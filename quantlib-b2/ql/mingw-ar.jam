@@ -1,0 +1,20 @@
+# override archive command for ar on Windows to use response file
+# because of the limit on the length of command line
+
+import generators ;
+import toolset ;
+
+actions piecemeal archive
+{
+    ar rc "$(<)" "@"@($(<[1]:T).rsp:E=$(>:T))
+    ranlib "$(<)"
+}
+
+rule init ( version ? : command * : options * )
+{
+    toolset.inherit-generators mingw-ar : gcc ;
+
+    generators.register-composing mingw-ar.archive : OBJ : STATIC_LIB ;
+
+    generators.override mingw-ar.archive : gcc.archive ;
+}

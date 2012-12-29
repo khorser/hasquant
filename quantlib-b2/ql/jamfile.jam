@@ -1,10 +1,10 @@
-project :
-	requirements
-		<include>..
-		<library>/boost//headers
-	:
-	usage-requirements
-		<include>..
+project : requirements
+	    <include>..
+	    <library>/boost//headers
+	: usage-requirements
+	    <include>..
 	;
 
 lib QuantLib : [ glob-tree *.cpp *.c ] ;
+
+using mingw-ar ;
