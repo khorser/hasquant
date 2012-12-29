@@ -1,0 +1,17 @@
+import option ; 
+ 
+using gcc ;
+ 
+option.set keep-going : false ; 
+
+#import boost ;
+
+use-project /boost : D:\\hasquant\\boost_1_50_0 ;
+
+project
+    : requirements <threading>multi <link>static <runtime-link>static <variant>release
+    ;
+
+build-project ql ;
+
+# build with --hash -d+2
