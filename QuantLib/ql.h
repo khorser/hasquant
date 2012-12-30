@@ -1,19 +1,24 @@
 extern "C"
 {
-    /* utilities */
-    const char *qlVersion();
-    const char *boostVersion();
+  /* utilities */
+  const char *qlVersion();
+  const char *boostVersion();
 
-    /* helpers */
-    void    qlFreeString(char *p);
-    int	    qlMinDate();
-    int	    qlMinYear();
-    int	    qlMinMonth();
-    int	    qlMinDay();
+  void	qlFreeString(char *p);
+  void *qlAllocateDate(int x, char **e);
+  int	qlDateSerialNumber(void *);
+  void  qlFreeDate(void *p);
 
-    /* settings */
-    int	    qlSettingsEvaluationDate();
-    char *  qlSettingsSetEvaluationDate(int x);
-    void    qlSettingsSetEnforceTodaysHistoricFixings(int x);
-    int	    qlSettingsEnforceTodaysHistoricFixings();
+  int	qlMinDate();
+  int	qlMinYear();
+  int	qlMinMonth();
+  int	qlMinDay();
+
+  /* settings */
+  int	qlSettingsEvaluationDate();
+  void	qlSettingsSetEvaluationDate(void *x);
+  void	qlSettingsSetEnforceTodaysHistoricFixings(int x);
+  int	qlSettingsEnforceTodaysHistoricFixings();
 }
+
+/* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */

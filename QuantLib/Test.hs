@@ -1,10 +1,9 @@
 module Main(main)
 where
 
-import Prelude hiding(catch)
-
-import Data.Time.Calendar
 import Control.Exception
+import Data.Time.Calendar
+import Prelude hiding(catch)
 
 import qualified QuantLib.Utilities as Utilities
 import qualified QuantLib.Settings as Settings

@@ -2,28 +2,23 @@
 
 #include "ql.h"
 
-#include <string.h>
-
 using namespace QuantLib;
 
 int qlSettingsEvaluationDate() {
-    Date d = Date(QuantLib::Settings::instance().evaluationDate());
-    return d.serialNumber();
+  Date d = Settings::instance().evaluationDate();
+  return d.serialNumber();
 }
 
-char* qlSettingsSetEvaluationDate(int x) {
-    try {
-	Settings::instance().evaluationDate() = QuantLib::Date(x);
-    } catch (Error& e) {
-	return strdup(e.what());
-    }
-    return 0;
+void qlSettingsSetEvaluationDate(void *x) {
+  Settings::instance().evaluationDate() = *(Date *)x;
 }
 
 void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
-    QuantLib::Settings::instance().enforcesTodaysHistoricFixings() = x;
+  Settings::instance().enforcesTodaysHistoricFixings() = x;
 }
 
 int qlSettingsEnforceTodaysHistoricFixings() {
-    return QuantLib::Settings::instance().enforcesTodaysHistoricFixings();
+  return Settings::instance().enforcesTodaysHistoricFixings();
 }
+
+/* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */
