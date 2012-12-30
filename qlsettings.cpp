@@ -1,34 +1,47 @@
-#include "ql/version.hpp"
-#include "ql/settings.hpp"
-#include "ql/time/date.hpp"
+#include <ql/version.hpp>
+#include <ql/settings.hpp>
+#include <ql/time/date.hpp>
 
 #include "qlsettings.h"
+
+#include <string.h>
+
+using namespace QuantLib;
 
 const char *qlVersion() {
      return QL_VERSION;
 }
 
 int qlSettingsEvaluationDate() {
-    QuantLib::Date d = QuantLib::Date(QuantLib::Settings::instance().evaluationDate());
+    Date d = Date(QuantLib::Settings::instance().evaluationDate());
     return d.serialNumber();
 }
 
-void qlSettingsSetEvaluationDate(int x) {
-    QuantLib::Settings::instance().evaluationDate() = QuantLib::Date(x);
+void qlFreeString(char *p) {
+    free(p);
+}
+
+char* qlSettingsSetEvaluationDate(int x) {
+    try {
+	Settings::instance().evaluationDate() = QuantLib::Date(x);
+    } catch (Error& e) {
+	return strdup(e.what());
+    }
+    return 0;
 }
 
 int qlMinDate() {
-    return QuantLib::Date::minDate().serialNumber();
+    return Date::minDate().serialNumber();
 }
 
 int qlMinYear() {
-    return QuantLib::Date::minDate().year();
+    return Date::minDate().year();
 }
 
 int qlMinMonth() {
-    return QuantLib::Date::minDate().month();
+    return Date::minDate().month();
 }
 
 int qlMinDay() {
-    return QuantLib::Date::minDate().dayOfMonth();
+    return Date::minDate().dayOfMonth();
 }

@@ -1,37 +1,45 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE ForeignFunctionInterface, DeriveDataTypeable #-}
 
-module Main(qlVersion, qlSettingsEvaluationDate, qlSettingsSetEvaluationDate, main)
+module Main(version, settingsEvaluationDate, settingsSetEvaluationDate, QLError, main)
 where
 
+import Prelude hiding(catch)
+
+import Foreign.Ptr
 import Foreign.C.Types
 import Foreign.C.String
 import System.IO.Unsafe
 
 import Data.Time.Calendar
 import Control.Monad
+import Control.Exception
+import Data.Typeable
 
-foreign import ccall "qlsettings.h qlVersion" c_qlVersion :: CString
-foreign import ccall "qlsettings.h qlSettingsEvaluationDate" c_qlSettingsEvaluationDate :: IO CInt
-foreign import ccall "qlsettings.h qlSettingsSetEvaluationDate" c_qlSettingsSetEvaluationDate :: CInt -> IO ()
+foreign import ccall safe "qlsettings.h qlVersion"
+    c_version :: CString
+foreign import ccall safe "qlsettings.h qlFreeString"
+    c_freeString :: CString -> IO ()
+foreign import ccall safe "qlsettings.h qlSettingsEvaluationDate"
+    c_settingsEvaluationDate :: IO CInt
+foreign import ccall safe "qlsettings.h qlSettingsSetEvaluationDate"
+    c_settingsSetEvaluationDate :: CInt -> IO CString
 
-foreign import ccall "qlsettings.h qlMinDate" c_qlMinDate :: IO CInt
-foreign import ccall "qlsettings.h qlMinYear" c_qlMinYear :: IO CInt
-foreign import ccall "qlsettings.h qlMinMonth" c_qlMinMonth :: IO CInt
-foreign import ccall "qlsettings.h qlMinDay" c_qlMinDay :: IO CInt
+foreign import ccall safe "qlsettings.h qlMinDate" c_minDate :: CInt
+foreign import ccall safe "qlsettings.h qlMinYear" c_minYear :: CInt
+foreign import ccall safe "qlsettings.h qlMinMonth" c_minMonth :: CInt
+foreign import ccall safe "qlsettings.h qlMinDay" c_minDay :: CInt
 
-qlVersion :: String
-qlVersion = unsafePerformIO $ peekCString c_qlVersion
+version :: String
+version = unsafePerformIO $ peekCString c_version
 
 -- Julian day of the QuantLib zero date
 qlStart :: Integer
-qlStart = unsafePerformIO $ do
-                                d <- c_qlMinDay
-                                m <- c_qlMinMonth
-                                y <- c_qlMinYear
-                                minDate <- c_qlMinDate
-                                let julian = fromGregorian (fromIntegral y) (fromIntegral m) (fromIntegral d)
-                                let julianDays = toModifiedJulianDay julian
-                                return $ julianDays - fromIntegral minDate
+qlStart = let minDateQlDays = fromIntegral c_minDate
+              minDateJulianDates = toModifiedJulianDay
+                $ fromGregorian (fromIntegral c_minYear)
+                                (fromIntegral c_minMonth)
+                                (fromIntegral c_minDay)
+              in minDateJulianDates - minDateQlDays
 
 fromQlDate :: CInt -> Day
 fromQlDate x = ModifiedJulianDay $ fromIntegral x + qlStart
@@ -39,17 +47,28 @@ fromQlDate x = ModifiedJulianDay $ fromIntegral x + qlStart
 toQlDate :: Day -> CInt
 toQlDate x = fromInteger $ toModifiedJulianDay x - qlStart
 
-qlSettingsEvaluationDate :: IO Day
-qlSettingsEvaluationDate = liftM fromQlDate c_qlSettingsEvaluationDate
+settingsEvaluationDate :: IO Day
+settingsEvaluationDate = liftM fromQlDate c_settingsEvaluationDate
 
-qlSettingsSetEvaluationDate :: Day -> IO ()
-qlSettingsSetEvaluationDate = c_qlSettingsSetEvaluationDate . toQlDate
+data QLError = QLError{message::String} deriving (Typeable, Show)
+instance Exception QLError
+
+settingsSetEvaluationDate :: Day -> IO ()
+settingsSetEvaluationDate x =
+  do result <- c_settingsSetEvaluationDate (toQlDate x)
+     unless (result == nullPtr) $
+       do msg <- peekCString result
+          c_freeString result
+          throw (QLError msg)
 
 main :: IO ()
 main = do
-        putStrLn qlVersion
-        d <- qlSettingsEvaluationDate
+        putStrLn version
+        d <- settingsEvaluationDate
         print d
-        qlSettingsSetEvaluationDate $ fromGregorian 2012 12 29
-        d1 <- qlSettingsEvaluationDate
+        settingsSetEvaluationDate $ fromGregorian 2012 12 29
+        d1 <- settingsEvaluationDate
         print d1
+        catch (settingsSetEvaluationDate $ fromGregorian 1861 1 1)
+            (\e -> do putStrLn $ "Caught QuantLib exception: " ++ message e)
+        putStrLn "OK"

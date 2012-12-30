@@ -1,8 +1,9 @@
 extern "C"
 {
     const char *qlVersion();
+    void qlFreeString(char *p);
     int qlSettingsEvaluationDate();
-    void qlSettingsSetEvaluationDate(int x);
+    char *qlSettingsSetEvaluationDate(int x);
 
     int qlMinDate();
     int qlMinYear();
