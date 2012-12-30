@@ -6,6 +6,10 @@ run [ glob *.cpp : quantlibbenchmark.cpp ] ../ql//QuantLib /boost//unit_test_fra
     :
     ;
 
+explicit benchmark ;
+
+rule benchmark ( )
+{
 run [ glob *.cpp : quantlibtestsuite.cpp ] ../ql//QuantLib /boost//unit_test_framework
     : --log_level=message --build_info=yes --result_code=no --report_level=short
     :
@@ -13,3 +17,4 @@ run [ glob *.cpp : quantlibtestsuite.cpp ] ../ql//QuantLib /boost//unit_test_fra
     : quantlib-benchmark
     :
     ;
+}
