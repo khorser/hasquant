@@ -17,6 +17,8 @@ import Data.Typeable
 
 foreign import ccall safe "qlsettings.h qlVersion"
     c_version :: CString
+foreign import ccall safe "qlsettings.h boostVersion"
+    c_boostVersion :: CString
 foreign import ccall safe "qlsettings.h qlFreeString"
     c_freeString :: CString -> IO ()
 foreign import ccall safe "qlsettings.h qlSettingsEvaluationDate"
@@ -31,6 +33,9 @@ foreign import ccall safe "qlsettings.h qlMinDay" c_minDay :: CInt
 
 version :: String
 version = unsafePerformIO $ peekCString c_version
+
+boostVersion :: String
+boostVersion = unsafePerformIO $ peekCString c_boostVersion
 
 -- Julian day of the QuantLib zero date
 qlStart :: Integer
@@ -64,6 +69,7 @@ settingsSetEvaluationDate x =
 main :: IO ()
 main = do
         putStrLn version
+        putStrLn boostVersion
         d <- settingsEvaluationDate
         print d
         settingsSetEvaluationDate $ fromGregorian 2012 12 29

@@ -1,6 +1,7 @@
 extern "C"
 {
     const char *qlVersion();
+    const char *boostVersion();
     void qlFreeString(char *p);
     int qlSettingsEvaluationDate();
     char *qlSettingsSetEvaluationDate(int x);

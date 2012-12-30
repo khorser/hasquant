@@ -12,6 +12,10 @@ const char *qlVersion() {
      return QL_VERSION;
 }
 
+const char *boostVersion() {
+     return BOOST_LIB_VERSION;
+}
+
 int qlSettingsEvaluationDate() {
     Date d = Date(QuantLib::Settings::instance().evaluationDate());
     return d.serialNumber();
