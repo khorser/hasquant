@@ -19,3 +19,11 @@ char* qlSettingsSetEvaluationDate(int x) {
     }
     return 0;
 }
+
+void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
+    QuantLib::Settings::instance().enforcesTodaysHistoricFixings() = x;
+}
+
+int qlSettingsEnforceTodaysHistoricFixings() {
+    return QuantLib::Settings::instance().enforcesTodaysHistoricFixings();
+}

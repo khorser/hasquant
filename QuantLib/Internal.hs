@@ -22,11 +22,11 @@ foreign import ccall safe "ql.h qlMinDay" c_minDay :: CInt
 -- Julian day of the QuantLib zero date
 qlStart :: Integer
 qlStart = let minDateQlDays = fromIntegral c_minDate
-              minDateJulianDates = toModifiedJulianDay
+              minDateJulianDays = toModifiedJulianDay
                 $ fromGregorian (fromIntegral c_minYear)
                                 (fromIntegral c_minMonth)
                                 (fromIntegral c_minDay)
-              in minDateJulianDates - minDateQlDays
+              in minDateJulianDays - minDateQlDays
 
 fromQlDate :: CInt -> Day
 fromQlDate x = ModifiedJulianDay $ fromIntegral x + qlStart

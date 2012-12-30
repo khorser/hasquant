@@ -21,4 +21,9 @@ main = do
         print d1
         catch (Settings.setEvaluationDate $ fromGregorian 1861 1 1)
             (\e -> putStrLn $ "Caught QuantLib exception: " ++ Error.message e)
+        e <- Settings.enforceTodaysHistoricFixings
+        print e
+        Settings.setEnforceTodaysHistoricFixings True
+        e1 <- Settings.enforceTodaysHistoricFixings
+        print e1
         putStrLn "OK"
