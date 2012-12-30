@@ -1,7 +1,10 @@
 #include <ql/version.hpp>
+#include <ql/time/date.hpp>
 #include <stdlib.h>
 
 #include "ql.h"
+
+using namespace QuantLib;
 
 const char *qlVersion() {
      return QL_VERSION;

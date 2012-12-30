@@ -1,5 +1,4 @@
 #include <ql/settings.hpp>
-#include <ql/time/date.hpp>
 
 #include "ql.h"
 

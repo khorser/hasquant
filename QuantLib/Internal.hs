@@ -8,6 +8,7 @@ import Foreign.C.Types
 import Foreign.C.String
 import Control.Exception
 import Data.Time.Calendar
+import Control.Monad
 
 import QuantLib.Error
 
