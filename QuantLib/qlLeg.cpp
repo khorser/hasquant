@@ -2,6 +2,7 @@
 #include <ql/cashflows/simplecashflow.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include <string.h>
 //#include <stdio.h>
 
 #include "ql.h"
@@ -9,19 +10,25 @@
 using namespace QuantLib;
 using namespace boost;
 
-void *qlLeg(int len, double *amounts, void **dates) {
+void *qlLeg(int len, double *amounts, void **dates, char **e) {
+  try {
     Leg *leg = new Leg();
     Date **d = (Date **)dates;
     for (int i = 0; i < len; ++i)
-	leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], *d[i])));
+      leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], *d[i])));
     //printf("Allocated leg %p\n", leg);
     return leg;
+  } catch (Error& er) {
+    *e = strdup(er.what());
+    //printf("Duplicated string %p\n", *e);
+    return 0;
+  }
 }
 
 int qlLegStartDate(void *leg) {
-    Leg *l = (Leg *)leg;
-    Date d = CashFlows::startDate(*l);
-    return d.serialNumber();
+  Leg *l = (Leg *)leg;
+  Date d = CashFlows::startDate(*l);
+  return d.serialNumber();
 }
 
 void qlFreeLeg(void *leg) {

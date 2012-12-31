@@ -1,2 +1,2 @@
 Don't pass around pointers to Dates and pass integers instead (validate using minDate and maxDate)
-Catch exceptions in qlLeg
+

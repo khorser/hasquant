@@ -18,7 +18,7 @@ extern "C"
   void  qlFreeDate(void *p);
 
   /* leg */
-  void *qlLeg(int len, double *amounts, void **dates);
+  void *qlLeg(int len, double *amounts, void **dates, char **e);
   int   qlLegStartDate(void *leg);
       /* internal */
   void  qlFreeLeg(void *leg);

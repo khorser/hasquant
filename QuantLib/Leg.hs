@@ -12,6 +12,8 @@ import Data.List(sortBy)
 import Data.Function(on)
 import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt), CDouble)
+import Foreign.C.String(CString, peekCString)
+import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr)
 import Foreign.ForeignPtr
@@ -25,7 +27,7 @@ data CLeg
 type Leg = ForeignPtr CLeg
 
 foreign import ccall safe "ql.h qlLeg"
-    c_leg :: CInt -> Ptr CDouble -> Ptr (Ptr CDate) -> IO (Ptr CLeg)
+    c_leg :: CInt -> Ptr CDouble -> Ptr (Ptr CDate) -> Ptr CString -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
     c_legStartDate :: Ptr CLeg -> IO CInt
 foreign import ccall safe "ql.h &qlFreeLeg"
@@ -40,13 +42,19 @@ leg flows s =
      case ds of
        Left m  -> throw $ Error m
        Right d -> 
-        do l <-leg' (fromIntegral $ length sorted) (map (realToFrac . fst) sorted) d
-           freeDates d
-           newForeignPtr p_freeLeg l
+        do alloca $
+            \errptr ->
+              do l <-leg' (fromIntegral $ length sorted) (map (realToFrac . fst) sorted) d errptr
+                 freeDates d
+                 newForeignPtr p_freeLeg l
 
-leg' :: CInt -> [CDouble] -> [Ptr CDate] -> IO (Ptr CLeg)
-leg' len amounts dates =
-  withArray amounts (withArray dates . c_leg len)
+leg' :: CInt -> [CDouble] -> [Ptr CDate] -> Ptr CString -> IO (Ptr CLeg)
+leg' len amounts dates e =
+  withArray
+    amounts
+    (\ams -> (withArray
+                dates
+                (\ds -> c_leg len ams ds e)))
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX Assuming that legs are immutable. Otherwise the type shoule be Leg -> IO Day
