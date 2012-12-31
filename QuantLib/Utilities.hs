@@ -6,8 +6,8 @@ module QuantLib.Utilities
   )
 where
 
-import Foreign.C.String
-import System.IO.Unsafe
+import Foreign.C.String(CString, peekCString)
+import System.IO.Unsafe(unsafePerformIO)
 
 foreign import ccall safe "ql.h qlVersion"
     c_version :: CString

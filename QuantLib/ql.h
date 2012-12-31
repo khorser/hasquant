@@ -13,9 +13,15 @@ extern "C"
   int	qlMinYear();
   int	qlMinMonth();
   int	qlMinDay();
-  void *qlAllocateDate(int x, char **e);
+  void *qlDate(int x, char **e);
   int	qlDateSerialNumber(void *);
   void  qlFreeDate(void *p);
+
+  /* leg */
+  void *qlLeg(int len, double *amounts, void **dates);
+  int   qlLegStartDate(void *leg);
+      /* internal */
+  void  qlFreeLeg(void *leg);
 
   /* settings */
   int	qlSettingsEvaluationDate();

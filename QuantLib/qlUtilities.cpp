@@ -24,4 +24,5 @@ void qlFreeString(char *p) {
   //printf("Freeing string %p\n", p);
   free(p);
 }
+
 /* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */

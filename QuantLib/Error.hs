@@ -5,8 +5,8 @@ module QuantLib.Error
   )
 where
 
-import Control.Exception
-import Data.Typeable
+import Control.Exception(Exception)
+import Data.Typeable(Typeable)
 
 data Error = Error{message::String} deriving (Typeable, Show)
 

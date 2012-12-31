@@ -1,31 +1,34 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 module QuantLib.Internal
   (
-    fromQlSerialNumber
+    fromQlDateSerialNumber
   , CDate
   , allocateDate
+  , allocateDates
   , freeDate
+  , freeDates
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   )
 where
 
-import Data.Time.Calendar
-import Foreign.C.String
-import Foreign.C.Types
-import Foreign.Marshal.Alloc
-import Foreign.Ptr
-import Foreign.Storable
+import Data.Either(lefts, rights)
+import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
+import Foreign.C.String(CString, peekCString)
+import Foreign.C.Types(CInt(CInt))
+import Foreign.Marshal.Alloc(alloca)
+import Foreign.Ptr(Ptr, nullPtr)
+import Foreign.Storable(peek)
 
-type CDate = ()
+data CDate
 
 foreign import ccall safe "ql.h qlFreeString"
     c_freeString :: CString -> IO ()
 
-foreign import ccall safe "ql.h qlAllocateDate"
+foreign import ccall safe "ql.h qlDate"
     c_allocateDate :: CInt -> Ptr CString -> IO (Ptr CDate)
 foreign import ccall safe "ql.h qlFreeDate"
-    freeDate :: Ptr CDate -> IO ()
+    c_freeDate :: Ptr CDate -> IO ()
 foreign import ccall safe "ql.h qlMinDateSerialNumber"
     c_minDateSerialNumber :: CInt
 foreign import ccall safe "ql.h qlMaxDateSerialNumber"
@@ -45,8 +48,8 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
                                     (fromIntegral c_minMonth)
                                     (fromIntegral c_minDay)
 
-fromQlSerialNumber :: CInt -> Day
-fromQlSerialNumber p = ModifiedJulianDay $
+fromQlDateSerialNumber :: CInt -> Day
+fromQlDateSerialNumber p = ModifiedJulianDay $
                 fromIntegral p + qlStart
 
 -- fromQlDatePtr :: Ptr CDate -> Day
@@ -55,6 +58,9 @@ fromQlSerialNumber p = ModifiedJulianDay $
 
 toQlDate :: Day -> CInt
 toQlDate x = fromInteger $ toModifiedJulianDay x - qlStart
+
+freeDate :: Ptr CDate -> IO ()
+freeDate = c_freeDate
 
 allocateDate :: Day -> IO (Either String (Ptr CDate))
 allocateDate x =
@@ -68,3 +74,15 @@ allocateDate x =
                 return (Left err)
       else
         return (Right d)
+
+allocateDates :: [Day] -> IO (Either String [Ptr CDate])
+allocateDates x =
+  do p <- mapM allocateDate x
+     let msgs = concat $ lefts p
+     let ptrs = rights p
+     if null msgs
+       then return $ Right ptrs
+       else mapM_ freeDate ptrs >> return (Left msgs)
+
+freeDates :: [Ptr CDate] -> IO ()
+freeDates = mapM_ freeDate

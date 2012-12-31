@@ -30,7 +30,7 @@ int qlMinDay() {
   return Date::minDate().dayOfMonth();
 }
 
-void * qlAllocateDate(int x, char **e) {
+void * qlDate(int x, char **e) {
   try {
     Date *p = new Date(x);
     //printf("Allocated date %p\n", p);

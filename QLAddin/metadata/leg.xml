@@ -30,29 +30,6 @@
 
     <!-- Leg Date functions -->
 
-    <Procedure name='qlLegStartDate'>
-      <description>Returns the start (i.e. first accrual) date for the given Leg object.</description>
-      <alias>QuantLib::CashFlows::startDate</alias>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='ObjectId'>
-            <type>QuantLib::Leg</type>
-            <superType>underlyingClass</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>id of existing QuantLib::Leg object</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Date</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Procedure>
-
     <Procedure name='qlLegMaturityDate'>
       <description>Returns the maturity (i.e. last payment) date for the given Leg object.</description>
       <alias>QuantLib::CashFlows::startDate</alias>
@@ -1415,34 +1392,6 @@
     </Member>
 
     <!-- Leg constructors -->
-
-    <Constructor name='qlLeg'>
-      <libraryFunction>Leg</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Amounts' exampleValue='1000000.0,500000.0'>
-            <type>double</type>
-            <tensorRank>vector</tensorRank>
-            <description>list of cash to be received/paid.</description>
-          </Parameter>
-          <Parameter name='Dates' exampleValue='40238,40330'>
-            <type>QuantLib::Date</type>
-            <tensorRank>vector</tensorRank>
-            <description>payment dates corresponding to amounts.</description>
-          </Parameter>
-          <Parameter name='ToBeSorted' default='true'>
-            <type>bool</type>
-            <tensorRank>scalar</tensorRank>
-            <description>TRUE if the CashFlows must be sorted by ascending dates.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
 
     <Constructor name='qlLegFromCapFloor'>
       <libraryFunction>Leg</libraryFunction>

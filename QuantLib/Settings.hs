@@ -8,15 +8,15 @@ module QuantLib.Settings
   )
 where
 
-import Control.Exception
-import Control.Monad
-import Data.Time.Calendar
-import Foreign.C.Types
-import Foreign.Marshal.Utils
-import Foreign.Ptr
+import Control.Exception(throw)
+import Control.Monad(liftM)
+import Data.Time.Calendar(Day)
+import Foreign.C.Types(CInt(CInt))
+import Foreign.Marshal.Utils(fromBool, toBool)
+import Foreign.Ptr(Ptr)
 
-import QuantLib.Error
-import QuantLib.Internal
+import QuantLib.Error(Error(Error))
+import QuantLib.Internal(CDate, fromQlDateSerialNumber, allocateDate, freeDate)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
     c_evaluationDate :: IO CInt
@@ -29,7 +29,7 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
 
 -- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
 evaluationDate :: IO Day
-evaluationDate = liftM fromQlSerialNumber c_evaluationDate
+evaluationDate = liftM fromQlDateSerialNumber c_evaluationDate
 
 -- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
 setEvaluationDate :: Day -> IO ()
