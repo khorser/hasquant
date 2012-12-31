@@ -31,10 +31,10 @@ settings = TestList
             t1 <- Settings.evaluationDate
             assertEqual "new valuation date" t1 (fromGregorian 2012 12 29)
   , "invalid evaluation date"
-      ~: do catch
-              (do Settings.setEvaluationDate (fromGregorian 1861 1 1)
-                  assertFailure "invalid evaluation date passed through")
-              (\e -> assertBool "exception message not empty" (length (Error.message e) > 0))
+      ~: catch
+          (do Settings.setEvaluationDate (fromGregorian 1861 1 1)
+              assertFailure "invalid evaluation date passed through")
+          (assertBool "exception message not empty" . not . null . Error.message)
   , "enforce today's historic fixings 1"
       ~: do e1 <- Settings.enforceTodaysHistoricFixings
             assertEqual "default enforce today's historic fixings" e1 False
