@@ -140,5 +140,6 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate
-          quickCheckWith stdArgs{maxDiscardRatio = 20} prop_legStartDate
+          --quickCheckWith stdArgs{maxDiscardRatio = 20} prop_legStartDate
+          quickCheck prop_legStartDate
           return ()

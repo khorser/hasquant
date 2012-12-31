@@ -13,14 +13,15 @@ import Data.Function(on)
 import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.C.String(CString, peekCString)
+import Foreign.ForeignPtr
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(withArray)
-import Foreign.Ptr(Ptr, FunPtr)
-import Foreign.ForeignPtr
+import Foreign.Ptr(Ptr, FunPtr, nullPtr)
+import Foreign.Storable(peek)
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Error(Error(Error))
-import QuantLib.Internal(CDate, allocateDates, freeDates, fromQlDateSerialNumber)
+import QuantLib.Internal(CDate, c_freeString, allocateDates, freeDates, fromQlDateSerialNumber)
 
 data CLeg
 
@@ -41,12 +42,16 @@ leg flows s =
      ds <- allocateDates (map snd sorted)
      case ds of
        Left m  -> throw $ Error m
-       Right d -> 
-        do alloca $
-            \errptr ->
-              do l <-leg' (fromIntegral $ length sorted) (map (realToFrac . fst) sorted) d errptr
-                 freeDates d
-                 newForeignPtr p_freeLeg l
+       Right d -> alloca $
+                    \errptr ->
+                    do l <-leg' (fromIntegral $ length sorted) (map (realToFrac . fst) sorted) d errptr
+                       freeDates d
+                       if l == nullPtr 
+                         then do msg <- peek errptr
+                                 err <- peekCString msg
+                                 c_freeString msg
+                                 throw $ Error err
+                          else newForeignPtr p_freeLeg l
 
 leg' :: CInt -> [CDouble] -> [Ptr CDate] -> Ptr CString -> IO (Ptr CLeg)
 leg' len amounts dates e =

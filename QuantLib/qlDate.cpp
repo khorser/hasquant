@@ -35,7 +35,7 @@ void * qlDate(int x, char **e) {
     Date *p = new Date(x);
     //printf("Allocated date %p\n", p);
     return p;
-  } catch (Error& er) {
+  } catch (std::exception& er) {
     *e = strdup(er.what());
     //printf("Duplicated string %p\n", *e);
     return 0;

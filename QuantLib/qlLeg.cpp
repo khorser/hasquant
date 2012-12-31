@@ -11,14 +11,18 @@ using namespace QuantLib;
 using namespace boost;
 
 void *qlLeg(int len, double *amounts, void **dates, char **e) {
+  Leg *leg = 0;
   try {
-    Leg *leg = new Leg();
+    leg = new Leg();
     Date **d = (Date **)dates;
     for (int i = 0; i < len; ++i)
       leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], *d[i])));
     //printf("Allocated leg %p\n", leg);
+    //QL_FAIL("Just for fun");
     return leg;
-  } catch (Error& er) {
+  } catch (std::exception& er) {
+    if (leg)
+      delete leg;
     *e = strdup(er.what());
     //printf("Duplicated string %p\n", *e);
     return 0;

@@ -9,6 +9,7 @@ module QuantLib.Internal
   , freeDates
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
+  , c_freeString
   )
 where
 
@@ -72,8 +73,7 @@ allocateDate x =
                 err <- peekCString msg
                 c_freeString msg
                 return (Left err)
-      else
-        return (Right d)
+        else return (Right d)
 
 allocateDates :: [Day] -> IO (Either String [Ptr CDate])
 allocateDates x =
