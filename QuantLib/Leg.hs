@@ -6,6 +6,7 @@ module QuantLib.Leg
   )
 where
 
+import Control.Monad(when)
 import Control.Exception(throw)
 import Data.List(sortBy)
 import Data.Function(on)
@@ -33,7 +34,8 @@ foreign import ccall safe "ql.h &qlFreeLeg"
 -- | (qlLeg)
 leg :: [(Double, Day)] -> Bool -> IO Leg
 leg flows s =
-  do let sorted = (if s then sortBy (compare `on` snd) else id) flows
+  do when (null flows) $ throw (Error "Empty list of flows")
+     let sorted = (if s then sortBy (compare `on` snd) else id) flows
      ds <- allocateDates (map snd sorted)
      case ds of
        Left m  -> throw $ Error m
@@ -47,7 +49,7 @@ leg' len amounts dates =
   withArray amounts (withArray dates . c_leg len)
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
--- XXX Assume that legs are immutable. Otherwise the type shoule be Leg -> IO Day
+-- XXX Assuming that legs are immutable. Otherwise the type shoule be Leg -> IO Day
 startDate :: Leg -> Day
 startDate l = fromQlDateSerialNumber
   $ unsafePerformIO (withForeignPtr l c_legStartDate)
