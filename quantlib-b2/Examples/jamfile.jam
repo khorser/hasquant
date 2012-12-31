@@ -1,25 +1,25 @@
-exe BermudanSwaption : [ glob BermudanSwaption/*.cpp ] ../ql//QuantLib ;
+exe BermudanSwaptionExample : [ glob BermudanSwaption/*.cpp ] ../ql//QuantLib ;
 
-exe Bonds : [ glob Bonds/*.cpp ] ../ql//QuantLib ;
+exe BondsExample : [ glob Bonds/*.cpp ] ../ql//QuantLib ;
 
-exe CallableBonds : [ glob CallableBonds/*.cpp ] ../ql//QuantLib ;
+exe CallableBondsExample : [ glob CallableBonds/*.cpp ] ../ql//QuantLib ;
 
-exe CDS : [ glob CDS/*.cpp ] ../ql//QuantLib ;
+exe CDSExample : [ glob CDS/*.cpp ] ../ql//QuantLib ;
 
-exe ConvertibleBonds : [ glob ConvertibleBonds/*.cpp ] ../ql//QuantLib ;
+exe ConvertibleBondsExample : [ glob ConvertibleBonds/*.cpp ] ../ql//QuantLib ;
 
-exe DiscreteHedging : [ glob DiscreteHedging/*.cpp ] ../ql//QuantLib ;
+exe DiscreteHedgingExample : [ glob DiscreteHedging/*.cpp ] ../ql//QuantLib ;
 
-exe EquityOption : [ glob EquityOption/*.cpp ] ../ql//QuantLib ;
+exe EquityOptionExample : [ glob EquityOption/*.cpp ] ../ql//QuantLib ;
 
-exe FittedBondCurve : [ glob FittedBondCurve/*.cpp ] ../ql//QuantLib ;
+exe FittedBondCurveExample : [ glob FittedBondCurve/*.cpp ] ../ql//QuantLib ;
 
-exe FRA : [ glob FRA/*.cpp ] ../ql//QuantLib ;
+exe FRAExample : [ glob FRA/*.cpp ] ../ql//QuantLib ;
 
-exe MarketModels : [ glob MarketModels/*.cpp ] ../ql//QuantLib ;
+exe MarketModelsExample : [ glob MarketModels/*.cpp ] ../ql//QuantLib ;
 
-exe Replication : [ glob Replication/*.cpp ] ../ql//QuantLib ;
+exe ReplicationExample : [ glob Replication/*.cpp ] ../ql//QuantLib ;
 
-exe Repo : [ glob Repo/*.cpp ] ../ql//QuantLib ;
+exe RepoExample : [ glob Repo/*.cpp ] ../ql//QuantLib ;
 
-exe Swap : [ glob Swap/*.cpp ] ../ql//QuantLib ;
+exe SwapExample : [ glob Swap/*.cpp ] ../ql//QuantLib ;
