@@ -1,6 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
-
-module QuantLib.Error(Error(..))
+module QuantLib.Error
+  (
+    Error(..)
+  )
 where
 
 import Control.Exception

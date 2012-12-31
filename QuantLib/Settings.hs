@@ -1,6 +1,6 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-
-module QuantLib.Settings(
+module QuantLib.Settings
+  (
     evaluationDate
   , setEvaluationDate
   , enforceTodaysHistoricFixings
@@ -29,7 +29,7 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
 
 -- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
 evaluationDate :: IO Day
-evaluationDate = liftM fromQlDate c_evaluationDate
+evaluationDate = liftM fromQlSerialNumber c_evaluationDate
 
 -- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
 setEvaluationDate :: Day -> IO ()

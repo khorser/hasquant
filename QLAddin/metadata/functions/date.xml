@@ -108,61 +108,6 @@
       </ReturnValue>
     </Procedure>
 
-    <Procedure name='qlDateMinDate'>
-      <description>returns the earliest date allowed in QuantLib.</description>
-      <alias>QuantLib::Date::minDate</alias>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Date</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Procedure>
-
-    <Procedure name='qlDateMaxDate'>
-      <description>returns the latest date allowed in QuantLib.</description>
-      <alias>QuantLib::Date::maxDate</alias>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Date</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Procedure>
-
-    <Procedure name='qlDateIsLeap' loopParameter='Year'>
-      <description>returns TRUE if a year is leap.</description>
-      <alias>QuantLib::Date::isLeap</alias>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Year' exampleValue='2007'>
-            <type>long</type>
-            <tensorRank>vector</tensorRank>
-            <description>year (e.g. 2006).</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>bool</type>
-        <tensorRank>vector</tensorRank>
-      </ReturnValue>
-    </Procedure>
-
     <Procedure name='qlDateEndOfMonth' loopParameter='Date'>
       <description>returns the last day of the month to which the given date belongs.</description>
       <alias>QuantLib::Date::endOfMonth</alias>

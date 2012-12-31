@@ -1,6 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-
-module QuantLib.Utilities(version, boostVersion)
+module QuantLib.Utilities
+  (
+    version
+  , boostVersion
+  )
 where
 
 import Foreign.C.String

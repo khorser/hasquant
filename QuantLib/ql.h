@@ -3,16 +3,19 @@ extern "C"
   /* utilities */
   const char *qlVersion();
   const char *boostVersion();
-
+      /* internal */
   void	qlFreeString(char *p);
-  void *qlAllocateDate(int x, char **e);
-  int	qlDateSerialNumber(void *);
-  void  qlFreeDate(void *p);
 
-  int	qlMinDate();
+  /* date */
+      /* internal */
+  int	qlMinDateSerialNumber();
+  int	qlMaxDateSerialNumber();
   int	qlMinYear();
   int	qlMinMonth();
   int	qlMinDay();
+  void *qlAllocateDate(int x, char **e);
+  int	qlDateSerialNumber(void *);
+  void  qlFreeDate(void *p);
 
   /* settings */
   int	qlSettingsEvaluationDate();

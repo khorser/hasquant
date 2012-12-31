@@ -1,10 +1,12 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-
-module QuantLib.Internal(
-    fromQlDate
+module QuantLib.Internal
+  (
+    fromQlSerialNumber
   , CDate
   , allocateDate
   , freeDate
+  , c_maxDateSerialNumber
+  , c_minDateSerialNumber
   )
 where
 
@@ -19,29 +21,32 @@ type CDate = ()
 
 foreign import ccall safe "ql.h qlFreeString"
     c_freeString :: CString -> IO ()
+
 foreign import ccall safe "ql.h qlAllocateDate"
-    c_allocateDate :: CInt -> Ptr (CString) -> IO (Ptr CDate)
---foreign import ccall safe "ql.h qlDateSerialNumber"
---    c_dateSerialNumber :: Ptr CDate -> CInt
+    c_allocateDate :: CInt -> Ptr CString -> IO (Ptr CDate)
 foreign import ccall safe "ql.h qlFreeDate"
     freeDate :: Ptr CDate -> IO ()
-
-foreign import ccall safe "ql.h qlMinDate" c_minDate :: CInt
-foreign import ccall safe "ql.h qlMinYear" c_minYear :: CInt
-foreign import ccall safe "ql.h qlMinMonth" c_minMonth :: CInt
-foreign import ccall safe "ql.h qlMinDay" c_minDay :: CInt
+foreign import ccall safe "ql.h qlMinDateSerialNumber"
+    c_minDateSerialNumber :: CInt
+foreign import ccall safe "ql.h qlMaxDateSerialNumber"
+    c_maxDateSerialNumber :: CInt
+foreign import ccall safe "ql.h qlMinYear"
+    c_minYear :: CInt
+foreign import ccall safe "ql.h qlMinMonth"
+    c_minMonth :: CInt
+foreign import ccall safe "ql.h qlMinDay"
+    c_minDay :: CInt
 
 -- |Julian day of the QuantLib zero date
 qlStart :: Integer
-qlStart = let minDateQlDays = fromIntegral c_minDate
-              minDateJulianDays = toModifiedJulianDay
-                $ fromGregorian (fromIntegral c_minYear)
-                                (fromIntegral c_minMonth)
-                                (fromIntegral c_minDay)
-              in minDateJulianDays - minDateQlDays
+qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
+            where minDateJulianDays = toModifiedJulianDay
+                    $ fromGregorian (fromIntegral c_minYear)
+                                    (fromIntegral c_minMonth)
+                                    (fromIntegral c_minDay)
 
-fromQlDate :: CInt -> Day
-fromQlDate p = ModifiedJulianDay $
+fromQlSerialNumber :: CInt -> Day
+fromQlSerialNumber p = ModifiedJulianDay $
                 fromIntegral p + qlStart
 
 -- fromQlDatePtr :: Ptr CDate -> Day
