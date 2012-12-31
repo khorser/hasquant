@@ -1,3 +1,5 @@
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module Main(main)
 where
 
@@ -7,6 +9,8 @@ import Data.Time.Clock
 import Data.Time.LocalTime
 import Prelude hiding(catch)
 import Test.HUnit
+import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property, quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
+import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
 import qualified QuantLib.Date as Date
 import qualified QuantLib.Error as Error
@@ -56,10 +60,46 @@ dates = test
             [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
   ]
 
+instance Arbitrary Day where
+  arbitrary = do
+    y <- elements [1900 .. 2300]
+    m <- elements [1 .. 12]
+    d <- elements [1 .. 31]
+    return (fromGregorian y m d)
+
+setAndGetEvaluationDate :: Day -> IO Day
+setAndGetEvaluationDate d =
+  do Settings.setEvaluationDate d
+     Settings.evaluationDate
+
+setAndGetEvaluationDateWithExceptions :: Day -> IO Day
+setAndGetEvaluationDateWithExceptions d =
+  do catch (Settings.setEvaluationDate d)
+           (\(_ :: Error.Error) -> return ())
+     Settings.evaluationDate
+
+prop_validEvaluationDate :: Property
+prop_validEvaluationDate = monadicIO
+  $ do d1 <- pick arbitrary
+       pre (d1 >= Date.minDate && d1 <= Date.maxDate)
+       d2 <- run $ setAndGetEvaluationDate d1
+       QC.assert $ d1 == d2
+
+prop_invalidEvaluationDate :: Day -> Property
+prop_invalidEvaluationDate d =
+  (d < Date.minDate || d > Date.maxDate)
+    ==> monadicIO
+          $ do  t <- run today
+                _ <- run $ Settings.setEvaluationDate t
+                d2 <- run $ setAndGetEvaluationDateWithExceptions d
+                QC.assert $ t == d2
+
 main :: IO ()
 main = do
         putStrLn $
           "QuantLib version " ++ Utilities.version
           ++ ", Boost " ++ Utilities.boostVersion
         _ <- runTestTT $ test [settings, dates]
+        quickCheckWith stdArgs{maxSuccess = 1000} prop_validEvaluationDate
+        quickCheck prop_invalidEvaluationDate
         return ()
