@@ -7,7 +7,6 @@ module QuantLib.CashFlow.Leg
   )
 where
 
-import Control.Monad(when)
 import Control.Exception(throw)
 import Data.Time.Calendar(Day)
 
@@ -38,19 +37,18 @@ foreign import ccall safe "ql.h &qlFreeLeg"
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
 leg flows =
-  do when (null flows) $ throw (Error "Empty list of flows")
-     alloca $
-       \errptr ->
-       do l <-leg' errptr
-                   (fromIntegral $ length amounts)
-                   (map realToFrac amounts)
-                   (map toQlDateSerialNumber dates)
-          if l == nullPtr 
-            then do msg <- peek errptr
-                    err <- peekCString msg
-                    c_freeString msg
-                    throw (Error err)
-            else newForeignPtr p_freeLeg l
+   alloca $
+     \errptr ->
+     do l <-leg' errptr
+                 (fromIntegral $ length amounts)
+                 (map realToFrac amounts)
+                 (map toQlDateSerialNumber dates)
+        if l == nullPtr 
+          then do msg <- peek errptr
+                  err <- peekCString msg
+                  c_freeString msg
+                  throw (Error err)
+          else newForeignPtr p_freeLeg l
   where amounts = map fst flows
         dates   = map snd flows
 

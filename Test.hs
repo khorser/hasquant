@@ -87,12 +87,7 @@ calendar :: Test
 calendar = TestList
   [
     "GBP" ~: "GBP calendar name" ~:
-      (Calendar.name Calendar.londonStockExchange) ~?= (Calendar.name Calendar.gbp)
-  , "non-existent calendar"
-      ~: catch
-          (do _ <- Calendar.calendar "WorldwideGoldSilverOilDiamondCarbonCurrencyStockExchange"
-              assertFailure "invalid calendar name passed through")
-          (assertBool "exception message not empty" . not . null . Error.message)
+      Calendar.name Calendar.londonStockExchange ~?= Calendar.name Calendar.gbp
   ]
 
 -- QuickCheck --
@@ -139,10 +134,10 @@ prop_singleLegStartDate flow@(_, d) =
 
 prop_legStartDate :: [(Double, Day)] -> Property
 prop_legStartDate flows =
-  (not (null flows) && all Date.isValid (map snd flows))
+  all Date.isValid (map snd flows)
     ==> monadicIO
           $ do l <- run $ Leg.leg flows
-               assert $ minimum (map snd flows) == Leg.startDate l
+               assert $ null flows || minimum (map snd flows) == Leg.startDate l
 
 -- Main --
 main :: IO ()

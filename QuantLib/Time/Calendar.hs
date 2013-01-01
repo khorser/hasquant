@@ -2,7 +2,6 @@
 module QuantLib.Time.Calendar
   (
     Calendar
-  , calendar
   , name
 
   , noCalendar
