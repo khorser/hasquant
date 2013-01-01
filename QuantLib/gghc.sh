@@ -1,1 +1,2 @@
-ghc -Wall -o Test *.hs ../Test.hs ../cpp/*.cpp -lQuantLib -pgml g++
+mkdir obj
+ghc -outputdir obj -Wall -o Test */*.hs *.hs ../Test.hs ../cpp/*.cpp -lQuantLib -pgml g++

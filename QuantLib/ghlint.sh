@@ -1,1 +1,1 @@
-hlint *.hs ../Test.hs
+hlint *.hs ../Test.hs */*.hs

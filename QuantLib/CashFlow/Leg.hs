@@ -1,5 +1,5 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
-module QuantLib.Leg
+module QuantLib.CashFlow.Leg
   (
     Leg
   , leg
@@ -12,7 +12,7 @@ import Control.Exception(throw)
 import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.C.String(CString, peekCString)
-import Foreign.ForeignPtr
+import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr, nullPtr)

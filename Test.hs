@@ -14,9 +14,9 @@ import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
-import qualified QuantLib.Date as Date(minDate, maxDate, isLeap, isValid)
+import qualified QuantLib.Time.Date as Date(minDate, maxDate, isLeap, isValid)
 import qualified QuantLib.Error as Error(Error(message))
-import qualified QuantLib.Leg as Leg(leg, startDate)
+import qualified QuantLib.CashFlow.Leg as Leg(leg, startDate)
 import qualified QuantLib.Settings as Settings(evaluationDate,
   setEvaluationDate, enforceTodaysHistoricFixings,
   setEnforceTodaysHistoricFixings)

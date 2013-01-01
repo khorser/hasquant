@@ -1,4 +1,4 @@
-module QuantLib.Date
+module QuantLib.Time.Date
   (
     minDate
   , maxDate
