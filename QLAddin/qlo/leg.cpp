@@ -58,33 +58,6 @@ using boost::shared_ptr;
 
 namespace QuantLibAddin {
 
-    Leg::Leg(const shared_ptr<ValueObject>& p,
-             const vector<Real>& amounts,
-             const vector<Date>& dates,
-             bool toBeSorted,
-             bool permanent)
-    : ObjectHandler::LibraryObject<QuantLib::Leg>(p, permanent)
-    {
-        QL_REQUIRE(amounts.size() == dates.size(),
-                   "Dates (" << dates.size() << ") and amounts (" <<
-                   amounts.size() << ") must have the same size");
-
-        libraryObject_ = shared_ptr<QuantLib::Leg>(new QuantLib::Leg());
-
-        for (QuantLib::Size i=0; i<amounts.size(); ++i) {
-            if (dates[i]!=Date())
-                libraryObject_->push_back(shared_ptr<CashFlow>(new
-                    QuantLib::SimpleCashFlow(amounts[i], dates[i])));
-            else
-                QL_REQUIRE(amounts[i]==0 || amounts[i]==Null<Real>(),
-                           "non-null amount (" << amounts[i] << ") on null date");
-        }
-
-        if (toBeSorted)
-            std::stable_sort(libraryObject_->begin(), libraryObject_->end(),
-                             earlier_than<shared_ptr<CashFlow> >());
-    }
-
     Leg::Leg(const shared_ptr<ValueObject>& prop,
              const shared_ptr<QuantLib::CapFloor>& capFloor,
              bool permanent)
