@@ -1,0 +1,37 @@
+Name:                hasquant
+Version:             0.1.0.0
+Synopsis:            Bindings to QuantLib
+-- Description:         
+
+License:             BSD3
+License-File:        LICENSE
+Author:              Sergey Khorev
+Maintainer:          sergey.khorev@gmail.com
+-- Copyright:           
+
+Category:            Finance
+-- build-type:          Custom
+Build-Type:          Simple
+Cabal-Version:       >=1.8
+--tested-with:	     GHC-7.4.2
+
+--Extra-Source-Files:  cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp
+
+-- library
+--   exposed-modules:     QuantLib.Utilities, QuantLib.Settings, QuantLib.Leg, QuantLib.Error, QuantLib.Date
+--   other-modules:       QuantLib.Internal
+--   ghc-options:	       -Wall
+--   build-depends:       base == 4.5.*, time >= 1.4
+--   include-dirs:        cpp
+--   install-includes:    ql.h
+Executable test
+  Main-Is:	       Test.hs
+  GHC-Options:	       -Wall
+  C-Sources:	       cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp
+  -- TODO don't hardcode paths to QL and boost
+  Include-Dirs:        cpp d:/hasquant/QuantLib-1.2.1 d:/hasquant/boost_1_50_0
+  Extra-Lib-Dirs:      D:/hasquant/QuantLib-1.2.1/ql/bin/15b474156460f41fe64f8ba9fcb070b1
+  Build-Depends:       base == 4.5.*, QuickCheck >=2.4.2, HUnit >= 1.2.4.2, time >= 1.4
+  Extra-Libraries:     QuantLib stdc++
+  -- TODO: do it only on windows, don't we really need -static-libstdc++ -static-libgcc
+  Ld-Options:	       -static

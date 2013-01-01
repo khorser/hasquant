@@ -1,3 +1,4 @@
+{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Leg
   (
     Leg
