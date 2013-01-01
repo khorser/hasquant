@@ -9,8 +9,6 @@ where
 
 import Control.Monad(when)
 import Control.Exception(throw)
-import Data.List(sortBy)
-import Data.Function(on)
 import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.C.String(CString, peekCString)
@@ -36,13 +34,9 @@ foreign import ccall safe "ql.h &qlFreeLeg"
     p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
 -- | (qlLeg)
-leg :: [(Double, Day)] -> Bool -> IO Leg
-leg flows s =
+leg :: [(Double, Day)] -> IO Leg
+leg flows =
   do when (null flows) $ throw (Error "Empty list of flows")
-     let sorted = (if s then sortBy (compare `on` snd) else id) flows
-     let amounts = map fst sorted
-     let dates = map snd sorted
-
      alloca $
        \errptr ->
        do l <-leg' errptr
@@ -55,6 +49,8 @@ leg flows s =
                     c_freeString msg
                     throw $ Error err
             else newForeignPtr p_freeLeg l
+  where amounts = map fst flows
+        dates   = map snd flows
 
 leg' :: Ptr CString -> CInt -> [CDouble] -> [CInt] -> IO (Ptr CLeg)
 leg' e len amounts dates = withArray amounts (withArray dates . c_leg e len)

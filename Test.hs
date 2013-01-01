@@ -71,15 +71,15 @@ legs = TestList
   [
     "single leg today"
       ~: do t <- today
-            l <- Leg.leg [(100, t)] False
+            l <- Leg.leg [(100, t)]
             assertEqual "today's leg start date" t (Leg.startDate l)
   , "two legs unsorted"
       ~: do t <- today
-            l <- Leg.leg [(100, t), (-1000, addDays (-10) t)] False
+            l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
             assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
   , "three legs sorted"
       ~: do t <- today
-            l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)] True
+            l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
             assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
   ]
 
@@ -118,18 +118,18 @@ prop_invalidEvaluationDate d =
                d2 <- run $ setAndGetEvaluationDateWithExceptions d
                assert $ t == d2
 
-prop_singleLegStartDate :: (Double, Day) -> Bool -> Property
-prop_singleLegStartDate flow@(_, d) s =
+prop_singleLegStartDate :: (Double, Day) -> Property
+prop_singleLegStartDate flow@(_, d) =
   Date.isValid d
     ==> monadicIO
-          $ do l <- run $ Leg.leg [flow] s
+          $ do l <- run $ Leg.leg [flow]
                assert $ d == Leg.startDate l
 
-prop_legStartDate :: [(Double, Day)] -> Bool -> Property
-prop_legStartDate flows s =
+prop_legStartDate :: [(Double, Day)] -> Property
+prop_legStartDate flows =
   (not (null flows) && all Date.isValid (map snd flows))
     ==> monadicIO
-          $ do l <- run $ Leg.leg flows s
+          $ do l <- run $ Leg.leg flows
                assert $ minimum (map snd flows) == Leg.startDate l
 
 -- Main --
