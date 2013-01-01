@@ -610,51 +610,6 @@ XLL_DEC OPER *qlCalendarIsHoliday(
     }
 
 }
-XLL_DEC char *qlCalendarName(
-        char *calendar,
-        OPER *Trigger) {
-
-    // declare a shared pointer to the Function Call object
-
-    boost::shared_ptr<ObjectHandler::FunctionCall> functionCall;
-
-    try {
-
-        // instantiate the Function Call object
-
-        functionCall = boost::shared_ptr<ObjectHandler::FunctionCall>(
-            new ObjectHandler::FunctionCall("qlCalendarName"));
-
-        ObjectHandler::validateRange(Trigger, "Trigger");
-
-        // initialize the session ID (if enabled)
-
-        SET_SESSION_ID
-
-        // convert input datatypes to QuantLib enumerated datatypes
-
-        QuantLib::Calendar calendarEnum =
-            ObjectHandler::Create<QuantLib::Calendar>()(calendar);
-
-        // invoke the member function
-
-        std::string returnValue = calendarEnum.name();
-
-        // convert and return the return value
-
-        static char ret[XL_MAX_STR_LEN];
-        ObjectHandler::stringToChar(returnValue, ret);
-        return ret;
-
-    } catch (const std::exception &e) {
-        ObjectHandler::RepositoryXL::instance().logError(e.what(), functionCall);
-        return 0;
-    } catch (...) {
-        ObjectHandler::RepositoryXL::instance().logError("unkown error type", functionCall);
-        return 0;
-    }
-
-}
 XLL_DEC bool *qlCalendarRemoveHoliday(
         char *calendar,
         OPER *Date,

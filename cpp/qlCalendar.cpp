@@ -1,236 +1,136 @@
 #include <ql/time/calendar.hpp>
+#include <ql/time/calendars/all.hpp>
 
+using namespace QuantLib;
+
+#include <string.h>
 #include "ql.h"
 
-/*
-    <EnumeratedTypeGroup type='QuantLib::Calendar'>
-      <includeFile>qlo/enumerations/factories/calendarfactory.hpp</includeFile>
-      <constructor>false</constructor>
-      <EnumeratedTypes>
-        
-        <EnumeratedType>
-          <string>Calendar</string>
-          <value>QuantLib::Calendar()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>NoCalendar</string>
-          <value>QuantLib::Calendar()</value>
-        </EnumeratedType>
+void *qlCalendar(char **e, const char* name)
+{
+  // use enumerations instead?
+  try {
+    if (!strcmp(name, "NoCalendar"))
+     return new Calendar();
+    else if (!strcmp(name, "NullCalendar"))
+     return new NullCalendar();
+    else if (!strcmp(name, "TARGET"))
+     return new TARGET();
+    else if (!strcmp(name, "Argentina::Merval"))
+     return new Argentina(Argentina::Merval);
+    else if (!strcmp(name, "Australia"))
+     return new Australia();
+    else if (!strcmp(name, "Brazil::Settlement"))
+     return new Brazil(Brazil::Settlement);
+    else if (!strcmp(name, "Brazil::Exchange"))
+     return new Brazil(Brazil::Exchange);
+    else if (!strcmp(name, "Canada::Settlement"))
+     return new Canada(Canada::Settlement);
+    else if (!strcmp(name, "Canada::TSX"))
+     return new Canada(Canada::TSX);
+    else if (!strcmp(name, "China"))
+     return new China();
+    else if (!strcmp(name, "CzechRepublic::PSE"))
+     return new CzechRepublic(CzechRepublic::PSE);
+    else if (!strcmp(name, "Denmark"))
+     return new Denmark();
+    else if (!strcmp(name, "Finland"))
+     return new Finland();
+    else if (!strcmp(name, "Germany::Eurex"))
+     return new Germany(Germany::Eurex);
+    else if (!strcmp(name, "Germany::FrankfurtStockExchange"))
+     return new Germany(Germany::FrankfurtStockExchange);
+    else if (!strcmp(name, "Germany::Settlement"))
+     return new Germany(Germany::Settlement);
+    else if (!strcmp(name, "Germany::Xetra"))
+     return new Germany(Germany::Xetra);
+    else if (!strcmp(name, "HongKong::HKEx"))
+     return new HongKong(HongKong::HKEx);
+    else if (!strcmp(name, "Hungary"))
+     return new Hungary();
+    else if (!strcmp(name, "Iceland::ICEX"))
+     return new Iceland(Iceland::ICEX);
+    else if (!strcmp(name, "India::NSE"))
+     return new India(India::NSE);
+    else if (!strcmp(name, "Indonesia::BEJ"))
+     return new Indonesia(Indonesia::BEJ);
+    else if (!strcmp(name, "Indonesia::JSX"))
+     return new Indonesia(Indonesia::JSX);
+    else if (!strcmp(name, "Italy::Exchange"))
+     return new Italy(Italy::Exchange);
+    else if (!strcmp(name, "Italy::Settlement"))
+     return new Italy(Italy::Settlement);
+    else if (!strcmp(name, "Japan"))
+     return new Japan();
+    else if (!strcmp(name, "Mexico::BMV"))
+     return new Mexico(Mexico::BMV);
+    else if (!strcmp(name, "NewZealand"))
+     return new NewZealand();
+    else if (!strcmp(name, "Norway"))
+     return new Norway();
+    else if (!strcmp(name, "Poland"))
+     return new Poland();
+    else if (!strcmp(name, "Russia"))
+     return new Russia();
+    else if (!strcmp(name, "SaudiArabia::Tadawul"))
+     return new SaudiArabia(SaudiArabia::Tadawul);
+    else if (!strcmp(name, "Singapore::SGX"))
+     return new Singapore(Singapore::SGX);
+    else if (!strcmp(name, "Slovakia::BSSE"))
+     return new Slovakia(Slovakia::BSSE);
+    else if (!strcmp(name, "SouthAfrica"))
+     return new SouthAfrica();
+    else if (!strcmp(name, "SouthKorea::KRX"))
+     return new SouthKorea(SouthKorea::KRX);
+    else if (!strcmp(name, "Sweden"))
+     return new Sweden();
+    else if (!strcmp(name, "Switzerland"))
+     return new Switzerland();
+    else if (!strcmp(name, "Taiwan::TSEC"))
+     return new Taiwan(Taiwan::TSEC);
+    else if (!strcmp(name, "EUR"))
+     return new TARGET();
+    else if (!strcmp(name, "Turkey"))
+     return new Turkey();
+    else if (!strcmp(name, "Ukraine::USE"))
+     return new Ukraine(Ukraine::USE);
+    else if (!strcmp(name, "UnitedKingdom::Exchange"))
+     return new UnitedKingdom(UnitedKingdom::Exchange);
+    else if (!strcmp(name, "London stock exchange"))
+     return new UnitedKingdom(UnitedKingdom::Exchange);
+    else if (!strcmp(name, "LONDON"))
+     return new UnitedKingdom(UnitedKingdom::Exchange);
+    else if (!strcmp(name, "GBP"))
+     return new UnitedKingdom(UnitedKingdom::Exchange);
+    else if (!strcmp(name, "UnitedKingdom::Metals"))
+     return new UnitedKingdom(UnitedKingdom::Metals);
+    else if (!strcmp(name, "UnitedKingdom::Settlement"))
+     return new UnitedKingdom(UnitedKingdom::Settlement);
+    else if (!strcmp(name, "UnitedStates::GovernmentBond"))
+     return new UnitedStates(UnitedStates::GovernmentBond);
+    else if (!strcmp(name, "UnitedStates::NERC"))
+     return new UnitedStates(UnitedStates::NERC);
+    else if (!strcmp(name, "UnitedStates::NYSE"))
+     return new UnitedStates(UnitedStates::NYSE);
+    else if (!strcmp(name, "UnitedStates::Settlement"))
+     return new UnitedStates(UnitedStates::Settlement);
+    else {
+      *e = strdup("Calendar not found");
+      return 0;
+    }
+  } catch (std::exception& er) {
+    *e = strdup(er.what());
+    //printf("Duplicated string %p\n", *e);
+    return 0;
+  }
+}
 
-        <!--too bad NullCalendar is actually a calendar-->
-        <EnumeratedType>
-          <string>Null</string>
-          <value>QuantLib::NullCalendar()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>NullCalendar</string>
-          <value>QuantLib::NullCalendar()</value>
-        </EnumeratedType>
+void  qlFreeCalendar(void *calendar) {
+  delete (Calendar *)calendar;
+}
 
-        <EnumeratedType>
-          <string>TARGET</string>
-          <value>QuantLib::TARGET()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Argentina::Merval</string>
-          <value>QuantLib::Argentina(QuantLib::Argentina::Merval)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Australia</string>
-          <value>QuantLib::Australia()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Brazil::Settlement</string>
-          <value>QuantLib::Brazil(QuantLib::Brazil::Settlement)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Brazil::Exchange</string>
-          <value>QuantLib::Brazil(QuantLib::Brazil::Exchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Canada::Settlement</string>
-          <value>QuantLib::Canada(QuantLib::Canada::Settlement)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Canada::TSX</string>
-          <value>QuantLib::Canada(QuantLib::Canada::TSX)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>China</string>
-          <value>QuantLib::China()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>CzechRepublic::PSE</string>
-          <value>QuantLib::CzechRepublic(QuantLib::CzechRepublic::PSE)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Denmark</string>
-          <value>QuantLib::Denmark()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Finland</string>
-          <value>QuantLib::Finland()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Germany::Eurex</string>
-          <value>QuantLib::Germany(QuantLib::Germany::Eurex)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Germany::FrankfurtStockExchange</string>
-          <value>QuantLib::Germany(QuantLib::Germany::FrankfurtStockExchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Germany::Settlement</string>
-          <value>QuantLib::Germany(QuantLib::Germany::Settlement)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Germany::Xetra</string>
-          <value>QuantLib::Germany(QuantLib::Germany::Xetra)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>HongKong::HKEx</string>
-          <value>QuantLib::HongKong(QuantLib::HongKong::HKEx)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Hungary</string>
-          <value>QuantLib::Hungary()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Iceland::ICEX</string>
-          <value>QuantLib::Iceland(QuantLib::Iceland::ICEX)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>India::NSE</string>
-          <value>QuantLib::India(QuantLib::India::NSE)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Indonesia::BEJ</string>
-          <value>QuantLib::Indonesia(QuantLib::Indonesia::BEJ)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Indonesia::JSX</string>
-          <value>QuantLib::Indonesia(QuantLib::Indonesia::JSX)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Italy::Exchange</string>
-          <value>QuantLib::Italy(QuantLib::Italy::Exchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Italy::Settlement</string>
-          <value>QuantLib::Italy(QuantLib::Italy::Settlement)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Japan</string>
-          <value>QuantLib::Japan()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Mexico::BMV</string>
-          <value>QuantLib::Mexico(QuantLib::Mexico::BMV)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>NewZealand</string>
-          <value>QuantLib::NewZealand()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Norway</string>
-          <value>QuantLib::Norway()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Poland</string>
-          <value>QuantLib::Poland()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Russia</string>
-          <value>QuantLib::Russia()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>SaudiArabia::Tadawul</string>
-          <value>QuantLib::SaudiArabia(QuantLib::SaudiArabia::Tadawul)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Singapore::SGX</string>
-          <value>QuantLib::Singapore(QuantLib::Singapore::SGX)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Slovakia::BSSE</string>
-          <value>QuantLib::Slovakia(QuantLib::Slovakia::BSSE)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>SouthAfrica</string>
-          <value>QuantLib::SouthAfrica()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>SouthKorea::KRX</string>
-          <value>QuantLib::SouthKorea(QuantLib::SouthKorea::KRX)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Sweden</string>
-          <value>QuantLib::Sweden()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Switzerland</string>
-          <value>QuantLib::Switzerland()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Taiwan::TSEC</string>
-          <value>QuantLib::Taiwan(QuantLib::Taiwan::TSEC)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <!-- clone of TARGET -->
-          <string>EUR</string>
-          <value>QuantLib::TARGET()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Turkey</string>
-          <value>QuantLib::Turkey()</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Ukraine::USE</string>
-          <value>QuantLib::Ukraine(QuantLib::Ukraine::USE)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedKingdom::Exchange</string>
-          <value>QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>London stock exchange</string>
-          <!-- Clone for UnitedKingdom::Exchange -->
-          <value>QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>LONDON</string>
-          <!-- Clone for UnitedKingdom::Exchange -->
-          <value>QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>GBP</string>
-          <!-- Clone for UnitedKingdom::Exchange -->
-          <value>QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedKingdom::Metals</string>
-          <value>QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Metals)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedKingdom::Settlement</string>
-          <value>QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Settlement)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedStates::GovernmentBond</string>
-          <value>QuantLib::UnitedStates(QuantLib::UnitedStates::GovernmentBond)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedStates::NERC</string>
-          <value>QuantLib::UnitedStates(QuantLib::UnitedStates::NERC)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedStates::NYSE</string>
-          <value>QuantLib::UnitedStates(QuantLib::UnitedStates::NYSE)</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>UnitedStates::Settlement</string>
-          <value>QuantLib::UnitedStates(QuantLib::UnitedStates::Settlement)</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-*/    
+const char *qlCalendarName(void *calendar) {
+  std::string name = ((Calendar *)calendar)->name();
+  return strdup(name.c_str());
+}
+/* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */

@@ -12,6 +12,7 @@ where
 
 import Control.Exception(throw)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
+
 import Foreign.C.String(CString)
 import Foreign.C.Types(CInt(CInt))
 

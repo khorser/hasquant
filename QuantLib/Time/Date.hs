@@ -9,7 +9,8 @@ where
 
 import Data.Time.Calendar(toGregorian, isLeapYear, Day)
 
-import QuantLib.Internal(fromQlDateSerialNumber, isDateValid, c_minDateSerialNumber, c_maxDateSerialNumber)
+import QuantLib.Internal(fromQlDateSerialNumber, isDateValid,
+  c_minDateSerialNumber, c_maxDateSerialNumber)
 
 -- |returns the earliest date allowed in QuantLib (qlDateMinDate)
 minDate :: Day

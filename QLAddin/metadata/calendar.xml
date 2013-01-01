@@ -12,22 +12,6 @@
 
   <Functions>
 
-    <EnumerationMember name='qlCalendarName' type='QuantLib::Calendar'>
-      <description>Returns the name of the given calendar.</description>
-      <libraryFunction>name</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>string</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </EnumerationMember>
-
     <EnumerationMember name='qlCalendarIsBusinessDay' type='QuantLib::Calendar' loopParameter='Date'>
       <description>Returns TRUE if the date is a business day for the given calendar.</description>
       <libraryFunction>isBusinessDay</libraryFunction>

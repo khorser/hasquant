@@ -7,6 +7,7 @@ module QuantLib.Utilities
 where
 
 import Foreign.C.String(CString, peekCString)
+
 import System.IO.Unsafe(unsafePerformIO)
 
 foreign import ccall safe "ql.h qlVersion"

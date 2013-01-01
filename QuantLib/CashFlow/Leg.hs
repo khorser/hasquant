@@ -10,6 +10,7 @@ where
 import Control.Monad(when)
 import Control.Exception(throw)
 import Data.Time.Calendar(Day)
+
 import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.C.String(CString, peekCString)
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
@@ -17,6 +18,7 @@ import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr, nullPtr)
 import Foreign.Storable(peek)
+
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Error(Error(Error))
@@ -47,7 +49,7 @@ leg flows =
             then do msg <- peek errptr
                     err <- peekCString msg
                     c_freeString msg
-                    throw $ Error err
+                    throw (Error err)
             else newForeignPtr p_freeLeg l
   where amounts = map fst flows
         dates   = map snd flows
@@ -58,5 +60,5 @@ leg' e len amounts dates = withArray amounts (withArray dates . c_leg e len)
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX Assuming that legs are immutable. Otherwise we will need to add IO to the type
 startDate :: Leg -> Day
-startDate l = fromQlDateSerialNumber
-  $ unsafePerformIO (withForeignPtr l c_legStartDate)
+startDate l = fromQlDateSerialNumber $ unsafePerformIO
+                (withForeignPtr l c_legStartDate)

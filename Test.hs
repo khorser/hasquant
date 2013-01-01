@@ -8,19 +8,19 @@ import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import Prelude hiding(catch)
+
 import Test.HUnit(runTestTT, test, assertEqual, (~:), (~?=), (~=?),
   Test(TestList), assertBool, assertFailure)
 import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
-import qualified QuantLib.Time.Date as Date(minDate, maxDate, isLeap, isValid)
-import qualified QuantLib.Error as Error(Error(message))
-import qualified QuantLib.CashFlow.Leg as Leg(leg, startDate)
-import qualified QuantLib.Settings as Settings(evaluationDate,
-  setEvaluationDate, enforceTodaysHistoricFixings,
-  setEnforceTodaysHistoricFixings)
-import qualified QuantLib.Utilities as Utilities(version, boostVersion)
+import qualified QuantLib.CashFlow.Leg as Leg
+import qualified QuantLib.Error as Error
+import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Time.Calendar as Calendar
+import qualified QuantLib.Time.Date as Date
+import qualified QuantLib.Utilities as Utilities
 
 today :: IO Day
 today =
@@ -54,8 +54,8 @@ settings = TestList
             assertEqual "new enforce today's historic fixings" e1 True
   ]
 
-dates :: Test
-dates = test
+date :: Test
+date = test
   [
     "min date" ~: "min date" ~:
       Date.minDate ~?= fromGregorian 1901 01 01
@@ -66,8 +66,8 @@ dates = test
             [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
   ]
 
-legs :: Test
-legs = TestList
+leg :: Test
+leg = TestList
   [
     "single leg today"
       ~: do t <- today
@@ -81,6 +81,18 @@ legs = TestList
       ~: do t <- today
             l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
             assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
+  ]
+
+calendar :: Test
+calendar = TestList
+  [
+    "GBP" ~: "GBP calendar name" ~:
+      (Calendar.name Calendar.londonStockExchange) ~?= (Calendar.name Calendar.gbp)
+  , "non-existent calendar"
+      ~: catch
+          (do _ <- Calendar.calendar "WorldwideGoldSilverOilDiamondCarbonCurrencyStockExchange"
+              assertFailure "invalid calendar name passed through")
+          (assertBool "exception message not empty" . not . null . Error.message)
   ]
 
 -- QuickCheck --
@@ -136,7 +148,7 @@ prop_legStartDate flows =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          _ <- runTestTT $ test [settings, dates, legs]
+          _ <- runTestTT $ test [settings, date, leg, calendar]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate

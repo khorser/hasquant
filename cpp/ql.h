@@ -20,6 +20,12 @@ extern "C"
       /* internal */
   void  qlFreeLeg(void *leg);
 
+  /* calendar */
+  void *qlCalendar(char **e, const char *name);
+  const char *qlCalendarName(void *calendar);
+      /* internal */
+  void  qlFreeCalendar(void *calendar);
+
   /* settings */
   int	qlSettingsEvaluationDate();
   void	qlSettingsSetEvaluationDate(int x);
