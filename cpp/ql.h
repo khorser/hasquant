@@ -16,7 +16,7 @@ extern "C"
 
   /* leg */
   void *qlLeg(char **e, int len, double *amounts, int *dates);
-  int   qlLegStartDate(void *leg);
+  int   qlLegStartDate(char **e, void *leg);
       /* internal */
   void  qlFreeLeg(void *leg);
 

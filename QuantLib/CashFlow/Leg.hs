@@ -30,7 +30,7 @@ type Leg = ForeignPtr CLeg
 foreign import ccall safe "ql.h qlLeg"
     c_leg :: Ptr CString -> CInt -> Ptr CDouble -> Ptr CInt -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
-    c_legStartDate :: Ptr CLeg -> IO CInt
+    c_legStartDate :: Ptr CString -> Ptr CLeg -> IO CInt
 foreign import ccall safe "ql.h &qlFreeLeg"
     p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
@@ -59,4 +59,15 @@ leg' e len amounts dates = withArray amounts (withArray dates . c_leg e len)
 -- XXX Assuming that legs are immutable. Otherwise we will need to add IO to the type
 startDate :: Leg -> Day
 startDate l = fromQlDateSerialNumber $ unsafePerformIO
-                (withForeignPtr l c_legStartDate)
+                (withForeignPtr l startDate')
+
+startDate' :: Ptr CLeg -> IO CInt
+startDate' l = alloca $
+              \errptr ->
+              do r <-c_legStartDate errptr l
+                 if r == 0
+                   then do msg <- peek errptr
+                           err <- peekCString msg
+                           c_freeString msg
+                           throw (Error err)
+                   else return r

@@ -69,7 +69,13 @@ date = test
 leg :: Test
 leg = TestList
   [
-    "single leg today"
+    "start date of an empty leg"
+      ~: catch
+          (do l <- Leg.leg []
+              print $ Leg.startDate l
+              assertFailure "start date of empty leg didn't return an error")
+          (assertBool "exception message not empty" . not . null . Error.message)
+  , "single leg today"
       ~: do t <- today
             l <- Leg.leg [(100, t)]
             assertEqual "today's leg start date" t (Leg.startDate l)

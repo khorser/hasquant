@@ -28,10 +28,16 @@ void *qlLeg(char **e, int len, double *amounts, int *dates) {
   }
 }
 
-int qlLegStartDate(void *leg) {
+int qlLegStartDate(char **e, void *leg) {
   Leg *l = (Leg *)leg;
-  Date d = CashFlows::startDate(*l);
-  return d.serialNumber();
+  try {
+    Date d = CashFlows::startDate(*l);
+    return d.serialNumber();
+  } catch (std::exception& er) {
+    *e = strdup(er.what());
+    //printf("Duplicated string %p\n", *e);
+    return 0;
+  }
 }
 
 void qlFreeLeg(void *leg) {
