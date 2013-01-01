@@ -1,1 +1,1 @@
-ghc -Wall *.hs ../Test.hs *.cpp -lQuantLib -pgml g++
+ghc -Wall -o Test *.hs ../Test.hs ../cpp/*.cpp -lQuantLib -pgml g++
