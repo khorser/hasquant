@@ -13,19 +13,16 @@ extern "C"
   int	qlMinYear();
   int	qlMinMonth();
   int	qlMinDay();
-  void *qlDate(int x, char **e);
-  int	qlDateSerialNumber(void *);
-  void  qlFreeDate(void *p);
 
   /* leg */
-  void *qlLeg(int len, double *amounts, void **dates, char **e);
+  void *qlLeg(int len, double *amounts, int *dates, char **e);
   int   qlLegStartDate(void *leg);
       /* internal */
   void  qlFreeLeg(void *leg);
 
   /* settings */
   int	qlSettingsEvaluationDate();
-  void	qlSettingsSetEvaluationDate(void *x);
+  void	qlSettingsSetEvaluationDate(int x);
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int	qlSettingsEnforceTodaysHistoricFixings();
 }

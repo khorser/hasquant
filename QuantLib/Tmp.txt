@@ -1,0 +1,99 @@
+  void *qlDate(int x, char **e);
+  int	qlDateSerialNumber(void *);
+  void  qlFreeDate(void *p);
+
+void * qlDate(int x, char **e) {
+  try {
+    Date *p = new Date(x);
+    //printf("Allocated date %p\n", p);
+    return p;
+  } catch (std::exception& er) {
+    *e = strdup(er.what());
+    //printf("Duplicated string %p\n", *e);
+    return 0;
+  }
+}
+
+int qlDateSerialNumber(void *p) {
+  if (p)
+    ((Date *)p)->serialNumber();
+  else
+    return 0;
+}
+
+void qlFreeDate(void *p) {
+  //for extra tests
+  //memset(p, 0, sizeof(Date));
+  //printf("Freeing date %p\n", p);
+  delete (Date *)p;
+}
+
+  , allocateDate
+  , allocateDates
+  , freeDate
+  , freeDates
+  , CDate
+data CDate
+
+foreign import ccall safe "ql.h qlDate"
+    c_allocateDate :: CInt -> Ptr CString -> IO (Ptr CDate)
+foreign import ccall safe "ql.h qlFreeDate"
+    c_freeDate :: Ptr CDate -> IO ()
+freeDate :: Ptr CDate -> IO ()
+freeDate = c_freeDate
+
+allocateDate :: Day -> IO (Either String (Ptr CDate))
+allocateDate x =
+  alloca $
+    \errptr -> do
+      d <- c_allocateDate (toQlDate x) errptr
+      if d == nullPtr
+        then do msg <- peek errptr
+                err <- peekCString msg
+                c_freeString msg
+                return (Left err)
+        else return (Right d)
+
+allocateDates :: [Day] -> IO (Either String [Ptr CDate])
+allocateDates x =
+  do p <- mapM allocateDate x
+     let msgs = concat $ lefts p
+     let ptrs = rights p
+     if null msgs
+       then return $ Right ptrs
+       else mapM_ freeDate ptrs >> return (Left msgs)
+
+freeDates :: [Ptr CDate] -> IO ()
+freeDates = mapM_ freeDate
+
+leg :: [(Double, Day)] -> Bool -> IO Leg
+leg flows s =
+  do when (null flows) $ throw (Error "Empty list of flows")
+     let sorted = (if s then sortBy (compare `on` snd) else id) flows
+     ds <- allocateDates (map snd sorted)
+     case ds of
+       Left m  -> throw $ Error m
+       Right d -> alloca $
+                    \errptr ->
+                    do l <-leg' (fromIntegral $ length sorted) (map (realToFrac . fst) sorted) d errptr
+                       freeDates d
+                       if l == nullPtr 
+                         then do msg <- peek errptr
+                                 err <- peekCString msg
+                                 c_freeString msg
+                                 throw $ Error err
+                          else newForeignPtr p_freeLeg l
+
+leg' :: CInt -> [CDouble] -> [Ptr CDate] -> Ptr CString -> IO (Ptr CLeg)
+leg' len amounts dates e =
+  withArray
+    amounts
+    (\ams -> (withArray
+                dates
+                (\ds -> c_leg len ams ds e)))
+setEvaluationDate :: Day -> IO ()
+setEvaluationDate x =
+  do d <- allocateDate x
+     case d of
+       Left e   -> throw $ Error e -- shall we use exceptions here?
+       Right p  -> c_setEvaluationDate p >> freeDate p

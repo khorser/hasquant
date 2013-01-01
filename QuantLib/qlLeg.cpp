@@ -10,13 +10,12 @@
 using namespace QuantLib;
 using namespace boost;
 
-void *qlLeg(int len, double *amounts, void **dates, char **e) {
+void *qlLeg(int len, double *amounts, int *dates, char **e) {
   Leg *leg = 0;
   try {
     leg = new Leg();
-    Date **d = (Date **)dates;
     for (int i = 0; i < len; ++i)
-      leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], *d[i])));
+      leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
     //printf("Allocated leg %p\n", leg);
     //QL_FAIL("Just for fun");
     return leg;

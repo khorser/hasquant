@@ -1,2 +1,4 @@
 Don't pass around pointers to Dates and pass integers instead (validate using minDate and maxDate)
-
+Cabalize
+rethink exceptions strategy
+swap the order of params in qlLeg

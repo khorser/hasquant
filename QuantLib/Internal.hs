@@ -2,34 +2,24 @@
 module QuantLib.Internal
   (
     fromQlDateSerialNumber
-  , CDate
-  , allocateDate
-  , allocateDates
-  , freeDate
-  , freeDates
+  , toQlDateSerialNumber
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , c_freeString
+  , isDateValid
   )
 where
 
-import Data.Either(lefts, rights)
+import Control.Exception(throw)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
-import Foreign.C.String(CString, peekCString)
+import Foreign.C.String(CString)
 import Foreign.C.Types(CInt(CInt))
-import Foreign.Marshal.Alloc(alloca)
-import Foreign.Ptr(Ptr, nullPtr)
-import Foreign.Storable(peek)
 
-data CDate
+import QuantLib.Error(Error(Error))
 
 foreign import ccall safe "ql.h qlFreeString"
     c_freeString :: CString -> IO ()
 
-foreign import ccall safe "ql.h qlDate"
-    c_allocateDate :: CInt -> Ptr CString -> IO (Ptr CDate)
-foreign import ccall safe "ql.h qlFreeDate"
-    c_freeDate :: Ptr CDate -> IO ()
 foreign import ccall safe "ql.h qlMinDateSerialNumber"
     c_minDateSerialNumber :: CInt
 foreign import ccall safe "ql.h qlMaxDateSerialNumber"
@@ -53,36 +43,14 @@ fromQlDateSerialNumber :: CInt -> Day
 fromQlDateSerialNumber p = ModifiedJulianDay $
                 fromIntegral p + qlStart
 
--- fromQlDatePtr :: Ptr CDate -> Day
--- fromQlDatePtr p = ModifiedJulianDay
---                     $ fromIntegral (c_dateSerialNumber p) + qlStart
+toQlDateSerialNumberUnsafe :: Day -> CInt
+toQlDateSerialNumberUnsafe x = fromInteger $ toModifiedJulianDay x - qlStart
 
-toQlDate :: Day -> CInt
-toQlDate x = fromInteger $ toModifiedJulianDay x - qlStart
+-- return Either instead?
+toQlDateSerialNumber :: Day -> CInt
+toQlDateSerialNumber x | isDateValid x = fromInteger $ toModifiedJulianDay x - qlStart
+                       | otherwise = throw $ Error ("Invalid QuantLib date: " ++ show x)
 
-freeDate :: Ptr CDate -> IO ()
-freeDate = c_freeDate
-
-allocateDate :: Day -> IO (Either String (Ptr CDate))
-allocateDate x =
-  alloca $
-    \errptr -> do
-      d <- c_allocateDate (toQlDate x) errptr
-      if d == nullPtr
-        then do msg <- peek errptr
-                err <- peekCString msg
-                c_freeString msg
-                return (Left err)
-        else return (Right d)
-
-allocateDates :: [Day] -> IO (Either String [Ptr CDate])
-allocateDates x =
-  do p <- mapM allocateDate x
-     let msgs = concat $ lefts p
-     let ptrs = rights p
-     if null msgs
-       then return $ Right ptrs
-       else mapM_ freeDate ptrs >> return (Left msgs)
-
-freeDates :: [Ptr CDate] -> IO ()
-freeDates = mapM_ freeDate
+isDateValid :: Day -> Bool
+isDateValid x = toQlDateSerialNumberUnsafe x >= c_minDateSerialNumber
+                  && toQlDateSerialNumberUnsafe x <= c_maxDateSerialNumber

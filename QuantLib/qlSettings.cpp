@@ -9,8 +9,8 @@ int qlSettingsEvaluationDate() {
   return d.serialNumber();
 }
 
-void qlSettingsSetEvaluationDate(void *x) {
-  Settings::instance().evaluationDate() = *(Date *)x;
+void qlSettingsSetEvaluationDate(int x) {
+  Settings::instance().evaluationDate() = Date(x);
 }
 
 void qlSettingsSetEnforceTodaysHistoricFixings(int x) {

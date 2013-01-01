@@ -9,7 +9,7 @@ where
 
 import Data.Time.Calendar(toGregorian, isLeapYear, Day)
 
-import QuantLib.Internal(fromQlDateSerialNumber, c_minDateSerialNumber, c_maxDateSerialNumber)
+import QuantLib.Internal(fromQlDateSerialNumber, isDateValid, c_minDateSerialNumber, c_maxDateSerialNumber)
 
 -- |returns the earliest date allowed in QuantLib (qlDateMinDate)
 minDate :: Day
@@ -27,4 +27,4 @@ isLeap :: [Day] -> [Bool]
 isLeap = map (isLeapYear . year)
 
 isValid :: Day -> Bool
-isValid x = x >= minDate && x<= maxDate
+isValid = isDateValid
