@@ -10,7 +10,7 @@
 using namespace QuantLib;
 using namespace boost;
 
-void *qlLeg(int len, double *amounts, int *dates, char **e) {
+void *qlLeg(char **e, int len, double *amounts, int *dates) {
   Leg *leg = 0;
   try {
     leg = new Leg();

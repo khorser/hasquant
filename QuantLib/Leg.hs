@@ -28,7 +28,7 @@ data CLeg
 type Leg = ForeignPtr CLeg
 
 foreign import ccall safe "ql.h qlLeg"
-    c_leg :: CInt -> Ptr CDouble -> Ptr CInt -> Ptr CString -> IO (Ptr CLeg)
+    c_leg :: Ptr CString -> CInt -> Ptr CDouble -> Ptr CInt -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
     c_legStartDate :: Ptr CLeg -> IO CInt
 foreign import ccall safe "ql.h &qlFreeLeg"
@@ -44,7 +44,10 @@ leg flows s =
 
      alloca $
        \errptr ->
-       do l <-leg' (fromIntegral $ length amounts) (map realToFrac amounts) (map toQlDateSerialNumber dates) errptr
+       do l <-leg' errptr
+                   (fromIntegral $ length amounts)
+                   (map realToFrac amounts)
+                   (map toQlDateSerialNumber dates)
           if l == nullPtr 
             then do msg <- peek errptr
                     err <- peekCString msg
@@ -52,13 +55,8 @@ leg flows s =
                     throw $ Error err
             else newForeignPtr p_freeLeg l
 
-leg' :: CInt -> [CDouble] -> [CInt] -> Ptr CString -> IO (Ptr CLeg)
-leg' len amounts dates e =
-  withArray
-    amounts
-    (\ams -> (withArray
-                dates
-                (\ds -> c_leg len ams ds e)))
+leg' :: Ptr CString -> CInt -> [CDouble] -> [CInt] -> IO (Ptr CLeg)
+leg' e len amounts dates = withArray amounts (withArray dates . c_leg e len)
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX Assuming that legs are immutable. Otherwise we will need to add IO to the type
