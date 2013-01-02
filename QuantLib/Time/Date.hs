@@ -4,15 +4,13 @@ module QuantLib.Time.Date
   , maxDate
   , isLeap
   , isValid
-  , NullableDay(..)
   )
 where
 
 import Data.Time.Calendar(toGregorian, isLeapYear, Day)
 
 import QuantLib.Internal(fromQlDateSerialNumber,
-  c_minDateSerialNumber, c_maxDateSerialNumber,
-  NullableDay(..), isValid)
+  c_minDateSerialNumber, c_maxDateSerialNumber, isValid)
 
 -- |returns the earliest date allowed in QuantLib (qlDateMinDate)
 minDate :: Day

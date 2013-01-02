@@ -18,3 +18,6 @@ This allows for easy building of mutators as simply returning a new copy with
 updated data
 
 How to create new calendars?
+
+Use some type magic to restrict dates and enforce the same length of dates and amounts for cash flows
+(for now the latter is solved by using a list of tuples)

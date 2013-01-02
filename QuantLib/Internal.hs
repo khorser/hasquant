@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE ForeignFunctionInterface,FlexibleInstances #-}
 module QuantLib.Internal
   (
     fromQlDateSerialNumber
@@ -7,7 +7,6 @@ module QuantLib.Internal
   , c_minDateSerialNumber
   , c_freeString
   , handleExceptions
-  , NullableDay(..)
   , isValid
   )
 where
@@ -76,11 +75,9 @@ instance QLDate Day where
                          | otherwise = throw $ Error ("Invalid QuantLib date: " ++ show x)
   
 
-data NullableDay = NullDate | Date Day
+instance QLDate (Maybe Day) where
+  isValid Nothing = True
+  isValid (Just x) = isValid x
 
-instance QLDate NullableDay where
-  isValid NullDate = True
-  isValid (Date x) = isValid x
-
-  toQlDateSerialNumber NullDate = 0 
-  toQlDateSerialNumber (Date x) = toQlDateSerialNumber x
+  toQlDateSerialNumber Nothing = 0 
+  toQlDateSerialNumber (Just x) = toQlDateSerialNumber x
