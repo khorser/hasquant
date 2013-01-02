@@ -84,7 +84,6 @@ instance Finalizable CCalendar
 
 calendar :: String -> IO Calendar
 calendar cname = withCString cname $ construct . c_calendar
-
 name :: Calendar -> String
 name c = unsafePerformIO
           $ withForeignPtr
@@ -93,6 +92,14 @@ name c = unsafePerformIO
                          str <- peekCString n
                          c_freeString n
                          return str)
+
+-- NB Calendars in QuantLib are sort of singletons: if you add
+-- a holiday to QuantLib::Russia, it will be added to all instances
+-- of the calendar
+-- Luckily this doesn't apply to joint calendars
+-- but there is another drawback: the name of a joint calendar is
+-- the concatenation of its components so == will return TRUE
+-- even while holidays might be different
 
 noCalendar::Calendar
 noCalendar                    = unsafePerformIO $ calendar "NoCalendar"

@@ -1,6 +1,8 @@
 #include <ql/settings.hpp>
 #include <ql/cashflows/cashflows.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
+#include <ql/time/calendars/all.hpp>
+
 #include <boost/shared_ptr.hpp>
 
 #include <iostream>
@@ -24,7 +26,7 @@ int main1()
     return 0;
 }
 
-int main()
+int main2()
 {
   Leg *leg = new Leg();
   leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(0, Date())));
@@ -42,4 +44,31 @@ int main3()
     char *p;
     Leg *l;
     catchAndHandle(&p, l);
+}
+
+int main4()
+{
+    Calendar c = Russia();
+    Calendar c3 = Russia();
+    Date d(28, Dec, 2012);
+    cout << c.isHoliday(d) << endl;
+    c.addHoliday(d);
+    cout << "c:" << c.isHoliday(d) << endl;
+    Calendar c2 = Russia();
+    cout << "c2:" << c2.isHoliday(d) << endl;
+    cout << "c3:" << c3.isHoliday(d) << endl;
+}
+
+int main()
+{
+    Calendar c = JointCalendar(Russia(), Ukraine());
+    Calendar c3 = JointCalendar(Russia(), Ukraine());
+    Date d(28, Dec, 2012);
+    cout << c.isHoliday(d) << endl;
+    c.addHoliday(d);
+    cout << "c:" << c.isHoliday(d) << c.name() << endl;
+    Calendar c2 = JointCalendar(Russia(), Ukraine());
+    cout << "c2:" << c2.isHoliday(d) << c2.name() << endl;
+    cout << "c3:" << c3.isHoliday(d) << c3.name() << endl;
+    cout << "c3==c:" << (c3 == c) << endl;
 }
