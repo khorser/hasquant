@@ -1,2 +1,20 @@
-rethink exceptions strategy
-improve cabalization
+Rethink exceptions strategy
+Improve cabalization
+
+Think of high-level combinators from abstract data types like
+
+class Instrument
+data Bond = Bond ... | FixedRateBond ... | FloatingRateBond ...
+instance Instrument Bond
+
+data PricingEngine = Engine1 ... | Engine2 ...
+
+data Result = Result{npv :: Double, ...}
+calculate :: Instrument -> PricingEngine -> IO Result
+
+While building components for pricing, we will construct contents.
+Actual instantiation of QuantLib object will happen inly on pricing.
+This allows for easy building of mutators as simply returning a new copy with
+updated data
+
+How to create new calendars?

@@ -10,7 +10,7 @@ int qlSettingsEvaluationDate() {
 }
 
 void qlSettingsSetEvaluationDate(int x) {
-  Settings::instance().evaluationDate() = Date(x);
+  Settings::instance().evaluationDate() = qlDate(x);
 }
 
 void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
@@ -21,4 +21,4 @@ int qlSettingsEnforceTodaysHistoricFixings() {
   return Settings::instance().enforcesTodaysHistoricFixings();
 }
 
-/* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

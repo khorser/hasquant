@@ -14,7 +14,7 @@ import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt))
 import Foreign.Marshal.Utils(fromBool, toBool)
 
-import QuantLib.Internal(fromQlDateSerialNumber, toQlDateSerialNumber)
+import QuantLib.Internal(fromQlDateSerialNumber, toQlDateSerialNumber, NullableDay(..))
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
     c_evaluationDate :: IO CInt
@@ -30,7 +30,7 @@ evaluationDate :: IO Day
 evaluationDate = liftM fromQlDateSerialNumber c_evaluationDate
 
 -- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
-setEvaluationDate :: Day -> IO ()
+setEvaluationDate :: NullableDay -> IO ()
 setEvaluationDate x = c_setEvaluationDate (toQlDateSerialNumber x)
 
 -- |returns the current value of the boolean which enforce the usage of historic

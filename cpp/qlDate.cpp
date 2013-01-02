@@ -30,4 +30,4 @@ int qlMinDay() {
   return Date::minDate().dayOfMonth();
 }
 
-/* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */
+/* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

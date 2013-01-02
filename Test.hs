@@ -37,12 +37,20 @@ settings = TestList
             t2 <- today
             assertEqual "default valuation date" t1 t2
   , "evaluation date 2"
-      ~: do Settings.setEvaluationDate (fromGregorian 2012 12 29)
+      ~: do Settings.setEvaluationDate $ Date.Date (fromGregorian 2012 12 29)
             t1 <- Settings.evaluationDate
             assertEqual "new valuation date" t1 (fromGregorian 2012 12 29)
+  , "null evaluation date"
+      ~: do Settings.setEvaluationDate $ Date.Date (fromGregorian 2012 12 29)
+            t0 <- Settings.evaluationDate
+            assertEqual "new valuation date" t0 (fromGregorian 2012 12 29)
+            Settings.setEvaluationDate Date.NullDate
+            t1 <- Settings.evaluationDate
+            t2 <- today
+            assertEqual "new valuation date" t1 t2
   , "invalid evaluation date"
       ~: catch
-          (do Settings.setEvaluationDate (fromGregorian 1861 1 1)
+          (do Settings.setEvaluationDate $ Date.Date (fromGregorian 1861 1 1)
               assertFailure "invalid evaluation date passed through")
           (assertBool "exception message not empty" . not . null . Error.message)
   , "enforce today's historic fixings 1"
@@ -106,12 +114,12 @@ instance Arbitrary Day where
 
 setAndGetEvaluationDate :: Day -> IO Day
 setAndGetEvaluationDate d =
-  do Settings.setEvaluationDate d
+  do Settings.setEvaluationDate (Date.Date d)
      Settings.evaluationDate
 
 setAndGetEvaluationDateWithExceptions :: Day -> IO Day
 setAndGetEvaluationDateWithExceptions d =
-  do catch (Settings.setEvaluationDate d)
+  do catch (Settings.setEvaluationDate (Date.Date d))
            (\(_ :: Error.Error) -> return ())
      Settings.evaluationDate
 
@@ -127,7 +135,7 @@ prop_invalidEvaluationDate d =
   not (Date.isValid d)
     ==> monadicIO
           $ do t <- run today
-               _ <- run $ Settings.setEvaluationDate t
+               _ <- run $ Settings.setEvaluationDate (Date.Date t)
                d2 <- run $ setAndGetEvaluationDateWithExceptions d
                assert $ t == d2
 

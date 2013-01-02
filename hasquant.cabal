@@ -24,7 +24,7 @@ Cabal-Version:       >=1.8
 --   build-depends:       base == 4.5.*, time >= 1.4
 --   include-dirs:        cpp
 --   install-includes:    ql.h
-Executable test
+Executable Test
   Main-Is:	       Test.hs
   GHC-Options:	       -Wall
   C-Sources:	       cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp cpp/qlCalendar.cpp

@@ -6,8 +6,9 @@ module QuantLib.Internal
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , c_freeString
-  , isDateValid
   , handleExceptions
+  , NullableDay(..)
+  , isValid
   )
 where
 
@@ -51,15 +52,6 @@ fromQlDateSerialNumber p = ModifiedJulianDay $
 toQlDateSerialNumberUnsafe :: Day -> CInt
 toQlDateSerialNumberUnsafe x = fromInteger $ toModifiedJulianDay x - qlStart
 
--- return Either instead?
-toQlDateSerialNumber :: Day -> CInt
-toQlDateSerialNumber x | isDateValid x = fromInteger $ toModifiedJulianDay x - qlStart
-                       | otherwise = throw $ Error ("Invalid QuantLib date: " ++ show x)
-
-isDateValid :: Day -> Bool
-isDateValid x = toQlDateSerialNumberUnsafe x >= c_minDateSerialNumber
-                  && toQlDateSerialNumberUnsafe x <= c_maxDateSerialNumber
-
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
    alloca $
@@ -72,3 +64,23 @@ handleExceptions f =
                   throw (Error err)
           else return r
 
+class QLDate a where
+  isValid :: a -> Bool
+  toQlDateSerialNumber :: a -> CInt
+
+instance QLDate Day where
+  isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
+                where num = toQlDateSerialNumberUnsafe x
+  -- return Either instead?
+  toQlDateSerialNumber x | isValid x = fromInteger $ toModifiedJulianDay x - qlStart
+                         | otherwise = throw $ Error ("Invalid QuantLib date: " ++ show x)
+  
+
+data NullableDay = NullDate | Date Day
+
+instance QLDate NullableDay where
+  isValid NullDate = True
+  isValid (Date x) = isValid x
+
+  toQlDateSerialNumber NullDate = 0 
+  toQlDateSerialNumber (Date x) = toQlDateSerialNumber x

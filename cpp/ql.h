@@ -1,3 +1,5 @@
+#include <ql/time/date.hpp>
+
 extern "C"
 {
   /* utilities */
@@ -32,5 +34,12 @@ extern "C"
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int	qlSettingsEnforceTodaysHistoricFixings();
 }
+
+  static inline QuantLib::Date qlDate(int serialNumber) {
+    if (!serialNumber)
+      return QuantLib::Date(); /* special null date value */
+    else
+      return QuantLib::Date(serialNumber);
+  }
 
 /* vim: set ft=CPP ff=unix ts=8 sts=2 sw=2: */

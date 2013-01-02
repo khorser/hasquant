@@ -4,13 +4,15 @@ module QuantLib.Time.Date
   , maxDate
   , isLeap
   , isValid
+  , NullableDay(..)
   )
 where
 
 import Data.Time.Calendar(toGregorian, isLeapYear, Day)
 
-import QuantLib.Internal(fromQlDateSerialNumber, isDateValid,
-  c_minDateSerialNumber, c_maxDateSerialNumber)
+import QuantLib.Internal(fromQlDateSerialNumber,
+  c_minDateSerialNumber, c_maxDateSerialNumber,
+  NullableDay(..), isValid)
 
 -- |returns the earliest date allowed in QuantLib (qlDateMinDate)
 minDate :: Day
@@ -26,6 +28,3 @@ year x = y where (y, _, _) = toGregorian x
 -- |returns TRUE if a year is leap (qlDateIsLeap), reimplemented in Haskell
 isLeap :: [Day] -> [Bool]
 isLeap = map (isLeapYear . year)
-
-isValid :: Day -> Bool
-isValid = isDateValid
