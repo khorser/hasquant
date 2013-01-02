@@ -7,6 +7,7 @@ module QuantLib.CashFlow.Leg
   )
 where
 
+import Control.Monad(liftM)
 import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CInt(CInt), CDouble)
@@ -14,8 +15,6 @@ import Foreign.C.String(CString)
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr)
-
-import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(handleExceptions, fromQlDateSerialNumber, toQlDateSerialNumber)
 
@@ -49,10 +48,5 @@ leg' len amounts dates e =
             (\ds -> c_leg len ams ds e)))
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
--- XXX Assuming that legs are immutable. Otherwise we will need to add IO to the type
-startDate :: Leg -> Day
-startDate l = fromQlDateSerialNumber $ unsafePerformIO
-                (withForeignPtr l startDate')
-
-startDate' :: Ptr CLeg -> IO CInt
-startDate' = handleExceptions . c_legStartDate
+startDate :: Leg -> IO Day
+startDate l = liftM fromQlDateSerialNumber (withForeignPtr l (handleExceptions . c_legStartDate))

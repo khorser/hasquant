@@ -80,21 +80,24 @@ leg = TestList
     "start date of an empty leg"
       ~: catch
           (do l <- Leg.leg []
-              print $ Leg.startDate l
+              _ <- Leg.startDate l
               assertFailure "start date of empty leg didn't return an error")
           (assertBool "exception message not empty" . not . null . Error.message)
   , "single leg today"
       ~: do t <- today
             l <- Leg.leg [(100, t)]
-            assertEqual "today's leg start date" t (Leg.startDate l)
+            d <- Leg.startDate l
+            assertEqual "today's leg start date" t d
   , "two legs unsorted"
       ~: do t <- today
             l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
-            assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
+            d <- Leg.startDate l
+            assertEqual "today's leg start date" (addDays (-10) t) d
   , "three legs sorted"
       ~: do t <- today
             l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
-            assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
+            d <- Leg.startDate l
+            assertEqual "today's leg start date" (addDays (-10) t) d
   ]
 
 calendar :: Test
@@ -144,14 +147,16 @@ prop_singleLegStartDate flow@(_, d) =
   Date.isValid d
     ==> monadicIO
           $ do l <- run $ Leg.leg [flow]
-               assert $ d == Leg.startDate l
+               st <- run $ Leg.startDate l
+               assert $ d == st
 
 prop_legStartDate :: [(Double, Day)] -> Property
 prop_legStartDate flows =
-  all Date.isValid (map snd flows)
+  not (null flows) && all Date.isValid (map snd flows)
     ==> monadicIO
           $ do l <- run $ Leg.leg flows
-               assert $ null flows || minimum (map snd flows) == Leg.startDate l
+               st <- run $ Leg.startDate l
+               assert $ minimum (map snd flows) == st
 
 -- Main --
 main :: IO ()

@@ -3,7 +3,6 @@
 
 using namespace QuantLib;
 
-#include <string.h>
 #include "ql.h"
 
 void *qlCalendar(const char *name, char **e)
@@ -115,14 +114,10 @@ void *qlCalendar(const char *name, char **e)
      return new UnitedStates(UnitedStates::NYSE);
     else if (!strcmp(name, "UnitedStates::Settlement"))
      return new UnitedStates(UnitedStates::Settlement);
-    else {
-      *e = strdup("Calendar not found");
-      return 0;
-    }
+    else
+      QL_FAIL("Calendar not found");
   } catch (std::exception& er) {
-    *e = strdup(er.what());
-    //printf("Duplicated string %p\n", *e);
-    return 0;
+    return handleException<void *>(e, er);
   }
 }
 

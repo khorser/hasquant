@@ -2,9 +2,6 @@
 #include <ql/cashflows/simplecashflow.hpp>
 #include <boost/shared_ptr.hpp>
 
-#include <string.h>
-//#include <stdio.h>
-
 #include "ql.h"
 
 using namespace QuantLib;
@@ -21,11 +18,7 @@ void *qlLeg(int len, double *amounts, int *dates, char **e) {
     //QL_FAIL("Just for fun");
     return leg;
   } catch (std::exception& er) {
-    if (leg)
-      delete leg;
-    *e = strdup(er.what());
-    //printf("Duplicated string %p\n", *e);
-    return 0;
+    return handleException(e, er, leg);
   }
 }
 
@@ -36,9 +29,7 @@ int qlLegStartDate(void *leg, char **e) {
     Date d = CashFlows::startDate(*l);
     return d.serialNumber();
   } catch (std::exception& er) {
-    *e = strdup(er.what());
-    //printf("Duplicated string %p\n", *e);
-    return 0;
+    return handleException<int>(e, er);
   }
 }
 

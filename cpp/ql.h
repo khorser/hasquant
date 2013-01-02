@@ -1,4 +1,11 @@
 #include <ql/time/date.hpp>
+#include <ql/errors.hpp>
+
+#include <string.h>
+#include <stdio.h>
+
+/* dates are passed as int = serial number o the date.
+ * the code assumes that Haskell bindings validate date */ 
 
 extern "C"
 {
@@ -40,6 +47,25 @@ static inline QuantLib::Date qlNullableDate(int serialNumber) {
     return QuantLib::Date(); /* special null date value */
   else
     return QuantLib::Date(serialNumber);
+}
+
+/* some helpers ... well ... I hope they will help... */
+template <class T>
+T *handleException(char **msg, std::exception &e, T *t)
+{
+  *msg = strdup(e.what());
+  //printf("Duplicated exception message to a string %p", *msg);
+  if (t)
+    delete t;
+  return 0;
+}
+
+template <class T>
+T handleException(char **msg, std::exception &e)
+{
+  *msg = strdup(e.what());
+  //printf("Duplicated exception message to a string %p", *msg);
+  return 0;
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

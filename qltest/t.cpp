@@ -30,3 +30,16 @@ int main()
   leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(0, Date())));
   return 0;
 }
+
+template <class T>
+void catchAndHandle(char **e, T *t)
+{
+    delete t;
+}
+
+int main3()
+{
+    char *p;
+    Leg *l;
+    catchAndHandle(&p, l);
+}
