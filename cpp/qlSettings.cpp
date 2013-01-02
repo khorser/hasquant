@@ -10,7 +10,7 @@ int qlSettingsEvaluationDate() {
 }
 
 void qlSettingsSetEvaluationDate(int x) {
-  Settings::instance().evaluationDate() = qlDate(x);
+  Settings::instance().evaluationDate() = qlNullableDate(x);
 }
 
 void qlSettingsSetEnforceTodaysHistoricFixings(int x) {

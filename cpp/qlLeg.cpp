@@ -16,7 +16,7 @@ void *qlLeg(int len, double *amounts, int *dates, char **e) {
   try {
     leg = new Leg();
     for (int i = 0; i < len; ++i)
-      leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], qlDate(dates[i]))));
+      leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
     //printf("Allocated leg %p\n", leg);
     //QL_FAIL("Just for fun");
     return leg;
