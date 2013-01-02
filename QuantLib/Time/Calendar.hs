@@ -3,6 +3,7 @@ module QuantLib.Time.Calendar
   (
     Calendar
   , name
+  , CCalendar
 
   , noCalendar
   , nullCalendar

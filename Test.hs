@@ -15,6 +15,7 @@ import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
+import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Error as Error
 import qualified QuantLib.Settings as Settings
@@ -80,24 +81,21 @@ leg = TestList
     "start date of an empty leg"
       ~: catch
           (do l <- Leg.leg []
-              _ <- Leg.startDate l
+              print $ Leg.startDate l
               assertFailure "start date of empty leg didn't return an error")
           (assertBool "exception message not empty" . not . null . Error.message)
   , "single leg today"
       ~: do t <- today
             l <- Leg.leg [(100, t)]
-            d <- Leg.startDate l
-            assertEqual "today's leg start date" t d
+            assertEqual "today's leg start date" t (Leg.startDate l)
   , "two legs unsorted"
       ~: do t <- today
             l <- Leg.leg [(100, t), (-1000, addDays (-10) t)]
-            d <- Leg.startDate l
-            assertEqual "today's leg start date" (addDays (-10) t) d
+            assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
   , "three legs sorted"
       ~: do t <- today
             l <- Leg.leg [(100, t), (1000, addDays (-10) t), (-2000, addDays 10 t)]
-            d <- Leg.startDate l
-            assertEqual "today's leg start date" (addDays (-10) t) d
+            assertEqual "today's leg start date" (addDays (-10) t) (Leg.startDate l)
   ]
 
 calendar :: Test
@@ -106,6 +104,18 @@ calendar = TestList
     "GBP" ~: "GBP calendar name" ~:
       Calendar.name Calendar.londonStockExchange ~?= Calendar.name Calendar.gbp
   ]
+
+bond :: Test
+bond = TestList
+  [
+    "bond statics"
+      ~: do l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
+            b <- Bond.bond 2 Calendar.gbp 1000 m i l
+            assertEqual "matirity date" m (Bond.maturityDate b)
+            assertEqual "issue date" i (Bond.issueDate b)
+  ]
+  where i = fromGregorian 2012 1 1
+        m = fromGregorian 2013 1 1
 
 -- QuickCheck --
 instance Arbitrary Day where
@@ -147,22 +157,20 @@ prop_singleLegStartDate flow@(_, d) =
   Date.isValid d
     ==> monadicIO
           $ do l <- run $ Leg.leg [flow]
-               st <- run $ Leg.startDate l
-               assert $ d == st
+               assert $ d == Leg.startDate l
 
 prop_legStartDate :: [(Double, Day)] -> Property
 prop_legStartDate flows =
   not (null flows) && all Date.isValid (map snd flows)
     ==> monadicIO
           $ do l <- run $ Leg.leg flows
-               st <- run $ Leg.startDate l
-               assert $ minimum (map snd flows) == st
+               assert $ minimum (map snd flows) == Leg.startDate l
 
 -- Main --
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          _ <- runTestTT $ test [settings, date, leg, calendar]
+          _ <- runTestTT $ test [settings, date, leg, calendar, bond]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate

@@ -40,6 +40,13 @@ extern "C"
   void	qlSettingsSetEvaluationDate(int x);
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int	qlSettingsEnforceTodaysHistoricFixings();
+
+  /* bond */
+  void *qlBond(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
+  int   qlBondMaturityDate(void *bond);
+  int   qlBondIssueDate(void *bond);
+      /* internal */
+  void qlFreeBond(void *bond);
 }
 
 static inline QuantLib::Date qlNullableDate(int serialNumber) {
