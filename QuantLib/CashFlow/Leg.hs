@@ -7,53 +7,46 @@ module QuantLib.CashFlow.Leg
   )
 where
 
-import Control.Exception(throw)
 import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CInt(CInt), CDouble)
-import Foreign.C.String(CString, peekCString)
+import Foreign.C.String(CString)
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
-import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(withArray)
-import Foreign.Ptr(Ptr, FunPtr, nullPtr)
-import Foreign.Storable(peek)
+import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Error(Error(Error))
-import QuantLib.Internal(c_freeString, fromQlDateSerialNumber, toQlDateSerialNumber)
+import QuantLib.Internal(handleExceptions, fromQlDateSerialNumber, toQlDateSerialNumber)
 
 data CLeg
 
 type Leg = ForeignPtr CLeg
 
 foreign import ccall safe "ql.h qlLeg"
-    c_leg :: Ptr CString -> CInt -> Ptr CDouble -> Ptr CInt -> IO (Ptr CLeg)
+    c_leg :: CInt -> Ptr CDouble -> Ptr CInt -> Ptr CString -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
-    c_legStartDate :: Ptr CString -> Ptr CLeg -> IO CInt
+    c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CInt
 foreign import ccall safe "ql.h &qlFreeLeg"
     p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
 leg flows =
-   alloca $
-     \errptr ->
-     do l <-leg' errptr
-                 (fromIntegral $ length amounts)
-                 (map realToFrac amounts)
-                 (map toQlDateSerialNumber dates)
-        if l == nullPtr 
-          then do msg <- peek errptr
-                  err <- peekCString msg
-                  c_freeString msg
-                  throw (Error err)
-          else newForeignPtr p_freeLeg l
-  where amounts = map fst flows
-        dates   = map snd flows
+  do l <- handleExceptions
+            $ leg' (fromIntegral $ length amounts)
+                   (map realToFrac amounts)
+                   (map toQlDateSerialNumber dates)
+     newForeignPtr p_freeLeg l
+  where (amounts, dates) = unzip flows
 
-leg' :: Ptr CString -> CInt -> [CDouble] -> [CInt] -> IO (Ptr CLeg)
-leg' e len amounts dates = withArray amounts (withArray dates . c_leg e len)
+leg' ::CInt -> [CDouble] -> [CInt] -> Ptr CString -> IO (Ptr CLeg)
+leg' len amounts dates e =
+  withArray
+  amounts
+  (\ams -> (withArray
+            dates
+            (\ds -> c_leg len ams ds e)))
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX Assuming that legs are immutable. Otherwise we will need to add IO to the type
@@ -62,12 +55,4 @@ startDate l = fromQlDateSerialNumber $ unsafePerformIO
                 (withForeignPtr l startDate')
 
 startDate' :: Ptr CLeg -> IO CInt
-startDate' l = alloca $
-              \errptr ->
-              do r <-c_legStartDate errptr l
-                 if r == 0
-                   then do msg <- peek errptr
-                           err <- peekCString msg
-                           c_freeString msg
-                           throw (Error err)
-                   else return r
+startDate' = handleExceptions . c_legStartDate

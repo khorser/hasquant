@@ -7,14 +7,18 @@ module QuantLib.Internal
   , c_minDateSerialNumber
   , c_freeString
   , isDateValid
+  , handleExceptions
   )
 where
 
 import Control.Exception(throw)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
-import Foreign.C.String(CString)
+import Foreign.C.String(CString, peekCString)
 import Foreign.C.Types(CInt(CInt))
+import Foreign.Marshal.Alloc(alloca)
+import Foreign.Ptr(nullPtr, Ptr)
+import Foreign.Storable(peek)
 
 import QuantLib.Error(Error(Error))
 
@@ -55,3 +59,16 @@ toQlDateSerialNumber x | isDateValid x = fromInteger $ toModifiedJulianDay x - q
 isDateValid :: Day -> Bool
 isDateValid x = toQlDateSerialNumberUnsafe x >= c_minDateSerialNumber
                   && toQlDateSerialNumberUnsafe x <= c_maxDateSerialNumber
+
+handleExceptions :: (Ptr CString -> IO a) -> IO a
+handleExceptions f =
+   alloca $
+     \errptr ->
+     do r <- f errptr
+        msg <- peek errptr
+        if msg /= nullPtr 
+          then do err <- peekCString msg
+                  c_freeString msg
+                  throw (Error err)
+          else return r
+

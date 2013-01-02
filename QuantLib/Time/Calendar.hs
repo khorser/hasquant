@@ -59,16 +59,11 @@ module QuantLib.Time.Calendar
   )
 where
 
-import Control.Exception(throw)
-
 import Foreign.C.String(withCString, CString, peekCString)
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
-import Foreign.Marshal.Alloc(alloca)
-import Foreign.Ptr(Ptr, FunPtr, nullPtr)
-import Foreign.Storable(peek)
+import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Error(Error(Error))
-import QuantLib.Internal(c_freeString)
+import QuantLib.Internal(c_freeString, handleExceptions)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -77,26 +72,19 @@ data CCalendar
 type Calendar = ForeignPtr CCalendar
 
 foreign import ccall safe "ql.h qlCalendar"
-    c_calendar :: Ptr CString -> CString -> IO (Ptr CCalendar)
+    c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
 foreign import ccall safe "ql.h &qlFreeCalendar"
     p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
 foreign import ccall safe "ql.h qlCalendarName"
     c_calendarName :: Ptr CCalendar -> IO CString
 
 calendar :: String -> IO Calendar
-calendar cname =
-  alloca $
-   \errptr ->
-     withCString
-       cname
-         (\n ->
-           do c <- c_calendar errptr n
-              if c == nullPtr
-                then do msg <- peek errptr
-                        err <- peekCString msg
-                        c_freeString msg
-                        throw (Error err)
-                else newForeignPtr p_freeCalendar c)
+calendar cname = 
+  withCString
+    cname
+    (\n ->
+       do c <- handleExceptions $ c_calendar n
+          newForeignPtr p_freeCalendar c)
 
 name :: Calendar -> String
 name c = unsafePerformIO

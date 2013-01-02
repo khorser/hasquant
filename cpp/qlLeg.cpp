@@ -10,7 +10,8 @@
 using namespace QuantLib;
 using namespace boost;
 
-void *qlLeg(char **e, int len, double *amounts, int *dates) {
+void *qlLeg(int len, double *amounts, int *dates, char **e) {
+  *e = 0;
   Leg *leg = 0;
   try {
     leg = new Leg();
@@ -28,7 +29,8 @@ void *qlLeg(char **e, int len, double *amounts, int *dates) {
   }
 }
 
-int qlLegStartDate(char **e, void *leg) {
+int qlLegStartDate(void *leg, char **e) {
+  *e = 0;
   Leg *l = (Leg *)leg;
   try {
     Date d = CashFlows::startDate(*l);

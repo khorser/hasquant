@@ -6,8 +6,9 @@ using namespace QuantLib;
 #include <string.h>
 #include "ql.h"
 
-void *qlCalendar(char **e, const char* name)
+void *qlCalendar(const char *name, char **e)
 {
+  *e = 0;
   // use enumerations instead?
   try {
     if (!strcmp(name, "NoCalendar"))

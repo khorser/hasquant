@@ -15,13 +15,13 @@ extern "C"
   int	qlMinDay();
 
   /* leg */
-  void *qlLeg(char **e, int len, double *amounts, int *dates);
-  int   qlLegStartDate(char **e, void *leg);
+  void *qlLeg(int len, double *amounts, int *dates, char **e);
+  int   qlLegStartDate(void *leg, char **e);
       /* internal */
   void  qlFreeLeg(void *leg);
 
   /* calendar */
-  void *qlCalendar(char **e, const char *name);
+  void *qlCalendar(const char *name, char **e);
   const char *qlCalendarName(void *calendar);
       /* internal */
   void  qlFreeCalendar(void *calendar);
