@@ -70,18 +70,9 @@ handleExceptions f =
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
 
--- |Run a function that returns a new object. The object needs a finalizer. The function might signal an exception
+-- |Run a function returning a new object that needs a finalizer. The function might signal an error
 construct :: (Finalizable a) => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
-construct f =
-   alloca $
-     \errptr ->
-     do r <- f errptr
-        msg <- peek errptr
-        if msg /= nullPtr 
-          then do err <- peekCString msg
-                  c_freeString msg
-                  throw (Error err)
-          else newForeignPtr finalize r
+construct f = handleExceptions f >>= newForeignPtr finalize
 
 class QLDate a where
   isValid :: a -> Bool

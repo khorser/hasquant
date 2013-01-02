@@ -82,10 +82,7 @@ instance Finalizable CCalendar
   where finalize = p_freeCalendar
 
 calendar :: String -> IO Calendar
-calendar cname = 
-  withCString
-    cname
-    (\n -> construct $ c_calendar n)
+calendar cname = withCString cname $ construct . c_calendar
 
 name :: Calendar -> String
 name c = unsafePerformIO
