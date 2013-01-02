@@ -60,10 +60,10 @@ module QuantLib.Time.Calendar
 where
 
 import Foreign.C.String(withCString, CString, peekCString)
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
+import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(c_freeString, handleExceptions)
+import QuantLib.Internal(c_freeString, Finalizable, finalize, construct)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -78,13 +78,14 @@ foreign import ccall safe "ql.h &qlFreeCalendar"
 foreign import ccall safe "ql.h qlCalendarName"
     c_calendarName :: Ptr CCalendar -> IO CString
 
+instance Finalizable CCalendar
+  where finalize = p_freeCalendar
+
 calendar :: String -> IO Calendar
 calendar cname = 
   withCString
     cname
-    (\n ->
-       do c <- handleExceptions $ c_calendar n
-          newForeignPtr p_freeCalendar c)
+    (\n -> construct $ c_calendar n)
 
 name :: Calendar -> String
 name c = unsafePerformIO

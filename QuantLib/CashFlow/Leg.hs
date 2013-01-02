@@ -12,11 +12,11 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.C.String(CString)
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
+import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
 import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(handleExceptions, fromQlDateSerialNumber, toQlDateSerialNumber)
+import QuantLib.Internal(handleExceptions, construct, fromQlDateSerialNumber, toQlDateSerialNumber, Finalizable, finalize)
 
 data CLeg
 
@@ -29,14 +29,15 @@ foreign import ccall safe "ql.h qlLegStartDate"
 foreign import ccall safe "ql.h &qlFreeLeg"
     p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
+instance Finalizable CLeg
+  where finalize = p_freeLeg
+
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
-leg flows =
-  do l <- handleExceptions
+leg flows = construct
             $ leg' (fromIntegral $ length amounts)
                    (map realToFrac amounts)
                    (map toQlDateSerialNumber dates)
-     newForeignPtr p_freeLeg l
   where (amounts, dates) = unzip flows
 
 leg' ::CInt -> [CDouble] -> [CInt] -> Ptr CString -> IO (Ptr CLeg)

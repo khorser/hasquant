@@ -8,6 +8,9 @@ module QuantLib.Internal
   , c_freeString
   , handleExceptions
   , isValid
+  , Finalizable
+  , finalize
+  , construct
   )
 where
 
@@ -16,8 +19,9 @@ import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGrego
 
 import Foreign.C.String(CString, peekCString)
 import Foreign.C.Types(CInt(CInt))
+import Foreign.ForeignPtr(ForeignPtr, newForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
-import Foreign.Ptr(nullPtr, Ptr)
+import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek)
 
 import QuantLib.Error(Error(Error))
@@ -62,6 +66,22 @@ handleExceptions f =
                   c_freeString msg
                   throw (Error err)
           else return r
+
+class Finalizable a where
+  finalize :: FunPtr (Ptr a -> IO ())
+
+-- |Run a function that returns a new object. The object needs a finalizer. The function might signal an exception
+construct :: (Finalizable a) => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
+construct f =
+   alloca $
+     \errptr ->
+     do r <- f errptr
+        msg <- peek errptr
+        if msg /= nullPtr 
+          then do err <- peekCString msg
+                  c_freeString msg
+                  throw (Error err)
+          else newForeignPtr finalize r
 
 class QLDate a where
   isValid :: a -> Bool

@@ -34,7 +34,7 @@ int qlLegStartDate(void *leg, char **e) {
 }
 
 void qlFreeLeg(void *leg) {
-  // printf("freeing leg %p\n", leg);
+  //printf("freeing leg %p\n", leg);
   delete (Leg *)leg;
 }
 

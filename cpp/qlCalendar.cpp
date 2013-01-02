@@ -122,6 +122,7 @@ void *qlCalendar(const char *name, char **e)
 }
 
 void  qlFreeCalendar(void *calendar) {
+  //printf("freeing calendar %p", calendar);
   delete (Calendar *)calendar;
 }
 
