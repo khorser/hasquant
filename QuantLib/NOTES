@@ -122,49 +122,8 @@ C ENUMERATIONS into Haskell?
       <Parameter name='NextToLastDate' default='QuantLib::Date()'>
         QuantLib::Date
 
-QuantLib::Period, Frequency
 /usr/include/ql/time/period.hpp
-/usr/include/ql/time/frequency.hpp
-period <-> frequency
-
-TimeUnit:
-    <string>Months</string>
-    <value>QuantLib::Months</value>
-    <string>Days</string>
-    <value>QuantLib::Days</value>
-    <string>Weeks</string>
-    <value>QuantLib::Weeks</value>
-    <string>Years</string>
-    <value>QuantLib::Years</value>
-Frequency:
-    <string>Frequency</string>
-    <value>QuantLib::NoFrequency</value>
-    <string>NoFrequency</string>
-    <value>QuantLib::NoFrequency</value>
-    <string>Annual</string>
-    <value>QuantLib::Annual</value>
-    <string>Semiannual</string>
-    <value>QuantLib::Semiannual</value>
-    <string>EveryFourthMonth</string>
-    <value>QuantLib::EveryFourthMonth</value>
-    <string>Quarterly</string>
-    <value>QuantLib::Quarterly</value>
-    <string>Bimonthly</string>
-    <value>QuantLib::Bimonthly</value>
-    <string>Monthly</string>
-    <value>QuantLib::Monthly</value>
-    <string>Biweekly</string>
-    <value>QuantLib::Biweekly</value>
-    <string>EveryFourthWeek</string>
-    <value>QuantLib::EveryFourthWeek</value>
-    <string>Weekly</string>
-    <value>QuantLib::Weekly</value>
-    <string>Daily</string>
-    <value>QuantLib::Daily</value>
-    <string>Once</string>
-    <value>QuantLib::Once</value>
-    <string>OtherFrequency</string>
-    <value>QuantLib::OtherFrequency</value>
+period from frequency
 
 <Constructor name='qlPiecewiseYieldCurve'>
   <libraryFunction>PiecewiseYieldCurve</libraryFunction>

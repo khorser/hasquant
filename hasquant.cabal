@@ -13,26 +13,37 @@ Category:            Finance
 -- build-type:          Custom
 Build-Type:          Simple
 Cabal-Version:       >=1.8
---tested-with:	     GHC-7.4.2
+--tested-with:       GHC-7.4.2
 
 --Extra-Source-Files:  cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp
 
 -- library
 --   exposed-modules:     QuantLib.Utilities, QuantLib.Settings, QuantLib.Leg, QuantLib.Error, QuantLib.Date
 --   other-modules:       QuantLib.Internal
---   ghc-options:	       -Wall
+--   ghc-options:              -Wall
 --   build-depends:       base == 4.5.*, time >= 1.4
 --   include-dirs:        cpp
 --   install-includes:    ql.h
 Executable Test
-  Main-Is:	       Test.hs
-  GHC-Options:	       -Wall
-  C-Sources:	       cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp cpp/qlCalendar.cpp cpp/qlBond.cpp cpp/qlDayCounter.cpp
+  Main-Is:             Test.hs
+  GHC-Options:         -Wall
+  C-Sources:           cpp/qlBond.cpp
+                        cpp/qlBusinessDayConvention.cpp
+                        cpp/qlCalendar.cpp
+                        cpp/qlDate.cpp
+                        cpp/qlDateGenerationRule.cpp
+                        cpp/qlDayCounter.cpp
+                        cpp/qlFrequency.cpp
+                        cpp/qlLeg.cpp
+                        cpp/qlSettings.cpp
+                        cpp/qlTimeUnit.cpp
+                        cpp/qlUtilities.cpp
   Include-Dirs:        cpp
   Build-Depends:       base == 4.5.*, QuickCheck >=2.4.2, HUnit >= 1.2.4.2, time >= 1.4
   Extra-Libraries:     QuantLib stdc++
   -- don't we really need -static-libstdc++ -static-libgcc?
   If os(windows)
-    LD-Options:	       -static
+    LD-Options:        -static
 
 -- TODO test suite
+-- vim: set et ts=8 sts=2 sw=2:

@@ -93,6 +93,8 @@ name c = unsafePerformIO
                          c_freeString n
                          return str)
 
+-- TODO add data Calendar = ...
+
 -- NB Calendars in QuantLib are sort of singletons: if you add
 -- a holiday to QuantLib::Russia, it will be added to all instances
 -- of the calendar

@@ -15,13 +15,17 @@ import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
-import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Error as Error
+import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.Settings as Settings
+import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
 import qualified QuantLib.Time.Calendar as Calendar
 import qualified QuantLib.Time.Date as Date
+import qualified QuantLib.Time.DateGenerationRule as DateGenerationRule
 import qualified QuantLib.Time.DayCounter as DayCounter
+import qualified QuantLib.Time.Frequency as Frequency
+import qualified QuantLib.Time.Unit as Unit
 import qualified QuantLib.Utilities as Utilities
 
 today :: IO Day
@@ -178,6 +182,10 @@ prop_legStartDate flows =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
+          print Frequency.Monthly
+          print DateGenerationRule.Forward
+          print Unit.Years
+          print BusinessDayConvention.Following
           _ <- runTestTT $ test [settings, date, leg, calendar, dayCounter, bond]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate

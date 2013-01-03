@@ -53,6 +53,49 @@ extern "C"
   const char *qlDayCounterName(void *counter);
       /* internal */
   void  qlFreeDayCounter(void *counter);
+
+  /* businessdayconvention */
+    /* enumeration */
+  int qlBusinessDayConventionFollowing();
+  int qlBusinessDayConventionModifiedFollowing();
+  int qlBusinessDayConventionPreceding();
+  int qlBusinessDayConventionModifiedPreceding();
+  int qlBusinessDayConventionUnadjusted();
+
+  /* dategenerationrule */
+    /* enumeration */
+  int qlDateGenerationRuleBackward();
+  int qlDateGenerationRuleForward();
+  int qlDateGenerationRuleZero();
+  int qlDateGenerationRuleThirdWednesday();
+  int qlDateGenerationRuleTwentieth();
+  int qlDateGenerationRuleTwentiethIMM();
+  int qlDateGenerationRuleOldCDS();
+  int qlDateGenerationRuleCDS();
+
+  /* timeunit */
+    /* enumeration */
+  int qlTimeUnitMonths();
+  int qlTimeUnitDays();
+  int qlTimeUnitWeeks();
+  int qlTimeUnitYears();
+
+  /* frequency */
+    /* enumeration */
+  int qlFrequencyFrequency();
+  int qlFrequencyNoFrequency();
+  int qlFrequencyAnnual();
+  int qlFrequencySemiannual();
+  int qlFrequencyEveryFourthMonth();
+  int qlFrequencyQuarterly();
+  int qlFrequencyBimonthly();
+  int qlFrequencyMonthly();
+  int qlFrequencyBiweekly();
+  int qlFrequencyEveryFourthWeek();
+  int qlFrequencyWeekly();
+  int qlFrequencyDaily();
+  int qlFrequencyOnce();
+  int qlFrequencyOtherFrequency();
 }
 
 static inline QuantLib::Date qlNullableDate(int serialNumber) {
@@ -63,7 +106,7 @@ static inline QuantLib::Date qlNullableDate(int serialNumber) {
 }
 
 /* some helpers ... well ... I hope they will help... */
-template <class T>
+  template <class T>
 T *handleException(char **msg, std::exception &e, T *t)
 {
   *msg = strdup(e.what());
@@ -73,7 +116,7 @@ T *handleException(char **msg, std::exception &e, T *t)
   return 0;
 }
 
-template <class T>
+  template <class T>
 T handleException(char **msg, std::exception &e)
 {
   *msg = strdup(e.what());
