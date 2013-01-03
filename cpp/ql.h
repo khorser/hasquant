@@ -47,6 +47,12 @@ extern "C"
   int   qlBondIssueDate(void *bond);
       /* internal */
   void qlFreeBond(void *bond);
+
+  /* daycounter */
+  void *qlDayCounter(const char *name, char **e);
+  const char *qlDayCounterName(void *counter);
+      /* internal */
+  void  qlFreeDayCounter(void *counter);
 }
 
 static inline QuantLib::Date qlNullableDate(int serialNumber) {

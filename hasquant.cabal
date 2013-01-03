@@ -27,7 +27,7 @@ Cabal-Version:       >=1.8
 Executable Test
   Main-Is:	       Test.hs
   GHC-Options:	       -Wall
-  C-Sources:	       cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp cpp/qlCalendar.cpp cpp/qlBond.cpp
+  C-Sources:	       cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp cpp/qlCalendar.cpp cpp/qlBond.cpp cpp/qlDayCounter.cpp
   Include-Dirs:        cpp
   Build-Depends:       base == 4.5.*, QuickCheck >=2.4.2, HUnit >= 1.2.4.2, time >= 1.4
   Extra-Libraries:     QuantLib stdc++

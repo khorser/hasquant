@@ -21,6 +21,7 @@ import qualified QuantLib.Error as Error
 import qualified QuantLib.Settings as Settings
 import qualified QuantLib.Time.Calendar as Calendar
 import qualified QuantLib.Time.Date as Date
+import qualified QuantLib.Time.DayCounter as DayCounter
 import qualified QuantLib.Utilities as Utilities
 
 today :: IO Day
@@ -105,6 +106,13 @@ calendar = TestList
       Calendar.name Calendar.londonStockExchange ~?= Calendar.name Calendar.gbp
   ]
 
+dayCounter :: Test
+dayCounter = TestList
+  [
+    "ACT/365" ~: "ACT/365 name" ~:
+      DayCounter.name DayCounter.actual365Fixed ~?= DayCounter.name DayCounter.a365F
+  ]
+
 bond :: Test
 bond = TestList
   [
@@ -170,7 +178,7 @@ prop_legStartDate flows =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          _ <- runTestTT $ test [settings, date, leg, calendar, bond]
+          _ <- runTestTT $ test [settings, date, leg, calendar, dayCounter, bond]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate

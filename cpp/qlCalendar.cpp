@@ -1,9 +1,9 @@
 #include <ql/time/calendar.hpp>
 #include <ql/time/calendars/all.hpp>
 
-using namespace QuantLib;
-
 #include "ql.h"
+
+using namespace QuantLib;
 
 void *qlCalendar(const char *name, char **e)
 {

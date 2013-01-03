@@ -100,108 +100,111 @@ name c = unsafePerformIO
 -- but there is another drawback: the name of a joint calendar is
 -- the concatenation of its components so == will return TRUE
 -- even while holidays might be different
+-- Also we can create a calendar that will call back Haskell
+-- for actual implementation
 
-noCalendar::Calendar
-noCalendar                    = unsafePerformIO $ calendar "NoCalendar"
-nullCalendar::Calendar
-nullCalendar                  = unsafePerformIO $ calendar "NullCalendar"
-target::Calendar
-target                        = unsafePerformIO $ calendar "TARGET"
-argentinaMerval::Calendar
-argentinaMerval              = unsafePerformIO $ calendar "Argentina::Merval"
-australia::Calendar
-australia                     = unsafePerformIO $ calendar "Australia"
-brazilSettlement::Calendar
-brazilSettlement             = unsafePerformIO $ calendar "Brazil::Settlement"
-brazilExchange::Calendar
-brazilExchange               = unsafePerformIO $ calendar "Brazil::Exchange"
-canadaSettlement::Calendar
-canadaSettlement             = unsafePerformIO $ calendar "Canada::Settlement"
-canadaTSX::Calendar
-canadaTSX                    = unsafePerformIO $ calendar "Canada::TSX"
-china::Calendar
-china                         = unsafePerformIO $ calendar "China"
-czechRepublicPSE::Calendar
-czechRepublicPSE             = unsafePerformIO $ calendar "CzechRepublic::PSE"
-denmark::Calendar
-denmark                       = unsafePerformIO $ calendar "Denmark"
-finland::Calendar
-finland                       = unsafePerformIO $ calendar "Finland"
-germanyEurex::Calendar
-germanyEurex                 = unsafePerformIO $ calendar "Germany::Eurex"
-germanyFrankfurtStockExchange::Calendar
-germanyFrankfurtStockExchange= unsafePerformIO $ calendar "Germany::FrankfurtStockExchange"
-germanySettlement::Calendar
-germanySettlement            = unsafePerformIO $ calendar "Germany::Settlement"
-germanyXetra::Calendar
-germanyXetra                 = unsafePerformIO $ calendar "Germany::Xetra"
-hongKongHKEx::Calendar
-hongKongHKEx                 = unsafePerformIO $ calendar "HongKong::HKEx"
-hungary::Calendar
-hungary                       = unsafePerformIO $ calendar "Hungary"
-icelandICEX::Calendar
-icelandICEX                  = unsafePerformIO $ calendar "Iceland::ICEX"
-indiaNSE::Calendar
-indiaNSE                     = unsafePerformIO $ calendar "India::NSE"
-indonesiaBEJ::Calendar
-indonesiaBEJ                 = unsafePerformIO $ calendar "Indonesia::BEJ"
-indonesiaJSX::Calendar
-indonesiaJSX                 = unsafePerformIO $ calendar "Indonesia::JSX"
-italyExchange::Calendar
-italyExchange                = unsafePerformIO $ calendar "Italy::Exchange"
-italySettlement::Calendar
-italySettlement              = unsafePerformIO $ calendar "Italy::Settlement"
-japan::Calendar
-japan                         = unsafePerformIO $ calendar "Japan"
-mexicoBMV::Calendar
-mexicoBMV                    = unsafePerformIO $ calendar "Mexico::BMV"
-newZealand::Calendar
-newZealand                    = unsafePerformIO $ calendar "NewZealand"
-norway::Calendar
-norway                        = unsafePerformIO $ calendar "Norway"
-poland::Calendar
-poland                        = unsafePerformIO $ calendar "Poland"
-russia::Calendar
-russia                        = unsafePerformIO $ calendar "Russia"
-saudiArabiaTadawul::Calendar
-saudiArabiaTadawul           = unsafePerformIO $ calendar "SaudiArabia::Tadawul"
-singaporeSGX::Calendar
-singaporeSGX                 = unsafePerformIO $ calendar "Singapore::SGX"
-slovakiaBSSE::Calendar
-slovakiaBSSE                 = unsafePerformIO $ calendar "Slovakia::BSSE"
-southAfrica::Calendar
-southAfrica                   = unsafePerformIO $ calendar "SouthAfrica"
-southKoreaKRX::Calendar
-southKoreaKRX                = unsafePerformIO $ calendar "SouthKorea::KRX"
-sweden::Calendar
-sweden                        = unsafePerformIO $ calendar "Sweden"
-switzerland::Calendar
-switzerland                   = unsafePerformIO $ calendar "Switzerland"
-taiwanTSEC::Calendar
-taiwanTSEC                   = unsafePerformIO $ calendar "Taiwan::TSEC"
-eur::Calendar
-eur                           = unsafePerformIO $ calendar "EUR"
-turkey::Calendar
-turkey                        = unsafePerformIO $ calendar "Turkey"
-ukraineUSE::Calendar
-ukraineUSE                   = unsafePerformIO $ calendar "Ukraine::USE"
-unitedKingdomExchange::Calendar
-unitedKingdomExchange        = unsafePerformIO $ calendar "UnitedKingdom::Exchange"
-londonStockExchange::Calendar
-londonStockExchange         = unsafePerformIO $ calendar "London stock exchange"
-london::Calendar
-london                        = unsafePerformIO $ calendar "LONDON"
-gbp::Calendar
-gbp                           = unsafePerformIO $ calendar "GBP"
-unitedKingdomMetals::Calendar
-unitedKingdomMetals          = unsafePerformIO $ calendar "UnitedKingdom::Metals"
-unitedKingdomSettlement::Calendar
-unitedKingdomSettlement      = unsafePerformIO $ calendar "UnitedKingdom::Settlement"
+noCalendar              ::Calendar
+nullCalendar            ::Calendar
+target                  ::Calendar
+argentinaMerval         ::Calendar
+australia               ::Calendar
+brazilSettlement        ::Calendar
+brazilExchange          ::Calendar
+canadaSettlement        ::Calendar
+canadaTSX               ::Calendar
+china                   ::Calendar
+czechRepublicPSE        ::Calendar
+denmark                 ::Calendar
+finland                 ::Calendar
+germanyEurex            ::Calendar
+germanyFrankfurtStockExchange ::Calendar
+germanySettlement       ::Calendar
+germanyXetra            ::Calendar
+hongKongHKEx            ::Calendar
+hungary                 ::Calendar
+icelandICEX             ::Calendar
+indiaNSE                ::Calendar
+indonesiaBEJ            ::Calendar
+indonesiaJSX            ::Calendar
+italyExchange           ::Calendar
+italySettlement         ::Calendar
+japan                   ::Calendar
+mexicoBMV               ::Calendar
+newZealand              ::Calendar
+norway                  ::Calendar
+poland                  ::Calendar
+russia                  ::Calendar
+saudiArabiaTadawul      ::Calendar
+singaporeSGX            ::Calendar
+slovakiaBSSE            ::Calendar
+southAfrica             ::Calendar
+southKoreaKRX           ::Calendar
+sweden                  ::Calendar
+switzerland             ::Calendar
+taiwanTSEC              ::Calendar
+eur                     ::Calendar
+turkey                  ::Calendar
+ukraineUSE              ::Calendar
+unitedKingdomExchange   ::Calendar
+londonStockExchange     ::Calendar
+london                  ::Calendar
+gbp                     ::Calendar
+unitedKingdomMetals     ::Calendar
+unitedKingdomSettlement ::Calendar
 unitedStatesGovernmentBond::Calendar
-unitedStatesGovernmentBond   = unsafePerformIO $ calendar "UnitedStates::GovernmentBond"
-unitedStatesNERC::Calendar
-unitedStatesNERC             = unsafePerformIO $ calendar "UnitedStates::NERC"
-unitedStatesNYSE::Calendar
-unitedStatesNYSE             = unsafePerformIO $ calendar "UnitedStates::NYSE"
-unitedStatesSettlement::Calendar
-unitedStatesSettlement       = unsafePerformIO $ calendar "UnitedStates::Settlement"
+unitedStatesNERC        ::Calendar
+unitedStatesNYSE        ::Calendar
+unitedStatesSettlement  ::Calendar
+
+noCalendar              = unsafePerformIO $ calendar "NoCalendar"
+nullCalendar            = unsafePerformIO $ calendar "NullCalendar"
+target                  = unsafePerformIO $ calendar "TARGET"
+argentinaMerval         = unsafePerformIO $ calendar "Argentina::Merval"
+australia               = unsafePerformIO $ calendar "Australia"
+brazilSettlement        = unsafePerformIO $ calendar "Brazil::Settlement"
+brazilExchange          = unsafePerformIO $ calendar "Brazil::Exchange"
+canadaSettlement        = unsafePerformIO $ calendar "Canada::Settlement"
+canadaTSX               = unsafePerformIO $ calendar "Canada::TSX"
+china                   = unsafePerformIO $ calendar "China"
+czechRepublicPSE        = unsafePerformIO $ calendar "CzechRepublic::PSE"
+denmark                 = unsafePerformIO $ calendar "Denmark"
+finland                 = unsafePerformIO $ calendar "Finland"
+germanyEurex            = unsafePerformIO $ calendar "Germany::Eurex"
+germanyFrankfurtStockExchange = unsafePerformIO $ calendar "Germany::FrankfurtStockExchange"
+germanySettlement       = unsafePerformIO $ calendar "Germany::Settlement"
+germanyXetra            = unsafePerformIO $ calendar "Germany::Xetra"
+hongKongHKEx            = unsafePerformIO $ calendar "HongKong::HKEx"
+hungary                 = unsafePerformIO $ calendar "Hungary"
+icelandICEX             = unsafePerformIO $ calendar "Iceland::ICEX"
+indiaNSE                = unsafePerformIO $ calendar "India::NSE"
+indonesiaBEJ            = unsafePerformIO $ calendar "Indonesia::BEJ"
+indonesiaJSX            = unsafePerformIO $ calendar "Indonesia::JSX"
+italyExchange           = unsafePerformIO $ calendar "Italy::Exchange"
+italySettlement         = unsafePerformIO $ calendar "Italy::Settlement"
+japan                   = unsafePerformIO $ calendar "Japan"
+mexicoBMV               = unsafePerformIO $ calendar "Mexico::BMV"
+newZealand              = unsafePerformIO $ calendar "NewZealand"
+norway                  = unsafePerformIO $ calendar "Norway"
+poland                  = unsafePerformIO $ calendar "Poland"
+russia                  = unsafePerformIO $ calendar "Russia"
+saudiArabiaTadawul      = unsafePerformIO $ calendar "SaudiArabia::Tadawul"
+singaporeSGX            = unsafePerformIO $ calendar "Singapore::SGX"
+slovakiaBSSE            = unsafePerformIO $ calendar "Slovakia::BSSE"
+southAfrica             = unsafePerformIO $ calendar "SouthAfrica"
+southKoreaKRX           = unsafePerformIO $ calendar "SouthKorea::KRX"
+sweden                  = unsafePerformIO $ calendar "Sweden"
+switzerland             = unsafePerformIO $ calendar "Switzerland"
+taiwanTSEC              = unsafePerformIO $ calendar "Taiwan::TSEC"
+eur                     = unsafePerformIO $ calendar "EUR"
+turkey                  = unsafePerformIO $ calendar "Turkey"
+ukraineUSE              = unsafePerformIO $ calendar "Ukraine::USE"
+unitedKingdomExchange   = unsafePerformIO $ calendar "UnitedKingdom::Exchange"
+londonStockExchange     = unsafePerformIO $ calendar "London stock exchange"
+london                  = unsafePerformIO $ calendar "LONDON"
+gbp                     = unsafePerformIO $ calendar "GBP"
+unitedKingdomMetals     = unsafePerformIO $ calendar "UnitedKingdom::Metals"
+unitedKingdomSettlement = unsafePerformIO $ calendar "UnitedKingdom::Settlement"
+unitedStatesGovernmentBond = unsafePerformIO $ calendar "UnitedStates::GovernmentBond"
+unitedStatesNERC        = unsafePerformIO $ calendar "UnitedStates::NERC"
+unitedStatesNYSE        = unsafePerformIO $ calendar "UnitedStates::NYSE"
+unitedStatesSettlement  = unsafePerformIO $ calendar "UnitedStates::Settlement"
