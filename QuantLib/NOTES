@@ -19,3 +19,481 @@ updated data
 
 Use some type magic to restrict dates and enforce the same length of dates and amounts for cash flows
 (for now the latter is solved by using a list of tuples)
+
+C ENUMERATIONS into Haskell?
+
+--- BOND Pricing: ---
+
+<EnumerationMember name='qlCalendarAdjust' type='QuantLib::Calendar' loopParameter='Date'>
+  <description>Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention.</description>
+      <Parameter name='Date'>
+        QuantLib::Date
+        vector
+      <Parameter name='BusinessDayConvention' const='False' default='"Following"'>
+        QuantLib::BusinessDayConvention
+  <ReturnValue>
+    QuantLib::Date
+    vector
+
+<EnumerationMember name='qlCalendarAdvance' type='QuantLib::Calendar' loopParameter='Period'>
+  <description>advances a date according to a given calendar.</description>
+      <Parameter name='StartDate'>
+        QuantLib::Date
+      <Parameter name='Period'>
+        QuantLib::Period
+        vector
+      <Parameter name='BusinessDayConvention' const='False' default='"Following"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='EndOfMonth' const='False' default='false'>
+        bool
+  <ReturnValue>
+    QuantLib::Date
+    vector
+
+<Constructor name='qlSimpleQuote'>
+  <libraryFunction>SimpleQuote</libraryFunction>
+      <Parameter name='Value' default='QuantLib::Null&lt;QuantLib::Real&gt;()'>
+        QuantLib::Real
+      <Parameter name='TickValue' 
+        QuantLib::Real
+
+<Constructor name='qlDepositRateHelper2'>
+  <libraryFunction>DepositRateHelper</libraryFunction>
+      <Parameter name='Rate' 
+        QuantLib::Quote
+        <superType>libToHandle</superType>
+      <Parameter name='Tenor' 
+        QuantLib::Period
+      <Parameter name='FixingDays' 
+        QuantLib::Natural
+      <Parameter name='Calendar' 
+        QuantLib::Calendar
+      <Parameter name='Convention' 
+        QuantLib::BusinessDayConvention
+      <Parameter name='EndOfMonth' 
+        bool
+      <Parameter name='DayCounter' 
+        QuantLib::DayCounter
+
+<Constructor name='qlFixedRateBondHelper'>
+  <libraryFunction>FixedRateBondHelper</libraryFunction>
+      <Parameter name='CleanPrice' 
+        QuantLib::Quote
+        <superType>libToHandle</superType>
+      <Parameter name='SettlementDays' 
+        QuantLib::Size
+      <Parameter name='FaceAmount' default='100.0'>
+        double
+      <Parameter name='ScheduleID'>
+        QuantLib::Schedule
+        <superType>libraryClass</superType>
+      <Parameter name='Coupons' 
+        QuantLib::Rate
+        vector
+      <Parameter name='DayCounter' 
+        QuantLib::DayCounter
+      <Parameter name='PaymentBDC' default='"Following"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='Redemption' default='100.0'>
+        double
+      <Parameter name='IssueDate' default='QuantLib::Date()'>
+        QuantLib::Date
+
+<Constructor name='qlSchedule'>
+  <libraryFunction>Schedule</libraryFunction>
+      <Parameter name='EffectiveDate' default='QuantLib::Date()'>
+        QuantLib::Date
+      <Parameter name='TerminationDate' 
+        QuantLib::Date
+      <Parameter name='Tenor' 
+        QuantLib::Period
+      <Parameter name='Calendar' default='"NullCalendar"'>
+        QuantLib::Calendar
+      <Parameter name='Convention' default='"Unadjusted"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='TermDateConv' default='"Unadjusted"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='GenRule' default='"Backward"'>
+        QuantLib::DateGeneration::Rule
+      <Parameter name='EndOfMonth' default='false'>
+        bool
+      <Parameter name='FirstDate' default='QuantLib::Date()'>
+        QuantLib::Date
+      <Parameter name='NextToLastDate' default='QuantLib::Date()'>
+        QuantLib::Date
+
+QuantLib::Period, Frequency
+/usr/include/ql/time/period.hpp
+/usr/include/ql/time/frequency.hpp
+period <-> frequency
+
+TimeUnit:
+    <string>Months</string>
+    <value>QuantLib::Months</value>
+    <string>Days</string>
+    <value>QuantLib::Days</value>
+    <string>Weeks</string>
+    <value>QuantLib::Weeks</value>
+    <string>Years</string>
+    <value>QuantLib::Years</value>
+Frequency:
+    <string>Frequency</string>
+    <value>QuantLib::NoFrequency</value>
+    <string>NoFrequency</string>
+    <value>QuantLib::NoFrequency</value>
+    <string>Annual</string>
+    <value>QuantLib::Annual</value>
+    <string>Semiannual</string>
+    <value>QuantLib::Semiannual</value>
+    <string>EveryFourthMonth</string>
+    <value>QuantLib::EveryFourthMonth</value>
+    <string>Quarterly</string>
+    <value>QuantLib::Quarterly</value>
+    <string>Bimonthly</string>
+    <value>QuantLib::Bimonthly</value>
+    <string>Monthly</string>
+    <value>QuantLib::Monthly</value>
+    <string>Biweekly</string>
+    <value>QuantLib::Biweekly</value>
+    <string>EveryFourthWeek</string>
+    <value>QuantLib::EveryFourthWeek</value>
+    <string>Weekly</string>
+    <value>QuantLib::Weekly</value>
+    <string>Daily</string>
+    <value>QuantLib::Daily</value>
+    <string>Once</string>
+    <value>QuantLib::Once</value>
+    <string>OtherFrequency</string>
+    <value>QuantLib::OtherFrequency</value>
+
+<Constructor name='qlPiecewiseYieldCurve'>
+  <libraryFunction>PiecewiseYieldCurve</libraryFunction>
+      <Parameter name='NDays' default='0'>
+        <type>QuantLib::Natural</type>
+        <type>QuantLib::Calendar</type>
+      <Parameter name='RateHelpers'
+        <type>QuantLib::RateHelper</type>
+        <tensorRank>vector</tensorRank>
+      <Parameter name='DayCounter'
+        <type>QuantLib::DayCounter</type>
+      <Parameter name='Jumps'
+        <type>QuantLib::Quote</type>
+        <tensorRank>vector</tensorRank>
+      <Parameter name='JumpDates'
+        <type>QuantLib::Date</type>
+        <tensorRank>vector</tensorRank>
+      <Parameter name='Accuracy' default='1.0e-12'>
+        <type>QuantLib::Real</type>
+      <Parameter name='TraitsID' default='"Discount"'>
+        <type>string</type>
+      <Parameter name='InterpolatorID' default='"LogLinear"'>
+        <type>string</type>
+
+<Constructor name='qlIborIndex'>
+      <Parameter name='FamilyName' exampleValue='Euribor'>
+        <type>string</type>
+      <Parameter name='Tenor' exampleValue='6M'>
+        <type>QuantLib::Period</type>
+      <Parameter name='FixingDays' exampleValue='2'>
+        <type>QuantLib::Natural</type>
+      <Parameter name='Currency' exampleValue='EUR'>
+        <type>QuantLib::Currency</type>
+      <Parameter name='Calendar' exampleValue='TARGET'>
+        <type>QuantLib::Calendar</type>
+      <Parameter name='BDayConvention' exampleValue='Modified Following'>
+        <type>QuantLib::BusinessDayConvention</type>
+      <Parameter name='EndOfMonth' exampleValue='TRUE'>
+        <type>bool</type>
+      <Parameter name='DayCounter' exampleValue='Actual/360'>
+        <type>QuantLib::DayCounter</type>
+      <Parameter name='FwdCurve' exampleValue='EURYC6M' default='""'>
+        <type>QuantLib::YieldTermStructure</type>
+
+<Constructor name='qlBondEngine'>
+      <Parameter name='YieldCurve' >
+        <type>QuantLib::YieldTermStructure</type>
+
+<Constructor name='qlInterestRate'>
+      <Parameter name='Rate' exampleValue='0.04'>
+        <type>QuantLib::Rate</type>
+      <Parameter name='DayCounter' exampleValue='"Actual/365 (Fixed)"'>
+        <type>QuantLib::DayCounter</type>
+      <Parameter name='Compounding' exampleValue='"Simple"' const='False'>
+        <type>QuantLib::Compounding</type>
+      <Parameter name='Frequency' default='"Annual"' const='False'>
+        <type>QuantLib::Frequency</type>
+
+<Member name='qlInstrumentSetPricingEngine' type='QuantLibAddin::Instrument'>
+  <description>Sets a new pricing engine to the given Instrument pbject.</description>
+      <Parameter name='PricingEngine' exampleValue='PricingEngineID'>
+        <type>QuantLibAddin::PricingEngine</type>
+  <ReturnValue>
+    <type>void</type>
+
+<EnumeratedClassGroup class='QuantLib::IborCouponPricer'>
+      <string>IborByBlack</string>
+      <value>IBOR_BY_BLACK_Pricer</value>
+
+      <string>DummyIborByBlack</string>
+      <value>IBOR_BY_BLACK_Pricer</value>
+
+<Constructor name='qlConstantOptionletVolatility'>
+      <Parameter name='NDays' default='0'>
+        <type>QuantLib::Size</type>
+      <Parameter name='Calendar' exampleValue='TARGET'>
+        <type>QuantLib::Calendar</type>
+      <Parameter name='BusinessDayConvention' exampleValue='"Following"'>
+        <type>QuantLib::BusinessDayConvention</type>
+      </Parameter>
+      <Parameter name='Volatility' examplevalue='0.20'>
+        <type>QuantLib::Quote</type>
+      <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+        <type>QuantLib::DayCounter</type>
+
+<Constructor name='qlSwapRateHelper2'>
+  <libraryFunction>SwapRateHelper</libraryFunction>
+      <Parameter name='Rate' 
+        QuantLib::Quote
+        <superType>libToHandle</superType>
+      <Parameter name='Tenor' 
+        QuantLib::Period
+      <Parameter name='Calendar' 
+        QuantLib::Calendar
+      <Parameter name='FixedLegFrequency' 
+        QuantLib::Frequency
+      <Parameter name='FixedLegConvention' 
+        QuantLib::BusinessDayConvention
+      <Parameter name='FixedLegDayCounter' 
+        QuantLib::DayCounter
+      <Parameter name='IborIndex' 
+        QuantLib::IborIndex
+      <Parameter name='Spread' 
+        QuantLib::Quote
+        <superType>libToHandle</superType>
+      <Parameter name='ForwardStart' 
+        QuantLib::Period
+      <Parameter name='DiscountingCurve' 
+        QuantLib::YieldTermStructure
+        <superType>libToHandle</superType>
+
+<Constructor name='qlZeroCouponBond'>
+  <libraryFunction>ZeroCouponBond</libraryFunction>
+      <Parameter name='SettlementDays' 
+        QuantLib::Size
+      <Parameter name='Calendar' 
+        QuantLib::Calendar
+      <Parameter name='FaceAmount' default='100.0'>
+        QuantLib::Real
+      <Parameter name='Maturity' 
+        QuantLib::Date
+      <Parameter name='PaymentBDC' default='"Following"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='Redemption' default='100'>
+        QuantLib::Real
+      <Parameter name='IssueDate' default='QuantLib::Date()'>
+        QuantLib::Date
+
+<Constructor name='qlFixedRateBond2'>
+  <libraryFunction>FixedRateBond</libraryFunction>
+      <Parameter name='SettlementDays' 
+        QuantLib::Size
+      <Parameter name='FaceAmount' default='100.0'>
+        QuantLib::Real
+      <Parameter name='ScheduleID'>
+        QuantLib::Schedule
+        <superType>libraryClass</superType>
+      <Parameter name='Coupons'>
+        QuantLib::InterestRate
+        vector
+      <Parameter name='PaymentBDC' default='"Following"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='Redemption' default='100.0'>
+        QuantLib::Real
+      <Parameter name='IssueDate' default='QuantLib::Date()'>
+        QuantLib::Date
+      <Parameter name='PaymentCalendar' 
+        QuantLib::Calendar
+
+<Member name='qlIndexAddFixings' type='QuantLibAddin::Index'>
+  <description>Adds fixings for the given Index object.</description>
+      <Parameter name='FixingDates' libraryType='QuantLib::Date'>
+        QuantLib::Date
+        vector
+      <Parameter name='FixingValues' libraryType='QuantLib::Real'>
+        QuantLib::Real
+        vector
+      <Parameter name='ForceOverwrite' default='false' const='False'>
+        bool
+
+<Constructor name='qlFloatingRateBond'>
+      <Parameter name='SettlementDays' 
+        QuantLib::Size
+      <Parameter name='PaymentBDC' default='"Following"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='FaceAmount' default='100.0'>
+        QuantLib::Real
+      <Parameter name='ScheduleID'>
+        QuantLib::Schedule
+        <superType>libraryClass</superType>
+      <Parameter name='FixingDays' default='QuantLib::Null&lt;QuantLib::Natural&gt;()'>
+        QuantLib::Natural
+      <Parameter name='IsInArrears' default='false'>
+        bool
+      <Parameter name='DayCounter' 
+        QuantLib::DayCounter
+      <Parameter name='Floors' default='std::vector&lt;QuantLib::Rate&gt;()'>
+        QuantLib::Rate
+        vector
+      <Parameter name='Gearings' default='1.0'>
+        double
+        vector
+      <Parameter name='IborIndex'>
+        QuantLib::IborIndex
+      <Parameter name='Spreads' default='0.0'>
+        QuantLib::Spread
+        vector
+      <Parameter name='Caps' default='std::vector&lt;QuantLib::Rate&gt;()'>
+        QuantLib::Rate
+        vector
+      <Parameter name='Redemption' default='100'>
+        QuantLib::Real
+      <Parameter name='IssueDate' default='QuantLib::Date()'>
+        QuantLib::Date
+
+<EnumeratedTypeGroup type='QuantLib::Currency'>
+      <string>Currency</string>
+      <value>QuantLib::Currency()</value>
+      <string>NoCurrency</string>
+      <value>QuantLib::Currency()</value>
+      <string>EUR</string>
+      <value>QuantLib::EURCurrency()</value>
+      <string>ARS</string>
+      <value>QuantLib::ARSCurrency()</value>
+      <string>ATS</string>
+      <value>QuantLib::ATSCurrency()</value>
+      <string>AUD</string>
+      <value>QuantLib::AUDCurrency()</value>
+      <string>BDT</string>
+      <value>QuantLib::BDTCurrency()</value>
+      <string>BEF</string>
+      <value>QuantLib::BEFCurrency()</value>
+      <string>BGL</string>
+      <value>QuantLib::BGLCurrency()</value>
+      <string>BRL</string>
+      <value>QuantLib::BRLCurrency()</value>
+      <string>BYR</string>
+      <value>QuantLib::BYRCurrency()</value>
+      <string>CAD</string>
+      <value>QuantLib::CADCurrency()</value>
+      <string>CHF</string>
+      <value>QuantLib::CHFCurrency()</value>
+      <string>CLP</string>
+      <value>QuantLib::CLPCurrency()</value>
+      <string>CNY</string>
+      <value>QuantLib::CNYCurrency()</value>
+      <string>COP</string>
+      <value>QuantLib::COPCurrency()</value>
+      <string>CYP</string>
+      <value>QuantLib::CYPCurrency()</value>
+      <string>CZK</string>
+      <value>QuantLib::CZKCurrency()</value>
+      <string>DEM</string>
+      <value>QuantLib::DEMCurrency()</value>
+      <string>DKK</string>
+      <value>QuantLib::DKKCurrency()</value>
+      <string>EEK</string>
+      <value>QuantLib::EEKCurrency()</value>
+      <string>ESP</string>
+      <value>QuantLib::ESPCurrency()</value>
+      <string>FIM</string>
+      <value>QuantLib::FIMCurrency()</value>
+      <string>FRF</string>
+      <value>QuantLib::FRFCurrency()</value>
+      <string>GBP</string>
+      <value>QuantLib::GBPCurrency()</value>
+      <string>GRD</string>
+      <value>QuantLib::GRDCurrency()</value>
+      <string>HKD</string>
+      <value>QuantLib::HKDCurrency()</value>
+      <string>HUF</string>
+      <value>QuantLib::HUFCurrency()</value>
+      <string>IEP</string>
+      <value>QuantLib::IEPCurrency()</value>
+      <string>ILS</string>
+      <value>QuantLib::ILSCurrency()</value>
+      <string>INR</string>
+      <value>QuantLib::INRCurrency()</value>
+      <string>IQD</string>
+      <value>QuantLib::IQDCurrency()</value>
+      <string>IRR</string>
+      <value>QuantLib::IRRCurrency()</value>
+      <string>ISK</string>
+      <value>QuantLib::ISKCurrency()</value>
+      <string>ITL</string>
+      <value>QuantLib::ITLCurrency()</value>
+      <string>JPY</string>
+      <value>QuantLib::JPYCurrency()</value>
+      <string>KRW</string>
+      <value>QuantLib::KRWCurrency()</value>
+      <string>KWD</string>
+      <value>QuantLib::KWDCurrency()</value>
+      <string>LTL</string>
+      <value>QuantLib::LTLCurrency()</value>
+      <string>LUF</string>
+      <value>QuantLib::LUFCurrency()</value>
+      <string>LVL</string>
+      <value>QuantLib::LVLCurrency()</value>
+      <string>MTL</string>
+      <value>QuantLib::MTLCurrency()</value>
+      <string>MXN</string>
+      <value>QuantLib::MXNCurrency()</value>
+      <string>NLG</string>
+      <value>QuantLib::NLGCurrency()</value>
+      <string>NOK</string>
+      <value>QuantLib::NOKCurrency()</value>
+      <string>NPR</string>
+      <value>QuantLib::NPRCurrency()</value>
+      <string>NZD</string>
+      <value>QuantLib::NZDCurrency()</value>
+      <string>PKR</string>
+      <value>QuantLib::PKRCurrency()</value>
+      <string>PLN</string>
+      <value>QuantLib::PLNCurrency()</value>
+      <string>PTE</string>
+      <value>QuantLib::PTECurrency()</value>
+      <string>ROL</string>
+      <value>QuantLib::ROLCurrency()</value>
+      <string>SAR</string>
+      <value>QuantLib::SARCurrency()</value>
+      <string>SEK</string>
+      <value>QuantLib::SEKCurrency()</value>
+      <string>SGD</string>
+      <value>QuantLib::SGDCurrency()</value>
+      <string>SIT</string>
+      <value>QuantLib::SITCurrency()</value>
+      <string>SKK</string>
+      <value>QuantLib::SKKCurrency()</value>
+      <string>THB</string>
+      <value>QuantLib::THBCurrency()</value>
+      <string>TRL</string>
+      <value>QuantLib::TRLCurrency()</value>
+      <string>TRY</string>
+      <value>QuantLib::TRYCurrency()</value>
+      <string>TTD</string>
+      <value>QuantLib::TTDCurrency()</value>
+      <string>TWD</string>
+      <value>QuantLib::TWDCurrency()</value>
+      <string>USD</string>
+      <value>QuantLib::USDCurrency()</value>
+      <string>VEB</string>
+      <value>QuantLib::VEBCurrency()</value>
+      <string>ZAR</string>
+      <value>QuantLib::ZARCurrency()</value>
+
+<Constructor name='qlLibor'>
+      <Parameter name='Currency'>
+        <type>QuantLib::Currency</type>
+      <Parameter name='Tenor' exampleValue='6M'>
+        <type>string</type>
+      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
+        <type>QuantLib::YieldTermStructure</type>

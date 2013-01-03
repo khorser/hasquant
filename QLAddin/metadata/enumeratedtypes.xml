@@ -27,41 +27,6 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
-    <EnumeratedTypeGroup type='QuantLib::DateGeneration::Rule'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Backward</string>
-          <value>QuantLib::DateGeneration::Backward</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Forward</string>
-          <value>QuantLib::DateGeneration::Forward</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Zero</string>
-          <value>QuantLib::DateGeneration::Zero</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>ThirdWednesday</string>
-          <value>QuantLib::DateGeneration::ThirdWednesday</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Twentieth</string>
-          <value>QuantLib::DateGeneration::Twentieth</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>TwentiethIMM</string>
-          <value>QuantLib::DateGeneration::TwentiethIMM</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>OldCDS</string>
-          <value>QuantLib::DateGeneration::OldCDS</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
     <EnumeratedTypeGroup type='QuantLib::TimeUnit'>
       <includeFile>oh/enumerations/typefactory.hpp</includeFile>
       <constructor>true</constructor>
@@ -146,54 +111,6 @@
         <EnumeratedType>
           <string>OtherFrequency</string>
           <value>QuantLib::OtherFrequency</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
-    <EnumeratedTypeGroup type='QuantLib::BusinessDayConvention'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Following</string>
-          <value>QuantLib::Following</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>F</string>
-          <value>QuantLib::Following</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Modified Following</string>
-          <value>QuantLib::ModifiedFollowing</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>MF</string>
-          <value>QuantLib::ModifiedFollowing</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Preceding</string>
-          <value>QuantLib::Preceding</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>P</string>
-          <value>QuantLib::Preceding</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Modified Preceding</string>
-          <value>QuantLib::ModifiedPreceding</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>MP</string>
-          <value>QuantLib::ModifiedPreceding</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Unadjusted</string>
-          <value>QuantLib::Unadjusted</value>
-        </EnumeratedType>
-        <!-- For Mgx export only -->
-        <EnumeratedType>
-          <string>Indifferent</string>
-          <value>QuantLib::Unadjusted</value>
         </EnumeratedType>
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
