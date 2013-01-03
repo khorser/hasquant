@@ -55,10 +55,6 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
                                     (fromIntegral c_minMonth)
                                     (fromIntegral c_minDay)
 
-fromQlDateSerialNumber :: CInt -> Day
-fromQlDateSerialNumber p = ModifiedJulianDay $
-                fromIntegral p + qlStart
-
 toQlDateSerialNumberUnsafe :: Day -> CInt
 toQlDateSerialNumberUnsafe x = fromInteger $ toModifiedJulianDay x - qlStart
 
@@ -100,6 +96,8 @@ construct f = handleExceptions f >>= newForeignPtr finalize
 class QLDate a where
   isValid :: a -> Bool
   toQlDateSerialNumber :: a -> CInt
+  fromQlDateSerialNumber :: CInt -> a
+
 
 instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
@@ -107,6 +105,9 @@ instance QLDate Day where
   -- return Either instead?
   toQlDateSerialNumber x | isValid x = fromInteger $ toModifiedJulianDay x - qlStart
                          | otherwise = throw $ Error ("Invalid QuantLib date: " ++ show x)
+  fromQlDateSerialNumber p = ModifiedJulianDay $
+                fromIntegral p + qlStart
+
   
 
 instance QLDate (Maybe Day) where
@@ -115,3 +116,6 @@ instance QLDate (Maybe Day) where
 
   toQlDateSerialNumber Nothing = 0 
   toQlDateSerialNumber (Just x) = toQlDateSerialNumber x
+
+  fromQlDateSerialNumber 0 = Nothing
+  fromQlDateSerialNumber x = Just (fromQlDateSerialNumber x)

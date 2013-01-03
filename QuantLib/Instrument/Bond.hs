@@ -3,6 +3,7 @@ module QuantLib.Instrument.Bond
   (
     Bond
   , bond
+  , bond'
   , issueDate
   , maturityDate
   )
@@ -28,7 +29,9 @@ data CBond
 type Bond = ForeignPtr CBond
 
 foreign import ccall safe "ql.h qlBond"
-    c_bond :: CUInt -> Ptr CCalendar -> CDouble -> CInt -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
+    c_bond :: CUInt -> Ptr CCalendar -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
+foreign import ccall safe "ql.h qlBond2"
+    c_bond2 :: CUInt -> Ptr CCalendar -> CDouble -> CInt -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
 foreign import ccall safe "ql.h &qlFreeBond"
     p_freeBond :: FunPtr (Ptr CBond -> IO ())
 foreign import ccall safe "ql.h qlBondMaturityDate"
@@ -41,23 +44,30 @@ instance Finalizable CBond where
 
 -- | (qlBond)
 -- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
---bond :: Word -> Calendar -> Maybe Day {-issue-} -> Maybe Leg -> IO Bond
---bond :: Word -> Calendar -> Double -> Day -> Maybe Day -> Maybe Leg -> IO Bond
-bond :: Word -> Calendar -> Double -> Day -> Day -> Leg -> IO Bond
-bond settl cal face maturity issue flows =
+bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
+bond settl cal issue coupons =
+  withForeignPtr
+  cal
+  (\c ->
+    withForeignPtr
+    coupons
+    (construct . c_bond (fromIntegral settl) c (toQlDateSerialNumber issue)))
+
+bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
+bond' settl cal face maturity issue flows =
   withForeignPtr
   cal
   (\c ->
     withForeignPtr
     flows
-    (construct . c_bond (fromIntegral settl) c (realToFrac face) (toQlDateSerialNumber maturity) (toQlDateSerialNumber issue)))
+    (construct . c_bond2 (fromIntegral settl) c (realToFrac face) (toQlDateSerialNumber maturity) (toQlDateSerialNumber issue)))
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX exceptions?
-maturityDate :: Bond -> Day
+maturityDate :: Bond -> Maybe Day
 maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr b c_maturityDate)
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX exceptions?
-issueDate :: Bond -> Day
+issueDate :: Bond -> Maybe Day
 issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr b c_issueDate)

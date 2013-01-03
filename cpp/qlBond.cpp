@@ -6,21 +6,34 @@
 
 using namespace QuantLib;
 
-void *qlBond(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e)
+void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
+    char **e)
 {
   try {
-    return new Bond(settlDays, *(Calendar *)calendar, faceAmount, Date(maturityDate), Date(issueDate), *(Leg *)cashFlows);
+    return new Bond(settlDays, *(Calendar *)calendar, qlNullableDate(issueDate), *(Leg *)coupons);
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
+}
+
+void *qlBond2(unsigned settlDays, void *calendar, double faceAmount,
+    int maturityDate, int issueDate, void *cashFlows, char **e)
+{
+  try {
+    return new Bond(settlDays, *(Calendar *)calendar, faceAmount,
+	qlNullableDate(maturityDate), qlNullableDate(issueDate),
+	*(Leg *)cashFlows);
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 int qlBondMaturityDate(void *bond) {
-  return ((Bond *)bond)->maturityDate().serialNumber();
+  return qlNullableDate(((Bond *)bond)->maturityDate());
 }
 
 int qlBondIssueDate(void *bond) {
-  return ((Bond *)bond)->issueDate().serialNumber();
+  return qlNullableDate(((Bond *)bond)->issueDate());
 }
 
 void qlFreeBond(void *bond) {

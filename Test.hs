@@ -134,12 +134,16 @@ bond = TestList
   [
     "bond statics"
       ~: do l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
-            b <- Bond.bond 2 Calendar.gbp 1000 m i l
+            b <- Bond.bond' 2 Calendar.gbp 1000 m i l
             assertEqual "matirity date" m (Bond.maturityDate b)
             assertEqual "issue date" i (Bond.issueDate b)
+  , "special bond statics"
+      ~: do l <- Leg.leg [] 
+            b <- Bond.bond 3 Calendar.gbp Nothing l
+            assertEqual "issue date" Nothing (Bond.issueDate b)
   ]
-  where i = fromGregorian 2012 1 1
-        m = fromGregorian 2013 1 1
+  where i = Just (fromGregorian 2012 1 1)
+        m = Just (fromGregorian 2013 1 1)
 
 -- QuickCheck --
 instance Arbitrary Day where

@@ -25,4 +25,17 @@ void qlFreeString(char *p) {
   free(p);
 }
 
+const QuantLib::Date qlNullableDate(int serialNumber) {
+  if (!serialNumber)
+    return Date(); /* special null date value */
+  else
+    return Date(serialNumber);
+}
+
+int qlNullableDate(const QuantLib::Date &date) {
+  if (date == Date())
+    return 0;
+  else
+    return date.serialNumber();
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

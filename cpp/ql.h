@@ -44,7 +44,8 @@ extern "C"
   int	qlSettingsEnforceTodaysHistoricFixings();
 
   /* bond */
-  void *qlBond(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
+  void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
+  void *qlBond2(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
   int   qlBondMaturityDate(void *bond);
   int   qlBondIssueDate(void *bond);
       /* internal */
@@ -106,14 +107,10 @@ extern "C"
   void  qlFreeCurrency(void *currency);
 }
 
-static inline QuantLib::Date qlNullableDate(int serialNumber) {
-  if (!serialNumber)
-    return QuantLib::Date(); /* special null date value */
-  else
-    return QuantLib::Date(serialNumber);
-}
+const QuantLib::Date qlNullableDate(int serialNumber);
+int qlNullableDate(const QuantLib::Date &date);
 
-/* some helpers ... well ... I hope they will help... */
+/* some useful helpers ... well ... I hope they are... */
   template <class T>
 T *handleException(char **msg, std::exception &e, T *t)
 {
