@@ -77,12 +77,12 @@ foreign import ccall safe "ql.h &qlFreeCalendar"
 foreign import ccall safe "ql.h qlCalendarName"
     c_calendarName :: Ptr CCalendar -> IO CString
 
-instance Finalizable CCalendar
-  where finalize = p_freeCalendar
+instance Finalizable CCalendar where
+  finalize = p_freeCalendar
 
-instance NamedSingleton CCalendar
-  where c_construct = c_calendar
-        c_name = c_calendarName
+instance NamedSingleton CCalendar where
+  c_construct = c_calendar
+  c_name = c_calendarName
 
 -- TODO add data Calendar = ...
 

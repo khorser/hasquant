@@ -63,12 +63,12 @@ foreign import ccall safe "ql.h &qlFreeDayCounter"
 foreign import ccall safe "ql.h qlDayCounterName"
     c_dayCounterName :: Ptr CDayCounter -> IO CString
 
-instance Finalizable CDayCounter
-  where finalize = p_freeDayCounter
+instance Finalizable CDayCounter where
+  finalize = p_freeDayCounter
 
-instance NamedSingleton CDayCounter
-  where c_construct = c_dayCounter
-        c_name = c_dayCounterName
+instance NamedSingleton CDayCounter where
+  c_construct = c_dayCounter
+  c_name = c_dayCounterName
 
 dayCounter      ::DayCounter
 noDayCounter    ::DayCounter

@@ -31,8 +31,8 @@ foreign import ccall safe "ql.h qlLegStartDate"
 foreign import ccall safe "ql.h &qlFreeLeg"
     p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
-instance Finalizable CLeg
-  where finalize = p_freeLeg
+instance Finalizable CLeg where
+  finalize = p_freeLeg
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg

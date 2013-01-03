@@ -89,12 +89,12 @@ foreign import ccall safe "ql.h &qlFreeCurrency"
 foreign import ccall safe "ql.h qlCurrencyName"
     c_currencyName :: Ptr CCurrency -> IO CString
 
-instance Finalizable CCurrency
-  where finalize = p_freeCurrency
+instance Finalizable CCurrency where
+  finalize = p_freeCurrency
 
-instance NamedSingleton CCurrency
-  where c_construct = c_currency
-        c_name = c_currencyName
+instance NamedSingleton CCurrency where
+  c_construct = c_currency
+  c_name = c_currencyName
 
 -- TODO add data Currency = ...
 

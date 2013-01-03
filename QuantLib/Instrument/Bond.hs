@@ -36,8 +36,8 @@ foreign import ccall safe "ql.h qlBondMaturityDate"
 foreign import ccall safe "ql.h qlBondIssueDate"
     c_issueDate :: Ptr CBond -> IO CInt
 
-instance Finalizable CBond
-  where finalize = p_freeBond
+instance Finalizable CBond where
+  finalize = p_freeBond
 
 -- | (qlBond)
 -- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
