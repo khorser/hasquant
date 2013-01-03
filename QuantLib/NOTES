@@ -1,5 +1,6 @@
 Rethink exceptions strategy
 Improve cabalization
+Wrap all ForeignPtr's into newtype?
 
 Think of high-level combinators from abstract data types like
 
@@ -93,9 +94,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
         QuantLib::Date
       <Parameter name='NextToLastDate' default='QuantLib::Date()'>
         QuantLib::Date
-
-/usr/include/ql/time/period.hpp
-period from frequency
 
 <Constructor name='qlPiecewiseYieldCurve'>
   <libraryFunction>PiecewiseYieldCurve</libraryFunction>

@@ -105,6 +105,13 @@ extern "C"
   const char *qlCurrencyName(void *currency);
       /* internal */
   void  qlFreeCurrency(void *currency);
+
+  /* period */
+  void *qlPeriod(int n, int u, char **e);
+  void *qlPeriodFromFrequency(int freq, char **e);
+  int qlPeriodToFrequency(void *period, char **e);
+      /* internal */
+  void  qlFreePeriod(void *period);
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber);

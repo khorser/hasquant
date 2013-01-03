@@ -26,6 +26,7 @@ import qualified QuantLib.Time.Date as Date
 import qualified QuantLib.Time.DateGenerationRule as DateGenerationRule
 import qualified QuantLib.Time.DayCounter as DayCounter
 import qualified QuantLib.Time.Frequency as Frequency
+import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Unit as Unit
 import qualified QuantLib.Utilities as Utilities
 
@@ -145,6 +146,19 @@ bond = TestList
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
 
+frequency :: Test
+frequency = TestList
+  [
+    "period to frequency"
+      ~: do p <- Period.period 1 Unit.Months
+            f <- Period.toFrequency p
+            assertEqual "Monthly frequency" f Frequency.Monthly
+  , "period from frequency"
+      ~: do p <- Period.fromFrequency Frequency.Annual
+            f <- Period.toFrequency p
+            assertEqual "Annual frequency" f Frequency.Annual
+  ]
+
 -- QuickCheck --
 instance Arbitrary Day where
   arbitrary = do
@@ -198,9 +212,18 @@ prop_legStartDate flows =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          print Frequency.Monthly
           print DateGenerationRule.Forward
-          _ <- runTestTT $ test [settings, date, leg, currency, calendar, dayCounter, bond]
+          _ <- runTestTT $ test
+            [
+              settings
+              , date
+              , leg
+              , currency
+              , calendar
+              , dayCounter
+              , bond
+              , frequency
+            ]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate

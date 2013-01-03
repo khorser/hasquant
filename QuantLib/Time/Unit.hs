@@ -9,7 +9,8 @@ where
 
 import Foreign.C.Types(CInt(CInt))
 
-data Unit = Months | Days | Weeks | Years deriving Show
+data Unit = Months | Days | Weeks | Years
+  deriving (Show, Eq)
 
 -- use some preprocessor instead?
 foreign import ccall safe "ql.h qlTimeUnitMonths"

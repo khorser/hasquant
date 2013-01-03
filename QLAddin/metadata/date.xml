@@ -13,52 +13,6 @@
   </copyright>
   <Functions>
 
-    <!-- to be deprecated in favour of coercion -->
-    <Procedure name='qlPeriodFromFrequency'>
-      <description>returns a Period from a given Frequency (e.g. 6M from SemiAnnual).</description>
-      <alias>QuantLibAddin::periodFromFrequency</alias>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Frequency' exampleValue='Annual'>
-            <type>QuantLib::Frequency</type>
-            <tensorRank>scalar</tensorRank>
-            <description>frequency (e.g. Annual, Semiannual, Every4Month, Quarterly, Bimonthly, Monthly).</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Period</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Procedure>
-
-    <!-- to be deprecated in favour of coercion -->
-    <Procedure name='qlFrequencyFromPeriod' loopParameter='Period'>
-      <description>returns a Frequency from a given Period (e.g. SemiAnnual from 6M).</description>
-      <alias>QuantLibAddin::frequencyFromPeriod</alias>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Period' exampleValue='1Y'>
-            <type>QuantLib::Period</type>
-            <tensorRank>vector</tensorRank>
-            <description>period(s) to advance (e.g. 2D for two days , 3W for three weeks, 6M for six months, 1Y for one year).</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Frequency</type>
-        <tensorRank>vector</tensorRank>
-      </ReturnValue>
-    </Procedure>
-
     <Procedure name='qlPeriodLessThan'>
       <description>Returns TRUE if the first period is less than the second.</description>
       <alias>QuantLib::operator&lt;</alias>

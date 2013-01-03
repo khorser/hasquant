@@ -8,7 +8,8 @@ where
 
 import Foreign.C.Types(CInt(CInt))
 
-data DateGenerationRule = Backward | Forward | Zero | ThirdWednesday | Twentieth | TwentiethIMM | OldCDS | CDS deriving Show
+data DateGenerationRule = Backward | Forward | Zero | ThirdWednesday | Twentieth | TwentiethIMM | OldCDS | CDS
+  deriving (Show, Eq)
 
 -- use some preprocessor instead?
 foreign import ccall safe "ql.h qlDateGenerationRuleBackward"

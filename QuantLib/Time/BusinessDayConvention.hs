@@ -9,7 +9,8 @@ where
 
 import Foreign.C.Types(CInt(CInt))
 
-data BusinessDayConvention = Following | ModifiedFollowing | Preceding | ModifiedPreceding | Unadjusted deriving Show
+data BusinessDayConvention = Following | ModifiedFollowing | Preceding | ModifiedPreceding | Unadjusted
+  deriving (Show, Eq)
 
 -- use some preprocessor instead?
 foreign import ccall safe "ql.h qlBusinessDayConventionFollowing"
