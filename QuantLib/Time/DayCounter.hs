@@ -46,13 +46,11 @@ module QuantLib.Time.DayCounter
 
 where
 
-import Foreign.C.String(withCString, CString, peekCString)
-import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
+import Foreign.C.String(CString)
+import Foreign.ForeignPtr(ForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(c_freeString, Finalizable, finalize, construct)
-
-import System.IO.Unsafe(unsafePerformIO)
+import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
 
 data CDayCounter
 
@@ -68,17 +66,9 @@ foreign import ccall safe "ql.h qlDayCounterName"
 instance Finalizable CDayCounter
   where finalize = p_freeDayCounter
 
-constructDayCounter :: String -> IO DayCounter
-constructDayCounter cname = withCString cname $ construct . c_dayCounter
-
-name :: DayCounter -> String
-name c = unsafePerformIO
-          $ withForeignPtr
-              c
-              (\cc -> do n <- c_dayCounterName cc
-                         str <- peekCString n
-                         c_freeString n
-                         return str)
+instance NamedSingleton CDayCounter
+  where c_construct = c_dayCounter
+        c_name = c_dayCounterName
 
 dayCounter      ::DayCounter
 noDayCounter    ::DayCounter
@@ -118,40 +108,40 @@ linACTACTISDA   ::DayCounter
 linACTACTISMA   ::DayCounter
 business252     ::DayCounter
 
-dayCounter         = unsafePerformIO $ constructDayCounter "DayCounter"
-noDayCounter       = unsafePerformIO $ constructDayCounter "NoDayCounter"
-actual365Fixed     = unsafePerformIO $ constructDayCounter "Actual/365 (Fixed)"
-act365Fixed        = unsafePerformIO $ constructDayCounter "Act/365 (Fixed)"
-a365Fixed          = unsafePerformIO $ constructDayCounter "A/365 (Fixed)"
-a365F              = unsafePerformIO $ constructDayCounter "A/365F"
-one                = unsafePerformIO $ constructDayCounter "1/1"
-actualActualISDA   = unsafePerformIO $ constructDayCounter "Actual/Actual (ISDA)"
-actualActual       = unsafePerformIO $ constructDayCounter "Actual/Actual"
-actual365          = unsafePerformIO $ constructDayCounter "Actual/365"
-act365             = unsafePerformIO $ constructDayCounter "Act/365"
-a365               = unsafePerformIO $ constructDayCounter "A/365"
-actAct             = unsafePerformIO $ constructDayCounter "Act/Act"
-actual360          = unsafePerformIO $ constructDayCounter "Actual/360"
-act360             = unsafePerformIO $ constructDayCounter "Act/360"
-a360               = unsafePerformIO $ constructDayCounter "A/360"
-thirty360BondBasis = unsafePerformIO $ constructDayCounter "30/360 (Bond Basis)"
-bondBasis          = unsafePerformIO $ constructDayCounter "Bond Basis"
-thirty360          = unsafePerformIO $ constructDayCounter "30/360"
-threeSixty360      = unsafePerformIO $ constructDayCounter "360/360"
-thirty360EurobondBasis = unsafePerformIO $ constructDayCounter "30/360 (Eurobond Basis)"
-eurobondBasis      = unsafePerformIO $ constructDayCounter "Eurobond Basis"
-thirtyE360         = unsafePerformIO $ constructDayCounter "30E/360"
-thirtyE360EurobondBasis= unsafePerformIO $ constructDayCounter "30E/360 (Eurobond Basis)"
-actualActualISMA   = unsafePerformIO $ constructDayCounter "Actual/Actual (ISMA)"
-actualActualBond   = unsafePerformIO $ constructDayCounter "Actual/Actual (Bond)"
-actualActualAFB    = unsafePerformIO $ constructDayCounter "Actual/Actual (AFB)"
-actualActualEuro   = unsafePerformIO $ constructDayCounter "Actual/Actual (Euro)"
-thirty360Italian   = unsafePerformIO $ constructDayCounter "30/360 (Italian)"
-simple             = unsafePerformIO $ constructDayCounter "Simple"
-lin30360           = unsafePerformIO $ constructDayCounter "LIN 30/360"
-linACT360          = unsafePerformIO $ constructDayCounter "LIN ACT/360"
-linACT365          = unsafePerformIO $ constructDayCounter "LIN ACT/365"
-linACTACT          = unsafePerformIO $ constructDayCounter "LIN ACT/ACT"
-linACTACTISDA      = unsafePerformIO $ constructDayCounter "LIN ACTACT ISDA"
-linACTACTISMA      = unsafePerformIO $ constructDayCounter "LIN ACTACT ISMA"
-business252        = unsafePerformIO $ constructDayCounter "Business252"
+dayCounter         = constructNamed "DayCounter"
+noDayCounter       = constructNamed "NoDayCounter"
+actual365Fixed     = constructNamed "Actual/365 (Fixed)"
+act365Fixed        = constructNamed "Act/365 (Fixed)"
+a365Fixed          = constructNamed "A/365 (Fixed)"
+a365F              = constructNamed "A/365F"
+one                = constructNamed "1/1"
+actualActualISDA   = constructNamed "Actual/Actual (ISDA)"
+actualActual       = constructNamed "Actual/Actual"
+actual365          = constructNamed "Actual/365"
+act365             = constructNamed "Act/365"
+a365               = constructNamed "A/365"
+actAct             = constructNamed "Act/Act"
+actual360          = constructNamed "Actual/360"
+act360             = constructNamed "Act/360"
+a360               = constructNamed "A/360"
+thirty360BondBasis = constructNamed "30/360 (Bond Basis)"
+bondBasis          = constructNamed "Bond Basis"
+thirty360          = constructNamed "30/360"
+threeSixty360      = constructNamed "360/360"
+thirty360EurobondBasis = constructNamed "30/360 (Eurobond Basis)"
+eurobondBasis      = constructNamed "Eurobond Basis"
+thirtyE360         = constructNamed "30E/360"
+thirtyE360EurobondBasis= constructNamed "30E/360 (Eurobond Basis)"
+actualActualISMA   = constructNamed "Actual/Actual (ISMA)"
+actualActualBond   = constructNamed "Actual/Actual (Bond)"
+actualActualAFB    = constructNamed "Actual/Actual (AFB)"
+actualActualEuro   = constructNamed "Actual/Actual (Euro)"
+thirty360Italian   = constructNamed "30/360 (Italian)"
+simple             = constructNamed "Simple"
+lin30360           = constructNamed "LIN 30/360"
+linACT360          = constructNamed "LIN ACT/360"
+linACT365          = constructNamed "LIN ACT/365"
+linACTACT          = constructNamed "LIN ACT/ACT"
+linACTACTISDA      = constructNamed "LIN ACTACT ISDA"
+linACTACTISMA      = constructNamed "LIN ACTACT ISMA"
+business252        = constructNamed "Business252"

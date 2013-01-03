@@ -10,21 +10,28 @@ module QuantLib.Internal
   , isValid
   , Finalizable
   , finalize
+  , NamedSingleton
+  , c_construct
+  , c_name
   , construct
+  , constructNamed
+  , name
   )
 where
 
 import Control.Exception(throw)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
-import Foreign.C.String(CString, peekCString)
+import Foreign.C.String(CString, peekCString, withCString)
 import Foreign.C.Types(CInt(CInt))
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr)
+import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek)
 
 import QuantLib.Error(Error(Error))
+
+import System.IO.Unsafe(unsafePerformIO)
 
 foreign import ccall safe "ql.h qlFreeString"
     c_freeString :: CString -> IO ()
@@ -70,8 +77,24 @@ handleExceptions f =
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
 
+class Finalizable a => NamedSingleton a where
+  c_construct :: CString -> Ptr CString -> IO (Ptr a)
+  c_name :: Ptr a -> IO CString
+
+constructNamed :: NamedSingleton a => String -> ForeignPtr a
+constructNamed n = unsafePerformIO (withCString n $ construct . c_construct)
+
+name :: NamedSingleton a => ForeignPtr a -> String
+name c = unsafePerformIO
+          $ withForeignPtr
+              c
+              (\cc -> do n <- c_name cc
+                         str <- peekCString n
+                         c_freeString n
+                         return str)
+
 -- |Run a function returning a new object that needs a finalizer. The function might signal an error
-construct :: (Finalizable a) => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
+construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
 construct f = handleExceptions f >>= newForeignPtr finalize
 
 class QLDate a where

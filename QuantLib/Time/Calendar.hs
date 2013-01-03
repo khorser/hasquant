@@ -60,13 +60,11 @@ module QuantLib.Time.Calendar
   )
 where
 
-import Foreign.C.String(withCString, CString, peekCString)
-import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
+import Foreign.C.String(CString)
+import Foreign.ForeignPtr(ForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(c_freeString, Finalizable, finalize, construct)
-
-import System.IO.Unsafe(unsafePerformIO)
+import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
 
 data CCalendar
 
@@ -82,17 +80,9 @@ foreign import ccall safe "ql.h qlCalendarName"
 instance Finalizable CCalendar
   where finalize = p_freeCalendar
 
-calendar :: String -> IO Calendar
-calendar cname = withCString cname $ construct . c_calendar
-
-name :: Calendar -> String
-name c = unsafePerformIO
-          $ withForeignPtr
-              c
-              (\cc -> do n <- c_calendarName cc
-                         str <- peekCString n
-                         c_freeString n
-                         return str)
+instance NamedSingleton CCalendar
+  where c_construct = c_calendar
+        c_name = c_calendarName
 
 -- TODO add data Calendar = ...
 
@@ -159,55 +149,55 @@ unitedStatesNERC        ::Calendar
 unitedStatesNYSE        ::Calendar
 unitedStatesSettlement  ::Calendar
 
-noCalendar              = unsafePerformIO $ calendar "NoCalendar"
-nullCalendar            = unsafePerformIO $ calendar "NullCalendar"
-target                  = unsafePerformIO $ calendar "TARGET"
-argentinaMerval         = unsafePerformIO $ calendar "Argentina::Merval"
-australia               = unsafePerformIO $ calendar "Australia"
-brazilSettlement        = unsafePerformIO $ calendar "Brazil::Settlement"
-brazilExchange          = unsafePerformIO $ calendar "Brazil::Exchange"
-canadaSettlement        = unsafePerformIO $ calendar "Canada::Settlement"
-canadaTSX               = unsafePerformIO $ calendar "Canada::TSX"
-china                   = unsafePerformIO $ calendar "China"
-czechRepublicPSE        = unsafePerformIO $ calendar "CzechRepublic::PSE"
-denmark                 = unsafePerformIO $ calendar "Denmark"
-finland                 = unsafePerformIO $ calendar "Finland"
-germanyEurex            = unsafePerformIO $ calendar "Germany::Eurex"
-germanyFrankfurtStockExchange = unsafePerformIO $ calendar "Germany::FrankfurtStockExchange"
-germanySettlement       = unsafePerformIO $ calendar "Germany::Settlement"
-germanyXetra            = unsafePerformIO $ calendar "Germany::Xetra"
-hongKongHKEx            = unsafePerformIO $ calendar "HongKong::HKEx"
-hungary                 = unsafePerformIO $ calendar "Hungary"
-icelandICEX             = unsafePerformIO $ calendar "Iceland::ICEX"
-indiaNSE                = unsafePerformIO $ calendar "India::NSE"
-indonesiaBEJ            = unsafePerformIO $ calendar "Indonesia::BEJ"
-indonesiaJSX            = unsafePerformIO $ calendar "Indonesia::JSX"
-italyExchange           = unsafePerformIO $ calendar "Italy::Exchange"
-italySettlement         = unsafePerformIO $ calendar "Italy::Settlement"
-japan                   = unsafePerformIO $ calendar "Japan"
-mexicoBMV               = unsafePerformIO $ calendar "Mexico::BMV"
-newZealand              = unsafePerformIO $ calendar "NewZealand"
-norway                  = unsafePerformIO $ calendar "Norway"
-poland                  = unsafePerformIO $ calendar "Poland"
-russia                  = unsafePerformIO $ calendar "Russia"
-saudiArabiaTadawul      = unsafePerformIO $ calendar "SaudiArabia::Tadawul"
-singaporeSGX            = unsafePerformIO $ calendar "Singapore::SGX"
-slovakiaBSSE            = unsafePerformIO $ calendar "Slovakia::BSSE"
-southAfrica             = unsafePerformIO $ calendar "SouthAfrica"
-southKoreaKRX           = unsafePerformIO $ calendar "SouthKorea::KRX"
-sweden                  = unsafePerformIO $ calendar "Sweden"
-switzerland             = unsafePerformIO $ calendar "Switzerland"
-taiwanTSEC              = unsafePerformIO $ calendar "Taiwan::TSEC"
-eur                     = unsafePerformIO $ calendar "EUR"
-turkey                  = unsafePerformIO $ calendar "Turkey"
-ukraineUSE              = unsafePerformIO $ calendar "Ukraine::USE"
-unitedKingdomExchange   = unsafePerformIO $ calendar "UnitedKingdom::Exchange"
-londonStockExchange     = unsafePerformIO $ calendar "London stock exchange"
-london                  = unsafePerformIO $ calendar "LONDON"
-gbp                     = unsafePerformIO $ calendar "GBP"
-unitedKingdomMetals     = unsafePerformIO $ calendar "UnitedKingdom::Metals"
-unitedKingdomSettlement = unsafePerformIO $ calendar "UnitedKingdom::Settlement"
-unitedStatesGovernmentBond = unsafePerformIO $ calendar "UnitedStates::GovernmentBond"
-unitedStatesNERC        = unsafePerformIO $ calendar "UnitedStates::NERC"
-unitedStatesNYSE        = unsafePerformIO $ calendar "UnitedStates::NYSE"
-unitedStatesSettlement  = unsafePerformIO $ calendar "UnitedStates::Settlement"
+noCalendar              = constructNamed "NoCalendar"
+nullCalendar            = constructNamed "NullCalendar"
+target                  = constructNamed "TARGET"
+argentinaMerval         = constructNamed "Argentina::Merval"
+australia               = constructNamed "Australia"
+brazilSettlement        = constructNamed "Brazil::Settlement"
+brazilExchange          = constructNamed "Brazil::Exchange"
+canadaSettlement        = constructNamed "Canada::Settlement"
+canadaTSX               = constructNamed "Canada::TSX"
+china                   = constructNamed "China"
+czechRepublicPSE        = constructNamed "CzechRepublic::PSE"
+denmark                 = constructNamed "Denmark"
+finland                 = constructNamed "Finland"
+germanyEurex            = constructNamed "Germany::Eurex"
+germanyFrankfurtStockExchange = constructNamed "Germany::FrankfurtStockExchange"
+germanySettlement       = constructNamed "Germany::Settlement"
+germanyXetra            = constructNamed "Germany::Xetra"
+hongKongHKEx            = constructNamed "HongKong::HKEx"
+hungary                 = constructNamed "Hungary"
+icelandICEX             = constructNamed "Iceland::ICEX"
+indiaNSE                = constructNamed "India::NSE"
+indonesiaBEJ            = constructNamed "Indonesia::BEJ"
+indonesiaJSX            = constructNamed "Indonesia::JSX"
+italyExchange           = constructNamed "Italy::Exchange"
+italySettlement         = constructNamed "Italy::Settlement"
+japan                   = constructNamed "Japan"
+mexicoBMV               = constructNamed "Mexico::BMV"
+newZealand              = constructNamed "NewZealand"
+norway                  = constructNamed "Norway"
+poland                  = constructNamed "Poland"
+russia                  = constructNamed "Russia"
+saudiArabiaTadawul      = constructNamed "SaudiArabia::Tadawul"
+singaporeSGX            = constructNamed "Singapore::SGX"
+slovakiaBSSE            = constructNamed "Slovakia::BSSE"
+southAfrica             = constructNamed "SouthAfrica"
+southKoreaKRX           = constructNamed "SouthKorea::KRX"
+sweden                  = constructNamed "Sweden"
+switzerland             = constructNamed "Switzerland"
+taiwanTSEC              = constructNamed "Taiwan::TSEC"
+eur                     = constructNamed "EUR"
+turkey                  = constructNamed "Turkey"
+ukraineUSE              = constructNamed "Ukraine::USE"
+unitedKingdomExchange   = constructNamed "UnitedKingdom::Exchange"
+londonStockExchange     = constructNamed "London stock exchange"
+london                  = constructNamed "LONDON"
+gbp                     = constructNamed "GBP"
+unitedKingdomMetals     = constructNamed "UnitedKingdom::Metals"
+unitedKingdomSettlement = constructNamed "UnitedKingdom::Settlement"
+unitedStatesGovernmentBond = constructNamed "UnitedStates::GovernmentBond"
+unitedStatesNERC        = constructNamed "UnitedStates::NERC"
+unitedStatesNYSE        = constructNamed "UnitedStates::NYSE"
+unitedStatesSettlement  = constructNamed "UnitedStates::Settlement"
