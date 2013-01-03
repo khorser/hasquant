@@ -4,6 +4,8 @@ module QuantLib.Time.Calendar
     Calendar
   , name
   , CCalendar
+  , adjust
+  , advance
 
   , noCalendar
   , nullCalendar
@@ -60,11 +62,20 @@ module QuantLib.Time.Calendar
   )
 where
 
+import Data.Time.Calendar(Day)
+
 import Foreign.C.String(CString)
-import Foreign.ForeignPtr(ForeignPtr)
+import Foreign.C.Types(CInt(CInt))
+import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
+import Foreign.Marshal.Utils(fromBool)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
+import System.IO.Unsafe(unsafePerformIO)
+
+import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed,
+  toQlDateSerialNumber, fromQlDateSerialNumber)
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention, fromBusinessDayConvention)
+import QuantLib.Time.Unit(Unit, fromUnit)
 
 data CCalendar
 
@@ -76,6 +87,10 @@ foreign import ccall safe "ql.h &qlFreeCalendar"
     p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
 foreign import ccall safe "ql.h qlCalendarName"
     c_calendarName :: Ptr CCalendar -> IO CString
+foreign import ccall safe "ql.h qlCalendarAdjust"
+    c_calendarAdjust :: Ptr CCalendar -> CInt -> CInt -> IO CInt
+foreign import ccall safe "ql.h qlCalendarAdvance"
+    c_calendarAdvance :: Ptr CCalendar -> CInt -> CInt -> CInt -> CInt -> CInt -> IO CInt
 
 instance Finalizable CCalendar where
   finalize = p_freeCalendar
@@ -83,6 +98,30 @@ instance Finalizable CCalendar where
 instance NamedSingleton CCalendar where
   c_construct = c_calendar
   c_name = c_calendarName
+
+
+-- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
+adjust :: Calendar -> Day -> BusinessDayConvention -> Day
+adjust cal d conv = fromQlDateSerialNumber $ unsafePerformIO
+  $ withForeignPtr
+      cal
+      (\c -> c_calendarAdjust
+               c
+               (toQlDateSerialNumber d)
+               (fromBusinessDayConvention conv))
+
+-- |advances a date according to a given calendar (qlCalendarAdvance)
+advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> Day
+advance cal d n u conv eom = fromQlDateSerialNumber $ unsafePerformIO
+  $ withForeignPtr
+      cal
+      (\c -> c_calendarAdvance
+               c
+               (toQlDateSerialNumber d)
+               (fromIntegral n)
+               (fromUnit u)
+               (fromBusinessDayConvention conv)
+               (fromBool eom))
 
 -- TODO add data Calendar = ...
 

@@ -32,6 +32,8 @@ extern "C"
   /* calendar */
   void *qlCalendar(const char *name, char **e);
   const char *qlCalendarName(void *calendar);
+  int	qlCalendarAdjust(void *c, int date, int conv);
+  int	qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom);
       /* internal */
   void  qlFreeCalendar(void *calendar);
 

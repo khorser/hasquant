@@ -20,35 +20,7 @@ updated data
 Use some type magic to restrict dates and enforce the same length of dates and amounts for cash flows
 (for now the latter is solved by using a list of tuples)
 
-C ENUMERATIONS into Haskell?
-
 --- BOND Pricing: ---
-
-<EnumerationMember name='qlCalendarAdjust' type='QuantLib::Calendar' loopParameter='Date'>
-  <description>Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention.</description>
-      <Parameter name='Date'>
-        QuantLib::Date
-        vector
-      <Parameter name='BusinessDayConvention' const='False' default='"Following"'>
-        QuantLib::BusinessDayConvention
-  <ReturnValue>
-    QuantLib::Date
-    vector
-
-<EnumerationMember name='qlCalendarAdvance' type='QuantLib::Calendar' loopParameter='Period'>
-  <description>advances a date according to a given calendar.</description>
-      <Parameter name='StartDate'>
-        QuantLib::Date
-      <Parameter name='Period'>
-        QuantLib::Period
-        vector
-      <Parameter name='BusinessDayConvention' const='False' default='"Following"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='EndOfMonth' const='False' default='false'>
-        bool
-  <ReturnValue>
-    QuantLib::Date
-    vector
 
 <Constructor name='qlSimpleQuote'>
   <libraryFunction>SimpleQuote</libraryFunction>

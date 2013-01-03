@@ -24,5 +24,5 @@ year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
 
 -- |returns TRUE if a year is leap (qlDateIsLeap), reimplemented in Haskell
-isLeap :: [Day] -> [Bool]
-isLeap = map (isLeapYear . year)
+isLeap :: Day -> Bool
+isLeap = isLeapYear . year

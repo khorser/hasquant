@@ -131,4 +131,12 @@ const char *qlCalendarName(void *calendar) {
   return strdup(name.c_str());
 }
 
+int qlCalendarAdjust(void *c, int date, int conv) {
+  return ((Calendar *)c)->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();
+}
+
+int qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom) {
+  return ((Calendar *)c)->advance(Date(date), n, (TimeUnit) unit, (BusinessDayConvention) conv, eom).serialNumber();
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

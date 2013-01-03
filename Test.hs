@@ -77,7 +77,7 @@ date = test
   , "max date" ~: "max date" ~:
       Date.maxDate ~?= fromGregorian 2199 12 31
   , "leap years" ~: "leap year" ~:
-      [False, True, False] ~=? Date.isLeap
+      [False, True, False] ~=? map Date.isLeap
             [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
   ]
 
@@ -109,6 +109,10 @@ calendar = TestList
   [
     "GBP" ~: "GBP calendar name" ~:
       Calendar.name Calendar.londonStockExchange ~?= Calendar.name Calendar.gbp
+  , "adjust" ~: "Russian Calendar adjust" ~:
+      Calendar.adjust Calendar.russia (fromGregorian 2012 12 22) BusinessDayConvention.Preceding ~?= fromGregorian 2012 12 21
+  , "advance" ~: "Russian Calendar adjust" ~:
+      Calendar.advance Calendar.russia (fromGregorian 2012 12 20) 1 Unit.Months BusinessDayConvention.Preceding False ~?= fromGregorian 2013 01 18
   ]
 
 currency :: Test
@@ -192,8 +196,6 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
           print Frequency.Monthly
           print DateGenerationRule.Forward
-          print Unit.Years
-          print BusinessDayConvention.Following
           _ <- runTestTT $ test [settings, date, leg, currency, calendar, dayCounter, bond]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
