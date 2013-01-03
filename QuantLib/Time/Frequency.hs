@@ -75,4 +75,4 @@ toFrequency n | n == c_noFrequency     = NoFrequency
               | n == c_daily           = Daily
               | n == c_once            = Once
               | n == c_other           = Other
-              | otherwise = throw (Error $ "Unknown frequncy code: " ++ (show n))
+              | otherwise = throw (Error $ "Unknown frequency code: " ++ show n)
