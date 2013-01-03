@@ -189,7 +189,17 @@ period from frequency
   <ReturnValue>
     <type>void</type>
 
-<EnumeratedClassGroup class='QuantLib::IborCouponPricer'>
+
+<Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
+  <description>Set the coupon pricer at the given Bond object.</description>
+      <Parameter name='FloatingRateCouponPricer'>
+        <type>QuantLib::FloatingRateCouponPricer</type>
+  <ReturnValue>
+    <type>void</type>
+
+? setCapletVolatility
+
+?<EnumeratedClassGroup class='QuantLib::IborCouponPricer'>
       <string>IborByBlack</string>
       <value>IBOR_BY_BLACK_Pricer</value>
 
@@ -213,7 +223,6 @@ period from frequency
   <libraryFunction>SwapRateHelper</libraryFunction>
       <Parameter name='Rate' 
         QuantLib::Quote
-        <superType>libToHandle</superType>
       <Parameter name='Tenor' 
         QuantLib::Period
       <Parameter name='Calendar' 
@@ -233,10 +242,8 @@ period from frequency
         QuantLib::Period
       <Parameter name='DiscountingCurve' 
         QuantLib::YieldTermStructure
-        <superType>libToHandle</superType>
 
 <Constructor name='qlZeroCouponBond'>
-  <libraryFunction>ZeroCouponBond</libraryFunction>
       <Parameter name='SettlementDays' 
         QuantLib::Size
       <Parameter name='Calendar' 
@@ -318,136 +325,6 @@ period from frequency
         QuantLib::Real
       <Parameter name='IssueDate' default='QuantLib::Date()'>
         QuantLib::Date
-
-<EnumeratedTypeGroup type='QuantLib::Currency'>
-      <string>Currency</string>
-      <value>QuantLib::Currency()</value>
-      <string>NoCurrency</string>
-      <value>QuantLib::Currency()</value>
-      <string>EUR</string>
-      <value>QuantLib::EURCurrency()</value>
-      <string>ARS</string>
-      <value>QuantLib::ARSCurrency()</value>
-      <string>ATS</string>
-      <value>QuantLib::ATSCurrency()</value>
-      <string>AUD</string>
-      <value>QuantLib::AUDCurrency()</value>
-      <string>BDT</string>
-      <value>QuantLib::BDTCurrency()</value>
-      <string>BEF</string>
-      <value>QuantLib::BEFCurrency()</value>
-      <string>BGL</string>
-      <value>QuantLib::BGLCurrency()</value>
-      <string>BRL</string>
-      <value>QuantLib::BRLCurrency()</value>
-      <string>BYR</string>
-      <value>QuantLib::BYRCurrency()</value>
-      <string>CAD</string>
-      <value>QuantLib::CADCurrency()</value>
-      <string>CHF</string>
-      <value>QuantLib::CHFCurrency()</value>
-      <string>CLP</string>
-      <value>QuantLib::CLPCurrency()</value>
-      <string>CNY</string>
-      <value>QuantLib::CNYCurrency()</value>
-      <string>COP</string>
-      <value>QuantLib::COPCurrency()</value>
-      <string>CYP</string>
-      <value>QuantLib::CYPCurrency()</value>
-      <string>CZK</string>
-      <value>QuantLib::CZKCurrency()</value>
-      <string>DEM</string>
-      <value>QuantLib::DEMCurrency()</value>
-      <string>DKK</string>
-      <value>QuantLib::DKKCurrency()</value>
-      <string>EEK</string>
-      <value>QuantLib::EEKCurrency()</value>
-      <string>ESP</string>
-      <value>QuantLib::ESPCurrency()</value>
-      <string>FIM</string>
-      <value>QuantLib::FIMCurrency()</value>
-      <string>FRF</string>
-      <value>QuantLib::FRFCurrency()</value>
-      <string>GBP</string>
-      <value>QuantLib::GBPCurrency()</value>
-      <string>GRD</string>
-      <value>QuantLib::GRDCurrency()</value>
-      <string>HKD</string>
-      <value>QuantLib::HKDCurrency()</value>
-      <string>HUF</string>
-      <value>QuantLib::HUFCurrency()</value>
-      <string>IEP</string>
-      <value>QuantLib::IEPCurrency()</value>
-      <string>ILS</string>
-      <value>QuantLib::ILSCurrency()</value>
-      <string>INR</string>
-      <value>QuantLib::INRCurrency()</value>
-      <string>IQD</string>
-      <value>QuantLib::IQDCurrency()</value>
-      <string>IRR</string>
-      <value>QuantLib::IRRCurrency()</value>
-      <string>ISK</string>
-      <value>QuantLib::ISKCurrency()</value>
-      <string>ITL</string>
-      <value>QuantLib::ITLCurrency()</value>
-      <string>JPY</string>
-      <value>QuantLib::JPYCurrency()</value>
-      <string>KRW</string>
-      <value>QuantLib::KRWCurrency()</value>
-      <string>KWD</string>
-      <value>QuantLib::KWDCurrency()</value>
-      <string>LTL</string>
-      <value>QuantLib::LTLCurrency()</value>
-      <string>LUF</string>
-      <value>QuantLib::LUFCurrency()</value>
-      <string>LVL</string>
-      <value>QuantLib::LVLCurrency()</value>
-      <string>MTL</string>
-      <value>QuantLib::MTLCurrency()</value>
-      <string>MXN</string>
-      <value>QuantLib::MXNCurrency()</value>
-      <string>NLG</string>
-      <value>QuantLib::NLGCurrency()</value>
-      <string>NOK</string>
-      <value>QuantLib::NOKCurrency()</value>
-      <string>NPR</string>
-      <value>QuantLib::NPRCurrency()</value>
-      <string>NZD</string>
-      <value>QuantLib::NZDCurrency()</value>
-      <string>PKR</string>
-      <value>QuantLib::PKRCurrency()</value>
-      <string>PLN</string>
-      <value>QuantLib::PLNCurrency()</value>
-      <string>PTE</string>
-      <value>QuantLib::PTECurrency()</value>
-      <string>ROL</string>
-      <value>QuantLib::ROLCurrency()</value>
-      <string>SAR</string>
-      <value>QuantLib::SARCurrency()</value>
-      <string>SEK</string>
-      <value>QuantLib::SEKCurrency()</value>
-      <string>SGD</string>
-      <value>QuantLib::SGDCurrency()</value>
-      <string>SIT</string>
-      <value>QuantLib::SITCurrency()</value>
-      <string>SKK</string>
-      <value>QuantLib::SKKCurrency()</value>
-      <string>THB</string>
-      <value>QuantLib::THBCurrency()</value>
-      <string>TRL</string>
-      <value>QuantLib::TRLCurrency()</value>
-      <string>TRY</string>
-      <value>QuantLib::TRYCurrency()</value>
-      <string>TTD</string>
-      <value>QuantLib::TTDCurrency()</value>
-      <string>TWD</string>
-      <value>QuantLib::TWDCurrency()</value>
-      <string>USD</string>
-      <value>QuantLib::USDCurrency()</value>
-      <string>VEB</string>
-      <value>QuantLib::VEBCurrency()</value>
-      <string>ZAR</string>
-      <value>QuantLib::ZARCurrency()</value>
 
 <Constructor name='qlLibor'>
       <Parameter name='Currency'>

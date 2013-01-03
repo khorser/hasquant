@@ -30,6 +30,7 @@ Executable Test
   C-Sources:           cpp/qlBond.cpp
                         cpp/qlBusinessDayConvention.cpp
                         cpp/qlCalendar.cpp
+                        cpp/qlCurrency.cpp
                         cpp/qlDate.cpp
                         cpp/qlDateGenerationRule.cpp
                         cpp/qlDayCounter.cpp

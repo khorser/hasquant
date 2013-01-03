@@ -84,6 +84,7 @@ instance Finalizable CCalendar
 
 calendar :: String -> IO Calendar
 calendar cname = withCString cname $ construct . c_calendar
+
 name :: Calendar -> String
 name c = unsafePerformIO
           $ withForeignPtr

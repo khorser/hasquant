@@ -16,6 +16,7 @@ import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
 import qualified QuantLib.CashFlow.Leg as Leg
+import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.Settings as Settings
@@ -110,6 +111,13 @@ calendar = TestList
       Calendar.name Calendar.londonStockExchange ~?= Calendar.name Calendar.gbp
   ]
 
+currency :: Test
+currency = TestList
+  [
+    "GBP" ~: "GBP currency name" ~:
+      Currency.name Currency.gbp ~?= "British pound sterling"
+  ]
+
 dayCounter :: Test
 dayCounter = TestList
   [
@@ -186,7 +194,7 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
           print DateGenerationRule.Forward
           print Unit.Years
           print BusinessDayConvention.Following
-          _ <- runTestTT $ test [settings, date, leg, calendar, dayCounter, bond]
+          _ <- runTestTT $ test [settings, date, leg, currency, calendar, dayCounter, bond]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate

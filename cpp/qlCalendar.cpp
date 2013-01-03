@@ -130,4 +130,5 @@ const char *qlCalendarName(void *calendar) {
   std::string name = ((Calendar *)calendar)->name();
   return strdup(name.c_str());
 }
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

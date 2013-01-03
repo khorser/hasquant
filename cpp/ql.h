@@ -96,6 +96,12 @@ extern "C"
   int qlFrequencyDaily();
   int qlFrequencyOnce();
   int qlFrequencyOtherFrequency();
+
+  /* currency */
+  void *qlCurrency(const char *name, char **e);
+  const char *qlCurrencyName(void *currency);
+      /* internal */
+  void  qlFreeCurrency(void *currency);
 }
 
 static inline QuantLib::Date qlNullableDate(int serialNumber) {
