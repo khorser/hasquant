@@ -28,6 +28,7 @@ import qualified QuantLib.Time.DateGenerationRule as DateGenerationRule
 import qualified QuantLib.Time.DayCounter as DayCounter
 import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
+import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
 import qualified QuantLib.Utilities as Utilities
 
@@ -160,6 +161,39 @@ frequency = TestList
             assertEqual "Annual frequency" f Frequency.Annual
   ]
 
+schedule :: Test
+schedule = TestList
+  [
+    "schedule1"
+      ~: do tenor <- Period.period 1 Unit.Months
+            _ <- Schedule.schedule'
+              (Just (fromGregorian 2012 12 20))
+              (fromGregorian 2013 12 21)
+              tenor
+              Calendar.russia
+              BusinessDayConvention.Following
+              BusinessDayConvention.Unadjusted
+              DateGenerationRule.Forward
+              False
+              (Just (fromGregorian 2012 12 21))
+              (Just (fromGregorian 2013 12 21))
+            assertEqual "Test" True True
+  , "schedule2"
+      ~: do _ <- Schedule.schedule
+              [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
+              Calendar.russia
+              BusinessDayConvention.Following
+            assertEqual "Test" True True
+  , "schedule3"
+      ~: do s <- Schedule.schedule
+              [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
+              Calendar.russia
+              BusinessDayConvention.Following
+            _ <- Schedule.until s (fromGregorian 2012 4 15)
+            assertEqual "Test" True True
+  ]
+
+
 -- QuickCheck --
 instance Arbitrary Day where
   arbitrary = do
@@ -221,7 +255,6 @@ prop_quoteValue val =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          print DateGenerationRule.Forward
           _ <- runTestTT $ test
             [
               settings
@@ -232,6 +265,7 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
               , dayCounter
               , bond
               , frequency
+              , schedule
             ]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate

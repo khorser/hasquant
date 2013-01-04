@@ -4,13 +4,42 @@
 
 using namespace QuantLib;
 
-void *qlSchedule(int eff, int term, double *amounts, int *dates, char **e) {
+void *qlSchedule2(int eff, int term, void *tenor, void *cal,
+    int conv, int termConv, int rule, int eom, int first, int nextToLast,
+    char **e) {
   *e = 0;
   try {
-    //leg = new Leg();
-    //printf("Allocated leg %p\n", leg);
+    return new Schedule(qlNullableDate(eff), Date(term),
+	*(Period *)tenor, *(Calendar *)cal, (BusinessDayConvention) conv,
+	(BusinessDayConvention) termConv, (DateGeneration::Rule)rule,
+	eom, qlNullableDate(first), qlNullableDate(nextToLast));
+    //printf("Allocated schedule %p\n", s);
     //QL_FAIL("Just for fun");
-    return 0;
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
+}
+
+void *qlSchedule(int len, int *dates, void *cal, int conv, char **e) {
+  *e = 0;
+  try {
+    std::vector<Date> d;
+    for (int i = 0; i < len; ++i)
+      d.push_back(Date(dates[i]));
+    return new Schedule(d, *(Calendar *)cal, (BusinessDayConvention)conv);
+    //printf("Allocated schedule %p\n", s);
+    //QL_FAIL("Just for fun");
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
+}
+
+void *qlScheduleUntil(void *sched, int date, char **e) {
+  *e = 0;
+  try {
+    return new Schedule(((Schedule *)sched)->until(Date(date)));
+    //printf("Allocated schedule %p\n", s);
+    //QL_FAIL("Just for fun");
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }

@@ -41,7 +41,7 @@ leg flows = construct
                    (map toQlDateSerialNumber dates)
   where (amounts, dates) = unzip flows
 
-leg' ::CInt -> [CDouble] -> [CDate] -> Ptr CString -> IO (Ptr CLeg)
+leg' :: CInt -> [CDouble] -> [CDate] -> Ptr CString -> IO (Ptr CLeg)
 leg' len amounts dates e =
   withArray
   amounts

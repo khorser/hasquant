@@ -116,10 +116,16 @@ extern "C"
   /* quote */
   void *qlSimpleQuote(double value, char **e);
   double qlQuoteValue(void *quote, char **e);
-    /* internal */
+      /* internal */
   void qlFreeQuote(void *quote);
 
   /* schedule */
+  void *qlSchedule(int len, int *dates, void *cal, int conv, char **e);
+  void *qlSchedule2(int eff, int term, void *tenor, void *cal,
+        int conv, int termConv, int rule, int eom, int first, int nextToLast,
+	char **e);
+  void *qlScheduleUntil(void *sched, int date, char **e);
+      /* internal */
   void qlFreeSchedule(void *s);
 }
 
