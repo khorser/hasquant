@@ -17,7 +17,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(handleExceptions, constructO, withObject, Object, fromQlDateSerialNumber, toQlDateSerialNumber, Finalizable, finalize)
+import QuantLib.Internal(handleExceptions, construct, withObject, Object, fromQlDateSerialNumber, toQlDateSerialNumber, Finalizable, finalize)
 
 data CLeg
 
@@ -35,7 +35,7 @@ instance Finalizable CLeg where
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
-leg flows = constructO
+leg flows = construct
             $ leg' (fromIntegral $ length amounts)
                    (map realToFrac amounts)
                    (map toQlDateSerialNumber dates)

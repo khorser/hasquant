@@ -20,7 +20,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
-import QuantLib.Internal(withObject, Object, constructO, Finalizable, finalize, toQlDateSerialNumber, fromQlDateSerialNumber)
+import QuantLib.Internal(withObject, Object, construct, Finalizable, finalize, toQlDateSerialNumber, fromQlDateSerialNumber)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 
 data CBond
@@ -50,7 +50,7 @@ bond settl cal issue coupons =
   (\c ->
     withObject
     coupons
-    (constructO . c_bond (fromIntegral settl) c (toQlDateSerialNumber issue)))
+    (construct . c_bond (fromIntegral settl) c (toQlDateSerialNumber issue)))
 
 bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
 bond' settl cal face maturity issue flows =
@@ -59,7 +59,7 @@ bond' settl cal face maturity issue flows =
   (\c ->
     withObject
     flows
-    (constructO . c_bond2 (fromIntegral settl) c (realToFrac face) (toQlDateSerialNumber maturity) (toQlDateSerialNumber issue)))
+    (construct . c_bond2 (fromIntegral settl) c (realToFrac face) (toQlDateSerialNumber maturity) (toQlDateSerialNumber issue)))
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX exceptions?

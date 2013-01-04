@@ -13,11 +13,10 @@ module QuantLib.Internal
   , NamedSingleton
   , c_construct
   , c_name
-  , construct
   , constructNamed
   , name
   , Object
-  , constructO
+  , construct
   , withObject
   )
 where
@@ -79,12 +78,10 @@ handleExceptions f =
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
 
-  -- |Run a function returning a new object that needs a finalizer. The function might signal an error
-  construct :: (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
-  construct f = handleExceptions f >>= newForeignPtr finalize
+  -- |Run a C function returning a new object that needs a finalizer. The function might signal an error
+  construct :: (Ptr CString -> IO (Ptr a)) -> IO (Object a)
+  construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
 
-  constructO :: (Ptr CString -> IO (Ptr a)) -> IO (Object a)
-  constructO = liftM Object . construct
 
 withObject :: Object a -> (Ptr a -> IO b) -> IO b
 withObject o = withForeignPtr (ptr o)
@@ -94,7 +91,7 @@ class Finalizable a => NamedSingleton a where
   c_name :: Ptr a -> IO CString
 
   constructNamed :: String -> Object a
-  constructNamed n = unsafePerformIO (withCString n $ constructO . c_construct)
+  constructNamed n = unsafePerformIO (withCString n $ construct . c_construct)
 
   name :: Object a -> String
   name c = unsafePerformIO
