@@ -123,11 +123,7 @@ instance QLDate Day where
   
 
 instance QLDate (Maybe Day) where
-  isValid Nothing = True
-  isValid (Just x) = isValid x
-
-  toQlDateSerialNumber Nothing = 0 
-  toQlDateSerialNumber (Just x) = toQlDateSerialNumber x
-
+  isValid = maybe True isValid
+  toQlDateSerialNumber = maybe 0 toQlDateSerialNumber
   fromQlDateSerialNumber 0 = Nothing
-  fromQlDateSerialNumber x = Just (fromQlDateSerialNumber x)
+  fromQlDateSerialNumber x = Just $ fromQlDateSerialNumber x
