@@ -83,11 +83,11 @@ data CCurrency
 type Currency = ForeignPtr CCurrency
 
 foreign import ccall safe "ql.h qlCurrency"
-    c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)
+  c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)
 foreign import ccall safe "ql.h &qlFreeCurrency"
-    p_freeCurrency :: FunPtr (Ptr CCurrency -> IO ())
+  p_freeCurrency :: FunPtr (Ptr CCurrency -> IO ())
 foreign import ccall safe "ql.h qlCurrencyName"
-    c_currencyName :: Ptr CCurrency -> IO CString
+  c_currencyName :: Ptr CCurrency -> IO CString
 
 instance Finalizable CCurrency where
   finalize = p_freeCurrency

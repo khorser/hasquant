@@ -10,6 +10,8 @@ module QuantLib.Instrument.Bond
 
 where
 
+import Control.Monad(liftM)
+
 import Data.Word(Word)
 import Data.Time.Calendar(Day)
 
@@ -20,54 +22,57 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.CashFlow.Leg(Leg, CLeg)
+import qualified QuantLib.CashFlow.Leg as Leg(Leg, CLeg, ptr)
 import QuantLib.Internal(Finalizable, finalize, construct, toQlDateSerialNumber, fromQlDateSerialNumber)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 
 data CBond
 
-type Bond = ForeignPtr CBond
+newtype Bond = Bond{ptr::ForeignPtr CBond}
 
 foreign import ccall safe "ql.h qlBond"
-    c_bond :: CUInt -> Ptr CCalendar -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
+  c_bond :: CUInt -> Ptr CCalendar -> CInt -> Ptr Leg.CLeg -> Ptr CString -> IO (Ptr CBond)
 foreign import ccall safe "ql.h qlBond2"
-    c_bond2 :: CUInt -> Ptr CCalendar -> CDouble -> CInt -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
+  c_bond2 :: CUInt -> Ptr CCalendar -> CDouble -> CInt -> CInt -> Ptr Leg.CLeg -> Ptr CString -> IO (Ptr CBond)
 foreign import ccall safe "ql.h &qlFreeBond"
-    p_freeBond :: FunPtr (Ptr CBond -> IO ())
+  p_freeBond :: FunPtr (Ptr CBond -> IO ())
 foreign import ccall safe "ql.h qlBondMaturityDate"
-    c_maturityDate :: Ptr CBond -> IO CInt
+  c_maturityDate :: Ptr CBond -> IO CInt
 foreign import ccall safe "ql.h qlBondIssueDate"
-    c_issueDate :: Ptr CBond -> IO CInt
+  c_issueDate :: Ptr CBond -> IO CInt
 
 instance Finalizable CBond where
   finalize = p_freeBond
 
+bondM :: IO (ForeignPtr CBond) -> IO Bond
+bondM = liftM Bond
+
 -- | (qlBond)
 -- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
-bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
+bond :: Word -> Calendar -> Maybe Day -> Leg.Leg -> IO Bond
 bond settl cal issue coupons =
   withForeignPtr
   cal
   (\c ->
     withForeignPtr
-    coupons
-    (construct . c_bond (fromIntegral settl) c (toQlDateSerialNumber issue)))
+    (Leg.ptr coupons)
+    (bondM . construct . c_bond (fromIntegral settl) c (toQlDateSerialNumber issue)))
 
-bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
+bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg.Leg -> IO Bond
 bond' settl cal face maturity issue flows =
   withForeignPtr
   cal
   (\c ->
     withForeignPtr
-    flows
-    (construct . c_bond2 (fromIntegral settl) c (realToFrac face) (toQlDateSerialNumber maturity) (toQlDateSerialNumber issue)))
+    (Leg.ptr flows)
+    (bondM . construct . c_bond2 (fromIntegral settl) c (realToFrac face) (toQlDateSerialNumber maturity) (toQlDateSerialNumber issue)))
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX exceptions?
 maturityDate :: Bond -> Maybe Day
-maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr b c_maturityDate)
+maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr (ptr b) c_maturityDate)
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX exceptions?
 issueDate :: Bond -> Maybe Day
-issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr b c_issueDate)
+issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr (ptr b) c_issueDate)

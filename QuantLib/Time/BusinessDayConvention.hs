@@ -14,15 +14,15 @@ data BusinessDayConvention = Following | ModifiedFollowing | Preceding | Modifie
 
 -- use some preprocessor instead?
 foreign import ccall safe "ql.h qlBusinessDayConventionFollowing"
-    c_following :: CInt
+  c_following :: CInt
 foreign import ccall safe "ql.h qlBusinessDayConventionModifiedFollowing"
-    c_modifiedFollowing :: CInt
+  c_modifiedFollowing :: CInt
 foreign import ccall safe "ql.h qlBusinessDayConventionPreceding"
-    c_preceding :: CInt
+  c_preceding :: CInt
 foreign import ccall safe "ql.h qlBusinessDayConventionModifiedPreceding"
-    c_modifiedPreceding :: CInt
+  c_modifiedPreceding :: CInt
 foreign import ccall safe "ql.h qlBusinessDayConventionUnadjusted"
-    c_unadjusted :: CInt
+  c_unadjusted :: CInt
 
 fromBusinessDayConvention :: BusinessDayConvention -> CInt
 fromBusinessDayConvention Following = fromIntegral c_following

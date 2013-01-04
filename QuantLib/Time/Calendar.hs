@@ -82,15 +82,15 @@ data CCalendar
 type Calendar = ForeignPtr CCalendar
 
 foreign import ccall safe "ql.h qlCalendar"
-    c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
+  c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
 foreign import ccall safe "ql.h &qlFreeCalendar"
-    p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
+  p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
 foreign import ccall safe "ql.h qlCalendarName"
-    c_calendarName :: Ptr CCalendar -> IO CString
+  c_calendarName :: Ptr CCalendar -> IO CString
 foreign import ccall safe "ql.h qlCalendarAdjust"
-    c_calendarAdjust :: Ptr CCalendar -> CInt -> CInt -> IO CInt
+  c_calendarAdjust :: Ptr CCalendar -> CInt -> CInt -> IO CInt
 foreign import ccall safe "ql.h qlCalendarAdvance"
-    c_calendarAdvance :: Ptr CCalendar -> CInt -> CInt -> CInt -> CInt -> CInt -> IO CInt
+  c_calendarAdvance :: Ptr CCalendar -> CInt -> CInt -> CInt -> CInt -> CInt -> IO CInt
 
 instance Finalizable CCalendar where
   finalize = p_freeCalendar

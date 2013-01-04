@@ -13,21 +13,21 @@ data DateGenerationRule = Backward | Forward | Zero | ThirdWednesday | Twentieth
 
 -- use some preprocessor instead?
 foreign import ccall safe "ql.h qlDateGenerationRuleBackward"
-    c_backward :: CInt
+  c_backward :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleForward"
-    c_forward :: CInt
+  c_forward :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleZero"
-    c_zero :: CInt
+  c_zero :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleThirdWednesday"
-    c_thirdWednesday :: CInt
+  c_thirdWednesday :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleTwentieth"
-    c_twentieth :: CInt
+  c_twentieth :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleTwentiethIMM"
-    c_twentiethIMM :: CInt
+  c_twentiethIMM :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleOldCDS"
-    c_oldCDS :: CInt
+  c_oldCDS :: CInt
 foreign import ccall safe "ql.h qlDateGenerationRuleCDS"
-    c_cds :: CInt
+  c_cds :: CInt
 
 fromDateGenerationRule :: DateGenerationRule -> CInt
 fromDateGenerationRule Backward = c_backward

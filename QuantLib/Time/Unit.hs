@@ -14,13 +14,13 @@ data Unit = Months | Days | Weeks | Years
 
 -- use some preprocessor instead?
 foreign import ccall safe "ql.h qlTimeUnitMonths"
-    c_months :: CInt
+  c_months :: CInt
 foreign import ccall safe "ql.h qlTimeUnitDays"
-    c_days :: CInt
+  c_days :: CInt
 foreign import ccall safe "ql.h qlTimeUnitWeeks"
-    c_weeks :: CInt
+  c_weeks :: CInt
 foreign import ccall safe "ql.h qlTimeUnitYears"
-    c_years :: CInt
+  c_years :: CInt
 
 fromUnit :: Unit -> CInt
 fromUnit Months = c_months

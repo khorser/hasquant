@@ -34,18 +34,18 @@ import QuantLib.Error(Error(Error))
 import System.IO.Unsafe(unsafePerformIO)
 
 foreign import ccall safe "ql.h qlFreeString"
-    c_freeString :: CString -> IO ()
+  c_freeString :: CString -> IO ()
 
 foreign import ccall safe "ql.h qlMinDateSerialNumber"
-    c_minDateSerialNumber :: CInt
+  c_minDateSerialNumber :: CInt
 foreign import ccall safe "ql.h qlMaxDateSerialNumber"
-    c_maxDateSerialNumber :: CInt
+  c_maxDateSerialNumber :: CInt
 foreign import ccall safe "ql.h qlMinYear"
-    c_minYear :: CInt
+  c_minYear :: CInt
 foreign import ccall safe "ql.h qlMinMonth"
-    c_minMonth :: CInt
+  c_minMonth :: CInt
 foreign import ccall safe "ql.h qlMinDay"
-    c_minDay :: CInt
+  c_minDay :: CInt
 
 -- |Julian day of the QuantLib zero date
 qlStart :: Integer
@@ -73,25 +73,26 @@ handleExceptions f =
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
 
+  -- |Run a function returning a new object that needs a finalizer. The function might signal an error
+  construct :: (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
+  construct f = handleExceptions f >>= newForeignPtr finalize
+
+
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-constructNamed :: NamedSingleton a => String -> ForeignPtr a
-constructNamed n = unsafePerformIO (withCString n $ construct . c_construct)
+  constructNamed :: String -> ForeignPtr a
+  constructNamed n = unsafePerformIO (withCString n $ construct . c_construct)
 
-name :: NamedSingleton a => ForeignPtr a -> String
-name c = unsafePerformIO
+  name :: ForeignPtr a -> String
+  name c = unsafePerformIO
           $ withForeignPtr
               c
               (\cc -> do n <- c_name cc
                          str <- peekCString n
                          c_freeString n
                          return str)
-
--- |Run a function returning a new object that needs a finalizer. The function might signal an error
-construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
-construct f = handleExceptions f >>= newForeignPtr finalize
 
 class QLDate a where
   isValid :: a -> Bool

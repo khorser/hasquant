@@ -57,11 +57,11 @@ data CDayCounter
 type DayCounter = ForeignPtr CDayCounter
 
 foreign import ccall safe "ql.h qlDayCounter"
-    c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
+  c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
 foreign import ccall safe "ql.h &qlFreeDayCounter"
-    p_freeDayCounter :: FunPtr (Ptr CDayCounter -> IO ())
+  p_freeDayCounter :: FunPtr (Ptr CDayCounter -> IO ())
 foreign import ccall safe "ql.h qlDayCounterName"
-    c_dayCounterName :: Ptr CDayCounter -> IO CString
+  c_dayCounterName :: Ptr CDayCounter -> IO CString
 
 instance Finalizable CDayCounter where
   finalize = p_freeDayCounter

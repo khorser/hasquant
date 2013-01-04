@@ -17,13 +17,13 @@ import Foreign.Marshal.Utils(fromBool, toBool)
 import QuantLib.Internal(fromQlDateSerialNumber, toQlDateSerialNumber)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
-    c_evaluationDate :: IO CInt
+  c_evaluationDate :: IO CInt
 foreign import ccall safe "ql.h qlSettingsSetEvaluationDate"
-    c_setEvaluationDate :: CInt -> IO ()
+  c_setEvaluationDate :: CInt -> IO ()
 foreign import ccall safe "ql.h qlSettingsEnforceTodaysHistoricFixings"
-    c_enforceTodaysHistoricFixings :: IO CInt
+  c_enforceTodaysHistoricFixings :: IO CInt
 foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
-    c_setEnforceTodaysHistoricFixings :: CInt -> IO ()
+  c_setEnforceTodaysHistoricFixings :: CInt -> IO ()
 
 -- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
 evaluationDate :: IO Day

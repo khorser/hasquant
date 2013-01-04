@@ -11,9 +11,9 @@ import Foreign.C.String(CString, peekCString)
 import System.IO.Unsafe(unsafePerformIO)
 
 foreign import ccall safe "ql.h qlVersion"
-    c_version :: CString
+  c_version :: CString
 foreign import ccall safe "ql.h boostVersion"
-    c_boostVersion :: CString
+  c_boostVersion :: CString
 
 -- |returns the version number of QuantLib
 version :: String

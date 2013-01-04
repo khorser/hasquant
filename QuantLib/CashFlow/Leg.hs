@@ -5,9 +5,11 @@ module QuantLib.CashFlow.Leg
   , leg
   , startDate
   , CLeg
+  , ptr
   )
 where
 
+import Control.Monad(liftM)
 import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CInt(CInt), CDouble)
@@ -22,21 +24,24 @@ import QuantLib.Internal(handleExceptions, construct, fromQlDateSerialNumber, to
 
 data CLeg
 
-type Leg = ForeignPtr CLeg
+newtype Leg = Leg{ptr::ForeignPtr CLeg}
 
 foreign import ccall safe "ql.h qlLeg"
-    c_leg :: CInt -> Ptr CDouble -> Ptr CInt -> Ptr CString -> IO (Ptr CLeg)
+  c_leg :: CInt -> Ptr CDouble -> Ptr CInt -> Ptr CString -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
-    c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CInt
+  c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CInt
 foreign import ccall safe "ql.h &qlFreeLeg"
-    p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
+  p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
 instance Finalizable CLeg where
   finalize = p_freeLeg
 
+legM :: IO (ForeignPtr CLeg) -> IO Leg
+legM = liftM Leg
+
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
-leg flows = construct
+leg flows = legM . construct
             $ leg' (fromIntegral $ length amounts)
                    (map realToFrac amounts)
                    (map toQlDateSerialNumber dates)
@@ -53,4 +58,4 @@ leg' len amounts dates e =
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable
 startDate :: Leg -> Day
-startDate l = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr l (handleExceptions . c_legStartDate))
+startDate l = fromQlDateSerialNumber $ unsafePerformIO (withForeignPtr (ptr l) (handleExceptions . c_legStartDate))
