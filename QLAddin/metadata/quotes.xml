@@ -42,24 +42,6 @@
   </copyright>
   <Functions>
 
-    <!-- Quote base class interface -->
-    <Member name='qlQuoteValue' type='QuantLib::Quote' superType='libraryQuote'>
-      <description>Returns the current value of the given Quote object.</description>
-      <libraryFunction>value</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Real</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
-
     <Member name='qlQuoteIsValid' type='QuantLib::Quote' superType='libraryQuote'>
       <description>Returns TRUE if the given Quote object has a valid value.</description>
       <libraryFunction>isValid</libraryFunction>
@@ -278,30 +260,6 @@
         <tensorRank>matrix</tensorRank>
       </ReturnValue>
     </Procedure>
-
-    <Constructor name='qlSimpleQuote'>
-      <libraryFunction>SimpleQuote</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Value' default='QuantLib::Null&lt;QuantLib::Real&gt;()'>
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>quote.</description>
-          </Parameter>
-          <Parameter name='TickValue' exampleValue='0.0001'>
-            <type>QuantLib::Real</type>
-            <tensorRank>scalar</tensorRank>
-            <description>tick value used for sensitivity analysis.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
 
     <!-- other Quote constructors -->
 

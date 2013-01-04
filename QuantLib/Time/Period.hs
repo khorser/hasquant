@@ -1,7 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Time.Period
   (
-    period
+    Period
+  , CPeriod
+  , period
   , fromFrequency
   , toFrequency
   )

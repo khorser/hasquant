@@ -14,12 +14,12 @@ import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt))
 import Foreign.Marshal.Utils(fromBool, toBool)
 
-import QuantLib.Internal(fromQlDateSerialNumber, toQlDateSerialNumber)
+import QuantLib.Internal(fromQlDateSerialNumber, toQlDateSerialNumber, CDate)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
-  c_evaluationDate :: IO CInt
+  c_evaluationDate :: IO CDate
 foreign import ccall safe "ql.h qlSettingsSetEvaluationDate"
-  c_setEvaluationDate :: CInt -> IO ()
+  c_setEvaluationDate :: CDate -> IO ()
 foreign import ccall safe "ql.h qlSettingsEnforceTodaysHistoricFixings"
   c_enforceTodaysHistoricFixings :: IO CInt
 foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"

@@ -17,16 +17,16 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(handleExceptions, construct, withObject, Object, fromQlDateSerialNumber, toQlDateSerialNumber, Finalizable, finalize)
+import QuantLib.Internal(handleExceptions, construct, CDate, withObject, Object, fromQlDateSerialNumber, toQlDateSerialNumber, Finalizable, finalize)
 
 data CLeg
 
 type Leg = Object CLeg
 
 foreign import ccall safe "ql.h qlLeg"
-  c_leg :: CInt -> Ptr CDouble -> Ptr CInt -> Ptr CString -> IO (Ptr CLeg)
+  c_leg :: CInt -> Ptr CDouble -> Ptr CDate -> Ptr CString -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
-  c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CInt
+  c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CDate
 foreign import ccall safe "ql.h &qlFreeLeg"
   p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
@@ -41,7 +41,7 @@ leg flows = construct
                    (map toQlDateSerialNumber dates)
   where (amounts, dates) = unzip flows
 
-leg' ::CInt -> [CDouble] -> [CInt] -> Ptr CString -> IO (Ptr CLeg)
+leg' ::CInt -> [CDouble] -> [CDate] -> Ptr CString -> IO (Ptr CLeg)
 leg' len amounts dates e =
   withArray
   amounts

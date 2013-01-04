@@ -18,6 +18,7 @@ module QuantLib.Internal
   , Object
   , construct
   , withObject
+  , CDate
   )
 where
 
@@ -40,9 +41,9 @@ foreign import ccall safe "ql.h qlFreeString"
   c_freeString :: CString -> IO ()
 
 foreign import ccall safe "ql.h qlMinDateSerialNumber"
-  c_minDateSerialNumber :: CInt
+  c_minDateSerialNumber :: CDate
 foreign import ccall safe "ql.h qlMaxDateSerialNumber"
-  c_maxDateSerialNumber :: CInt
+  c_maxDateSerialNumber :: CDate
 foreign import ccall safe "ql.h qlMinYear"
   c_minYear :: CInt
 foreign import ccall safe "ql.h qlMinMonth"
@@ -52,6 +53,8 @@ foreign import ccall safe "ql.h qlMinDay"
 
 newtype Object a = Object{ptr :: ForeignPtr a}
 
+type CDate = Int
+
 -- |Julian day of the QuantLib zero date
 qlStart :: Integer
 qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
@@ -60,7 +63,7 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
                                     (fromIntegral c_minMonth)
                                     (fromIntegral c_minDay)
 
-toQlDateSerialNumberUnsafe :: Day -> CInt
+toQlDateSerialNumberUnsafe :: Day -> CDate
 toQlDateSerialNumberUnsafe x = fromInteger $ toModifiedJulianDay x - qlStart
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
@@ -104,8 +107,8 @@ class Finalizable a => NamedSingleton a where
 
 class QLDate a where
   isValid :: a -> Bool
-  toQlDateSerialNumber :: a -> CInt
-  fromQlDateSerialNumber :: CInt -> a
+  toQlDateSerialNumber :: a -> CDate
+  fromQlDateSerialNumber :: CDate -> a
 
 
 instance QLDate Day where

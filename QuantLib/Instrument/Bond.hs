@@ -13,14 +13,14 @@ where
 import Data.Word(Word)
 import Data.Time.Calendar(Day)
 
-import Foreign.C.Types(CInt(CInt), CDouble(CDouble), CUInt(CUInt))
+import Foreign.C.Types(CDouble(CDouble), CUInt(CUInt))
 import Foreign.C.String(CString)
 import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
-import QuantLib.Internal(withObject, Object, construct, Finalizable, finalize, toQlDateSerialNumber, fromQlDateSerialNumber)
+import QuantLib.Internal(CDate, withObject, Object, construct, Finalizable, finalize, toQlDateSerialNumber, fromQlDateSerialNumber)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 
 data CBond
@@ -28,15 +28,15 @@ data CBond
 type Bond = Object CBond
 
 foreign import ccall safe "ql.h qlBond"
-  c_bond :: CUInt -> Ptr CCalendar -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
+  c_bond :: CUInt -> Ptr CCalendar -> CDate -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
 foreign import ccall safe "ql.h qlBond2"
-  c_bond2 :: CUInt -> Ptr CCalendar -> CDouble -> CInt -> CInt -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
+  c_bond2 :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
 foreign import ccall safe "ql.h &qlFreeBond"
   p_freeBond :: FunPtr (Ptr CBond -> IO ())
 foreign import ccall safe "ql.h qlBondMaturityDate"
-  c_maturityDate :: Ptr CBond -> IO CInt
+  c_maturityDate :: Ptr CBond -> IO CDate
 foreign import ccall safe "ql.h qlBondIssueDate"
-  c_issueDate :: Ptr CBond -> IO CInt
+  c_issueDate :: Ptr CBond -> IO CDate
 
 instance Finalizable CBond where
   finalize = p_freeBond

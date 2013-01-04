@@ -112,6 +112,15 @@ extern "C"
   int qlPeriodToFrequency(void *period, char **e);
       /* internal */
   void  qlFreePeriod(void *period);
+
+  /* quote */
+  void *qlSimpleQuote(double value, char **e);
+  double qlQuoteValue(void *quote, char **e);
+    /* internal */
+  void qlFreeQuote(void *quote);
+
+  /* schedule */
+  void qlFreeSchedule(void *s);
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber);

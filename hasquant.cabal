@@ -37,6 +37,8 @@ Executable Test
                         cpp/qlFrequency.cpp
                         cpp/qlLeg.cpp
                         cpp/qlPeriod.cpp
+                        cpp/qlQuote.cpp
+                        cpp/qlSchedule.cpp
                         cpp/qlSettings.cpp
                         cpp/qlTimeUnit.cpp
                         cpp/qlUtilities.cpp

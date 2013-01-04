@@ -19,6 +19,7 @@ import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
 import qualified QuantLib.Instrument.Bond as Bond
+import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
 import qualified QuantLib.Time.Calendar as Calendar
@@ -208,6 +209,14 @@ prop_legStartDate flows =
           $ do l <- run $ Leg.leg flows
                assert $ minimum (map snd flows) == Leg.startDate l
 
+prop_quoteValue :: Double -> Property
+prop_quoteValue val =
+  val > 0
+    ==> monadicIO
+          $ do q <- run $ Quote.simpleQuote val
+               assert $ Quote.value q == val
+
+
 -- Main --
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
@@ -229,4 +238,5 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
           quickCheck prop_singleLegStartDate
           --quickCheckWith stdArgs{maxDiscardRatio = 20} prop_legStartDate
           quickCheck prop_legStartDate
+          quickCheckWith stdArgs{maxSuccess = 10} prop_quoteValue
           return ()

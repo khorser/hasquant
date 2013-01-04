@@ -72,7 +72,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed,
-  toQlDateSerialNumber, fromQlDateSerialNumber, Object, withObject)
+  toQlDateSerialNumber, fromQlDateSerialNumber, Object, withObject, CDate)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention, fromBusinessDayConvention)
 import QuantLib.Time.Unit(Unit, fromUnit)
 
@@ -87,9 +87,9 @@ foreign import ccall safe "ql.h &qlFreeCalendar"
 foreign import ccall safe "ql.h qlCalendarName"
   c_calendarName :: Ptr CCalendar -> IO CString
 foreign import ccall safe "ql.h qlCalendarAdjust"
-  c_calendarAdjust :: Ptr CCalendar -> CInt -> CInt -> IO CInt
+  c_calendarAdjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate
 foreign import ccall safe "ql.h qlCalendarAdvance"
-  c_calendarAdvance :: Ptr CCalendar -> CInt -> CInt -> CInt -> CInt -> CInt -> IO CInt
+  c_calendarAdvance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
 
 instance Finalizable CCalendar where
   finalize = p_freeCalendar

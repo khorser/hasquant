@@ -22,13 +22,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
 
 --- BOND Pricing: ---
 
-<Constructor name='qlSimpleQuote'>
-  <libraryFunction>SimpleQuote</libraryFunction>
-      <Parameter name='Value' default='QuantLib::Null&lt;QuantLib::Real&gt;()'>
-        QuantLib::Real
-      <Parameter name='TickValue' 
-        QuantLib::Real
-
 <Constructor name='qlDepositRateHelper2'>
   <libraryFunction>DepositRateHelper</libraryFunction>
       <Parameter name='Rate' 
@@ -69,29 +62,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
       <Parameter name='Redemption' default='100.0'>
         double
       <Parameter name='IssueDate' default='QuantLib::Date()'>
-        QuantLib::Date
-
-<Constructor name='qlSchedule'>
-  <libraryFunction>Schedule</libraryFunction>
-      <Parameter name='EffectiveDate' default='QuantLib::Date()'>
-        QuantLib::Date
-      <Parameter name='TerminationDate' 
-        QuantLib::Date
-      <Parameter name='Tenor' 
-        QuantLib::Period
-      <Parameter name='Calendar' default='"NullCalendar"'>
-        QuantLib::Calendar
-      <Parameter name='Convention' default='"Unadjusted"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='TermDateConv' default='"Unadjusted"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='GenRule' default='"Backward"'>
-        QuantLib::DateGeneration::Rule
-      <Parameter name='EndOfMonth' default='false'>
-        bool
-      <Parameter name='FirstDate' default='QuantLib::Date()'>
-        QuantLib::Date
-      <Parameter name='NextToLastDate' default='QuantLib::Date()'>
         QuantLib::Date
 
 <Constructor name='qlPiecewiseYieldCurve'>
