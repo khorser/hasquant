@@ -1,0 +1,53 @@
+all: cpp/qlBond.o cpp/qlBusinessDayConvention.o cpp/qlCalendar.o \
+    cpp/qlCurrency.o cpp/qlDateGenerationRule.o cpp/qlDate.o \
+    cpp/qlDayCounter.o cpp/qlFrequency.o cpp/qlLeg.o cpp/qlPeriod.o \
+    cpp/qlQuote.o cpp/qlSchedule.o cpp/qlSettings.o cpp/qlTimeUnit.o \
+    cpp/qlUtilities.o
+
+
+cpp/qlBond.o:                 ../cpp/ql.h ../cpp/qlBond.cpp
+	g++ -c -Wall -o cpp/qlBond.o ../cpp/qlBond.cpp
+
+cpp/qlBusinessDayConvention.o: ../cpp/ql.h ../cpp/qlBusinessDayConvention.cpp
+	g++ -c -Wall -o cpp/qlBusinessDayConvention.o ../cpp/qlBusinessDayConvention.cpp
+
+cpp/qlCalendar.o:             ../cpp/ql.h ../cpp/qlCalendar.cpp
+	g++ -c -Wall -o cpp/qlCalendar.o  ../cpp/qlCalendar.cpp
+
+cpp/qlCurrency.o:             ../cpp/ql.h ../cpp/qlCurrency.cpp
+	g++ -c -Wall -o cpp/qlCurrency.o  ../cpp/qlCurrency.cpp
+
+cpp/qlDateGenerationRule.o:   ../cpp/ql.h ../cpp/qlDateGenerationRule.cpp
+	g++ -c -Wall -o cpp/qlDateGenerationRule.o  ../cpp/qlDateGenerationRule.cpp
+
+cpp/qlDate.o:                 ../cpp/ql.h ../cpp/qlDate.cpp
+	g++ -c -Wall -o cpp/qlDate.o  ../cpp/qlDate.cpp
+
+cpp/qlDayCounter.o:           ../cpp/ql.h ../cpp/qlDayCounter.cpp
+	g++ -c -Wall -o cpp/qlDayCounter.o  ../cpp/qlDayCounter.cpp
+
+cpp/qlFrequency.o:            ../cpp/ql.h ../cpp/qlFrequency.cpp
+	g++ -c -Wall -o cpp/qlFrequency.o  ../cpp/qlFrequency.cpp
+
+cpp/qlLeg.o:                  ../cpp/ql.h ../cpp/qlLeg.cpp
+	g++ -c -Wall -o cpp/qlLeg.o  ../cpp/qlLeg.cpp
+
+cpp/qlPeriod.o:               ../cpp/ql.h ../cpp/qlPeriod.cpp
+	g++ -c -Wall -o cpp/qlPeriod.o  ../cpp/qlPeriod.cpp
+
+cpp/qlQuote.o:                ../cpp/ql.h ../cpp/qlQuote.cpp
+	g++ -c -Wall -o cpp/qlQuote.o  ../cpp/qlQuote.cpp
+
+cpp/qlSchedule.o:             ../cpp/ql.h ../cpp/qlSchedule.cpp
+	g++ -c -Wall -o cpp/qlSchedule.o  ../cpp/qlSchedule.cpp
+
+cpp/qlSettings.o:             ../cpp/ql.h ../cpp/qlSettings.cpp
+	g++ -c -Wall -o cpp/qlSettings.o  ../cpp/qlSettings.cpp
+
+cpp/qlTimeUnit.o:             ../cpp/ql.h ../cpp/qlTimeUnit.cpp
+	g++ -c -Wall -o cpp/qlTimeUnit.o  ../cpp/qlTimeUnit.cpp
+
+cpp/qlUtilities.o:            ../cpp/ql.h ../cpp/qlUtilities.cpp
+	g++ -c -Wall -o cpp/qlUtilities.o  ../cpp/qlUtilities.cpp
+
+# vim: set ft=make:
