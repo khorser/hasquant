@@ -1,6 +1,5 @@
 Rethink exceptions strategy
 Improve cabalization
-Finalize wrapping of all ForeignPtr's into newtype. ?Supply another class methods like constructor and accessor?
 
 Think of high-level combinators from abstract data types like
 

@@ -11,16 +11,15 @@ import Control.Monad(liftM)
 
 import Foreign.C.Types(CInt(CInt))
 import Foreign.C.String(CString)
-import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(handleExceptions, construct, Finalizable, finalize)
+import QuantLib.Internal(handleExceptions, constructO, Finalizable, finalize, Object, withObject)
 import qualified QuantLib.Time.Frequency as F(Frequency, fromFrequency, toFrequency)
 import QuantLib.Time.Unit(Unit, fromUnit)
 
 data CPeriod
 
-newtype Period = Period{ptr::ForeignPtr CPeriod}
+type Period = Object CPeriod
 
 foreign import ccall safe "ql.h qlPeriod"
   c_period :: CInt -> CInt -> Ptr CString -> IO (Ptr CPeriod)
@@ -34,16 +33,13 @@ foreign import ccall safe "ql.h qlPeriodToFrequency"
 instance Finalizable CPeriod where
   finalize = p_freePeriod
 
-periodM :: IO (ForeignPtr CPeriod) -> IO Period
-periodM = liftM Period
-
 period :: Int -> Unit -> IO Period
-period n u = periodM . construct $ c_period (fromIntegral n) (fromUnit u)
+period n u = constructO $ c_period (fromIntegral n) (fromUnit u)
 
 -- |returns a Period from a given Frequency (e.g. 6M from SemiAnnual) (qlPeriodFromFrequency)
 fromFrequency :: F.Frequency -> IO Period
-fromFrequency f = periodM . construct $ c_periodFromFreq (F.fromFrequency f)
+fromFrequency f = constructO $ c_periodFromFreq (F.fromFrequency f)
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M) (qlFrequencyFromPeriod)
 toFrequency :: Period -> IO F.Frequency
-toFrequency p = liftM F.toFrequency $ withForeignPtr (ptr p) (handleExceptions . c_periodToFreq )
+toFrequency p = liftM F.toFrequency $ withObject p (handleExceptions . c_periodToFreq )

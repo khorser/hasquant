@@ -73,14 +73,13 @@ module QuantLib.Currency
 where
 
 import Foreign.C.String(CString)
-import Foreign.ForeignPtr(ForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
+import QuantLib.Internal(Object, Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
 
 data CCurrency
 
-type Currency = ForeignPtr CCurrency
+type Currency = Object CCurrency
 
 foreign import ccall safe "ql.h qlCurrency"
   c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)

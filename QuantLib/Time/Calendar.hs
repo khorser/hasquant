@@ -66,20 +66,19 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.String(CString)
 import Foreign.C.Types(CInt(CInt))
-import Foreign.ForeignPtr(ForeignPtr, withForeignPtr)
 import Foreign.Marshal.Utils(fromBool)
 import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed,
-  toQlDateSerialNumber, fromQlDateSerialNumber)
+  toQlDateSerialNumber, fromQlDateSerialNumber, Object, withObject)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention, fromBusinessDayConvention)
 import QuantLib.Time.Unit(Unit, fromUnit)
 
 data CCalendar
 
-type Calendar = ForeignPtr CCalendar
+type Calendar = Object CCalendar
 
 foreign import ccall safe "ql.h qlCalendar"
   c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
@@ -103,7 +102,7 @@ instance NamedSingleton CCalendar where
 -- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
 adjust :: Calendar -> Day -> BusinessDayConvention -> Day
 adjust cal d conv = fromQlDateSerialNumber $ unsafePerformIO
-  $ withForeignPtr
+  $ withObject
       cal
       (\c -> c_calendarAdjust
                c
@@ -113,7 +112,7 @@ adjust cal d conv = fromQlDateSerialNumber $ unsafePerformIO
 -- |advances a date according to a given calendar (qlCalendarAdvance)
 advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> Day
 advance cal d n u conv eom = fromQlDateSerialNumber $ unsafePerformIO
-  $ withForeignPtr
+  $ withObject
       cal
       (\c -> c_calendarAdvance
                c

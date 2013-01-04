@@ -16,10 +16,14 @@ module QuantLib.Internal
   , construct
   , constructNamed
   , name
+  , Object
+  , constructO
+  , withObject
   )
 where
 
 import Control.Exception(throw)
+import Control.Monad(liftM)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 
 import Foreign.C.String(CString, peekCString, withCString)
@@ -46,6 +50,8 @@ foreign import ccall safe "ql.h qlMinMonth"
   c_minMonth :: CInt
 foreign import ccall safe "ql.h qlMinDay"
   c_minDay :: CInt
+
+newtype Object a = Object{ptr :: ForeignPtr a}
 
 -- |Julian day of the QuantLib zero date
 qlStart :: Integer
@@ -77,18 +83,23 @@ class Finalizable a where
   construct :: (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
   construct f = handleExceptions f >>= newForeignPtr finalize
 
+  constructO :: (Ptr CString -> IO (Ptr a)) -> IO (Object a)
+  constructO = liftM Object . construct
+
+withObject :: Object a -> (Ptr a -> IO b) -> IO b
+withObject o = withForeignPtr (ptr o)
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-  constructNamed :: String -> ForeignPtr a
-  constructNamed n = unsafePerformIO (withCString n $ construct . c_construct)
+  constructNamed :: String -> Object a
+  constructNamed n = unsafePerformIO (withCString n $ constructO . c_construct)
 
-  name :: ForeignPtr a -> String
+  name :: Object a -> String
   name c = unsafePerformIO
           $ withForeignPtr
-              c
+              (ptr c)
               (\cc -> do n <- c_name cc
                          str <- peekCString n
                          c_freeString n

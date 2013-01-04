@@ -47,14 +47,13 @@ module QuantLib.Time.DayCounter
 where
 
 import Foreign.C.String(CString)
-import Foreign.ForeignPtr(ForeignPtr)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
+import QuantLib.Internal(Object, Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed)
 
 data CDayCounter
 
-type DayCounter = ForeignPtr CDayCounter
+type DayCounter = Object CDayCounter
 
 foreign import ccall safe "ql.h qlDayCounter"
   c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
