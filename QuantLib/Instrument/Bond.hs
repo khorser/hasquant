@@ -20,7 +20,7 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CDouble(CDouble), CUInt(CUInt))
 import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr, castPtr)
+import Foreign.Ptr(Ptr, FunPtr, castPtr, castFunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -57,15 +57,12 @@ foreign import ccall safe "ql.h qlBondIssueDate"
 instance Finalizable CBond where
   finalize = p_freeBond
 
-foreign import ccall safe "ql.h &qlFreeBond"
-  p_freeFixedRateBond :: FunPtr (Ptr CFixedRateBond -> IO ())
-
 data CFixedRateBond
 
 type FixedRateBond = Object CFixedRateBond
 
 instance Finalizable CFixedRateBond where
-  finalize = p_freeFixedRateBond
+  finalize = castFunPtr p_freeBond
 
 instance BondClass CFixedRateBond
 
