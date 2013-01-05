@@ -3,30 +3,24 @@ module QuantLib.Time.BusinessDayConvention
   (
     BusinessDayConvention(..)
   , fromBusinessDayConvention
+  , toBusinessDayConvention
   )
 
 where
 
-import Foreign.C.Types(CInt(CInt))
+import Foreign.C.Types(CInt)
+import Foreign.Ptr(Ptr)
+
+import QuantLib.Internal(fromQlEnum, toQlEnum)
 
 data BusinessDayConvention = Following | ModifiedFollowing | Preceding | ModifiedPreceding | Unadjusted
-  deriving (Show, Eq)
+  deriving (Show, Eq, Enum)
 
--- use some preprocessor instead?
-foreign import ccall safe "ql.h qlBusinessDayConventionFollowing"
-  c_following :: CInt
-foreign import ccall safe "ql.h qlBusinessDayConventionModifiedFollowing"
-  c_modifiedFollowing :: CInt
-foreign import ccall safe "ql.h qlBusinessDayConventionPreceding"
-  c_preceding :: CInt
-foreign import ccall safe "ql.h qlBusinessDayConventionModifiedPreceding"
-  c_modifiedPreceding :: CInt
-foreign import ccall safe "ql.h qlBusinessDayConventionUnadjusted"
-  c_unadjusted :: CInt
+foreign import ccall safe "ql.h qlBusinessDayConvention"
+  c_values :: Ptr CInt -> IO (Ptr CInt)
 
 fromBusinessDayConvention :: BusinessDayConvention -> CInt
-fromBusinessDayConvention Following = fromIntegral c_following
-fromBusinessDayConvention ModifiedFollowing = fromIntegral c_modifiedFollowing
-fromBusinessDayConvention Preceding = fromIntegral c_preceding
-fromBusinessDayConvention ModifiedPreceding = fromIntegral c_modifiedPreceding
-fromBusinessDayConvention Unadjusted = fromIntegral c_unadjusted
+fromBusinessDayConvention = toQlEnum c_values
+
+toBusinessDayConvention :: CInt -> BusinessDayConvention
+toBusinessDayConvention = fromQlEnum c_values

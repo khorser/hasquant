@@ -3,27 +3,27 @@ module QuantLib.Time.Unit
   (
     Unit(..)
   , fromUnit
+  , toUnit
   )
 
 where
 
-import Foreign.C.Types(CInt(CInt))
+import Foreign.C.Types(CInt)
+import Foreign.Ptr(Ptr)
+
+import QuantLib.Internal(fromQlEnum, toQlEnum)
 
 data Unit = Months | Days | Weeks | Years
-  deriving (Show, Eq)
+  deriving (Show, Eq, Enum)
 
--- use some preprocessor instead?
-foreign import ccall safe "ql.h qlTimeUnitMonths"
-  c_months :: CInt
-foreign import ccall safe "ql.h qlTimeUnitDays"
-  c_days :: CInt
-foreign import ccall safe "ql.h qlTimeUnitWeeks"
-  c_weeks :: CInt
-foreign import ccall safe "ql.h qlTimeUnitYears"
-  c_years :: CInt
+data BusinessDayConvention = Following | ModifiedFollowing | Preceding | ModifiedPreceding | Unadjusted
+  deriving (Show, Eq, Enum)
+
+foreign import ccall safe "ql.h qlTimeUnit"
+  c_values :: Ptr CInt -> IO (Ptr CInt)
 
 fromUnit :: Unit -> CInt
-fromUnit Months = c_months
-fromUnit Days   = c_days
-fromUnit Weeks  = c_weeks
-fromUnit Years  = c_years
+fromUnit = toQlEnum c_values
+
+toUnit :: CInt -> Unit
+toUnit = fromQlEnum c_values

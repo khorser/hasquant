@@ -4,56 +4,26 @@
 
 using namespace QuantLib;
 
-int qlFrequencyNoFrequency() {
-  return NoFrequency;
-}
+static int values[] = 
+  {
+    NoFrequency
+  , Annual
+  , Semiannual
+  , EveryFourthMonth
+  , Quarterly
+  , Bimonthly
+  , Monthly
+  , Biweekly
+  , EveryFourthWeek
+  , Weekly
+  , Daily
+  , Once
+  , OtherFrequency
+  };
 
-int qlFrequencyAnnual() {
-  return Annual;
-}
-
-int qlFrequencySemiannual() {
-  return Semiannual;
-}
-
-int qlFrequencyEveryFourthMonth() {
-  return EveryFourthMonth;
-}
-
-int qlFrequencyQuarterly() {
-  return Quarterly;
-}
-
-int qlFrequencyBimonthly() {
-  return Bimonthly;
-}
-
-int qlFrequencyMonthly() {
-  return Monthly;
-}
-
-int qlFrequencyBiweekly() {
-  return Biweekly;
-}
-
-int qlFrequencyEveryFourthWeek() {
-  return EveryFourthWeek;
-}
-
-int qlFrequencyWeekly() {
-  return Weekly;
-}
-
-int qlFrequencyDaily() {
-  return Daily;
-}
-
-int qlFrequencyOnce() {
-  return Once;
-}
-
-int qlFrequencyOtherFrequency() {
-  return OtherFrequency;
+int *qlFrequency(int *c) {
+  *c = sizeof(values)/sizeof(values[0]);
+  return values;
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

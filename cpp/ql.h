@@ -59,46 +59,19 @@ extern "C"
 
   /* businessdayconvention */
     /* enumeration */
-  int qlBusinessDayConventionFollowing();
-  int qlBusinessDayConventionModifiedFollowing();
-  int qlBusinessDayConventionPreceding();
-  int qlBusinessDayConventionModifiedPreceding();
-  int qlBusinessDayConventionUnadjusted();
+  int *qlBusinessDayConvention(int *c);
 
   /* dategenerationrule */
     /* enumeration */
-  int qlDateGenerationRuleBackward();
-  int qlDateGenerationRuleForward();
-  int qlDateGenerationRuleZero();
-  int qlDateGenerationRuleThirdWednesday();
-  int qlDateGenerationRuleTwentieth();
-  int qlDateGenerationRuleTwentiethIMM();
-  int qlDateGenerationRuleOldCDS();
-  int qlDateGenerationRuleCDS();
+  int *qlDateGenerationRule(int *c);
 
   /* timeunit */
     /* enumeration */
-  int qlTimeUnitMonths();
-  int qlTimeUnitDays();
-  int qlTimeUnitWeeks();
-  int qlTimeUnitYears();
+  int *qlTimeUnit(int *c);
 
   /* frequency */
     /* enumeration */
-  int qlFrequencyFrequency();
-  int qlFrequencyNoFrequency();
-  int qlFrequencyAnnual();
-  int qlFrequencySemiannual();
-  int qlFrequencyEveryFourthMonth();
-  int qlFrequencyQuarterly();
-  int qlFrequencyBimonthly();
-  int qlFrequencyMonthly();
-  int qlFrequencyBiweekly();
-  int qlFrequencyEveryFourthWeek();
-  int qlFrequencyWeekly();
-  int qlFrequencyDaily();
-  int qlFrequencyOnce();
-  int qlFrequencyOtherFrequency();
+  int *qlFrequency(int *c);
 
   /* currency */
   void *qlCurrency(const char *name, char **e);

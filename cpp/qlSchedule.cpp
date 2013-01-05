@@ -37,7 +37,7 @@ void *qlScheduleUntil(void *sched, int date, char **e) {
   *e = 0;
   try {
     Schedule *s = new Schedule(static_cast<Schedule *>(sched)->until(Date(date)));
-    printf("Allocated schedule %p\n", s);
+    //printf("Allocated schedule %p\n", s);
     return s;
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
@@ -45,9 +45,9 @@ void *qlScheduleUntil(void *sched, int date, char **e) {
 }
 
 void qlFreeSchedule(void *s) {
-  fprintf(stderr, "freeing schedule %p\n", s);
+  //fprintf(stderr, "freeing schedule %p\n", s);
   delete static_cast<Schedule *>(s);
-  fprintf(stderr, "freed schedule %p\n", s);
+  //fprintf(stderr, "freed schedule %p\n", s);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

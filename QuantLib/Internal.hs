@@ -19,17 +19,23 @@ module QuantLib.Internal
   , construct
   , withObject
   , CDate
+  , toQlEnum
+  , fromQlEnum
   )
+
 where
 
 import Control.Exception(throw)
 import Control.Monad(liftM)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
+import Data.List(elemIndex)
+import Data.Maybe(fromMaybe)
 
 import Foreign.C.String(CString, peekCString, withCString)
 import Foreign.C.Types(CInt(CInt))
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
+import Foreign.Marshal.Array(peekArray)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek)
 
@@ -127,3 +133,18 @@ instance QLDate (Maybe Day) where
   toQlDateSerialNumber = maybe 0 toQlDateSerialNumber
   fromQlDateSerialNumber 0 = Nothing
   fromQlDateSerialNumber x = Just $ fromQlDateSerialNumber x
+
+values :: (Ptr CInt -> IO (Ptr CInt)) -> [CInt]
+values c_values = 
+  unsafePerformIO $
+    alloca $
+    \pcount ->
+    do v <- c_values pcount
+       count <- peek pcount
+       peekArray (fromIntegral count) v
+
+toQlEnum :: Enum a => (Ptr CInt -> IO (Ptr CInt)) -> a -> CInt
+toQlEnum c_values x = values c_values !! fromEnum x
+
+fromQlEnum :: Enum a => (Ptr CInt -> IO (Ptr CInt)) -> CInt -> a
+fromQlEnum c_values x = toEnum $ fromMaybe 0 (elemIndex x $ values c_values)

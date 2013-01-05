@@ -4,20 +4,17 @@
 
 using namespace QuantLib;
 
-int qlTimeUnitMonths() {
-  return Months;
-}
+static int values[] = 
+  {
+    Months
+  , Days
+  , Weeks
+  , Years
+  };
 
-int qlTimeUnitDays() {
-  return Days;
-}
-
-int qlTimeUnitWeeks() {
-  return Weeks;
-}
-
-int qlTimeUnitYears() {
-  return Years;
+int *qlTimeUnit(int *c) {
+  *c = sizeof(values)/sizeof(values[0]);
+  return values;
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

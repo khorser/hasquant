@@ -4,24 +4,18 @@
 
 using namespace QuantLib;
 
-int qlBusinessDayConventionFollowing() {
-    return Following;
-}
+static int values[] = 
+  {
+    Following
+  , ModifiedFollowing
+  , Preceding
+  , ModifiedPreceding
+  , Unadjusted
+  };
 
-int qlBusinessDayConventionModifiedFollowing() {
-    return ModifiedFollowing;
-}
-
-int qlBusinessDayConventionPreceding() {
-    return Preceding;
-}
-
-int qlBusinessDayConventionModifiedPreceding() {
-    return ModifiedPreceding;
-}
-
-int qlBusinessDayConventionUnadjusted() {
-    return Unadjusted;
+int *qlBusinessDayConvention(int *c) {
+  *c = sizeof(values)/sizeof(values[0]);
+  return values;
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
