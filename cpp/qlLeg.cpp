@@ -24,9 +24,8 @@ void *qlLeg(int len, double *amounts, int *dates, char **e) {
 
 int qlLegStartDate(void *leg, char **e) {
   *e = 0;
-  Leg *l = (Leg *)leg;
   try {
-    Date d = CashFlows::startDate(*l);
+    Date d = CashFlows::startDate(*static_cast<Leg *>(leg));
     return d.serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
@@ -35,7 +34,7 @@ int qlLegStartDate(void *leg, char **e) {
 
 void qlFreeLeg(void *leg) {
   //printf("freeing leg %p\n", leg);
-  delete (Leg *)leg;
+  delete static_cast<Leg *>(leg);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

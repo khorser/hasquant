@@ -33,7 +33,7 @@ int qlPeriodToFrequency(void *period, char **e) {
 
 void  qlFreePeriod(void *period) {
   //printf("freeing period %p\n", leg);
-  delete (Period *)period;
+  delete static_cast<Period *>(period);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

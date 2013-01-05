@@ -92,11 +92,11 @@ void *qlDayCounter(const char *name, char **e)
 
 void  qlFreeDayCounter(void *counter) {
   //printf("freeing counter %p", counter);
-  delete (Calendar *)counter;
+  delete static_cast<Calendar *>(counter);
 }
 
 const char *qlDayCounterName(void *counter) {
-  std::string name = ((DayCounter *)counter)->name();
+  std::string name = static_cast<DayCounter *>(counter)->name();
   return strdup(name.c_str());
 }
 

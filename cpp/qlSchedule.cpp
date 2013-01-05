@@ -10,7 +10,7 @@ void *qlSchedule2(int eff, int term, void *tenor, void *cal,
   *e = 0;
   try {
     return new Schedule(qlNullableDate(eff), Date(term),
-	*(Period *)tenor, *(Calendar *)cal, (BusinessDayConvention) conv,
+	*static_cast<Period *>(tenor), *static_cast<Calendar *>(cal), (BusinessDayConvention) conv,
 	(BusinessDayConvention) termConv, (DateGeneration::Rule)rule,
 	eom, qlNullableDate(first), qlNullableDate(nextToLast));
     //printf("Allocated schedule %p\n", s);
@@ -26,7 +26,7 @@ void *qlSchedule(int len, int *dates, void *cal, int conv, char **e) {
     std::vector<Date> d;
     for (int i = 0; i < len; ++i)
       d.push_back(Date(dates[i]));
-    return new Schedule(d, *(Calendar *)cal, (BusinessDayConvention)conv);
+    return new Schedule(d, *static_cast<Calendar *>(cal), (BusinessDayConvention)conv);
     //printf("Allocated schedule %p\n", s);
     //QL_FAIL("Just for fun");
   } catch (std::exception& er) {
@@ -37,7 +37,7 @@ void *qlSchedule(int len, int *dates, void *cal, int conv, char **e) {
 void *qlScheduleUntil(void *sched, int date, char **e) {
   *e = 0;
   try {
-    return new Schedule(((Schedule *)sched)->until(Date(date)));
+    return new Schedule(static_cast<Schedule *>(sched)->until(Date(date)));
     //printf("Allocated schedule %p\n", s);
     //QL_FAIL("Just for fun");
   } catch (std::exception& er) {
@@ -46,7 +46,7 @@ void *qlScheduleUntil(void *sched, int date, char **e) {
 }
 
 void qlFreeSchedule(void *s) {
-  delete (Schedule *)s;
+  delete static_cast<Schedule *>(s);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
