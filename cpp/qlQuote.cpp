@@ -7,9 +7,8 @@ using namespace QuantLib;
 void *qlSimpleQuote(double value, char **e) {
   *e = 0;
   try {
-    return (Quote *)(new SimpleQuote(value));
+    return static_cast<Quote *>(new SimpleQuote(value));
     //printf("Allocated simple quote %p\n", q);
-    //QL_FAIL("Just for fun");
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }

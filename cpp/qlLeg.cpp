@@ -15,7 +15,6 @@ void *qlLeg(int len, double *amounts, int *dates, char **e) {
     for (int i = 0; i < len; ++i)
       leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
     //printf("Allocated leg %p\n", leg);
-    //QL_FAIL("Just for fun");
     return leg;
   } catch (std::exception& er) {
     return handleException(e, er, leg);

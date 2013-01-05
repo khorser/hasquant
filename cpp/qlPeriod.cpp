@@ -25,7 +25,7 @@ void *qlPeriodFromFrequency(int freq, char **e) {
 int qlPeriodToFrequency(void *period, char **e) {
   *e = 0;
   try {
-    return (Frequency)((Period *) period)->frequency() ;
+    return (Frequency)(static_cast<Period *>(period))->frequency() ;
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }

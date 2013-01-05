@@ -204,10 +204,12 @@ schedule = TestList
             assertEqual "Test" True True
   , "schedule3"
       ~: do s <- Schedule.schedule
-              [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
+              [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
               Calendar.russia
               BusinessDayConvention.Following
-            _ <- Schedule.until s (fromGregorian 2012 4 15)
+            _ <- Schedule.until s (fromGregorian 2013 4 15)
+            putStrLn ""
+            putStrLn "www"
             assertEqual "Test" True True
   ]
 
