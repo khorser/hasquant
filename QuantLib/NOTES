@@ -1,8 +1,7 @@
 Rethink exceptions strategy
 Improve cabalization
 
-Storable for Day
-Use Ix for enumerated types
+Use Ix for enumerated types - will not work for frequencies because of the gaps in the enumeration members in C++ library
 
 Think of high-level combinators from abstract data types like
 
