@@ -6,6 +6,11 @@ module QuantLib.Instrument.Bond
   , bond'
   , issueDate
   , maturityDate
+  , FixedRateBond
+  , fixedRateBond
+  , fixedRateBond'
+  , fixedRateBond''
+  , frequency
   )
 
 where
@@ -15,18 +20,29 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CDouble(CDouble), CUInt(CUInt))
 import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr)
+import Foreign.Ptr(Ptr, FunPtr, castPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
 import QuantLib.Internal(CDate, withObject, Object, construct, Finalizable, finalize, toQlDateSerialNumber, fromQlDateSerialNumber)
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
+import QuantLib.Time.DateGenerationRule(DateGenerationRule)
+import QuantLib.Time.DayCounter(DayCounter)
+import QuantLib.Time.Frequency(Frequency)
+import QuantLib.Time.Period(Period)
+import QuantLib.Time.Schedule(Schedule)
 
 data CBond
 
 type Bond = Object CBond
 
+class BondClass c
+
+instance BondClass CBond
+
+-- is it possible to use type class constraints in FFI declarations?
 foreign import ccall safe "ql.h qlBond"
   c_bond :: CUInt -> Ptr CCalendar -> CDate -> Ptr CLeg -> Ptr CString -> IO (Ptr CBond)
 foreign import ccall safe "ql.h qlBond2"
@@ -40,6 +56,18 @@ foreign import ccall safe "ql.h qlBondIssueDate"
 
 instance Finalizable CBond where
   finalize = p_freeBond
+
+foreign import ccall safe "ql.h &qlFreeBond"
+  p_freeFixedRateBond :: FunPtr (Ptr CFixedRateBond -> IO ())
+
+data CFixedRateBond
+
+type FixedRateBond = Object CFixedRateBond
+
+instance Finalizable CFixedRateBond where
+  finalize = p_freeFixedRateBond
+
+instance BondClass CFixedRateBond
 
 -- | (qlBond)
 -- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
@@ -63,10 +91,30 @@ bond' settl cal face maturity issue flows =
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX exceptions?
-maturityDate :: Bond -> Maybe Day
-maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b c_maturityDate)
+maturityDate :: BondClass a => Object a -> Maybe Day
+maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_maturityDate . castPtr))
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX exceptions?
-issueDate :: Bond -> Maybe Day
-issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b c_issueDate)
+issueDate :: BondClass a => Object a -> Maybe Day
+issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_issueDate . castPtr))
+
+-- |(qlFixedRateBond)
+fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
+   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar -> IO FixedRateBond
+fixedRateBond settl face sched coupons counter conv redemption issue cal = undefined
+
+-- |(qlFixedRateBond2)
+fixedRateBond' :: Word -> Double -> Day -> Day -> Period -> [Double] -> DayCounter
+  -> BusinessDayConvention -> BusinessDayConvention -> Double -> Maybe Day
+  -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar -> IO FixedRateBond
+fixedRateBond' settl face start maturity tenor coupons counter accrConv paymentConv
+  redemption issue stub rule eom cal = undefined
+
+fixedRateBond'' :: Word -> Double -> Schedule -> [Double] -> BusinessDayConvention
+  -> Double -> Maybe Day -> Calendar -> IO FixedRateBond
+fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
+  undefined
+
+frequency :: FixedRateBond -> Frequency
+frequency = undefined

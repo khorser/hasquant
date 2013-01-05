@@ -1,6 +1,9 @@
 Rethink exceptions strategy
 Improve cabalization
 
+Storable for Day
+Use Ix for enumerated types
+
 Think of high-level combinators from abstract data types like
 
 class Instrument
@@ -26,7 +29,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
   <libraryFunction>DepositRateHelper</libraryFunction>
       <Parameter name='Rate' 
         QuantLib::Quote
-        <superType>libToHandle</superType>
       <Parameter name='Tenor' 
         QuantLib::Period
       <Parameter name='FixingDays' 
@@ -44,14 +46,12 @@ Use some type magic to restrict dates and enforce the same length of dates and a
   <libraryFunction>FixedRateBondHelper</libraryFunction>
       <Parameter name='CleanPrice' 
         QuantLib::Quote
-        <superType>libToHandle</superType>
       <Parameter name='SettlementDays' 
         QuantLib::Size
       <Parameter name='FaceAmount' default='100.0'>
         double
       <Parameter name='ScheduleID'>
         QuantLib::Schedule
-        <superType>libraryClass</superType>
       <Parameter name='Coupons' 
         QuantLib::Rate
         vector
@@ -176,7 +176,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
         QuantLib::IborIndex
       <Parameter name='Spread' 
         QuantLib::Quote
-        <superType>libToHandle</superType>
       <Parameter name='ForwardStart' 
         QuantLib::Period
       <Parameter name='DiscountingCurve' 
@@ -198,27 +197,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
       <Parameter name='IssueDate' default='QuantLib::Date()'>
         QuantLib::Date
 
-<Constructor name='qlFixedRateBond2'>
-  <libraryFunction>FixedRateBond</libraryFunction>
-      <Parameter name='SettlementDays' 
-        QuantLib::Size
-      <Parameter name='FaceAmount' default='100.0'>
-        QuantLib::Real
-      <Parameter name='ScheduleID'>
-        QuantLib::Schedule
-        <superType>libraryClass</superType>
-      <Parameter name='Coupons'>
-        QuantLib::InterestRate
-        vector
-      <Parameter name='PaymentBDC' default='"Following"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='Redemption' default='100.0'>
-        QuantLib::Real
-      <Parameter name='IssueDate' default='QuantLib::Date()'>
-        QuantLib::Date
-      <Parameter name='PaymentCalendar' 
-        QuantLib::Calendar
-
 <Member name='qlIndexAddFixings' type='QuantLibAddin::Index'>
   <description>Adds fixings for the given Index object.</description>
       <Parameter name='FixingDates' libraryType='QuantLib::Date'>
@@ -239,7 +217,6 @@ Use some type magic to restrict dates and enforce the same length of dates and a
         QuantLib::Real
       <Parameter name='ScheduleID'>
         QuantLib::Schedule
-        <superType>libraryClass</superType>
       <Parameter name='FixingDays' default='QuantLib::Null&lt;QuantLib::Natural&gt;()'>
         QuantLib::Natural
       <Parameter name='IsInArrears' default='false'>
