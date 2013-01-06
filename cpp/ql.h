@@ -12,11 +12,10 @@ extern "C"
   /* utilities */
   const char *qlVersion();
   const char *boostVersion();
-      /* internal */
+
   void	qlFreeString(char *p);
 
   /* date */
-      /* internal */
   int	qlMinDateSerialNumber();
   int	qlMaxDateSerialNumber();
   int	qlMinYear();
@@ -26,7 +25,7 @@ extern "C"
   /* leg */
   void *qlLeg(int len, double *amounts, int *dates, char **e);
   int   qlLegStartDate(void *leg, char **e);
-      /* internal */
+
   void  qlFreeLeg(void *leg);
 
   /* calendar */
@@ -34,7 +33,7 @@ extern "C"
   const char *qlCalendarName(void *calendar);
   int	qlCalendarAdjust(void *c, int date, int conv);
   int	qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom);
-      /* internal */
+
   void  qlFreeCalendar(void *calendar);
 
   /* settings */
@@ -48,48 +47,32 @@ extern "C"
   void *qlBond2(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
   int   qlBondMaturityDate(void *bond);
   int   qlBondIssueDate(void *bond);
-      /* internal */
+
   void qlFreeBond(void *bond);
 
   /* daycounter */
   void *qlDayCounter(const char *name, char **e);
   const char *qlDayCounterName(void *counter);
-      /* internal */
+
   void  qlFreeDayCounter(void *counter);
-
-  /* businessdayconvention */
-    /* enumeration */
-  int *qlBusinessDayConvention(int *c);
-
-  /* dategenerationrule */
-    /* enumeration */
-  int *qlDateGenerationRule(int *c);
-
-  /* timeunit */
-    /* enumeration */
-  int *qlTimeUnit(int *c);
-
-  /* frequency */
-    /* enumeration */
-  int *qlFrequency(int *c);
 
   /* currency */
   void *qlCurrency(const char *name, char **e);
   const char *qlCurrencyName(void *currency);
-      /* internal */
+
   void  qlFreeCurrency(void *currency);
 
   /* period */
   void *qlPeriod(int n, int u, char **e);
   void *qlPeriodFromFrequency(int freq, char **e);
   int qlPeriodToFrequency(void *period, char **e);
-      /* internal */
+
   void  qlFreePeriod(void *period);
 
   /* quote */
   void *qlSimpleQuote(double value, char **e);
   double qlQuoteValue(void *quote, char **e);
-      /* internal */
+
   void qlFreeQuote(void *quote);
 
   /* schedule */
@@ -98,8 +81,11 @@ extern "C"
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
   void *qlScheduleUntil(void *sched, int date, char **e);
-      /* internal */
+
   void qlFreeSchedule(void *s);
+
+  /* enumerations */
+  int *qlEnumerationValue(const char *name, int *c);
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber);

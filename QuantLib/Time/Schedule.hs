@@ -19,10 +19,11 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import Prelude hiding(until)
 
-import QuantLib.Internal(CDate, construct, withObject, Object, Finalizable, finalize, toQlDateSerialNumber)
-import QuantLib.Time.BusinessDayConvention(BusinessDayConvention, fromBusinessDayConvention)
+import QuantLib.Internal(CDate, construct, withObject, Object, Finalizable,
+  finalize, toQlDateSerialNumber, toQlEnum)
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
-import QuantLib.Time.DateGenerationRule(DateGenerationRule, fromDateGenerationRule)
+import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.Period(Period, CPeriod)
 
 data CSchedule
@@ -59,9 +60,9 @@ schedule' effective term tenor cal conv termConv rule eom first nextToLast =
                 (toQlDateSerialNumber term)
                 t
                 c
-                (fromBusinessDayConvention conv)
-                (fromBusinessDayConvention termConv)
-                (fromDateGenerationRule rule)
+                (toQlEnum conv)
+                (toQlEnum termConv)
+                (toQlEnum rule)
                 (fromBool eom)
                 (toQlDateSerialNumber first)
                 (toQlDateSerialNumber nextToLast)))
@@ -76,7 +77,7 @@ schedule days cal conv =
     withObject
       cal
       (\c -> construct
-              $ c_schedule (fromIntegral $ length days) d c (fromBusinessDayConvention conv)))
+              $ c_schedule (fromIntegral $ length days) d c (toQlEnum conv)))
 
 -- | (qlScheduleTruncated)
 until :: Schedule -> Day -> IO Schedule

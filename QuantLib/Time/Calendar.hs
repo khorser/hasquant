@@ -71,10 +71,11 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton, c_name, name, constructNamed,
-  toQlDateSerialNumber, fromQlDateSerialNumber, Object, withObject, CDate)
-import QuantLib.Time.BusinessDayConvention(BusinessDayConvention, fromBusinessDayConvention)
-import QuantLib.Time.Unit(Unit, fromUnit)
+import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton,
+  c_name, name, constructNamed, toQlDateSerialNumber, fromQlDateSerialNumber,
+  Object, withObject, CDate, toQlEnum)
+import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
+import QuantLib.Time.Unit(Unit)
 
 data CCalendar
 
@@ -107,7 +108,7 @@ adjust cal d conv = fromQlDateSerialNumber $ unsafePerformIO
       (\c -> c_calendarAdjust
                c
                (toQlDateSerialNumber d)
-               (fromBusinessDayConvention conv))
+               (toQlEnum conv))
 
 -- |advances a date according to a given calendar (qlCalendarAdvance)
 advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> Day
@@ -118,8 +119,8 @@ advance cal d n u conv eom = fromQlDateSerialNumber $ unsafePerformIO
                c
                (toQlDateSerialNumber d)
                (fromIntegral n)
-               (fromUnit u)
-               (fromBusinessDayConvention conv)
+               (toQlEnum u)
+               (toQlEnum conv)
                (fromBool eom))
 
 -- TODO add data Calendar = ...

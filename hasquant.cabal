@@ -28,19 +28,16 @@ Executable Test
   Main-Is:             Test.hs
   GHC-Options:         -Wall
   C-Sources:           cpp/qlBond.cpp
-                        cpp/qlBusinessDayConvention.cpp
                         cpp/qlCalendar.cpp
                         cpp/qlCurrency.cpp
                         cpp/qlDate.cpp
-                        cpp/qlDateGenerationRule.cpp
                         cpp/qlDayCounter.cpp
-                        cpp/qlFrequency.cpp
+                        cpp/qlEnumerations.cpp
                         cpp/qlLeg.cpp
                         cpp/qlPeriod.cpp
                         cpp/qlQuote.cpp
                         cpp/qlSchedule.cpp
                         cpp/qlSettings.cpp
-                        cpp/qlTimeUnit.cpp
                         cpp/qlUtilities.cpp
   Include-Dirs:        cpp
   Build-Depends:       base == 4.5.*, QuickCheck >=2.4.2, HUnit >= 1.2.4.2, time >= 1.4

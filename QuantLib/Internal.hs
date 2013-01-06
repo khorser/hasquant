@@ -27,10 +27,9 @@ where
 
 import Control.Exception(throw)
 import Control.Monad(liftM)
-import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.List(elemIndex)
-import Data.Maybe(fromMaybe)
-
+import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
+import Data.Typeable(Typeable, typeOf)
 import Foreign.C.String(CString, peekCString, withCString)
 import Foreign.C.Types(CInt(CInt))
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
@@ -38,10 +37,9 @@ import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek)
+import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Error(Error(Error))
-
-import System.IO.Unsafe(unsafePerformIO)
 
 foreign import ccall safe "ql.h qlFreeString"
   c_freeString :: CString -> IO ()
@@ -134,17 +132,38 @@ instance QLDate (Maybe Day) where
   fromQlDateSerialNumber 0 = Nothing
   fromQlDateSerialNumber x = Just $ fromQlDateSerialNumber x
 
-values :: (Ptr CInt -> IO (Ptr CInt)) -> [CInt]
-values c_values = 
-  unsafePerformIO $
-    alloca $
-    \pcount ->
-    do v <- c_values pcount
-       count <- peek pcount
-       peekArray (fromIntegral count) v
+foreign import ccall safe "ql.h qlEnumerationValue"
+  c_values :: CString -> Ptr CInt -> IO (Ptr CInt)
 
-toQlEnum :: Enum a => (Ptr CInt -> IO (Ptr CInt)) -> a -> CInt
-toQlEnum c_values x = values c_values !! fromEnum x
+values :: String -> [CInt]
+values ename = if null vals
+                 then throw $ Error ("Enumeration " ++ ename ++ " is not known")
+                 else vals
+  where vals = unsafePerformIO $
+                withCString
+                ename 
+                (\n -> alloca $
+                           \pcount ->
+                           do v <- c_values n pcount
+                              count <- peek pcount
+                              peekArray (fromIntegral count) v)
 
-fromQlEnum :: Enum a => (Ptr CInt -> IO (Ptr CInt)) -> CInt -> a
-fromQlEnum c_values x = toEnum $ fromMaybe 0 (elemIndex x $ values c_values)
+toQlEnum :: (Typeable a, Enum a, Show a) => a -> CInt
+toQlEnum x =
+  if index >= length vals
+    then throw $ Error ("Constructor " ++ show x ++ " is not found")
+    else vals !! index
+  where
+    index = fromEnum x
+    vals = values (show $ typeOf x) 
+
+fromQlEnum :: (Typeable a, Enum a) => CInt -> a
+fromQlEnum x = enum
+               where enum = result index
+                     result Nothing  = throw
+                       $ Error ("Unknown enumeration code: " ++ show x)
+                     result (Just i) = toEnum i
+                     index = elemIndex x $ values (show $ typeOf enum)
+               -- NB: intermediate computations are using the type of the
+               -- result here, thank laziness (?)
+               -- Looks like fixed point operator. Are we abusing the type system?
