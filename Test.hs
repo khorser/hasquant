@@ -145,23 +145,23 @@ bond = TestList
             b <- Bond.bond 3 Calendar.gbp Nothing l
             --print $ Bond.frequency b
             assertEqual "issue date" Nothing (Bond.issueDate b)
-  , "fixed rate bond"
-      ~: do s <- Schedule.schedule
-                  [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
-                  Calendar.russia
-                  BusinessDayConvention.Following
-            b <- Bond.fixedRateBond
-                  1
-                  100
-                  s
-                  [3]
-                  DayCounter.actual365Fixed
-                  BusinessDayConvention.Following
-                  100
-                  (Just $ fromGregorian 2012 10 01)
-                  Calendar.russia
-            assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
-            assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.maturityDate b)
+  -- , "fixed rate bond"
+  --     ~: do s <- Schedule.schedule
+  --                 [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
+  --                 Calendar.russia
+  --                 BusinessDayConvention.Following
+  --           b <- Bond.fixedRateBond
+  --                 1
+  --                 100
+  --                 s
+  --                 [3]
+  --                 DayCounter.actual365Fixed
+  --                 BusinessDayConvention.Following
+  --                 100
+  --                 (Just $ fromGregorian 2012 10 01)
+  --                 Calendar.russia
+  --           assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
+  --           assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.maturityDate b)
   ]
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
@@ -202,16 +202,16 @@ schedule = TestList
               Calendar.russia
               BusinessDayConvention.Following
             assertEqual "Test" True True
-  -- , "schedule truncation"
-  -- -- for some reason qlFreeSchedule for resulting schedule segfaults
-  -- -- on Windows while works ok on Linux. The C++ code is the literal translation
-  -- -- of QLAddin
-  --     ~: do s <- Schedule.schedule
-  --             [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
-  --             Calendar.russia
-  --             BusinessDayConvention.Following
-  --           _ <- Schedule.until s (fromGregorian 2013 4 15)
-  --           assertEqual "Test" True True
+  , "schedule truncation"
+  -- for some reason qlFreeSchedule for resulting schedule segfaults
+  -- on Windows while works ok on Linux. The C++ code is the literal translation
+  -- of QLAddin
+      ~: do s <- Schedule.schedule
+              [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
+              Calendar.russia
+              BusinessDayConvention.Following
+            _ <- Schedule.until s (fromGregorian 2013 4 15)
+            assertEqual "Test" True True
   ]
 
 

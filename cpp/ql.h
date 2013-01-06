@@ -7,6 +7,16 @@
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
 
+#ifdef QLTRACK_ALLOCATIONS
+# define TM(text, p) tracemem("\n" text ": %p\n", (p))
+# define DUP(p) tracedup((p))
+void *tracemem(const char *text, void *p);
+char *tracedup(const char *p);
+#else
+# define TM(text, p) (p)
+# define DUP(p) strdup((p))
+#endif
+
 extern "C"
 {
   /* utilities */
@@ -95,8 +105,7 @@ int qlNullableDate(const QuantLib::Date &date);
   template <class T>
 T *handleException(char **msg, std::exception &e, T *t)
 {
-  *msg = strdup(e.what());
-  //printf("Duplicated exception message to a string %p", *msg);
+  *msg = DUP(e.what());
   if (t)
     delete t;
   return 0;
@@ -105,8 +114,7 @@ T *handleException(char **msg, std::exception &e, T *t)
   template <class T>
 T handleException(char **msg, std::exception &e)
 {
-  *msg = strdup(e.what());
-  //printf("Duplicated exception message to a string %p", *msg);
+  *msg = DUP(e.what());
   return 0;
 }
 

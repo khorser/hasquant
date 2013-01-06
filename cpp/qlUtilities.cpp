@@ -19,10 +19,7 @@ const char *boostVersion() {
 }
 
 void qlFreeString(char *p) {
-  // for extra tests
-  //*p = 0;
-  //printf("Freeing string %p\n", p);
-  free(p);
+  free(TM("Freeing string", p));
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber) {
@@ -38,4 +35,17 @@ int qlNullableDate(const QuantLib::Date &date) {
   else
     return date.serialNumber();
 }
+
+#ifdef QLTRACK_ALLOCATIONS
+void *tracemem(const char *text, void *p) {
+  fprintf(stderr, text, p);
+  return p;
+}
+
+char *tracedup(const char *p) {
+  TM("Duplicated string", const_cast<char *>(p));
+  return strdup(p);
+}
+#endif
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

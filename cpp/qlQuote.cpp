@@ -7,8 +7,7 @@ using namespace QuantLib;
 void *qlSimpleQuote(double value, char **e) {
   *e = 0;
   try {
-    return static_cast<Quote *>(new SimpleQuote(value));
-    //printf("Allocated simple quote %p\n", q);
+    return TM("Allocated simple quote", static_cast<Quote *>(new SimpleQuote(value)));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
@@ -17,15 +16,14 @@ void *qlSimpleQuote(double value, char **e) {
 double qlQuoteValue(void *quote, char **e) {
   *e = 0;
   try {
-    return static_cast<Quote *>(quote)->value();
+    return static_cast<Quote *>(TM("Quote", quote))->value();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 
 void qlFreeQuote(void *quote) {
-  //printf("freeing quote %p\n", quote);
-  delete static_cast<Quote *>(quote);
+  delete static_cast<Quote *>(TM("Freeing quote", quote));
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

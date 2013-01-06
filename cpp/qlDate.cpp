@@ -1,10 +1,4 @@
-#include <ql/version.hpp>
-#include <ql/errors.hpp>
 #include <ql/time/date.hpp>
-
-#include <stdlib.h>
-#include <string.h>
-//#include <stdio.h>
 
 #include "ql.h"
 

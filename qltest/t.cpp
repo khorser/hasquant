@@ -2,6 +2,7 @@
 #include <ql/cashflows/cashflows.hpp>
 #include <ql/cashflows/simplecashflow.hpp>
 #include <ql/time/calendars/all.hpp>
+#include <ql/time/schedule.hpp>
 
 #include <boost/shared_ptr.hpp>
 
@@ -59,7 +60,7 @@ int main4()
     cout << "c3:" << c3.isHoliday(d) << endl;
 }
 
-int main()
+int main5()
 {
     Calendar c = JointCalendar(Russia(), Ukraine());
     Calendar c3 = JointCalendar(Russia(), Ukraine());
@@ -71,4 +72,25 @@ int main()
     cout << "c2:" << c2.isHoliday(d) << c2.name() << endl;
     cout << "c3:" << c3.isHoliday(d) << c3.name() << endl;
     cout << "c3==c:" << (c3 == c) << endl;
+}
+
+void *sfun1()
+{
+    std::vector<Date> dates;
+    dates.push_back(Date(20, Dec, 2012));
+    dates.push_back(Date(20, May, 2013));
+    return new Schedule(dates , Russia(), Following);
+}
+
+void *sfun2(void *s1)
+{
+    return new Schedule(static_cast<Schedule *>(s1)->until(Date(15, Apr, 2013)));
+}
+
+int main()
+{
+    void *s1 = sfun1();
+    void *s2 = sfun2(s1);
+    delete static_cast<Schedule *>(s1);
+    delete static_cast<Schedule *>(s2);
 }
