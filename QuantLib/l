@@ -1,1 +1,2 @@
+#!/bin/sh
 hlint *.hs ../Test.hs */*.hs
