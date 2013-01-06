@@ -2,15 +2,14 @@
 #include <ql/errors.hpp>
 
 #include <string.h>
-#include <stdio.h>
 
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
 
 #ifdef QLTRACK_ALLOCATIONS
-# define TM(text, p) tracemem("\n" text ": %p\n", (p))
+# define TM(text, p) tracemem(__FILE__, __LINE__, (text), (p))
 # define DUP(p) tracedup((p))
-void *tracemem(const char *text, void *p);
+void *tracemem(const char *file, int line, const char *text, void *p);
 char *tracedup(const char *p);
 #else
 # define TM(text, p) (p)

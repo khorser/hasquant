@@ -147,11 +147,11 @@ void *qlCurrency(const char *name, char **e)
 }
 
 void  qlFreeCurrency(void *currency) {
-  delete static_cast<Currency *>(TM("Freeing currency", currency));
+  delete static_cast<Currency *>(TM("Pfreeing currency", currency));
 }
 
 const char *qlCurrencyName(void *currency) {
-  std::string name = static_cast<Currency *>(TM("Currency", currency))->name();
+  std::string name = static_cast<Currency *>(TM("Pcurrency", currency))->name();
   return DUP(name.c_str());
 }
 

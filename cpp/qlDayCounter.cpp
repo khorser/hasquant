@@ -92,11 +92,11 @@ void *qlDayCounter(const char *name, char **e)
 }
 
 void  qlFreeDayCounter(void *counter) {
-  delete static_cast<Calendar *>(TM("Freeing counter", counter));
+  delete static_cast<Calendar *>(TM("Pfreeing counter", counter));
 }
 
 const char *qlDayCounterName(void *counter) {
-  std::string name = static_cast<DayCounter *>(TM("Counter", counter))->name();
+  std::string name = static_cast<DayCounter *>(TM("Pcounter", counter))->name();
   return DUP(name.c_str());
 }
 

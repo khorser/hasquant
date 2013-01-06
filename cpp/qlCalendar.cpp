@@ -124,21 +124,21 @@ void *qlCalendar(const char *name, char **e)
 }
 
 void  qlFreeCalendar(void *calendar) {
-  delete static_cast<Calendar *>(TM("freeing calendar", calendar));
+  delete static_cast<Calendar *>(TM("Pfreeing calendar", calendar));
 }
 
 const char *qlCalendarName(void *calendar) {
-  std::string name = static_cast<Calendar *>(TM("calendar", calendar))->name();
+  std::string name = static_cast<Calendar *>(TM("Pcalendar", calendar))->name();
   return DUP(name.c_str());
 }
 
 int qlCalendarAdjust(void *c, int date, int conv) {
-  return static_cast<Calendar *>(TM("calendar", c))
+  return static_cast<Calendar *>(TM("Pcalendar", c))
     ->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();
 }
 
 int qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom) {
-  return static_cast<Calendar *>(TM("calendar", c))
+  return static_cast<Calendar *>(TM("Pcalendar", c))
     ->advance(Date(date), n, (TimeUnit) unit, (BusinessDayConvention) conv, eom).serialNumber();
 }
 

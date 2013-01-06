@@ -21,6 +21,7 @@ module QuantLib.Internal
   , CDate
   , toQlEnum
   , fromQlEnum
+  , signalError
   )
 
 where
@@ -55,6 +56,9 @@ foreign import ccall safe "ql.h qlMinMonth"
 foreign import ccall safe "ql.h qlMinDay"
   c_minDay :: CInt
 
+signalError :: String -> a
+signalError = throw . Error
+
 newtype Object a = Object{ptr :: ForeignPtr a}
 
 type CDate = Int
@@ -79,7 +83,7 @@ handleExceptions f =
         if msg /= nullPtr 
           then do err <- peekCString msg
                   c_freeString msg
-                  throw (Error err)
+                  signalError err
           else return r
 
 class Finalizable a where
@@ -120,7 +124,7 @@ instance QLDate Day where
                 where num = toQlDateSerialNumberUnsafe x
   -- return Either instead?
   toQlDateSerialNumber x | isValid x = fromInteger $ toModifiedJulianDay x - qlStart
-                         | otherwise = throw $ Error ("Invalid QuantLib date: " ++ show x)
+                         | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
   fromQlDateSerialNumber p = ModifiedJulianDay $
                 fromIntegral p + qlStart
 
@@ -137,7 +141,7 @@ foreign import ccall safe "ql.h qlEnumerationValue"
 
 values :: String -> [CInt]
 values ename = if null vals
-                 then throw $ Error ("Enumeration " ++ ename ++ " is not known")
+                 then signalError ("Enumeration " ++ ename ++ " is not known")
                  else vals
   where vals = unsafePerformIO $
                 withCString
@@ -151,7 +155,7 @@ values ename = if null vals
 toQlEnum :: (Typeable a, Enum a, Show a) => a -> CInt
 toQlEnum x =
   if index >= length vals
-    then throw $ Error ("Constructor " ++ show x ++ " is not found")
+    then signalError ("Constructor " ++ show x ++ " is not found")
     else vals !! index
   where
     index = fromEnum x
@@ -160,8 +164,8 @@ toQlEnum x =
 fromQlEnum :: (Typeable a, Enum a) => CInt -> a
 fromQlEnum x = enum
                where enum = result index
-                     result Nothing  = throw
-                       $ Error ("Unknown enumeration code: " ++ show x)
+                     result Nothing  =
+                       signalError ("Unknown enumeration code: " ++ show x)
                      result (Just i) = toEnum i
                      index = elemIndex x $ values (show $ typeOf enum)
                -- NB: intermediate computations are using the type of the

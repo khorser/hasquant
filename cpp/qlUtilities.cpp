@@ -4,7 +4,11 @@
 
 #include <stdlib.h>
 #include <string.h>
-//#include <stdio.h>
+#include <stdio.h>
+
+#ifdef _WIN32
+# include <windows.h>
+#endif
 
 #include "ql.h"
 
@@ -19,7 +23,7 @@ const char *boostVersion() {
 }
 
 void qlFreeString(char *p) {
-  free(TM("Freeing string", p));
+  free(TM("Pfreeing string", p));
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber) {
@@ -37,8 +41,14 @@ int qlNullableDate(const QuantLib::Date &date) {
 }
 
 #ifdef QLTRACK_ALLOCATIONS
-void *tracemem(const char *text, void *p) {
-  fprintf(stderr, text, p);
+void *tracemem(const char *file, int line, const char *text, void *p) {
+  //fprintf(stderr, text, p);
+  int thread = 0;
+#ifdef _WIN32
+  thread = GetCurrentThreadId();
+#endif
+
+  printf("\n%d(%s:%d)%s : %p\n", thread, file, line, text, p);
   return p;
 }
 

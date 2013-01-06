@@ -25,14 +25,14 @@ void *qlPeriodFromFrequency(int freq, char **e) {
 int qlPeriodToFrequency(void *period, char **e) {
   *e = 0;
   try {
-    return (Frequency)(static_cast<Period *>(TM("Period", period)))->frequency();
+    return (Frequency)(static_cast<Period *>(TM("Pperiod", period)))->frequency();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 
 void  qlFreePeriod(void *period) {
-  delete static_cast<Period *>(TM("Freeing period", period));
+  delete static_cast<Period *>(TM("Pfreeing period", period));
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

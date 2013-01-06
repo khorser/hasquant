@@ -16,14 +16,14 @@ void *qlSimpleQuote(double value, char **e) {
 double qlQuoteValue(void *quote, char **e) {
   *e = 0;
   try {
-    return static_cast<Quote *>(TM("Quote", quote))->value();
+    return static_cast<Quote *>(TM("Pquote", quote))->value();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 
 void qlFreeQuote(void *quote) {
-  delete static_cast<Quote *>(TM("Freeing quote", quote));
+  delete static_cast<Quote *>(TM("Pfreeing quote", quote));
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
