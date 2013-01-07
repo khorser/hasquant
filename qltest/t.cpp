@@ -89,10 +89,23 @@ void *sfun2(void *s1)
 
 int main()
 {
+    Schedule *s0 = new Schedule(Date(20, Dec, 2012),
+			    Date(21, Dec, 2013),
+			    *(new Period(1, Months)),
+			    *(new Russia()),
+			    Following,
+			    Unadjusted,
+			    DateGeneration::Forward,
+			    false,
+			    Date(21, Dec, 2012),
+			    Date(21, Dec, 2013));
+
+    std::cout << "1111" << std::endl;
     void *c = new Russia();
     void *s1 = sfun1(c);
-    delete static_cast<Schedule *>(c);
+    delete static_cast<Calendar *>(c);
     void *s2 = sfun2(s1);
     delete static_cast<Schedule *>(s1);
     delete static_cast<Schedule *>(s2);
+    std::cout << "2222" << std::endl;
 }

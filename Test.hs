@@ -15,6 +15,7 @@ import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
+import QuantLib.Internal(name)
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
@@ -112,7 +113,7 @@ calendar = TestList
   [
     "GBP" ~: do c1 <- Calendar.londonStockExchange
                 c2 <- Calendar.gbp
-                assertEqual "GBP calendar name" (Calendar.name c1) (Calendar.name c2)
+                assertEqual "GBP calendar name" (name c1) (name c2)
   , "adjust" ~: do c <- Calendar.russia 
                    assertEqual "Russian Calendar adjust"
                               (fromGregorian 2012 12 21)
@@ -127,7 +128,7 @@ currency :: Test
 currency = TestList
   [
     "GBP" ~: do c <- Currency.gbp
-                assertEqual "GBP currency name " "British pound sterling" (Currency.name c)
+                assertEqual "GBP currency name " "British pound sterling" (name c)
   ]
 
 dayCounter :: Test
@@ -135,7 +136,7 @@ dayCounter = TestList
   [
     "ACT/365" ~: do c1 <- DayCounter.a365F
                     c2 <- DayCounter.actual365Fixed
-                    assertEqual "ACT/365 names" (DayCounter.name c1) (DayCounter.name c2)
+                    assertEqual "ACT/365 names" (name c1) (name c2)
   ]
 
 bond :: Test

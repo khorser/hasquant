@@ -71,7 +71,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton,
-  c_name, name, constructNamed, toQlDateSerialNumber, fromQlDateSerialNumber,
+  c_name, constructNamed, toQlDateSerialNumber, fromQlDateSerialNumber,
   Object, withObject, CDate, toQlEnum)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
