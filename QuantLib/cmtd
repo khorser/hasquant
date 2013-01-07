@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir cpp
+make -f M EXTRA="-DQLTRACK_ALLOCATIONS -g -O0"

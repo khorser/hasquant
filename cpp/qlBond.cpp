@@ -9,6 +9,7 @@ using namespace QuantLib;
 void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
     char **e)
 {
+  *e = 0;
   try {
     return TM("Allocated bond",
 	      new Bond(settlDays,
@@ -23,6 +24,7 @@ void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
 void *qlBond2(unsigned settlDays, void *calendar, double faceAmount,
     int maturityDate, int issueDate, void *cashFlows, char **e)
 {
+  *e = 0;
   try {
     return TM("Allocated bond2",
 	      new Bond(settlDays,

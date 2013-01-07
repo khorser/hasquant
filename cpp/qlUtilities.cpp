@@ -53,8 +53,8 @@ void *tracemem(const char *file, int line, const char *text, void *p) {
 }
 
 char *tracedup(const char *p) {
-  TM("Duplicated string", const_cast<char *>(p));
-  return strdup(p);
+  TM("Duplicating string", const_cast<char *>(p));
+  return (char *)TM("Duplicated string", strdup(p));
 }
 #endif
 
