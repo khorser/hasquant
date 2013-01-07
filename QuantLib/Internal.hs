@@ -61,7 +61,7 @@ signalError = throw . Error
 
 newtype Object a = Object{ptr :: ForeignPtr a}
 
-type CDate = Int
+type CDate = CInt
 
 -- |Julian day of the QuantLib zero date
 qlStart :: Integer
@@ -72,7 +72,7 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
                                     (fromIntegral c_minDay)
 
 toQlDateSerialNumberUnsafe :: Day -> CDate
-toQlDateSerialNumberUnsafe x = fromInteger $ toModifiedJulianDay x - qlStart
+toQlDateSerialNumberUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
@@ -123,7 +123,7 @@ instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
                 where num = toQlDateSerialNumberUnsafe x
   -- return Either instead?
-  toQlDateSerialNumber x | isValid x = fromInteger $ toModifiedJulianDay x - qlStart
+  toQlDateSerialNumber x | isValid x = fromIntegral $ toModifiedJulianDay x - qlStart
                          | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
   fromQlDateSerialNumber p = ModifiedJulianDay $
                 fromIntegral p + qlStart

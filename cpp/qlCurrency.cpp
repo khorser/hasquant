@@ -140,18 +140,18 @@ void *qlCurrency(const char *name, char **e)
       c = new ZARCurrency();
     else
       QL_FAIL("Currency not found");
-    return TM("Allocated currency", c);
+    return TP("Allocated currency", c);
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 void  qlFreeCurrency(void *currency) {
-  delete static_cast<Currency *>(TM("Pfreeing currency", currency));
+  delete static_cast<Currency *>(TP("Pfreeing currency", currency));
 }
 
 const char *qlCurrencyName(void *currency) {
-  std::string name = static_cast<Currency *>(TM("Pcurrency", currency))->name();
+  std::string name = static_cast<Currency *>(TP("Pcurrency", currency))->name();
   return DUP(name.c_str());
 }
 

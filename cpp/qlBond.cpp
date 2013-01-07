@@ -11,11 +11,11 @@ void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
 {
   *e = 0;
   try {
-    return TM("Allocated bond",
+    return TP("Allocated bond",
 	      new Bond(settlDays,
-			*static_cast<Calendar *>(TM("Pcalendar", calendar)),
+			*static_cast<Calendar *>(TP("Pcalendar", calendar)),
 			qlNullableDate(issueDate),
-			*static_cast<Leg *>(TM("Pcoupons", coupons))));
+			*static_cast<Leg *>(TP("Pcoupons", coupons))));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
@@ -26,30 +26,30 @@ void *qlBond2(unsigned settlDays, void *calendar, double faceAmount,
 {
   *e = 0;
   try {
-    return TM("Allocated bond2",
+    return TP("Allocated bond2",
 	      new Bond(settlDays,
-			*static_cast<Calendar *>(TM("Pcalendar", calendar)),
+			*static_cast<Calendar *>(TP("Pcalendar", calendar)),
 			faceAmount,
 			qlNullableDate(maturityDate),
 			qlNullableDate(issueDate),
-			*static_cast<Leg *>(TM("PcashFlows", cashFlows))));
+			*static_cast<Leg *>(TP("PcashFlows", cashFlows))));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 int qlBondMaturityDate(void *bond) {
-  return qlNullableDate(static_cast<Bond *>(TM("Pbond", bond))
+  return qlNullableDate(static_cast<Bond *>(TP("Pbond", bond))
       ->maturityDate());
 }
 
 int qlBondIssueDate(void *bond) {
-  return qlNullableDate(static_cast<Bond *>(TM("Pbond", bond))
+  return qlNullableDate(static_cast<Bond *>(TP("Pbond", bond))
       ->issueDate());
 }
 
 void qlFreeBond(void *bond) {
-  delete static_cast<Bond *>(TM("Pfreeing bond", bond));
+  delete static_cast<Bond *>(TP("Pfreeing bond", bond));
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

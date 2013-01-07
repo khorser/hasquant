@@ -18,7 +18,7 @@ where
 import Data.Word(Word)
 import Data.Time.Calendar(Day)
 
-import Foreign.C.Types(CDouble(CDouble), CUInt(CUInt))
+import Foreign.C.Types(CDouble(CDouble), CInt(CInt), CUInt(CUInt))
 import Foreign.C.String(CString)
 import Foreign.Ptr(Ptr, FunPtr, castPtr, castFunPtr)
 
@@ -99,19 +99,21 @@ issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_issueDat
 -- |(qlFixedRateBond)
 fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
    -> BusinessDayConvention -> Double -> Maybe Day -> Calendar -> IO FixedRateBond
-fixedRateBond settl face sched coupons counter conv redemption issue cal = undefined
+--fixedRateBond settl face sched coupons counter conv redemption issue cal = 
+fixedRateBond = undefined
 
 -- |(qlFixedRateBond2)
 fixedRateBond' :: Word -> Double -> Day -> Day -> Period -> [Double] -> DayCounter
   -> BusinessDayConvention -> BusinessDayConvention -> Double -> Maybe Day
   -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar -> IO FixedRateBond
-fixedRateBond' settl face start maturity tenor coupons counter accrConv paymentConv
-  redemption issue stub rule eom cal = undefined
+--fixedRateBond' settl face start maturity tenor coupons counter accrConv paymentConv
+--  redemption issue stub rule eom cal = 
+fixedRateBond' = undefined
 
 fixedRateBond'' :: Word -> Double -> Schedule -> [Double] -> BusinessDayConvention
   -> Double -> Maybe Day -> Calendar -> IO FixedRateBond
-fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
-  undefined
+--fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
+fixedRateBond'' = undefined
 
 frequency :: FixedRateBond -> Frequency
 frequency = undefined

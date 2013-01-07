@@ -7,13 +7,25 @@
  * the code assumes that Haskell bindings validate date */ 
 
 #ifdef QLTRACK_ALLOCATIONS
-# define TM(text, p) tracemem(__FILE__, __LINE__, (text), (p))
+/* trace pointer */
+# define TP(text, p) traceval(__FILE__, __LINE__, (text), (void *)(p))
 # define DUP(p) tracedup((p))
-void *tracemem(const char *file, int line, const char *text, void *p);
+# define TV(f, v) traceval(__FILE__, __LINE__, (f), (v))
+
+#include <iostream>
+
+int getThread();
+template <class T>
+T traceval(const char *file, int line, const char *text, T val) {
+  std::cout << std::endl << getThread() << "(" << file << ":" << line
+    << ")" << text << ": " << val << std::endl;
+  return val;
+}
 char *tracedup(const char *p);
 #else
-# define TM(text, p) (p)
+# define TP(text, p) (p)
 # define DUP(p) strdup((p))
+# define TV(f, v) (v)
 #endif
 
 extern "C"

@@ -85,18 +85,18 @@ void *qlDayCounter(const char *name, char **e)
       c = new Business252();
     else
       QL_FAIL("Counter not found");
-    return TM("Allocated counter", c);
+    return TP("Allocated counter", c);
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 void  qlFreeDayCounter(void *counter) {
-  delete static_cast<Calendar *>(TM("Pfreeing counter", counter));
+  delete static_cast<Calendar *>(TP("Pfreeing counter", counter));
 }
 
 const char *qlDayCounterName(void *counter) {
-  std::string name = static_cast<DayCounter *>(TM("Pcounter", counter))->name();
+  std::string name = static_cast<DayCounter *>(TP("Pcounter", counter))->name();
   return DUP(name.c_str());
 }
 

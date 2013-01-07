@@ -117,28 +117,28 @@ void *qlCalendar(const char *name, char **e)
       c = new UnitedStates(UnitedStates::Settlement);
     else
       QL_FAIL("Calendar not found");
-    return TM("Allocated calendar", c);
+    return TP("Allocated calendar", c);
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 void  qlFreeCalendar(void *calendar) {
-  delete static_cast<Calendar *>(TM("Pfreeing calendar", calendar));
+  delete static_cast<Calendar *>(TP("Pfreeing calendar", calendar));
 }
 
 const char *qlCalendarName(void *calendar) {
-  std::string name = static_cast<Calendar *>(TM("Pcalendar", calendar))->name();
+  std::string name = static_cast<Calendar *>(TP("Pcalendar", calendar))->name();
   return DUP(name.c_str());
 }
 
 int qlCalendarAdjust(void *c, int date, int conv) {
-  return static_cast<Calendar *>(TM("Pcalendar", c))
+  return static_cast<Calendar *>(TP("Pcalendar", c))
     ->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();
 }
 
 int qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom) {
-  return static_cast<Calendar *>(TM("Pcalendar", c))
+  return static_cast<Calendar *>(TP("Pcalendar", c))
     ->advance(Date(date), n, (TimeUnit) unit, (BusinessDayConvention) conv, eom).serialNumber();
 }
 
