@@ -19,7 +19,7 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
           tenor <- Period.period 1 Unit.Months
           cal <- Calendar.russia
-          _ <- Schedule.schedule'
+          s0 <- Schedule.schedule'
                (Just (fromGregorian 2012 12 20))
                (fromGregorian 2013 12 21)
                tenor
@@ -31,10 +31,10 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
                (Just (fromGregorian 2012 12 21))
                (Just (fromGregorian 2013 12 21))
 
-          cal2 <- Calendar.russia
+          cal2 <- Calendar.ukraineUSE
           s <- Schedule.schedule
               [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
               cal2
-              BusinessDayConvention.Following
+              BusinessDayConvention.Unadjusted
           _ <- Schedule.until s (fromGregorian 2013 4 15)
           return ()

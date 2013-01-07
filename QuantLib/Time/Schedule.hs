@@ -80,6 +80,10 @@ schedule days cal conv =
               $ c_schedule (fromIntegral $ length days) d c (toQlEnum conv)))
 
 -- | (qlScheduleTruncated)
+-- DO NOT call this on schedules created with 'schedule'
+-- because result.isRegular_.pop_back() in QuantLib's Schedule::until
+-- is called on empty isRegular_ causing unspecified behaviour including
+-- segfaults 
 until :: Schedule -> Day -> IO Schedule
 until sched d =
   withObject

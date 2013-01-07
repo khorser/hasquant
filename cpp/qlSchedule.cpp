@@ -43,9 +43,9 @@ void *qlSchedule(int len, int *dates, void *cal, int conv, char **e) {
 void *qlScheduleUntil(void *sched, int date, char **e) {
   *e = 0;
   try {
-    Schedule tmp = static_cast<Schedule *>(TP("Pschedule", sched))
-		    ->until(Date(TV("Pdate", date)));
-    return TP("Allocated truncated schedule", new Schedule(tmp));
+    return TP("Allocated truncated schedule",
+	new Schedule(static_cast<Schedule *>(TP("Pschedule", sched))
+		      ->until(Date(TV("Pdate", date)))));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }

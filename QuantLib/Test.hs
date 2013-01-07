@@ -214,15 +214,19 @@ schedule = TestList
               BusinessDayConvention.Following
             assertEqual "Test" True True
   , "schedule truncation"
-  -- for some reason qlFreeSchedule for resulting schedule segfaults
-  -- on Windows while works ok on Linux. The C++ code is the literal translation
-  -- of QLAddin
-  -- Also it works fine under gdb
-      ~: do cal <- Calendar.russia
-            s <- Schedule.schedule
-              [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
+      ~: do tenor <- Period.period 1 Unit.Months
+            cal <- Calendar.russia
+            s <- Schedule.schedule'
+              (Just (fromGregorian 2012 12 20))
+              (fromGregorian 2013 12 21)
+              tenor
               cal
               BusinessDayConvention.Following
+              BusinessDayConvention.Unadjusted
+              DateGenerationRule.Forward
+              False
+              (Just (fromGregorian 2012 12 21))
+              (Just (fromGregorian 2013 12 21))
             _ <- Schedule.until s (fromGregorian 2013 4 15)
             assertEqual "Test" True True
   ]
