@@ -10,6 +10,7 @@
 /* trace pointer */
 # define TP(text, p) traceval(__FILE__, __LINE__, (text), (void *)(p))
 # define DUP(p) tracedup((p))
+/* trace val */
 # define TV(f, v) traceval(__FILE__, __LINE__, (f), (v))
 
 #include <iostream>

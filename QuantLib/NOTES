@@ -17,6 +17,8 @@ Actual instantiation of QuantLib object will happen inly on pricing.
 This allows for easy building of mutators as simply returning a new copy with
 updated data
 
+keep objects together to avoid gc-ing of objects for which we still have references
+
 --- BOND Pricing: ---
 
 <Constructor name='qlDepositRateHelper2'>
