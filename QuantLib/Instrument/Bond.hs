@@ -119,7 +119,7 @@ fixedRateBond settl face sched coupons counter conv redemption issue calendar =
         withArray
         (map realToFrac coupons)
         (\cpns ->
-          (construct $ c_fixedRateBond (fromIntegral settl)
+          construct $ c_fixedRateBond (fromIntegral settl)
                                        (realToFrac face)
                                        s
                                        (fromIntegral (length coupons))
@@ -128,7 +128,7 @@ fixedRateBond settl face sched coupons counter conv redemption issue calendar =
                                        (toQlEnum conv)
                                        (realToFrac redemption)
                                        (toQlDateSerialNumber issue)
-                                       cal)))))
+                                       cal))))
 
 -- |(qlFixedRateBond2)
 fixedRateBond' :: Word -> Double -> Day -> Day -> Period -> [Double] -> DayCounter

@@ -1,1 +1,1 @@
-hlint ../Test.hs Instrument\Bond.hs Time\BusinessDayConvention.hs Time\Calendar.hs Currency.hs Time\Date.hs Time\DateGenerationRule.hs Time\DayCounter.hs Error.hs Time\Frequency.hs Internal.hs CashFlow\Leg.hs Time\Period.hs Quote.hs Time\Schedule.hs Settings.hs Time\Unit.hs Utilities.hs
+hlint Test.hs Instrument\Bond.hs Time\BusinessDayConvention.hs Time\Calendar.hs Currency.hs Time\Date.hs Time\DateGenerationRule.hs Time\DayCounter.hs Error.hs Time\Frequency.hs Internal.hs CashFlow\Leg.hs Time\Period.hs Quote.hs Time\Schedule.hs Settings.hs Time\Unit.hs Utilities.hs
