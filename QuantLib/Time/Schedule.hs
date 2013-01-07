@@ -30,15 +30,15 @@ data CSchedule
 
 type Schedule = Object CSchedule
 
-foreign import ccall unsafe "ql.h qlSchedule"
+foreign import ccall safe "ql.h qlSchedule"
   c_schedule :: CInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
-foreign import ccall unsafe "ql.h qlSchedule2"
+foreign import ccall safe "ql.h qlSchedule2"
   c_schedule' :: CDate -> CDate -> Ptr CPeriod -> Ptr CCalendar
     -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString
     -> IO (Ptr CSchedule)
-foreign import ccall unsafe "ql.h qlScheduleUntil"
+foreign import ccall safe "ql.h qlScheduleUntil"
   c_until :: Ptr CSchedule -> CDate -> Ptr CString -> IO (Ptr CSchedule)
-foreign import ccall unsafe "ql.h &qlFreeSchedule"
+foreign import ccall safe "ql.h &qlFreeSchedule"
   p_freeSchedule :: FunPtr (Ptr CSchedule -> IO ())
 
 instance Finalizable CSchedule where

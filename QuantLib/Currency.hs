@@ -2,7 +2,6 @@
 module QuantLib.Currency
   (
     CCurrency
-  , name
   , Currency
 
   , currency

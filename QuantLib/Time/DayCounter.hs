@@ -2,7 +2,6 @@
 module QuantLib.Time.DayCounter
   (
     DayCounter
-  , name
   , CDayCounter
 
   , dayCounter
