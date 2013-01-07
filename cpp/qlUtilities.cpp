@@ -5,10 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifdef _WIN32
-# include <windows.h>
-#endif
-
 #include "ql.h"
 
 using namespace QuantLib;
@@ -40,14 +36,6 @@ int qlNullableDate(const QuantLib::Date &date) {
 }
 
 #ifdef QLTRACK_ALLOCATIONS
-int getThread() {
-# ifdef _WIN32
-  return (int)GetCurrentThreadId();
-# else
-  return 0;
-# endif
-}
-
 char *tracedup(const char *p) {
   TP("Duplicating string", const_cast<char *>(p));
   return (char *)TP("Duplicated string to", strdup(p));

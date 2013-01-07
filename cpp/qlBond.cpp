@@ -14,9 +14,9 @@ void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
   try {
     return TP("Allocated bond",
 	      new Bond(settlDays,
-			*static_cast<Calendar *>(TP("Pcalendar", calendar)),
+			*log_and_cast<Calendar>("Pcalendar", calendar),
 			qlNullableDate(issueDate),
-			*static_cast<Leg *>(TP("Pcoupons", coupons))));
+			*log_and_cast<Leg>("Pcoupons", coupons)));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
@@ -29,28 +29,26 @@ void *qlBond2(unsigned settlDays, void *calendar, double faceAmount,
   try {
     return TP("Allocated bond2",
 	      new Bond(settlDays,
-			*static_cast<Calendar *>(TP("Pcalendar", calendar)),
+			*log_and_cast<Calendar>("Pcalendar", calendar),
 			faceAmount,
 			qlNullableDate(maturityDate),
 			qlNullableDate(issueDate),
-			*static_cast<Leg *>(TP("PcashFlows", cashFlows))));
+			*log_and_cast<Leg>("PcashFlows", cashFlows)));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 int qlBondMaturityDate(void *bond) {
-  return qlNullableDate(static_cast<Bond *>(TP("Pbond", bond))
-      ->maturityDate());
+  return qlNullableDate(log_and_cast<Bond>("Pbond", bond)->maturityDate());
 }
 
 int qlBondIssueDate(void *bond) {
-  return qlNullableDate(static_cast<Bond *>(TP("Pbond", bond))
-      ->issueDate());
+  return qlNullableDate(log_and_cast<Bond>("Pbond", bond)->issueDate());
 }
 
 void qlFreeBond(void *bond) {
-  delete static_cast<Bond *>(TP("Pfreeing bond", bond));
+  delete log_and_cast<Bond>("Pfreeing bond", bond);
 }
 
 void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
@@ -69,13 +67,13 @@ void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
 		new FixedRateBond(
 		  settlDays,
 		  face,
-		  *static_cast<Schedule *>(TP("Pschedule", schedule)),
+		  *log_and_cast<Schedule>("Pschedule", schedule),
 		  cpns,
-		  *static_cast<DayCounter *>(TP("Pcounter", counter)),
+		  *log_and_cast<DayCounter>("Pcounter", counter),
 		  (BusinessDayConvention) payConv,
 		  redemption,
 		  qlNullableDate(issue),
-		  *static_cast<Calendar *>(TP("Pcalendar", payCal)))));
+		  *log_and_cast<Calendar>("Pcalendar", payCal))));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }

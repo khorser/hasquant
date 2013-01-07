@@ -92,13 +92,12 @@ void *qlDayCounter(const char *name, char **e)
 }
 
 void  qlFreeDayCounter(void *counter) {
-  delete static_cast<Calendar *>(TP("Pfreeing counter", counter));
+  delete log_and_cast<Calendar>("Pfreeing counter", counter);
 }
 
 const char *qlDayCounterName(void *counter) {
-  std::string name = static_cast<DayCounter *>(TP("Pcounter", counter))->name();
+  std::string name = log_and_cast<DayCounter>("Pcounter", counter)->name();
   return DUP(name.c_str());
 }
-
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

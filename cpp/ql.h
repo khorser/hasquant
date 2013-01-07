@@ -8,18 +8,17 @@
 
 #ifdef QLTRACK_ALLOCATIONS
 /* trace pointer */
-# define TP(text, p) traceval(__FILE__, __LINE__, (text), (void *)(p))
+# define TP(text, p) traceval((text), (void *)(p))
 # define DUP(p) tracedup((p))
 /* trace val */
-# define TV(f, v) traceval(__FILE__, __LINE__, (f), (v))
+# define TV(f, v) traceval((f), (v))
 
 #include <iostream>
 
 int getThread();
 template <class T>
-T traceval(const char *file, int line, const char *text, T val) {
-  std::cout << std::endl << getThread() << "(" << file << ":" << line
-    << ")" << text << ": " << val << std::endl;
+T traceval(const char *text, T val) {
+  std::cout << std::endl << text << ": " << val << std::endl;
   return val;
 }
 char *tracedup(const char *p);
@@ -28,6 +27,11 @@ char *tracedup(const char *p);
 # define DUP(p) strdup((p))
 # define TV(f, v) (v)
 #endif
+
+template <class T>
+T *log_and_cast(const char *msg, void *p) {
+  return static_cast<T *>(TP(msg, p));
+}
 
 extern "C"
 {

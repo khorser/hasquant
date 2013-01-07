@@ -12,8 +12,8 @@ void *qlSchedule2(int eff, int term, void *tenor, void *cal,
     return TP("Allocated schedule2",
 	      new Schedule(qlNullableDate(eff),
 			    Date(term),
-			    *static_cast<Period *>(TP("Ptenor", tenor)),
-			    *static_cast<Calendar *>(TP("Pcalendar", cal)),
+			    *log_and_cast<Period>("Ptenor", tenor),
+			    *log_and_cast<Calendar>("Pcalendar", cal),
 			    (BusinessDayConvention) conv,
 			    (BusinessDayConvention) termConv,
 			    (DateGeneration::Rule) rule,
@@ -33,7 +33,7 @@ void *qlSchedule(int len, int *dates, void *cal, int conv, char **e) {
       d.push_back(Date(TV("PAdate", dates[i])));
     return TP("Allocated schedule",
 		new Schedule(d,
-			      *static_cast<Calendar *>(TP("Pcalendar", cal)),
+			      *log_and_cast<Calendar>("Pcalendar", cal),
 			      (BusinessDayConvention)conv));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
@@ -44,7 +44,7 @@ void *qlScheduleUntil(void *sched, int date, char **e) {
   *e = 0;
   try {
     return TP("Allocated truncated schedule",
-	new Schedule(static_cast<Schedule *>(TP("Pschedule", sched))
+	new Schedule(log_and_cast<Schedule>("Pschedule", sched)
 		      ->until(Date(date))));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
@@ -52,7 +52,7 @@ void *qlScheduleUntil(void *sched, int date, char **e) {
 }
 
 void qlFreeSchedule(void *s) {
-  delete static_cast<Schedule *>(TP("Pfreeing schedule", s));
+  delete log_and_cast<Schedule>("Pfreeing schedule", s);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
