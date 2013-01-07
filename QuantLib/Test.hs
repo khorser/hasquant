@@ -154,23 +154,33 @@ bond = TestList
             b <- Bond.bond 3 c Nothing l
             --print $ Bond.frequency b
             assertEqual "issue date" Nothing (Bond.issueDate b)
-  -- , "fixed rate bond"
-  --     ~: do s <- Schedule.schedule
-  --                 [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
-  --                 Calendar.russia
-  --                 BusinessDayConvention.Following
-  --           b <- Bond.fixedRateBond
-  --                 1
-  --                 100
-  --                 s
-  --                 [3]
-  --                 DayCounter.actual365Fixed
-  --                 BusinessDayConvention.Following
-  --                 100
-  --                 (Just $ fromGregorian 2012 10 01)
-  --                 Calendar.russia
-  --           assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
-  --           assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.maturityDate b)
+  , "fixed rate bond"
+      ~: do c <- Calendar.russia
+            tenor <- Period.period 1 Unit.Months
+            s <- Schedule.schedule'
+              (Just (fromGregorian 2012 12 20))
+              (fromGregorian 2013 12 21)
+              tenor
+              c
+              BusinessDayConvention.Following
+              BusinessDayConvention.Unadjusted
+              DateGenerationRule.Forward
+              False
+              (Just (fromGregorian 2012 12 21))
+              (Just (fromGregorian 2013 12 21))
+            cnt <- DayCounter.actual365Fixed
+            b <- Bond.fixedRateBond
+                  1
+                  100
+                  s
+                  [3]
+                  cnt
+                  BusinessDayConvention.Following
+                  100
+                  (Just $ fromGregorian 2012 10 01)
+                  c
+            assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
+            assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
   ]
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)

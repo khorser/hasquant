@@ -1,6 +1,7 @@
 #include <ql/cashflows/cashflows.hpp>
 #include <ql/time/calendar.hpp>
 #include <ql/instruments/bond.hpp>
+#include <ql/instruments/bonds/all.hpp>
 
 #include "ql.h"
 
@@ -50,6 +51,34 @@ int qlBondIssueDate(void *bond) {
 
 void qlFreeBond(void *bond) {
   delete static_cast<Bond *>(TP("Pfreeing bond", bond));
+}
+
+void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
+    int cLen, double *coupons, void *counter,
+    int payConv, double redemption, int issue, void *payCal,
+    char **e)
+{
+  *e = 0;
+  try {
+    std::vector<Rate> cpns;
+    for (int i = 0; i < cLen; ++i)
+      cpns.push_back(coupons[i]);
+
+    return TP("Allocated fixed rate bond",
+	      static_cast<Bond *>(
+		new FixedRateBond(
+		  settlDays,
+		  face,
+		  *static_cast<Schedule *>(TP("Pschedule", schedule)),
+		  cpns,
+		  *static_cast<DayCounter *>(TP("Pcounter", counter)),
+		  (BusinessDayConvention) payConv,
+		  redemption,
+		  qlNullableDate(issue),
+		  *static_cast<Calendar *>(TP("Pcalendar", payCal)))));
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

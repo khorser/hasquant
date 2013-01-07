@@ -68,6 +68,10 @@ extern "C"
   void *qlBond2(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
   int   qlBondMaturityDate(void *bond);
   int   qlBondIssueDate(void *bond);
+  void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
+    int cLen, double *coupons, void *counter,
+    int payConv, double redemption, int issue, void *payCal,
+    char **e);
 
   void qlFreeBond(void *bond);
 

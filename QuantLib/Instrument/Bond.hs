@@ -20,19 +20,20 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CDouble(CDouble), CInt(CInt), CUInt(CUInt))
 import Foreign.C.String(CString)
+import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr, castPtr, castFunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
-import QuantLib.Internal(CDate, withObject, Object, construct, Finalizable, finalize, toQlDateSerialNumber, fromQlDateSerialNumber)
+import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
-import QuantLib.Time.DayCounter(DayCounter)
+import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)
 import QuantLib.Time.Period(Period)
-import QuantLib.Time.Schedule(Schedule)
+import QuantLib.Time.Schedule(Schedule, CSchedule)
 
 data CBond
 
@@ -96,11 +97,38 @@ maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_matur
 issueDate :: BondClass a => Object a -> Maybe Day
 issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_issueDate . castPtr))
 
+foreign import ccall safe "ql.h qlFixedRateBond"
+  c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule
+    -> CInt -> Ptr CDouble -> Ptr CDayCounter
+    -> CInt -> CDouble -> CDate -> Ptr CCalendar -> Ptr CString
+    -> IO (Ptr CFixedRateBond)
+
 -- |(qlFixedRateBond)
 fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
    -> BusinessDayConvention -> Double -> Maybe Day -> Calendar -> IO FixedRateBond
---fixedRateBond settl face sched coupons counter conv redemption issue cal = 
-fixedRateBond = undefined
+fixedRateBond settl face sched coupons counter conv redemption issue calendar =
+  withObject
+  sched
+  (\s ->
+    withObject
+    counter
+    (\c ->
+      withObject
+      calendar
+      (\cal ->
+        withArray
+        (map realToFrac coupons)
+        (\cpns ->
+          (construct $ c_fixedRateBond (fromIntegral settl)
+                                       (realToFrac face)
+                                       s
+                                       (fromIntegral (length coupons))
+                                       cpns
+                                       c
+                                       (toQlEnum conv)
+                                       (realToFrac redemption)
+                                       (toQlDateSerialNumber issue)
+                                       cal)))))
 
 -- |(qlFixedRateBond2)
 fixedRateBond' :: Word -> Double -> Day -> Day -> Period -> [Double] -> DayCounter
