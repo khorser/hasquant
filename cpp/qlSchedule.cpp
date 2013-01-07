@@ -10,16 +10,16 @@ void *qlSchedule2(int eff, int term, void *tenor, void *cal,
   *e = 0;
   try {
     return TP("Allocated schedule2",
-	      new Schedule(qlNullableDate(eff),
-			    Date(term),
+	      new Schedule(qlNullableDate(TV("Peff", eff)),
+			    Date(TV("Pterm", term)),
 			    *static_cast<Period *>(TP("Ptenor", tenor)),
 			    *static_cast<Calendar *>(TP("Pcalendar", cal)),
-			    (BusinessDayConvention) conv,
-			    (BusinessDayConvention) termConv,
-			    (DateGeneration::Rule) rule,
-			    eom,
-			    qlNullableDate(first),
-			    qlNullableDate(nextToLast)));
+			    (BusinessDayConvention) TV("Pconv", conv),
+			    (BusinessDayConvention) TV("PtermConv", termConv),
+			    (DateGeneration::Rule) TV("Prule", rule),
+			    TV("Peom", eom),
+			    qlNullableDate(TV("Pfirst", first)),
+			    qlNullableDate(TV("PnextToLast", nextToLast))));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
