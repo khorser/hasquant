@@ -41,11 +41,11 @@ int qlNullableDate(const QuantLib::Date &date) {
 
 #ifdef QLTRACK_ALLOCATIONS
 int getThread() {
-#ifdef _WIN32
+# ifdef _WIN32
   return (int)GetCurrentThreadId();
-#else
+# else
   return 0;
-#endif
+# endif
 }
 
 char *tracedup(const char *p) {

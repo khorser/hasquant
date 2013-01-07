@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir obj
+ghc -outputdir obj -Wall -o Test1 */*.hs *.hs ../Test1.hs cpp/*.o -lQuantLib -pgml g++ -optl-g
