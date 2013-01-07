@@ -69,43 +69,43 @@ instance NamedSingleton CDayCounter where
   c_construct = c_dayCounter
   c_name = c_dayCounterName
 
-dayCounter      ::DayCounter
-noDayCounter    ::DayCounter
-actual365Fixed  ::DayCounter
-act365Fixed     ::DayCounter
-a365Fixed       ::DayCounter
-a365F           ::DayCounter
-one             ::DayCounter
-actualActualISDA::DayCounter
-actualActual    ::DayCounter
-actual365       ::DayCounter
-act365          ::DayCounter
-a365            ::DayCounter
-actAct          ::DayCounter
-actual360       ::DayCounter
-act360          ::DayCounter
-a360            ::DayCounter
-thirty360BondBasis  ::DayCounter
-bondBasis       ::DayCounter
-thirty360       ::DayCounter
-threeSixty360   ::DayCounter
-thirty360EurobondBasis::DayCounter
-eurobondBasis   ::DayCounter
-thirtyE360      ::DayCounter
-thirtyE360EurobondBasis::DayCounter
-actualActualISMA::DayCounter
-actualActualBond::DayCounter
-actualActualAFB ::DayCounter
-actualActualEuro::DayCounter
-thirty360Italian::DayCounter
-simple          ::DayCounter
-lin30360        ::DayCounter
-linACT360       ::DayCounter
-linACT365       ::DayCounter
-linACTACT       ::DayCounter
-linACTACTISDA   ::DayCounter
-linACTACTISMA   ::DayCounter
-business252     ::DayCounter
+dayCounter      :: IO DayCounter
+noDayCounter    :: IO DayCounter
+actual365Fixed  :: IO DayCounter
+act365Fixed     :: IO DayCounter
+a365Fixed       :: IO DayCounter
+a365F           :: IO DayCounter
+one             :: IO DayCounter
+actualActualISDA:: IO DayCounter
+actualActual    :: IO DayCounter
+actual365       :: IO DayCounter
+act365          :: IO DayCounter
+a365            :: IO DayCounter
+actAct          :: IO DayCounter
+actual360       :: IO DayCounter
+act360          :: IO DayCounter
+a360            :: IO DayCounter
+thirty360BondBasis  :: IO DayCounter
+bondBasis       :: IO DayCounter
+thirty360       :: IO DayCounter
+threeSixty360   :: IO DayCounter
+thirty360EurobondBasis:: IO DayCounter
+eurobondBasis   :: IO DayCounter
+thirtyE360      :: IO DayCounter
+thirtyE360EurobondBasis:: IO DayCounter
+actualActualISMA:: IO DayCounter
+actualActualBond:: IO DayCounter
+actualActualAFB :: IO DayCounter
+actualActualEuro:: IO DayCounter
+thirty360Italian:: IO DayCounter
+simple          :: IO DayCounter
+lin30360        :: IO DayCounter
+linACT360       :: IO DayCounter
+linACT365       :: IO DayCounter
+linACTACT       :: IO DayCounter
+linACTACTISDA   :: IO DayCounter
+linACTACTISMA   :: IO DayCounter
+business252     :: IO DayCounter
 
 dayCounter         = constructNamed "DayCounter"
 noDayCounter       = constructNamed "NoDayCounter"

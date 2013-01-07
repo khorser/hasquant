@@ -4,7 +4,7 @@ g++ -Wall -c ../cpp/qlCalendar.cpp -o cpp/qlCalendar.o -I%DEVLIBS%\QuantLib-1.2.
 g++ -Wall -c ../cpp/qlCurrency.cpp -o cpp/qlCurrency.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
 g++ -Wall -c ../cpp/qlDate.cpp -o cpp/qlDate.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
 g++ -Wall -c ../cpp/qlDayCounter.cpp -o cpp/qlDayCounter.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
-g++ -Wall -c ../cpp/qlEnumerations.cpp -o cpp/qlFrequency.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
+g++ -Wall -c ../cpp/qlEnumerations.cpp -o cpp/qlEnumerations.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
 g++ -Wall -c ../cpp/qlLeg.cpp -o cpp/qlLeg.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
 g++ -Wall -c ../cpp/qlPeriod.cpp -o cpp/qlPeriod.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0
 g++ -Wall -c ../cpp/qlQuote.cpp -o cpp/qlQuote.o -I%DEVLIBS%\QuantLib-1.2.1 -I%DEVLIBS%\boost_1_50_0

@@ -110,39 +110,47 @@ leg = TestList
 calendar :: Test
 calendar = TestList
   [
-    "GBP" ~: "GBP calendar name" ~:
-      Calendar.name Calendar.londonStockExchange ~?= Calendar.name Calendar.gbp
-  , "adjust" ~: "Russian Calendar adjust" ~:
-      Calendar.adjust Calendar.russia (fromGregorian 2012 12 22) BusinessDayConvention.Preceding ~?= fromGregorian 2012 12 21
-  , "advance" ~: "Russian Calendar adjust" ~:
-      Calendar.advance Calendar.russia (fromGregorian 2012 12 20) 1 Unit.Months BusinessDayConvention.Preceding False ~?= fromGregorian 2013 01 18
+    "GBP" ~: do c1 <- Calendar.londonStockExchange
+                c2 <- Calendar.gbp
+                assertEqual "GBP calendar name" (Calendar.name c1) (Calendar.name c2)
+  , "adjust" ~: do c <- Calendar.russia 
+                   assertEqual "Russian Calendar adjust"
+                              (fromGregorian 2012 12 21)
+                              (Calendar.adjust c (fromGregorian 2012 12 22) BusinessDayConvention.Preceding)
+  , "advance" ~: do c <- Calendar.russia 
+                    assertEqual "Russian Calendar advance"
+                              (fromGregorian 2013 01 18)
+                              (Calendar.advance c (fromGregorian 2012 12 20) 1 Unit.Months BusinessDayConvention.Preceding False)
   ]
 
 currency :: Test
 currency = TestList
   [
-    "GBP" ~: "GBP currency name" ~:
-      Currency.name Currency.gbp ~?= "British pound sterling"
+    "GBP" ~: do c <- Currency.gbp
+                assertEqual "GBP currency name " "British pound sterling" (Currency.name c)
   ]
 
 dayCounter :: Test
 dayCounter = TestList
   [
-    "ACT/365" ~: "ACT/365 name" ~:
-      DayCounter.name DayCounter.actual365Fixed ~?= DayCounter.name DayCounter.a365F
+    "ACT/365" ~: do c1 <- DayCounter.a365F
+                    c2 <- DayCounter.actual365Fixed
+                    assertEqual "ACT/365 names" (DayCounter.name c1) (DayCounter.name c2)
   ]
 
 bond :: Test
 bond = TestList
   [
     "bond statics"
-      ~: do l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
-            b <- Bond.bond' 2 Calendar.gbp 1000 m i l
+      ~: do c <- Calendar.gbp
+            l <- Leg.leg [(1000, fromGregorian 2013 1 1)] 
+            b <- Bond.bond' 2 c 1000 m i l
             assertEqual "matirity date" m (Bond.maturityDate b)
             assertEqual "issue date" i (Bond.issueDate b)
   , "special bond statics"
-      ~: do l <- Leg.leg [] 
-            b <- Bond.bond 3 Calendar.gbp Nothing l
+      ~: do c <- Calendar.gbp
+            l <- Leg.leg [] 
+            b <- Bond.bond 3 c Nothing l
             --print $ Bond.frequency b
             assertEqual "issue date" Nothing (Bond.issueDate b)
   -- , "fixed rate bond"
@@ -184,11 +192,12 @@ schedule = TestList
   [
     "schedule1"
       ~: do tenor <- Period.period 1 Unit.Months
+            cal <- Calendar.russia
             _ <- Schedule.schedule'
               (Just (fromGregorian 2012 12 20))
               (fromGregorian 2013 12 21)
               tenor
-              Calendar.russia
+              cal
               BusinessDayConvention.Following
               BusinessDayConvention.Unadjusted
               DateGenerationRule.Forward
@@ -197,9 +206,10 @@ schedule = TestList
               (Just (fromGregorian 2013 12 21))
             assertEqual "Test" True True
   , "schedule2"
-      ~: do _ <- Schedule.schedule
+      ~: do cal <- Calendar.russia
+            _ <- Schedule.schedule
               [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
-              Calendar.russia
+              cal
               BusinessDayConvention.Following
             assertEqual "Test" True True
   , "schedule truncation"
@@ -207,9 +217,10 @@ schedule = TestList
   -- on Windows while works ok on Linux. The C++ code is the literal translation
   -- of QLAddin
   -- Also it works fine under gdb
-      ~: do s <- Schedule.schedule
+      ~: do cal <- Calendar.russia
+            s <- Schedule.schedule
               [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
-              Calendar.russia
+              cal
               BusinessDayConvention.Following
             _ <- Schedule.until s (fromGregorian 2013 4 15)
             assertEqual "Test" True True

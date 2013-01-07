@@ -135,58 +135,58 @@ advance cal d n u conv eom = fromQlDateSerialNumber $ unsafePerformIO
 -- Also we can create a calendar that will call back Haskell
 -- for actual implementation
 
-noCalendar              ::Calendar
-nullCalendar            ::Calendar
-target                  ::Calendar
-argentinaMerval         ::Calendar
-australia               ::Calendar
-brazilSettlement        ::Calendar
-brazilExchange          ::Calendar
-canadaSettlement        ::Calendar
-canadaTSX               ::Calendar
-china                   ::Calendar
-czechRepublicPSE        ::Calendar
-denmark                 ::Calendar
-finland                 ::Calendar
-germanyEurex            ::Calendar
-germanyFrankfurtStockExchange ::Calendar
-germanySettlement       ::Calendar
-germanyXetra            ::Calendar
-hongKongHKEx            ::Calendar
-hungary                 ::Calendar
-icelandICEX             ::Calendar
-indiaNSE                ::Calendar
-indonesiaBEJ            ::Calendar
-indonesiaJSX            ::Calendar
-italyExchange           ::Calendar
-italySettlement         ::Calendar
-japan                   ::Calendar
-mexicoBMV               ::Calendar
-newZealand              ::Calendar
-norway                  ::Calendar
-poland                  ::Calendar
-russia                  ::Calendar
-saudiArabiaTadawul      ::Calendar
-singaporeSGX            ::Calendar
-slovakiaBSSE            ::Calendar
-southAfrica             ::Calendar
-southKoreaKRX           ::Calendar
-sweden                  ::Calendar
-switzerland             ::Calendar
-taiwanTSEC              ::Calendar
-eur                     ::Calendar
-turkey                  ::Calendar
-ukraineUSE              ::Calendar
-unitedKingdomExchange   ::Calendar
-londonStockExchange     ::Calendar
-london                  ::Calendar
-gbp                     ::Calendar
-unitedKingdomMetals     ::Calendar
-unitedKingdomSettlement ::Calendar
-unitedStatesGovernmentBond::Calendar
-unitedStatesNERC        ::Calendar
-unitedStatesNYSE        ::Calendar
-unitedStatesSettlement  ::Calendar
+noCalendar              :: IO Calendar
+nullCalendar            :: IO Calendar
+target                  :: IO Calendar
+argentinaMerval         :: IO Calendar
+australia               :: IO Calendar
+brazilSettlement        :: IO Calendar
+brazilExchange          :: IO Calendar
+canadaSettlement        :: IO Calendar
+canadaTSX               :: IO Calendar
+china                   :: IO Calendar
+czechRepublicPSE        :: IO Calendar
+denmark                 :: IO Calendar
+finland                 :: IO Calendar
+germanyEurex            :: IO Calendar
+germanyFrankfurtStockExchange :: IO Calendar
+germanySettlement       :: IO Calendar
+germanyXetra            :: IO Calendar
+hongKongHKEx            :: IO Calendar
+hungary                 :: IO Calendar
+icelandICEX             :: IO Calendar
+indiaNSE                :: IO Calendar
+indonesiaBEJ            :: IO Calendar
+indonesiaJSX            :: IO Calendar
+italyExchange           :: IO Calendar
+italySettlement         :: IO Calendar
+japan                   :: IO Calendar
+mexicoBMV               :: IO Calendar
+newZealand              :: IO Calendar
+norway                  :: IO Calendar
+poland                  :: IO Calendar
+russia                  :: IO Calendar
+saudiArabiaTadawul      :: IO Calendar
+singaporeSGX            :: IO Calendar
+slovakiaBSSE            :: IO Calendar
+southAfrica             :: IO Calendar
+southKoreaKRX           :: IO Calendar
+sweden                  :: IO Calendar
+switzerland             :: IO Calendar
+taiwanTSEC              :: IO Calendar
+eur                     :: IO Calendar
+turkey                  :: IO Calendar
+ukraineUSE              :: IO Calendar
+unitedKingdomExchange   :: IO Calendar
+londonStockExchange     :: IO Calendar
+london                  :: IO Calendar
+gbp                     :: IO Calendar
+unitedKingdomMetals     :: IO Calendar
+unitedKingdomSettlement :: IO Calendar
+unitedStatesGovernmentBond:: IO Calendar
+unitedStatesNERC        :: IO Calendar
+unitedStatesNYSE        :: IO Calendar
+unitedStatesSettlement  :: IO Calendar
 
 noCalendar              = constructNamed "NoCalendar"
 nullCalendar            = constructNamed "NullCalendar"

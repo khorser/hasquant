@@ -101,8 +101,8 @@ class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-  constructNamed :: String -> Object a
-  constructNamed n = unsafePerformIO (withCString n $ construct . c_construct)
+  constructNamed :: String -> IO (Object a)
+  constructNamed n = withCString n $ construct . c_construct
 
   name :: Object a -> String
   name c = unsafePerformIO

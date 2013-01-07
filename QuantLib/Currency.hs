@@ -97,70 +97,70 @@ instance NamedSingleton CCurrency where
 
 -- TODO add data Currency = ...
 
-currency :: Currency
-noCurrency :: Currency
-eur :: Currency
-ars :: Currency
-ats :: Currency
-aud :: Currency
-bdt :: Currency
-bef :: Currency
-bgl :: Currency
-brl :: Currency
-byr :: Currency
-cad :: Currency
-chf :: Currency
-clp :: Currency
-cny :: Currency
-cop :: Currency
-cyp :: Currency
-czk :: Currency
-dem :: Currency
-dkk :: Currency
-eek :: Currency
-esp :: Currency
-fim :: Currency
-frf :: Currency
-gbp :: Currency
-grd :: Currency
-hkd :: Currency
-huf :: Currency
-iep :: Currency
-ils :: Currency
-inr :: Currency
-iqd :: Currency
-irr :: Currency
-isk :: Currency
-itl :: Currency
-jpy :: Currency
-krw :: Currency
-kwd :: Currency
-ltl :: Currency
-luf :: Currency
-lvl :: Currency
-mtl :: Currency
-mxn :: Currency
-nlg :: Currency
-nok :: Currency
-npr :: Currency
-nzd :: Currency
-pkr :: Currency
-pln :: Currency
-pte :: Currency
-rol :: Currency
-sar :: Currency
-sek :: Currency
-sgd :: Currency
-sit :: Currency
-skk :: Currency
-thb :: Currency
-trl :: Currency
-try :: Currency
-ttd :: Currency
-twd :: Currency
-usd :: Currency
-veb :: Currency
-zar :: Currency
+currency :: IO Currency
+noCurrency :: IO Currency
+eur :: IO Currency
+ars :: IO Currency
+ats :: IO Currency
+aud :: IO Currency
+bdt :: IO Currency
+bef :: IO Currency
+bgl :: IO Currency
+brl :: IO Currency
+byr :: IO Currency
+cad :: IO Currency
+chf :: IO Currency
+clp :: IO Currency
+cny :: IO Currency
+cop :: IO Currency
+cyp :: IO Currency
+czk :: IO Currency
+dem :: IO Currency
+dkk :: IO Currency
+eek :: IO Currency
+esp :: IO Currency
+fim :: IO Currency
+frf :: IO Currency
+gbp :: IO Currency
+grd :: IO Currency
+hkd :: IO Currency
+huf :: IO Currency
+iep :: IO Currency
+ils :: IO Currency
+inr :: IO Currency
+iqd :: IO Currency
+irr :: IO Currency
+isk :: IO Currency
+itl :: IO Currency
+jpy :: IO Currency
+krw :: IO Currency
+kwd :: IO Currency
+ltl :: IO Currency
+luf :: IO Currency
+lvl :: IO Currency
+mtl :: IO Currency
+mxn :: IO Currency
+nlg :: IO Currency
+nok :: IO Currency
+npr :: IO Currency
+nzd :: IO Currency
+pkr :: IO Currency
+pln :: IO Currency
+pte :: IO Currency
+rol :: IO Currency
+sar :: IO Currency
+sek :: IO Currency
+sgd :: IO Currency
+sit :: IO Currency
+skk :: IO Currency
+thb :: IO Currency
+trl :: IO Currency
+try :: IO Currency
+ttd :: IO Currency
+twd :: IO Currency
+usd :: IO Currency
+veb :: IO Currency
+zar :: IO Currency
 
 currency  = constructNamed "Currency"
 noCurrency= constructNamed "NoCurrency"
