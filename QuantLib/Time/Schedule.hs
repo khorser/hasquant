@@ -31,9 +31,9 @@ data CSchedule
 type Schedule = Object CSchedule
 
 foreign import ccall safe "ql.h qlSchedule"
-  c_schedule :: CInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
+  c_schedule' :: CInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlSchedule2"
-  c_schedule' :: CDate -> CDate -> Ptr CPeriod -> Ptr CCalendar
+  c_schedule :: CDate -> CDate -> Ptr CPeriod -> Ptr CCalendar
     -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString
     -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleUntil"
@@ -45,17 +45,17 @@ instance Finalizable CSchedule where
   finalize = p_freeSchedule
 
 -- | (qlSchedule)
-schedule' :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention
+schedule :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention
   -> BusinessDayConvention -> DateGenerationRule -> Bool
   -> Maybe Day -> Maybe Day -> IO Schedule
-schedule' effective term tenor cal conv termConv rule eom first nextToLast =
+schedule effective term tenor cal conv termConv rule eom first nextToLast =
   withObject
     tenor
     (\t ->
       withObject
         cal
         (\c -> construct
-                $ c_schedule'
+                $ c_schedule
                 (toQlDateSerialNumber effective)
                 (toQlDateSerialNumber term)
                 t
@@ -69,15 +69,15 @@ schedule' effective term tenor cal conv termConv rule eom first nextToLast =
 
 
 -- | (qlScheduleFromDateVector)
-schedule :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
-schedule days cal conv =
+schedule' :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
+schedule' days cal conv =
   withArray
   (map toQlDateSerialNumber days)
   (\d ->
     withObject
       cal
       (\c -> construct
-              $ c_schedule (fromIntegral $ length days) d c (toQlEnum conv)))
+              $ c_schedule' (fromIntegral $ length days) d c (toQlEnum conv)))
 
 -- | (qlScheduleTruncated)
 -- DO NOT call this on schedules created with 'schedule'

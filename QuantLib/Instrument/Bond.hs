@@ -39,7 +39,11 @@ data CBond
 
 type Bond = Object CBond
 
-class BondClass c
+class BondClass c where
+  safeCastPtr :: Ptr c -> Ptr CBond
+  safeCastPtr = castPtr
+  safeCastFin :: FunPtr (Ptr CBond -> IO ()) -> FunPtr (Ptr c -> IO ())
+  safeCastFin = castFunPtr
 
 instance BondClass CBond
 
@@ -63,7 +67,7 @@ data CFixedRateBond
 type FixedRateBond = Object CFixedRateBond
 
 instance Finalizable CFixedRateBond where
-  finalize = castFunPtr p_freeBond
+  finalize = safeCastFin p_freeBond
 
 instance BondClass CFixedRateBond
 
@@ -90,12 +94,12 @@ bond' settl cal face maturity issue flows =
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX exceptions?
 maturityDate :: BondClass a => Object a -> Maybe Day
-maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_maturityDate . castPtr))
+maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_maturityDate . safeCastPtr))
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX exceptions?
 issueDate :: BondClass a => Object a -> Maybe Day
-issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_issueDate . castPtr))
+issueDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_issueDate . safeCastPtr))
 
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule

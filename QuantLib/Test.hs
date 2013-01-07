@@ -157,7 +157,7 @@ bond = TestList
   , "fixed rate bond"
       ~: do c <- Calendar.russia
             tenor <- Period.period 1 Unit.Months
-            s <- Schedule.schedule'
+            s <- Schedule.schedule
               (Just (fromGregorian 2012 12 20))
               (fromGregorian 2013 12 21)
               tenor
@@ -204,7 +204,7 @@ schedule = TestList
     "schedule1"
       ~: do tenor <- Period.period 1 Unit.Months
             cal <- Calendar.russia
-            _ <- Schedule.schedule'
+            _ <- Schedule.schedule
               (Just (fromGregorian 2012 12 20))
               (fromGregorian 2013 12 21)
               tenor
@@ -218,7 +218,7 @@ schedule = TestList
             assertEqual "Test" True True
   , "schedule2"
       ~: do cal <- Calendar.russia
-            _ <- Schedule.schedule
+            _ <- Schedule.schedule'
               [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
               cal
               BusinessDayConvention.Following
@@ -226,7 +226,7 @@ schedule = TestList
   , "schedule truncation"
       ~: do tenor <- Period.period 1 Unit.Months
             cal <- Calendar.russia
-            s <- Schedule.schedule'
+            s <- Schedule.schedule
               (Just (fromGregorian 2012 12 20))
               (fromGregorian 2013 12 21)
               tenor
