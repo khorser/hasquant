@@ -74,22 +74,24 @@ int main5()
     cout << "c3==c:" << (c3 == c) << endl;
 }
 
-void *sfun1()
+void *sfun1(void *c)
 {
     std::vector<Date> dates;
-    dates.push_back(Date(20, Dec, 2012));
-    dates.push_back(Date(20, May, 2013));
-    return new Schedule(dates , Russia(), Following);
+    dates.push_back(Date(500));
+    dates.push_back(Date(800));
+    return new Schedule(dates , *static_cast<Calendar *>(c), Following);
 }
 
 void *sfun2(void *s1)
 {
-    return new Schedule(static_cast<Schedule *>(s1)->until(Date(15, Apr, 2013)));
+    return new Schedule(static_cast<Schedule *>(s1)->until(Date(700)));
 }
 
 int main()
 {
-    void *s1 = sfun1();
+    void *c = new Russia();
+    void *s1 = sfun1(c);
+    delete static_cast<Schedule *>(c);
     void *s2 = sfun2(s1);
     delete static_cast<Schedule *>(s1);
     delete static_cast<Schedule *>(s2);

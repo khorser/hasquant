@@ -206,6 +206,7 @@ schedule = TestList
   -- for some reason qlFreeSchedule for resulting schedule segfaults
   -- on Windows while works ok on Linux. The C++ code is the literal translation
   -- of QLAddin
+  -- Also it works fine under gdb
       ~: do s <- Schedule.schedule
               [fromGregorian 2012 12 20, fromGregorian 2013 5 20]
               Calendar.russia
