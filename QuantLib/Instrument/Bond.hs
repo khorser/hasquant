@@ -75,7 +75,7 @@ instance BondClass CFixedRateBond
 --   instance IsA CBond CFixedRateBond
 --
 -- maturityDate :: IsA CBond a => Object a -> Maybe Day
--- maturityDate b = fromQlDateSerialNumber $ unsafePerformIO (withObject b (c_maturityDate . upcast))
+-- maturityDate b = fromQlDate $ unsafePerformIO (withObject b (c_maturityDate . upcast))
 
 -- is it possible to use type class constraints in FFI declarations?
 foreign import ccall safe "ql.h qlBond"
@@ -100,7 +100,7 @@ bond settl cal issue coupons =
   (\c ->
     withObject
     coupons
-    (construct . c_bond (fromIntegral settl) c (toQlDateSerialNumber issue)))
+    (construct . c_bond (fromIntegral settl) c (toQlDate issue)))
 
 bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
 bond' settl cal face maturity issue flows =
@@ -112,19 +112,19 @@ bond' settl cal face maturity issue flows =
     (construct . c_bond'  (fromIntegral settl)
                           c
                           (realToFrac face)
-                          (toQlDateSerialNumber maturity)
-                          (toQlDateSerialNumber issue)))
+                          (toQlDate maturity)
+                          (toQlDate issue)))
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX any exceptions possible?
 maturityDate :: BondClass a => Object a -> Maybe Day
-maturityDate b = fromQlDateSerialNumber $ unsafePerformIO
+maturityDate b = fromQlDate $ unsafePerformIO
                   (withObject b (c_maturityDate . safeCastPtr))
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX any exceptions possible?
 issueDate :: BondClass a => Object a -> Maybe Day
-issueDate b = fromQlDateSerialNumber $ unsafePerformIO
+issueDate b = fromQlDate $ unsafePerformIO
                   (withObject b (c_issueDate . safeCastPtr))
 
 foreign import ccall safe "ql.h qlFixedRateBond"
@@ -165,7 +165,7 @@ fixedRateBond settl face sched coupons counter conv redemption issue calendar =
                                        c
                                        (toQlEnum conv)
                                        (realToFrac redemption)
-                                       (toQlDateSerialNumber issue)
+                                       (toQlDate issue)
                                        cal))))
 
 -- |(qlFixedRateBond2)
@@ -193,8 +193,8 @@ fixedRateBond' settl couponCal face start maturity tenor coupons counter accrCon
             construct $ c_fixedRateBond' (fromIntegral settl)
                                          cc
                                          (realToFrac face)
-                                         (toQlDateSerialNumber start)
-                                         (toQlDateSerialNumber maturity)
+                                         (toQlDate start)
+                                         (toQlDate maturity)
                                          t
                                          (fromIntegral (length coupons))
                                          cpns
@@ -202,8 +202,8 @@ fixedRateBond' settl couponCal face start maturity tenor coupons counter accrCon
                                          (toQlEnum accrConv)
                                          (toQlEnum paymentConv)
                                          (realToFrac redemption)
-                                         (toQlDateSerialNumber issue)
-                                         (toQlDateSerialNumber stub)
+                                         (toQlDate issue)
+                                         (toQlDate stub)
                                          (toQlEnum rule)
                                          (fromBool eom)
                                          pc)))))

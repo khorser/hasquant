@@ -1,8 +1,8 @@
 {-# LANGUAGE ForeignFunctionInterface,FlexibleInstances #-}
 module QuantLib.Internal
   (
-    fromQlDateSerialNumber
-  , toQlDateSerialNumber
+    fromQlDate
+  , toQlDate
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , c_freeString
@@ -74,8 +74,8 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
                                     (fromIntegral c_minMonth)
                                     (fromIntegral c_minDay)
 
-toQlDateSerialNumberUnsafe :: Day -> CDate
-toQlDateSerialNumberUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
+toQlDateUnsafe :: Day -> CDate
+toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
@@ -118,26 +118,26 @@ class Finalizable a => NamedSingleton a where
 
 class QLDate a where
   isValid :: a -> Bool
-  toQlDateSerialNumber :: a -> CDate
-  fromQlDateSerialNumber :: CDate -> a
+  toQlDate :: a -> CDate
+  fromQlDate :: CDate -> a
 
 
 instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
-                where num = toQlDateSerialNumberUnsafe x
+                where num = toQlDateUnsafe x
   -- return Either instead?
-  toQlDateSerialNumber x | isValid x = fromIntegral $ toModifiedJulianDay x - qlStart
+  toQlDate x | isValid x = fromIntegral $ toModifiedJulianDay x - qlStart
                          | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
-  fromQlDateSerialNumber p = ModifiedJulianDay $
+  fromQlDate p = ModifiedJulianDay $
                 fromIntegral p + qlStart
 
   
 
 instance QLDate (Maybe Day) where
   isValid = maybe True isValid
-  toQlDateSerialNumber = maybe 0 toQlDateSerialNumber
-  fromQlDateSerialNumber 0 = Nothing
-  fromQlDateSerialNumber x = Just $ fromQlDateSerialNumber x
+  toQlDate = maybe 0 toQlDate
+  fromQlDate 0 = Nothing
+  fromQlDate x = Just $ fromQlDate x
 
 foreign import ccall safe "ql.h qlEnumerationValue"
   c_values :: CString -> Ptr CInt -> IO (Ptr CInt)

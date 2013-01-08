@@ -70,9 +70,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(Finalizable, finalize, c_construct, NamedSingleton,
-  c_name, constructNamed, toQlDateSerialNumber, fromQlDateSerialNumber,
-  Object, withObject, CDate, toQlEnum)
+import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
 
@@ -101,22 +99,22 @@ instance NamedSingleton CCalendar where
 
 -- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
 adjust :: Calendar -> Day -> BusinessDayConvention -> Day
-adjust cal d conv = fromQlDateSerialNumber $ unsafePerformIO
+adjust cal d conv = fromQlDate $ unsafePerformIO
   $ withObject
       cal
       (\c -> c_calendarAdjust
                c
-               (toQlDateSerialNumber d)
+               (toQlDate d)
                (toQlEnum conv))
 
 -- |advances a date according to a given calendar (qlCalendarAdvance)
 advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> Day
-advance cal d n u conv eom = fromQlDateSerialNumber $ unsafePerformIO
+advance cal d n u conv eom = fromQlDate $ unsafePerformIO
   $ withObject
       cal
       (\c -> c_calendarAdvance
                c
-               (toQlDateSerialNumber d)
+               (toQlDate d)
                (fromIntegral n)
                (toQlEnum u)
                (toQlEnum conv)

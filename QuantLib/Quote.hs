@@ -14,7 +14,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(handleExceptions, construct, withObject, Object, Finalizable, finalize)
+import QuantLib.Internal
 
 data CQuote
 

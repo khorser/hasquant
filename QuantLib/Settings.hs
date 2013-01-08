@@ -14,7 +14,7 @@ import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt))
 import Foreign.Marshal.Utils(fromBool, toBool)
 
-import QuantLib.Internal(fromQlDateSerialNumber, toQlDateSerialNumber, CDate)
+import QuantLib.Internal
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
   c_evaluationDate :: IO CDate
@@ -27,11 +27,11 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
 
 -- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
 evaluationDate :: IO Day
-evaluationDate = liftM fromQlDateSerialNumber c_evaluationDate
+evaluationDate = liftM fromQlDate c_evaluationDate
 
 -- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
 setEvaluationDate :: Maybe Day -> IO ()
-setEvaluationDate x = c_setEvaluationDate (toQlDateSerialNumber x)
+setEvaluationDate x = c_setEvaluationDate (toQlDate x)
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date (qlSettingsEnforceTodaysHistoricFixings)

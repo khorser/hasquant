@@ -74,7 +74,7 @@ where
 import Foreign.C.String(CString)
 import Foreign.Ptr(Ptr, FunPtr)
 
-import QuantLib.Internal(Object, Finalizable, finalize, c_construct, NamedSingleton, c_name, constructNamed)
+import QuantLib.Internal
 
 data CCurrency
 

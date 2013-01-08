@@ -61,23 +61,23 @@ schedule effective term tenor cal conv termConv rule eom first nextToLast =
         cal
         (\c -> construct
                 $ c_schedule
-                (toQlDateSerialNumber effective)
-                (toQlDateSerialNumber term)
+                (toQlDate effective)
+                (toQlDate term)
                 t
                 c
                 (toQlEnum conv)
                 (toQlEnum termConv)
                 (toQlEnum rule)
                 (fromBool eom)
-                (toQlDateSerialNumber first)
-                (toQlDateSerialNumber nextToLast)))
+                (toQlDate first)
+                (toQlDate nextToLast)))
 
 
 -- | (qlScheduleFromDateVector)
 schedule' :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
 schedule' days cal conv =
   withArray
-  (map toQlDateSerialNumber days)
+  (map toQlDate days)
   (\d ->
     withObject
       cal
@@ -95,12 +95,12 @@ until :: Schedule -> Day -> IO Schedule
 until sched d =
   withObject
   sched
-  (\s -> construct $ c_until s (toQlDateSerialNumber d))
+  (\s -> construct $ c_until s (toQlDate d))
 
 
 -- |returns the dates for the given Schedule object (qlScheduleDates)
 dates :: Schedule -> [Day]
-dates sched = map fromQlDateSerialNumber (unsafePerformIO
+dates sched = map fromQlDate (unsafePerformIO
                 $ withObject
                     sched
                     (\s ->

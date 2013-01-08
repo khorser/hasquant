@@ -17,7 +17,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(handleExceptions, construct, CDate, withObject, Object, fromQlDateSerialNumber, toQlDateSerialNumber, Finalizable, finalize)
+import QuantLib.Internal
 
 data CLeg
 
@@ -38,7 +38,7 @@ leg :: [(Double, Day)] -> IO Leg
 leg flows = construct
             $ leg' (fromIntegral $ length amounts)
                    (map realToFrac amounts)
-                   (map toQlDateSerialNumber dates)
+                   (map toQlDate dates)
   where (amounts, dates) = unzip flows
 
 leg' :: CInt -> [CDouble] -> [CDate] -> Ptr CString -> IO (Ptr CLeg)
@@ -52,4 +52,4 @@ leg' len amounts dates e =
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable
 startDate :: Leg -> Day
-startDate l = fromQlDateSerialNumber $ unsafePerformIO (withObject l (handleExceptions . c_legStartDate))
+startDate l = fromQlDate $ unsafePerformIO (withObject l (handleExceptions . c_legStartDate))
