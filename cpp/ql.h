@@ -34,6 +34,16 @@ T *log_and_cast(const char *msg, void *p) {
 }
 
 template <class T1, class T2>
+T2 *log_and_upcast(const char *msg, T1 *p) {
+#ifdef QLTRACK_ALLOCATIONS
+  TP(msg, p);
+#endif
+  // or shall we use dynamic_cast?
+  // apparently we could have used some Alexandrescu-style type magic
+  return static_cast<T2 *>(p);
+}
+
+template <class T1, class T2>
 T2 *log_and_downcast(const char *msg, void *p) {
   return dynamic_cast<T2 *>(static_cast<T1 *>(TP(msg, p)));
 }

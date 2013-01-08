@@ -59,8 +59,7 @@ void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
     for (int i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
 
-    return TP("Allocated fixed rate bond",
-	      static_cast<Bond *>(
+    return log_and_upcast<FixedRateBond, Bond>("Allocated fixed rate bond",
 		new FixedRateBond(
 		  settlDays,
 		  face,
@@ -70,7 +69,7 @@ void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
 		  (BusinessDayConvention) payConv,
 		  redemption,
 		  qlNullableDate(issue),
-		  *log_and_cast<Calendar>("Pcalendar", payCal))));
+		  *log_and_cast<Calendar>("Pcalendar", payCal)));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
@@ -86,8 +85,7 @@ void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face,
     for (int i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
 
-    return TP("Allocated fixed rate bond1",
-	      static_cast<Bond *>(
+    return log_and_upcast<FixedRateBond, Bond>("Allocated fixed rate bond1",
 		new FixedRateBond(
 		  settlDays,
 		  *log_and_cast<Calendar>("PcpnCal", cpnCal),
@@ -104,7 +102,7 @@ void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face,
 		  qlNullableDate(stub),
 		  (DateGeneration::Rule) rule,
 		  eom,
-		  *log_and_cast<Calendar>("PpayCal", payCal))));
+		  *log_and_cast<Calendar>("PpayCal", payCal)));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
