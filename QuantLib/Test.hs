@@ -273,9 +273,9 @@ prop_scheduleDates :: [Day] -> Property
 prop_scheduleDates dates =
   all Date.isValid dates
     ==> monadicIO
-      $ do c <- run $ Calendar.russia
+      $ do c <- run Calendar.russia
            s <- run $ Schedule.schedule' dates c BusinessDayConvention.Unadjusted
-           assert $ dates == (Schedule.dates s)
+           assert $ dates == Schedule.dates s
 
 instance Arbitrary Frequency.Frequency where
   arbitrary = arbitraryBoundedEnum
