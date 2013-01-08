@@ -290,6 +290,13 @@ prop_quoteValue val =
           $ do q <- run $ Quote.simpleQuote val
                assert $ Quote.value q == val
 
+prop_scheduleDates :: [Day] -> Property
+prop_scheduleDates dates =
+  all Date.isValid dates
+    ==> monadicIO
+      $ do c <- run $ Calendar.russia
+           s <- run $ Schedule.schedule' dates c BusinessDayConvention.Unadjusted
+           assert $ dates == (Schedule.dates s)
 
 -- Main --
 main :: IO ()
@@ -312,5 +319,6 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
           quickCheck prop_singleLegStartDate
           --quickCheckWith stdArgs{maxDiscardRatio = 20} prop_legStartDate
           quickCheck prop_legStartDate
+          quickCheck prop_scheduleDates
           quickCheckWith stdArgs{maxSuccess = 10} prop_quoteValue
           return ()
