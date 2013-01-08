@@ -201,22 +201,7 @@ frequency = TestList
 schedule :: Test
 schedule = TestList
   [
-    "schedule1"
-      ~: do tenor <- Period.period 1 Unit.Months
-            cal <- Calendar.russia
-            _ <- Schedule.schedule
-              (Just (fromGregorian 2012 12 20))
-              (fromGregorian 2013 12 21)
-              tenor
-              cal
-              BusinessDayConvention.Following
-              BusinessDayConvention.Unadjusted
-              DateGenerationRule.Forward
-              False
-              (Just (fromGregorian 2012 12 21))
-              (Just (fromGregorian 2013 12 21))
-            assertEqual "Test" True True
-  , "schedule2"
+    "schedule'"
       ~: do cal <- Calendar.russia
             _ <- Schedule.schedule'
               [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
