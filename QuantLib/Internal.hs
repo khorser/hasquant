@@ -84,6 +84,30 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
 toQlDateUnsafe :: Day -> CDate
 toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
+withObject :: Object a -> (Ptr a -> IO b) -> IO b
+withObject = withForeignPtr . ptr
+
+withObject2 :: Object a1 -> Object a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
+withObject2 o1 o2 f = withObject o1 (withObject o2 . f)
+
+withObject3 :: Object a1 -> Object a2 -> Object a3
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> IO b) -> IO b
+withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
+
+withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
+withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
+
+withDays :: [Day] -> (CInt -> Ptr CDate -> IO b) -> IO b
+withDays days f = withArrayLen
+                      (map toQlDate days)
+                      (\n d -> f (fromIntegral n) d)
+
+withAmounts :: [Double] -> (CInt -> Ptr CDouble -> IO b) -> IO b
+withAmounts amounts f = withArrayLen
+                        (map realToFrac amounts)
+                        (\n a -> f (fromIntegral n) a)
+
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
    alloca $
@@ -102,21 +126,6 @@ class Finalizable a where
   -- |Run a C function returning a new object that needs a finalizer. The function might signal an error
   construct :: (Ptr CString -> IO (Ptr a)) -> IO (Object a)
   construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
-
-
-withObject :: Object a -> (Ptr a -> IO b) -> IO b
-withObject = withForeignPtr . ptr
-
-withObject2 :: Object a1 -> Object a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
-withObject2 o1 o2 f = withObject o1 (withObject o2 . f)
-
-withObject3 :: Object a1 -> Object a2 -> Object a3
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> IO b) -> IO b
-withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
-
-withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
-withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
@@ -139,7 +148,6 @@ class QLDate a where
   toQlDate :: a -> CDate
   fromQlDate :: CDate -> a
 
-
 instance QLDate Day where
   isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
                 where num = toQlDateUnsafe x
@@ -148,8 +156,6 @@ instance QLDate Day where
                          | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
   fromQlDate p = ModifiedJulianDay $
                 fromIntegral p + qlStart
-
-  
 
 instance QLDate (Maybe Day) where
   isValid = maybe True isValid
@@ -192,13 +198,3 @@ fromQlEnum x = enum
                -- NB: intermediate computations are using the type of the
                -- result here, thank laziness (?)
                -- Looks like fixed point operator. Are we abusing the type system?
-
-withDays :: [Day] -> (CInt -> Ptr CDate -> IO b) -> IO b
-withDays days f = withArrayLen
-                      (map toQlDate days)
-                      (\n d -> f (fromIntegral n) d)
-
-withAmounts :: [Double] -> (CInt -> Ptr CDouble -> IO b) -> IO b
-withAmounts amounts f = withArrayLen
-                        (map realToFrac amounts)
-                        (\n a -> f (fromIntegral n) a)

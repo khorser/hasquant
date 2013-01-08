@@ -33,13 +33,12 @@ instance Finalizable CLeg where
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
-leg flows = construct
-              (\e ->
-                (withAmounts
-                  amounts
-                  (\_ ams -> (withDays
-                              dates
-                              (\n ds -> c_leg n ams ds e)))))
+leg flows = withAmounts
+            amounts
+            (\_ ams ->
+              withDays
+              dates
+              (\n ds -> construct $ c_leg n ams ds))
   where (amounts, dates) = unzip flows
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
