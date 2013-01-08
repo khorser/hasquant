@@ -33,6 +33,11 @@ T *log_and_cast(const char *msg, void *p) {
   return static_cast<T *>(TP(msg, p));
 }
 
+template <class T1, class T2>
+T2 *log_and_downcast(const char *msg, void *p) {
+  return dynamic_cast<T2 *>(static_cast<T1 *>(TP(msg, p)));
+}
+
 extern "C"
 {
   /* utilities */
@@ -40,6 +45,8 @@ extern "C"
   const char *boostVersion();
 
   void	qlFreeString(char *p);
+  int  *qlAllocateInts(int size);
+  void  qlFreeInts(int *p);
 
   /* date */
   int	qlMinDateSerialNumber();
@@ -70,13 +77,15 @@ extern "C"
 
   /* bond */
   void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
-  void *qlBond2(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
+  void *qlBond1(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
   int   qlBondMaturityDate(void *bond);
   int   qlBondIssueDate(void *bond);
+
   void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
     int cLen, double *coupons, void *counter,
     int payConv, double redemption, int issue, void *payCal,
     char **e);
+  int   qlFixedBondFrequency(void *bond);
 
   void qlFreeBond(void *bond);
 
@@ -106,11 +115,12 @@ extern "C"
   void qlFreeQuote(void *quote);
 
   /* schedule */
-  void *qlSchedule(int len, int *dates, void *cal, int conv, char **e);
-  void *qlSchedule2(int eff, int term, void *tenor, void *cal,
+  void *qlSchedule(int eff, int term, void *tenor, void *cal,
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
+  void *qlSchedule1(int len, int *dates, void *cal, int conv, char **e);
   void *qlScheduleUntil(void *sched, int date, char **e);
+  int  *qlScheduleDates(void *sched, int *count);
 
   void qlFreeSchedule(void *s);
 

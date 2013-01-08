@@ -1,6 +1,3 @@
-#include <ql/cashflows/cashflows.hpp>
-#include <ql/time/calendar.hpp>
-#include <ql/instruments/bond.hpp>
 #include <ql/instruments/bonds/all.hpp>
 
 #include "ql.h"
@@ -22,7 +19,7 @@ void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
   }
 }
 
-void *qlBond2(unsigned settlDays, void *calendar, double faceAmount,
+void *qlBond1(unsigned settlDays, void *calendar, double faceAmount,
     int maturityDate, int issueDate, void *cashFlows, char **e)
 {
   *e = 0;
@@ -77,6 +74,10 @@ void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
+}
+
+int qlFixedBondFrequency(void *bond) {
+  return log_and_downcast<Bond, FixedRateBond>("Pbond", bond)->frequency();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

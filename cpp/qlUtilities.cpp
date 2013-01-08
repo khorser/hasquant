@@ -21,6 +21,14 @@ void qlFreeString(char *p) {
   free(TP("Pfreeing string", p));
 }
 
+int *qlAllocateInts(int size) {
+  return new int[size];
+}
+
+void qlFreeInts(int *p) {
+  delete[] p;
+}
+
 const QuantLib::Date qlNullableDate(int serialNumber) {
   if (!serialNumber)
     return Date(); /* special null date value */

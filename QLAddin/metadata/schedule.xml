@@ -12,25 +12,6 @@
   </copyright>
   <Functions>
 
-    <Member name='qlScheduleSize' type='QuantLib::Schedule' superType='libraryClass'>
-      <description>returns the number of dates in the given Schedule object.</description>
-      <libraryFunction>size</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Size</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
-
     <Member name='qlSchedulePreviousDate' type='QuantLib::Schedule' superType='libraryClass'>
       <description>returns the highest date in the given Schedule object preceding the input reference date.</description>
       <libraryFunction>previousDate</libraryFunction>
@@ -74,23 +55,6 @@
       <ReturnValue>
         <type>QuantLib::Date</type>
         <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
-
-    <Member name='qlScheduleDates' type='QuantLib::Schedule' superType='libraryClass'>
-      <description>returns the dates for the given Schedule object.</description>
-      <libraryFunction>dates</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::Date</type>
-        <tensorRank>vector</tensorRank>
       </ReturnValue>
     </Member>
 

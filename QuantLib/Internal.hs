@@ -6,6 +6,7 @@ module QuantLib.Internal
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , c_freeString
+  , c_freeInts
   , handleExceptions
   , isValid
   , Finalizable
@@ -44,6 +45,8 @@ import QuantLib.Error(Error(Error))
 
 foreign import ccall safe "ql.h qlFreeString"
   c_freeString :: CString -> IO ()
+foreign import ccall safe "ql.h qlFreeInts"
+  c_freeInts :: Ptr CInt -> IO ()
 
 foreign import ccall safe "ql.h qlMinDateSerialNumber"
   c_minDateSerialNumber :: CDate

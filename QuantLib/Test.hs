@@ -152,7 +152,6 @@ bond = TestList
       ~: do c <- Calendar.gbp
             l <- Leg.leg [] 
             b <- Bond.bond 3 c Nothing l
-            --print $ Bond.frequency b
             assertEqual "issue date" Nothing (Bond.issueDate b)
   , "fixed rate bond"
       ~: do c <- Calendar.russia
@@ -181,6 +180,8 @@ bond = TestList
                   c
             assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
             assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
+            assertEqual "fixed rate bond frequency" Frequency.Monthly (Bond.frequency b)
+
   ]
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
@@ -203,11 +204,11 @@ schedule = TestList
   [
     "schedule'"
       ~: do cal <- Calendar.russia
-            _ <- Schedule.schedule'
+            s <- Schedule.schedule'
               [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
               cal
               BusinessDayConvention.Following
-            assertEqual "Test" True True
+            assertEqual "Schedule dates" [fromGregorian 2012 12 20, fromGregorian 2012 5 20] (Schedule.dates s)
   , "schedule truncation"
       ~: do tenor <- Period.period 1 Unit.Months
             cal <- Calendar.russia
@@ -222,8 +223,14 @@ schedule = TestList
               False
               (Just (fromGregorian 2012 12 21))
               (Just (fromGregorian 2013 12 21))
-            _ <- Schedule.until s (fromGregorian 2013 4 15)
-            assertEqual "Test" True True
+            truncated <- Schedule.until s (fromGregorian 2013 4 15)
+            assertEqual "Schedule dates" [fromGregorian 2012 12 20,
+                                          fromGregorian 2012 12 21,
+                                          fromGregorian 2013 01 21,
+                                          fromGregorian 2013 02 21,
+                                          fromGregorian 2013 03 21,
+                                          fromGregorian 2013 04 15]
+                                         (Schedule.dates truncated)
   ]
 
 

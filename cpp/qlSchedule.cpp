@@ -4,7 +4,22 @@
 
 using namespace QuantLib;
 
-void *qlSchedule2(int eff, int term, void *tenor, void *cal,
+void *qlSchedule1(int len, int *dates, void *cal, int conv, char **e) {
+  *e = 0;
+  try {
+    std::vector<Date> d;
+    for (int i = 0; i < len; ++i)
+      d.push_back(Date(TV("PAdate", dates[i])));
+    return TP("Allocated schedule",
+		new Schedule(d,
+			      *log_and_cast<Calendar>("Pcalendar", cal),
+			      (BusinessDayConvention)conv));
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
+}
+
+void *qlSchedule(int eff, int term, void *tenor, void *cal,
     int conv, int termConv, int rule, int eom, int first, int nextToLast,
     char **e) {
   *e = 0;
@@ -25,21 +40,6 @@ void *qlSchedule2(int eff, int term, void *tenor, void *cal,
   }
 }
 
-void *qlSchedule(int len, int *dates, void *cal, int conv, char **e) {
-  *e = 0;
-  try {
-    std::vector<Date> d;
-    for (int i = 0; i < len; ++i)
-      d.push_back(Date(TV("PAdate", dates[i])));
-    return TP("Allocated schedule",
-		new Schedule(d,
-			      *log_and_cast<Calendar>("Pcalendar", cal),
-			      (BusinessDayConvention)conv));
-  } catch (std::exception& er) {
-    return handleException<void *>(e, er);
-  }
-}
-
 void *qlScheduleUntil(void *sched, int date, char **e) {
   *e = 0;
   try {
@@ -49,6 +49,18 @@ void *qlScheduleUntil(void *sched, int date, char **e) {
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
+}
+
+int *qlScheduleDates(void *sched, int *count) {
+  const std::vector<Date> &dates = log_and_cast<Schedule>("Pschedule", sched)
+    ->dates();
+  *count = dates.size();
+  int *days = qlAllocateInts(*count);
+  // if we wanted more C++
+  // we could use std::transform, mem_fun/lambda, and std::copy here
+  for (size_t i = 0; i < dates.size(); ++i)
+    days[i] = dates[i].serialNumber();
+  return days;
 }
 
 void qlFreeSchedule(void *s) {
