@@ -17,7 +17,6 @@ import System.IO.Unsafe(unsafePerformIO)
 import QuantLib.Internal
 
 data CQuote
-
 type Quote = Object CQuote
 
 foreign import ccall safe "ql.h qlSimpleQuote"

@@ -1722,39 +1722,6 @@
       </ReturnValue>
     </Procedure>
 
-    <Constructor name='qlInterestRate'>
-      <libraryFunction>InterestRate</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Rate' exampleValue='0.04'>
-            <type>QuantLib::Rate</type>
-            <tensorRank>scalar</tensorRank>
-            <description>rate.</description>
-          </Parameter>
-          <Parameter name='DayCounter' exampleValue='"Actual/365 (Fixed)"'>
-            <type>QuantLib::DayCounter</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Irr DayCounter ID.</description>
-          </Parameter>
-          <Parameter name='Compounding' exampleValue='"Simple"' const='False'>
-            <type>QuantLib::Compounding</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Interest rate coumpounding rule (Simple:1+rt, Compounded:(1+r)^t, Continuous:e^{rt}).</description>
-          </Parameter>
-          <Parameter name='Frequency' default='"Annual"' const='False'>
-            <type>QuantLib::Frequency</type>
-            <tensorRank>scalar</tensorRank>
-            <description>frequency (e.g. Annual, Semiannual, Every4Month, Quarterly, Bimonthly, Monthly).</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
   </Functions>
 
 </Category>

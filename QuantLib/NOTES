@@ -107,16 +107,6 @@ keep objects together to avoid gc-ing of objects for which we still have referen
       <Parameter name='YieldCurve' >
         <type>QuantLib::YieldTermStructure</type>
 
-<Constructor name='qlInterestRate'>
-      <Parameter name='Rate' exampleValue='0.04'>
-        <type>QuantLib::Rate</type>
-      <Parameter name='DayCounter' exampleValue='"Actual/365 (Fixed)"'>
-        <type>QuantLib::DayCounter</type>
-      <Parameter name='Compounding' exampleValue='"Simple"' const='False'>
-        <type>QuantLib::Compounding</type>
-      <Parameter name='Frequency' default='"Annual"' const='False'>
-        <type>QuantLib::Frequency</type>
-
 <Member name='qlInstrumentSetPricingEngine' type='QuantLibAddin::Instrument'>
   <description>Sets a new pricing engine to the given Instrument pbject.</description>
       <Parameter name='PricingEngine' exampleValue='PricingEngineID'>

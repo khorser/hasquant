@@ -2,6 +2,7 @@
 #include <ql/time/dategenerationrule.hpp>
 #include <ql/time/frequency.hpp>
 #include <ql/time/timeunit.hpp>
+#include <ql/compounding.hpp>
 
 #include <string.h>
 
@@ -58,6 +59,14 @@ static int timeUnitValues[] =
   , Years
   };
 
+static int compoundingValues[] =
+  {
+    Simple
+  , Compounded
+  , Continuous
+  , SimpleThenCompounded
+  };
+
 int *qlEnumerationValue(const char *name, int *c) {
   if (!strcmp(name, "BusinessDayConvention")) {
     *c = sizeof(businessDayConventionValues)/sizeof(businessDayConventionValues[0]);
@@ -73,6 +82,9 @@ int *qlEnumerationValue(const char *name, int *c) {
   } else if (!strcmp(name, "Unit")) {
     *c = sizeof(timeUnitValues)/sizeof(timeUnitValues[0]);
     return timeUnitValues;
+  } else if (!strcmp(name, "Compounding")) {
+    *c = sizeof(compoundingValues)/sizeof(compoundingValues[0]);
+    return compoundingValues;
   } else {
     *c = 0;
     return 0;

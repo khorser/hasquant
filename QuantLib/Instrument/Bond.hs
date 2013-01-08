@@ -128,6 +128,10 @@ foreign import ccall safe "ql.h qlFixedRateBond1"
     -> Ptr CPeriod -> CInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
     -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
+foreign import ccall safe "ql.h qlFixedRateBond2"
+  c_fixedRateBond'' :: CUInt -> CDouble -> Ptr CSchedule
+    ->CInt -> Ptr CDouble -> CInt -> CDouble -> CDate -> Ptr CCalendar
+    -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedBondFrequency"
   c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt
 
@@ -152,7 +156,6 @@ fixedRateBond settl face sched coupons counter conv redemption issue calendar =
                                        (toQlDate issue)
                                        cal))
 
--- |(qlFixedRateBond2)
 fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
   -> DayCounter -> BusinessDayConvention -> BusinessDayConvention -> Double
   -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar
@@ -182,12 +185,23 @@ fixedRateBond' settl couponCal face start maturity tenor coupons counter accrCon
                                          (fromBool eom)
                                          pc))
                                          
-
+-- |(qlFixedRateBond2)
 fixedRateBond'' :: Word -> Double -> Schedule -> [Double]
   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
   -> IO FixedRateBond
---fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
-fixedRateBond'' = undefined
+fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
+  withObject2 sched cal
+  (\s c ->
+    withAmounts coupons
+    (\n cpns -> construct $ c_fixedRateBond'' (fromIntegral settl)
+                                              (realToFrac face)
+                                              s
+                                              n
+                                              cpns
+                                              (toQlEnum paymentConv)
+                                              (realToFrac redemption)
+                                              (toQlDate issue)
+                                              c))
 
 frequency :: FixedRateBond -> Frequency
 frequency x = fromQlEnum $ unsafePerformIO (withObject x c_fixedBondFrequency)

@@ -7,7 +7,7 @@ using namespace QuantLib;
 void *qlSimpleQuote(double value, char **e) {
   *e = 0;
   try {
-    return TP("Allocated simple quote", static_cast<Quote *>(new SimpleQuote(value)));
+    return log_and_upcast<SimpleQuote, Quote>("Allocated simple quote", new SimpleQuote(value));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }

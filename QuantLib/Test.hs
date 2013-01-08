@@ -17,9 +17,11 @@ import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
 import QuantLib.Internal(name)
 import qualified QuantLib.CashFlow.Leg as Leg
+import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
 import qualified QuantLib.Instrument.Bond as Bond
+import qualified QuantLib.InterestRate as InterestRate
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
@@ -314,6 +316,8 @@ prop_frequencyFromPeriodFromFrequency freq =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
+          dc <- DayCounter.actual365Fixed
+          r <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
           _ <- runTestTT $ test
             [
               settings

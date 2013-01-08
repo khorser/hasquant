@@ -99,6 +99,9 @@ extern "C"
     int maturity, void *tenor, int cLen, double *coupons, void *dayCounter,
     int accrConv, int paymentConv, double redemption, int issue, int stub,
     int rule, int eom, void *payCal, char **e);
+  void *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
+    int cLen, double *coupons, int paymentConv, double redemption, int issue,
+    void *cal, char **e);
   int   qlFixedBondFrequency(void *bond);
 
   void qlFreeBond(void *bond);
@@ -137,6 +140,11 @@ extern "C"
   int  *qlScheduleDates(void *sched, int *count);
 
   void qlFreeSchedule(void *s);
+
+  /* interest rate */
+  void *qlInterestRate(double r, void *dc, int comp, int freq, char **e);
+
+  void qlFreeInterestRate(void *rate);
 
   /* enumerations */
   int *qlEnumerationValue(const char *name, int *c);

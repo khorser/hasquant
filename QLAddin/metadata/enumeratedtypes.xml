@@ -241,29 +241,6 @@
       </EnumeratedTypes>
     </EnumeratedTypeGroup>
 
-    <EnumeratedTypeGroup type='QuantLib::Compounding'>
-      <includeFile>oh/enumerations/typefactory.hpp</includeFile>
-      <constructor>true</constructor>
-      <EnumeratedTypes>
-        <EnumeratedType>
-          <string>Continuous</string>
-          <value>QuantLib::Continuous</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Simple</string>
-          <value>QuantLib::Simple</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>Compounded</string>
-          <value>QuantLib::Compounded</value>
-        </EnumeratedType>
-        <EnumeratedType>
-          <string>SimpleThenCompounded</string>
-          <value>QuantLib::SimpleThenCompounded</value>
-        </EnumeratedType>
-      </EnumeratedTypes>
-    </EnumeratedTypeGroup>
-
     <EnumeratedTypeGroup type='QuantLib::Duration::Type'>
       <includeFile>oh/enumerations/typefactory.hpp</includeFile>
       <constructor>true</constructor>
