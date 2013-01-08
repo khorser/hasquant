@@ -11,8 +11,8 @@ import Prelude hiding(catch)
 
 import Test.HUnit(runTestTT, test, assertEqual, (~:), (~?=), (~=?),
   Test(TestList), assertBool, assertFailure)
-import Test.QuickCheck as QC(Arbitrary, elements, arbitrary, Property,
-  quickCheck, quickCheckWith, (==>), stdArgs, Args(..))
+import Test.QuickCheck(Arbitrary, elements, arbitrary, Property,
+  quickCheck, quickCheckWith, (==>), stdArgs, Args(..), arbitraryBoundedEnum)
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
 import QuantLib.Internal(name)
@@ -43,14 +43,10 @@ today =
 settings :: Test
 settings = TestList
   [
-    "evaluation date 1"
+    "default evaluation date"
       ~: do t1 <- Settings.evaluationDate
             t2 <- today
             assertEqual "default valuation date" t1 t2
-  , "evaluation date 2"
-      ~: do Settings.setEvaluationDate $ Just (fromGregorian 2012 12 29)
-            t1 <- Settings.evaluationDate
-            assertEqual "new valuation date" t1 (fromGregorian 2012 12 29)
   , "null evaluation date"
       ~: do Settings.setEvaluationDate $ Just (fromGregorian 2012 12 29)
             t0 <- Settings.evaluationDate
@@ -59,11 +55,6 @@ settings = TestList
             t1 <- Settings.evaluationDate
             t2 <- today
             assertEqual "new valuation date" t1 t2
-  , "invalid evaluation date"
-      ~: catch
-          (do Settings.setEvaluationDate $ Just (fromGregorian 1861 1 1)
-              assertFailure "invalid evaluation date passed through")
-          (assertBool "exception message not empty" . not . null . Error.message)
   , "enforce today's historic fixings 1"
       ~: do e1 <- Settings.enforceTodaysHistoricFixings
             assertEqual "default enforce today's historic fixings" e1 False
@@ -153,7 +144,7 @@ bond = TestList
             l <- Leg.leg [] 
             b <- Bond.bond 3 c Nothing l
             assertEqual "issue date" Nothing (Bond.issueDate b)
-  , "fixed rate bond"
+  , "fixed rate bond with schedule"
       ~: do c <- Calendar.russia
             tenor <- Period.period 1 Unit.Months
             s <- Schedule.schedule
@@ -189,27 +180,15 @@ bond = TestList
 frequency :: Test
 frequency = TestList
   [
-    "period to frequency"
+    "1M period to frequency"
       ~: do p <- Period.period 1 Unit.Months
-            f <- Period.toFrequency p
-            assertEqual "Monthly frequency" f Frequency.Monthly
-  , "period from frequency"
-      ~: do p <- Period.fromFrequency Frequency.Annual
-            f <- Period.toFrequency p
-            assertEqual "Annual frequency" f Frequency.Annual
+            assertEqual "Monthly frequency" Frequency.Monthly (Period.toFrequency p)
   ]
 
 schedule :: Test
 schedule = TestList
   [
-    "schedule'"
-      ~: do cal <- Calendar.russia
-            s <- Schedule.schedule'
-              [fromGregorian 2012 12 20, fromGregorian 2012 5 20]
-              cal
-              BusinessDayConvention.Following
-            assertEqual "Schedule dates" [fromGregorian 2012 12 20, fromGregorian 2012 5 20] (Schedule.dates s)
-  , "schedule truncation"
+    "schedule truncation"
       ~: do tenor <- Period.period 1 Unit.Months
             cal <- Calendar.russia
             s <- Schedule.schedule
@@ -298,6 +277,16 @@ prop_scheduleDates dates =
            s <- run $ Schedule.schedule' dates c BusinessDayConvention.Unadjusted
            assert $ dates == (Schedule.dates s)
 
+instance Arbitrary Frequency.Frequency where
+  arbitrary = arbitraryBoundedEnum
+
+prop_frequencyFromPeriodFromFrequency :: Frequency.Frequency -> Property
+prop_frequencyFromPeriodFromFrequency freq =
+  freq /= Frequency.OtherFrequency
+    ==> monadicIO
+      $ do p <- run $ Period.fromFrequency freq
+           assert $ Period.toFrequency p == freq
+
 -- Main --
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
@@ -320,5 +309,6 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
           --quickCheckWith stdArgs{maxDiscardRatio = 20} prop_legStartDate
           quickCheck prop_legStartDate
           quickCheck prop_scheduleDates
+          quickCheck prop_frequencyFromPeriodFromFrequency
           quickCheckWith stdArgs{maxSuccess = 10} prop_quoteValue
           return ()

@@ -88,7 +88,9 @@ schedule' days cal conv =
 -- DO NOT call this on schedules created with 'schedule'
 -- because result.isRegular_.pop_back() in QuantLib's Schedule::until
 -- is called on empty isRegular_ causing unspecified behaviour including
--- segfaults. Introduce another Schedule type with restricted interface?
+-- segfaults.
+-- TODO Introduce another Schedule type with restricted interface?
+-- moreover, a fixed rate bond can be constructed from a full schedule only!
 until :: Schedule -> Day -> IO Schedule
 until sched d =
   withObject

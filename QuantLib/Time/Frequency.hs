@@ -11,4 +11,4 @@ import Data.Typeable(Typeable)
 data Frequency = NoFrequency | Annual | Semiannual | EveryFourthMonth
   | Quarterly | Bimonthly | Monthly | Biweekly | EveryFourthWeek | Weekly
   | Daily | Once | OtherFrequency
- deriving (Show, Eq, Enum, Typeable)
+ deriving (Show, Eq, Enum, Typeable, Bounded)

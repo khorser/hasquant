@@ -9,11 +9,11 @@ module QuantLib.Time.Period
   )
 where
 
-import Control.Monad(liftM)
-
 import Foreign.C.Types(CInt(CInt))
 import Foreign.C.String(CString)
 import Foreign.Ptr(Ptr, FunPtr)
+
+import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal(handleExceptions, construct, Finalizable, finalize,
   Object, withObject, toQlEnum, fromQlEnum)
@@ -21,7 +21,6 @@ import qualified QuantLib.Time.Frequency as F(Frequency)
 import QuantLib.Time.Unit(Unit)
 
 data CPeriod
-
 type Period = Object CPeriod
 
 foreign import ccall safe "ql.h qlPeriod"
@@ -44,5 +43,5 @@ fromFrequency :: F.Frequency -> IO Period
 fromFrequency f = construct $ c_periodFromFreq (toQlEnum f)
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M) (qlFrequencyFromPeriod)
-toFrequency :: Period -> IO F.Frequency
-toFrequency p = liftM fromQlEnum $ withObject p (handleExceptions . c_periodToFreq )
+toFrequency :: Period -> F.Frequency
+toFrequency p = fromQlEnum $ unsafePerformIO (withObject p (handleExceptions . c_periodToFreq))
