@@ -15,7 +15,7 @@ import Data.Time.Calendar(Day)
 import Foreign.C.Types(CInt(CInt))
 import Foreign.C.String(CString)
 import Foreign.Marshal.Alloc(alloca)
-import Foreign.Marshal.Array(withArray, peekArray)
+import Foreign.Marshal.Array(peekArray)
 import Foreign.Marshal.Utils(fromBool)
 import Foreign.Ptr(Ptr, FunPtr)
 import Foreign.Storable(peek)
@@ -54,12 +54,9 @@ schedule :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention
   -> BusinessDayConvention -> DateGenerationRule -> Bool
   -> Maybe Day -> Maybe Day -> IO Schedule
 schedule effective term tenor cal conv termConv rule eom first nextToLast =
-  withObject
-    tenor
-    (\t ->
-      withObject
-        cal
-        (\c -> construct
+  withObject2 tenor cal
+    (\t c ->
+                construct
                 $ c_schedule
                 (toQlDate effective)
                 (toQlDate term)
@@ -70,19 +67,18 @@ schedule effective term tenor cal conv termConv rule eom first nextToLast =
                 (toQlEnum rule)
                 (fromBool eom)
                 (toQlDate first)
-                (toQlDate nextToLast)))
+                (toQlDate nextToLast))
 
 
 -- | (qlScheduleFromDateVector)
 schedule' :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
 schedule' days cal conv =
-  withArray
-  (map toQlDate days)
-  (\d ->
+  withDays
+  days
+  (\n d ->
     withObject
       cal
-      (\c -> construct
-              $ c_schedule' (fromIntegral $ length days) d c (toQlEnum conv)))
+      (\c -> construct $ c_schedule' n d c (toQlEnum conv)))
 
 -- | (qlScheduleTruncated)
 -- DO NOT call this on schedules created with 'schedule'

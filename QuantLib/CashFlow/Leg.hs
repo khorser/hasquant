@@ -12,7 +12,6 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.C.String(CString)
-import Foreign.Marshal.Array(withArray)
 import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
@@ -20,7 +19,6 @@ import System.IO.Unsafe(unsafePerformIO)
 import QuantLib.Internal
 
 data CLeg
-
 type Leg = Object CLeg
 
 foreign import ccall safe "ql.h qlLeg"
@@ -36,18 +34,13 @@ instance Finalizable CLeg where
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
 leg flows = construct
-            $ leg' (fromIntegral $ length amounts)
-                   (map realToFrac amounts)
-                   (map toQlDate dates)
+              (\e ->
+                (withAmounts
+                  amounts
+                  (\_ ams -> (withDays
+                              dates
+                              (\n ds -> c_leg n ams ds e)))))
   where (amounts, dates) = unzip flows
-
-leg' :: CInt -> [CDouble] -> [CDate] -> Ptr CString -> IO (Ptr CLeg)
-leg' len amounts dates e =
-  withArray
-  amounts
-  (\ams -> (withArray
-            dates
-            (\ds -> c_leg len ams ds e)))
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable

@@ -167,9 +167,9 @@ bond = TestList
                   cnt
                   BusinessDayConvention.Following
                   100
-                  (Just $ fromGregorian 2012 10 01)
+                  (Just $ fromGregorian 2012 10 11)
                   c
-            assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
+            assertEqual "issue date" (Just $ fromGregorian 2012 10 11) (Bond.issueDate b)
             assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
             assertEqual "fixed rate bond frequency" Frequency.Monthly (Bond.frequency b)
   , "fixed rate bond with calendars"

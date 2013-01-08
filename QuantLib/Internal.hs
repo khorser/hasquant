@@ -19,6 +19,11 @@ module QuantLib.Internal
   , Object
   , construct
   , withObject
+  , withObject2
+  , withObject3
+  , withObject4
+  , withDays
+  , withAmounts
   , CDate
   , toQlEnum
   , fromQlEnum
@@ -32,13 +37,15 @@ import Control.Monad(liftM)
 import Data.List(elemIndex)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.Typeable(Typeable, typeOf)
+
 import Foreign.C.String(CString, peekCString, withCString)
-import Foreign.C.Types(CInt(CInt))
+import Foreign.C.Types(CInt(CInt), CDouble)
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
-import Foreign.Marshal.Array(peekArray)
+import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek)
+
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Error(Error(Error))
@@ -98,7 +105,18 @@ class Finalizable a where
 
 
 withObject :: Object a -> (Ptr a -> IO b) -> IO b
-withObject o = withForeignPtr (ptr o)
+withObject = withForeignPtr . ptr
+
+withObject2 :: Object a1 -> Object a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
+withObject2 o1 o2 f = withObject o1 (withObject o2 . f)
+
+withObject3 :: Object a1 -> Object a2 -> Object a3
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> IO b) -> IO b
+withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
+
+withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
+withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
@@ -174,3 +192,13 @@ fromQlEnum x = enum
                -- NB: intermediate computations are using the type of the
                -- result here, thank laziness (?)
                -- Looks like fixed point operator. Are we abusing the type system?
+
+withDays :: [Day] -> (CInt -> Ptr CDate -> IO b) -> IO b
+withDays days f = withArrayLen
+                      (map toQlDate days)
+                      (\n d -> f (fromIntegral n) d)
+
+withAmounts :: [Double] -> (CInt -> Ptr CDouble -> IO b) -> IO b
+withAmounts amounts f = withArrayLen
+                        (map realToFrac amounts)
+                        (\n a -> f (fromIntegral n) a)

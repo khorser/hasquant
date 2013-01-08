@@ -15,8 +15,7 @@ import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
-import QuantLib.Internal(handleExceptions, construct, Finalizable, finalize,
-  Object, withObject, toQlEnum, fromQlEnum)
+import QuantLib.Internal
 import qualified QuantLib.Time.Frequency as F(Frequency)
 import QuantLib.Time.Unit(Unit)
 

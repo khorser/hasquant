@@ -20,7 +20,6 @@ import Data.Time.Calendar(Day)
 
 import Foreign.C.Types(CDouble(CDouble), CInt(CInt), CUInt(CUInt))
 import Foreign.C.String(CString)
-import Foreign.Marshal.Array(withArray)
 import Foreign.Marshal.Utils(fromBool)
 import Foreign.Ptr(Ptr, FunPtr, castPtr, castFunPtr)
 
@@ -95,25 +94,17 @@ foreign import ccall safe "ql.h qlBondIssueDate"
 -- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
 bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
 bond settl cal issue coupons =
-  withObject
-  cal
-  (\c ->
-    withObject
-    coupons
-    (construct . c_bond (fromIntegral settl) c (toQlDate issue)))
+  withObject2 cal coupons
+  (\c -> construct . c_bond (fromIntegral settl) c (toQlDate issue))
 
 bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
 bond' settl cal face maturity issue flows =
-  withObject
-  cal
-  (\c ->
-    withObject
-    flows
-    (construct . c_bond'  (fromIntegral settl)
-                          c
-                          (realToFrac face)
-                          (toQlDate maturity)
-                          (toQlDate issue)))
+  withObject2 cal flows
+  (\c -> construct . c_bond' (fromIntegral settl)
+                             c
+                             (realToFrac face)
+                             (toQlDate maturity)
+                             (toQlDate issue))
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX any exceptions possible?
@@ -145,28 +136,21 @@ fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
    -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
    -> IO FixedRateBond
 fixedRateBond settl face sched coupons counter conv redemption issue calendar =
-  withObject
-  sched
-  (\s ->
-    withObject
-    counter
-    (\c ->
-      withObject
-      calendar
-      (\cal ->
-        withArray
-        (map realToFrac coupons)
-        (\cpns ->
+  withObject3 sched counter calendar
+  (\s c cal ->
+        withAmounts
+        coupons
+        (\n cpns ->
           construct $ c_fixedRateBond (fromIntegral settl)
                                        (realToFrac face)
                                        s
-                                       (fromIntegral (length coupons))
+                                       n
                                        cpns
                                        c
                                        (toQlEnum conv)
                                        (realToFrac redemption)
                                        (toQlDate issue)
-                                       cal))))
+                                       cal))
 
 -- |(qlFixedRateBond2)
 fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
@@ -175,28 +159,18 @@ fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
   -> IO FixedRateBond
 fixedRateBond' settl couponCal face start maturity tenor coupons counter accrConv paymentConv
   redemption issue stub rule eom paymentCal =
-    withObject
-    tenor
-    (\t ->
-      withObject
-      counter
-      (\dc ->
-        withObject
-        couponCal
-        (\cc ->
-        withObject
-        paymentCal
-        (\pc ->
-          withArray
-          (map realToFrac coupons)
-          (\cpns ->
+    withObject4 tenor counter couponCal paymentCal
+    (\t dc cc pc ->
+          withAmounts
+          coupons
+          (\n cpns ->
             construct $ c_fixedRateBond' (fromIntegral settl)
                                          cc
                                          (realToFrac face)
                                          (toQlDate start)
                                          (toQlDate maturity)
                                          t
-                                         (fromIntegral (length coupons))
+                                         n
                                          cpns
                                          dc
                                          (toQlEnum accrConv)
@@ -206,7 +180,7 @@ fixedRateBond' settl couponCal face start maturity tenor coupons counter accrCon
                                          (toQlDate stub)
                                          (toQlEnum rule)
                                          (fromBool eom)
-                                         pc)))))
+                                         pc))
                                          
 
 fixedRateBond'' :: Word -> Double -> Schedule -> [Double]
