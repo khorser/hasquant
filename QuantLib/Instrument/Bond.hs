@@ -21,6 +21,7 @@ import Data.Time.Calendar(Day)
 import Foreign.C.Types(CDouble(CDouble), CInt(CInt), CUInt(CUInt))
 import Foreign.C.String(CString)
 import Foreign.Marshal.Array(withArray)
+import Foreign.Marshal.Utils(fromBool)
 import Foreign.Ptr(Ptr, FunPtr, castPtr, castFunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
@@ -32,7 +33,7 @@ import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)
-import QuantLib.Time.Period(Period)
+import QuantLib.Time.Period(Period, CPeriod)
 import QuantLib.Time.Schedule(Schedule, CSchedule)
 
 data CBond
@@ -89,8 +90,6 @@ foreign import ccall safe "ql.h qlBondMaturityDate"
   c_maturityDate :: Ptr CBond -> IO CDate
 foreign import ccall safe "ql.h qlBondIssueDate"
   c_issueDate :: Ptr CBond -> IO CDate
-foreign import ccall safe "ql.h qlFixedBondFrequency"
-  c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt
 
 -- | (qlBond)
 -- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
@@ -117,13 +116,13 @@ bond' settl cal face maturity issue flows =
                           (toQlDateSerialNumber issue)))
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
--- XXX exceptions?
+-- XXX any exceptions possible?
 maturityDate :: BondClass a => Object a -> Maybe Day
 maturityDate b = fromQlDateSerialNumber $ unsafePerformIO
                   (withObject b (c_maturityDate . safeCastPtr))
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
--- XXX exceptions?
+-- XXX any exceptions possible?
 issueDate :: BondClass a => Object a -> Maybe Day
 issueDate b = fromQlDateSerialNumber $ unsafePerformIO
                   (withObject b (c_issueDate . safeCastPtr))
@@ -133,6 +132,13 @@ foreign import ccall safe "ql.h qlFixedRateBond"
     -> CInt -> Ptr CDouble -> Ptr CDayCounter
     -> CInt -> CDouble -> CDate -> Ptr CCalendar -> Ptr CString
     -> IO (Ptr CFixedRateBond)
+foreign import ccall safe "ql.h qlFixedRateBond1"
+  c_fixedRateBond' :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate
+    -> Ptr CPeriod -> CInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
+    -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
+    -> Ptr CString -> IO (Ptr CFixedRateBond)
+foreign import ccall safe "ql.h qlFixedBondFrequency"
+  c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt
 
 -- |(qlFixedRateBond)
 fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
@@ -163,13 +169,45 @@ fixedRateBond settl face sched coupons counter conv redemption issue calendar =
                                        cal))))
 
 -- |(qlFixedRateBond2)
-fixedRateBond' :: Word -> Double -> Day -> Day -> Period -> [Double]
+fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
   -> DayCounter -> BusinessDayConvention -> BusinessDayConvention -> Double
-  -> Maybe Day -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool
-  -> Calendar -> IO FixedRateBond
---fixedRateBond' settl face start maturity tenor coupons counter accrConv paymentConv
---  redemption issue stub rule eom cal = 
-fixedRateBond' = undefined
+  -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar
+  -> IO FixedRateBond
+fixedRateBond' settl couponCal face start maturity tenor coupons counter accrConv paymentConv
+  redemption issue stub rule eom paymentCal =
+    withObject
+    tenor
+    (\t ->
+      withObject
+      counter
+      (\dc ->
+        withObject
+        couponCal
+        (\cc ->
+        withObject
+        paymentCal
+        (\pc ->
+          withArray
+          (map realToFrac coupons)
+          (\cpns ->
+            construct $ c_fixedRateBond' (fromIntegral settl)
+                                         cc
+                                         (realToFrac face)
+                                         (toQlDateSerialNumber start)
+                                         (toQlDateSerialNumber maturity)
+                                         t
+                                         (fromIntegral (length coupons))
+                                         cpns
+                                         dc
+                                         (toQlEnum accrConv)
+                                         (toQlEnum paymentConv)
+                                         (realToFrac redemption)
+                                         (toQlDateSerialNumber issue)
+                                         (toQlDateSerialNumber stub)
+                                         (toQlEnum rule)
+                                         (fromBool eom)
+                                         pc)))))
+                                         
 
 fixedRateBond'' :: Word -> Double -> Schedule -> [Double]
   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar

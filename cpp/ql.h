@@ -85,6 +85,10 @@ extern "C"
     int cLen, double *coupons, void *counter,
     int payConv, double redemption, int issue, void *payCal,
     char **e);
+  void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
+    int maturity, void *tenor, int cLen, double *coupons, void *dayCounter,
+    int accrConv, int paymentConv, double redemption, int issue, int stub,
+    int rule, int eom, void *payCal, char **e);
   int   qlFixedBondFrequency(void *bond);
 
   void qlFreeBond(void *bond);

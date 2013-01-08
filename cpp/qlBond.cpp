@@ -76,6 +76,40 @@ void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
   }
 }
 
+void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face,
+  int start, int maturity, void *tenor, int cLen, double *coupons,
+  void *dayCounter, int accrConv, int paymentConv, double redemption,
+  int issue, int stub, int rule, int eom, void *payCal, char **e) {
+  *e = 0;
+  try {
+    std::vector<Rate> cpns;
+    for (int i = 0; i < cLen; ++i)
+      cpns.push_back(coupons[i]);
+
+    return TP("Allocated fixed rate bond1",
+	      static_cast<Bond *>(
+		new FixedRateBond(
+		  settlDays,
+		  *log_and_cast<Calendar>("PcpnCal", cpnCal),
+		  face,
+		  Date(start),
+		  Date(maturity),
+		  *log_and_cast<Period>("Ptenor", tenor),
+		  cpns,
+		  *log_and_cast<DayCounter>("PdayCounter", dayCounter),
+		  (BusinessDayConvention) accrConv,
+		  (BusinessDayConvention) paymentConv,
+		  redemption,
+		  qlNullableDate(issue),
+		  qlNullableDate(stub),
+		  (DateGeneration::Rule) rule,
+		  eom,
+		  *log_and_cast<Calendar>("PpayCal", payCal))));
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
+}
+
 int qlFixedBondFrequency(void *bond) {
   return log_and_downcast<Bond, FixedRateBond>("Pbond", bond)->frequency();
 }

@@ -172,7 +172,30 @@ bond = TestList
             assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
             assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
             assertEqual "fixed rate bond frequency" Frequency.Monthly (Bond.frequency b)
-
+  , "fixed rate bond with calendars"
+      ~: do c <- Calendar.russia
+            tenor <- Period.period 1 Unit.Months
+            cnt <- DayCounter.actual365Fixed
+            b <- Bond.fixedRateBond'
+                  1
+                  c
+                  100
+                  (fromGregorian 2012 12 20)
+                  (fromGregorian 2013 12 21)
+                  tenor
+                  [0.12]
+                  cnt
+                  BusinessDayConvention.Following
+                  BusinessDayConvention.Unadjusted
+                  100
+                  (Just $ fromGregorian 2012 10 01)
+                  Nothing
+                  DateGenerationRule.Forward
+                  False
+                  c
+            assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
+            assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
+            assertEqual "fixed rate bond frequency" Frequency.Monthly (Bond.frequency b)
   ]
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
