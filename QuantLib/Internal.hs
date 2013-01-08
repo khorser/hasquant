@@ -24,6 +24,7 @@ module QuantLib.Internal
   , withObject4
   , withDays
   , withAmounts
+  , withObjects
   , CDate
   , toQlEnum
   , fromQlEnum
@@ -97,6 +98,16 @@ withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
 withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
 withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
+
+withObjects :: [Object a] -> (CInt -> Ptr (Ptr a) -> IO b) -> IO b
+withObjects os f = withObjects' os f []
+
+-- XXX rewrite with fold
+withObjects' :: [Object a] -> (CInt -> Ptr (Ptr a) -> IO b) -> [Ptr a] -> IO b
+withObjects' (o:os) f ps = withForeignPtr
+                            (ptr o)
+                            (\p -> withObjects' os f (ps ++ [p]))
+withObjects' _ f ps = withArrayLen ps (\n p -> f (fromIntegral n) p)
 
 withDays :: [Day] -> (CInt -> Ptr CDate -> IO b) -> IO b
 withDays days f = withArrayLen

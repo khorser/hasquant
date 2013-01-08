@@ -109,25 +109,26 @@ void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face,
 }
 
 void *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
-  int cLen, double *coupons, int paymentConv, double redemption, int issue,
+  int cLen, void **coupons, int paymentConv, double redemption, int issue,
   void *cal, char **e) {
   *e = 0;
   try {
-    std::vector<Rate> cpns;
-    for (int i = 0; i < cLen; ++i)
-      cpns.push_back(coupons[i]);
-    return 0;
-
-//    return log_and_upcast<FixedRateBond, Bond>("Allocated fixed rate bond2",
-//		new FixedRateBond(
-//		  settlDays,
-//		  face,
-//		  *log_and_cast<Schedule>("Pschedule", sched),
-//		  cpns,
-//		  (BusinessDayConvention) paymentConv,
-//		  redemption,
-//		  qlNullableDate(issue),
-//		  *log_and_cast<Calendar>("Pcalendar", cal)));
+    std::vector<InterestRate> cpns;
+    InterestRate **rates = reinterpret_cast<InterestRate **>(coupons);
+    for (int i = 0; i < cLen; ++i) {
+      TPP("Prate", rates[i]);
+      cpns.push_back(*rates[i]);
+    }
+    return log_and_upcast<FixedRateBond, Bond>("Allocated fixed rate bond2",
+		new FixedRateBond(
+		  settlDays,
+		  face,
+		  *log_and_cast<Schedule>("Pschedule", sched),
+		  cpns,
+		  (BusinessDayConvention) paymentConv,
+		  redemption,
+		  qlNullableDate(issue),
+		  *log_and_cast<Calendar>("Pcalendar", cal)));
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }

@@ -317,7 +317,30 @@ main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
           dc <- DayCounter.actual365Fixed
-          r <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
+          r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
+          r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
+          cal <- Calendar.russia
+          tenor <- Period.period 1 Unit.Months
+          s <- Schedule.schedule
+            (Just (fromGregorian 2012 12 20))
+            (fromGregorian 2013 12 21)
+            tenor
+            cal
+            BusinessDayConvention.Following
+            BusinessDayConvention.Unadjusted
+            DateGenerationRule.Forward
+            False
+            (Just (fromGregorian 2012 12 21))
+            (Just (fromGregorian 2013 12 21))
+          b <- Bond.fixedRateBond''
+                  3
+                  100
+                  s
+                  [r1, r2]
+                  BusinessDayConvention.Preceding
+                  100
+                  (Just (fromGregorian 2012 12 21))
+                  cal
           _ <- runTestTT $ test
             [
               settings

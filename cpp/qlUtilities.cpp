@@ -43,11 +43,9 @@ int qlNullableDate(const QuantLib::Date &date) {
     return date.serialNumber();
 }
 
-#ifdef QLTRACK_ALLOCATIONS
 char *tracedup(const char *p) {
-  TP("Duplicating string", const_cast<char *>(p));
+  TPP("Duplicating string", const_cast<char *>(p));
   return (char *)TP("Duplicated string to", strdup(p));
 }
-#endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

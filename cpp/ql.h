@@ -12,6 +12,7 @@
 # define DUP(p) tracedup((p))
 /* trace val */
 # define TV(f, v) traceval((f), (v))
+# define TPP(text, p) (void)traceval((text), (void *)(p));
 
 #include <iostream>
 
@@ -26,6 +27,7 @@ char *tracedup(const char *p);
 # define TP(text, p) (p)
 # define DUP(p) strdup((p))
 # define TV(f, v) (v)
+# define TPP(text, p)
 #endif
 
 template <class T>
@@ -35,9 +37,7 @@ T *log_and_cast(const char *msg, void *p) {
 
 template <class T1, class T2>
 T2 *log_and_upcast(const char *msg, T1 *p) {
-#ifdef QLTRACK_ALLOCATIONS
-  TP(msg, p);
-#endif
+  TPP(msg, p)
   // or shall we use dynamic_cast?
   // apparently we could have used some Alexandrescu-style type magic
   return static_cast<T2 *>(p);
@@ -100,7 +100,7 @@ extern "C"
     int accrConv, int paymentConv, double redemption, int issue, int stub,
     int rule, int eom, void *payCal, char **e);
   void *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
-    int cLen, double *coupons, int paymentConv, double redemption, int issue,
+    int cLen, void **coupons, int paymentConv, double redemption, int issue,
     void *cal, char **e);
   int   qlFixedBondFrequency(void *bond);
 

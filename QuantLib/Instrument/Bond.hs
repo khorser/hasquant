@@ -32,6 +32,7 @@ import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)
+import QuantLib.InterestRate(InterestRate, CInterestRate)
 import QuantLib.Time.Period(Period, CPeriod)
 import QuantLib.Time.Schedule(Schedule, CSchedule)
 
@@ -130,7 +131,7 @@ foreign import ccall safe "ql.h qlFixedRateBond1"
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond2"
   c_fixedRateBond'' :: CUInt -> CDouble -> Ptr CSchedule
-    ->CInt -> Ptr CDouble -> CInt -> CDouble -> CDate -> Ptr CCalendar
+    -> CInt -> Ptr (Ptr CInterestRate) -> CInt -> CDouble -> CDate -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedBondFrequency"
   c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt
@@ -186,13 +187,13 @@ fixedRateBond' settl couponCal face start maturity tenor coupons counter accrCon
                                          pc))
                                          
 -- |(qlFixedRateBond2)
-fixedRateBond'' :: Word -> Double -> Schedule -> [Double]
+fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
   -> IO FixedRateBond
 fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
   withObject2 sched cal
   (\s c ->
-    withAmounts coupons
+    withObjects coupons
     (\n cpns -> construct $ c_fixedRateBond'' (fromIntegral settl)
                                               (realToFrac face)
                                               s
