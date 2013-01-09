@@ -12,8 +12,6 @@ module QuantLib.Time.Period
   )
 where
 
-import System.IO.Unsafe(unsafePerformIO)
-
 import QuantLib.Internal
 import qualified QuantLib.Time.Frequency as F(Frequency)
 import QuantLib.Time.Unit(Unit)

@@ -11,8 +11,6 @@ module QuantLib.Quote
   )
 where
 
-import System.IO.Unsafe(unsafePerformIO)
-
 import QuantLib.Internal
 
 data CQuote

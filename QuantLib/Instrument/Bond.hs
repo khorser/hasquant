@@ -21,8 +21,6 @@ where
 
 import Data.Word(Word)
 
-import System.IO.Unsafe(unsafePerformIO)
-
 import QuantLib.CashFlow.Leg(Leg, CLeg)
 import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)

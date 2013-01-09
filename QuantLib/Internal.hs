@@ -32,12 +32,13 @@ module QuantLib.Internal
   , toQlDate
   , fromQlEnum
   , toQlEnum
-  -- re-exporting some popular FFI stuff
+  -- re-exporting some popular system stuff
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
   , fromBool, toBool
-  -- and standard day class
+  , unsafePerformIO
+  -- and the standard day type
   , Day
   )
 

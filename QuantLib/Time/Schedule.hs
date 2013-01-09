@@ -21,8 +21,6 @@ import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.Period(Period, CPeriod)
 
-import System.IO.Unsafe(unsafePerformIO)
-
 data CSchedule
 type Schedule = Object CSchedule
 

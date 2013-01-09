@@ -11,8 +11,6 @@ module QuantLib.CashFlow.Leg
   )
 where
 
-import System.IO.Unsafe(unsafePerformIO)
-
 import QuantLib.Internal
 
 data CLeg
