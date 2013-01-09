@@ -151,6 +151,11 @@ extern "C"
 
   /* rate helper */
   void qlFreeRateHelper(void *helper);
+  void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
+    void *calendar, int conv, int eom, void *dayCount, char **e);
+  void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
+    void *sched, int cLen, double *coupons, void *dayCount, int conv,
+    double redemption, int issue, char **e);
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber);
