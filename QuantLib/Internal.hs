@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,FlexibleInstances #-}
+{-# LANGUAGE ForeignFunctionInterface,FlexibleInstances,MultiParamTypeClasses #-}
 module QuantLib.Internal
   (
   -- types
@@ -7,21 +7,16 @@ module QuantLib.Internal
   -- information
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
-  -- memory management
-  , c_freeString
-  , c_freeInts
   -- exceptions
   , signalError
   , handleExceptions
   -- object construction and access
-  , Finalizable
-  , finalize
+  , Finalizable(..)
   , construct
-  , NamedSingleton
-  , c_construct
-  , c_name
+  , NamedSingleton(..)
   , constructNamed
   , name
+  , IsA(..)
   -- utils
   , isValid
   , withObject
@@ -31,6 +26,7 @@ module QuantLib.Internal
   , withDays
   , withAmounts
   , withObjects
+  , getIntArray
   -- convertors
   , fromQlDate
   , toQlDate
@@ -59,7 +55,7 @@ import Foreign.C.Types
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Marshal.Utils(fromBool, toBool)
-import Foreign.Ptr(nullPtr, Ptr, FunPtr)
+import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr, castFunPtr)
 import Foreign.Storable(peek)
 
 import System.IO.Unsafe(unsafePerformIO)
@@ -132,6 +128,17 @@ withAmounts amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
 
+-- get a function that returns an array of ints, the number of items
+-- is returned via the first argument
+getIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getIntArray f =
+  alloca
+  (\pcnt -> do array <- f pcnt
+               count <- peek pcnt
+               ints <- peekArray (fromIntegral count) array
+               c_freeInts array
+               return ints)
+
 handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
    alloca $
@@ -151,6 +158,13 @@ class Finalizable a where
 -- The function might signal an error
 construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (Object a)
 construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
+
+-- |Specify that `b' is also an `a'
+class IsA a b where
+  safeCastPtr :: Ptr b -> Ptr a
+  safeCastPtr = castPtr
+  safeCastFin :: FunPtr (Ptr a -> IO ()) -> FunPtr (Ptr b -> IO ())
+  safeCastFin = castFunPtr
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)

@@ -13,10 +13,6 @@ module QuantLib.Time.Schedule
   )
 where
 
-import Foreign.Marshal.Alloc(alloca)
-import Foreign.Marshal.Array(peekArray)
-import Foreign.Storable(peek)
-
 import Prelude hiding(until)
 
 import QuantLib.Internal
@@ -96,10 +92,4 @@ dates :: Schedule -> [Day]
 dates sched = map fromQlDate (unsafePerformIO
                 $ withObject
                     sched
-                    (\s ->
-                      alloca
-                      (\pcnt -> do ds <- c_scheduleDates s pcnt
-                                   count <- peek pcnt
-                                   days <- peekArray (fromIntegral count) ds
-                                   c_freeInts ds
-                                   return days)))
+                    (\s -> getIntArray (c_scheduleDates s)))

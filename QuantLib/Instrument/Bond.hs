@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses,FlexibleContexts #-}
 module QuantLib.Instrument.Bond
   (
   -- types
@@ -20,8 +20,6 @@ module QuantLib.Instrument.Bond
 where
 
 import Data.Word(Word)
-
-import Foreign.Ptr(castPtr, castFunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -48,21 +46,13 @@ type FixedRateBond = Object CFixedRateBond
 instance Finalizable CFixedRateBond where
   finalize = safeCastFin p_freeBond
 
-class BondClass c where
-  safeCastPtr :: Ptr c -> Ptr CBond
-  safeCastPtr = castPtr
-  safeCastFin :: FunPtr (Ptr CBond -> IO ()) -> FunPtr (Ptr c -> IO ())
-  safeCastFin = castFunPtr
+instance IsA CBond CBond
+instance IsA CBond CFixedRateBond
 
-instance BondClass CBond
-instance BondClass CFixedRateBond
-
--- ideally I would like to have a class "IsA a b" and
--- "instance IsA CBond CFixedRateBond" to derive finalizers
--- and casts automatically for all descendants
--- This doesn't work:
+-- ideally I would like the "instance IsA CBond CFixedRateBond" to derive
+-- finalizers for all descendants
 --
--- LANGUAGE MultiParamTypeClasses,FlexibleInstances,UndecidableInstances,FlexibleContexts
+-- LANGUAGE UndecidableInstances
 -- class (Finalizable a) => IsA a b where
 --   commonFinalizer :: FunPtr (Ptr a -> IO ())
 --   commonFinalizer = finalize
@@ -71,11 +61,8 @@ instance BondClass CFixedRateBond
 --
 -- instance (IsA a b) => Finalizable b where
 --   finalize = castFunPtr commonFinalizer
---
---   instance IsA CBond CFixedRateBond
---
--- maturityDate :: IsA CBond a => Object a -> Maybe Day
--- maturityDate b = fromQlDate $ unsafePerformIO (withObject b (c_maturityDate . upcast))
+-- also it would be great to have the type class declarations for
+-- Bond/FixedRateBond rather than CBond/CFixedRateBond
 
 -- is it possible to use type class constraints in FFI declarations?
 foreign import ccall safe "ql.h qlBond"
@@ -109,13 +96,13 @@ bond' settl cal face maturity issue flows =
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX any exceptions possible?
-maturityDate :: BondClass a => Object a -> Maybe Day
+maturityDate :: IsA CBond a => Object a -> Maybe Day
 maturityDate b = fromQlDate $ unsafePerformIO
                   (withObject b (c_maturityDate . safeCastPtr))
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX any exceptions possible?
-issueDate :: BondClass a => Object a -> Maybe Day
+issueDate :: IsA CBond a => Object a -> Maybe Day
 issueDate b = fromQlDate $ unsafePerformIO
                   (withObject b (c_issueDate . safeCastPtr))
 
