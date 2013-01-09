@@ -40,6 +40,7 @@ Executable Test
                         cpp/qlSchedule.cpp
                         cpp/qlSettings.cpp
                         cpp/qlUtilities.cpp
+                        cpp/qlYield.cpp
   Include-Dirs:        cpp
   Build-Depends:       base == 4.5.*, QuickCheck >=2.5, HUnit >= 1.2.4.2, time >= 1.4
   Extra-Libraries:     QuantLib stdc++

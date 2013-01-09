@@ -33,6 +33,7 @@ import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
+import qualified QuantLib.TermStructure.Yield as Yield
 import qualified QuantLib.Utilities as Utilities
 
 today :: IO Day
@@ -198,6 +199,35 @@ bond = TestList
             assertEqual "issue date" (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
             assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
             assertEqual "fixed rate bond frequency" Frequency.Monthly (Bond.frequency b)
+  , "fixed rate bond''"
+      ~: do dc <- DayCounter.actual365Fixed
+            r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
+            r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
+            cal <- Calendar.russia
+            tenor <- Period.period 6 Unit.Months
+            s <- Schedule.schedule
+              (Just (fromGregorian 2012 12 20))
+              (fromGregorian 2013 12 21)
+              tenor
+              cal
+              BusinessDayConvention.Following
+              BusinessDayConvention.Unadjusted
+              DateGenerationRule.Forward
+              False
+              (Just (fromGregorian 2012 12 21))
+              (Just (fromGregorian 2013 12 21))
+            b <- Bond.fixedRateBond''
+                    3
+                    100
+                    s
+                    [r1, r2]
+                    BusinessDayConvention.Preceding
+                    100
+                    (Just (fromGregorian 2012 12 21))
+                    cal
+            assertEqual "issue date" (Just $ fromGregorian 2012 12 21) (Bond.issueDate b)
+            assertEqual "maturity date" (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
+            assertEqual "fixed rate bond frequency" Frequency.Semiannual (Bond.frequency b)
   ]
   where i = Just (fromGregorian 2012 1 1)
         m = Just (fromGregorian 2013 1 1)
@@ -316,31 +346,6 @@ prop_frequencyFromPeriodFromFrequency freq =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          dc <- DayCounter.actual365Fixed
-          r1 <- InterestRate.interestRate 0.12 dc Compounding.Simple Frequency.Annual
-          r2 <- InterestRate.interestRate 0.125 dc Compounding.Simple Frequency.Monthly
-          cal <- Calendar.russia
-          tenor <- Period.period 1 Unit.Months
-          s <- Schedule.schedule
-            (Just (fromGregorian 2012 12 20))
-            (fromGregorian 2013 12 21)
-            tenor
-            cal
-            BusinessDayConvention.Following
-            BusinessDayConvention.Unadjusted
-            DateGenerationRule.Forward
-            False
-            (Just (fromGregorian 2012 12 21))
-            (Just (fromGregorian 2013 12 21))
-          b <- Bond.fixedRateBond''
-                  3
-                  100
-                  s
-                  [r1, r2]
-                  BusinessDayConvention.Preceding
-                  100
-                  (Just (fromGregorian 2012 12 21))
-                  cal
           _ <- runTestTT $ test
             [
               settings

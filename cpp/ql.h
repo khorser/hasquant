@@ -148,6 +148,9 @@ extern "C"
 
   /* enumerations */
   int *qlEnumerationValue(const char *name, int *c);
+
+  /* rate helper */
+  void qlFreeRateHelper(void *helper);
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber);

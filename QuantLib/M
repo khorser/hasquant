@@ -1,7 +1,7 @@
 all: cpp/qlBond.o cpp/qlCalendar.o cpp/qlCurrency.o cpp/qlDate.o \
     cpp/qlDayCounter.o cpp/qlEnumerations.o cpp/qlLeg.o cpp/qlPeriod.o \
     cpp/qlQuote.o cpp/qlSchedule.o cpp/qlSettings.o cpp/qlUtilities.o \
-    cpp/qlInterestRate.o
+    cpp/qlInterestRate.o cpp/qlYield.o
 
 
 cpp/qlBond.o: ../cpp/ql.h ../cpp/qlBond.cpp
@@ -42,5 +42,8 @@ cpp/qlSettings.o: ../cpp/ql.h ../cpp/qlSettings.cpp
 
 cpp/qlUtilities.o: ../cpp/ql.h ../cpp/qlUtilities.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlUtilities.o ../cpp/qlUtilities.cpp
+
+cpp/qlYield.o: ../cpp/ql.h ../cpp/qlYield.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlYield.o ../cpp/qlYield.cpp
 
 # vim: set ft=make:
