@@ -15,7 +15,6 @@ where
 
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray)
-import Foreign.Marshal.Utils(fromBool)
 import Foreign.Storable(peek)
 
 import Prelude hiding(until)

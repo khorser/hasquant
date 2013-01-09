@@ -11,8 +11,6 @@ where
 
 import Control.Monad(liftM)
 
-import Foreign.Marshal.Utils(fromBool, toBool)
-
 import QuantLib.Internal
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"

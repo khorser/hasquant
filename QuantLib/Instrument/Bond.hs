@@ -21,7 +21,6 @@ where
 
 import Data.Word(Word)
 
-import Foreign.Marshal.Utils(fromBool)
 import Foreign.Ptr(castPtr, castFunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)

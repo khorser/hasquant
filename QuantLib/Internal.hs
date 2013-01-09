@@ -37,7 +37,10 @@ module QuantLib.Internal
   , fromQlEnum
   , toQlEnum
   -- re-exporting some popular FFI stuff
-  , CInt(CInt), CDouble(CDouble), CUInt(CUInt), CString, Ptr, FunPtr
+  , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
+  , CString
+  , Ptr, FunPtr
+  , fromBool, toBool
   -- and standard day class
   , Day
   )
@@ -55,6 +58,7 @@ import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
+import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)
 import Foreign.Storable(peek)
 

@@ -64,7 +64,6 @@ module QuantLib.Time.Calendar
 where
 
 import Control.Monad(liftM)
-import Foreign.Marshal.Utils(fromBool)
 
 import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
