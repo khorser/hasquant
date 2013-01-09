@@ -8,12 +8,6 @@ module QuantLib.CashFlow.Leg
   )
 where
 
-import Data.Time.Calendar(Day)
-
-import Foreign.C.Types(CInt(CInt), CDouble)
-import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr)
-
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal

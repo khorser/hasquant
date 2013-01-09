@@ -9,9 +9,7 @@ module QuantLib.Settings
 where
 
 import Control.Monad(liftM)
-import Data.Time.Calendar(Day)
 
-import Foreign.C.Types(CInt(CInt))
 import Foreign.Marshal.Utils(fromBool, toBool)
 
 import QuantLib.Internal

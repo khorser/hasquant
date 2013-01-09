@@ -7,7 +7,7 @@ module QuantLib.Time.Date
   )
 where
 
-import Data.Time.Calendar(toGregorian, isLeapYear, Day)
+import Data.Time.Calendar(toGregorian, isLeapYear)
 
 import QuantLib.Internal
 

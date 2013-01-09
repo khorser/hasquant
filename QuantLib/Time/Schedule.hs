@@ -10,14 +10,9 @@ module QuantLib.Time.Schedule
   )
 where
 
-import Data.Time.Calendar(Day)
-
-import Foreign.C.Types(CInt(CInt))
-import Foreign.C.String(CString)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray)
 import Foreign.Marshal.Utils(fromBool)
-import Foreign.Ptr(Ptr, FunPtr)
 import Foreign.Storable(peek)
 
 import Prelude hiding(until)

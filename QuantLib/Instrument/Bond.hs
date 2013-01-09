@@ -16,12 +16,9 @@ module QuantLib.Instrument.Bond
 where
 
 import Data.Word(Word)
-import Data.Time.Calendar(Day)
 
-import Foreign.C.Types(CDouble(CDouble), CInt(CInt), CUInt(CUInt))
-import Foreign.C.String(CString)
 import Foreign.Marshal.Utils(fromBool)
-import Foreign.Ptr(Ptr, FunPtr, castPtr, castFunPtr)
+import Foreign.Ptr(castPtr, castFunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 

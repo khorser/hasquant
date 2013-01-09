@@ -6,8 +6,6 @@ module QuantLib.TermStructure.Yield
   )
 where
 
-import Foreign.Ptr(Ptr, FunPtr)
-
 import QuantLib.Internal
 
 data CRateHelper

@@ -71,9 +71,6 @@ module QuantLib.Currency
   )
 where
 
-import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr)
-
 import QuantLib.Internal
 
 data CCurrency

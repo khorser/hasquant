@@ -61,12 +61,7 @@ module QuantLib.Time.Calendar
   )
 where
 
-import Data.Time.Calendar(Day)
-
-import Foreign.C.String(CString)
-import Foreign.C.Types(CInt(CInt))
 import Foreign.Marshal.Utils(fromBool)
-import Foreign.Ptr(Ptr, FunPtr)
 
 import System.IO.Unsafe(unsafePerformIO)
 

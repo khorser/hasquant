@@ -29,6 +29,10 @@ module QuantLib.Internal
   , toQlEnum
   , fromQlEnum
   , signalError
+  -- re-exporting some popular FFI stuff
+  , CInt(CInt), CDouble(CDouble), CUInt(CUInt), CString, Ptr, FunPtr
+  -- and standard day class
+  , Day
   )
 
 where
@@ -39,9 +43,9 @@ import Data.List(elemIndex)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.Typeable(Typeable, typeOf)
 
-import Foreign.C.String(CString, peekCString, withCString)
-import Foreign.C.Types(CInt(CInt), CDouble)
+import Foreign.C.String
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
+import Foreign.C.Types
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr)

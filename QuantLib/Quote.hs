@@ -8,10 +8,6 @@ module QuantLib.Quote
   )
 where
 
-import Foreign.C.Types(CDouble(CDouble))
-import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr)
-
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal

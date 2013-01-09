@@ -7,10 +7,6 @@ module QuantLib.InterestRate
   )
 where
 
-import Foreign.C.Types(CInt(CInt), CDouble(CDouble))
-import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr)
-
 import QuantLib.Compounding(Compounding)
 import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)

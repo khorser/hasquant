@@ -9,10 +9,6 @@ module QuantLib.Time.Period
   )
 where
 
-import Foreign.C.Types(CInt(CInt))
-import Foreign.C.String(CString)
-import Foreign.Ptr(Ptr, FunPtr)
-
 import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal
