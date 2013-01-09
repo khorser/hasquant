@@ -29,7 +29,7 @@ foreign import ccall safe "ql.h qlSchedule"
     -> CInt -> CInt -> CInt -> CInt -> CDate -> CDate -> Ptr CString
     -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlSchedule1"
-  c_schedule' :: CInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
+  c_schedule' :: CUInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleUntil"
   c_until :: Ptr CSchedule -> CDate -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h &qlFreeSchedule"

@@ -7,12 +7,12 @@
 using namespace QuantLib;
 using namespace boost;
 
-void *qlLeg(int len, double *amounts, int *dates, char **e) {
+void *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
   *e = 0;
   Leg *leg = 0;
   try {
     leg = new Leg();
-    for (int i = 0; i < len; ++i)
+    for (unsigned i = 0; i < len; ++i)
       leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
     return TP("Allocated leg", leg);
   } catch (std::exception& er) {

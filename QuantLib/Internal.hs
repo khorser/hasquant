@@ -121,7 +121,7 @@ withObjects objs fn = go objs []
                         (ptr o)
                         (\p -> go os (ps ++ [p]))
 
-withDays :: [Day] -> (CInt -> Ptr CDate -> IO b) -> IO b
+withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
 withDays days f = withArrayLen
                       (map toQlDate days)
                       (\n d -> f (fromIntegral n) d)

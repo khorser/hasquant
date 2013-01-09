@@ -17,7 +17,7 @@ data CLeg
 type Leg = Object CLeg
 
 foreign import ccall safe "ql.h qlLeg"
-  c_leg :: CInt -> Ptr CDouble -> Ptr CDate -> Ptr CString -> IO (Ptr CLeg)
+  c_leg :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CString -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
   c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CDate
 foreign import ccall safe "ql.h &qlFreeLeg"

@@ -66,7 +66,7 @@ extern "C"
   int	qlMinDay();
 
   /* leg */
-  void *qlLeg(int len, double *amounts, int *dates, char **e);
+  void *qlLeg(unsigned len, double *amounts, int *dates, char **e);
   int   qlLegStartDate(void *leg, char **e);
 
   void  qlFreeLeg(void *leg);
@@ -135,7 +135,7 @@ extern "C"
   void *qlSchedule(int eff, int term, void *tenor, void *cal,
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
-  void *qlSchedule1(int len, int *dates, void *cal, int conv, char **e);
+  void *qlSchedule1(unsigned len, int *dates, void *cal, int conv, char **e);
   void *qlScheduleUntil(void *sched, int date, char **e);
   int  *qlScheduleDates(void *sched, int *count);
 

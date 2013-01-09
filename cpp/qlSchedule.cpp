@@ -4,11 +4,11 @@
 
 using namespace QuantLib;
 
-void *qlSchedule1(int len, int *dates, void *cal, int conv, char **e) {
+void *qlSchedule1(unsigned len, int *dates, void *cal, int conv, char **e) {
   *e = 0;
   try {
     std::vector<Date> d;
-    for (int i = 0; i < len; ++i)
+    for (unsigned i = 0; i < len; ++i)
       d.push_back(Date(TV("PAdate", dates[i])));
     return TP("Allocated schedule",
 		new Schedule(d,
