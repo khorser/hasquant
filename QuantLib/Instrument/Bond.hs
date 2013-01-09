@@ -19,8 +19,6 @@ module QuantLib.Instrument.Bond
 
 where
 
-import Data.Word(Word)
-
 import QuantLib.CashFlow.Leg(Leg, CLeg)
 import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)

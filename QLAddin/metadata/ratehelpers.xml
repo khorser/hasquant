@@ -162,56 +162,6 @@
       </ParameterList>
     </Constructor>
 
-    <Constructor name='qlDepositRateHelper2'>
-      <libraryFunction>DepositRateHelper</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='Rate' exampleValue='0.036565'>
-            <type>QuantLib::Quote</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>deposit quote.</description>
-          </Parameter>
-          <Parameter name='Tenor' exampleValue='6M'>
-            <type>QuantLib::Period</type>
-            <tensorRank>scalar</tensorRank>
-            <description>deposit length (e.g. 3M for three months).</description>
-          </Parameter>
-          <Parameter name='FixingDays' exampleValue='2'>
-            <type>QuantLib::Natural</type>
-            <tensorRank>scalar</tensorRank>
-            <description>fixing days (e.g. 2).</description>
-          </Parameter>
-          <Parameter name='Calendar' exampleValue='TARGET'>
-            <type>QuantLib::Calendar</type>
-            <tensorRank>scalar</tensorRank>
-            <description>holiday calendar (e.g. TARGET).</description>
-          </Parameter>
-          <Parameter name='Convention' exampleValue='Modified Following'>
-            <type>QuantLib::BusinessDayConvention</type>
-            <tensorRank>scalar</tensorRank>
-            <description>business day convention (e.g. Modified Following).</description>
-          </Parameter>
-          <Parameter name='EndOfMonth' exampleValue='true'>
-            <type>bool</type>
-            <tensorRank>scalar</tensorRank>
-            <description>End of Month rule (TRUE for end of month to end of month termination date, FALSE otherwise).</description>
-          </Parameter>
-          <Parameter name='DayCounter' exampleValue='Actual/360'>
-            <type>QuantLib::DayCounter</type>
-            <tensorRank>scalar</tensorRank>
-            <description>DayCounter ID.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
     <Constructor name='qlSwapRateHelper'>
       <libraryFunction>SwapRateHelper</libraryFunction>
       <SupportedPlatforms>
@@ -530,67 +480,6 @@
             <type>QuantLib::Bond</type>
             <tensorRank>scalar</tensorRank>
             <description>Bond object ID.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-    </Constructor>
-
-    <Constructor name='qlFixedRateBondHelper'>
-      <libraryFunction>FixedRateBondHelper</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='CleanPrice' exampleValue='100.4332'>
-            <type>QuantLib::Quote</type>
-            <superType>libToHandle</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>cleanPrice.</description>
-          </Parameter>
-          <Parameter name='SettlementDays' exampleValue='3'>
-            <type>QuantLib::Size</type>
-            <tensorRank>scalar</tensorRank>
-            <description>settlement days.</description>
-          </Parameter>
-          <Parameter name='FaceAmount' default='100.0'>
-            <type>double</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Face nominal amount.</description>
-          </Parameter>
-          <Parameter name='ScheduleID'>
-            <type>QuantLib::Schedule</type>
-            <superType>libraryClass</superType>
-            <tensorRank>scalar</tensorRank>
-            <description>Schedule object ID.</description>
-          </Parameter>
-          <Parameter name='Coupons' exampleValue='0.04'>
-            <type>QuantLib::Rate</type>
-            <tensorRank>vector</tensorRank>
-            <description>coupon fixed rates.</description>
-          </Parameter>
-          <Parameter name='DayCounter' exampleValue='Actual/Actual (ISMA)'>
-            <type>QuantLib::DayCounter</type>
-            <tensorRank>scalar</tensorRank>
-            <description>Payment DayCounter ID.</description>
-          </Parameter>
-          <Parameter name='PaymentBDC' default='"Following"'>
-            <type>QuantLib::BusinessDayConvention</type>
-            <tensorRank>scalar</tensorRank>
-            <description>payment business day convention.</description>
-          </Parameter>
-          <Parameter name='Redemption' default='100.0'>
-            <type>double</type>
-            <tensorRank>scalar</tensorRank>
-            <description>redemption value.</description>
-          </Parameter>
-          <Parameter name='IssueDate' default='QuantLib::Date()'>
-            <type>QuantLib::Date</type>
-            <tensorRank>scalar</tensorRank>
-            <description>issue date: the bond can't be traded until then.</description>
           </Parameter>
         </Parameters>
       </ParameterList>

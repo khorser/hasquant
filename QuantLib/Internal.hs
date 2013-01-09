@@ -38,6 +38,7 @@ module QuantLib.Internal
   , Ptr, FunPtr
   , fromBool, toBool
   , unsafePerformIO
+  , Word
   -- and the standard day type
   , Day
   )
@@ -49,6 +50,7 @@ import Control.Monad(liftM)
 import Data.List(elemIndex)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.Typeable(Typeable, typeOf)
+import Data.Word(Word)
 
 import Foreign.C.String
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
