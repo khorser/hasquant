@@ -51,7 +51,6 @@ import Foreign.Ptr(Ptr, FunPtr)
 import QuantLib.Internal
 
 data CDayCounter
-
 type DayCounter = Object CDayCounter
 
 foreign import ccall safe "ql.h qlDayCounter"

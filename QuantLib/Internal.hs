@@ -102,7 +102,7 @@ withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 withObjects :: [Object a] -> (CInt -> Ptr (Ptr a) -> IO b) -> IO b
 withObjects os f = withObjects' os f []
 
--- XXX rewrite with fold
+-- XXX rewrite using fold?
 withObjects' :: [Object a] -> (CInt -> Ptr (Ptr a) -> IO b) -> [Ptr a] -> IO b
 withObjects' (o:os) f ps = withForeignPtr
                             (ptr o)
@@ -134,19 +134,20 @@ handleExceptions f =
 class Finalizable a where
   finalize :: FunPtr (Ptr a -> IO ())
 
-  -- |Run a C function returning a new object that needs a finalizer. The function might signal an error
-  construct :: (Ptr CString -> IO (Ptr a)) -> IO (Object a)
-  construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
+-- |Run a C function returning a new object that needs a finalizer.
+-- The function might signal an error
+construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (Object a)
+construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
-  constructNamed :: String -> IO (Object a)
-  constructNamed n = withCString n $ construct . c_construct
+constructNamed :: NamedSingleton a => String -> IO (Object a)
+constructNamed n = withCString n $ construct . c_construct
 
-  name :: Object a -> String
-  name c = unsafePerformIO
+name :: NamedSingleton a => Object a -> String
+name c = unsafePerformIO
           $ withForeignPtr
               (ptr c)
               (\cc -> do n <- c_name cc
@@ -165,8 +166,7 @@ instance QLDate Day where
   -- return Either instead?
   toQlDate x | isValid x = fromIntegral $ toModifiedJulianDay x - qlStart
                          | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
-  fromQlDate p = ModifiedJulianDay $
-                fromIntegral p + qlStart
+  fromQlDate p = ModifiedJulianDay $ fromIntegral p + qlStart
 
 instance QLDate (Maybe Day) where
   isValid = maybe True isValid
@@ -200,12 +200,10 @@ toQlEnum x =
     vals = values (show $ typeOf x) 
 
 fromQlEnum :: (Typeable a, Enum a) => CInt -> a
+-- NB: intermediate computations are using the type of the result:
 fromQlEnum x = enum
                where enum = result index
                      result Nothing  =
                        signalError ("Unknown enumeration code: " ++ show x)
                      result (Just i) = toEnum i
                      index = elemIndex x $ values (show $ typeOf enum)
-               -- NB: intermediate computations are using the type of the
-               -- result here, thank laziness (?)
-               -- Looks like fixed point operator. Are we abusing the type system?

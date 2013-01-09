@@ -75,7 +75,6 @@ import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
 
 data CCalendar
-
 type Calendar = Object CCalendar
 
 foreign import ccall safe "ql.h qlCalendar"
