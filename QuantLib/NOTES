@@ -19,6 +19,11 @@ updated data
 
 keep objects together to avoid gc-ing of objects for which we still have references
 
+try and make objects as much immutable as possible by not exposing mutators
+(except maybe Calendars that should keep the ability to be changed if the user wants
+to introduce adjustments)
+as result not going to use Handle/RelinkableHandle machinery
+
 --- BOND Pricing: ---
 
 <Constructor name='qlDepositRateHelper2'>

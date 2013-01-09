@@ -1,15 +1,19 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Instrument.Bond
   (
-    Bond
+  -- types
+    CBond
+  , Bond
+  , FixedRateBond
+  -- makers
   , bond
   , bond'
-  , issueDate
-  , maturityDate
-  , FixedRateBond
   , fixedRateBond
   , fixedRateBond'
   , fixedRateBond''
+  -- accessors
+  , issueDate
+  , maturityDate
   , frequency
   )
 

@@ -1,11 +1,13 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Time.Calendar
   (
-    Calendar
-  , CCalendar
+  -- objects
+    CCalendar
+  , Calendar
+  -- accessors
   , adjust
   , advance
-
+  -- makers
   , noCalendar
   , nullCalendar
   , target
@@ -61,9 +63,8 @@ module QuantLib.Time.Calendar
   )
 where
 
+import Control.Monad(liftM)
 import Foreign.Marshal.Utils(fromBool)
-
-import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
@@ -92,19 +93,19 @@ instance NamedSingleton CCalendar where
 
 
 -- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
-adjust :: Calendar -> Day -> BusinessDayConvention -> Day
-adjust cal d conv = fromQlDate $ unsafePerformIO
-  $ withObject
+adjust :: Calendar -> Day -> BusinessDayConvention -> IO Day
+adjust cal d conv = liftM fromQlDate
+  (withObject
       cal
       (\c -> c_calendarAdjust
                c
                (toQlDate d)
-               (toQlEnum conv))
+               (toQlEnum conv)))
 
 -- |advances a date according to a given calendar (qlCalendarAdvance)
-advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> Day
-advance cal d n u conv eom = fromQlDate $ unsafePerformIO
-  $ withObject
+advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> IO Day
+advance cal d n u conv eom = liftM fromQlDate
+  (withObject
       cal
       (\c -> c_calendarAdvance
                c
@@ -112,7 +113,7 @@ advance cal d n u conv eom = fromQlDate $ unsafePerformIO
                (fromIntegral n)
                (toQlEnum u)
                (toQlEnum conv)
-               (fromBool eom))
+               (fromBool eom)))
 
 -- TODO add data Calendar = ...
 

@@ -1,6 +1,7 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
 module QuantLib.Utilities
   (
+  -- accessors
     version
   , boostVersion
   )

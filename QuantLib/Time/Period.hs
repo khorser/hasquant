@@ -1,10 +1,13 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Time.Period
   (
-    Period
-  , CPeriod
+  -- types
+    CPeriod
+  , Period
+  -- makers
   , period
   , fromFrequency
+  -- accessors
   , toFrequency
   )
 where

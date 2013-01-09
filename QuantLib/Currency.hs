@@ -1,9 +1,10 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Currency
   (
+  -- types
     CCurrency
   , Currency
-
+  -- makers
   , currency
   , noCurrency
   , eur

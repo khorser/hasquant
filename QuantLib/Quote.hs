@@ -1,9 +1,12 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Quote
   (
-    Quote
+  -- types
+    CQuote
+  , Quote
+  -- makers
   , simpleQuote
-  , CQuote
+  -- accessors
   , value
   )
 where

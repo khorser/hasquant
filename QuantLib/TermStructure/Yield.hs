@@ -1,8 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.TermStructure.Yield
   (
-    RateHelper
-  , CRateHelper
+  -- objects
+    CRateHelper
+  , RateHelper
   )
 where
 

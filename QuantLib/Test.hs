@@ -109,13 +109,21 @@ calendar = TestList
                 c2 <- Calendar.gbp
                 assertEqual "GBP calendar name" (name c1) (name c2)
   , "adjust" ~: do c <- Calendar.russia 
-                   assertEqual "Russian Calendar adjust"
-                              (fromGregorian 2012 12 21)
-                              (Calendar.adjust c (fromGregorian 2012 12 22) BusinessDayConvention.Preceding)
+                   a <- Calendar.adjust
+                            c
+                            (fromGregorian 2012 12 22)
+                            BusinessDayConvention.Preceding
+                   assertEqual "Russian Calendar adjust" (fromGregorian 2012 12 21) a
   , "advance" ~: do c <- Calendar.russia 
-                    assertEqual "Russian Calendar advance"
-                              (fromGregorian 2013 01 18)
-                              (Calendar.advance c (fromGregorian 2012 12 20) 1 Unit.Months BusinessDayConvention.Preceding False)
+                    a <- Calendar.advance
+                            c
+                            (fromGregorian 2012 12 20)
+                            1
+                            Unit.Months
+                            BusinessDayConvention.Preceding
+                            False
+                    assertEqual "Russian Calendar advance" (fromGregorian 2013 01 18) a
+                              
   ]
 
 currency :: Test

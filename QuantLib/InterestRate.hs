@@ -1,9 +1,11 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.InterestRate
   (
-    InterestRate
+  -- types
+    CInterestRate
+  , InterestRate
+  -- makers
   , interestRate
-  , CInterestRate
   )
 where
 

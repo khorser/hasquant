@@ -1,11 +1,14 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Time.Schedule
   (
-    Schedule
+  -- objects
+    CSchedule
+  , Schedule
+  -- makers
   , schedule
-  , CSchedule
   , schedule'
   , until
+  -- accessors
   , dates
   )
 where

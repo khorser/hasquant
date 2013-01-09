@@ -1,23 +1,29 @@
 {-# LANGUAGE ForeignFunctionInterface,FlexibleInstances #-}
 module QuantLib.Internal
   (
-    fromQlDate
-  , toQlDate
+  -- types
+    Object
+  , CDate
+  -- information
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
+  -- memory management
   , c_freeString
   , c_freeInts
+  -- exceptions
+  , signalError
   , handleExceptions
-  , isValid
+  -- object construction and access
   , Finalizable
   , finalize
+  , construct
   , NamedSingleton
   , c_construct
   , c_name
   , constructNamed
   , name
-  , Object
-  , construct
+  -- utils
+  , isValid
   , withObject
   , withObject2
   , withObject3
@@ -25,10 +31,11 @@ module QuantLib.Internal
   , withDays
   , withAmounts
   , withObjects
-  , CDate
-  , toQlEnum
+  -- convertors
+  , fromQlDate
+  , toQlDate
   , fromQlEnum
-  , signalError
+  , toQlEnum
   -- re-exporting some popular FFI stuff
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt), CString, Ptr, FunPtr
   -- and standard day class

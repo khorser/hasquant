@@ -1,10 +1,13 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.CashFlow.Leg
   (
-    Leg
+  -- types
+    CLeg
+  , Leg
+  -- makers
   , leg
+  -- accessors
   , startDate
-  , CLeg
   )
 where
 

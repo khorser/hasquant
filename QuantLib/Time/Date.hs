@@ -1,5 +1,6 @@
 module QuantLib.Time.Date
   (
+  -- accessors
     minDate
   , maxDate
   , isLeap

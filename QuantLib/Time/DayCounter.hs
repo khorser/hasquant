@@ -1,9 +1,10 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
 module QuantLib.Time.DayCounter
   (
-    DayCounter
-  , CDayCounter
-
+  -- types
+    CDayCounter
+  , DayCounter
+  -- makers
   , dayCounter
   , noDayCounter
   , actual365Fixed
