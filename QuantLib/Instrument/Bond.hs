@@ -104,17 +104,17 @@ issueDate b = fromQlDate $ unsafePerformIO
 
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule
-    -> CInt -> Ptr CDouble -> Ptr CDayCounter
+    -> CUInt -> Ptr CDouble -> Ptr CDayCounter
     -> CInt -> CDouble -> CDate -> Ptr CCalendar -> Ptr CString
     -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond1"
   c_fixedRateBond' :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate
-    -> Ptr CPeriod -> CInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
+    -> Ptr CPeriod -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CInt
     -> CDouble -> CDate -> CDate -> CInt -> CInt -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedRateBond2"
   c_fixedRateBond'' :: CUInt -> CDouble -> Ptr CSchedule
-    -> CInt -> Ptr (Ptr CInterestRate) -> CInt -> CDouble -> CDate -> Ptr CCalendar
+    -> CUInt -> Ptr (Ptr CInterestRate) -> CInt -> CDouble -> CDate -> Ptr CCalendar
     -> Ptr CString -> IO (Ptr CFixedRateBond)
 foreign import ccall safe "ql.h qlFixedBondFrequency"
   c_fixedBondFrequency :: Ptr CFixedRateBond -> IO CInt

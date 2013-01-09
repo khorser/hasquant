@@ -92,15 +92,15 @@ extern "C"
   int   qlBondIssueDate(void *bond);
 
   void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
-    int cLen, double *coupons, void *counter,
+    unsigned cLen, double *coupons, void *counter,
     int payConv, double redemption, int issue, void *payCal,
     char **e);
   void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
-    int maturity, void *tenor, int cLen, double *coupons, void *dayCounter,
+    int maturity, void *tenor, unsigned cLen, double *coupons, void *dayCounter,
     int accrConv, int paymentConv, double redemption, int issue, int stub,
     int rule, int eom, void *payCal, char **e);
   void *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
-    int cLen, void **coupons, int paymentConv, double redemption, int issue,
+    unsigned cLen, void **coupons, int paymentConv, double redemption, int issue,
     void *cal, char **e);
   int   qlFixedBondFrequency(void *bond);
 
@@ -154,7 +154,7 @@ extern "C"
   void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
     void *calendar, int conv, int eom, void *dayCount, char **e);
   void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
-    void *sched, int cLen, double *coupons, void *dayCount, int conv,
+    void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
     double redemption, int issue, char **e);
 }
 

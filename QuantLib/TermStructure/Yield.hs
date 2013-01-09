@@ -35,7 +35,7 @@ foreign import ccall safe "ql.h qlDepositRateHelper"
     -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
 foreign import ccall safe "ql.h qlFixedRateBondHelper"
   c_fixedRateBondHelper :: Ptr CQuote -> CUInt -> CDouble -> Ptr CSchedule
-  -> CInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CDouble -> CInt
+  -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CDouble -> CInt
   -> Ptr CString -> IO (Ptr CRateHelper)
 
 instance Finalizable CRateHelper where

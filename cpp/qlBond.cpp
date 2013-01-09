@@ -49,14 +49,14 @@ void qlFreeBond(void *bond) {
 }
 
 void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
-    int cLen, double *coupons, void *counter,
+    unsigned cLen, double *coupons, void *counter,
     int payConv, double redemption, int issue, void *payCal,
     char **e)
 {
   *e = 0;
   try {
     std::vector<Rate> cpns;
-    for (int i = 0; i < cLen; ++i)
+    for (unsigned i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
 
     return log_and_upcast<FixedRateBond, Bond>("Allocated fixed rate bond",
@@ -76,13 +76,13 @@ void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
 }
 
 void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face,
-  int start, int maturity, void *tenor, int cLen, double *coupons,
+  int start, int maturity, void *tenor, unsigned cLen, double *coupons,
   void *dayCounter, int accrConv, int paymentConv, double redemption,
   int issue, int stub, int rule, int eom, void *payCal, char **e) {
   *e = 0;
   try {
     std::vector<Rate> cpns;
-    for (int i = 0; i < cLen; ++i)
+    for (unsigned i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
 
     return log_and_upcast<FixedRateBond, Bond>("Allocated fixed rate bond1",
@@ -109,13 +109,13 @@ void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face,
 }
 
 void *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
-  int cLen, void **coupons, int paymentConv, double redemption, int issue,
+  unsigned cLen, void **coupons, int paymentConv, double redemption, int issue,
   void *cal, char **e) {
   *e = 0;
   try {
     std::vector<InterestRate> cpns;
     InterestRate **rates = reinterpret_cast<InterestRate **>(coupons);
-    for (int i = 0; i < cLen; ++i) {
+    for (unsigned i = 0; i < cLen; ++i) {
       TPP("Prate", rates[i]);
       cpns.push_back(*rates[i]);
     }

@@ -113,7 +113,7 @@ withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
 withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 
-withObjects :: [Object a] -> (CInt -> Ptr (Ptr a) -> IO b) -> IO b
+withObjects :: [Object a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 -- XXX rewrite using folds?
 withObjects objs fn = go objs []
   where go [] ps     = withArrayLen ps (\n p -> fn (fromIntegral n) p)
@@ -126,7 +126,7 @@ withDays days f = withArrayLen
                       (map toQlDate days)
                       (\n d -> f (fromIntegral n) d)
 
-withAmounts :: [Double] -> (CInt -> Ptr CDouble -> IO b) -> IO b
+withAmounts :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
 withAmounts amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)

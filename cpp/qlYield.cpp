@@ -24,13 +24,13 @@ void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
 }
 
 void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
-  void *sched, int cLen, double *coupons, void *dayCount, int conv,
+  void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
   double redemption, int issue, char **e)
 {
   *e = 0;
   try {
     std::vector<Rate> cpns;
-    for (int i = 0; i < cLen; ++i)
+    for (unsigned i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
     return TP("Allocated deposit rate helper",
       new FixedRateBondHelper(
