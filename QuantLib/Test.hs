@@ -1,12 +1,14 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Main(main)
+
 where
 
 import Control.Exception(catch)
 import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
+import Data.Word(Word)
 import Prelude hiding(catch)
 
 import Test.HUnit(runTestTT, test, assertEqual, (~:), (~?=), (~=?),
@@ -275,6 +277,34 @@ schedule = TestList
                                          (Schedule.dates truncated)
   ]
 
+bondval :: Test
+bondval = TestList
+  [
+    "bond valuation"
+      ~: do _zc3mRate <- Quote.simpleQuote zc3mQuote
+            _zc6mRate <- Quote.simpleQuote zc6mQuote
+            _zc1yRate <- Quote.simpleQuote zc1yQuote
+            zcBondsDayCounter <- DayCounter.actual365Fixed
+            p3m <- Period.period 3 Unit.Months
+            _p6m <- Period.period 6 Unit.Months
+            _p1y <- Period.period 1 Unit.Years
+            cal <- Calendar.target
+            _zc3m <- Yield.depositRateHelper
+                      zc3mQuote -- zc3mRate
+                      p3m
+                      fixingDays
+                      cal
+                      BusinessDayConvention.ModifiedFollowing
+                      True
+                      zcBondsDayCounter
+            assertEqual "Test" True True
+  ]
+  where zc3mQuote=0.0096
+        zc6mQuote=0.0145
+        zc1yQuote=0.0194
+        fixingDays = 3 :: Word
+        _settlementDays = 3 :: Word
+
 
 -- QuickCheck --
 instance Arbitrary Day where
@@ -365,6 +395,7 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
               , bond
               , frequency
               , schedule
+              , bondval
             ]
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate

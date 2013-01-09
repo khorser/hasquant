@@ -17,7 +17,7 @@ where
 
 import QuantLib.Internal
 import QuantLib.Math.Interpolation(Interpolation)
-import QuantLib.Quote(Quote, CQuote)
+import QuantLib.Quote(Quote)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
@@ -31,10 +31,10 @@ foreign import ccall safe "ql.h &qlFreeRateHelper"
   p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
 
 foreign import ccall safe "ql.h qlDepositRateHelper"
-  c_depositRateHelper :: Ptr CQuote -> Ptr CPeriod -> CUInt -> Ptr CCalendar
+  c_depositRateHelper :: CDouble -> Ptr CPeriod -> CUInt -> Ptr CCalendar
     -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
 foreign import ccall safe "ql.h qlFixedRateBondHelper"
-  c_fixedRateBondHelper :: Ptr CQuote -> CUInt -> CDouble -> Ptr CSchedule
+  c_fixedRateBondHelper :: CDouble -> CUInt -> CDouble -> Ptr CSchedule
   -> CUInt -> Ptr CDouble -> Ptr CDayCounter -> CInt -> CDouble -> CInt
   -> Ptr CString -> IO (Ptr CRateHelper)
 
@@ -44,31 +44,31 @@ instance Finalizable CRateHelper where
 data Bootstrap = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
 
 -- |(qlDepositRateHelper2)
-depositRateHelper :: Quote -> Period -> Word -> Calendar
+depositRateHelper :: Double -> Period -> Word -> Calendar
   -> BusinessDayConvention -> Bool -> DayCounter -> IO RateHelper
 depositRateHelper quote tenor fixDays cal conv eom dayCount =
-  withObject4 quote tenor cal dayCount
-  (\q t c dc -> construct $ c_depositRateHelper
-                              q
-                              t
-                              (fromIntegral fixDays)
-                              c
-                              (toQlEnum conv)
-                              (fromBool eom)
-                              dc)
+  withObject3 tenor cal dayCount
+  (\t c dc -> construct $ c_depositRateHelper
+                            (realToFrac quote)
+                            t
+                            (fromIntegral fixDays)
+                            c
+                            (toQlEnum conv)
+                            (fromBool eom)
+                            dc)
 
 -- |(qlFixedRateBondHelper)
-fixedRateBondHelper :: Quote -> Word -> Double -> Schedule -> [Double]
+fixedRateBondHelper :: Double -> Word -> Double -> Schedule -> [Double]
   -> DayCounter -> BusinessDayConvention -> Double -> Maybe Day
   -> IO RateHelper
 fixedRateBondHelper quote settlDays face sched coupons dayCount conv
   redemption issue =
-    withObject3 quote sched dayCount
-    (\q s dc ->
+    withObject2 sched dayCount
+    (\s dc ->
       withAmounts
       coupons
       (\n cpns -> construct $ c_fixedRateBondHelper
-                              q
+                              (realToFrac quote)
                               (fromIntegral settlDays)
                               (realToFrac face)
                               s

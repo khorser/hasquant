@@ -4,14 +4,14 @@
 
 using namespace QuantLib;
 
-void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
+void *qlDepositRateHelper(double quote, void *period, unsigned fixDays,
   void *calendar, int conv, int eom, void *dayCount, char **e)
 {
   *e = 0;
   try {
     return TP("Allocated deposit rate helper",
       new DepositRateHelper(
-	    Handle<Quote>(log_and_cast<Quote>("Pquote", quote), false),
+	    quote,
 	    *log_and_cast<Period>("Pperiod", period),
 	    fixDays,
 	    *log_and_cast<Calendar>("Pcalendar", calendar),
@@ -23,7 +23,7 @@ void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
   }
 }
 
-void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
+void *qlFixedRateBondHelper(double quote, unsigned settlDays, double face,
   void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
   double redemption, int issue, char **e)
 {
@@ -34,7 +34,7 @@ void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
       cpns.push_back(coupons[i]);
     return TP("Allocated deposit rate helper",
       new FixedRateBondHelper(
-	    Handle<Quote>(log_and_cast<Quote>("Pquote", quote), false),
+	    Handle<Quote>(boost::shared_ptr<Quote>(new SimpleQuote(quote)), false),
 	    settlDays,
 	    face,
 	    *log_and_cast<Schedule>("Pschedule", sched),

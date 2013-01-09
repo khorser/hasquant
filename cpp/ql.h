@@ -151,9 +151,9 @@ extern "C"
 
   /* rate helper */
   void qlFreeRateHelper(void *helper);
-  void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
+  void *qlDepositRateHelper(double quote, void *period, unsigned fixDays,
     void *calendar, int conv, int eom, void *dayCount, char **e);
-  void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
+  void *qlFixedRateBondHelper(double quote, unsigned settlDays, double face,
     void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
     double redemption, int issue, char **e);
 }
