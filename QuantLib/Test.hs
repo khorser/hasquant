@@ -5,10 +5,10 @@ module Main(main)
 where
 
 import Control.Exception(catch)
+import Data.List(zip4)
 import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
-import Data.Word(Word)
 import Prelude hiding(catch)
 
 import Test.HUnit(runTestTT, test, assertEqual, (~:), (~?=), (~=?),
@@ -289,6 +289,8 @@ bondval = TestList
             p6m <- Period.period 6 Unit.Months
             p1y <- Period.period 1 Unit.Years
             cal <- Calendar.target
+            gcal <- Calendar.unitedStatesGovernmentBond
+            actact <- DayCounter.actualActualBond
             _zc3m <- Yield.depositRateHelper
                       zc3mRate
                       p3m
@@ -313,28 +315,52 @@ bondval = TestList
                       BusinessDayConvention.ModifiedFollowing
                       True
                       zcBondsDayCounter
-            _quotes <- mapM Quote.simpleQuote marketQuotes
+            quotes <- mapM Quote.simpleQuote marketQuotes
+            schedules <- mapM (\(i, m) -> Schedule.schedule
+                                            i
+                                            m
+                                            p6m
+                                            gcal
+                                            BusinessDayConvention.Unadjusted
+                                            BusinessDayConvention.Unadjusted
+                                            DateGenerationRule.Backward
+                                            False
+                                            Nothing
+                                            Nothing)
+                          $ zip issueDates maturities
+            bondHelpers <- mapM (\(s, q, c, i) ->
+                                  Yield.fixedRateBondHelper
+                                    q
+                                    settlementDays
+                                    100.0
+                                    s
+                                    [c]
+                                    actact
+                                    BusinessDayConvention.Unadjusted
+                                    redemption
+                                    i)
+                              $ zip4 schedules quotes couponRates issueDates
             assertEqual "Test" True True
   ]
   where zc3mQuote=0.0096
         zc6mQuote=0.0145
         zc1yQuote=0.0194
         fixingDays = 3
-        _settlementDays = 3 :: Word
-        _redemption = 100.0 :: Double
-        _issueDates = [
+        settlementDays = 3
+        redemption = 100.0
+        issueDates = map Just [
           fromGregorian 2005 03 15,
           fromGregorian 2005 06 15,
           fromGregorian 2006 06 30,
           fromGregorian 2002 11 15,
           fromGregorian 1987 05 15]
-        _maturities = [
+        maturities = [
 	  fromGregorian 2010 08 31,
 	  fromGregorian 2011 08 31,
 	  fromGregorian 2013 08 31,
 	  fromGregorian 2018 08 15,
 	  fromGregorian 2038 05 15]
-        _couponRates = [0.02375, 0.04625, 0.03125, 0.04000, 0.04500] :: [Double]
+        couponRates = [0.02375, 0.04625, 0.03125, 0.04000, 0.04500]
         marketQuotes = [100.390625, 106.21875, 100.59375, 101.6875, 102.140625]
 
 
