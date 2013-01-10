@@ -13,14 +13,16 @@ public:
   static Handle<Quote> clone(Quote *q) {
     return Handle<Quote>(new QuoteWrapper(q), false);
   }
+
+  ~QuoteWrapper() {
+    TPP("Destroying quote wrapper", this);
+  }
+
   Real value() const { return quote_.value(); }
   bool isValid() const { return quote_.isValid(); }
 private:
   QuoteWrapper(Quote *q) : quote_(q->value()){
     TPP("Created quote wrapper", this);
-  }
-  ~QuoteWrapper() {
-    TPP("Destroying quote wrapper", this);
   }
 
   const SimpleQuote quote_;
