@@ -4,32 +4,32 @@
 
 using namespace QuantLib;
 
-void *qlPeriod(int n, int u, char **e) {
+Period *qlPeriod(int n, int u, char **e) {
   try {
-    return uncast("Allocated period", new Period(n, (TimeUnit) u));
+    return alloc(new Period(n, (TimeUnit) u));
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<Period *>(e, er);
   }
 }
 
-void *qlPeriodFromFrequency(int freq, char **e) {
+Period *qlPeriodFromFrequency(int freq, char **e) {
   try {
-    return uncast("Created period from frequency", new Period((Frequency) freq));
+    return alloc(new Period((Frequency) freq));
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<Period *>(e, er);
   }
 }
 
-int qlPeriodToFrequency(void *period, char **e) {
+int qlPeriodToFrequency(Period *period, char **e) {
   try {
-    return (Frequency)(cast<Period>("Pperiod", period))->frequency();
+    return arg(period)->frequency();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 
-void  qlFreePeriod(void *period) {
-  delete cast<Period>("Pfreeing period", period);
+void  qlFreePeriod(Period *period) {
+  del(period);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

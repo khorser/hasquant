@@ -1,7 +1,10 @@
 #include <ql/time/date.hpp>
 #include <ql/errors.hpp>
-
 #include <string.h>
+
+//including because Leg and RateHelpers are actually typedefs
+#include <ql/cashflow.hpp>
+#include <ql/termstructures/yield/ratehelpers.hpp>
 
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
@@ -38,19 +41,10 @@ char *tracedup(const char *p);
 # define TPP2(text, str, p)
 #endif
 
-template <class T>
-T *cast(const char *msg, void *p) {
-  return static_cast<T *>(TP(msg, p));
-}
-
-template <class T>
-T *log(T *p, const char *msg) {
-  TPP(msg, p);
-  return p;
-}
 
 namespace QuantLib {
   class Quote;
+  class SimpleQuote;
   class Bond;
   class FixedRateBond;
   class Period;
@@ -58,9 +52,14 @@ namespace QuantLib {
   class Calendar;
   class Schedule;
   class Currency;
+  class InterestRate;
+  class FixedRateBondHelper;
+  class DepositRateHelper;
+  class YieldTermStructure;
 }
 
 using QuantLib::Quote;
+using QuantLib::SimpleQuote;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
 using QuantLib::Period;
@@ -68,6 +67,12 @@ using QuantLib::DayCounter;
 using QuantLib::Calendar;
 using QuantLib::Schedule;
 using QuantLib::Currency;
+using QuantLib::InterestRate;
+using QuantLib::Leg;
+using QuantLib::RateHelper;
+using QuantLib::FixedRateBondHelper;
+using QuantLib::DepositRateHelper;
+using QuantLib::YieldTermStructure;
 
 using QuantLib::Date;
 
@@ -97,6 +102,14 @@ public:
 };
 
 template <>
+class objClassName<FixedRateBond *> {
+public:
+  static const char *name() {
+    return "FixedRateBond";
+  }
+};
+
+template <>
 class objClassName<DayCounter *> {
 public:
   static const char *name() {
@@ -105,10 +118,26 @@ public:
 };
 
 template <>
+class objClassName<InterestRate *> {
+public:
+  static const char *name() {
+    return "InterestRate";
+  }
+};
+
+template <>
 class objClassName<Calendar *> {
 public:
   static const char *name() {
     return "Calendar";
+  }
+};
+
+template <>
+class objClassName<SimpleQuote *> {
+public:
+  static const char *name() {
+    return "SimpleQuote";
   }
 };
 
@@ -136,6 +165,46 @@ public:
   }
 };
 
+template <>
+class objClassName<Currency *> {
+public:
+  static const char *name() {
+    return "Currency";
+  }
+};
+
+template <>
+class objClassName<Leg *> {
+public:
+  static const char *name() {
+    return "Leg";
+  }
+};
+
+template <>
+class objClassName<RateHelper *> {
+public:
+  static const char *name() {
+    return "RateHelper";
+  }
+};
+
+template <>
+class objClassName<DepositRateHelper *> {
+public:
+  static const char *name() {
+    return "DepositRateHelper";
+  }
+};
+
+template <>
+class objClassName<FixedRateBondHelper *> {
+public:
+  static const char *name() {
+    return "FixedRateBondHelper";
+  }
+};
+
 template <class T>
 T arg(T p) {
   TPP2(objClassName<T>::name(), "arg", p);
@@ -152,22 +221,6 @@ template <class T>
 T alloc(T p) {
   TPP2(objClassName<T>::name(), "allocated", p);
   return p;
-}
-
-template <class T>
-void *uncast(const char *msg, T *p) {
-  return static_cast<void *>(TP(msg, p));
-}
-
-template <class T1, class T2>
-T2 *upcast(const char *msg, T1 *p) {
-  TPP(msg, p)
-  return static_cast<T2 *>(p);
-}
-
-template <class T1, class T2>
-T2 *downcast(const char *msg, void *p) {
-  return dynamic_cast<T2 *>(static_cast<T1 *>(TP(msg, p)));
 }
 
 extern "C"
@@ -188,10 +241,10 @@ extern "C"
   int	qlMinDay();
 
   /* leg */
-  void *qlLeg(unsigned len, double *amounts, int *dates, char **e);
-  int   qlLegStartDate(void *leg, char **e);
+  Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e);
+  int   qlLegStartDate(Leg *leg, char **e);
 
-  void  qlFreeLeg(void *leg);
+  void  qlFreeLeg(Leg *leg);
 
   /* calendar */
   Calendar *qlCalendar(const char *name, char **e);
@@ -208,31 +261,33 @@ extern "C"
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
 
   /* bond */
-  Bond *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
-  Bond *qlBond1(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
-  int   qlBondMaturityDate(void *bond);
-  int   qlBondIssueDate(void *bond);
+  Bond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate,
+    Leg *coupons, char **e);
+  Bond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
+    int maturityDate, int issueDate, Leg *cashFlows, char **e);
+  int   qlBondMaturityDate(Bond *bond);
+  int   qlBondIssueDate(Bond *bond);
 
-  Bond *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
-    unsigned cLen, double *coupons, void *counter,
-    int payConv, double redemption, int issue, void *payCal,
+  Bond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
+    unsigned cLen, double *coupons, DayCounter *counter,
+    int payConv, double redemption, int issue, Calendar *payCal,
     char **e);
-  Bond *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
-    int maturity, void *tenor, unsigned cLen, double *coupons, void *dayCounter,
-    int accrConv, int paymentConv, double redemption, int issue, int stub,
-    int rule, int eom, void *payCal, char **e);
-  Bond *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
-    unsigned cLen, void **coupons, int paymentConv, double redemption, int issue,
-    void *cal, char **e);
+  Bond *qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
+    int start, int maturity, Period *tenor, unsigned cLen, double *coupons,
+    DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
+    int issue, int stub, int rule, int eom, Calendar *payCal, char **e);
+  Bond *qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
+    unsigned cLen, InterestRate **coupons, int paymentConv, double redemption,
+    int issue, Calendar *cal, char **e);
   int qlFixedBondFrequency(Bond *bond);
 
   void qlFreeBond(Bond *bond);
 
   /* daycounter */
-  void *qlDayCounter(const char *name, char **e);
-  const char *qlDayCounterName(void *counter);
+  DayCounter *qlDayCounter(const char *name, char **e);
+  const char *qlDayCounterName(DayCounter *counter);
 
-  void  qlFreeDayCounter(void *counter);
+  void qlFreeDayCounter(DayCounter *counter);
 
   /* currency */
   Currency *qlCurrency(const char *name, char **e);
@@ -241,11 +296,11 @@ extern "C"
   void  qlFreeCurrency(Currency *currency);
 
   /* period */
-  void *qlPeriod(int n, int u, char **e);
-  void *qlPeriodFromFrequency(int freq, char **e);
-  int qlPeriodToFrequency(void *period, char **e);
+  Period *qlPeriod(int n, int u, char **e);
+  Period *qlPeriodFromFrequency(int freq, char **e);
+  int qlPeriodToFrequency(Period *period, char **e);
 
-  void  qlFreePeriod(void *period);
+  void  qlFreePeriod(Period *period);
 
   /* quote */
   Quote *qlSimpleQuote(double value, char **e);
@@ -254,35 +309,37 @@ extern "C"
   void qlFreeQuote(Quote *quote);
 
   /* schedule */
-  void *qlSchedule(int eff, int term, void *tenor, void *cal,
+  Schedule *qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
-  void *qlSchedule1(unsigned len, int *dates, void *cal, int conv, char **e);
-  void *qlScheduleUntil(void *sched, int date, char **e);
-  int  *qlScheduleDates(void *sched, int *count);
+  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **e);
+  Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
+  int  *qlScheduleDates(Schedule *sched, int *count);
 
-  void qlFreeSchedule(void *s);
+  void qlFreeSchedule(Schedule *s);
 
   /* interest rate */
-  void *qlInterestRate(double r, void *dc, int comp, int freq, char **e);
+  InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e);
 
-  void qlFreeInterestRate(void *rate);
+  void qlFreeInterestRate(InterestRate *rate);
 
   /* enumerations */
   int *qlEnumerationValue(const char *name, int *c);
 
   /* yield term structure */
-  void qlFreeRateHelper(void *helper);
-  void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
-    void *calendar, int conv, int eom, void *dayCount, char **e);
-  void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
-    void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
-    double redemption, int issue, char **e);
-  void *qlPiecewiseYieldCurve(int date, unsigned rateLen, void **ratehelpers,
-    void *dayCount, unsigned quoteLen, void **quotes, void *dates,
-    double accuracy, char *interpolator, char *boostrap, char **e);
+  RateHelper *qlDepositRateHelper(Quote *quote, Period *period,
+    unsigned fixDays, Calendar *calendar, int conv, int eom,
+    DayCounter *dayCount, char **e);
+  RateHelper *qlFixedRateBondHelper(Quote *quote, unsigned settlDays,
+    double face, Schedule *sched, unsigned cLen, double *coupons,
+    DayCounter *dayCount, int conv, double redemption, int issue, char **e);
+  YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
+    RateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+    Quote **quotes, int *dates, double accuracy, char *interpolator,
+    char *boostrap, char **e);
 
-  void qlFreeTermStructure(void *ts);
+  void qlFreeRateHelper(RateHelper *helper);
+  void qlFreeYieldTermStructure(YieldTermStructure *ts);
 }
 
 const Date qlNullableDate(int serialNumber);

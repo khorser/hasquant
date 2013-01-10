@@ -7,29 +7,29 @@
 using namespace QuantLib;
 using namespace boost;
 
-void *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
+Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e) {
   Leg *leg = 0;
   try {
     leg = new Leg();
     for (unsigned i = 0; i < len; ++i)
       leg->push_back(shared_ptr<CashFlow>(new SimpleCashFlow(amounts[i], Date(dates[i]))));
-    return uncast("Allocated leg", leg);
+    return alloc(leg);
   } catch (std::exception& er) {
     return handleException(e, er, leg);
   }
 }
 
-int qlLegStartDate(void *leg, char **e) {
+int qlLegStartDate(Leg *leg, char **e) {
   try {
-    Date d = CashFlows::startDate(*cast<Leg>("Pleg", leg));
+    Date d = CashFlows::startDate(*arg(leg));
     return d.serialNumber();
   } catch (std::exception& er) {
     return handleException<int>(e, er);
   }
 }
 
-void qlFreeLeg(void *leg) {
-  delete cast<Leg>("Pfreeing leg", leg);
+void qlFreeLeg(Leg *leg) {
+  del(leg);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

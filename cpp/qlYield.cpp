@@ -28,64 +28,62 @@ private:
   const SimpleQuote quote_;
 };
 
-void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
-  void *calendar, int conv, int eom, void *dayCount, char **e)
+RateHelper *qlDepositRateHelper(Quote *quote, Period *period, unsigned fixDays,
+  Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e)
 {
   try {
-    return uncast("Allocated deposit rate helper",
-      new DepositRateHelper(
-	    QuoteWrapper::clone(cast<Quote>("Pquote", quote)),
-	    *cast<Period>("Pperiod", period),
+    return alloc(new DepositRateHelper(
+	    QuoteWrapper::clone(arg(quote)),
+	    *arg(period),
 	    fixDays,
-	    *cast<Calendar>("Pcalendar", calendar),
+	    *arg(calendar),
 	    (BusinessDayConvention) conv,
 	    eom,
-	    *cast<DayCounter>("Pdaycounter", dayCount)));
+	    *arg(dayCount)));
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<RateHelper *>(e, er);
   }
 }
 
-void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
-  void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
+RateHelper *qlFixedRateBondHelper(Quote *quote, unsigned settlDays, double face,
+  Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
   double redemption, int issue, char **e)
 {
   try {
     std::vector<Rate> cpns;
     for (unsigned i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
-    return uncast("Allocated deposit rate helper",
-      new FixedRateBondHelper(
-	    QuoteWrapper::clone(cast<Quote>("Pquote", quote)),
+    return alloc(new FixedRateBondHelper(
+	    QuoteWrapper::clone(arg(quote)),
 	    settlDays,
 	    face,
-	    *cast<Schedule>("Pschedule", sched),
+	    *arg(sched),
 	    cpns,
-	    *cast<DayCounter>("Pdaycounter", dayCount),
+	    *arg(dayCount),
 	    (BusinessDayConvention) conv,
 	    redemption,
 	    qlNullableDate(issue)));
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<RateHelper *>(e, er);
   }
 }
 
-void qlFreeRateHelper(void *helper) {
-  delete cast<RateHelper>("Pfreeing rate helper", helper);
+void qlFreeRateHelper(RateHelper *helper) {
+  del(helper);
 }
 
-void *qlPiecewiseYieldCurve(int date, unsigned rateLen, void **ratehelpers,
-  void *dayCount, unsigned quoteLen, void **quotes, void *dates,
+YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, RateHelper **ratehelpers,
+  DayCounter *dayCount, unsigned quoteLen, Quote **quotes, int *dates,
   double accuracy, char *interpolator, char *boostrap, char **e) {
   try {
     return 0;
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<YieldTermStructure *>(e, er);
   }
 }
 
-void qlFreeTermStructure(void *ts) {
-  delete cast<TermStructure>("Pfreeing term structure", ts);
+void qlFreeYieldTermStructure(YieldTermStructure *ts) {
+  del(ts);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

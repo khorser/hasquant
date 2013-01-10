@@ -4,21 +4,20 @@
 
 using namespace QuantLib;
 
-void *qlInterestRate(double r, void *dc, int comp, int freq, char **e) {
+InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e) {
   try {
-    return uncast("Allocated InterestRate",
-	new InterestRate(
+    return alloc(new InterestRate(
 	  r,
-	  *cast<DayCounter>("Pday counter", dc),
+	  *arg(dc),
 	  (Compounding) comp,
 	  (Frequency) freq));
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<InterestRate *>(e, er);
   }
 }
 
-void qlFreeInterestRate(void *rate) {
-  delete cast<InterestRate>("Pfreeing interest rate", rate);
+void qlFreeInterestRate(InterestRate *rate) {
+  del(rate);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

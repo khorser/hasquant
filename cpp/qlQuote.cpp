@@ -6,7 +6,7 @@ using namespace QuantLib;
 
 Quote *qlSimpleQuote(double value, char **e) {
   try {
-    return log(new SimpleQuote(value), "Allocated quote");
+    return alloc(new SimpleQuote(value));
   } catch (std::exception& er) {
     return handleException<Quote *>(e, er);
   }
@@ -14,14 +14,14 @@ Quote *qlSimpleQuote(double value, char **e) {
 
 double qlQuoteValue(Quote *quote, char **e) {
   try {
-    return quote->value();
+    return arg(quote)->value();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 
 void qlFreeQuote(Quote *quote) {
-  delete log(quote, "Deallocating quote");
+  del(quote);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

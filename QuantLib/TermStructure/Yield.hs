@@ -5,8 +5,8 @@ module QuantLib.TermStructure.Yield
     CRateHelper
   , RateHelper
   , Bootstrap
-  , CTermStructure
-  , TermStructure
+  , CYieldTermStructure
+  , YieldTermStructure
   -- makers
   , depositRateHelper
   , fixedRateBondHelper
@@ -40,7 +40,7 @@ foreign import ccall safe "ql.h qlFixedRateBondHelper"
 foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
   c_piecewiseYieldCurve :: CDate -> CUInt -> Ptr (Ptr CRateHelper)
     -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble
-    -> CString -> CString -> Ptr CString -> IO (Ptr CTermStructure)
+    -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
 
 instance Finalizable CRateHelper where
   finalize = p_freeRateHelper
@@ -83,18 +83,18 @@ fixedRateBondHelper quote settlDays face sched coupons dayCount conv
                               (realToFrac redemption)
                               (toQlDate issue)))
 
-data CTermStructure
-type TermStructure = Object CTermStructure
+data CYieldTermStructure
+type YieldTermStructure = Object CYieldTermStructure
 
-foreign import ccall safe "ql.h &qlFreeTermStructure"
-  p_freeTermStructure :: FunPtr (Ptr CTermStructure -> IO ())
+foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
+  p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
 
-instance Finalizable CTermStructure
-  where finalize = p_freeTermStructure
+instance Finalizable CYieldTermStructure
+  where finalize = p_freeYieldTermStructure
 
 piecewiseYieldCurve :: Day -> [RateHelper] -> DayCounter
   -> [(Quote, Day)] -> Double -> Interpolation -> Bootstrap
-  -> IO TermStructure
+  -> IO YieldTermStructure
 piecewiseYieldCurve refDate instr dayCounter jumps accuracy interp boot =
   withObjects instr
   (\ni i ->
@@ -122,5 +122,5 @@ piecewiseYieldCurve refDate instr dayCounter jumps accuracy interp boot =
 -- |(qlPiecewiseYieldCurve)
 piecewiseYieldCurve' :: Word -> Calendar -> [RateHelper] -> DayCounter
   -> [(Quote, Day)] -> Double -> Bootstrap -> Interpolation
-  -> IO TermStructure
+  -> IO YieldTermStructure
 piecewiseYieldCurve' = undefined
