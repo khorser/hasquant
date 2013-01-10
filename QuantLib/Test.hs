@@ -280,30 +280,62 @@ schedule = TestList
 bondval :: Test
 bondval = TestList
   [
-    "bond valuation"
-      ~: do _zc3mRate <- Quote.simpleQuote zc3mQuote
-            _zc6mRate <- Quote.simpleQuote zc6mQuote
-            _zc1yRate <- Quote.simpleQuote zc1yQuote
+    "bond valuation (QuantLib Bond example)"
+      ~: do zc3mRate <- Quote.simpleQuote zc3mQuote
+            zc6mRate <- Quote.simpleQuote zc6mQuote
+            zc1yRate <- Quote.simpleQuote zc1yQuote
             zcBondsDayCounter <- DayCounter.actual365Fixed
             p3m <- Period.period 3 Unit.Months
-            _p6m <- Period.period 6 Unit.Months
-            _p1y <- Period.period 1 Unit.Years
+            p6m <- Period.period 6 Unit.Months
+            p1y <- Period.period 1 Unit.Years
             cal <- Calendar.target
             _zc3m <- Yield.depositRateHelper
-                      zc3mQuote -- zc3mRate
+                      zc3mRate
                       p3m
                       fixingDays
                       cal
                       BusinessDayConvention.ModifiedFollowing
                       True
                       zcBondsDayCounter
+            _zc6m <- Yield.depositRateHelper
+                      zc6mRate
+                      p6m
+                      fixingDays
+                      cal
+                      BusinessDayConvention.ModifiedFollowing
+                      True
+                      zcBondsDayCounter
+            _zc1y <- Yield.depositRateHelper
+                      zc1yRate
+                      p1y
+                      fixingDays
+                      cal
+                      BusinessDayConvention.ModifiedFollowing
+                      True
+                      zcBondsDayCounter
+            _quotes <- mapM Quote.simpleQuote marketQuotes
             assertEqual "Test" True True
   ]
   where zc3mQuote=0.0096
         zc6mQuote=0.0145
         zc1yQuote=0.0194
-        fixingDays = 3 :: Word
+        fixingDays = 3
         _settlementDays = 3 :: Word
+        _redemption = 100.0 :: Double
+        _issueDates = [
+          fromGregorian 2005 03 15,
+          fromGregorian 2005 06 15,
+          fromGregorian 2006 06 30,
+          fromGregorian 2002 11 15,
+          fromGregorian 1987 05 15]
+        _maturities = [
+	  fromGregorian 2010 08 31,
+	  fromGregorian 2011 08 31,
+	  fromGregorian 2013 08 31,
+	  fromGregorian 2018 08 15,
+	  fromGregorian 2038 05 15]
+        _couponRates = [0.02375, 0.04625, 0.03125, 0.04000, 0.04500] :: [Double]
+        marketQuotes = [100.390625, 106.21875, 100.59375, 101.6875, 102.140625]
 
 
 -- QuickCheck --
