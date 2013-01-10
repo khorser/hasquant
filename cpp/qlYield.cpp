@@ -10,18 +10,19 @@ using namespace QuantLib;
 // Anyway we are not going to use features of Observable/RelinkableHandle
 class QuoteWrapper: public Quote {
 public:
+  static Handle<Quote> clone(Quote *q) {
+    return Handle<Quote>(new QuoteWrapper(q), false);
+  }
+  Real value() const { return quote_.value(); }
+  bool isValid() const { return quote_.isValid(); }
+private:
   QuoteWrapper(Quote *q) : quote_(q->value()){
     TPP("Created quote wrapper", this);
   }
   ~QuoteWrapper() {
     TPP("Destroying quote wrapper", this);
   }
-  Handle<Quote> createHandle() {
-    return Handle<Quote>(this, false);
-  }
-  Real value() const { return quote_.value(); }
-  bool isValid() const { return quote_.isValid(); }
-private:
+
   const SimpleQuote quote_;
 };
 
@@ -31,7 +32,7 @@ void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
   try {
     return uncast("Allocated deposit rate helper",
       new DepositRateHelper(
-	    (new QuoteWrapper(cast<Quote>("Pquote", quote)))->createHandle(),
+	    QuoteWrapper::clone(cast<Quote>("Pquote", quote)),
 	    *cast<Period>("Pperiod", period),
 	    fixDays,
 	    *cast<Calendar>("Pcalendar", calendar),
@@ -53,7 +54,7 @@ void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
       cpns.push_back(coupons[i]);
     return uncast("Allocated deposit rate helper",
       new FixedRateBondHelper(
-	    (new QuoteWrapper(cast<Quote>("Pquote", quote)))->createHandle(),
+	    QuoteWrapper::clone(cast<Quote>("Pquote", quote)),
 	    settlDays,
 	    face,
 	    *cast<Schedule>("Pschedule", sched),

@@ -88,4 +88,4 @@ until sched d =
 -- |returns the dates for the given Schedule object (qlScheduleDates)
 dates :: Schedule -> [Day]
 dates sched = map fromQlDate (unsafePerformIO
-                $ withObject sched (getIntArray . c_scheduleDates))
+                $ withObject sched (getDynIntArray . c_scheduleDates))

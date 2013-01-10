@@ -26,7 +26,7 @@ module QuantLib.Internal
   , withDays
   , withAmounts
   , withObjects
-  , getIntArray
+  , getDynIntArray
   -- convertors
   , fromQlDate
   , toQlDate
@@ -131,15 +131,21 @@ withAmounts amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
 
+getDynIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getDynIntArray = getIntArray c_freeInts
+
+getStaticIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getStaticIntArray = getIntArray (const $ return ())
+
 -- get a function that returns an array of ints, the number of items
 -- is returned via the first argument
-getIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
-getIntArray f =
+getIntArray :: (Ptr CInt -> IO ()) -> (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
+getIntArray fin f =
   alloca
   (\pcnt -> do array <- f pcnt
                count <- peek pcnt
                ints <- peekArray (fromIntegral count) array
-               c_freeInts array
+               fin array
                return ints)
 
 handleExceptions :: (Ptr CString -> IO a) -> IO a
@@ -213,13 +219,7 @@ values ename = if null vals
                  then signalError ("Enumeration " ++ ename ++ " is not known")
                  else vals
   where vals = unsafePerformIO $
-                withCString
-                ename 
-                (\n -> alloca $
-                           \pcount ->
-                           do v <- c_values n pcount
-                              count <- peek pcount
-                              peekArray (fromIntegral count) v)
+                withCString ename (getStaticIntArray . c_values)
 
 toQlEnum :: (Typeable a, Enum a, Show a) => a -> CInt
 toQlEnum x =
