@@ -56,7 +56,21 @@ namespace QuantLib {
   class Period;
   class DayCounter;
   class Calendar;
+  class Schedule;
+  class Currency;
 }
+
+using QuantLib::Quote;
+using QuantLib::Bond;
+using QuantLib::FixedRateBond;
+using QuantLib::Period;
+using QuantLib::DayCounter;
+using QuantLib::Calendar;
+using QuantLib::Schedule;
+using QuantLib::Currency;
+
+using QuantLib::Date;
+
 
 template <class T>
 class objClassName {
@@ -75,7 +89,7 @@ public:
 };
 
 template <>
-class objClassName<QuantLib::Bond *> {
+class objClassName<Bond *> {
 public:
   static const char *name() {
     return "Bond";
@@ -83,7 +97,7 @@ public:
 };
 
 template <>
-class objClassName<QuantLib::DayCounter *> {
+class objClassName<DayCounter *> {
 public:
   static const char *name() {
     return "DayCounter";
@@ -91,7 +105,7 @@ public:
 };
 
 template <>
-class objClassName<QuantLib::Calendar *> {
+class objClassName<Calendar *> {
 public:
   static const char *name() {
     return "Calendar";
@@ -99,7 +113,7 @@ public:
 };
 
 template <>
-class objClassName<QuantLib::Quote *> {
+class objClassName<Quote *> {
 public:
   static const char *name() {
     return "Quote";
@@ -107,10 +121,18 @@ public:
 };
 
 template <>
-class objClassName<QuantLib::Period *> {
+class objClassName<Period *> {
 public:
   static const char *name() {
     return "Period";
+  }
+};
+
+template <>
+class objClassName<Schedule *> {
+public:
+  static const char *name() {
+    return "Schedule";
   }
 };
 
@@ -172,12 +194,12 @@ extern "C"
   void  qlFreeLeg(void *leg);
 
   /* calendar */
-  void *qlCalendar(const char *name, char **e);
-  const char *qlCalendarName(void *calendar);
-  int	qlCalendarAdjust(void *c, int date, int conv);
-  int	qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom);
+  Calendar *qlCalendar(const char *name, char **e);
+  const char *qlCalendarName(Calendar *calendar);
+  int	qlCalendarAdjust(Calendar *c, int date, int conv);
+  int	qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
 
-  void  qlFreeCalendar(void *calendar);
+  void  qlFreeCalendar(Calendar *calendar);
 
   /* settings */
   int	qlSettingsEvaluationDate();
@@ -186,25 +208,25 @@ extern "C"
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
 
   /* bond */
-  QuantLib::Bond *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
-  QuantLib::Bond *qlBond1(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
+  Bond *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
+  Bond *qlBond1(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
   int   qlBondMaturityDate(void *bond);
   int   qlBondIssueDate(void *bond);
 
-  QuantLib::Bond *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
+  Bond *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
     unsigned cLen, double *coupons, void *counter,
     int payConv, double redemption, int issue, void *payCal,
     char **e);
-  QuantLib::Bond *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
+  Bond *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
     int maturity, void *tenor, unsigned cLen, double *coupons, void *dayCounter,
     int accrConv, int paymentConv, double redemption, int issue, int stub,
     int rule, int eom, void *payCal, char **e);
-  QuantLib::Bond *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
+  Bond *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
     unsigned cLen, void **coupons, int paymentConv, double redemption, int issue,
     void *cal, char **e);
-  int qlFixedBondFrequency(QuantLib::Bond *bond);
+  int qlFixedBondFrequency(Bond *bond);
 
-  void qlFreeBond(QuantLib::Bond *bond);
+  void qlFreeBond(Bond *bond);
 
   /* daycounter */
   void *qlDayCounter(const char *name, char **e);
@@ -213,10 +235,10 @@ extern "C"
   void  qlFreeDayCounter(void *counter);
 
   /* currency */
-  void *qlCurrency(const char *name, char **e);
-  const char *qlCurrencyName(void *currency);
+  Currency *qlCurrency(const char *name, char **e);
+  const char *qlCurrencyName(Currency *currency);
 
-  void  qlFreeCurrency(void *currency);
+  void  qlFreeCurrency(Currency *currency);
 
   /* period */
   void *qlPeriod(int n, int u, char **e);
@@ -226,10 +248,10 @@ extern "C"
   void  qlFreePeriod(void *period);
 
   /* quote */
-  QuantLib::Quote *qlSimpleQuote(double value, char **e);
-  double qlQuoteValue(QuantLib::Quote *quote, char **e);
+  Quote *qlSimpleQuote(double value, char **e);
+  double qlQuoteValue(Quote *quote, char **e);
 
-  void qlFreeQuote(QuantLib::Quote *quote);
+  void qlFreeQuote(Quote *quote);
 
   /* schedule */
   void *qlSchedule(int eff, int term, void *tenor, void *cal,
@@ -263,8 +285,8 @@ extern "C"
   void qlFreeTermStructure(void *ts);
 }
 
-const QuantLib::Date qlNullableDate(int serialNumber);
-int qlNullableDate(const QuantLib::Date &date);
+const Date qlNullableDate(int serialNumber);
+int qlNullableDate(const Date &date);
 
 /* some useful helpers ... well ... I hope they are... */
 template <class T>

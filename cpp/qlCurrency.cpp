@@ -4,7 +4,7 @@
 
 using namespace QuantLib;
 
-void *qlCurrency(const char *name, char **e)
+Currency *qlCurrency(const char *name, char **e)
 {
   // use enumerations instead?
   try {
@@ -139,18 +139,18 @@ void *qlCurrency(const char *name, char **e)
       c = new ZARCurrency();
     else
       QL_FAIL("Currency not found");
-    return uncast("Allocated currency", c);
+    return alloc(c);
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<Currency *>(e, er);
   }
 }
 
-void  qlFreeCurrency(void *currency) {
-  delete cast<Currency>("Pfreeing currency", currency);
+void  qlFreeCurrency(Currency *currency) {
+  del(currency);
 }
 
-const char *qlCurrencyName(void *currency) {
-  std::string name = cast<Currency>("Pcurrency", currency)->name();
+const char *qlCurrencyName(Currency *currency) {
+  std::string name = arg(currency)->name();
   return DUP(name.c_str());
 }
 

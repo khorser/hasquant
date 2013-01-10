@@ -5,7 +5,7 @@
 
 using namespace QuantLib;
 
-void *qlCalendar(const char *name, char **e)
+Calendar *qlCalendar(const char *name, char **e)
 {
   // use enumerations instead?
   try {
@@ -116,29 +116,30 @@ void *qlCalendar(const char *name, char **e)
       c = new UnitedStates(UnitedStates::Settlement);
     else
       QL_FAIL("Calendar not found");
-    return uncast("Allocated calendar", c);
+    return alloc(c);
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<Calendar *>(e, er);
   }
 }
 
-void  qlFreeCalendar(void *calendar) {
-  delete cast<Calendar>("Pfreeing calendar", calendar);
+void qlFreeCalendar(Calendar *calendar) {
+  del(calendar);
 }
 
-const char *qlCalendarName(void *calendar) {
-  std::string name = cast<Calendar>("Pcalendar", calendar)->name();
+const char *qlCalendarName(Calendar *calendar) {
+  std::string name = arg(calendar)->name();
   return DUP(name.c_str());
 }
 
-int qlCalendarAdjust(void *c, int date, int conv) {
-  return cast<Calendar>("Pcalendar", c)
-    ->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();
+int qlCalendarAdjust(Calendar *c, int date, int conv) {
+  return arg(c)->adjust(Date(date), (BusinessDayConvention) conv)
+      .serialNumber();
 }
 
-int qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom) {
-  return cast<Calendar>("Pcalendar", c)
-    ->advance(Date(date), n, (TimeUnit) unit, (BusinessDayConvention) conv, eom).serialNumber();
+int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv,
+  int eom) {
+  return arg(c)->advance(Date(date), n, (TimeUnit) unit,
+      (BusinessDayConvention) conv, eom).serialNumber();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
