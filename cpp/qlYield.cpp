@@ -74,4 +74,18 @@ void qlFreeRateHelper(void *helper) {
   delete cast<RateHelper>("Pfreeing rate helper", helper);
 }
 
+void *qlPiecewiseYieldCurve(int date, unsigned rateLen, void **ratehelpers,
+  void *dayCount, unsigned quoteLen, void **quotes, void *dates,
+  double accuracy, char *interpolator, char *boostrap, char **e) {
+  try {
+    return 0;
+  } catch (std::exception& er) {
+    return handleException<void *>(e, er);
+  }
+}
+
+void qlFreeTermStructure(void *ts) {
+  delete cast<TermStructure>("Pfreeing term structure", ts);
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

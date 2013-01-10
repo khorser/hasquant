@@ -26,6 +26,7 @@ module QuantLib.Internal
   , withDays
   , withAmounts
   , withObjects
+  , withString2
   , getDynIntArray
   -- convertors
   , fromQlDate
@@ -130,6 +131,12 @@ withAmounts :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
 withAmounts amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
+
+withString2 :: String -> String -> (CString -> CString -> IO b) -> IO b
+withString2 s1 s2 f = withCString s1
+                      (\str1 ->
+                        withCString s2
+                        (\str2 -> f str1 str2))
 
 getDynIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
 getDynIntArray = getIntArray c_freeInts

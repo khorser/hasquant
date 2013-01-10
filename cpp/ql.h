@@ -154,13 +154,18 @@ extern "C"
   /* enumerations */
   int *qlEnumerationValue(const char *name, int *c);
 
-  /* rate helper */
+  /* yield term structure */
   void qlFreeRateHelper(void *helper);
   void *qlDepositRateHelper(void *quote, void *period, unsigned fixDays,
     void *calendar, int conv, int eom, void *dayCount, char **e);
   void *qlFixedRateBondHelper(void *quote, unsigned settlDays, double face,
     void *sched, unsigned cLen, double *coupons, void *dayCount, int conv,
     double redemption, int issue, char **e);
+  void *qlPiecewiseYieldCurve(int date, unsigned rateLen, void **ratehelpers,
+    void *dayCount, unsigned quoteLen, void **quotes, void *dates,
+    double accuracy, char *interpolator, char *boostrap, char **e);
+
+  void qlFreeTermStructure(void *ts);
 }
 
 const QuantLib::Date qlNullableDate(int serialNumber);
