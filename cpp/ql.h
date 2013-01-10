@@ -9,25 +9,33 @@
 #ifdef QLTRACK_ALLOCATIONS
 /* trace pointer */
 # define TP(text, p) traceval((text), (void *)(p))
+# define TP2(text, str, p) traceval2((text), (str), (void *)(p))
 # define DUP(p) tracedup((p))
 /* trace val */
 # define TV(f, v) traceval((f), (v))
 # define TPP(text, p) (void)traceval((text), (void *)(p));
+# define TPP2(text, str, p) (void)traceval2((text), (str), (void *)(p));
 
 #include <iostream>
 
-int getThread();
 template <class T>
 T traceval(const char *text, T val) {
   std::cout << std::endl << text << ": " << val << std::endl;
   return val;
 }
+template <class T>
+T traceval2(const char *text, const char *kind, T val) {
+  std::cout << std::endl << kind << "" << text << ": " << val << std::endl;
+  return val;
+}
 char *tracedup(const char *p);
 #else
 # define TP(text, p) (p)
+# define TP2(text, str, p) (p)
 # define DUP(p) strdup((p))
 # define TV(f, v) (v)
 # define TPP(text, p)
+# define TPP2(text, str, p)
 #endif
 
 template <class T>
@@ -41,6 +49,89 @@ T *log(T *p, const char *msg) {
   return p;
 }
 
+namespace QuantLib {
+  class Quote;
+  class Bond;
+  class FixedRateBond;
+  class Period;
+  class DayCounter;
+  class Calendar;
+}
+
+template <class T>
+class objClassName {
+public:
+  static const char *name() {
+    return "Unknown";
+  }
+};
+
+template <>
+class objClassName<void *> {
+public:
+  static const char *name() {
+    return "Ptr";
+  }
+};
+
+template <>
+class objClassName<QuantLib::Bond *> {
+public:
+  static const char *name() {
+    return "Bond";
+  }
+};
+
+template <>
+class objClassName<QuantLib::DayCounter *> {
+public:
+  static const char *name() {
+    return "DayCounter";
+  }
+};
+
+template <>
+class objClassName<QuantLib::Calendar *> {
+public:
+  static const char *name() {
+    return "Calendar";
+  }
+};
+
+template <>
+class objClassName<QuantLib::Quote *> {
+public:
+  static const char *name() {
+    return "Quote";
+  }
+};
+
+template <>
+class objClassName<QuantLib::Period *> {
+public:
+  static const char *name() {
+    return "Period";
+  }
+};
+
+template <class T>
+T arg(T p) {
+  TPP2(objClassName<T>::name(), "arg", p);
+  return p;
+}
+
+template <class T>
+void del(T p) {
+  TPP2(objClassName<T>::name(), "freeing", p);
+  delete p;
+}
+
+template <class T>
+T alloc(T p) {
+  TPP2(objClassName<T>::name(), "allocated", p);
+  return p;
+}
+
 template <class T>
 void *uncast(const char *msg, T *p) {
   return static_cast<void *>(TP(msg, p));
@@ -49,20 +140,12 @@ void *uncast(const char *msg, T *p) {
 template <class T1, class T2>
 T2 *upcast(const char *msg, T1 *p) {
   TPP(msg, p)
-  // apparently we could have used some Alexandrescu-style type magic
-  // to detect base class
   return static_cast<T2 *>(p);
 }
 
 template <class T1, class T2>
 T2 *downcast(const char *msg, void *p) {
   return dynamic_cast<T2 *>(static_cast<T1 *>(TP(msg, p)));
-}
-
-namespace QuantLib {
-  class Quote;
-  class Bond;
-  class FixedRateBond;
 }
 
 extern "C"

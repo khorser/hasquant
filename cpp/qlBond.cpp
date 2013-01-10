@@ -8,10 +8,10 @@ Bond *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons,
     char **e)
 {
   try {
-    return log(new Bond(settlDays,
+    return alloc(new Bond(settlDays,
 			*cast<Calendar>("Pcalendar", calendar),
 			qlNullableDate(issueDate),
-			*cast<Leg>("Pcoupons", coupons)), "Allocated bond");
+			*cast<Leg>("Pcoupons", coupons)));
   } catch (std::exception& er) {
     return handleException<Bond *>(e, er);
   }
@@ -41,7 +41,7 @@ int qlBondIssueDate(void *bond) {
 }
 
 void qlFreeBond(Bond *bond) {
-  delete log(bond, "Pfreeing bond");
+  del(bond);
 }
 
 Bond *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
@@ -125,7 +125,7 @@ Bond *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
 }
 
 int qlFixedBondFrequency(Bond *bond) {
-  return dynamic_cast<FixedRateBond *>(log(bond, "Pbond"))->frequency();
+  return dynamic_cast<FixedRateBond *>(arg(bond))->frequency();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
