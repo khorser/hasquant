@@ -9,16 +9,24 @@ int qlSettingsEvaluationDate() {
   return d.serialNumber();
 }
 
-void qlSettingsSetEvaluationDate(int x) {
-  Settings::instance().evaluationDate() = qlNullableDate(x);
-}
-
-void qlSettingsSetEnforceTodaysHistoricFixings(int x) {
-  Settings::instance().enforcesTodaysHistoricFixings() = x;
-}
-
 int qlSettingsEnforceTodaysHistoricFixings() {
   return Settings::instance().enforcesTodaysHistoricFixings();
+}
+
+void qlSettingsSetEvaluationDate(int x, char **e) {
+  try {
+    Settings::instance().evaluationDate() = qlNullableDate(x);
+  } catch (std::exception& er) {
+    handleException<void *>(e, er);
+  }
+}
+
+void qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e) {
+  try {
+    Settings::instance().enforcesTodaysHistoricFixings() = x;
+  } catch (std::exception& er) {
+    handleException<void *>(e, er);
+  }
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

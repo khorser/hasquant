@@ -86,9 +86,9 @@ extern "C"
 
   /* settings */
   int	qlSettingsEvaluationDate();
-  void	qlSettingsSetEvaluationDate(int x);
-  void	qlSettingsSetEnforceTodaysHistoricFixings(int x);
   int	qlSettingsEnforceTodaysHistoricFixings();
+  void	qlSettingsSetEvaluationDate(int x, char **e);
+  void	qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
 
   /* bond */
   void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
