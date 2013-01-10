@@ -6,7 +6,6 @@ using namespace QuantLib;
 
 void *qlDayCounter(const char *name, char **e)
 {
-  *e = 0;
   try {
     DayCounter *c = 0;
     if (!strcmp(name, "DayCounter"))
@@ -85,18 +84,18 @@ void *qlDayCounter(const char *name, char **e)
       c = new Business252();
     else
       QL_FAIL("Counter not found");
-    return TP("Allocated counter", c);
+    return uncast("Allocated counter", c);
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 void  qlFreeDayCounter(void *counter) {
-  delete log_and_cast<Calendar>("Pfreeing counter", counter);
+  delete cast<Calendar>("Pfreeing counter", counter);
 }
 
 const char *qlDayCounterName(void *counter) {
-  std::string name = log_and_cast<DayCounter>("Pcounter", counter)->name();
+  std::string name = cast<DayCounter>("Pcounter", counter)->name();
   return DUP(name.c_str());
 }
 

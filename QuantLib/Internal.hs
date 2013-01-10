@@ -59,7 +59,7 @@ import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr, castFunPtr)
-import Foreign.Storable(peek)
+import Foreign.Storable(peek, poke)
 
 import System.IO.Unsafe(unsafePerformIO)
 
@@ -146,7 +146,8 @@ handleExceptions :: (Ptr CString -> IO a) -> IO a
 handleExceptions f =
    alloca $
      \errptr ->
-     do r <- f errptr
+     do poke errptr nullPtr
+        r <- f errptr
         msg <- peek errptr
         if msg /= nullPtr 
           then do err <- peekCString msg

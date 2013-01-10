@@ -31,20 +31,25 @@ char *tracedup(const char *p);
 #endif
 
 template <class T>
-T *log_and_cast(const char *msg, void *p) {
+T *cast(const char *msg, void *p) {
   return static_cast<T *>(TP(msg, p));
 }
 
+template <class T>
+void *uncast(const char *msg, T *p) {
+  return static_cast<void *>(TP(msg, p));
+}
+
 template <class T1, class T2>
-T2 *log_and_upcast(const char *msg, T1 *p) {
+T2 *upcast(const char *msg, T1 *p) {
   TPP(msg, p)
-  // or shall we use dynamic_cast?
   // apparently we could have used some Alexandrescu-style type magic
+  // to detect base class
   return static_cast<T2 *>(p);
 }
 
 template <class T1, class T2>
-T2 *log_and_downcast(const char *msg, void *p) {
+T2 *downcast(const char *msg, void *p) {
   return dynamic_cast<T2 *>(static_cast<T1 *>(TP(msg, p)));
 }
 

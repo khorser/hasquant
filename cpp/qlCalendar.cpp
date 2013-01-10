@@ -7,7 +7,6 @@ using namespace QuantLib;
 
 void *qlCalendar(const char *name, char **e)
 {
-  *e = 0;
   // use enumerations instead?
   try {
     Calendar *c = 0;
@@ -117,28 +116,28 @@ void *qlCalendar(const char *name, char **e)
       c = new UnitedStates(UnitedStates::Settlement);
     else
       QL_FAIL("Calendar not found");
-    return TP("Allocated calendar", c);
+    return uncast("Allocated calendar", c);
   } catch (std::exception& er) {
     return handleException<void *>(e, er);
   }
 }
 
 void  qlFreeCalendar(void *calendar) {
-  delete log_and_cast<Calendar>("Pfreeing calendar", calendar);
+  delete cast<Calendar>("Pfreeing calendar", calendar);
 }
 
 const char *qlCalendarName(void *calendar) {
-  std::string name = log_and_cast<Calendar>("Pcalendar", calendar)->name();
+  std::string name = cast<Calendar>("Pcalendar", calendar)->name();
   return DUP(name.c_str());
 }
 
 int qlCalendarAdjust(void *c, int date, int conv) {
-  return log_and_cast<Calendar>("Pcalendar", c)
+  return cast<Calendar>("Pcalendar", c)
     ->adjust(Date(date), (BusinessDayConvention) conv).serialNumber();
 }
 
 int qlCalendarAdvance(void *c, int date, int n, int unit, int conv, int eom) {
-  return log_and_cast<Calendar>("Pcalendar", c)
+  return cast<Calendar>("Pcalendar", c)
     ->advance(Date(date), n, (TimeUnit) unit, (BusinessDayConvention) conv, eom).serialNumber();
 }
 
