@@ -1,0 +1,3 @@
+#!/bin/sh
+# run gdb continuously until failure
+while true ; do gdb -ex run ./Test -ex quit ; done ;

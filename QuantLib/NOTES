@@ -24,7 +24,9 @@ try and make objects as much immutable as possible by not exposing mutators
 to introduce adjustments)
 as result not going to use Handle/RelinkableHandle machinery
 
-TODO Sometimes invalid year (2200) makes it into setEvalDate. Check why
+TODO Sometimes setEvalDate complains about invalid year
+for a valid date (e.g. 2199-11-27 == QL serial number 109540):
+could not notify one or more observers: year 2200 out of bounds
 
 --- BOND Pricing: ---
 
