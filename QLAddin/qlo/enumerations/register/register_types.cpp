@@ -80,78 +80,6 @@ namespace QuantLibAddin {
         }
 
         {
-            ObjectHandler::Create<QuantLib::BusinessDayConvention> create;
-            create.registerType("F", new QuantLib::BusinessDayConvention(QuantLib::Following));
-            create.registerType("Following", new QuantLib::BusinessDayConvention(QuantLib::Following));
-            create.registerType("Indifferent", new QuantLib::BusinessDayConvention(QuantLib::Unadjusted));
-            create.registerType("MF", new QuantLib::BusinessDayConvention(QuantLib::ModifiedFollowing));
-            create.registerType("MP", new QuantLib::BusinessDayConvention(QuantLib::ModifiedPreceding));
-            create.registerType("Modified Following", new QuantLib::BusinessDayConvention(QuantLib::ModifiedFollowing));
-            create.registerType("Modified Preceding", new QuantLib::BusinessDayConvention(QuantLib::ModifiedPreceding));
-            create.registerType("P", new QuantLib::BusinessDayConvention(QuantLib::Preceding));
-            create.registerType("Preceding", new QuantLib::BusinessDayConvention(QuantLib::Preceding));
-            create.registerType("Unadjusted", new QuantLib::BusinessDayConvention(QuantLib::Unadjusted));
-        }
-
-        {
-            ObjectHandler::Create<QuantLib::Calendar> create;
-            create.registerType("Argentina::Merval", new QuantLib::Argentina(QuantLib::Argentina::Merval));
-            create.registerType("Australia", new QuantLib::Australia());
-            create.registerType("Brazil::Exchange", new QuantLib::Brazil(QuantLib::Brazil::Exchange));
-            create.registerType("Brazil::Settlement", new QuantLib::Brazil(QuantLib::Brazil::Settlement));
-            create.registerType("Calendar", new QuantLib::Calendar());
-            create.registerType("Canada::Settlement", new QuantLib::Canada(QuantLib::Canada::Settlement));
-            create.registerType("Canada::TSX", new QuantLib::Canada(QuantLib::Canada::TSX));
-            create.registerType("China", new QuantLib::China());
-            create.registerType("CzechRepublic::PSE", new QuantLib::CzechRepublic(QuantLib::CzechRepublic::PSE));
-            create.registerType("Denmark", new QuantLib::Denmark());
-            create.registerType("EUR", new QuantLib::TARGET());
-            create.registerType("Finland", new QuantLib::Finland());
-            create.registerType("GBP", new QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange));
-            create.registerType("Germany::Eurex", new QuantLib::Germany(QuantLib::Germany::Eurex));
-            create.registerType("Germany::FrankfurtStockExchange", new QuantLib::Germany(QuantLib::Germany::FrankfurtStockExchange));
-            create.registerType("Germany::Settlement", new QuantLib::Germany(QuantLib::Germany::Settlement));
-            create.registerType("Germany::Xetra", new QuantLib::Germany(QuantLib::Germany::Xetra));
-            create.registerType("HongKong::HKEx", new QuantLib::HongKong(QuantLib::HongKong::HKEx));
-            create.registerType("Hungary", new QuantLib::Hungary());
-            create.registerType("Iceland::ICEX", new QuantLib::Iceland(QuantLib::Iceland::ICEX));
-            create.registerType("India::NSE", new QuantLib::India(QuantLib::India::NSE));
-            create.registerType("Indonesia::BEJ", new QuantLib::Indonesia(QuantLib::Indonesia::BEJ));
-            create.registerType("Indonesia::JSX", new QuantLib::Indonesia(QuantLib::Indonesia::JSX));
-            create.registerType("Italy::Exchange", new QuantLib::Italy(QuantLib::Italy::Exchange));
-            create.registerType("Italy::Settlement", new QuantLib::Italy(QuantLib::Italy::Settlement));
-            create.registerType("Japan", new QuantLib::Japan());
-            create.registerType("LONDON", new QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange));
-            create.registerType("London stock exchange", new QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange));
-            create.registerType("Mexico::BMV", new QuantLib::Mexico(QuantLib::Mexico::BMV));
-            create.registerType("NewZealand", new QuantLib::NewZealand());
-            create.registerType("NoCalendar", new QuantLib::Calendar());
-            create.registerType("Norway", new QuantLib::Norway());
-            create.registerType("Null", new QuantLib::NullCalendar());
-            create.registerType("NullCalendar", new QuantLib::NullCalendar());
-            create.registerType("Poland", new QuantLib::Poland());
-            create.registerType("Russia", new QuantLib::Russia());
-            create.registerType("SaudiArabia::Tadawul", new QuantLib::SaudiArabia(QuantLib::SaudiArabia::Tadawul));
-            create.registerType("Singapore::SGX", new QuantLib::Singapore(QuantLib::Singapore::SGX));
-            create.registerType("Slovakia::BSSE", new QuantLib::Slovakia(QuantLib::Slovakia::BSSE));
-            create.registerType("SouthAfrica", new QuantLib::SouthAfrica());
-            create.registerType("SouthKorea::KRX", new QuantLib::SouthKorea(QuantLib::SouthKorea::KRX));
-            create.registerType("Sweden", new QuantLib::Sweden());
-            create.registerType("Switzerland", new QuantLib::Switzerland());
-            create.registerType("TARGET", new QuantLib::TARGET());
-            create.registerType("Taiwan::TSEC", new QuantLib::Taiwan(QuantLib::Taiwan::TSEC));
-            create.registerType("Turkey", new QuantLib::Turkey());
-            create.registerType("Ukraine::USE", new QuantLib::Ukraine(QuantLib::Ukraine::USE));
-            create.registerType("UnitedKingdom::Exchange", new QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Exchange));
-            create.registerType("UnitedKingdom::Metals", new QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Metals));
-            create.registerType("UnitedKingdom::Settlement", new QuantLib::UnitedKingdom(QuantLib::UnitedKingdom::Settlement));
-            create.registerType("UnitedStates::GovernmentBond", new QuantLib::UnitedStates(QuantLib::UnitedStates::GovernmentBond));
-            create.registerType("UnitedStates::NERC", new QuantLib::UnitedStates(QuantLib::UnitedStates::NERC));
-            create.registerType("UnitedStates::NYSE", new QuantLib::UnitedStates(QuantLib::UnitedStates::NYSE));
-            create.registerType("UnitedStates::Settlement", new QuantLib::UnitedStates(QuantLib::UnitedStates::Settlement));
-        }
-
-        {
             ObjectHandler::Create<QuantLib::CapFloor::Type> create;
             create.registerType("Cap", new QuantLib::CapFloor::Type(QuantLib::CapFloor::Cap));
             create.registerType("Collar", new QuantLib::CapFloor::Type(QuantLib::CapFloor::Collar));
@@ -193,126 +121,6 @@ namespace QuantLibAddin {
         }
 
         {
-            ObjectHandler::Create<QuantLib::Currency> create;
-            create.registerType("ARS", new QuantLib::ARSCurrency());
-            create.registerType("ATS", new QuantLib::ATSCurrency());
-            create.registerType("AUD", new QuantLib::AUDCurrency());
-            create.registerType("BDT", new QuantLib::BDTCurrency());
-            create.registerType("BEF", new QuantLib::BEFCurrency());
-            create.registerType("BGL", new QuantLib::BGLCurrency());
-            create.registerType("BRL", new QuantLib::BRLCurrency());
-            create.registerType("BYR", new QuantLib::BYRCurrency());
-            create.registerType("CAD", new QuantLib::CADCurrency());
-            create.registerType("CHF", new QuantLib::CHFCurrency());
-            create.registerType("CLP", new QuantLib::CLPCurrency());
-            create.registerType("CNY", new QuantLib::CNYCurrency());
-            create.registerType("COP", new QuantLib::COPCurrency());
-            create.registerType("CYP", new QuantLib::CYPCurrency());
-            create.registerType("CZK", new QuantLib::CZKCurrency());
-            create.registerType("Currency", new QuantLib::Currency());
-            create.registerType("DEM", new QuantLib::DEMCurrency());
-            create.registerType("DKK", new QuantLib::DKKCurrency());
-            create.registerType("EEK", new QuantLib::EEKCurrency());
-            create.registerType("ESP", new QuantLib::ESPCurrency());
-            create.registerType("EUR", new QuantLib::EURCurrency());
-            create.registerType("FIM", new QuantLib::FIMCurrency());
-            create.registerType("FRF", new QuantLib::FRFCurrency());
-            create.registerType("GBP", new QuantLib::GBPCurrency());
-            create.registerType("GRD", new QuantLib::GRDCurrency());
-            create.registerType("HKD", new QuantLib::HKDCurrency());
-            create.registerType("HUF", new QuantLib::HUFCurrency());
-            create.registerType("IEP", new QuantLib::IEPCurrency());
-            create.registerType("ILS", new QuantLib::ILSCurrency());
-            create.registerType("INR", new QuantLib::INRCurrency());
-            create.registerType("IQD", new QuantLib::IQDCurrency());
-            create.registerType("IRR", new QuantLib::IRRCurrency());
-            create.registerType("ISK", new QuantLib::ISKCurrency());
-            create.registerType("ITL", new QuantLib::ITLCurrency());
-            create.registerType("JPY", new QuantLib::JPYCurrency());
-            create.registerType("KRW", new QuantLib::KRWCurrency());
-            create.registerType("KWD", new QuantLib::KWDCurrency());
-            create.registerType("LTL", new QuantLib::LTLCurrency());
-            create.registerType("LUF", new QuantLib::LUFCurrency());
-            create.registerType("LVL", new QuantLib::LVLCurrency());
-            create.registerType("MTL", new QuantLib::MTLCurrency());
-            create.registerType("MXN", new QuantLib::MXNCurrency());
-            create.registerType("NLG", new QuantLib::NLGCurrency());
-            create.registerType("NOK", new QuantLib::NOKCurrency());
-            create.registerType("NPR", new QuantLib::NPRCurrency());
-            create.registerType("NZD", new QuantLib::NZDCurrency());
-            create.registerType("NoCurrency", new QuantLib::Currency());
-            create.registerType("PKR", new QuantLib::PKRCurrency());
-            create.registerType("PLN", new QuantLib::PLNCurrency());
-            create.registerType("PTE", new QuantLib::PTECurrency());
-            create.registerType("ROL", new QuantLib::ROLCurrency());
-            create.registerType("SAR", new QuantLib::SARCurrency());
-            create.registerType("SEK", new QuantLib::SEKCurrency());
-            create.registerType("SGD", new QuantLib::SGDCurrency());
-            create.registerType("SIT", new QuantLib::SITCurrency());
-            create.registerType("SKK", new QuantLib::SKKCurrency());
-            create.registerType("THB", new QuantLib::THBCurrency());
-            create.registerType("TRL", new QuantLib::TRLCurrency());
-            create.registerType("TRY", new QuantLib::TRYCurrency());
-            create.registerType("TTD", new QuantLib::TTDCurrency());
-            create.registerType("TWD", new QuantLib::TWDCurrency());
-            create.registerType("USD", new QuantLib::USDCurrency());
-            create.registerType("VEB", new QuantLib::VEBCurrency());
-            create.registerType("ZAR", new QuantLib::ZARCurrency());
-        }
-
-        {
-            ObjectHandler::Create<QuantLib::DateGeneration::Rule> create;
-            create.registerType("Backward", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::Backward));
-            create.registerType("Forward", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::Forward));
-            create.registerType("OldCDS", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::OldCDS));
-            create.registerType("ThirdWednesday", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::ThirdWednesday));
-            create.registerType("Twentieth", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::Twentieth));
-            create.registerType("TwentiethIMM", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::TwentiethIMM));
-            create.registerType("Zero", new QuantLib::DateGeneration::Rule(QuantLib::DateGeneration::Zero));
-        }
-
-        {
-            ObjectHandler::Create<QuantLib::DayCounter> create;
-            create.registerType("1/1", new QuantLib::OneDayCounter());
-            create.registerType("30/360", new QuantLib::Thirty360(QuantLib::Thirty360::BondBasis));
-            create.registerType("30/360 (Bond Basis)", new QuantLib::Thirty360(QuantLib::Thirty360::BondBasis));
-            create.registerType("30/360 (Eurobond Basis)", new QuantLib::Thirty360(QuantLib::Thirty360::EurobondBasis));
-            create.registerType("30/360 (Italian)", new QuantLib::Thirty360(QuantLib::Thirty360::Italian));
-            create.registerType("30E/360", new QuantLib::Thirty360(QuantLib::Thirty360::EurobondBasis));
-            create.registerType("30E/360 (Eurobond Basis)", new QuantLib::Thirty360(QuantLib::Thirty360::EurobondBasis));
-            create.registerType("360/360", new QuantLib::Thirty360(QuantLib::Thirty360::BondBasis));
-            create.registerType("A/360", new QuantLib::Actual360());
-            create.registerType("A/365", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("A/365 (Fixed)", new QuantLib::Actual365Fixed());
-            create.registerType("A/365F", new QuantLib::Actual365Fixed());
-            create.registerType("Act/360", new QuantLib::Actual360());
-            create.registerType("Act/365", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("Act/365 (Fixed)", new QuantLib::Actual365Fixed());
-            create.registerType("Act/Act", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("Actual/360", new QuantLib::Actual360());
-            create.registerType("Actual/365", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("Actual/365 (Fixed)", new QuantLib::Actual365Fixed());
-            create.registerType("Actual/Actual", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("Actual/Actual (AFB)", new QuantLib::ActualActual(QuantLib::ActualActual::AFB));
-            create.registerType("Actual/Actual (Bond)", new QuantLib::ActualActual(QuantLib::ActualActual::ISMA));
-            create.registerType("Actual/Actual (Euro)", new QuantLib::ActualActual(QuantLib::ActualActual::AFB));
-            create.registerType("Actual/Actual (ISDA)", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("Actual/Actual (ISMA)", new QuantLib::ActualActual(QuantLib::ActualActual::ISMA));
-            create.registerType("Bond Basis", new QuantLib::Thirty360(QuantLib::Thirty360::BondBasis));
-            create.registerType("Business252", new QuantLib::Business252());
-            create.registerType("DayCounter", new QuantLib::DayCounter());
-            create.registerType("Eurobond Basis", new QuantLib::Thirty360(QuantLib::Thirty360::EurobondBasis));
-            create.registerType("LIN 30/360", new QuantLib::Thirty360(QuantLib::Thirty360::EurobondBasis));
-            create.registerType("LIN ACT/360", new QuantLib::Actual360());
-            create.registerType("LIN ACT/365", new QuantLib::Actual365Fixed());
-            create.registerType("LIN ACT/ACT", new QuantLib::ActualActual(QuantLib::ActualActual::AFB));
-            create.registerType("LIN ACTACT ISDA", new QuantLib::ActualActual(QuantLib::ActualActual::ISDA));
-            create.registerType("LIN ACTACT ISMA", new QuantLib::ActualActual(QuantLib::ActualActual::ISMA));
-            create.registerType("NoDayCounter", new QuantLib::DayCounter());
-            create.registerType("Simple", new QuantLib::SimpleDayCounter());
-        }
-
-        {
             ObjectHandler::Create<QuantLib::Duration::Type> create;
             create.registerType("Macaulay", new QuantLib::Duration::Type(QuantLib::Duration::Macaulay));
             create.registerType("Modified", new QuantLib::Duration::Type(QuantLib::Duration::Modified));
@@ -331,68 +139,11 @@ namespace QuantLibAddin {
         }
 
         {
-            ObjectHandler::Create<QuantLib::Frequency> create;
-            create.registerType("Annual", new QuantLib::Frequency(QuantLib::Annual));
-            create.registerType("Bimonthly", new QuantLib::Frequency(QuantLib::Bimonthly));
-            create.registerType("Biweekly", new QuantLib::Frequency(QuantLib::Biweekly));
-            create.registerType("Daily", new QuantLib::Frequency(QuantLib::Daily));
-            create.registerType("EveryFourthMonth", new QuantLib::Frequency(QuantLib::EveryFourthMonth));
-            create.registerType("EveryFourthWeek", new QuantLib::Frequency(QuantLib::EveryFourthWeek));
-            create.registerType("Frequency", new QuantLib::Frequency(QuantLib::NoFrequency));
-            create.registerType("Monthly", new QuantLib::Frequency(QuantLib::Monthly));
-            create.registerType("NoFrequency", new QuantLib::Frequency(QuantLib::NoFrequency));
-            create.registerType("Once", new QuantLib::Frequency(QuantLib::Once));
-            create.registerType("OtherFrequency", new QuantLib::Frequency(QuantLib::OtherFrequency));
-            create.registerType("Quarterly", new QuantLib::Frequency(QuantLib::Quarterly));
-            create.registerType("Semiannual", new QuantLib::Frequency(QuantLib::Semiannual));
-            create.registerType("Weekly", new QuantLib::Frequency(QuantLib::Weekly));
-        }
-
-        {
             ObjectHandler::Create<QuantLib::GFunctionFactory::YieldCurveModel> create;
             create.registerType("ExactYield", new QuantLib::GFunctionFactory::YieldCurveModel(QuantLib::GFunctionFactory::ExactYield));
             create.registerType("NonParallelShifts", new QuantLib::GFunctionFactory::YieldCurveModel(QuantLib::GFunctionFactory::NonParallelShifts));
             create.registerType("ParallelShifts", new QuantLib::GFunctionFactory::YieldCurveModel(QuantLib::GFunctionFactory::ParallelShifts));
             create.registerType("Standard", new QuantLib::GFunctionFactory::YieldCurveModel(QuantLib::GFunctionFactory::Standard));
-        }
-
-        {
-            ObjectHandler::Create<QuantLib::Month> create;
-            create.registerType("1", new QuantLib::Month(QuantLib::January));
-            create.registerType("10", new QuantLib::Month(QuantLib::October));
-            create.registerType("11", new QuantLib::Month(QuantLib::November));
-            create.registerType("12", new QuantLib::Month(QuantLib::December));
-            create.registerType("2", new QuantLib::Month(QuantLib::February));
-            create.registerType("3", new QuantLib::Month(QuantLib::March));
-            create.registerType("4", new QuantLib::Month(QuantLib::April));
-            create.registerType("5", new QuantLib::Month(QuantLib::May));
-            create.registerType("6", new QuantLib::Month(QuantLib::June));
-            create.registerType("7", new QuantLib::Month(QuantLib::July));
-            create.registerType("8", new QuantLib::Month(QuantLib::August));
-            create.registerType("9", new QuantLib::Month(QuantLib::September));
-            create.registerType("Apr", new QuantLib::Month(QuantLib::Apr));
-            create.registerType("April", new QuantLib::Month(QuantLib::April));
-            create.registerType("Aug", new QuantLib::Month(QuantLib::Aug));
-            create.registerType("August", new QuantLib::Month(QuantLib::August));
-            create.registerType("Dec", new QuantLib::Month(QuantLib::Dec));
-            create.registerType("December", new QuantLib::Month(QuantLib::December));
-            create.registerType("Feb", new QuantLib::Month(QuantLib::Feb));
-            create.registerType("February", new QuantLib::Month(QuantLib::February));
-            create.registerType("Jan", new QuantLib::Month(QuantLib::Jan));
-            create.registerType("January", new QuantLib::Month(QuantLib::January));
-            create.registerType("Jul", new QuantLib::Month(QuantLib::Jul));
-            create.registerType("July", new QuantLib::Month(QuantLib::July));
-            create.registerType("Jun", new QuantLib::Month(QuantLib::Jun));
-            create.registerType("June", new QuantLib::Month(QuantLib::June));
-            create.registerType("Mar", new QuantLib::Month(QuantLib::Mar));
-            create.registerType("March", new QuantLib::Month(QuantLib::March));
-            create.registerType("May", new QuantLib::Month(QuantLib::May));
-            create.registerType("Nov", new QuantLib::Month(QuantLib::Nov));
-            create.registerType("November", new QuantLib::Month(QuantLib::November));
-            create.registerType("Oct", new QuantLib::Month(QuantLib::Oct));
-            create.registerType("October", new QuantLib::Month(QuantLib::October));
-            create.registerType("Sep", new QuantLib::Month(QuantLib::Sep));
-            create.registerType("September", new QuantLib::Month(QuantLib::September));
         }
 
         {
@@ -459,62 +210,9 @@ namespace QuantLibAddin {
         }
 
         {
-            ObjectHandler::Create<QuantLib::TimeUnit> create;
-            create.registerType("Days", new QuantLib::TimeUnit(QuantLib::Days));
-            create.registerType("Months", new QuantLib::TimeUnit(QuantLib::Months));
-            create.registerType("Weeks", new QuantLib::TimeUnit(QuantLib::Weeks));
-            create.registerType("Years", new QuantLib::TimeUnit(QuantLib::Years));
-        }
-
-        {
             ObjectHandler::Create<QuantLib::VanillaSwap::Type> create;
             create.registerType("Payer", new QuantLib::VanillaSwap::Type(QuantLib::VanillaSwap::Payer));
             create.registerType("Receiver", new QuantLib::VanillaSwap::Type(QuantLib::VanillaSwap::Receiver));
-        }
-
-        {
-            ObjectHandler::Create<QuantLib::Weekday> create;
-            create.registerType("Fri", new QuantLib::Weekday(QuantLib::Fri));
-            create.registerType("Friday", new QuantLib::Weekday(QuantLib::Friday));
-            create.registerType("Mon", new QuantLib::Weekday(QuantLib::Mon));
-            create.registerType("Monday", new QuantLib::Weekday(QuantLib::Monday));
-            create.registerType("Sat", new QuantLib::Weekday(QuantLib::Sat));
-            create.registerType("Saturday", new QuantLib::Weekday(QuantLib::Saturday));
-            create.registerType("Sun", new QuantLib::Weekday(QuantLib::Sun));
-            create.registerType("Sunday", new QuantLib::Weekday(QuantLib::Sunday));
-            create.registerType("Thu", new QuantLib::Weekday(QuantLib::Thu));
-            create.registerType("Thursday", new QuantLib::Weekday(QuantLib::Thursday));
-            create.registerType("Tue", new QuantLib::Weekday(QuantLib::Tue));
-            create.registerType("Tuesday", new QuantLib::Weekday(QuantLib::Tuesday));
-            create.registerType("Wed", new QuantLib::Weekday(QuantLib::Wed));
-            create.registerType("Wednesday", new QuantLib::Weekday(QuantLib::Wednesday));
-        }
-
-        {
-            ObjectHandler::Create<QuantLibAddin::InterpolatedYieldCurve::Interpolator> create;
-            create.registerType("BackwardFlat", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::BackwardFlat));
-            create.registerType("CubicNaturalSpline", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::CubicNaturalSpline));
-            create.registerType("ForwardFlat", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::ForwardFlat));
-            create.registerType("FritschButlandCubic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::FritschButlandCubic));
-            create.registerType("FritschButlandLogCubic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::FritschButlandLogCubic));
-            create.registerType("KrugerCubic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::KrugerCubic));
-            create.registerType("KrugerLogCubic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::KrugerLogCubic));
-            create.registerType("Linear", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::Linear));
-            create.registerType("LogCubicNaturalSpline", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::LogCubicNaturalSpline));
-            create.registerType("LogLinear", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::LogLinear));
-            create.registerType("LogParabolic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::LogParabolic));
-            create.registerType("MonotonicCubicNaturalSpline", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::MonotonicCubicNaturalSpline));
-            create.registerType("MonotonicLogCubicNaturalSpline", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::MonotonicLogCubicNaturalSpline));
-            create.registerType("MonotonicLogParabolic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::MonotonicLogParabolic));
-            create.registerType("MonotonicParabolic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::MonotonicParabolic));
-            create.registerType("Parabolic", new QuantLibAddin::InterpolatedYieldCurve::Interpolator(QuantLibAddin::InterpolatedYieldCurve::Parabolic));
-        }
-
-        {
-            ObjectHandler::Create<QuantLibAddin::InterpolatedYieldCurve::Traits> create;
-            create.registerType("Discount", new QuantLibAddin::InterpolatedYieldCurve::Traits(QuantLibAddin::InterpolatedYieldCurve::Discount));
-            create.registerType("ForwardRate", new QuantLibAddin::InterpolatedYieldCurve::Traits(QuantLibAddin::InterpolatedYieldCurve::ForwardRate));
-            create.registerType("ZeroYield", new QuantLibAddin::InterpolatedYieldCurve::Traits(QuantLibAddin::InterpolatedYieldCurve::ZeroYield));
         }
 
         {
@@ -536,44 +234,5 @@ namespace QuantLibAddin {
         }
 
     }
-
-    void unregisterEnumeratedTypes() {
-    
-        ObjectHandler::Create<QuantLib::Average::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Barrier::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::BusinessDayConvention>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Calendar>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::CapFloor::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::CmsMarketCalibration::CalibrationType>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Compounding>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::CubicInterpolation::BoundaryCondition>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::CubicInterpolation::DerivativeApprox>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Currency>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::DateGeneration::Rule>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::DayCounter>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Duration::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::EndCriteria::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Frequency>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::GFunctionFactory::YieldCurveModel>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Month>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Option::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::OvernightIndexedSwap::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Position::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::PriceType>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Protection::Side>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Replication::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::SalvagingAlgorithm::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::SensitivityAnalysis>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Settlement::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::TimeUnit>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::VanillaSwap::Type>().unregisterTypes();
-        ObjectHandler::Create<QuantLib::Weekday>().unregisterTypes();
-        ObjectHandler::Create<QuantLibAddin::InterpolatedYieldCurve::Interpolator>().unregisterTypes();
-        ObjectHandler::Create<QuantLibAddin::InterpolatedYieldCurve::Traits>().unregisterTypes();
-        ObjectHandler::Create<QuantLibAddin::RateHelper::DepoInclusionCriteria>().unregisterTypes();
-        ObjectHandler::Create<QuantLibAddin::SwapIndex::FixingType>().unregisterTypes();
-    
-    }
-
 }
 

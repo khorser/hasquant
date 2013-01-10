@@ -87,27 +87,6 @@ namespace QuantLibAddin {
         }
 
         {
-            ObjectHandler::Create<boost::shared_ptr<QuantLib::Interpolation> > create;
-            create.registerType("Abcd", reinterpret_cast<void*>(ABCD_Interpolation));
-            create.registerType("BackwardFlat", reinterpret_cast<void*>(BACKWARDFLAT_Interpolation));
-            create.registerType("CubicNaturalSpline", reinterpret_cast<void*>(CUBICNATURALSPLINE_Interpolation));
-            create.registerType("ForwardFlat", reinterpret_cast<void*>(FORWARDFLAT_Interpolation));
-            create.registerType("FritschButlandCubic", reinterpret_cast<void*>(FritschButlandCubic_Interpolation));
-            create.registerType("FritschButlandLogCubic", reinterpret_cast<void*>(FritschButlandLogCubic_Interpolation));
-            create.registerType("KrugerCubic", reinterpret_cast<void*>(KrugerCubic_Interpolation));
-            create.registerType("KrugerLogCubic", reinterpret_cast<void*>(KrugerLogCubic_Interpolation));
-            create.registerType("Linear", reinterpret_cast<void*>(LINEAR_Interpolation));
-            create.registerType("LogCubicNaturalSpline", reinterpret_cast<void*>(LOGCUBICNATURALSPLINE_Interpolation));
-            create.registerType("LogLinear", reinterpret_cast<void*>(LOGLINEAR_Interpolation));
-            create.registerType("LogParabolic", reinterpret_cast<void*>(LogParabolic_Interpolation));
-            create.registerType("MonotonicCubicNaturalSpline", reinterpret_cast<void*>(MONOTONICCUBICNATURALSPLINE_Interpolation));
-            create.registerType("MonotonicLogCubicNaturalSpline", reinterpret_cast<void*>(MONOTONICLOGCUBICNATURALSPLINE_Interpolation));
-            create.registerType("MonotonicLogParabolic", reinterpret_cast<void*>(MonotonicLogParabolic_Interpolation));
-            create.registerType("MonotonicParabolic", reinterpret_cast<void*>(MonotonicParabolic_Interpolation));
-            create.registerType("Parabolic", reinterpret_cast<void*>(Parabolic_Interpolation));
-        }
-
-        {
             ObjectHandler::Create<boost::shared_ptr<QuantLib::Interpolation2D> > create;
             create.registerType("BiCubic", reinterpret_cast<void*>(BICUBICSPLINE));
             create.registerType("BiLinear", reinterpret_cast<void*>(BILINEAR_Interpolation));
