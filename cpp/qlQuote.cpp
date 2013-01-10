@@ -4,24 +4,24 @@
 
 using namespace QuantLib;
 
-void *qlSimpleQuote(double value, char **e) {
+Quote *qlSimpleQuote(double value, char **e) {
   try {
-    return upcast<SimpleQuote, Quote>("Allocated simple quote", new SimpleQuote(value));
+    return log(new SimpleQuote(value), "Allocated quote");
   } catch (std::exception& er) {
-    return handleException<void *>(e, er);
+    return handleException<Quote *>(e, er);
   }
 }
 
-double qlQuoteValue(void *quote, char **e) {
+double qlQuoteValue(Quote *quote, char **e) {
   try {
-    return cast<Quote>("Pquote", quote)->value();
+    return quote->value();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 
-void qlFreeQuote(void *quote) {
-  delete cast<Quote>("Pfreeing quote", quote);
+void qlFreeQuote(Quote *quote) {
+  delete log(quote, "Deallocating quote");
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

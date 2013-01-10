@@ -36,6 +36,12 @@ T *cast(const char *msg, void *p) {
 }
 
 template <class T>
+T *log(T *p, const char *msg) {
+  TPP(msg, p);
+  return p;
+}
+
+template <class T>
 void *uncast(const char *msg, T *p) {
   return static_cast<void *>(TP(msg, p));
 }
@@ -51,6 +57,12 @@ T2 *upcast(const char *msg, T1 *p) {
 template <class T1, class T2>
 T2 *downcast(const char *msg, void *p) {
   return dynamic_cast<T2 *>(static_cast<T1 *>(TP(msg, p)));
+}
+
+namespace QuantLib {
+  class Quote;
+  class Bond;
+  class FixedRateBond;
 }
 
 extern "C"
@@ -91,25 +103,25 @@ extern "C"
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
 
   /* bond */
-  void *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
-  void *qlBond1(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
+  QuantLib::Bond *qlBond(unsigned settlDays, void *calendar, int issueDate, void *coupons, char **e);
+  QuantLib::Bond *qlBond1(unsigned settlDays, void *calendar, double faceAmount, int maturityDate, int issueDate, void *cashFlows, char **e);
   int   qlBondMaturityDate(void *bond);
   int   qlBondIssueDate(void *bond);
 
-  void *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
+  QuantLib::Bond *qlFixedRateBond(unsigned settlDays, double face, void *schedule,
     unsigned cLen, double *coupons, void *counter,
     int payConv, double redemption, int issue, void *payCal,
     char **e);
-  void *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
+  QuantLib::Bond *qlFixedRateBond1(unsigned settlDays, void *cpnCal, double face, int start,
     int maturity, void *tenor, unsigned cLen, double *coupons, void *dayCounter,
     int accrConv, int paymentConv, double redemption, int issue, int stub,
     int rule, int eom, void *payCal, char **e);
-  void *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
+  QuantLib::Bond *qlFixedRateBond2(unsigned settlDays, double face, void *sched,
     unsigned cLen, void **coupons, int paymentConv, double redemption, int issue,
     void *cal, char **e);
-  int   qlFixedBondFrequency(void *bond);
+  int qlFixedBondFrequency(QuantLib::Bond *bond);
 
-  void qlFreeBond(void *bond);
+  void qlFreeBond(QuantLib::Bond *bond);
 
   /* daycounter */
   void *qlDayCounter(const char *name, char **e);
@@ -131,10 +143,10 @@ extern "C"
   void  qlFreePeriod(void *period);
 
   /* quote */
-  void *qlSimpleQuote(double value, char **e);
-  double qlQuoteValue(void *quote, char **e);
+  QuantLib::Quote *qlSimpleQuote(double value, char **e);
+  double qlQuoteValue(QuantLib::Quote *quote, char **e);
 
-  void qlFreeQuote(void *quote);
+  void qlFreeQuote(QuantLib::Quote *quote);
 
   /* schedule */
   void *qlSchedule(int eff, int term, void *tenor, void *cal,
@@ -172,7 +184,7 @@ const QuantLib::Date qlNullableDate(int serialNumber);
 int qlNullableDate(const QuantLib::Date &date);
 
 /* some useful helpers ... well ... I hope they are... */
-  template <class T>
+template <class T>
 T *handleException(char **msg, std::exception &e, T *t)
 {
   *msg = DUP(e.what());
@@ -181,8 +193,15 @@ T *handleException(char **msg, std::exception &e, T *t)
   return 0;
 }
 
-  template <class T>
+template <class T>
 T handleException(char **msg, std::exception &e)
+{
+  *msg = DUP(e.what());
+  return 0;
+}
+
+template <class T>
+T handleException2(char **msg, std::exception &e)
 {
   *msg = DUP(e.what());
   return 0;
