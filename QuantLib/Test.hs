@@ -6,6 +6,7 @@ where
 
 import Control.Exception(catch)
 import Data.List(zip4)
+import Data.Word(Word)
 import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
@@ -78,7 +79,9 @@ date = test
       Date.maxDate ~?= fromGregorian 2199 12 31
   , "leap years" ~: "leap year" ~:
       [False, True, False] ~=? map Date.isLeap
-            [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5]
+            [ fromGregorian 2100 10 10,
+              fromGregorian 2012 1 1,
+              fromGregorian 1981 5 5]
   ]
 
 leg :: Test
@@ -282,51 +285,62 @@ bondval = TestList
   [
     "bond valuation (QuantLib Bond example)"
       ~: do zcBondsDayCounter <- DayCounter.actual365Fixed
-            p6m <- Period.period 6 Unit.Months
             cal <- Calendar.target
+            settlementDate <- Calendar.adjust cal
+                                              settlDate
+                                              BusinessDayConvention.Following
+            todaysDate <- Calendar.advance  cal
+                                            settlementDate
+                                            (-(fromIntegral fixingDays))
+                                            Unit.Days
+                                            BusinessDayConvention.Following
+                                            False
+            Settings.setEvaluationDate (Just todaysDate)
             gcal <- Calendar.unitedStatesGovernmentBond
             actact <- DayCounter.actualActualBond
-            depoHelpers <- mapM (\(q, p) -> do tenor <- Period.period p Unit.Months
-                                               rate <- Quote.simpleQuote q
-                                               Yield.depositRateHelper
-                                                 rate
-                                                 tenor
-                                                 fixingDays
-                                                 cal
-                                                 BusinessDayConvention.ModifiedFollowing
-                                                 True
-                                                 zcBondsDayCounter
-                                  ) $ zip zcQuotes zcTenors
+            depoBondHelpers <- mapM
+              (\(q, p) -> do tenor <- Period.period p Unit.Months
+                             rate <- Quote.simpleQuote q
+                             Yield.depositRateHelper
+                               rate
+                               tenor
+                               fixingDays
+                               cal
+                               BusinessDayConvention.ModifiedFollowing
+                               True
+                               zcBondsDayCounter)
+              $ zip zcQuotes zcTenors
             quotes <- mapM Quote.simpleQuote marketQuotes
-            schedules <- mapM (\(i, m) -> Schedule.schedule
-                                            i
-                                            m
-                                            p6m
-                                            gcal
-                                            BusinessDayConvention.Unadjusted
-                                            BusinessDayConvention.Unadjusted
-                                            DateGenerationRule.Backward
-                                            False
-                                            Nothing
-                                            Nothing)
-                          $ zip issueDates maturities
-            bondHelpers <- mapM (\(s, q, c, i) ->
-                                  Yield.fixedRateBondHelper
-                                    q
-                                    settlementDays
-                                    100.0
-                                    s
-                                    [c]
-                                    actact
-                                    BusinessDayConvention.Unadjusted
-                                    redemption
-                                    i)
-                              $ zip4 schedules quotes couponRates issueDates
+            bondBondHelpers <- mapM
+              (\(q, c, i, m) -> do p6m <- Period.fromFrequency Frequency.Semiannual
+                                   s <- Schedule.schedule
+                                          i
+                                          m
+                                          p6m
+                                          gcal
+                                          BusinessDayConvention.Unadjusted
+                                          BusinessDayConvention.Unadjusted
+                                          DateGenerationRule.Backward
+                                          False
+                                          Nothing
+                                          Nothing
+                                   Yield.fixedRateBondHelper
+                                     q
+                                     settlementDays
+                                     100.0
+                                     s
+                                     [c]
+                                     actact
+                                     BusinessDayConvention.Unadjusted
+                                     redemption
+                                     i)
+              $ zip4 quotes couponRates issueDates maturities
             assertEqual "Test" True True
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
         zcTenors = [3, 6, 12]
-        fixingDays = 3
+        settlDate = fromGregorian 2008 09 18
+        fixingDays = 3 :: Word
         settlementDays = 3
         redemption = 100.0
         issueDates = map Just [
