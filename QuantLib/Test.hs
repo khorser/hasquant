@@ -281,40 +281,22 @@ bondval :: Test
 bondval = TestList
   [
     "bond valuation (QuantLib Bond example)"
-      ~: do zc3mRate <- Quote.simpleQuote zc3mQuote
-            zc6mRate <- Quote.simpleQuote zc6mQuote
-            zc1yRate <- Quote.simpleQuote zc1yQuote
-            zcBondsDayCounter <- DayCounter.actual365Fixed
-            p3m <- Period.period 3 Unit.Months
+      ~: do zcBondsDayCounter <- DayCounter.actual365Fixed
             p6m <- Period.period 6 Unit.Months
-            p1y <- Period.period 1 Unit.Years
             cal <- Calendar.target
             gcal <- Calendar.unitedStatesGovernmentBond
             actact <- DayCounter.actualActualBond
-            _zc3m <- Yield.depositRateHelper
-                      zc3mRate
-                      p3m
-                      fixingDays
-                      cal
-                      BusinessDayConvention.ModifiedFollowing
-                      True
-                      zcBondsDayCounter
-            _zc6m <- Yield.depositRateHelper
-                      zc6mRate
-                      p6m
-                      fixingDays
-                      cal
-                      BusinessDayConvention.ModifiedFollowing
-                      True
-                      zcBondsDayCounter
-            _zc1y <- Yield.depositRateHelper
-                      zc1yRate
-                      p1y
-                      fixingDays
-                      cal
-                      BusinessDayConvention.ModifiedFollowing
-                      True
-                      zcBondsDayCounter
+            depoHelpers <- mapM (\(q, p) -> do tenor <- Period.period p Unit.Months
+                                               rate <- Quote.simpleQuote q
+                                               Yield.depositRateHelper
+                                                 rate
+                                                 tenor
+                                                 fixingDays
+                                                 cal
+                                                 BusinessDayConvention.ModifiedFollowing
+                                                 True
+                                                 zcBondsDayCounter
+                                  ) $ zip zcQuotes zcTenors
             quotes <- mapM Quote.simpleQuote marketQuotes
             schedules <- mapM (\(i, m) -> Schedule.schedule
                                             i
@@ -342,9 +324,8 @@ bondval = TestList
                               $ zip4 schedules quotes couponRates issueDates
             assertEqual "Test" True True
   ]
-  where zc3mQuote=0.0096
-        zc6mQuote=0.0145
-        zc1yQuote=0.0194
+  where zcQuotes = [0.0096, 0.0145, 0.0194]
+        zcTenors = [3, 6, 12]
         fixingDays = 3
         settlementDays = 3
         redemption = 100.0
