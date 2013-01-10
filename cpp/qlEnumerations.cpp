@@ -67,6 +67,51 @@ static int compoundingValues[] =
   , SimpleThenCompounded
   };
 
+static int weekdayValues[] =
+  {
+    Sunday
+  , Monday
+  , Tuesday
+  , Wednesday
+  , Thursday
+  , Friday
+  , Saturday
+  , Sun
+  , Mon
+  , Tue
+  , Wed
+  , Thu
+  , Fri
+  , Sat
+  };
+
+static int monthValues[] =
+  {
+    January
+  , February
+  , March
+  , April
+  , May
+  , June
+  , July
+  , August
+  , September
+  , October
+  , November
+  , December
+  , Jan
+  , Feb
+  , Mar
+  , Apr
+  , Jun
+  , Jul
+  , Aug
+  , Sep
+  , Oct
+  , Nov
+  , Dec
+  };
+
 int *qlEnumerationValue(const char *name, int *c) {
   if (!strcmp(name, "BusinessDayConvention")) {
     *c = sizeof(businessDayConventionValues)/sizeof(businessDayConventionValues[0]);
@@ -85,6 +130,12 @@ int *qlEnumerationValue(const char *name, int *c) {
   } else if (!strcmp(name, "Compounding")) {
     *c = sizeof(compoundingValues)/sizeof(compoundingValues[0]);
     return compoundingValues;
+  } else if (!strcmp(name, "Weekday")) {
+    *c = sizeof(weekdayValues)/sizeof(weekdayValues[0]);
+    return weekdayValues;
+  } else if (!strcmp(name, "Month")) {
+    *c = sizeof(monthValues)/sizeof(monthValues[0]);
+    return monthValues;
   } else {
     *c = 0;
     return 0;
