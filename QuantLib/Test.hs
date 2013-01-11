@@ -34,6 +34,7 @@ import qualified QuantLib.Time.Date as Date
 import qualified QuantLib.Time.DateGenerationRule as DateGenerationRule
 import qualified QuantLib.Time.DayCounter as DayCounter
 import qualified QuantLib.Time.Frequency as Frequency
+import qualified QuantLib.Math.Interpolation as Interpolation
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
@@ -288,7 +289,7 @@ bondval = TestList
       ~: do zcBondsDayCounter <- DayCounter.actual365Fixed
             cal <- Calendar.target
             settlementDate <- Calendar.adjust cal
-                                              settlDate
+                                              (fromGregorian 2008 09 18)
                                               BusinessDayConvention.Following
             todaysDate <- Calendar.advance  cal
                                             settlementDate
@@ -336,11 +337,19 @@ bondval = TestList
                                      redemption
                                      i)
               $ zip4 quotes couponRates issueDates maturities
+            tsdc <- DayCounter.actualActualISDA
+            ts <- Yield.piecewiseYieldCurve
+                    settlementDate
+                    (depoBondHelpers ++ bondBondHelpers)
+                    tsdc
+                    []
+                    tolerance
+                    Yield.Discount
+                    Interpolation.LogLinear
             assertEqual "Test" True True
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
         zcTenors = [3, 6, 12]
-        settlDate = fromGregorian 2008 09 18
         fixingDays = 3 :: Word
         settlementDays = 3
         redemption = 100.0
@@ -358,6 +367,7 @@ bondval = TestList
 	  fromGregorian 2038 05 15]
         couponRates = [0.02375, 0.04625, 0.03125, 0.04000, 0.04500]
         marketQuotes = [100.390625, 106.21875, 100.59375, 101.6875, 102.140625]
+        tolerance = 1.0e-15
 
 
 -- QuickCheck --

@@ -4,23 +4,23 @@
 
 using namespace QuantLib;
 
-Quote *qlSimpleQuote(double value, char **e) {
+qlQuote *qlSimpleQuote(double value, char **e) {
   try {
-    return alloc(new SimpleQuote(value));
+    return ret(new qlQuote(alloc(new SimpleQuote(value))));
   } catch (std::exception& er) {
-    return handleException<Quote *>(e, er);
+    return handleException<qlQuote *>(e, er);
   }
 }
 
-double qlQuoteValue(Quote *quote, char **e) {
+double qlQuoteValue(qlQuote *quote, char **e) {
   try {
-    return arg(quote)->value();
+    return (*arg(quote))->value();
   } catch (std::exception& er) {
     return handleException<double>(e, er);
   }
 }
 
-void qlFreeQuote(Quote *quote) {
+void qlFreeQuote(qlQuote *quote) {
   del(quote);
 }
 

@@ -46,6 +46,20 @@ using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
 
+typedef boost::shared_ptr<Quote> qlQuote;
+
+// Leg and RateHelper are typedefs so we cannot use forward declaration
+// for them. Using them only when corresponding headers have been included
+// to save some time on compilation
+#ifdef quantlib_ratehelpers_hpp
+using QuantLib::RateHelper;
+typedef boost::shared_ptr<RateHelper> qlRateHelper;
+#endif
+
+#ifdef quantlib_cash_flow_hpp
+using QuantLib::Leg;
+#endif
+
 using QuantLib::Date;
 
 template <class T>
@@ -121,6 +135,14 @@ public:
 };
 
 template <>
+class objClassName<qlQuote *> {
+public:
+  static const char *name() {
+    return "qlQuote";
+  }
+};
+
+template <>
 class objClassName<Period *> {
 public:
   static const char *name() {
@@ -144,12 +166,15 @@ public:
   }
 };
 
-// Leg and RateHelper are typedefs so we cannot use forward declaration
-// for them. Using them only when corresponding headers have been included
-// to save some time on compilation
-#ifdef quantlib_cash_flow_hpp
-using QuantLib::Leg;
+template <>
+class objClassName<YieldTermStructure *> {
+public:
+  static const char *name() {
+    return "YieldTermStructure";
+  }
+};
 
+#ifdef quantlib_cash_flow_hpp
 template <>
 class objClassName<Leg *> {
 public:
@@ -160,12 +185,19 @@ public:
 #endif
 
 #ifdef quantlib_ratehelpers_hpp
-using QuantLib::RateHelper;
 template <>
 class objClassName<RateHelper *> {
 public:
   static const char *name() {
     return "RateHelper";
+  }
+};
+
+template <>
+class objClassName<qlRateHelper *> {
+public:
+  static const char *name() {
+    return "qlRateHelper";
   }
 };
 #endif
@@ -200,6 +232,11 @@ void del(T p) {
 template <class T>
 T alloc(T p) {
   return TP("allocated", p);
+}
+
+template <class T>
+T ret(T p) {
+  return TP("returned", p);
 }
 
 const Date qlNullableDate(int serialNumber);

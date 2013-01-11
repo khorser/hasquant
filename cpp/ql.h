@@ -87,10 +87,10 @@ extern "C"
   void qlFreePeriod(Period *period);
 
   /* quote */
-  Quote *qlSimpleQuote(double value, char **e);
-  double qlQuoteValue(Quote *quote, char **e);
+  qlQuote *qlSimpleQuote(double value, char **e);
+  double qlQuoteValue(qlQuote *quote, char **e);
 
-  void qlFreeQuote(Quote *quote);
+  void qlFreeQuote(qlQuote *quote);
 
   /* schedule */
   Schedule *qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
@@ -112,18 +112,18 @@ extern "C"
 
 #ifdef quantlib_ratehelpers_hpp
   /* yield term structure */
-  RateHelper *qlDepositRateHelper(Quote *quote, Period *period,
+  qlRateHelper *qlDepositRateHelper(qlQuote *quote, Period *period,
     unsigned fixDays, Calendar *calendar, int conv, int eom,
     DayCounter *dayCount, char **e);
-  RateHelper *qlFixedRateBondHelper(Quote *quote, unsigned settlDays,
+  qlRateHelper *qlFixedRateBondHelper(qlQuote *quote, unsigned settlDays,
     double face, Schedule *sched, unsigned cLen, double *coupons,
     DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
-    RateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-    Quote **quotes, int *dates, double accuracy, char *trait,
+    qlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+    qlQuote **quotes, int *dates, double accuracy, char *trait,
     char *interpolator, char **e);
 
-  void qlFreeRateHelper(RateHelper *helper);
+  void qlFreeRateHelper(qlRateHelper *helper);
 #endif
   void qlFreeYieldTermStructure(YieldTermStructure *ts);
 }

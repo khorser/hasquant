@@ -4,7 +4,7 @@ module QuantLib.TermStructure.Yield
   -- types
     CRateHelper
   , RateHelper
-  , Trait
+  , Trait(..)
   , CYieldTermStructure
   , YieldTermStructure
   -- makers
