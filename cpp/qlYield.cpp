@@ -72,11 +72,46 @@ void qlFreeRateHelper(RateHelper *helper) {
   del(helper);
 }
 
+typedef YieldTermStructure *(*piecewiseYieldCurve_t)(const Date& referenceDate,
+  const std::vector<boost::shared_ptr<RateHelper> >& instruments,
+  const DayCounter& dayCounter,
+  const std::vector<Handle<Quote> >& jumps,
+  const std::vector<Date>& jumpDates,
+  Real accuracy);
+
+template <class T, class I>
+class YieldCurveCreator {
+public:
+  static YieldTermStructure *piecewiseYieldCurve(const Date& referenceDate,
+    const std::vector<boost::shared_ptr<typename T::helper> >& instruments,
+  const DayCounter& dayCounter,
+  const std::vector<Handle<Quote> >& jumps,
+  const std::vector<Date>& jumpDates,
+  Real accuracy) {
+    return new PiecewiseYieldCurve<T, I>(referenceDate, instruments,
+	dayCounter, jumps, jumpDates, accuracy);
+  }
+};
+
 YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen, RateHelper **ratehelpers,
   DayCounter *dayCount, unsigned quoteLen, Quote **quotes, int *dates,
-  double accuracy, char *interpolator, char *boostrap, char **e) {
+  double accuracy, char *trait, char *interpolator, char **e) {
   try {
-    return 0;
+    piecewiseYieldCurve_t c;
+    if (!strcmp(trait, "Discount")) {
+      if (!strcmp(interpolator, "Linear"))
+	c = &YieldCurveCreator<Discount, Linear>::piecewiseYieldCurve;
+    }
+    std::vector<boost::shared_ptr<RateHelper> > instr;
+    std::vector<Handle<Quote> > jumps;
+    std::vector<Date> jumpDates;
+    //for (unsigned i = 0; i < rateLen; ++i)
+    //  instr.push_back(*ratehelpers[i]);
+    for (unsigned i = 0; i < quoteLen; ++i) {
+      jumps.push_back(QuoteWrapper::clone(arg(quotes[i])));
+      jumpDates.push_back(Date(dates[i]));
+    }
+    return alloc(c(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy));
   } catch (std::exception& er) {
     return handleException<YieldTermStructure *>(e, er);
   }

@@ -4,7 +4,7 @@ module QuantLib.TermStructure.Yield
   -- types
     CRateHelper
   , RateHelper
-  , Bootstrap
+  , Trait
   , CYieldTermStructure
   , YieldTermStructure
   -- makers
@@ -45,7 +45,7 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
 instance Finalizable CRateHelper where
   finalize = p_freeRateHelper
 
-data Bootstrap = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
+data Trait = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
 
 -- |(qlDepositRateHelper2)
 depositRateHelper :: Quote -> Period -> Word -> Calendar
@@ -93,9 +93,9 @@ instance Finalizable CYieldTermStructure
   where finalize = p_freeYieldTermStructure
 
 piecewiseYieldCurve :: Day -> [RateHelper] -> DayCounter
-  -> [(Quote, Day)] -> Double -> Interpolation -> Bootstrap
+  -> [(Quote, Day)] -> Double -> Trait -> Interpolation
   -> IO YieldTermStructure
-piecewiseYieldCurve refDate instr dayCounter jumps accuracy interp boot =
+piecewiseYieldCurve refDate instr dayCounter jumps accuracy trait interp =
   withObjects instr
   (\ni i ->
     withObjects quotes
@@ -104,8 +104,8 @@ piecewiseYieldCurve refDate instr dayCounter jumps accuracy interp boot =
       (\_ ds ->
         withObject dayCounter
           (\dc ->
-            withString2 (show interp) (show boot)
-            (\int boo ->
+            withString2 (show trait) (show interp)
+            (\t int ->
               construct $ c_piecewiseYieldCurve
                             (toQlDate refDate)
                             ni
@@ -115,12 +115,12 @@ piecewiseYieldCurve refDate instr dayCounter jumps accuracy interp boot =
                             q
                             ds
                             (realToFrac accuracy)
-                            int
-                            boo)))))
+                            t
+                            int)))))
   where (quotes, dates) = unzip jumps
 
 -- |(qlPiecewiseYieldCurve)
 piecewiseYieldCurve' :: Word -> Calendar -> [RateHelper] -> DayCounter
-  -> [(Quote, Day)] -> Double -> Bootstrap -> Interpolation
+  -> [(Quote, Day)] -> Double -> Trait -> Interpolation
   -> IO YieldTermStructure
 piecewiseYieldCurve' = undefined

@@ -120,8 +120,8 @@ extern "C"
     DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
     RateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-    Quote **quotes, int *dates, double accuracy, char *interpolator,
-    char *boostrap, char **e);
+    Quote **quotes, int *dates, double accuracy, char *trait,
+    char *interpolator, char **e);
 
   void qlFreeRateHelper(RateHelper *helper);
 #endif
