@@ -133,10 +133,7 @@ withAmounts amounts f = withArrayLen
                         (\n a -> f (fromIntegral n) a)
 
 withString2 :: String -> String -> (CString -> CString -> IO b) -> IO b
-withString2 s1 s2 f = withCString s1
-                      (\str1 ->
-                        withCString s2
-                        (\str2 -> f str1 str2))
+withString2 s1 s2 f = withCString s1 (withCString s2 . f)
 
 getDynIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
 getDynIntArray = getIntArray c_freeInts

@@ -19,7 +19,7 @@ import Test.QuickCheck(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..), arbitraryBoundedEnum)
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
-import qualified QuantLib.Internal as Internal(toQlEnum)
+--import qualified QuantLib.Internal as Internal(toQlEnum)
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency

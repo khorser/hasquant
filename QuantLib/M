@@ -4,46 +4,46 @@ all: cpp/qlBond.o cpp/qlCalendar.o cpp/qlCurrency.o cpp/qlDate.o \
     cpp/qlInterestRate.o cpp/qlYield.o
 
 
-cpp/qlBond.o: ../cpp/ql.h ../cpp/qlBond.cpp
+cpp/qlBond.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlBond.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlBond.o ../cpp/qlBond.cpp
 
-cpp/qlCalendar.o: ../cpp/ql.h ../cpp/qlCalendar.cpp
+cpp/qlCalendar.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlCalendar.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlCalendar.o ../cpp/qlCalendar.cpp
 
-cpp/qlCurrency.o: ../cpp/ql.h ../cpp/qlCurrency.cpp
+cpp/qlCurrency.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlCurrency.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlCurrency.o ../cpp/qlCurrency.cpp
 
-cpp/qlDate.o: ../cpp/ql.h ../cpp/qlDate.cpp
+cpp/qlDate.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlDate.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlDate.o ../cpp/qlDate.cpp
 
-cpp/qlDayCounter.o: ../cpp/ql.h ../cpp/qlDayCounter.cpp
+cpp/qlDayCounter.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlDayCounter.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlDayCounter.o ../cpp/qlDayCounter.cpp
 
-cpp/qlEnumerations.o: ../cpp/ql.h ../cpp/qlEnumerations.cpp
+cpp/qlEnumerations.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlEnumerations.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlEnumerations.o ../cpp/qlEnumerations.cpp
 
-cpp/qlInterestRate.o: ../cpp/ql.h ../cpp/qlInterestRate.cpp
+cpp/qlInterestRate.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlInterestRate.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlInterestRate.o ../cpp/qlInterestRate.cpp
 
-cpp/qlLeg.o: ../cpp/ql.h ../cpp/qlLeg.cpp
+cpp/qlLeg.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlLeg.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlLeg.o ../cpp/qlLeg.cpp
 
-cpp/qlPeriod.o: ../cpp/ql.h ../cpp/qlPeriod.cpp
+cpp/qlPeriod.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlPeriod.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlPeriod.o ../cpp/qlPeriod.cpp
 
-cpp/qlQuote.o: ../cpp/ql.h ../cpp/qlQuote.cpp
+cpp/qlQuote.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlQuote.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlQuote.o ../cpp/qlQuote.cpp
 
-cpp/qlSchedule.o: ../cpp/ql.h ../cpp/qlSchedule.cpp
+cpp/qlSchedule.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlSchedule.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlSchedule.o ../cpp/qlSchedule.cpp
 
-cpp/qlSettings.o: ../cpp/ql.h ../cpp/qlSettings.cpp
+cpp/qlSettings.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlSettings.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlSettings.o ../cpp/qlSettings.cpp
 
-cpp/qlUtilities.o: ../cpp/ql.h ../cpp/qlUtilities.cpp
+cpp/qlUtilities.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlUtilities.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlUtilities.o ../cpp/qlUtilities.cpp
 
-cpp/qlYield.o: ../cpp/ql.h ../cpp/qlYield.cpp
+cpp/qlYield.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYield.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlYield.o ../cpp/qlYield.cpp
 
 # vim: set ft=make:
