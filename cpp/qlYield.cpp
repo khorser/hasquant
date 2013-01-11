@@ -4,11 +4,41 @@
 
 using namespace QuantLib;
 
+#ifdef QLTRACK_ALLOCATIONS
+// very minimal implementation to check that all objects are actually freed
+class RateHelperWrapper: public RateHelper {
+  public:
+    RateHelperWrapper(RateHelper *helper)
+	: RateHelper(helper->quote()), helper_(helper) {
+      TP2("wrapped", helper); TP2("in", this);
+    }
+    ~RateHelperWrapper() { TP2("destroying underlying", helper_); delete helper_; }
+    const Handle<Quote>& quote() const { return helper_->quote(); }
+    Real impliedQuote() const { return helper_->impliedQuote(); }
+    Real quoteError() const { return helper_->quoteError(); }
+    void setTermStructure(YieldTermStructure* ts) { helper_->setTermStructure(ts); }
+    Date earliestDate() const { return helper_->earliestDate(); }
+    Date latestDate() const {return helper_->latestDate(); }
+    void update() {helper_->update();}
+    void accept(AcyclicVisitor& v) {helper_->accept(v);}
+    void notifyObservers() {helper_->notifyObservers();}
+  private:
+    RateHelper *helper_;
+};
+template <class T>
+RateHelper *wrap(T *h) {
+  return new RateHelperWrapper(alloc(h));
+}
+#else
+template <class T>
+RateHelper *wrap(T *h) { return alloc(h); }
+#endif
+
 qlRateHelper *qlDepositRateHelper(qlQuote *quote, Period *period, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e)
 {
   try {
-    return ret(new qlRateHelper(alloc(new DepositRateHelper(
+    return ret(new qlRateHelper(wrap(new DepositRateHelper(
 	    Handle<Quote>(*arg(quote)),
 	    *arg(period),
 	    fixDays,
@@ -29,7 +59,7 @@ qlRateHelper *qlFixedRateBondHelper(qlQuote *quote, unsigned settlDays, double f
     std::vector<Rate> cpns;
     for (unsigned i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
-    return ret(new qlRateHelper(alloc(new FixedRateBondHelper(
+    return ret(new qlRateHelper(wrap(new FixedRateBondHelper(
 	    Handle<Quote>(*arg(quote)),
 	    settlDays,
 	    face,
