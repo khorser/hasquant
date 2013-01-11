@@ -46,6 +46,13 @@ using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
 
+// Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
+// because quotes and rate helpers are used via smart pointers (Handle
+// and shared_ptr) in QuantLib
+// Alternatively we could clone passed quotes/helpers and put them into
+// the containers each time we call QuantLib
+// To make things more complex, I added wrapper classes used when tracing
+// is activated to track that objects are really destroyed, yes, I'm paranoid
 typedef boost::shared_ptr<Quote> qlQuote;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
