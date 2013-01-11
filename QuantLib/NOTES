@@ -22,7 +22,9 @@ keep objects together to avoid gc-ing of objects for which we still have referen
 try and make objects as much immutable as possible by not exposing mutators
 (except maybe Calendars that should keep the ability to be changed if the user wants
 to introduce adjustments)
-as result not going to use Handle/RelinkableHandle machinery
+as result that Handle/RelinkableHandle machinery isn't going to be much of help
+and might even harm (?)
+I'm thinking of implementing functional reactive programming paradigm if needed
 
 --- BOND Pricing: ---
 

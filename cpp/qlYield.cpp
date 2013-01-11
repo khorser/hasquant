@@ -34,11 +34,11 @@ template <class T>
 RateHelper *wrap(T *h) { return alloc(h); }
 #endif
 
-qlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
+QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e)
 {
   try {
-    return ret(new qlRateHelper(wrap(new DepositRateHelper(
+    return ret(new QlRateHelper(wrap(new DepositRateHelper(
 	    Handle<Quote>(*arg(quote)),
 	    *arg(period),
 	    fixDays,
@@ -47,11 +47,11 @@ qlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDa
 	    eom,
 	    *arg(dayCount)))));
   } catch (std::exception& er) {
-    return handleException<qlRateHelper *>(e, er);
+    return handleException<QlRateHelper *>(e, er);
   }
 }
 
-qlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
+QlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
   Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
   double redemption, int issue, char **e)
 {
@@ -59,7 +59,7 @@ qlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double f
     std::vector<Rate> cpns;
     for (unsigned i = 0; i < cLen; ++i)
       cpns.push_back(coupons[i]);
-    return ret(new qlRateHelper(wrap(new FixedRateBondHelper(
+    return ret(new QlRateHelper(wrap(new FixedRateBondHelper(
 	    Handle<Quote>(*arg(quote)),
 	    settlDays,
 	    face,
@@ -70,11 +70,11 @@ qlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double f
 	    redemption,
 	    qlNullableDate(issue)))));
   } catch (std::exception& er) {
-    return handleException<qlRateHelper *>(e, er);
+    return handleException<QlRateHelper *>(e, er);
   }
 }
 
-void qlFreeRateHelper(qlRateHelper *helper) {
+void qlFreeRateHelper(QlRateHelper *helper) {
   del(helper);
 }
 
@@ -100,7 +100,7 @@ public:
 };
 
 QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
-  qlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+  QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
   QlQuote **quotes, int *dates, double accuracy, char *trait,
   char *interpolator, char **e) {
   try {
@@ -129,4 +129,11 @@ void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {
   del(ts);
 }
 
+double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e) {
+  try {
+    return (*ts)->discount(Date(date), extrapolate);
+  } catch (std::exception& er) {
+    return handleException<double>(e, er);
+  }
+}
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

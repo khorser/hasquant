@@ -130,35 +130,6 @@
     </Member>
 
     <!-- YieldTermStructure interface -->
-    <Member name='qlYieldTSDiscount' type='QuantLib::YieldTermStructure' superType='libraryTermStructure' loopParameter='DfDates'>
-      <description>Returns a discount factor from the given YieldTermStructure object.</description>
-      <libraryFunction>discount</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Calc'/-->
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='DfDates' exampleValue ="'1Y,2Y,3Y,4Y,5Y">
-            <type>QuantLib::Date</type>
-            <tensorRank>vector</tensorRank>
-            <description>vector of dates.</description>
-          </Parameter>
-          <Parameter name='AllowExtrapolation' const='False' default='false'>
-            <type>bool</type>
-            <tensorRank>scalar</tensorRank>
-            <description>TRUE allows extrapolation.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>QuantLib::DiscountFactor</type>
-        <tensorRank>vector</tensorRank>
-      </ReturnValue>
-    </Member>
-
     <Member name='qlYieldTSForwardRate' type='QuantLib::YieldTermStructure' superType='libraryTermStructure' loopParameter='D2'>
       <description>Returns the forward interest rate from the given YieldTermStructure object.</description>
       <libraryFunction>forwardRate</libraryFunction>

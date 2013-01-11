@@ -31,6 +31,7 @@ namespace QuantLib {
   class DepositRateHelper;
   class YieldTermStructure;
   class PricingEngine;
+  class DiscountingBondEngine;
 }
 
 using QuantLib::Quote;
@@ -47,6 +48,7 @@ using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
 using QuantLib::PricingEngine;
+using QuantLib::DiscountingBondEngine;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -64,7 +66,7 @@ typedef boost::shared_ptr<PricingEngine> QlPricingEngine;
 // to save some time on compilation
 #ifdef quantlib_ratehelpers_hpp
 using QuantLib::RateHelper;
-typedef boost::shared_ptr<RateHelper> qlRateHelper;
+typedef boost::shared_ptr<RateHelper> QlRateHelper;
 #endif
 
 #ifdef quantlib_cash_flow_hpp
@@ -170,6 +172,30 @@ public:
 };
 
 template <>
+class objClassName<PricingEngine *> {
+public:
+  static const char *name() {
+    return "PricingEngine";
+  }
+};
+
+template <>
+class objClassName<DiscountingBondEngine *> {
+public:
+  static const char *name() {
+    return "DiscountingBondEngine";
+  }
+};
+
+template <>
+class objClassName<QlPricingEngine *> {
+public:
+  static const char *name() {
+    return "QlPricingEngine";
+  }
+};
+
+template <>
 class objClassName<Schedule *> {
 public:
   static const char *name() {
@@ -213,10 +239,10 @@ public:
 };
 
 template <>
-class objClassName<qlRateHelper *> {
+class objClassName<QlRateHelper *> {
 public:
   static const char *name() {
-    return "qlRateHelper";
+    return "QlRateHelper";
   }
 };
 #endif

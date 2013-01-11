@@ -12,8 +12,12 @@ module QuantLib.TermStructure.Yield
   , fixedRateBondHelper
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
+  -- accessors
+  , discount
   )
 where
+
+import Control.Monad(liftM)
 
 import QuantLib.Internal
 import QuantLib.Math.Interpolation(Interpolation)
@@ -88,6 +92,9 @@ type YieldTermStructure = Object CYieldTermStructure
 
 foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
   p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
+foreign import ccall safe "ql.h qlYieldTSDiscount"
+  c_yieldTSDiscount :: Ptr CYieldTermStructure -> CDate -> CInt
+    -> Ptr CString -> IO CDouble
 
 instance Finalizable CYieldTermStructure
   where finalize = p_freeYieldTermStructure
@@ -124,3 +131,12 @@ piecewiseYieldCurve' :: Word -> Calendar -> [RateHelper] -> DayCounter
   -> [(Quote, Day)] -> Double -> Trait -> Interpolation
   -> IO YieldTermStructure
 piecewiseYieldCurve' = undefined
+
+-- |Returns a discount factor from the given YieldTermStructure object (qlYieldTSDiscount)
+discount :: YieldTermStructure -> Day -> Bool -> IO Double
+discount ts d ex = liftM realToFrac (withObject
+                    ts
+                    (\t -> handleExceptions
+                      $ c_yieldTSDiscount t
+                          (toQlDate d)
+                          (fromBool ex)))

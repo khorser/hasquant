@@ -112,20 +112,26 @@ extern "C"
 
 #ifdef quantlib_ratehelpers_hpp
   /* yield term structure */
-  qlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period,
+  QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period,
     unsigned fixDays, Calendar *calendar, int conv, int eom,
     DayCounter *dayCount, char **e);
-  qlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays,
+  QlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays,
     double face, Schedule *sched, unsigned cLen, double *coupons,
     DayCounter *dayCount, int conv, double redemption, int issue, char **e);
   QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
-    qlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
+    QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
     QlQuote **quotes, int *dates, double accuracy, char *trait,
     char *interpolator, char **e);
 
-  void qlFreeRateHelper(qlRateHelper *helper);
+  void qlFreeRateHelper(QlRateHelper *helper);
 #endif
   void qlFreeYieldTermStructure(QlYieldTermStructure *ts);
+  double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e);
+
+  /* pricing engine */
+  QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, char **e);
+
+  void qlFreePricingEngine(QlPricingEngine *engine);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

@@ -1,7 +1,7 @@
 all: cpp/qlBond.o cpp/qlCalendar.o cpp/qlCurrency.o cpp/qlDate.o \
     cpp/qlDayCounter.o cpp/qlEnumerations.o cpp/qlLeg.o cpp/qlPeriod.o \
     cpp/qlQuote.o cpp/qlSchedule.o cpp/qlSettings.o cpp/qlUtilities.o \
-    cpp/qlInterestRate.o cpp/qlYield.o
+    cpp/qlInterestRate.o cpp/qlYield.o cpp/qlPricingEngine.o
 
 
 cpp/qlBond.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlBond.cpp
@@ -30,6 +30,9 @@ cpp/qlLeg.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlLeg.cpp
 
 cpp/qlPeriod.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlPeriod.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlPeriod.o ../cpp/qlPeriod.cpp
+
+cpp/qlPricingEngine.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlPricingEngine.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlPricingEngine.o ../cpp/qlPricingEngine.cpp
 
 cpp/qlQuote.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlQuote.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlQuote.o ../cpp/qlQuote.cpp

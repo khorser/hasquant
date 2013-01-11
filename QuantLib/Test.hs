@@ -26,6 +26,7 @@ import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.InterestRate as InterestRate
+import qualified QuantLib.PricingEngine as Pricing
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
@@ -346,6 +347,8 @@ bondval = TestList
                     tolerance
                     Yield.Discount
                     Interpolation.LogLinear
+            --df <- Yield.discount ts (fromGregorian 2011 08 03) True
+            pricing <- Pricing.discountingBondEngine ts
             assertEqual "Test" True True
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
