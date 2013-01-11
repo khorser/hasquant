@@ -18,7 +18,9 @@ const char *boostVersion() {
 }
 
 void qlFreeString(char *p) {
-  free(TP("Pfreeing string", p));
+  TP2("Freeing string", (void *)p);
+  free(p);
+  TP2("Freed string", (void *)p);
 }
 
 int *qlAllocateInts(int size) {
@@ -44,8 +46,10 @@ int qlNullableDate(const QuantLib::Date &date) {
 }
 
 char *tracedup(const char *p) {
-  TPP("Duplicating string", const_cast<char *>(p));
-  return (char *)TP("Duplicated string to", strdup(p));
+  TP2("Duplicating string", (void *)p);
+  char *dup = strdup(p);
+  TP2("Duplicated string to", (void *)dup);
+  return dup;
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

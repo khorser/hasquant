@@ -5,38 +5,19 @@
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
 
-#ifdef QLTRACK_ALLOCATIONS
-/* trace pointer */
-# define TP(text, p) traceval((text), (void *)(p))
-# define TP2(text, str, p) traceval2((text), (str), (void *)(p))
-# define DUP(p) tracedup((p))
-/* trace val */
-# define TV(f, v) traceval((f), (v))
-# define TPP(text, p) (void)traceval((text), (void *)(p));
-# define TPP2(text, str, p) (void)traceval2((text), (str), (void *)(p));
-
-#include <iostream>
-
-template <class T>
-T traceval(const char *text, T val) {
-  std::cout << std::endl << text << ": " << val << std::endl;
-  return val;
-}
-template <class T>
-T traceval2(const char *text, const char *kind, T val) {
-  std::cout << std::endl << kind << "" << text << ": " << val << std::endl;
-  return val;
-}
 char *tracedup(const char *p);
+#define DUP(p) tracedup((p))
+
+#ifdef QLTRACK_ALLOCATIONS
+template <class T> T traceval(const char *text, T val);
+/* trace a pointer */
+# define TP(text, p) traceval((text), (p))
+# define TP2(text, p) (void)traceval((text), (p));
+# include <iostream>
 #else
 # define TP(text, p) (p)
-# define TP2(text, str, p) (p)
-# define DUP(p) strdup((p))
-# define TV(f, v) (v)
-# define TPP(text, p)
-# define TPP2(text, str, p)
+# define TP2(text, p)
 #endif
-
 
 namespace QuantLib {
   class Quote;
@@ -210,21 +191,18 @@ public:
 
 template <class T>
 T arg(T p) {
-  TPP2(objClassName<T>::name(), "arg", p);
-  return p;
+  return TP("arg", p);
 }
 
 template <class T>
 void del(T p) {
-  TPP2(objClassName<T>::name(), "deleting", p);
-  delete p;
-  TPP2(objClassName<T>::name(), "deleted", p);
+  delete TP("deleting", p);
+  TP2("deleted", p);
 }
 
 template <class T>
 T alloc(T p) {
-  TPP2(objClassName<T>::name(), "allocated", p);
-  return p;
+  return TP("allocated", p);
 }
 
 extern "C"
@@ -372,4 +350,11 @@ T handleException(char **msg, std::exception &e)
   return 0;
 }
 
+#ifdef QLTRACK_ALLOCATIONS
+template <class T>
+T traceval(const char *text, T val) {
+  std::cout << std::endl << text << objClassName<T>::name() << ": " << val << std::endl;
+  return val;
+}
+#endif
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

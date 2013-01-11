@@ -34,9 +34,9 @@ isLeap = isLeapYear . year
 data Weekday = Sunday | Monday | Tuesday | Wednesday | Thursday | Friday
   | Saturday
   | Sun | Mon | Tue | Wed | Thu | Fri | Sat
-  deriving (Show, Eq, Enum, Typeable, Bounded)
+  deriving (Show, Eq, Enum, Typeable)
 
 data Month = January | February | March | April | May | June | July | August
   | September | October | November | December
   | Jan | Feb | Mar | Apr | Jun | Jul | Aug | Sep | Oct | Nov | Dec
-  deriving (Show, Eq, Enum, Typeable, Bounded)
+  deriving (Show, Eq, Enum, Typeable)

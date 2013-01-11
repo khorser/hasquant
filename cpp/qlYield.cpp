@@ -15,14 +15,14 @@ public:
   }
 
   ~QuoteWrapper() {
-    TPP("Destroying quote wrapper", this);
+    TP2("Destroying quote wrapper", (void *)this);
   }
 
   Real value() const { return quote_.value(); }
   bool isValid() const { return quote_.isValid(); }
 private:
   QuoteWrapper(Quote *q) : quote_(q->value()){
-    TPP("Created quote wrapper", this);
+    TP2("Created quote wrapper", (void *)this);
   }
 
   const SimpleQuote quote_;
