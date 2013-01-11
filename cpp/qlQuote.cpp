@@ -25,15 +25,15 @@ template <class T>
 Quote *wrap(T *q) { return alloc(q); }
 #endif
 
-qlQuote *qlSimpleQuote(double value, char **e) {
+QlQuote *qlSimpleQuote(double value, char **e) {
   try {
-    return ret(new qlQuote(wrap(new SimpleQuote(value))));
+    return ret(new QlQuote(wrap(new SimpleQuote(value))));
   } catch (std::exception& er) {
-    return handleException<qlQuote *>(e, er);
+    return handleException<QlQuote *>(e, er);
   }
 }
 
-double qlQuoteValue(qlQuote *quote, char **e) {
+double qlQuoteValue(QlQuote *quote, char **e) {
   try {
     return (*arg(quote))->value();
   } catch (std::exception& er) {
@@ -41,7 +41,7 @@ double qlQuoteValue(qlQuote *quote, char **e) {
   }
 }
 
-void qlFreeQuote(qlQuote *quote) {
+void qlFreeQuote(QlQuote *quote) {
   del(quote);
 }
 

@@ -30,6 +30,7 @@ namespace QuantLib {
   class FixedRateBondHelper;
   class DepositRateHelper;
   class YieldTermStructure;
+  class PricingEngine;
 }
 
 using QuantLib::Quote;
@@ -45,6 +46,7 @@ using QuantLib::InterestRate;
 using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
+using QuantLib::PricingEngine;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -53,7 +55,9 @@ using QuantLib::YieldTermStructure;
 // the containers each time we call QuantLib
 // To make things more complex, I added wrapper classes used when tracing
 // is activated to track that objects are really destroyed, yes, I'm paranoid
-typedef boost::shared_ptr<Quote> qlQuote;
+typedef boost::shared_ptr<Quote> QlQuote;
+typedef boost::shared_ptr<YieldTermStructure> QlYieldTermStructure;
+typedef boost::shared_ptr<PricingEngine> QlPricingEngine;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
@@ -142,10 +146,18 @@ public:
 };
 
 template <>
-class objClassName<qlQuote *> {
+class objClassName<QlQuote *> {
 public:
   static const char *name() {
-    return "qlQuote";
+    return "QlQuote";
+  }
+};
+
+template <>
+class objClassName<QlYieldTermStructure *> {
+public:
+  static const char *name() {
+    return "QlYieldTermStructure";
   }
 };
 

@@ -34,7 +34,7 @@ template <class T>
 RateHelper *wrap(T *h) { return alloc(h); }
 #endif
 
-qlRateHelper *qlDepositRateHelper(qlQuote *quote, Period *period, unsigned fixDays,
+qlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e)
 {
   try {
@@ -51,7 +51,7 @@ qlRateHelper *qlDepositRateHelper(qlQuote *quote, Period *period, unsigned fixDa
   }
 }
 
-qlRateHelper *qlFixedRateBondHelper(qlQuote *quote, unsigned settlDays, double face,
+qlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
   Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
   double redemption, int issue, char **e)
 {
@@ -99,9 +99,9 @@ public:
   }
 };
 
-YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
+QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
   qlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
-  qlQuote **quotes, int *dates, double accuracy, char *trait,
+  QlQuote **quotes, int *dates, double accuracy, char *trait,
   char *interpolator, char **e) {
   try {
     piecewiseYieldCurve_t c = 0;
@@ -118,13 +118,14 @@ YieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
       jumps.push_back(Handle<Quote>(*arg(quotes[i])));
       jumpDates.push_back(Date(dates[i]));
     }
-    return alloc(c(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy));
+    return ret(new QlYieldTermStructure(
+	  alloc(c(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy))));
   } catch (std::exception& er) {
-    return handleException<YieldTermStructure *>(e, er);
+    return handleException<QlYieldTermStructure *>(e, er);
   }
 }
 
-void qlFreeYieldTermStructure(YieldTermStructure *ts) {
+void qlFreeYieldTermStructure(QlYieldTermStructure *ts) {
   del(ts);
 }
 
