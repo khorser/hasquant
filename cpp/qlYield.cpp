@@ -1,4 +1,5 @@
 #include <ql/termstructures/yield/all.hpp>
+#include <ql/math/interpolations/all.hpp>
 
 #include "ql.h"
 
@@ -106,9 +107,113 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
   try {
     piecewiseYieldCurve_t c = 0;
     if (!strcmp(trait, "Discount")) {
-      if (!strcmp(interpolator, "LogLinear"))
+      if (!strcmp(interpolator, "BackwardFlat"))
+	c = &YieldCurveCreator<Discount, BackwardFlat>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "ForwardFlat"))
+	c = &YieldCurveCreator<Discount, ForwardFlat>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "Linear"))
+        c = &YieldCurveCreator<Discount, Linear>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "LogLinear"))
         c = &YieldCurveCreator<Discount, LogLinear>::piecewiseYieldCurve;
-    }
+      //else if (!strcmp(interpolator, "CubicNaturalSpline"))
+      //  c = &YieldCurveCreator<Discount, Cubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<Discount, MonotonicCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "LogCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<Discount, LogCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicLogCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<Discount, MonotonicLogCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "KrugerCubic"))
+      //  c = &YieldCurveCreator<Discount, KrugerCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "KrugerLogCubic"))
+      //  c = &YieldCurveCreator<Discount, KrugerLogCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "FritschButlandCubic"))
+      //  c = &YieldCurveCreator<Discount, FritschButlandCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "FritschButlandLogCubic"))
+      //  c = &YieldCurveCreator<Discount, FritschButlandLogCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "Parabolic"))
+      //  c = &YieldCurveCreator<Discount, Parabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicParabolic"))
+      //  c = &YieldCurveCreator<Discount, MonotonicParabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "LogParabolic"))
+      //  c = &YieldCurveCreator<Discount, LogParabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicLogParabolic"))
+      //  c = &YieldCurveCreator<Discount, MonotonicLogParabolic>::piecewiseYieldCurve;
+      else
+	QL_FAIL("Unsupported interpolation");
+    } else if (!strcmp(trait, "ForwardRate")) {
+      if (!strcmp(interpolator, "BackwardFlat"))
+	c = &YieldCurveCreator<ForwardRate, BackwardFlat>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "ForwardFlat"))
+	c = &YieldCurveCreator<ForwardRate, ForwardFlat>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "Linear"))
+	c = &YieldCurveCreator<ForwardRate, Linear>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "LogLinear"))
+	c = &YieldCurveCreator<ForwardRate, LogLinear>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "CubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ForwardRate, CubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ForwardRate, MonotonicCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "LogCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ForwardRate, LogCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicLogCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ForwardRate, MonotonicLogCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "KrugerCubic"))
+      //  c = &YieldCurveCreator<ForwardRate, KrugerCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "KrugerLogCubic"))
+      //  c = &YieldCurveCreator<ForwardRate, KrugerLogCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "FritschButlandCubic"))
+      //  c = &YieldCurveCreator<ForwardRate, FritschButlandCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "FritschButlandLogCubic"))
+      //  c = &YieldCurveCreator<ForwardRate, FritschButlandLogCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "Parabolic"))
+      //  c = &YieldCurveCreator<ForwardRate, Parabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicParabolic"))
+      //  c = &YieldCurveCreator<ForwardRate, MonotonicParabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "LogParabolic"))
+      //  c = &YieldCurveCreator<ForwardRate, LogParabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicLogParabolic"))
+      //  c = &YieldCurveCreator<ForwardRate, MonotonicLogParabolic>::piecewiseYieldCurve;
+      else
+	QL_FAIL("Unsupported interpolation");
+    } else if (!strcmp(trait, "ZeroYield")) {
+      if (!strcmp(interpolator, "BackwardFlat"))
+	c = &YieldCurveCreator<ZeroYield, BackwardFlat>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "ForwardFlat"))
+	c = &YieldCurveCreator<ZeroYield, ForwardFlat>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "Linear"))
+	c = &YieldCurveCreator<ZeroYield, Linear>::piecewiseYieldCurve;
+      else if (!strcmp(interpolator, "LogLinear"))
+	c = &YieldCurveCreator<ZeroYield, LogLinear>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "CubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ZeroYield, CubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ZeroYield, MonotonicCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "LogCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ZeroYield, LogCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicLogCubicNaturalSpline"))
+      //  c = &YieldCurveCreator<ZeroYield, MonotonicLogCubicNaturalSpline>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "KrugerCubic"))
+      //  c = &YieldCurveCreator<ZeroYield, KrugerCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "KrugerLogCubic"))
+      //  c = &YieldCurveCreator<ZeroYield, KrugerLogCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "FritschButlandCubic"))
+      //  c = &YieldCurveCreator<ZeroYield, FritschButlandCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "FritschButlandLogCubic"))
+      //  c = &YieldCurveCreator<ZeroYield, FritschButlandLogCubic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "Parabolic"))
+      //  c = &YieldCurveCreator<ZeroYield, Parabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicParabolic"))
+      //  c = &YieldCurveCreator<ZeroYield, MonotonicParabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "LogParabolic"))
+      //  c = &YieldCurveCreator<ZeroYield, LogParabolic>::piecewiseYieldCurve;
+      //else if (!strcmp(interpolator, "MonotonicLogParabolic"))
+      //  c = &YieldCurveCreator<ZeroYield, MonotonicLogParabolic>::piecewiseYieldCurve;
+      else
+	QL_FAIL("Unsupported interpolation");
+    } else
+	QL_FAIL("Unsupported trait");
+
     std::vector<boost::shared_ptr<RateHelper> > instr;
     std::vector<Handle<Quote> > jumps;
     std::vector<Date> jumpDates;
