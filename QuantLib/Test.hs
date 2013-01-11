@@ -11,6 +11,7 @@ import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import Prelude hiding(catch)
+import System.Mem(performGC)
 
 import Test.HUnit(runTestTT, test, assertEqual, (~:), (~?=), (~=?),
   Test(TestList), assertBool, assertFailure)
@@ -18,7 +19,6 @@ import Test.QuickCheck(Arbitrary, elements, arbitrary, Property,
   quickCheck, quickCheckWith, (==>), stdArgs, Args(..), arbitraryBoundedEnum)
 import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
-import QuantLib.Internal(name)
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
@@ -112,7 +112,7 @@ calendar = TestList
   [
     "GBP" ~: do c1 <- Calendar.londonStockExchange
                 c2 <- Calendar.gbp
-                assertEqual "GBP calendar name" (name c1) (name c2)
+                assertEqual "GBP calendar name" (Utilities.name c1) (Utilities.name c2)
   , "adjust" ~: do c <- Calendar.russia 
                    a <- Calendar.adjust
                             c
@@ -135,7 +135,7 @@ currency :: Test
 currency = TestList
   [
     "GBP" ~: do c <- Currency.gbp
-                assertEqual "GBP currency name " "British pound sterling" (name c)
+                assertEqual "GBP currency name " "British pound sterling" (Utilities.name c)
   ]
 
 dayCounter :: Test
@@ -143,7 +143,7 @@ dayCounter = TestList
   [
     "ACT/365" ~: do c1 <- DayCounter.a365F
                     c2 <- DayCounter.actual365Fixed
-                    assertEqual "ACT/365 names" (name c1) (name c2)
+                    assertEqual "ACT/365 names" (Utilities.name c1) (Utilities.name c2)
   ]
 
 bond :: Test
@@ -450,6 +450,12 @@ main = do putStrLn $ "QuantLib version " ++ Utilities.version
               , schedule
               , bondval
             ]
+          -- if we don't do GC we have a chance of getting 
+          -- "could not notify one or more observers: year 2200 out of bounds"
+          -- from one of the outstanding rate helpers
+          -- when QuickCheck sets evaluation date to some border value like 27Nov2199
+          performGC
+          putStrLn "-- Done with HUnit --"
           quickCheckWith stdArgs{maxSuccess = 500} prop_validEvaluationDate
           quickCheck prop_invalidEvaluationDate
           quickCheck prop_singleLegStartDate

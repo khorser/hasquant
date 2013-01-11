@@ -2,10 +2,6 @@
 #include <ql/errors.hpp>
 #include <string.h>
 
-//including because Leg and RateHelpers are actually typedefs
-#include <ql/cashflow.hpp>
-#include <ql/termstructures/yield/ratehelpers.hpp>
-
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
 
@@ -68,14 +64,11 @@ using QuantLib::Calendar;
 using QuantLib::Schedule;
 using QuantLib::Currency;
 using QuantLib::InterestRate;
-using QuantLib::Leg;
-using QuantLib::RateHelper;
 using QuantLib::FixedRateBondHelper;
 using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
 
 using QuantLib::Date;
-
 
 template <class T>
 class objClassName {
@@ -173,6 +166,12 @@ public:
   }
 };
 
+// Leg and RateHelper are typedefs so we cannot use forward declaration
+// for them. Using them only when corresponding headers have been included
+// to save some time on compilation
+#ifdef quantlib_cash_flow_hpp
+using QuantLib::Leg;
+
 template <>
 class objClassName<Leg *> {
 public:
@@ -180,7 +179,10 @@ public:
     return "Leg";
   }
 };
+#endif
 
+#ifdef quantlib_ratehelpers_hpp
+using QuantLib::RateHelper;
 template <>
 class objClassName<RateHelper *> {
 public:
@@ -188,6 +190,7 @@ public:
     return "RateHelper";
   }
 };
+#endif
 
 template <>
 class objClassName<DepositRateHelper *> {
@@ -213,8 +216,9 @@ T arg(T p) {
 
 template <class T>
 void del(T p) {
-  TPP2(objClassName<T>::name(), "freeing", p);
+  TPP2(objClassName<T>::name(), "deleting", p);
   delete p;
+  TPP2(objClassName<T>::name(), "deleted", p);
 }
 
 template <class T>
@@ -230,8 +234,8 @@ extern "C"
   const char *boostVersion();
 
   void	qlFreeString(char *p);
-  int  *qlAllocateInts(int size);
-  void  qlFreeInts(int *p);
+  int *qlAllocateInts(int size);
+  void qlFreeInts(int *p);
 
   /* date */
   int	qlMinDateSerialNumber();
@@ -240,11 +244,13 @@ extern "C"
   int	qlMinMonth();
   int	qlMinDay();
 
+#ifdef quantlib_cash_flow_hpp
   /* leg */
   Leg *qlLeg(unsigned len, double *amounts, int *dates, char **e);
-  int   qlLegStartDate(Leg *leg, char **e);
+  int qlLegStartDate(Leg *leg, char **e);
 
-  void  qlFreeLeg(Leg *leg);
+  void qlFreeLeg(Leg *leg);
+#endif
 
   /* calendar */
   Calendar *qlCalendar(const char *name, char **e);
@@ -252,7 +258,7 @@ extern "C"
   int	qlCalendarAdjust(Calendar *c, int date, int conv);
   int	qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
 
-  void  qlFreeCalendar(Calendar *calendar);
+  void qlFreeCalendar(Calendar *calendar);
 
   /* settings */
   int	qlSettingsEvaluationDate();
@@ -261,12 +267,14 @@ extern "C"
   void	qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
 
   /* bond */
+#ifdef quantlib_cash_flow_hpp
   Bond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate,
     Leg *coupons, char **e);
   Bond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
     int maturityDate, int issueDate, Leg *cashFlows, char **e);
-  int   qlBondMaturityDate(Bond *bond);
-  int   qlBondIssueDate(Bond *bond);
+#endif
+  int qlBondMaturityDate(Bond *bond);
+  int qlBondIssueDate(Bond *bond);
 
   Bond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
     unsigned cLen, double *coupons, DayCounter *counter,
@@ -293,14 +301,14 @@ extern "C"
   Currency *qlCurrency(const char *name, char **e);
   const char *qlCurrencyName(Currency *currency);
 
-  void  qlFreeCurrency(Currency *currency);
+  void qlFreeCurrency(Currency *currency);
 
   /* period */
   Period *qlPeriod(int n, int u, char **e);
   Period *qlPeriodFromFrequency(int freq, char **e);
   int qlPeriodToFrequency(Period *period, char **e);
 
-  void  qlFreePeriod(Period *period);
+  void qlFreePeriod(Period *period);
 
   /* quote */
   Quote *qlSimpleQuote(double value, char **e);
@@ -314,7 +322,7 @@ extern "C"
 	char **e);
   Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **e);
   Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
-  int  *qlScheduleDates(Schedule *sched, int *count);
+  int *qlScheduleDates(Schedule *sched, int *count);
 
   void qlFreeSchedule(Schedule *s);
 
@@ -326,6 +334,7 @@ extern "C"
   /* enumerations */
   int *qlEnumerationValue(const char *name, int *c);
 
+#ifdef quantlib_ratehelpers_hpp
   /* yield term structure */
   RateHelper *qlDepositRateHelper(Quote *quote, Period *period,
     unsigned fixDays, Calendar *calendar, int conv, int eom,
@@ -340,6 +349,7 @@ extern "C"
 
   void qlFreeRateHelper(RateHelper *helper);
   void qlFreeYieldTermStructure(YieldTermStructure *ts);
+#endif
 }
 
 const Date qlNullableDate(int serialNumber);
@@ -357,13 +367,6 @@ T *handleException(char **msg, std::exception &e, T *t)
 
 template <class T>
 T handleException(char **msg, std::exception &e)
-{
-  *msg = DUP(e.what());
-  return 0;
-}
-
-template <class T>
-T handleException2(char **msg, std::exception &e)
 {
   *msg = DUP(e.what());
   return 0;

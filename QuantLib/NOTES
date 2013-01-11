@@ -24,11 +24,6 @@ try and make objects as much immutable as possible by not exposing mutators
 to introduce adjustments)
 as result not going to use Handle/RelinkableHandle machinery
 
-TODO setEvalDate complains about invalid year for a valid date
-(e.g. 2199-11-27 == QL serial number 109540):
-could not notify one or more observers: year 2200 out of bounds
-Seems to be caused by rate helpers (already destroyed?)
-
 --- BOND Pricing: ---
 
 <Constructor name='qlIborIndex'>

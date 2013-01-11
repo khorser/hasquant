@@ -4,12 +4,13 @@ module QuantLib.Utilities
   -- accessors
     version
   , boostVersion
+  , name
   )
 where
 
-import Foreign.C.String(CString, peekCString)
+import Foreign.C.String(peekCString)
 
-import System.IO.Unsafe(unsafePerformIO)
+import QuantLib.Internal
 
 foreign import ccall safe "ql.h qlVersion"
   c_version :: CString
