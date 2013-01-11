@@ -9,16 +9,16 @@ extern "C"
   const char *qlVersion();
   const char *boostVersion();
 
-  void	qlFreeString(char *p);
+  void qlFreeString(char *p);
   int *qlAllocateInts(int size);
   void qlFreeInts(int *p);
 
   /* date */
-  int	qlMinDateSerialNumber();
-  int	qlMaxDateSerialNumber();
-  int	qlMinYear();
-  int	qlMinMonth();
-  int	qlMinDay();
+  int qlMinDateSerialNumber();
+  int qlMaxDateSerialNumber();
+  int qlMinYear();
+  int qlMinMonth();
+  int qlMinDay();
 
 #ifdef quantlib_cash_flow_hpp
   /* leg */
@@ -31,16 +31,16 @@ extern "C"
   /* calendar */
   Calendar *qlCalendar(const char *name, char **e);
   const char *qlCalendarName(Calendar *calendar);
-  int	qlCalendarAdjust(Calendar *c, int date, int conv);
-  int	qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
+  int qlCalendarAdjust(Calendar *c, int date, int conv);
+  int qlCalendarAdvance(Calendar *c, int date, int n, int unit, int conv, int eom);
 
   void qlFreeCalendar(Calendar *calendar);
 
   /* settings */
-  int	qlSettingsEvaluationDate();
-  int	qlSettingsEnforceTodaysHistoricFixings();
-  void	qlSettingsSetEvaluationDate(int x, char **e);
-  void	qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
+  int qlSettingsEvaluationDate();
+  int qlSettingsEnforceTodaysHistoricFixings();
+  void qlSettingsSetEvaluationDate(int x, char **e);
+  void qlSettingsSetEnforceTodaysHistoricFixings(int x, char **e);
 
   /* bond */
 #ifdef quantlib_cash_flow_hpp
@@ -124,8 +124,8 @@ extern "C"
     char *boostrap, char **e);
 
   void qlFreeRateHelper(RateHelper *helper);
-  void qlFreeYieldTermStructure(YieldTermStructure *ts);
 #endif
+  void qlFreeYieldTermStructure(YieldTermStructure *ts);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
