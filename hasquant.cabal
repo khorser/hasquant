@@ -36,6 +36,7 @@ Executable Test
                         cpp/qlInterestRate.cpp
                         cpp/qlLeg.cpp
                         cpp/qlPeriod.cpp
+                        cpp/qlPricingEngine.cpp
                         cpp/qlQuote.cpp
                         cpp/qlSchedule.cpp
                         cpp/qlSettings.cpp
