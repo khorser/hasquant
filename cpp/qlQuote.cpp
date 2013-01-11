@@ -8,10 +8,11 @@ using namespace QuantLib;
 // very minimal implementation to check that all objects are actually freed
 class QuoteWrapper: public Quote {
   public:
-    QuoteWrapper(Quote *quote): quote_(quote) {TP2("wrapped", quote); TP2("wrapper", this);}
+    QuoteWrapper(Quote *quote): quote_(quote) {TP2("wrapped", quote); TP2("in", this);}
     virtual ~QuoteWrapper() { TP2("destroying underlying", quote_); delete quote_; }
     Real value() const {return quote_->value();}
     bool isValid() const {return quote_->isValid();}
+    void notifyObservers() {quote_->notifyObservers();}
   private:
     Quote *quote_;
 };

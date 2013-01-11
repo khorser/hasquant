@@ -265,6 +265,27 @@ T traceval(const char *text, T val) {
   std::cout << std::endl << text << objClassName<T>::name() << ": " << val << std::endl;
   return val;
 }
+
+class QuoteWrapper;
+template <>
+class objClassName<QuoteWrapper *> {
+public:
+  static const char *name() {
+    return "QuoteWrapper";
+  }
+};
+
+# ifdef quantlib_ratehelpers_hpp
+class RateHelperWrapper;
+
+template <>
+class objClassName<RateHelperWrapper *> {
+public:
+  static const char *name() {
+    return "RateHelperWrapper";
+  }
+};
+# endif
 #endif
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
