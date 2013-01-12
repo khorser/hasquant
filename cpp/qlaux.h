@@ -21,6 +21,7 @@ namespace QuantLib {
   class SimpleQuote;
   class Bond;
   class FixedRateBond;
+  class ZeroCouponBond;
   class Period;
   class DayCounter;
   class Calendar;
@@ -39,6 +40,7 @@ using QuantLib::Quote;
 using QuantLib::SimpleQuote;
 using QuantLib::Bond;
 using QuantLib::FixedRateBond;
+using QuantLib::ZeroCouponBond;
 using QuantLib::Period;
 using QuantLib::DayCounter;
 using QuantLib::Calendar;
@@ -114,6 +116,14 @@ class objClassName<FixedRateBond *> {
 public:
   static const char *name() {
     return "FixedRateBond";
+  }
+};
+
+template <>
+class objClassName<ZeroCouponBond *> {
+public:
+  static const char *name() {
+    return "ZeroCouponBond";
   }
 };
 

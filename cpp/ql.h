@@ -64,6 +64,8 @@ extern "C" {
     unsigned cLen, InterestRate **coupons, int paymentConv, double redemption,
     int issue, Calendar *cal, char **e);
   int qlFixedBondFrequency(Bond *bond);
+  Bond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
+    int maturity, int payConv, double redemption, int issue, char **e);
 
   void qlFreeBond(Bond *bond);
 

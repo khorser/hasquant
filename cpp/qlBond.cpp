@@ -127,4 +127,20 @@ Instrument *qlBondAsInstrument(Bond *bond) {
   return bond;
 }
 
+Bond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
+  int maturity, int payConv, double redemption, int issue, char **e) {
+  try {
+    return alloc(new ZeroCouponBond(
+		  settlDays,
+		  *arg(cal),
+		  face,
+		  Date(maturity),
+		  (BusinessDayConvention) payConv,
+		  redemption,
+		  qlNullableDate(issue)));
+  } catch (std::exception& er) {
+    return handleException<Bond *>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

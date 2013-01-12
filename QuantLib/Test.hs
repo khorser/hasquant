@@ -379,6 +379,16 @@ bondval = TestList
             Instrument.setPricingEngine fixedBond pricing
             npv <- Instrument.npv fixedBond
             assertBool "Fixed rate bond NPV" $ abs(npv-107.67) < 0.01
+            zcBond <- Bond.zeroCouponBond settlementDays
+                                         gcal
+                                         faceAmount
+                                         (fromGregorian 2013 08 15)
+                                         BusinessDayConvention.Following
+                                         116.92
+                                         (Just $ fromGregorian 2003 08 15)
+            Instrument.setPricingEngine zcBond pricing
+            znpv <- Instrument.npv zcBond
+            assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
 
             assertEqual "Test" True True
   ]

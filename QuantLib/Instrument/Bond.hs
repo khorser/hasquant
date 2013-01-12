@@ -11,6 +11,7 @@ module QuantLib.Instrument.Bond
   , fixedRateBond
   , fixedRateBond'
   , fixedRateBond''
+  , zeroCouponBond
   -- accessors
   , issueDate
   , maturityDate
@@ -199,3 +200,20 @@ instance IsA CInstrument CBond where
 
 instance IsA CInstrument CFixedRateBond where
   safeCastPtr = c_bondAsInstrument . safeCastPtr
+
+foreign import ccall safe "ql.h qlZeroCouponBond"
+  c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate
+    -> CInt -> CDouble -> CDate -> Ptr CString -> IO (Ptr CBond)
+
+-- |(qlZeroCouponBond)
+zeroCouponBond :: Word -> Calendar -> Double -> Day -> BusinessDayConvention
+  -> Double -> Maybe Day -> IO Bond
+zeroCouponBond settlDays cal face maturity payConv redemption issue =
+  withObject cal
+    (\c -> construct $ c_zeroCouponBond (fromIntegral settlDays)
+                                        c
+                                        (realToFrac face)
+                                        (toQlDate maturity)
+                                        (toQlEnum payConv)
+                                        (realToFrac redemption)
+                                        (toQlDate issue))
