@@ -5,8 +5,7 @@
 using namespace QuantLib;
 
 Bond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate, Leg *coupons,
-    char **e)
-{
+  char **e) {
   try {
     return alloc(new Bond(settlDays,
 			*arg(calendar),
@@ -18,8 +17,7 @@ Bond *qlBond(unsigned settlDays, Calendar *calendar, int issueDate, Leg *coupons
 }
 
 Bond *qlBond1(unsigned settlDays, Calendar *calendar, double faceAmount,
-    int maturityDate, int issueDate, Leg *cashFlows, char **e)
-{
+    int maturityDate, int issueDate, Leg *cashFlows, char **e) {
   try {
     return alloc(new Bond(settlDays,
 			*arg(calendar),
@@ -47,8 +45,7 @@ void qlFreeBond(Bond *bond) {
 Bond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
     unsigned cLen, double *coupons, DayCounter *counter,
     int payConv, double redemption, int issue, Calendar *payCal,
-    char **e)
-{
+    char **e) {
   try {
     std::vector<Rate> cpns;
     for (unsigned i = 0; i < cLen; ++i)
@@ -124,6 +121,10 @@ Bond *qlFixedRateBond2(unsigned settlDays, double face, Schedule *sched,
 
 int qlFixedBondFrequency(Bond *bond) {
   return arg(dynamic_cast<FixedRateBond *>(arg(bond)))->frequency();
+}
+
+Instrument *qlBondAsInstrument(Bond *bond) {
+  return bond;
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

@@ -13,27 +13,6 @@
   </copyright>
 
   <Functions>
-
-    <Member name='qlInstrumentNPV' type='QuantLib::Instrument'>
-      <description>Returns the NPV for the given Instrument object.</description>
-      <libraryFunction>NPV</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Calc'/>
-        <SupportedPlatform name='Guile'/>
-        <SupportedPlatform name='C'/>
-        <SupportedPlatform name='Cpp'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters/>
-      </ParameterList>
-      <ReturnValue>
-        <type>double</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
-
     <Member name='qlInstrumentErrorEstimate' type='QuantLib::Instrument'>
       <description>Returns the NPV error estimation (for e.g. Monte Carlo simulation) for the given Instrument object.</description>
       <libraryFunction>errorEstimate</libraryFunction>
@@ -109,29 +88,5 @@
         <tensorRank>scalar</tensorRank>
       </ReturnValue>
     </Member>
-
-    <Member name='qlInstrumentSetPricingEngine' type='QuantLibAddin::Instrument'>
-      <description>Sets a new pricing engine to the given Instrument pbject.</description>
-      <libraryFunction>setPricingEngine</libraryFunction>
-      <SupportedPlatforms>
-        <SupportedPlatform name='Excel'/>
-        <SupportedPlatform name='Cpp'/>
-        <SupportedPlatform name='Calc'/>
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='PricingEngine' exampleValue='PricingEngineID'>
-            <type>QuantLibAddin::PricingEngine</type>
-            <tensorRank>scalar</tensorRank>
-            <description>PricingEngine object ID.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>void</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
-
   </Functions>
 </Category>

@@ -5,8 +5,7 @@
 
 using namespace QuantLib;
 
-Calendar *qlCalendar(const char *name, char **e)
-{
+Calendar *qlCalendar(const char *name, char **e) {
   // use enumerations instead?
   try {
     Calendar *c = 0;

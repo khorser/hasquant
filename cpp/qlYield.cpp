@@ -36,8 +36,7 @@ RateHelper *wrap(T *h) { return alloc(h); }
 #endif
 
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
-  Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e)
-{
+  Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
     return ret(new QlRateHelper(wrap(new DepositRateHelper(
 	    Handle<Quote>(*arg(quote)),
@@ -54,8 +53,7 @@ QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDa
 
 QlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double face,
   Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
-  double redemption, int issue, char **e)
-{
+  double redemption, int issue, char **e) {
   try {
     std::vector<Rate> cpns;
     for (unsigned i = 0; i < cLen; ++i)

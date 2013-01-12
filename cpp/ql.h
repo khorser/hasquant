@@ -51,6 +51,7 @@ extern "C"
 #endif
   int qlBondMaturityDate(Bond *bond);
   int qlBondIssueDate(Bond *bond);
+  Instrument *qlBondAsInstrument(Bond *bond);
 
   Bond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
     unsigned cLen, double *coupons, DayCounter *counter,
@@ -132,6 +133,10 @@ extern "C"
   QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, char **e);
 
   void qlFreePricingEngine(QlPricingEngine *engine);
+
+  /* instrument */
+  void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine eng, char **e);
+  double qlInstrumentNPV(Instrument *instr, char **e);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

@@ -21,6 +21,7 @@ where
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
 import QuantLib.Internal
+import QuantLib.Instrument(CInstrument)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
@@ -189,3 +190,12 @@ fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
 
 frequency :: FixedRateBond -> Frequency
 frequency x = fromQlEnum $ unsafePerformIO (withObject x c_fixedBondFrequency)
+
+foreign import ccall safe "ql.h qlBondAsInstrument"
+  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
+
+instance IsA CInstrument CBond where
+  safeCastPtr = c_bondAsInstrument
+
+instance IsA CInstrument CFixedRateBond where
+  safeCastPtr = c_bondAsInstrument . safeCastPtr

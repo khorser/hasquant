@@ -32,6 +32,7 @@ namespace QuantLib {
   class YieldTermStructure;
   class PricingEngine;
   class DiscountingBondEngine;
+  class Instrument;
 }
 
 using QuantLib::Quote;
@@ -49,6 +50,7 @@ using QuantLib::DepositRateHelper;
 using QuantLib::YieldTermStructure;
 using QuantLib::PricingEngine;
 using QuantLib::DiscountingBondEngine;
+using QuantLib::Instrument;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -88,6 +90,14 @@ class objClassName<void *> {
 public:
   static const char *name() {
     return "Ptr";
+  }
+};
+
+template <>
+class objClassName<Instrument *> {
+public:
+  static const char *name() {
+    return "Instrument";
   }
 };
 

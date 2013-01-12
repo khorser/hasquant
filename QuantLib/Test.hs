@@ -24,6 +24,7 @@ import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
+import qualified QuantLib.Instrument as Instrument
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.InterestRate as InterestRate
 import qualified QuantLib.PricingEngine as Pricing
@@ -314,9 +315,9 @@ bondval = TestList
                                zcBondsDayCounter)
               $ zip zcQuotes zcTenors
             quotes <- mapM Quote.simpleQuote marketQuotes
+            p6m <- Period.fromFrequency Frequency.Semiannual
             bondBondHelpers <- mapM
-              (\(q, c, i, m) -> do p6m <- Period.fromFrequency Frequency.Semiannual
-                                   s <- Schedule.schedule
+              (\(q, c, i, m) -> do s <- Schedule.schedule
                                           i
                                           m
                                           p6m
@@ -354,6 +355,31 @@ bondval = TestList
                     --Interpolation.Abcd
             --df <- Yield.discount ts (fromGregorian 2011 08 03) True
             pricing <- Pricing.discountingBondEngine ts
+            -- Fixed 4.5% US Treasury Note
+            fixedSchedule <- Schedule.schedule (Just (fromGregorian 2007 05 15))
+                                               (fromGregorian 2017 05 15)
+                                               p6m
+                                               gcal
+                                               BusinessDayConvention.Unadjusted
+                                               BusinessDayConvention.Unadjusted
+                                               DateGenerationRule.Backward
+                                               False
+                                               Nothing
+                                               Nothing
+            nocal <- Calendar.noCalendar
+            fixedBond <- Bond.fixedRateBond settlementDays
+                                            faceAmount
+                                            fixedSchedule
+                                            [0.045]
+                                            actact
+                                            BusinessDayConvention.ModifiedFollowing
+                                            100.0
+                                            (Just (fromGregorian 2007 05 15))
+                                            nocal
+            Instrument.setPricingEngine fixedBond pricing
+            npv <- Instrument.npv fixedBond
+            print npv
+
             assertEqual "Test" True True
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
@@ -361,6 +387,7 @@ bondval = TestList
         fixingDays = 3 :: Word
         settlementDays = 3
         redemption = 100.0
+        faceAmount = 100.0
         issueDates = map Just [
           fromGregorian 2005 03 15,
           fromGregorian 2005 06 15,

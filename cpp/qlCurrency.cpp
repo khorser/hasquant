@@ -4,8 +4,7 @@
 
 using namespace QuantLib;
 
-Currency *qlCurrency(const char *name, char **e)
-{
+Currency *qlCurrency(const char *name, char **e) {
   // use enumerations instead?
   try {
     Currency *c = 0;

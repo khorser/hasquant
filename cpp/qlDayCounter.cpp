@@ -4,8 +4,7 @@
 
 using namespace QuantLib;
 
-DayCounter *qlDayCounter(const char *name, char **e)
-{
+DayCounter *qlDayCounter(const char *name, char **e) {
   try {
     DayCounter *c = 0;
     if (!strcmp(name, "DayCounter"))
