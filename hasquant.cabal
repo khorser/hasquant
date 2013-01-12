@@ -35,6 +35,7 @@ Executable Test
                         cpp/qlEnumerations.cpp
                         cpp/qlInterestRate.cpp
                         cpp/qlInstrument.cpp
+                        cpp/qlIborIndex.cpp
                         cpp/qlLeg.cpp
                         cpp/qlPeriod.cpp
                         cpp/qlPricingEngine.cpp
