@@ -12,6 +12,7 @@ all: cpp/qlBond.o \
 	cpp/qlUtilities.o \
 	cpp/qlInterestRate.o \
 	cpp/qlYield.o \
+	cpp/qlYieldAux.o \
 	cpp/qlPricingEngine.o \
 	cpp/qlInstrument.o
 
@@ -61,7 +62,10 @@ cpp/qlSettings.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlSettings.cpp
 cpp/qlUtilities.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlUtilities.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlUtilities.o ../cpp/qlUtilities.cpp
 
-cpp/qlYield.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYield.cpp
+cpp/qlYield.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYield.cpp ../cpp/qlYieldAux.h
 	g++ -c -Wall $(EXTRA) -o cpp/qlYield.o ../cpp/qlYield.cpp
+
+cpp/qlYieldAux.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYieldAux.cpp ../cpp/qlYieldAux.h
+	g++ -c -Wall $(EXTRA) -o cpp/qlYieldAux.o ../cpp/qlYieldAux.cpp
 
 # vim: set ft=make:
