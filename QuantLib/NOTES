@@ -28,27 +28,6 @@ I'm thinking of implementing functional reactive programming paradigm if needed
 
 --- BOND Pricing: ---
 
-ql/indexes/ibor/libor.hpp
-<Constructor name='qlLibor'>
-      <Parameter name='Currency'>
-        <type>QuantLib::Currency</type>
-      <Parameter name='Tenor' exampleValue='6M'>
-        <type>string</type>
-      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
-        <type>QuantLib::YieldTermStructure</type>
-
-ql/indexes/ibor/euribor.hpp
-<Constructor name='qlEuribor'>
-      <Parameter name='Tenor' exampleValue='6M'>
-        <type>string</type>
-      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
-        <type>QuantLib::YieldTermStructure</type>
-<Constructor name='qlEuribor365'>
-      <Parameter name='Tenor' exampleValue='6M'>
-        <type>string</type>
-      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
-        <type>QuantLib::YieldTermStructure</type>
-
 ql/termstructures/yield/ratehelpers.hpp
 <Constructor name='qlSwapRateHelper2'>
       <Parameter name='Rate' 

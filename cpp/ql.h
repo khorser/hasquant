@@ -98,14 +98,16 @@ extern "C" {
   Schedule *qlSchedule(int eff, int term, Period *tenor, Calendar *cal,
         int conv, int termConv, int rule, int eom, int first, int nextToLast,
 	char **e);
-  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv, char **e);
+  Schedule *qlSchedule1(unsigned len, int *dates, Calendar *cal, int conv,
+    char **e);
   Schedule *qlScheduleUntil(Schedule *sched, int date, char **e);
   int *qlScheduleDates(Schedule *sched, int *count);
 
   void qlFreeSchedule(Schedule *s);
 
   /* interest rate */
-  InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq, char **e);
+  InterestRate *qlInterestRate(double r, DayCounter *dc, int comp, int freq,
+    char **e);
 
   void qlFreeInterestRate(InterestRate *rate);
 
@@ -128,7 +130,8 @@ extern "C" {
   void qlFreeRateHelper(QlRateHelper *helper);
 #endif
   void qlFreeYieldTermStructure(QlYieldTermStructure *ts);
-  double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, char **e);
+  double qlYieldTSDiscount(QlYieldTermStructure *ts, int date,
+    int extrapolate, char **e);
 
   /* pricing engine */
   QlPricingEngine *qlDiscountingBondEngine(QlYieldTermStructure *ts, char **e);
@@ -136,13 +139,29 @@ extern "C" {
   void qlFreePricingEngine(QlPricingEngine *engine);
 
   /* instrument */
-  void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine eng, char **e);
+  void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine eng,
+    char **e);
   double qlInstrumentNPV(Instrument *instr, char **e);
 
   /* ibor index */
   QlIborIndex *qlIborIndex(char *name, Period *period, unsigned settlDays,
     Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
     QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *qlLibor(char *name, Period *tenor, unsigned settlDays,
+    Currency *ccy, Calendar *cal, DayCounter *dc, QlYieldTermStructure *fwd,
+    char **e);
+  QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
+    Currency *ccy, Calendar *cal, DayCounter *dayCount,
+    QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *cur,
+    Calendar *cal, DayCounter *dayCount, QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *qlCreateIbor(char *name, Period *tenor,
+    QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *qlCreateIborON(char *name,
+    QlYieldTermStructure *fwd, char **e);
+  QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
+    QlYieldTermStructure *fwd, char **e);
+
   void qlFreeIborIndex(QlIborIndex *i);
 }
 
