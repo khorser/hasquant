@@ -138,7 +138,7 @@ Currency *qlCurrency(const char *name, char **e)
     else if (!strcmp("ZAR", name))
       c = new ZARCurrency();
     else
-      QL_FAIL("Currency not found");
+      QL_FAIL("Currency not found " << name);
     return alloc(c);
   } catch (std::exception& er) {
     return handleException<Currency *>(e, er);

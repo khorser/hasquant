@@ -115,7 +115,7 @@ Calendar *qlCalendar(const char *name, char **e)
     else if (!strcmp(name, "UnitedStates::Settlement"))
       c = new UnitedStates(UnitedStates::Settlement);
     else
-      QL_FAIL("Calendar not found");
+      QL_FAIL("Calendar not found " << name);
     return alloc(c);
   } catch (std::exception& er) {
     return handleException<Calendar *>(e, er);

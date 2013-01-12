@@ -83,7 +83,7 @@ DayCounter *qlDayCounter(const char *name, char **e)
     else if (!strcmp(name, "Business252"))
       c = new Business252();
     else
-      QL_FAIL("Counter not found");
+      QL_FAIL("Counter not found " << name);
     return alloc(c);
   } catch (std::exception& er) {
     return handleException<DayCounter *>(e, er);
