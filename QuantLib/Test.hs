@@ -378,7 +378,7 @@ bondval = TestList
                                             nocal
             Instrument.setPricingEngine fixedBond pricing
             npv <- Instrument.npv fixedBond
-            print npv
+            assertBool "Fixed rate bond NPV" $ abs(npv-107.67) < 0.01
 
             assertEqual "Test" True True
   ]

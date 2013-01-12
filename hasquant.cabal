@@ -34,6 +34,7 @@ Executable Test
                         cpp/qlDayCounter.cpp
                         cpp/qlEnumerations.cpp
                         cpp/qlInterestRate.cpp
+                        cpp/qlInstrument.cpp
                         cpp/qlLeg.cpp
                         cpp/qlPeriod.cpp
                         cpp/qlPricingEngine.cpp
