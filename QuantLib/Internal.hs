@@ -23,6 +23,8 @@ module QuantLib.Internal
   , withObject2
   , withObject3
   , withObject4
+  , withObject5
+  , maybeWithObject
   , withDays
   , withAmounts
   , withObjects
@@ -34,6 +36,7 @@ module QuantLib.Internal
   , fromQlEnum
   , toQlEnum
   -- re-exporting some popular system stuff
+  , withCString
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
@@ -54,8 +57,8 @@ import Data.Typeable(Typeable, typeOf)
 import Data.Word(Word)
 
 import Foreign.C.String
-import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.C.Types
+import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
 import Foreign.Marshal.Utils(fromBool, toBool)
@@ -103,6 +106,10 @@ toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 withObject :: Object a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr . ptr
 
+maybeWithObject :: Maybe (Object a) -> (Ptr a -> IO b) -> IO b
+maybeWithObject (Just o) f = withObject o f
+maybeWithObject Nothing f  = f nullPtr
+
 withObject2 :: Object a1 -> Object a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
 withObject2 o1 o2 f = withObject o1 (withObject o2 . f)
 
@@ -113,6 +120,10 @@ withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
 withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
 withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
+
+withObject5 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> IO b) -> IO b
+withObject5 o1 o2 o3 o4 o5 f = withObject o1 (withObject4 o2 o3 o4 o5 . f)
 
 withObjects :: [Object a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 -- XXX rewrite using folds?

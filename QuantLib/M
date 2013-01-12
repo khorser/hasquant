@@ -4,17 +4,18 @@ all: cpp/qlBond.o \
 	cpp/qlDate.o \
 	cpp/qlDayCounter.o \
 	cpp/qlEnumerations.o \
+	cpp/qlIborIndex.o \
+	cpp/qlInstrument.o \
+	cpp/qlInterestRate.o \
 	cpp/qlLeg.o \
 	cpp/qlPeriod.o \
+	cpp/qlPricingEngine.o \
 	cpp/qlQuote.o \
 	cpp/qlSchedule.o \
 	cpp/qlSettings.o \
 	cpp/qlUtilities.o \
-	cpp/qlInterestRate.o \
 	cpp/qlYield.o \
-	cpp/qlYieldAux.o \
-	cpp/qlPricingEngine.o \
-	cpp/qlInstrument.o
+	cpp/qlYieldAux.o
 
 
 cpp/qlBond.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlBond.cpp
@@ -34,6 +35,9 @@ cpp/qlDayCounter.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlDayCounter.cpp
 
 cpp/qlEnumerations.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlEnumerations.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlEnumerations.o ../cpp/qlEnumerations.cpp
+
+cpp/qlIborIndex.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlIborIndex.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlIborIndex.o ../cpp/qlIborIndex.cpp
 
 cpp/qlInterestRate.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlInterestRate.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlInterestRate.o ../cpp/qlInterestRate.cpp

@@ -24,23 +24,24 @@ import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
+import qualified QuantLib.Index.Ibor as Ibor
 import qualified QuantLib.Instrument as Instrument
 import qualified QuantLib.Instrument.Bond as Bond
 import qualified QuantLib.InterestRate as InterestRate
+import qualified QuantLib.Math.Interpolation as Interpolation
 import qualified QuantLib.PricingEngine as Pricing
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
+import qualified QuantLib.TermStructure.Yield as Yield
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
 import qualified QuantLib.Time.Calendar as Calendar
 import qualified QuantLib.Time.Date as Date
 import qualified QuantLib.Time.DateGenerationRule as DateGenerationRule
 import qualified QuantLib.Time.DayCounter as DayCounter
 import qualified QuantLib.Time.Frequency as Frequency
-import qualified QuantLib.Math.Interpolation as Interpolation
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
-import qualified QuantLib.TermStructure.Yield as Yield
 import qualified QuantLib.Utilities as Utilities
 
 today :: IO Day
@@ -389,6 +390,18 @@ bondval = TestList
             Instrument.setPricingEngine zcBond pricing
             znpv <- Instrument.npv zcBond
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
+
+            -- eur <- Currency.eur
+            -- idx <- Ibor.iborIndex "TEST"
+            --                       p6m
+            --                       3
+            --                       eur
+            --                       gcal
+            --                       BusinessDayConvention.ModifiedFollowing
+            --                       False
+            --                       actact
+            --                       -- Nothing
+            --                       (Just ts)
 
             assertEqual "Test" True True
   ]

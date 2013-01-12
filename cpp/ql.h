@@ -138,6 +138,12 @@ extern "C" {
   /* instrument */
   void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine eng, char **e);
   double qlInstrumentNPV(Instrument *instr, char **e);
+
+  /* ibor index */
+  QlIborIndex *qlIborIndex(char *name, Period *period, unsigned settlDays,
+    Currency *ccy, Calendar *cal, int conv, int eom, DayCounter *dayCount,
+    QlYieldTermStructure *fwd, char **e);
+  void qlFreeIborIndex(QlIborIndex *i);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

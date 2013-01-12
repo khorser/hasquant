@@ -28,44 +28,6 @@ I'm thinking of implementing functional reactive programming paradigm if needed
 
 --- BOND Pricing: ---
 
-ql/instruments/bonds/zerocouponbond.hpp
-<Constructor name='qlZeroCouponBond'>
-      <Parameter name='SettlementDays' 
-        QuantLib::Size
-      <Parameter name='Calendar' 
-        QuantLib::Calendar
-      <Parameter name='FaceAmount' default='100.0'>
-        QuantLib::Real
-      <Parameter name='Maturity' 
-        QuantLib::Date
-      <Parameter name='PaymentBDC' default='"Following"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='Redemption' default='100'>
-        QuantLib::Real
-      <Parameter name='IssueDate' default='QuantLib::Date()'>
-        QuantLib::Date
-
-ql/indexes/iborindex.hpp
-<Constructor name='qlIborIndex'>
-      <Parameter name='FamilyName' exampleValue='Euribor'>
-        <type>string</type>
-      <Parameter name='Tenor' exampleValue='6M'>
-        <type>QuantLib::Period</type>
-      <Parameter name='FixingDays' exampleValue='2'>
-        <type>QuantLib::Natural</type>
-      <Parameter name='Currency' exampleValue='EUR'>
-        <type>QuantLib::Currency</type>
-      <Parameter name='Calendar' exampleValue='TARGET'>
-        <type>QuantLib::Calendar</type>
-      <Parameter name='BDayConvention' exampleValue='Modified Following'>
-        <type>QuantLib::BusinessDayConvention</type>
-      <Parameter name='EndOfMonth' exampleValue='TRUE'>
-        <type>bool</type>
-      <Parameter name='DayCounter' exampleValue='Actual/360'>
-        <type>QuantLib::DayCounter</type>
-      <Parameter name='FwdCurve' exampleValue='EURYC6M' default='""'>
-        <type>QuantLib::YieldTermStructure</type>
-
 ql/indexes/ibor/libor.hpp
 <Constructor name='qlLibor'>
       <Parameter name='Currency'>
