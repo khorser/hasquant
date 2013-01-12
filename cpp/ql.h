@@ -3,8 +3,7 @@
 /* dates are passed as int = serial number o the date.
  * the code assumes that Haskell bindings validate date */ 
 
-extern "C"
-{
+extern "C" {
   /* utilities */
   const char *qlVersion();
   const char *boostVersion();

@@ -299,8 +299,7 @@ int qlNullableDate(const Date &date);
 
 /* some useful helpers ... well ... I hope they are... */
 template <class T>
-T *handleException(char **msg, std::exception &e, T *t)
-{
+T *handleException(char **msg, std::exception &e, T *t) {
   *msg = DUP(e.what());
   if (t)
     delete t;
@@ -308,8 +307,7 @@ T *handleException(char **msg, std::exception &e, T *t)
 }
 
 template <class T>
-T handleException(char **msg, std::exception &e)
-{
+T handleException(char **msg, std::exception &e) {
   *msg = DUP(e.what());
   return 0;
 }

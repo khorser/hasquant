@@ -13,7 +13,7 @@ data Result = Result{npv :: Double, ...}
 calculate :: Instrument -> PricingEngine -> IO Result
 
 While building components for pricing, we will construct contents.
-Actual instantiation of QuantLib object will happen inly on pricing.
+Actual instantiation of QuantLib object will happen only on pricing.
 This allows for easy building of mutators as simply returning a new copy with
 updated data
 
@@ -28,6 +28,24 @@ I'm thinking of implementing functional reactive programming paradigm if needed
 
 --- BOND Pricing: ---
 
+ql/instruments/bonds/zerocouponbond.hpp
+<Constructor name='qlZeroCouponBond'>
+      <Parameter name='SettlementDays' 
+        QuantLib::Size
+      <Parameter name='Calendar' 
+        QuantLib::Calendar
+      <Parameter name='FaceAmount' default='100.0'>
+        QuantLib::Real
+      <Parameter name='Maturity' 
+        QuantLib::Date
+      <Parameter name='PaymentBDC' default='"Following"'>
+        QuantLib::BusinessDayConvention
+      <Parameter name='Redemption' default='100'>
+        QuantLib::Real
+      <Parameter name='IssueDate' default='QuantLib::Date()'>
+        QuantLib::Date
+
+ql/indexes/iborindex.hpp
 <Constructor name='qlIborIndex'>
       <Parameter name='FamilyName' exampleValue='Euribor'>
         <type>string</type>
@@ -48,45 +66,29 @@ I'm thinking of implementing functional reactive programming paradigm if needed
       <Parameter name='FwdCurve' exampleValue='EURYC6M' default='""'>
         <type>QuantLib::YieldTermStructure</type>
 
-<Member name='qlInstrumentSetPricingEngine' type='QuantLibAddin::Instrument'>
-  <description>Sets a new pricing engine to the given Instrument pbject.</description>
-      <Parameter name='PricingEngine' exampleValue='PricingEngineID'>
-        <type>QuantLibAddin::PricingEngine</type>
-  <ReturnValue>
-    <type>void</type>
+ql/indexes/ibor/libor.hpp
+<Constructor name='qlLibor'>
+      <Parameter name='Currency'>
+        <type>QuantLib::Currency</type>
+      <Parameter name='Tenor' exampleValue='6M'>
+        <type>string</type>
+      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
+        <type>QuantLib::YieldTermStructure</type>
 
+ql/indexes/ibor/euribor.hpp
+<Constructor name='qlEuribor'>
+      <Parameter name='Tenor' exampleValue='6M'>
+        <type>string</type>
+      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
+        <type>QuantLib::YieldTermStructure</type>
+<Constructor name='qlEuribor365'>
+      <Parameter name='Tenor' exampleValue='6M'>
+        <type>string</type>
+      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
+        <type>QuantLib::YieldTermStructure</type>
 
-<Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
-  <description>Set the coupon pricer at the given Bond object.</description>
-      <Parameter name='FloatingRateCouponPricer'>
-        <type>QuantLib::FloatingRateCouponPricer</type>
-  <ReturnValue>
-    <type>void</type>
-
-? setCapletVolatility
-
-?<EnumeratedClassGroup class='QuantLib::IborCouponPricer'>
-      <string>IborByBlack</string>
-      <value>IBOR_BY_BLACK_Pricer</value>
-
-      <string>DummyIborByBlack</string>
-      <value>IBOR_BY_BLACK_Pricer</value>
-
-<Constructor name='qlConstantOptionletVolatility'>
-      <Parameter name='NDays' default='0'>
-        <type>QuantLib::Size</type>
-      <Parameter name='Calendar' exampleValue='TARGET'>
-        <type>QuantLib::Calendar</type>
-      <Parameter name='BusinessDayConvention' exampleValue='"Following"'>
-        <type>QuantLib::BusinessDayConvention</type>
-      </Parameter>
-      <Parameter name='Volatility' examplevalue='0.20'>
-        <type>QuantLib::Quote</type>
-      <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
-        <type>QuantLib::DayCounter</type>
-
+ql/termstructures/yield/ratehelpers.hpp
 <Constructor name='qlSwapRateHelper2'>
-  <libraryFunction>SwapRateHelper</libraryFunction>
       <Parameter name='Rate' 
         QuantLib::Quote
       <Parameter name='Tenor' 
@@ -108,22 +110,7 @@ I'm thinking of implementing functional reactive programming paradigm if needed
       <Parameter name='DiscountingCurve' 
         QuantLib::YieldTermStructure
 
-<Constructor name='qlZeroCouponBond'>
-      <Parameter name='SettlementDays' 
-        QuantLib::Size
-      <Parameter name='Calendar' 
-        QuantLib::Calendar
-      <Parameter name='FaceAmount' default='100.0'>
-        QuantLib::Real
-      <Parameter name='Maturity' 
-        QuantLib::Date
-      <Parameter name='PaymentBDC' default='"Following"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='Redemption' default='100'>
-        QuantLib::Real
-      <Parameter name='IssueDate' default='QuantLib::Date()'>
-        QuantLib::Date
-
+ql/index.hpp
 <Member name='qlIndexAddFixings' type='QuantLibAddin::Index'>
   <description>Adds fixings for the given Index object.</description>
       <Parameter name='FixingDates' libraryType='QuantLib::Date'>
@@ -135,6 +122,7 @@ I'm thinking of implementing functional reactive programming paradigm if needed
       <Parameter name='ForceOverwrite' default='false' const='False'>
         bool
 
+ql/instruments/bonds/floatingratebond.hpp
 <Constructor name='qlFloatingRateBond'>
       <Parameter name='SettlementDays' 
         QuantLib::Size
@@ -169,10 +157,24 @@ I'm thinking of implementing functional reactive programming paradigm if needed
       <Parameter name='IssueDate' default='QuantLib::Date()'>
         QuantLib::Date
 
-<Constructor name='qlLibor'>
-      <Parameter name='Currency'>
-        <type>QuantLib::Currency</type>
-      <Parameter name='Tenor' exampleValue='6M'>
-        <type>string</type>
-      <Parameter name='YieldCurve' exampleValue='EURYC' default='""'>
-        <type>QuantLib::YieldTermStructure</type>
+ql/termstructures/volatility/optionlet
+<Constructor name='qlConstantOptionletVolatility'>
+      <Parameter name='NDays' default='0'>
+        <type>QuantLib::Size</type>
+      <Parameter name='Calendar' exampleValue='TARGET'>
+        <type>QuantLib::Calendar</type>
+      <Parameter name='BusinessDayConvention' exampleValue='"Following"'>
+        <type>QuantLib::BusinessDayConvention</type>
+      </Parameter>
+      <Parameter name='Volatility' examplevalue='0.20'>
+        <type>QuantLib::Quote</type>
+      <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
+        <type>QuantLib::DayCounter</type>
+
+ql/cashflows/couponpricer.hpp
+BlackIborCouponPricer
+setCapletVolatility
+<Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
+  <description>Set the coupon pricer at the given Bond object.</description>
+      <Parameter name='FloatingRateCouponPricer'>
+        <type>QuantLib::FloatingRateCouponPricer</type>
