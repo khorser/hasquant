@@ -103,40 +103,40 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
 	ts = new PiecewiseYieldCurve<Discount, Linear>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy);
       else if (!strcmp(interpolator, "LogLinear"))
 	ts = new PiecewiseYieldCurve<Discount, LogLinear>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy);
-      else if (!strcmp(interpolator, "CubicNaturalSpline"))
+      else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
 	ts = new PiecewiseYieldCurve<Discount, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "MonotonicCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
 	ts = new PiecewiseYieldCurve<Discount, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "LogCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
 	ts = new PiecewiseYieldCurve<Discount, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "MonotonicLogCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
 	ts = new PiecewiseYieldCurve<Discount, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "KrugerCubic"))
+      else if (!strcmp(interpolator, "Cubic Kruger"))
 	ts = new PiecewiseYieldCurve<Discount, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Kruger));
-      else if (!strcmp(interpolator, "KrugerLogCubic"))
+      else if (!strcmp(interpolator, "LogCubic Kruger"))
 	ts = new PiecewiseYieldCurve<Discount, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Kruger));
-      else if (!strcmp(interpolator, "FritschButlandCubic"))
+      else if (!strcmp(interpolator, "Cubic FritschButland"))
 	ts = new PiecewiseYieldCurve<Discount, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::FritschButland));
-      else if (!strcmp(interpolator, "FritschButlandLogCubic"))
+      else if (!strcmp(interpolator, "LogCubic FritschButland"))
 	ts = new PiecewiseYieldCurve<Discount, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::FritschButland));
-      else if (!strcmp(interpolator, "Parabolic"))
+      else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
 	ts = new PiecewiseYieldCurve<Discount, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Parabolic, false));
-      else if (!strcmp(interpolator, "MonotonicParabolic"))
+      else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
 	ts = new PiecewiseYieldCurve<Discount, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Parabolic, true));
-      else if (!strcmp(interpolator, "LogParabolic"))
+      else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
 	ts = new PiecewiseYieldCurve<Discount, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Parabolic, false));
-      else if (!strcmp(interpolator, "MonotonicLogParabolic"))
+      else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
 	ts = new PiecewiseYieldCurve<Discount, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Parabolic, true));
       else
@@ -150,40 +150,40 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
 	ts = new PiecewiseYieldCurve<ForwardRate, Linear>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy);
       else if (!strcmp(interpolator, "LogLinear"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogLinear>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy);
-      else if (!strcmp(interpolator, "CubicNaturalSpline"))
+      else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "MonotonicCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "LogCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "MonotonicLogCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "KrugerCubic"))
+      else if (!strcmp(interpolator, "Cubic Kruger"))
 	ts = new PiecewiseYieldCurve<ForwardRate, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Kruger));
-      else if (!strcmp(interpolator, "KrugerLogCubic"))
+      else if (!strcmp(interpolator, "LogCubic Kruger"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Kruger));
-      else if (!strcmp(interpolator, "FritschButlandCubic"))
+      else if (!strcmp(interpolator, "Cubic FritschButland"))
 	ts = new PiecewiseYieldCurve<ForwardRate, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::FritschButland));
-      else if (!strcmp(interpolator, "FritschButlandLogCubic"))
+      else if (!strcmp(interpolator, "LogCubic FritschButland"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::FritschButland));
-      else if (!strcmp(interpolator, "Parabolic"))
+      else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Parabolic, false));
-      else if (!strcmp(interpolator, "MonotonicParabolic"))
+      else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Parabolic, true));
-      else if (!strcmp(interpolator, "LogParabolic"))
+      else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Parabolic, false));
-      else if (!strcmp(interpolator, "MonotonicLogParabolic"))
+      else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
 	ts = new PiecewiseYieldCurve<ForwardRate, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Parabolic, true));
       else
@@ -197,40 +197,40 @@ QlYieldTermStructure *qlPiecewiseYieldCurve(int date, unsigned rateLen,
 	ts = new PiecewiseYieldCurve<ZeroYield, Linear>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy);
       else if (!strcmp(interpolator, "LogLinear"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogLinear>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy);
-      else if (!strcmp(interpolator, "CubicNaturalSpline"))
+      else if (!strcmp(interpolator, "Cubic (NaturalSpline False)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "MonotonicCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "Cubic (NaturalSpline True)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "LogCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "LogCubic (NaturalSpline False)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Spline, false, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "MonotonicLogCubicNaturalSpline"))
+      else if (!strcmp(interpolator, "LogCubic (NaturalSpline True)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Spline, true, CubicInterpolation::SecondDerivative, 0.0, CubicInterpolation::SecondDerivative, 0.0));
-      else if (!strcmp(interpolator, "KrugerCubic"))
+      else if (!strcmp(interpolator, "Cubic Kruger"))
 	ts = new PiecewiseYieldCurve<ZeroYield, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Kruger));
-      else if (!strcmp(interpolator, "KrugerLogCubic"))
+      else if (!strcmp(interpolator, "LogCubic Kruger"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Kruger));
-      else if (!strcmp(interpolator, "FritschButlandCubic"))
+      else if (!strcmp(interpolator, "Cubic FritschButland"))
 	ts = new PiecewiseYieldCurve<ZeroYield, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::FritschButland));
-      else if (!strcmp(interpolator, "FritschButlandLogCubic"))
+      else if (!strcmp(interpolator, "LogCubic FritschButland"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::FritschButland));
-      else if (!strcmp(interpolator, "Parabolic"))
+      else if (!strcmp(interpolator, "Cubic (Parabolic False)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Parabolic, false));
-      else if (!strcmp(interpolator, "MonotonicParabolic"))
+      else if (!strcmp(interpolator, "Cubic (Parabolic True)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, Cubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  Cubic(CubicInterpolation::Parabolic, true));
-      else if (!strcmp(interpolator, "LogParabolic"))
+      else if (!strcmp(interpolator, "LogCubic (Parabolic False)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Parabolic, false));
-      else if (!strcmp(interpolator, "MonotonicLogParabolic"))
+      else if (!strcmp(interpolator, "LogCubic (Parabolic True)"))
 	ts = new PiecewiseYieldCurve<ZeroYield, LogCubic>(Date(date), instr, *arg(dayCount), jumps, jumpDates, accuracy,
 		  LogCubic(CubicInterpolation::Parabolic, true));
       else

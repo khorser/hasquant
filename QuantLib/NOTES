@@ -48,10 +48,6 @@ I'm thinking of implementing functional reactive programming paradigm if needed
       <Parameter name='FwdCurve' exampleValue='EURYC6M' default='""'>
         <type>QuantLib::YieldTermStructure</type>
 
-<Constructor name='qlBondEngine'>
-      <Parameter name='YieldCurve' >
-        <type>QuantLib::YieldTermStructure</type>
-
 <Member name='qlInstrumentSetPricingEngine' type='QuantLibAddin::Instrument'>
   <description>Sets a new pricing engine to the given Instrument pbject.</description>
       <Parameter name='PricingEngine' exampleValue='PricingEngineID'>

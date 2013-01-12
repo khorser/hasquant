@@ -1,13 +1,16 @@
 module QuantLib.Math.Interpolation
   (
     Interpolation(..)
+  , Approximation(..)
   )
 
 where
 
+-- bool indicates if the approximation is monotonic
+data Approximation = NaturalSpline Bool | Parabolic Bool | Kruger
+  | FritschButland
+  deriving (Show, Eq)
+
 data Interpolation = BackwardFlat | ForwardFlat | Linear | LogLinear
-  | CubicNaturalSpline | MonotonicCubicNaturalSpline | LogCubicNaturalSpline
-  | MonotonicLogCubicNaturalSpline | KrugerCubic | KrugerLogCubic
-  | FritschButlandCubic | FritschButlandLogCubic | Parabolic
-  | MonotonicParabolic | LogParabolic | MonotonicLogParabolic | Abcd
+  | Cubic Approximation | LogCubic Approximation | Abcd
  deriving (Show, Eq)

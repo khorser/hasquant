@@ -347,6 +347,11 @@ bondval = TestList
                     tolerance
                     Yield.Discount
                     Interpolation.LogLinear
+                    --(Interpolation.Cubic $ Interpolation.NaturalSpline True)
+                    --(Interpolation.LogCubic $ Interpolation.Parabolic False)
+                    --(Interpolation.LogCubic Interpolation.Kruger)
+                    --(Interpolation.Cubic Interpolation.FritschButland)
+                    --Interpolation.Abcd
             --df <- Yield.discount ts (fromGregorian 2011 08 03) True
             pricing <- Pricing.discountingBondEngine ts
             assertEqual "Test" True True
@@ -451,8 +456,6 @@ prop_frequencyFromPeriodFromFrequency freq =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
-          --print $ Internal.toQlEnum Date.January
-          --print $ Internal.toQlEnum Date.Sat
           _ <- runTestTT $ test
             [
               settings
