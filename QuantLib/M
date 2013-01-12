@@ -65,7 +65,7 @@ cpp/qlUtilities.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlUtilities.cpp
 cpp/qlYield.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYield.cpp ../cpp/qlYieldAux.h
 	g++ -c -Wall $(EXTRA) -o cpp/qlYield.o ../cpp/qlYield.cpp
 
-cpp/qlYieldAux.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYieldAux.cpp ../cpp/qlYieldAux.h
+cpp/qlYieldAux.o: ../cpp/qlYieldAux.cpp ../cpp/qlYieldAux.h
 	g++ -c -Wall $(EXTRA) -o cpp/qlYieldAux.o ../cpp/qlYieldAux.cpp
 
 # vim: set ft=make:
