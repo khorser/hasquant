@@ -16,19 +16,22 @@ module QuantLib.Instrument.Bond
   , issueDate
   , maturityDate
   , frequency
+  -- mutators
+  , setCouponPricer
   )
 
 where
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
-import QuantLib.Internal
+import QuantLib.CashFlow.CouponPricer(FloatingRateCouponPricer, CFloatingRateCouponPricer)
 import QuantLib.Instrument(CInstrument)
+import QuantLib.InterestRate(InterestRate, CInterestRate)
+import QuantLib.Internal
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)
-import QuantLib.InterestRate(InterestRate, CInterestRate)
 import QuantLib.Time.Period(Period, CPeriod)
 import QuantLib.Time.Schedule(Schedule, CSchedule)
 
@@ -49,22 +52,6 @@ instance IsA CBond CBond where
 instance IsA CBond CFixedRateBond where
   cast = castPtr
 
--- ideally I would like the "instance IsA CBond CFixedRateBond" to derive
--- finalizers for all descendants
---
--- LANGUAGE UndecidableInstances
--- class (Finalizable a) => IsA a b where
---   commonFinalizer :: FunPtr (Ptr a -> IO ())
---   commonFinalizer = finalize
---   upcast :: Ptr b -> Ptr a
---   upcast = castPtr
---
--- instance (IsA a b) => Finalizable b where
---   finalize = castFunPtr commonFinalizer
--- also it would be great to have the type class declarations for
--- Bond/FixedRateBond rather than CBond/CFixedRateBond
-
--- is it possible to use type class constraints in FFI declarations?
 foreign import ccall safe "ql.h qlBond"
   c_bond :: CUInt -> Ptr CCalendar -> CDate -> Ptr CLeg -> Ptr CString
   -> IO (Ptr CBond)
@@ -79,7 +66,6 @@ foreign import ccall safe "ql.h qlBondIssueDate"
   c_issueDate :: Ptr CBond -> IO CDate
 
 -- | (qlBond)
--- these signatures would be more approrpriate (see QuantLib::Bond::Bond)
 bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
 bond settl cal issue coupons =
   withObject2 cal coupons
@@ -217,3 +203,16 @@ zeroCouponBond settlDays cal face maturity payConv redemption issue =
                                         (toQlEnum payConv)
                                         (realToFrac redemption)
                                         (toQlDate issue))
+
+foreign import ccall safe "ql.h qlBondSetCouponPricer"
+  c_bondSetCouponPricer :: Ptr CBond -> Ptr CFloatingRateCouponPricer
+    -> Ptr CString -> IO ()
+
+-- |Set the coupon pricer at the given Bond object (qlBondSetCouponPricer)
+-- doing like QuantLibXL here, in QuantLib it is a function working on
+-- cashflows (see the implementation in qlBondSetCouponPricer)
+setCouponPricer :: IsA CBond a => Object a -> FloatingRateCouponPricer -> IO ()
+setCouponPricer b p = 
+  withCast b
+  (\bb -> withObject p
+          (\pp -> handleExceptions $ c_bondSetCouponPricer bb pp))

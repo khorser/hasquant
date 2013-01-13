@@ -1,4 +1,5 @@
 #include <ql/instruments/bonds/all.hpp>
+#include <ql/cashflows/couponpricer.hpp>
 
 #include "ql.h"
 
@@ -140,6 +141,14 @@ Bond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
 		  qlNullableDate(issue)));
   } catch (std::exception& er) {
     return handleException<Bond *>(e, er);
+  }
+}
+
+void qlBondSetCouponPricer(Bond *b, QlFloatingRateCouponPricer *p, char **e) {
+  try {
+    return setCouponPricer(arg(b)->cashflows(), *p);
+  } catch (std::exception& er) {
+    (void)handleException<void *>(e, er);
   }
 }
 

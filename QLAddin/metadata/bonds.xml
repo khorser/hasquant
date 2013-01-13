@@ -1237,29 +1237,6 @@
       </ReturnValue>
     </Member>
 
-    <Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
-      <description>Set the coupon pricer at the given Bond object.</description>
-      <libraryFunction>setCouponPricer</libraryFunction>
-      <SupportedPlatforms>
-        <!--SupportedPlatform name='Excel' calcInWizard='false'/-->
-        <SupportedPlatform name='Excel'/>
-        <!--SupportedPlatform name='Cpp'/-->
-      </SupportedPlatforms>
-      <ParameterList>
-        <Parameters>
-          <Parameter name='FloatingRateCouponPricer'>
-            <type>QuantLib::FloatingRateCouponPricer</type>
-            <tensorRank>scalar</tensorRank>
-            <description>FloatingRate coupon pricer object ID.</description>
-          </Parameter>
-        </Parameters>
-      </ParameterList>
-      <ReturnValue>
-        <type>void</type>
-        <tensorRank>scalar</tensorRank>
-      </ReturnValue>
-    </Member>
-
     <Member name='qlBondSetCouponPricers' type='QuantLibAddin::Bond'>
       <description>Set the coupon pricer at the given Bond object.</description>
       <libraryFunction>setCouponPricers</libraryFunction>

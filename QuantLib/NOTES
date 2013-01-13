@@ -85,8 +85,3 @@ ql/instruments/bonds/floatingratebond.hpp
         QuantLib::Real
       <Parameter name='IssueDate' default='QuantLib::Date()'>
         QuantLib::Date
-
-<Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
-  <description>Set the coupon pricer at the given Bond object.</description>
-      <Parameter name='FloatingRateCouponPricer'>
-        <type>QuantLib::FloatingRateCouponPricer</type>

@@ -423,6 +423,7 @@ bondval = TestList
                                             v
                                             act365
             couponPricer <- CouponPricer.blackIborCouponPricer vol
+            Bond.setCouponPricer fixedBond couponPricer -- TODO use with floater!
 
             assertEqual "Test" True True
   ]
