@@ -12,8 +12,7 @@ QlIborIndex *qlIborIndex(char *name, Period *period, unsigned settlDays,
     return ret(new QlIborIndex(alloc(new IborIndex(name, *arg(period),
 	  settlDays, *arg(ccy), *arg(cal), (BusinessDayConvention) conv,
 	  eom, *arg(dayCount),
-	  fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>()
-	  ))));
+	  Handle<YieldTermStructure>(*(arg(fwd)))))));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
@@ -29,8 +28,7 @@ QlIborIndex *qlLibor(char *name, Period *tenor, unsigned settlDays,
   try {
     return ret(new QlIborIndex(alloc(new Libor(name, *arg(tenor), settlDays,
 	      *arg(ccy), *arg(cal), *arg(dc),
-	      fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>()
-	      ))));
+	      Handle<YieldTermStructure>(*(arg(fwd)))))));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
@@ -42,8 +40,7 @@ QlIborIndex *qlDailyTenorLibor(char *name, unsigned settlDays,
   try {
     return ret(new QlIborIndex(alloc(new DailyTenorLibor(name, settlDays,
 	      *arg(ccy), *arg(cal), *arg(dc),
-	      fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>()
-	      ))));
+	      Handle<YieldTermStructure>(*(arg(fwd)))))));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
@@ -54,8 +51,7 @@ QlIborIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
   try {
     return ret(new QlIborIndex(alloc(new OvernightIndex(name, settlDays,
 	      *arg(ccy), *arg(cal), *arg(dayCount),
-	      fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>()
-	      ))));
+	      Handle<YieldTermStructure>(*(arg(fwd)))))));
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
@@ -64,7 +60,7 @@ QlIborIndex *qlOvernightIndex(char *name, unsigned settlDays, Currency *ccy,
 QlIborIndex *qlCreateIbor(char *name, Period *tenor,
     QlYieldTermStructure *fwd, char **e) {
   try {
-    Handle <YieldTermStructure> ts = fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>();
+    Handle <YieldTermStructure> ts = Handle<YieldTermStructure>(*(arg(fwd)));
     IborIndex *i = 0;
     if (!strcmp(name, "Euribor"))
       i = new Euribor(*arg(tenor), ts);
@@ -110,7 +106,7 @@ QlIborIndex *qlCreateIbor(char *name, Period *tenor,
 
 QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
   try {
-    Handle <YieldTermStructure> ts = fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>();
+    Handle <YieldTermStructure> ts = Handle<YieldTermStructure>(*(arg(fwd)));
     IborIndex *i = 0;
     if (!strcmp(name, "CADLiborON"))
       i = new CADLiborON(ts);
@@ -133,7 +129,7 @@ QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
 QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
     QlYieldTermStructure *fwd, char **e) {
   try {
-    Handle <YieldTermStructure> ts = fwd ? Handle<YieldTermStructure>(*(arg(fwd))) : Handle<YieldTermStructure>();
+    Handle <YieldTermStructure> ts = Handle<YieldTermStructure>(*(arg(fwd)));
     IborIndex *i = 0;
     if (!strcmp(name, "DailyTenorCHFLibor"))
       i = new DailyTenorCHFLibor(settlDays, ts);

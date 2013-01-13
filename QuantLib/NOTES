@@ -86,23 +86,6 @@ ql/instruments/bonds/floatingratebond.hpp
       <Parameter name='IssueDate' default='QuantLib::Date()'>
         QuantLib::Date
 
-ql/termstructures/volatility/optionlet
-<Constructor name='qlConstantOptionletVolatility'>
-      <Parameter name='NDays' default='0'>
-        <type>QuantLib::Size</type>
-      <Parameter name='Calendar' exampleValue='TARGET'>
-        <type>QuantLib::Calendar</type>
-      <Parameter name='BusinessDayConvention' exampleValue='"Following"'>
-        <type>QuantLib::BusinessDayConvention</type>
-      </Parameter>
-      <Parameter name='Volatility' examplevalue='0.20'>
-        <type>QuantLib::Quote</type>
-      <Parameter name='DayCounter' default='"Actual/365 (Fixed)"'>
-        <type>QuantLib::DayCounter</type>
-
-ql/cashflows/couponpricer.hpp
-!BlackIborCouponPricer
-!setCapletVolatility
 <Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
   <description>Set the coupon pricer at the given Bond object.</description>
       <Parameter name='FloatingRateCouponPricer'>

@@ -393,7 +393,7 @@ bondval = TestList
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
 
             p3m <- Period.period 3 Unit.Months
-            usd3m <- Ibor.usdLibor p3m Nothing -- TODO use deposwap curve
+            usd3m <- Ibor.usdLibor p3m ts -- TODO use deposwap curve
             Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
 
             -- some Ibor tests
@@ -406,13 +406,12 @@ bondval = TestList
             --                       BusinessDayConvention.ModifiedFollowing
             --                       False
             --                       actact
-            --                       -- Nothing
-            --                       (Just ts)
-            --cad <- Ibor.cadLiborON Nothing -- (Just ts)
-            --gbpD <- Ibor.dailyTenorGBPLibor 3 Nothing -- (Just ts)
-            --on <- Ibor.overnightIndex "T" 3 eur gcal actact (Just ts)
+            --                       ts
+            --cad <- Ibor.cadLiborON ts
+            --gbpD <- Ibor.dailyTenorGBPLibor 3 ts
+            --on <- Ibor.overnightIndex "T" 3 eur gcal actact ts
             --gbp <- Currency.gbp
-            --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact (Just ts)
+            --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact ts
 
             assertEqual "Test" True True
   ]

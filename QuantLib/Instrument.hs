@@ -38,5 +38,4 @@ setPricingEngine :: IsA CInstrument a => Object a-> PricingEngine -> IO ()
 setPricingEngine i e =
   withCast i
   (\ii ->
-    withObject e
-    (\ee -> handleExceptions $ c_setPricingEngine ii ee))
+    withObject e (handleExceptions . c_setPricingEngine ii))

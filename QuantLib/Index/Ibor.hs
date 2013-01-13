@@ -61,24 +61,25 @@ foreign import ccall safe "ql.h &qlFreeIborIndex"
 instance Finalizable CIborIndex where
   finalize = p_freeIborIndex
 
+-- XXX any point in passing Nothing as the term structure?
 -- | (qlIborIndex)
 iborIndex :: String -> Period -> Word -> Currency -> Calendar
-  -> BusinessDayConvention -> Bool -> DayCounter -> Maybe YieldTermStructure
+  -> BusinessDayConvention -> Bool -> DayCounter -> YieldTermStructure
   -> IO IborIndex
 iborIndex famname tenor settlDays ccy cal conv eom dayCounter fwd =
   withCString famname
   (\n ->
-    withObject4 tenor ccy cal dayCounter
-    (\t cur c dc ->
-      maybeWithObject fwd
-      (construct . c_iborIndex n
+    withObject5 tenor ccy cal dayCounter fwd
+    (\t cur c dc ts ->
+      (construct $ c_iborIndex n
                                t
                                (fromIntegral settlDays)
                                cur
                                c
                                (toQlEnum conv)
                                (fromBool eom)
-                               dc)))
+                               dc
+                               ts)))
 foreign import ccall safe "ql.h qlLibor"
   c_libor :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
     -> Ptr CCalendar -> Ptr CDayCounter -> Ptr CYieldTermStructure
@@ -86,18 +87,18 @@ foreign import ccall safe "ql.h qlLibor"
 
 -- |(qlLibor)
 libor :: String -> Period -> Word -> Currency -> Calendar -> DayCounter
-  -> Maybe YieldTermStructure -> IO IborIndex
+  -> YieldTermStructure -> IO IborIndex
 libor famname tenor settlDays ccy cal dayCount fwd =
   withCString famname
-  (\n -> withObject4 tenor ccy cal dayCount
-          (\t cur c dc -> 
-            maybeWithObject fwd
-            (construct . c_libor n
+  (\n -> withObject5 tenor ccy cal dayCount fwd
+          (\t cur c dc ts-> 
+            (construct $ c_libor n
                                  t
                                  (fromIntegral settlDays)
                                  cur
                                  c
-                                 dc)))
+                                 dc
+                                 ts)))
 
 foreign import ccall safe "ql.h qlDailyTenorLibor"
   c_dailyTenorLibor :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
@@ -105,17 +106,17 @@ foreign import ccall safe "ql.h qlDailyTenorLibor"
     -> IO (Ptr CIborIndex)
 
 dailyTenorLibor :: String -> Word -> Currency -> Calendar -> DayCounter
-  -> Maybe YieldTermStructure -> IO IborIndex
+  -> YieldTermStructure -> IO IborIndex
 dailyTenorLibor famname settlDays ccy cal dayCount fwd =
   withCString famname
-  (\n -> withObject3 ccy cal dayCount
-          (\cur c dc ->
-            maybeWithObject fwd
-            (construct . c_dailyTenorLibor n
+  (\n -> withObject4 ccy cal dayCount fwd
+          (\cur c dc ts ->
+            (construct $ c_dailyTenorLibor n
                                            (fromIntegral settlDays)
                                            cur
                                            c
-                                           dc)))
+                                           dc
+                                           ts)))
 
 foreign import ccall safe "ql.h qlOvernightIndex"
   c_overnightIndex :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
@@ -124,16 +125,16 @@ foreign import ccall safe "ql.h qlOvernightIndex"
 
 -- |(qlOvernightIndex)
 overnightIndex :: String -> Word -> Currency -> Calendar -> DayCounter
-  -> Maybe YieldTermStructure -> IO IborIndex
+  -> YieldTermStructure -> IO IborIndex
 overnightIndex famname settlDays ccy cal dayCount fwd =
   withCString famname
-  (\n -> withObject3 ccy cal dayCount
-          (\cur c dc -> maybeWithObject fwd
-                        (construct . c_overnightIndex n
-                                                      (fromIntegral settlDays)
-                                                      cur
-                                                      c
-                                                      dc)))
+  (\n -> withObject4 ccy cal dayCount fwd
+          (\cur c dc ts -> (construct $ c_overnightIndex n
+                                                         (fromIntegral settlDays)
+                                                         cur
+                                                         c
+                                                         dc
+                                                         ts)))
 
 
 foreign import ccall safe "ql.h qlCreateIbor"
@@ -146,109 +147,108 @@ foreign import ccall safe "ql.h qlCreateDailyTenorIbor"
   c_createDailyTenorLibor :: CString -> CUInt -> Ptr CYieldTermStructure
     -> Ptr CString -> IO (Ptr CIborIndex)
 
-createIbor :: String -> Period -> Maybe YieldTermStructure -> IO IborIndex
+createIbor :: String -> Period -> YieldTermStructure -> IO IborIndex
 createIbor famname tenor ts =
   withCString famname
-  (\n -> withObject tenor
-          (\p -> maybeWithObject ts
-                  (construct . c_createIbor n p)))
+  (\n -> withObject2 tenor ts
+          (\p t -> (construct $ c_createIbor n p t)))
 
-createIborON :: String -> Maybe YieldTermStructure -> IO IborIndex
+createIborON :: String -> YieldTermStructure -> IO IborIndex
 createIborON famname ts =
   withCString famname
-  (\n -> maybeWithObject ts
+  (\n -> withObject ts
           (construct . c_createIborON n))
 
-createDailyTenorLibor :: String -> Word -> Maybe YieldTermStructure
+createDailyTenorLibor :: String -> Word -> YieldTermStructure
   -> IO IborIndex
 createDailyTenorLibor famname settlDays ts =
   withCString famname
-  (\n -> maybeWithObject ts
+  (\n -> withObject ts
           (construct . c_createDailyTenorLibor n (fromIntegral settlDays)))
 
 -- |(qlEuribor)
-euribor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+euribor :: Period -> YieldTermStructure -> IO IborIndex
 euribor = createIbor "Euribor"
 
 -- |(qlEuribor365)
-euribor365 :: Period -> Maybe YieldTermStructure -> IO IborIndex
+euribor365 :: Period -> YieldTermStructure -> IO IborIndex
 euribor365 = createIbor "Euribor365"
 
-audLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+audLibor :: Period -> YieldTermStructure -> IO IborIndex
 audLibor = createIbor "AUDLibor"
 
-cadLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+cadLibor :: Period -> YieldTermStructure -> IO IborIndex
 cadLibor = createIbor "CADLibor"
 
-cadLiborON :: Maybe YieldTermStructure -> IO IborIndex
+cadLiborON :: YieldTermStructure -> IO IborIndex
 cadLiborON = createIborON "CADLiborON"
 
-cdor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+cdor :: Period -> YieldTermStructure -> IO IborIndex
 cdor = createIbor "Cdor"
 
-chfLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+chfLibor :: Period -> YieldTermStructure -> IO IborIndex
 chfLibor = createIbor "CHFLibor"
 
-dailyTenorChfLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorChfLibor :: Word -> YieldTermStructure -> IO IborIndex
 dailyTenorChfLibor = createDailyTenorLibor "DailyTenorCHFLibor"
 
-dkkLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+dkkLibor :: Period -> YieldTermStructure -> IO IborIndex
 dkkLibor = createIbor "DKKLibor"
 
 -- |(qlEonia)
-eonia :: Maybe YieldTermStructure -> IO IborIndex
+eonia :: YieldTermStructure -> IO IborIndex
 eonia = createIborON "Eonia"
 
-eurLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+eurLibor :: Period -> YieldTermStructure -> IO IborIndex
 eurLibor = createIbor "EURLibor"
 
-dailyTenorEURLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorEURLibor :: Word -> YieldTermStructure -> IO IborIndex
 dailyTenorEURLibor = createDailyTenorLibor "DailyTenorEURLibor"
 
-gbpLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+gbpLibor :: Period -> YieldTermStructure -> IO IborIndex
 gbpLibor = createIbor "GBPLibor"
 
-dailyTenorGBPLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorGBPLibor :: Word -> YieldTermStructure -> IO IborIndex
 dailyTenorGBPLibor = createDailyTenorLibor "DailyTenorGBPLibor"
 
-gbpLiborON :: Maybe YieldTermStructure -> IO IborIndex
+gbpLiborON :: YieldTermStructure -> IO IborIndex
 gbpLiborON = createIborON "GBPLiborON"
 
-jibar :: Period -> Maybe YieldTermStructure -> IO IborIndex
+jibar :: Period -> YieldTermStructure -> IO IborIndex
 jibar = createIbor "Jibar"
 
-jpyLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+jpyLibor :: Period -> YieldTermStructure -> IO IborIndex
 jpyLibor = createIbor "JPYLibor"
 
-dailyTenorJPYLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorJPYLibor :: Word -> YieldTermStructure -> IO IborIndex
 dailyTenorJPYLibor = createDailyTenorLibor "DailyTenorJPYLibor"
 
-nzdLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+nzdLibor :: Period -> YieldTermStructure -> IO IborIndex
 nzdLibor = createIbor "NZDLibor"
 
-sekLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+sekLibor :: Period -> YieldTermStructure -> IO IborIndex
 sekLibor = createIbor "SEKLibor"
 
 -- |(qlSonia)
-sonia :: Maybe YieldTermStructure -> IO IborIndex
+sonia :: YieldTermStructure -> IO IborIndex
 sonia = createIborON "Sonia"
 
-tibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+tibor :: Period -> YieldTermStructure -> IO IborIndex
 tibor = createIbor "Tibor"
 
-trLibor  :: Period -> Maybe YieldTermStructure -> IO IborIndex
+trLibor  :: Period -> YieldTermStructure -> IO IborIndex
 trLibor = createIbor "TRLibor"
 
-usdLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+usdLibor :: Period -> YieldTermStructure -> IO IborIndex
 usdLibor = createIbor "USDLibor"
 
-dailyTenorUsdLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorUsdLibor :: Word -> YieldTermStructure -> IO IborIndex
 dailyTenorUsdLibor = createDailyTenorLibor "DailyTenorUSDLibor"
 
-usdLiborON :: Maybe YieldTermStructure -> IO IborIndex
+usdLiborON :: YieldTermStructure -> IO IborIndex
 usdLiborON = createIborON "USDLiborON"
 
-zibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
+zibor :: Period -> YieldTermStructure -> IO IborIndex
 zibor = createIbor "Zibor"
 
 foreign import ccall safe "ql.h qlIborAsIndex"
