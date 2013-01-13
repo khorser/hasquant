@@ -24,6 +24,7 @@ import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
+import qualified QuantLib.Index as Index
 import qualified QuantLib.Index.Ibor as Ibor
 import qualified QuantLib.Instrument as Instrument
 import qualified QuantLib.Instrument.Bond as Bond
@@ -391,7 +392,12 @@ bondval = TestList
             znpv <- Instrument.npv zcBond
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
 
-            -- eur <- Currency.eur
+            p3m <- Period.period 3 Unit.Months
+            usd3m <- Ibor.usdLibor p3m Nothing -- TODO use deposwap curve
+            Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
+
+            -- some Ibor tests
+            --eur <- Currency.eur
             -- idx <- Ibor.iborIndex "TEST"
             --                       p6m
             --                       3
@@ -402,6 +408,11 @@ bondval = TestList
             --                       actact
             --                       -- Nothing
             --                       (Just ts)
+            --cad <- Ibor.cadLiborON Nothing -- (Just ts)
+            --gbpD <- Ibor.dailyTenorGBPLibor 3 Nothing -- (Just ts)
+            --on <- Ibor.overnightIndex "T" 3 eur gcal actact (Just ts)
+            --gbp <- Currency.gbp
+            --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact (Just ts)
 
             assertEqual "Test" True True
   ]

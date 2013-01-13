@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses #-}
 module QuantLib.Index.Ibor
   (
   -- types
@@ -23,6 +23,7 @@ module QuantLib.Index.Ibor
   , dailyTenorEURLibor
   , gbpLibor
   , dailyTenorGBPLibor
+  , gbpLiborON
   , jibar
   , jpyLibor
   , dailyTenorJPYLibor
@@ -33,11 +34,13 @@ module QuantLib.Index.Ibor
   , trLibor
   , usdLibor
   , dailyTenorUsdLibor
+  , usdLiborON
   , zibor
   )
 where
 
 import QuantLib.Currency(Currency, CCurrency)
+import QuantLib.Index(CIndex)
 import QuantLib.Internal
 import QuantLib.TermStructure.Yield(YieldTermStructure, CYieldTermStructure)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
@@ -208,6 +211,9 @@ gbpLibor = createIbor "GBPLibor"
 dailyTenorGBPLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
 dailyTenorGBPLibor = createDailyTenorLibor "DailyTenorGBPLibor"
 
+gbpLiborON :: Maybe YieldTermStructure -> IO IborIndex
+gbpLiborON = createIborON "GBPLiborON"
+
 jibar :: Period -> Maybe YieldTermStructure -> IO IborIndex
 jibar = createIbor "Jibar"
 
@@ -239,5 +245,14 @@ usdLibor = createIbor "USDLibor"
 dailyTenorUsdLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
 dailyTenorUsdLibor = createDailyTenorLibor "DailyTenorUSDLibor"
 
+usdLiborON :: Maybe YieldTermStructure -> IO IborIndex
+usdLiborON = createIborON "USDLiborON"
+
 zibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 zibor = createIbor "Zibor"
+
+foreign import ccall safe "ql.h qlIborAsIndex"
+  c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
+
+instance IsA CIndex CIborIndex where
+  safeCastPtr = c_iborAsIndex

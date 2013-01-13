@@ -51,18 +51,6 @@ ql/termstructures/yield/ratehelpers.hpp
       <Parameter name='DiscountingCurve' 
         QuantLib::YieldTermStructure
 
-ql/index.hpp
-<Member name='qlIndexAddFixings' type='QuantLibAddin::Index'>
-  <description>Adds fixings for the given Index object.</description>
-      <Parameter name='FixingDates' libraryType='QuantLib::Date'>
-        QuantLib::Date
-        vector
-      <Parameter name='FixingValues' libraryType='QuantLib::Real'>
-        QuantLib::Real
-        vector
-      <Parameter name='ForceOverwrite' default='false' const='False'>
-        bool
-
 ql/instruments/bonds/floatingratebond.hpp
 <Constructor name='qlFloatingRateBond'>
       <Parameter name='SettlementDays' 
@@ -113,8 +101,8 @@ ql/termstructures/volatility/optionlet
         <type>QuantLib::DayCounter</type>
 
 ql/cashflows/couponpricer.hpp
-BlackIborCouponPricer
-setCapletVolatility
+!BlackIborCouponPricer
+!setCapletVolatility
 <Member name='qlBondSetCouponPricer' type='QuantLibAddin::Bond'>
   <description>Set the coupon pricer at the given Bond object.</description>
       <Parameter name='FloatingRateCouponPricer'>

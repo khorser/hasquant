@@ -163,6 +163,10 @@ extern "C" {
     QlYieldTermStructure *fwd, char **e);
 
   void qlFreeIborIndex(QlIborIndex *i);
+  QlIndex *qlIborAsIndex(QlIborIndex *i);
+
+  /* index */
+  void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

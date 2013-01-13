@@ -118,6 +118,10 @@ QlIborIndex *qlCreateIborON(char *name, QlYieldTermStructure *fwd, char **e) {
       i = new Eonia(ts);
     else if (!strcmp(name, "Sonia"))
       i = new Sonia(ts);
+    else if (!strcmp(name, "GBPLiborON"))
+      i = new GBPLiborON(ts);
+    else if (!strcmp(name, "USDLiborON"))
+      i = new USDLiborON(ts);
     else
       QL_FAIL("Unknown ON Ibor " << name);
     return ret(new QlIborIndex(alloc(i)));
@@ -147,6 +151,10 @@ QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
   } catch (std::exception& er) {
     return handleException<QlIborIndex *>(e, er);
   }
+}
+
+QlIndex *qlIborAsIndex(QlIborIndex *i) {
+  return new QlIndex(*i); // how safe is this from the life time point of view?
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

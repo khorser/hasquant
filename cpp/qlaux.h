@@ -35,6 +35,7 @@ namespace QuantLib {
   class DiscountingBondEngine;
   class Instrument;
   class IborIndex;
+  class Index;
 }
 
 using QuantLib::Quote;
@@ -55,6 +56,7 @@ using QuantLib::PricingEngine;
 using QuantLib::DiscountingBondEngine;
 using QuantLib::Instrument;
 using QuantLib::IborIndex;
+using QuantLib::Index;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -67,6 +69,7 @@ typedef boost::shared_ptr<Quote> QlQuote;
 typedef boost::shared_ptr<YieldTermStructure> QlYieldTermStructure;
 typedef boost::shared_ptr<PricingEngine> QlPricingEngine;
 typedef boost::shared_ptr<IborIndex> QlIborIndex;
+typedef boost::shared_ptr<Index> QlIndex;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
@@ -190,7 +193,23 @@ template <>
 class objClassName<IborIndex *> {
 public:
   static const char *name() {
-    return "QlIborIndex";
+    return "IborIndex";
+  }
+};
+
+template <>
+class objClassName<QlIndex *> {
+public:
+  static const char *name() {
+    return "QlIndex";
+  }
+};
+
+template <>
+class objClassName<Index *> {
+public:
+  static const char *name() {
+    return "Index";
   }
 };
 

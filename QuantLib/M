@@ -5,6 +5,7 @@ all: cpp/qlBond.o \
 	cpp/qlDayCounter.o \
 	cpp/qlEnumerations.o \
 	cpp/qlIborIndex.o \
+	cpp/qlIndex.o \
 	cpp/qlInstrument.o \
 	cpp/qlInterestRate.o \
 	cpp/qlLeg.o \
@@ -38,6 +39,9 @@ cpp/qlEnumerations.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlEnumerations.cpp
 
 cpp/qlIborIndex.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlIborIndex.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlIborIndex.o ../cpp/qlIborIndex.cpp
+
+cpp/qlIndex.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlIndex.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlIndex.o ../cpp/qlIndex.cpp
 
 cpp/qlInterestRate.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlInterestRate.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlInterestRate.o ../cpp/qlInterestRate.cpp

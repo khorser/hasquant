@@ -33,9 +33,10 @@ Executable Test
                         cpp/qlDate.cpp
                         cpp/qlDayCounter.cpp
                         cpp/qlEnumerations.cpp
+                        cpp/qlIborIndex.cpp
+                        cpp/qlIndex.cpp
                         cpp/qlInterestRate.cpp
                         cpp/qlInstrument.cpp
-                        cpp/qlIborIndex.cpp
                         cpp/qlLeg.cpp
                         cpp/qlPeriod.cpp
                         cpp/qlPricingEngine.cpp
