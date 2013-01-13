@@ -14,7 +14,8 @@ import QuantLib.Internal
 data CIndex
 type Index = Object CIndex
 
-instance IsA CIndex CIndex
+instance IsA CIndex CIndex where
+  cast = id
 
 foreign import ccall safe "ql.h qlIndexAddFixing"
   c_indexAddFixing :: Ptr CIndex -> CDate -> CDouble -> CInt -> Ptr CString
