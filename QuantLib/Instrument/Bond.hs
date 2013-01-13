@@ -44,8 +44,10 @@ type FixedRateBond = Object CFixedRateBond
 instance Finalizable CFixedRateBond where
   finalize = castFinalizer p_freeBond
 
-instance IsA CBond CBond
-instance IsA CBond CFixedRateBond
+instance IsA CBond CBond where
+  cast = id
+instance IsA CBond CFixedRateBond where
+  cast = castPtr
 
 -- ideally I would like the "instance IsA CBond CFixedRateBond" to derive
 -- finalizers for all descendants

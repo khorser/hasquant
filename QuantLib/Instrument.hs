@@ -19,7 +19,8 @@ import QuantLib.PricingEngine(PricingEngine, CPricingEngine)
 data CInstrument
 type Instrument = Object CInstrument
 
-instance IsA CInstrument CInstrument
+instance IsA CInstrument CInstrument where
+  cast = id
 
 foreign import ccall safe "ql.h qlInstrumentNPV"
   c_npv :: Ptr CInstrument -> Ptr CString -> IO CDouble

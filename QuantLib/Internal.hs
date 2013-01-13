@@ -40,6 +40,7 @@ module QuantLib.Internal
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
+  , castPtr
   , fromBool, toBool
   , unsafePerformIO
   , Word
@@ -187,7 +188,6 @@ construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
 -- |Specify that `b' is also an `a'
 class IsA a b where
   cast :: Ptr b -> Ptr a
-  cast = castPtr
   withCast :: Object b -> (Ptr a -> IO c) -> IO c
   withCast x f = withObject x (f . cast)
   castFinalizer :: FunPtr (Ptr a -> IO ()) -> FunPtr (Ptr b -> IO ())
