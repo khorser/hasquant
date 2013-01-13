@@ -186,10 +186,12 @@ construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
 
 -- |Specify that `b' is also an `a'
 class IsA a b where
-  safeCastPtr :: Ptr b -> Ptr a
-  safeCastPtr = castPtr
-  safeCastFin :: FunPtr (Ptr a -> IO ()) -> FunPtr (Ptr b -> IO ())
-  safeCastFin = castFunPtr
+  cast :: Ptr b -> Ptr a
+  cast = castPtr
+  withCast :: Object b -> (Ptr a -> IO c) -> IO c
+  withCast x f = withObject x (f . cast)
+  castFinalizer :: FunPtr (Ptr a -> IO ()) -> FunPtr (Ptr b -> IO ())
+  castFinalizer = castFunPtr
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)

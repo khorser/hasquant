@@ -153,8 +153,9 @@ QlIborIndex *qlCreateDailyTenorIbor(char *name, unsigned settlDays,
   }
 }
 
-QlIndex *qlIborAsIndex(QlIborIndex *i) {
-  return new QlIndex(*i); // how safe is this from the life time point of view?
+Index *qlIborAsIndex(QlIborIndex *i) {
+  // the pointer can be used only as long as `i' as alive
+  return (*i).get();
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

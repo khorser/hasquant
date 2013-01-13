@@ -4,9 +4,9 @@
 
 using namespace QuantLib;
 
-void qlIndexAddFixing(QlIndex *i, int date, double fix, int overwrite, char **e) {
+void qlIndexAddFixing(Index *i, int date, double fix, int overwrite, char **e) {
   try {
-    (*arg(i))->addFixing(Date(date), fix, overwrite);
+    arg(i)->addFixing(Date(date), fix, overwrite);
   } catch (std::exception& er) {
     (void)handleException<void *>(e, er);
   }

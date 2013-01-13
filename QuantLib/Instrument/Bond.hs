@@ -42,7 +42,7 @@ data CFixedRateBond
 type FixedRateBond = Object CFixedRateBond
 
 instance Finalizable CFixedRateBond where
-  finalize = safeCastFin p_freeBond
+  finalize = castFinalizer p_freeBond
 
 instance IsA CBond CBond
 instance IsA CBond CFixedRateBond
@@ -95,14 +95,12 @@ bond' settl cal face maturity issue flows =
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX any exceptions possible?
 maturityDate :: IsA CBond a => Object a -> Maybe Day
-maturityDate b = fromQlDate $ unsafePerformIO
-                  (withObject b (c_maturityDate . safeCastPtr))
+maturityDate b = fromQlDate $ unsafePerformIO (withCast b c_maturityDate)
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX any exceptions possible?
 issueDate :: IsA CBond a => Object a -> Maybe Day
-issueDate b = fromQlDate $ unsafePerformIO
-                  (withObject b (c_issueDate . safeCastPtr))
+issueDate b = fromQlDate $ unsafePerformIO (withCast b c_issueDate)
 
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule
@@ -196,10 +194,10 @@ foreign import ccall safe "ql.h qlBondAsInstrument"
   c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
 
 instance IsA CInstrument CBond where
-  safeCastPtr = c_bondAsInstrument
+  cast = c_bondAsInstrument
 
 instance IsA CInstrument CFixedRateBond where
-  safeCastPtr = c_bondAsInstrument . safeCastPtr
+  cast = c_bondAsInstrument . cast -- delegating to the Bond casting interface
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate

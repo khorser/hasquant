@@ -255,4 +255,4 @@ foreign import ccall safe "ql.h qlIborAsIndex"
   c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
 
 instance IsA CIndex CIborIndex where
-  safeCastPtr = c_iborAsIndex
+  cast = c_iborAsIndex
