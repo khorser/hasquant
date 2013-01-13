@@ -10,23 +10,6 @@
     Copyright (C) 2005 Plamen Neykov
   </enumeratedClassCopyright>
 
-  <EnumeratedClassGroups>
-    <EnumeratedClassGroup class='QuantLib::IborCouponPricer'>
-      <includeFile>qlo/enumerations/factories/iborcouponpricersfactory.hpp</includeFile>
-      <EnumeratedClasses>
-        <EnumeratedClass>
-          <string>IborByBlack</string>
-          <value>IBOR_BY_BLACK_Pricer</value>
-          <libraryClass>QuantLib::BlackIborCouponPricer</libraryClass>
-        </EnumeratedClass>
-        <EnumeratedClass>
-          <string>DummyIborByBlack</string>
-          <value>IBOR_BY_BLACK_Pricer</value>
-          <libraryClass>QuantLib::BlackIborCouponPricer</libraryClass>
-        </EnumeratedClass>
-      </EnumeratedClasses>
-    </EnumeratedClassGroup>
-
     <EnumeratedClassGroup class='QuantLib::CmsCouponPricer'>
       <includeFile>qlo/enumerations/factories/conundrumpricerfactory.hpp</includeFile>
       <EnumeratedClasses>

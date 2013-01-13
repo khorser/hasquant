@@ -21,6 +21,7 @@ import Test.QuickCheck.Monadic as QC(assert, monadicIO, pick, pre, run)
 
 --import qualified QuantLib.Internal as Internal(toQlEnum)
 import qualified QuantLib.CashFlow.Leg as Leg
+import qualified QuantLib.CashFlow.CouponPricer as CouponPricer
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
 import qualified QuantLib.Error as Error
@@ -34,6 +35,7 @@ import qualified QuantLib.PricingEngine as Pricing
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
 import qualified QuantLib.TermStructure.Yield as Yield
+import qualified QuantLib.TermStructure.Volatility as Vol
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
 import qualified QuantLib.Time.Calendar as Calendar
 import qualified QuantLib.Time.Date as Date
@@ -412,6 +414,15 @@ bondval = TestList
             --on <- Ibor.overnightIndex "T" 3 eur gcal actact ts
             --gbp <- Currency.gbp
             --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact ts
+
+            v <- Quote.simpleQuote 0.0
+            act365 <- DayCounter.actual365Fixed
+            vol <- Vol.constantOptionletVol settlementDays
+                                            cal
+                                            BusinessDayConvention.ModifiedFollowing
+                                            v
+                                            act365
+            couponPricer <- CouponPricer.blackIborCouponPricer vol
 
             assertEqual "Test" True True
   ]

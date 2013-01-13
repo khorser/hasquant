@@ -2,7 +2,7 @@
 #include <ql/math/interpolations/all.hpp>
 
 #include "ql.h"
-#include "qlYieldAux.h"
+#include "qlYieldTSAux.h"
 
 using namespace QuantLib;
 
@@ -39,6 +39,7 @@ RateHelper *wrap(T *h) { return alloc(h); }
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
+	    Handle<Quote> qq(*arg(quote));
     return ret(new QlRateHelper(wrap(new DepositRateHelper(
 	    Handle<Quote>(*arg(quote)),
 	    *arg(period),

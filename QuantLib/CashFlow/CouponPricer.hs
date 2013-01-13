@@ -10,18 +10,19 @@ module QuantLib.CashFlow.CouponPricer
 where
 
 import QuantLib.Internal
-import QuantLib.TermStructure.Volatility(OptionletVolStructure)
+import QuantLib.TermStructure.Volatility(OptionletVolStructure, COptionletVolStructure)
 
 data CFloatingRateCouponPricer
 type FloatingRateCouponPricer = Object CFloatingRateCouponPricer
 
---foreign import ccall safe "ql.h qlLeg"
---  c_leg :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CString -> IO (Ptr CLeg)
---foreign import ccall safe "ql.h &qlFreeLeg"
---  p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
+foreign import ccall safe "ql.h qlBlackIborCouponPricer"
+  c_blackIborCouponPricer :: Ptr COptionletVolStructure -> Ptr CString
+    -> IO (Ptr CFloatingRateCouponPricer)
+foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
+  p_freeFloatingCouponPricer :: FunPtr (Ptr CFloatingRateCouponPricer -> IO ())
 
---instance Finalizable CLeg where
---  finalize = p_freeLeg
+instance Finalizable CFloatingRateCouponPricer where
+  finalize = p_freeFloatingCouponPricer
 
 blackIborCouponPricer :: OptionletVolStructure -> IO FloatingRateCouponPricer
-blackIborCouponPricer _capletVol = undefined
+blackIborCouponPricer capletVol = withObject capletVol (construct . c_blackIborCouponPricer)

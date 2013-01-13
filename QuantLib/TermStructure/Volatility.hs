@@ -12,10 +12,10 @@ module QuantLib.TermStructure.Volatility
 where
 
 import QuantLib.Internal
-import QuantLib.Quote(Quote)
+import QuantLib.Quote(Quote, CQuote)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Calendar(Calendar)
-import QuantLib.Time.DayCounter(DayCounter)
+import QuantLib.Time.Calendar(Calendar, CCalendar)
+import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 
 data CVolTermStructure
 type VolTermStructure = Object CVolTermStructure
@@ -23,17 +23,23 @@ type VolTermStructure = Object CVolTermStructure
 data COptionletVolStructure
 type OptionletVolStructure = Object COptionletVolStructure
 
---foreign import ccall safe "ql.h &qlFreeRateHelper"
---  p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
---
---foreign import ccall safe "ql.h qlDepositRateHelper"
---  c_depositRateHelper :: Ptr CQuote -> Ptr CPeriod -> CUInt -> Ptr CCalendar
---    -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
+foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
+  p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())
 
---instance Finalizable CRateHelper where
---  finalize = p_freeRateHelper
+foreign import ccall safe "ql.h qlConstantOptionletVol"
+  c_constantOptionletVol :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote
+    -> Ptr CDayCounter -> Ptr CString -> IO (Ptr COptionletVolStructure)
+
+instance Finalizable COptionletVolStructure where
+  finalize = p_freeOptionletVolStructure
 
 -- |(qlConstantOptionletVolatility)
 constantOptionletVol :: Word -> Calendar -> BusinessDayConvention -> Quote
   -> DayCounter -> IO OptionletVolStructure
-constantOptionletVol = undefined
+constantOptionletVol settlDays cal conv quote dayCount =
+  withObject3 cal quote dayCount
+  (\c q dc -> construct $ c_constantOptionletVol (fromIntegral settlDays)
+                                               c
+                                               (toQlEnum conv)
+                                               q
+                                               dc)

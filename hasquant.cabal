@@ -29,6 +29,7 @@ Executable Test
   GHC-Options:         -Wall
   C-Sources:           cpp/qlBond.cpp
                         cpp/qlCalendar.cpp
+                        cpp/qlCouponPricer.cpp
                         cpp/qlCurrency.cpp
                         cpp/qlDate.cpp
                         cpp/qlDayCounter.cpp
@@ -44,8 +45,9 @@ Executable Test
                         cpp/qlSchedule.cpp
                         cpp/qlSettings.cpp
                         cpp/qlUtilities.cpp
-                        cpp/qlYield.cpp
-                        cpp/qlYieldAux.cpp
+                        cpp/qlVolatilityTS.cpp
+                        cpp/qlYieldTS.cpp
+                        cpp/qlYieldTSAux.cpp
   Include-Dirs:        cpp
   Build-Depends:       base == 4.5.*, QuickCheck >=2.5, HUnit >= 1.2.4.2, time >= 1.4
   Extra-Libraries:     QuantLib stdc++

@@ -167,6 +167,16 @@ extern "C" {
 
   /* index */
   void qlIndexAddFixing(Index *i, int date, double fix, int overwrite, char **e);
+
+  /* coupon pricer */
+  QlFloatingRateCouponPricer *qlBlackIborCouponPricer(
+    QlOptionletVolatilityStructure *vol, char **e);
+  void qlFreeFloatingCouponPricer(QlFloatingRateCouponPricer *p);
+
+  /* volatility */
+  QlOptionletVolatilityStructure *qlConstantOptionletVol(
+    unsigned days, Calendar *cal, int conv, QlQuote *q, DayCounter *dc, char **e);
+  void qlFreeOptionletVolatilityStructure(QlOptionletVolatilityStructure *p);
 }
 
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

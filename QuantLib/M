@@ -1,5 +1,6 @@
 all: cpp/qlBond.o \
 	cpp/qlCalendar.o \
+	cpp/qlCouponPricer.o \
 	cpp/qlCurrency.o \
 	cpp/qlDate.o \
 	cpp/qlDayCounter.o \
@@ -15,8 +16,9 @@ all: cpp/qlBond.o \
 	cpp/qlSchedule.o \
 	cpp/qlSettings.o \
 	cpp/qlUtilities.o \
-	cpp/qlYield.o \
-	cpp/qlYieldAux.o
+	cpp/qlVolatilityTS.o \
+	cpp/qlYieldTS.o \
+	cpp/qlYieldTSAux.o
 
 
 cpp/qlBond.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlBond.cpp
@@ -24,6 +26,9 @@ cpp/qlBond.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlBond.cpp
 
 cpp/qlCalendar.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlCalendar.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlCalendar.o ../cpp/qlCalendar.cpp
+
+cpp/qlCouponPricer.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlCouponPricer.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlCouponPricer.o ../cpp/qlCouponPricer.cpp
 
 cpp/qlCurrency.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlCurrency.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlCurrency.o ../cpp/qlCurrency.cpp
@@ -70,10 +75,13 @@ cpp/qlSettings.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlSettings.cpp
 cpp/qlUtilities.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlUtilities.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlUtilities.o ../cpp/qlUtilities.cpp
 
-cpp/qlYield.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYield.cpp ../cpp/qlYieldAux.h
-	g++ -c -Wall $(EXTRA) -o cpp/qlYield.o ../cpp/qlYield.cpp
+cpp/qlVolatilityTS.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlVolatilityTS.cpp
+	g++ -c -Wall $(EXTRA) -o cpp/qlVolatilityTS.o ../cpp/qlVolatilityTS.cpp
 
-cpp/qlYieldAux.o: ../cpp/qlYieldAux.cpp ../cpp/qlYieldAux.h
-	g++ -c -Wall $(EXTRA) -o cpp/qlYieldAux.o ../cpp/qlYieldAux.cpp
+cpp/qlYieldTS.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlYieldTS.cpp ../cpp/qlYieldTSAux.h
+	g++ -c -Wall $(EXTRA) -o cpp/qlYieldTS.o ../cpp/qlYieldTS.cpp
+
+cpp/qlYieldTSAux.o: ../cpp/qlYieldTSAux.cpp ../cpp/qlYieldTSAux.h
+	g++ -c -Wall $(EXTRA) -o cpp/qlYieldTSAux.o ../cpp/qlYieldTSAux.cpp
 
 # vim: set ft=make:

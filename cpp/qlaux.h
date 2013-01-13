@@ -36,6 +36,8 @@ namespace QuantLib {
   class Instrument;
   class IborIndex;
   class Index;
+  class FloatingRateCouponPricer;
+  class OptionletVolatilityStructure;
 }
 
 using QuantLib::Quote;
@@ -57,6 +59,8 @@ using QuantLib::DiscountingBondEngine;
 using QuantLib::Instrument;
 using QuantLib::IborIndex;
 using QuantLib::Index;
+using QuantLib::FloatingRateCouponPricer;
+using QuantLib::OptionletVolatilityStructure;
 
 // Haskell CQuote and CRateHelper are actually pointers to shared_ptr's
 // because quotes and rate helpers are used via smart pointers (Handle
@@ -70,6 +74,8 @@ typedef boost::shared_ptr<YieldTermStructure> QlYieldTermStructure;
 typedef boost::shared_ptr<PricingEngine> QlPricingEngine;
 typedef boost::shared_ptr<IborIndex> QlIborIndex;
 typedef boost::shared_ptr<Index> QlIndex;
+typedef boost::shared_ptr<FloatingRateCouponPricer> QlFloatingRateCouponPricer;
+typedef boost::shared_ptr<OptionletVolatilityStructure> QlOptionletVolatilityStructure;
 
 // Leg and RateHelper are typedefs so we cannot use forward declaration
 // for them. Using them only when corresponding headers have been included
@@ -130,6 +136,22 @@ class objClassName<ZeroCouponBond *> {
 public:
   static const char *name() {
     return "ZeroCouponBond";
+  }
+};
+
+template <>
+class objClassName<FloatingRateCouponPricer *> {
+public:
+  static const char *name() {
+    return "FloatingRateCouponPricer";
+  }
+};
+
+template <>
+class objClassName<QlFloatingRateCouponPricer *> {
+public:
+  static const char *name() {
+    return "QlFloatingRateCouponPricer";
   }
 };
 
@@ -310,6 +332,22 @@ class objClassName<FixedRateBondHelper *> {
 public:
   static const char *name() {
     return "FixedRateBondHelper";
+  }
+};
+
+template <>
+class objClassName<OptionletVolatilityStructure *> {
+public:
+  static const char *name() {
+    return "OptionletVolatilityStructure";
+  }
+};
+
+template <>
+class objClassName<QlOptionletVolatilityStructure *> {
+public:
+  static const char *name() {
+    return "QlOptionletVolatilityStructure";
   }
 };
 
