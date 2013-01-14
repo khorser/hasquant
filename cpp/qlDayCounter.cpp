@@ -47,6 +47,8 @@ DayCounter *qlDayCounter(const char *name, char **e) {
       c = new Thirty360(Thirty360::BondBasis);
     else if (!strcmp(name, "360/360"))
       c = new Thirty360(Thirty360::BondBasis);
+    else if (!strcmp(name, "30/360 (European)"))
+      c = new Thirty360(Thirty360::European);
     else if (!strcmp(name, "30/360 (Eurobond Basis)"))
       c = new Thirty360(Thirty360::EurobondBasis);
     else if (!strcmp(name, "Eurobond Basis"))

@@ -394,8 +394,42 @@ bondval = TestList
             znpv <- Instrument.npv zcBond
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
 
+            act360 <- DayCounter.actual360
+            thirty360European <- DayCounter.thirty360European
+            depoLiborHelpers <-
+              mapM (\(q, (n, u)) ->
+                do quote <- Quote.simpleQuote q
+                   p <- Period.period n u
+                   Yield.depositRateHelper quote p fixingDays cal
+                                                  BusinessDayConvention.ModifiedFollowing
+                                                  True act360
+                   )
+                   $ zip liborDepoQuotes liborDepoTerms
+
+            eur6M <- Ibor.euribor p6m Nothing
+            v <- Quote.simpleQuote 0.0
+            q0 <- Quote.simpleQuote 0 -- is this the same as empty quote?
+
+            swapLiborHelpers <-
+              mapM (\(q, n) ->
+                do quote <- Quote.simpleQuote q
+                   p <- Period.period n Unit.Years
+                   p1d <- Period.period 1 Unit.Days
+                   Yield.swapRateHelper' quote p cal Frequency.Annual BusinessDayConvention.Unadjusted
+                                         thirty360European eur6M q0 p1d Nothing)
+                    $ zip liborSwapQuotes liborSwapTerms
+
+            fwdCurve <- Yield.piecewiseYieldCurve
+                          settlementDate
+                          (depoLiborHelpers ++ swapLiborHelpers)
+                          tsdc
+                          []
+                          tolerance
+                          Yield.Discount
+                          Interpolation.LogLinear
+
             p3m <- Period.period 3 Unit.Months
-            usd3m <- Ibor.usdLibor p3m (Just ts) -- TODO use deposwap curve
+            usd3m <- Ibor.usdLibor p3m (Just fwdCurve)
             Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
 
             pq <- Period.fromFrequency Frequency.Quarterly
@@ -410,7 +444,6 @@ bondval = TestList
                                                True
                                                Nothing
                                                Nothing
-            act360 <- DayCounter.actual360
             floater <- Bond.floatingRateBond settlementDays
                                              faceAmount
                                              floatSchedule
@@ -426,7 +459,6 @@ bondval = TestList
                                              100.0
                                              (Just $ fromGregorian 2005 10 21)
             Instrument.setPricingEngine floater pricing
-            v <- Quote.simpleQuote 0.0
             act365 <- DayCounter.actual365Fixed
             vol <- Vol.constantOptionletVol settlementDays
                                             cal
@@ -435,6 +467,9 @@ bondval = TestList
                                             act365
             couponPricer <- CouponPricer.blackIborCouponPricer vol
             Bond.setCouponPricer floater couponPricer
+
+            fnpv <- Instrument.npv floater
+            assertBool "Floating rate bond NPV" $ abs(fnpv-102.36) < 0.01
 
             -- some Ibor tests
             --eur <- Currency.eur
@@ -453,23 +488,6 @@ bondval = TestList
             --gbp <- Currency.gbp
             --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact ts
 
-            p2y <- Period.period 2 Unit.Years
-            q2y <- Quote.simpleQuote 0.0295
-            thirty360 <- DayCounter.thirty360
-            eur6M <- Ibor.euribor p6m Nothing
-            q0 <- Quote.simpleQuote 0 -- is this the same as empty quote?
-            fwdStart <- Period.period 1 Unit.Days
-
-            swRate <- Yield.swapRateHelper' q2y
-                                            p2y
-                                            cal
-                                            Frequency.Annual
-                                            BusinessDayConvention.Unadjusted
-                                            thirty360
-                                            eur6M
-                                            q0
-                                            fwdStart
-                                            Nothing
 
             assertEqual "Test" True True
   ]
@@ -494,6 +512,12 @@ bondval = TestList
         couponRates = [0.02375, 0.04625, 0.03125, 0.04000, 0.04500]
         marketQuotes = [100.390625, 106.21875, 100.59375, 101.6875, 102.140625]
         tolerance = 1.0e-15
+        liborDepoQuotes = [0.043375, 0.031875, 0.0320375,
+                              0.03385, 0.0338125, 0.0335125]
+        liborDepoTerms = [(1, Unit.Weeks), (1, Unit.Months), (3, Unit.Months),
+                          (6, Unit.Months), (9, Unit.Months), (1, Unit.Years)]
+        liborSwapQuotes = [0.0295, 0.0323, 0.0359, 0.0412, 0.0433]
+        liborSwapTerms = [2, 3, 5, 10, 15]
 
 
 -- QuickCheck --

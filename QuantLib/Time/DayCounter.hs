@@ -40,6 +40,8 @@ module QuantLib.Time.DayCounter
   , linACTACTISDA
   , linACTACTISMA
   , business252
+
+  , thirty360European
   )
 
 where
@@ -99,6 +101,8 @@ linACTACTISDA   :: IO DayCounter
 linACTACTISMA   :: IO DayCounter
 business252     :: IO DayCounter
 
+thirty360European:: IO DayCounter
+
 dayCounter         = constructNamed "DayCounter"
 noDayCounter       = constructNamed "NoDayCounter"
 actual365Fixed     = constructNamed "Actual/365 (Fixed)"
@@ -136,3 +140,5 @@ linACTACT          = constructNamed "LIN ACT/ACT"
 linACTACTISDA      = constructNamed "LIN ACTACT ISDA"
 linACTACTISMA      = constructNamed "LIN ACTACT ISMA"
 business252        = constructNamed "Business252"
+
+thirty360European  = constructNamed "30/360 (European)"
