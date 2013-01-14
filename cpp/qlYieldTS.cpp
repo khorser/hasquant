@@ -39,7 +39,6 @@ RateHelper *wrap(T *h) { return alloc(h); }
 QlRateHelper *qlDepositRateHelper(QlQuote *quote, Period *period, unsigned fixDays,
   Calendar *calendar, int conv, int eom, DayCounter *dayCount, char **e) {
   try {
-	    Handle<Quote> qq(*arg(quote));
     return ret(new QlRateHelper(wrap(new DepositRateHelper(
 	    Handle<Quote>(*arg(quote)),
 	    *arg(period),
@@ -110,4 +109,18 @@ double qlYieldTSDiscount(QlYieldTermStructure *ts, int date, int extrapolate, ch
     return handleException<double>(e, er);
   }
 }
+
+QlRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
+  int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
+  QlYieldTermStructure *ts, char **e) {
+  try {
+    return ret(new QlRateHelper(new SwapRateHelper(Handle<Quote>(*arg(q)),
+	    *arg(t), *arg(cal), (Frequency) freq, (BusinessDayConvention) conv,
+	    *arg(dc), *arg(i), Handle<Quote>(*arg(s)), *arg(fwdStart),
+	    ts ? Handle<YieldTermStructure>(*arg(ts)) : Handle<YieldTermStructure>())));
+  } catch (std::exception& er) {
+    return handleException<QlRateHelper *>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

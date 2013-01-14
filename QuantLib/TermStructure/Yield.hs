@@ -130,9 +130,28 @@ discount ts d ex = liftM realToFrac (withObject
                           (toQlDate d)
                           (fromBool ex)))
 
+foreign import ccall safe "ql.h qlSwapRateHelper1"
+  c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
+    -> CInt -> Ptr CDayCounter -> Ptr CIborIndex -> Ptr CQuote -> Ptr CPeriod
+    -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CRateHelper)
+
 -- |(qlSwapRateHelper2)
 swapRateHelper' :: Quote -> Period -> Calendar -> Frequency
   -> BusinessDayConvention -> DayCounter -> IborIndex -> Quote
-  -> Period -> YieldTermStructure -> IO swapRateHelper'
-swapRateHelper' _rate _tenor _cal _fixedFreq _fixedConv _fixedDayCount
-  _index _spread _fwdStart _discCurve = undefined
+  -> Period -> Maybe YieldTermStructure -> IO RateHelper
+swapRateHelper' rate tenor cal fixedFreq fixedConv fixedDayCount
+  index spread fwdStart disc =
+    withObject7 rate tenor cal fixedDayCount index spread fwdStart
+    (\r t c dc i s f ->
+      maybeWithObject disc
+      (\dsc -> construct $ c_swapRateHelper' r
+                                             t
+                                             c
+                                             (toQlEnum fixedFreq)
+                                             (toQlEnum fixedConv)
+                                             dc
+                                             i
+                                             s
+                                             f
+                                             dsc))
+

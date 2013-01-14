@@ -24,6 +24,9 @@ module QuantLib.Internal
   , withObject3
   , withObject4
   , withObject5
+  , withObject6
+  , withObject7
+  , withObject8
   , maybeWithObject
   , withDays
   , withAmounts
@@ -125,6 +128,24 @@ withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 withObject5 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> IO b) -> IO b
 withObject5 o1 o2 o3 o4 o5 f = withObject o1 (withObject4 o2 o3 o4 o5 . f)
+
+withObject6 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
+  -> Object a6
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> IO b) -> IO b
+withObject6 o1 o2 o3 o4 o5 o6 f =
+  withObject o1 (withObject5 o2 o3 o4 o5 o6 . f)
+
+withObject7 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
+  -> Object a6 -> Object a7
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> Ptr a7 -> IO b) -> IO b
+withObject7 o1 o2 o3 o4 o5 o6 o7 f =
+  withObject o1 (withObject6 o2 o3 o4 o5 o6 o7 . f)
+
+withObject8 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
+  -> Object a6 -> Object a7 -> Object a8
+  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> Ptr a7 -> Ptr a8 -> IO b) -> IO b
+withObject8 o1 o2 o3 o4 o5 o6 o7 o8 f =
+  withObject o1 (withObject7 o2 o3 o4 o5 o6 o7 o8 . f)
 
 withObjects :: [Object a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 -- XXX rewrite using folds?

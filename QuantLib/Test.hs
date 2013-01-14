@@ -453,6 +453,24 @@ bondval = TestList
             --gbp <- Currency.gbp
             --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact ts
 
+            p2y <- Period.period 2 Unit.Years
+            q2y <- Quote.simpleQuote 0.0295
+            thirty360 <- DayCounter.thirty360
+            eur6M <- Ibor.euribor p6m ts -- should allow skipping term structure
+            q0 <- Quote.simpleQuote 0 -- is this the same as empty quote?
+            fwdStart <- Period.period 1 Unit.Days
+
+            swRate <- Yield.swapRateHelper' q2y
+                                            p2y
+                                            cal
+                                            Frequency.Annual
+                                            BusinessDayConvention.Unadjusted
+                                            thirty360
+                                            eur6M
+                                            q0
+                                            fwdStart
+                                            Nothing
+
             assertEqual "Test" True True
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]

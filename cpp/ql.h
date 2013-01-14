@@ -132,6 +132,9 @@ extern "C" {
     QlRateHelper **ratehelpers, DayCounter *dayCount, unsigned quoteLen,
     QlQuote **quotes, int *dates, double accuracy, char *trait,
     char *interpolator, char **e);
+  QlRateHelper *qlSwapRateHelper1(QlQuote *q, Period *t, Calendar *cal, int freq,
+    int conv, DayCounter *dc, QlIborIndex *i, QlQuote *s, Period *fwdStart,
+    QlYieldTermStructure *ts, char **e);
 
   void qlFreeRateHelper(QlRateHelper *helper);
 #endif
