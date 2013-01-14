@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.Schedule
   (
-  -- objects
-    CSchedule
-  , Schedule
   -- makers
-  , schedule
+    schedule
   , schedule'
   , until
   -- accessors
@@ -16,13 +14,9 @@ where
 import Prelude hiding(until)
 
 import QuantLib.Internal
+import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
-import QuantLib.Time.Period(Period, CPeriod)
-
-data CSchedule
-type Schedule = Object CSchedule
 
 foreign import ccall safe "ql.h qlSchedule"
   c_schedule :: CDate -> CDate -> Ptr CPeriod -> Ptr CCalendar

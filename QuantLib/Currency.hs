@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Currency
   (
-  -- types
-    CCurrency
-  , Currency
   -- makers
-  , currency
+    currency
   , noCurrency
   , eur
   , ars
@@ -73,9 +71,7 @@ module QuantLib.Currency
 where
 
 import QuantLib.Internal
-
-data CCurrency
-type Currency = Object CCurrency
+import QuantLib.Types
 
 foreign import ccall safe "ql.h qlCurrency"
   c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)

@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.Period
   (
-  -- types
-    CPeriod
-  , Period
   -- makers
-  , period
+    period
   , fromFrequency
   -- accessors
   , toFrequency
@@ -13,11 +11,9 @@ module QuantLib.Time.Period
 where
 
 import QuantLib.Internal
+import QuantLib.Types
 import qualified QuantLib.Time.Frequency as F(Frequency)
 import QuantLib.Time.Unit(Unit)
-
-data CPeriod
-type Period = Object CPeriod
 
 foreign import ccall safe "ql.h qlPeriod"
   c_period :: CInt -> CInt -> Ptr CString -> IO (Ptr CPeriod)

@@ -1,27 +1,15 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.TermStructure.Volatility
   (
-  -- types
-    CVolTermStructure
-  , VolTermStructure
-  , COptionletVolStructure
-  , OptionletVolStructure
   -- makers
-  , constantOptionletVol
+    constantOptionletVol
   )
 where
 
 import QuantLib.Internal
-import QuantLib.Quote(Quote, CQuote)
+import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Calendar(Calendar, CCalendar)
-import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
-
-data CVolTermStructure
-type VolTermStructure = Object CVolTermStructure
-
-data COptionletVolStructure
-type OptionletVolStructure = Object COptionletVolStructure
 
 foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
   p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())

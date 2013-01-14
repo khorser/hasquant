@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,FlexibleContexts,MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Instrument
   (
-  -- types
-    CInstrument
-  , Instrument
   -- accessors
-  , npv
+    npv
   -- mutators
   , setPricingEngine
   )
@@ -14,10 +12,7 @@ where
 import Control.Monad(liftM)
 
 import QuantLib.Internal
-import QuantLib.PricingEngine(PricingEngine, CPricingEngine)
-
-data CInstrument
-type Instrument = Object CInstrument
+import QuantLib.Types
 
 instance IsA CInstrument CInstrument where
   cast = id

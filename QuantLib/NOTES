@@ -25,28 +25,3 @@ to introduce adjustments)
 as result that Handle/RelinkableHandle machinery isn't going to be much of help
 and might even harm (?)
 I'm thinking of implementing functional reactive programming paradigm if needed
-
---- BOND Pricing: ---
-
-ql/termstructures/yield/ratehelpers.hpp
-<Constructor name='qlSwapRateHelper2'>
-      <Parameter name='Rate' 
-        QuantLib::Quote
-      <Parameter name='Tenor' 
-        QuantLib::Period
-      <Parameter name='Calendar' 
-        QuantLib::Calendar
-      <Parameter name='FixedLegFrequency' 
-        QuantLib::Frequency
-      <Parameter name='FixedLegConvention' 
-        QuantLib::BusinessDayConvention
-      <Parameter name='FixedLegDayCounter' 
-        QuantLib::DayCounter
-      <Parameter name='IborIndex' 
-        QuantLib::IborIndex
-      <Parameter name='Spread' 
-        QuantLib::Quote
-      <Parameter name='ForwardStart' 
-        QuantLib::Period
-      <Parameter name='DiscountingCurve' 
-        QuantLib::YieldTermStructure

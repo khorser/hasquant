@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.Calendar
   (
-  -- objects
-    CCalendar
-  , Calendar
   -- accessors
-  , adjust
+    adjust
   , advance
   -- makers
   , noCalendar
@@ -66,11 +64,9 @@ where
 import Control.Monad(liftM)
 
 import QuantLib.Internal
+import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
-
-data CCalendar
-type Calendar = Object CCalendar
 
 foreign import ccall safe "ql.h qlCalendar"
   c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)

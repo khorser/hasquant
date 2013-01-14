@@ -1,20 +1,16 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.CashFlow.Leg
   (
-  -- types
-    CLeg
-  , Leg
   -- makers
-  , leg
+    leg
   -- accessors
   , startDate
   )
 where
 
 import QuantLib.Internal
-
-data CLeg
-type Leg = Object CLeg
+import QuantLib.Types
 
 foreign import ccall safe "ql.h qlLeg"
   c_leg :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CString -> IO (Ptr CLeg)

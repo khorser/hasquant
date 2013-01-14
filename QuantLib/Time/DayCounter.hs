@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.DayCounter
   (
-  -- types
-    CDayCounter
-  , DayCounter
   -- makers
-  , dayCounter
+    dayCounter
   , noDayCounter
   , actual365Fixed
   , act365Fixed
@@ -47,9 +45,7 @@ module QuantLib.Time.DayCounter
 where
 
 import QuantLib.Internal
-
-data CDayCounter
-type DayCounter = Object CDayCounter
+import QuantLib.Types
 
 foreign import ccall safe "ql.h qlDayCounter"
   c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)

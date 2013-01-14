@@ -1,20 +1,16 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Quote
   (
-  -- types
-    CQuote
-  , Quote
   -- makers
-  , simpleQuote
+    simpleQuote
   -- accessors
   , value
   )
 where
 
 import QuantLib.Internal
-
-data CQuote
-type Quote = Object CQuote
+import QuantLib.Types
 
 foreign import ccall safe "ql.h qlSimpleQuote"
   c_simpleQuote :: CDouble -> Ptr CString -> IO (Ptr CQuote)

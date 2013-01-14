@@ -1,12 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses,FlexibleContexts #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Instrument.Bond
   (
-  -- types
-    CBond
-  , Bond
-  , FixedRateBond
   -- makers
-  , bond
+    bond
   , bond'
   , fixedRateBond
   , fixedRateBond'
@@ -23,28 +20,14 @@ module QuantLib.Instrument.Bond
 
 where
 
-import QuantLib.CashFlow.Leg(Leg, CLeg)
-import QuantLib.CashFlow.CouponPricer(FloatingRateCouponPricer, CFloatingRateCouponPricer)
-import QuantLib.Index.Ibor(IborIndex, CIborIndex)
-import QuantLib.Instrument(CInstrument)
-import QuantLib.InterestRate(InterestRate, CInterestRate)
 import QuantLib.Internal
+import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Calendar(Calendar, CCalendar)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
-import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)
-import QuantLib.Time.Period(Period, CPeriod)
-import QuantLib.Time.Schedule(Schedule, CSchedule)
-
-data CBond
-type Bond = Object CBond
 
 instance Finalizable CBond where
   finalize = p_freeBond
-
-data CFixedRateBond
-type FixedRateBond = Object CFixedRateBond
 
 instance Finalizable CFixedRateBond where
   finalize = castFinalizer p_freeBond

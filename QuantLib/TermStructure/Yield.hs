@@ -1,15 +1,13 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.TermStructure.Yield
   (
   -- types
-    CRateHelper
-  , RateHelper
-  , Trait(..)
-  , CYieldTermStructure
-  , YieldTermStructure
+    Trait(..)
   -- makers
   , depositRateHelper
   , fixedRateBondHelper
+  , swapRateHelper'
   , piecewiseYieldCurve
   , piecewiseYieldCurve'
   -- accessors
@@ -20,16 +18,10 @@ where
 import Control.Monad(liftM)
 
 import QuantLib.Internal
+import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
-import QuantLib.Quote(Quote, CQuote)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Calendar(Calendar, CCalendar)
-import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
-import QuantLib.Time.Period(Period, CPeriod)
-import QuantLib.Time.Schedule(Schedule, CSchedule)
-
-data CRateHelper
-type RateHelper = Object CRateHelper
+import QuantLib.Time.Frequency(Frequency)
 
 foreign import ccall safe "ql.h &qlFreeRateHelper"
   p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
@@ -87,9 +79,6 @@ fixedRateBondHelper quote settlDays face sched coupons dayCount conv
                               (realToFrac redemption)
                               (toQlDate issue)))
 
-data CYieldTermStructure
-type YieldTermStructure = Object CYieldTermStructure
-
 foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
   p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
 foreign import ccall safe "ql.h qlYieldTSDiscount"
@@ -140,3 +129,10 @@ discount ts d ex = liftM realToFrac (withObject
                       $ c_yieldTSDiscount t
                           (toQlDate d)
                           (fromBool ex)))
+
+-- |(qlSwapRateHelper2)
+swapRateHelper' :: Quote -> Period -> Calendar -> Frequency
+  -> BusinessDayConvention -> DayCounter -> IborIndex -> Quote
+  -> Period -> YieldTermStructure -> IO swapRateHelper'
+swapRateHelper' _rate _tenor _cal _fixedFreq _fixedConv _fixedDayCount
+  _index _spread _fwdStart _discCurve = undefined

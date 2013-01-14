@@ -1,18 +1,14 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,FlexibleContexts,MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Index
   (
-  -- types
-    CIndex
-  , Index
   -- mutators
-  , addFixing
+    addFixing
   )
 where
 
 import QuantLib.Internal
-
-data CIndex
-type Index = Object CIndex
+import QuantLib.Types
 
 instance IsA CIndex CIndex where
   cast = id

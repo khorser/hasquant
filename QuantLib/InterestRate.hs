@@ -1,21 +1,16 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.InterestRate
   (
-  -- types
-    CInterestRate
-  , InterestRate
   -- makers
-  , interestRate
+    interestRate
   )
 where
 
 import QuantLib.Compounding(Compounding)
-import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
 import QuantLib.Time.Frequency(Frequency)
 import QuantLib.Internal
-
-data CInterestRate
-type InterestRate = Object CInterestRate
+import QuantLib.Types
 
 foreign import ccall safe "ql.h qlInterestRate"
   c_interestRate :: CDouble -> Ptr CDayCounter -> CInt -> CInt

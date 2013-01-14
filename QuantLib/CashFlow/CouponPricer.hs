@@ -1,19 +1,14 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.CashFlow.CouponPricer
   (
-  -- types
-    CFloatingRateCouponPricer
-  , FloatingRateCouponPricer
   -- makers
-  , blackIborCouponPricer
+    blackIborCouponPricer
   )
 where
 
 import QuantLib.Internal
-import QuantLib.TermStructure.Volatility(OptionletVolStructure, COptionletVolStructure)
-
-data CFloatingRateCouponPricer
-type FloatingRateCouponPricer = Object CFloatingRateCouponPricer
+import QuantLib.Types
 
 foreign import ccall safe "ql.h qlBlackIborCouponPricer"
   c_blackIborCouponPricer :: Ptr COptionletVolStructure -> Ptr CString

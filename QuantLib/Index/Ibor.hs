@@ -1,11 +1,9 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Index.Ibor
   (
-  -- types
-    CIborIndex
-  , IborIndex
   -- makers
-  , iborIndex
+    iborIndex
   , overnightIndex
   , libor
   , dailyTenorLibor
@@ -39,17 +37,9 @@ module QuantLib.Index.Ibor
   )
 where
 
-import QuantLib.Currency(Currency, CCurrency)
-import QuantLib.Index(CIndex)
 import QuantLib.Internal
-import QuantLib.TermStructure.Yield(YieldTermStructure, CYieldTermStructure)
+import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
-import QuantLib.Time.Calendar(Calendar, CCalendar)
-import QuantLib.Time.DayCounter(DayCounter, CDayCounter)
-import QuantLib.Time.Period(Period, CPeriod)
-
-data CIborIndex
-type IborIndex = Object CIborIndex
 
 foreign import ccall safe "ql.h qlIborIndex"
   c_iborIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
