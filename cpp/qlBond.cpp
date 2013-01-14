@@ -48,10 +48,7 @@ Bond *qlFixedRateBond(unsigned settlDays, double face, Schedule *schedule,
     int payConv, double redemption, int issue, Calendar *payCal,
     char **e) {
   try {
-    std::vector<Rate> cpns;
-    for (unsigned i = 0; i < cLen; ++i)
-      cpns.push_back(coupons[i]);
-
+    std::vector<Rate> cpns(coupons, coupons+cLen);
     return alloc(new FixedRateBond(
 		  settlDays,
 		  face,
@@ -72,10 +69,7 @@ Bond *qlFixedRateBond1(unsigned settlDays, Calendar *cpnCal, double face,
   DayCounter *dayCounter, int accrConv, int paymentConv, double redemption,
   int issue, int stub, int rule, int eom, Calendar *payCal, char **e) {
   try {
-    std::vector<Rate> cpns;
-    for (unsigned i = 0; i < cLen; ++i)
-      cpns.push_back(coupons[i]);
-
+    std::vector<Rate> cpns(coupons, coupons+cLen);
     return alloc(new FixedRateBond(
 		  settlDays,
 		  *arg(cpnCal),
@@ -158,18 +152,10 @@ Bond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
   unsigned nCaps, double *caps, unsigned nFloors, double *floors,
   int inArrears, double redemption, int issue, char **e) {
   try {
-    std::vector<Real> gs;
-    std::vector<Spread> sps;
-    std::vector<Rate> cs;
-    std::vector<Rate> fs;
-    for (unsigned i = 0; i < nGearings; ++i)
-      gs.push_back(gearings[i]);
-    for (unsigned i = 0; i < nSpreads; ++i)
-      sps.push_back(spreads[i]);
-    for (unsigned i = 0; i < nCaps; ++i)
-      cs.push_back(caps[i]);
-    for (unsigned i = 0; i < nFloors; ++i)
-      fs.push_back(floors[i]);
+    std::vector<Real> gs(gearings, gearings+nGearings);
+    std::vector<Spread> sps(spreads, spreads+nSpreads);
+    std::vector<Rate> cs(caps, caps+nCaps);
+    std::vector<Rate> fs(floors, floors+nFloors);
     return alloc(new FloatingRateBond(settlDays, face, *arg(sched),
 	  *arg(index), *arg(dc), (BusinessDayConvention) payConv, fixDays, gs,
 	  sps, cs, fs, inArrears, redemption, qlNullableDate(issue)));

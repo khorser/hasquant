@@ -57,9 +57,7 @@ QlRateHelper *qlFixedRateBondHelper(QlQuote *quote, unsigned settlDays, double f
   Schedule *sched, unsigned cLen, double *coupons, DayCounter *dayCount, int conv,
   double redemption, int issue, char **e) {
   try {
-    std::vector<Rate> cpns;
-    for (unsigned i = 0; i < cLen; ++i)
-      cpns.push_back(coupons[i]);
+    std::vector<Rate> cpns(coupons, coupons+cLen);
     return ret(new QlRateHelper(wrap(new FixedRateBondHelper(
 	    Handle<Quote>(*arg(quote)),
 	    settlDays,
