@@ -17,6 +17,8 @@ template <class T> T traceval(const char *text, T val);
 #endif
 
 namespace QuantLib {
+  template <class T>
+  class Handle;
   class Quote;
   class SimpleQuote;
   class Bond;
@@ -40,6 +42,7 @@ namespace QuantLib {
   class OptionletVolatilityStructure;
 }
 
+using QuantLib::Handle;
 using QuantLib::Quote;
 using QuantLib::SimpleQuote;
 using QuantLib::Bond;
@@ -382,6 +385,13 @@ T ret(T p) {
 
 const Date qlNullableDate(int serialNumber);
 int qlNullableDate(const Date &date);
+
+template <class T>
+Handle<T> qlNullableHandle(boost::shared_ptr<T> *p) {
+  return p
+    ? Handle<T>(*(arg(p)))
+    : Handle<T>();
+}
 
 /* some useful helpers ... well ... I hope they are... */
 template <class T>

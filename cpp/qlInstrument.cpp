@@ -12,10 +12,10 @@ double qlInstrumentNPV(Instrument *instr, char **e) {
   }
 }
 
-void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine eng,
+void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine *eng,
   char **e) {
   try {
-    arg(instr)->setPricingEngine(arg(eng));
+    arg(instr)->setPricingEngine(*arg(eng));
   } catch (std::exception& er) {
     (void)handleException<int>(e, er);
   }

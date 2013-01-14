@@ -148,7 +148,7 @@ extern "C" {
   void qlFreePricingEngine(QlPricingEngine *engine);
 
   /* instrument */
-  void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine eng,
+  void qlInstrumentSetPricingEngine(Instrument *instr, QlPricingEngine *eng,
     char **e);
   double qlInstrumentNPV(Instrument *instr, char **e);
 
