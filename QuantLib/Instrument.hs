@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,FlexibleContexts,MultiParamTypeClasses #-}
+{-# LANGUAGE ForeignFunctionInterface,FlexibleContexts,MultiParamTypeClasses #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Instrument
   (

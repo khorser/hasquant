@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls #-}
+{-# LANGUAGE ForeignFunctionInterface #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.InterestRate
   (

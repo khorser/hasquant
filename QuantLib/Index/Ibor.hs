@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses #-}
+{-# LANGUAGE ForeignFunctionInterface,MultiParamTypeClasses #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Index.Ibor
   (
