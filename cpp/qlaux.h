@@ -291,6 +291,14 @@ public:
   }
 };
 
+template <>
+class objClassName<QlYieldTermStructure *> {
+public:
+  static const char *name() {
+    return "QlYieldTermStructure";
+  }
+};
+
 #ifdef quantlib_cash_flow_hpp
 template <>
 class objClassName<Leg *> {

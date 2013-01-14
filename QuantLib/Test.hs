@@ -395,7 +395,7 @@ bondval = TestList
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
 
             p3m <- Period.period 3 Unit.Months
-            usd3m <- Ibor.usdLibor p3m ts -- TODO use deposwap curve
+            usd3m <- Ibor.usdLibor p3m (Just ts) -- TODO use deposwap curve
             Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
 
             pq <- Period.fromFrequency Frequency.Quarterly
@@ -456,7 +456,7 @@ bondval = TestList
             p2y <- Period.period 2 Unit.Years
             q2y <- Quote.simpleQuote 0.0295
             thirty360 <- DayCounter.thirty360
-            eur6M <- Ibor.euribor p6m ts -- should allow skipping term structure
+            eur6M <- Ibor.euribor p6m Nothing
             q0 <- Quote.simpleQuote 0 -- is this the same as empty quote?
             fwdStart <- Period.period 1 Unit.Days
 
