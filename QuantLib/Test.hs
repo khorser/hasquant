@@ -471,25 +471,8 @@ bondval = TestList
             fnpv <- Instrument.npv floater
             assertBool "Floating rate bond NPV" $ abs(fnpv-102.36) < 0.01
 
-            -- some Ibor tests
-            --eur <- Currency.eur
-            -- idx <- Ibor.iborIndex "TEST"
-            --                       p6m
-            --                       3
-            --                       eur
-            --                       gcal
-            --                       BusinessDayConvention.ModifiedFollowing
-            --                       False
-            --                       actact
-            --                       ts
-            --cad <- Ibor.cadLiborON ts
-            --gbpD <- Ibor.dailyTenorGBPLibor 3 ts
-            --on <- Ibor.overnightIndex "T" 3 eur gcal actact ts
-            --gbp <- Currency.gbp
-            --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact ts
-
-
-            assertEqual "Test" True True
+            --putStrLn $ "Data from QL Bond Example: " ++ show [100.922178, 107.668289, 102.359315]
+            --putStrLn $ "Ours: " ++ show [znpv, npv, fnpv]
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
         zcTenors = [3, 6, 12]
