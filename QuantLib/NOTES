@@ -50,38 +50,3 @@ ql/termstructures/yield/ratehelpers.hpp
         QuantLib::Period
       <Parameter name='DiscountingCurve' 
         QuantLib::YieldTermStructure
-
-ql/instruments/bonds/floatingratebond.hpp
-<Constructor name='qlFloatingRateBond'>
-      <Parameter name='SettlementDays' 
-        QuantLib::Size
-      <Parameter name='PaymentBDC' default='"Following"'>
-        QuantLib::BusinessDayConvention
-      <Parameter name='FaceAmount' default='100.0'>
-        QuantLib::Real
-      <Parameter name='ScheduleID'>
-        QuantLib::Schedule
-      <Parameter name='FixingDays' default='QuantLib::Null&lt;QuantLib::Natural&gt;()'>
-        QuantLib::Natural
-      <Parameter name='IsInArrears' default='false'>
-        bool
-      <Parameter name='DayCounter' 
-        QuantLib::DayCounter
-      <Parameter name='Floors' default='std::vector&lt;QuantLib::Rate&gt;()'>
-        QuantLib::Rate
-        vector
-      <Parameter name='Gearings' default='1.0'>
-        double
-        vector
-      <Parameter name='IborIndex'>
-        QuantLib::IborIndex
-      <Parameter name='Spreads' default='0.0'>
-        QuantLib::Spread
-        vector
-      <Parameter name='Caps' default='std::vector&lt;QuantLib::Rate&gt;()'>
-        QuantLib::Rate
-        vector
-      <Parameter name='Redemption' default='100'>
-        QuantLib::Real
-      <Parameter name='IssueDate' default='QuantLib::Date()'>
-        QuantLib::Date

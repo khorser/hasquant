@@ -67,6 +67,11 @@ extern "C" {
   Bond *qlZeroCouponBond(int settlDays, Calendar *cal, double face,
     int maturity, int payConv, double redemption, int issue, char **e);
   void qlBondSetCouponPricer(Bond *b, QlFloatingRateCouponPricer *p, char **e);
+  Bond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
+    QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
+    unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
+    unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+    int inArrears, double redemption, int issue, char **e);
 
   void qlFreeBond(Bond *bond);
 

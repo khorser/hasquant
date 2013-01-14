@@ -398,6 +398,44 @@ bondval = TestList
             usd3m <- Ibor.usdLibor p3m ts -- TODO use deposwap curve
             Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
 
+            pq <- Period.fromFrequency Frequency.Quarterly
+            nyse <- Calendar.unitedStatesNYSE
+            floatSchedule <- Schedule.schedule (Just $ fromGregorian 2005 10 21)
+                                               (fromGregorian 2010 10 21)
+                                               pq
+                                               nyse
+                                               BusinessDayConvention.Unadjusted
+                                               BusinessDayConvention.Unadjusted
+                                               DateGenerationRule.Backward
+                                               True
+                                               Nothing
+                                               Nothing
+            act360 <- DayCounter.actual360
+            floater <- Bond.floatingRateBond settlementDays
+                                             faceAmount
+                                             floatSchedule
+                                             usd3m
+                                             act360
+                                             BusinessDayConvention.ModifiedFollowing
+                                             2
+                                             [1.0]
+                                             [0.001]
+                                             []
+                                             []
+                                             True
+                                             100.0
+                                             (Just $ fromGregorian 2005 10 21)
+            Instrument.setPricingEngine floater pricing
+            v <- Quote.simpleQuote 0.0
+            act365 <- DayCounter.actual365Fixed
+            vol <- Vol.constantOptionletVol settlementDays
+                                            cal
+                                            BusinessDayConvention.ModifiedFollowing
+                                            v
+                                            act365
+            couponPricer <- CouponPricer.blackIborCouponPricer vol
+            Bond.setCouponPricer floater couponPricer
+
             -- some Ibor tests
             --eur <- Currency.eur
             -- idx <- Ibor.iborIndex "TEST"
@@ -414,16 +452,6 @@ bondval = TestList
             --on <- Ibor.overnightIndex "T" 3 eur gcal actact ts
             --gbp <- Currency.gbp
             --l <- Ibor.libor "qqq" p3m 2 gbp gcal actact ts
-
-            v <- Quote.simpleQuote 0.0
-            act365 <- DayCounter.actual365Fixed
-            vol <- Vol.constantOptionletVol settlementDays
-                                            cal
-                                            BusinessDayConvention.ModifiedFollowing
-                                            v
-                                            act365
-            couponPricer <- CouponPricer.blackIborCouponPricer vol
-            Bond.setCouponPricer fixedBond couponPricer -- TODO use with floater!
 
             assertEqual "Test" True True
   ]

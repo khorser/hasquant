@@ -12,6 +12,7 @@ module QuantLib.Instrument.Bond
   , fixedRateBond'
   , fixedRateBond''
   , zeroCouponBond
+  , floatingRateBond
   -- accessors
   , issueDate
   , maturityDate
@@ -24,6 +25,7 @@ where
 
 import QuantLib.CashFlow.Leg(Leg, CLeg)
 import QuantLib.CashFlow.CouponPricer(FloatingRateCouponPricer, CFloatingRateCouponPricer)
+import QuantLib.Index.Ibor(IborIndex, CIborIndex)
 import QuantLib.Instrument(CInstrument)
 import QuantLib.InterestRate(InterestRate, CInterestRate)
 import QuantLib.Internal
@@ -214,5 +216,45 @@ foreign import ccall safe "ql.h qlBondSetCouponPricer"
 setCouponPricer :: IsA CBond a => Object a -> FloatingRateCouponPricer -> IO ()
 setCouponPricer b p = 
   withCast b
-  (\bb -> withObject p
-          (\pp -> handleExceptions $ c_bondSetCouponPricer bb pp))
+  (\bb -> withObject p (handleExceptions . c_bondSetCouponPricer bb))
+
+foreign import ccall safe "ql.h qlFloatingRateBond"
+  c_floatingRateBond :: CUInt -> CDouble -> Ptr CSchedule -> Ptr CIborIndex
+    -> Ptr CDayCounter -> CInt -> CUInt -> CUInt -> Ptr CDouble
+    -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble -> CUInt -> Ptr CDouble
+    -> CInt -> CDouble -> CDate -> Ptr CString -> IO (Ptr CBond)
+
+-- |(qlFloatingRateBond)
+floatingRateBond :: Word -> Double -> Schedule -> IborIndex
+  -> DayCounter -> BusinessDayConvention -> Word -> [Double] -> [Double]
+  -> [Double] -> [Double] -> Bool -> Double -> Maybe Day -> IO Bond
+floatingRateBond settlDays face schedule index accrDayCounter paymentConv
+  fixDays gearings spreads caps floors inArrears redemption issue =
+    withObject3 schedule index accrDayCounter
+    (\sched indx dc ->
+      withAmounts gearings
+      (\ng gs ->
+        withAmounts spreads
+        (\ns sps ->
+          withAmounts caps
+          (\nc cs ->
+            withAmounts floors
+            (\nf fs ->
+              construct $ c_floatingRateBond (fromIntegral settlDays)
+                                             (realToFrac face)
+                                             sched
+                                             indx
+                                             dc
+                                             (toQlEnum paymentConv)
+                                             (fromIntegral fixDays)
+                                             ng
+                                             gs
+                                             ns
+                                             sps
+                                             nc
+                                             cs
+                                             nf
+                                             fs
+                                             (fromBool inArrears)
+                                             (realToFrac redemption)
+                                             (toQlDate issue))))))

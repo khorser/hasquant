@@ -152,4 +152,30 @@ void qlBondSetCouponPricer(Bond *b, QlFloatingRateCouponPricer *p, char **e) {
   }
 }
 
+Bond *qlFloatingRateBond(unsigned settlDays, double face, Schedule *sched,
+  QlIborIndex *index, DayCounter *dc, int payConv, unsigned fixDays,
+  unsigned nGearings, double *gearings, unsigned nSpreads, double *spreads,
+  unsigned nCaps, double *caps, unsigned nFloors, double *floors,
+  int inArrears, double redemption, int issue, char **e) {
+  try {
+    std::vector<Real> gs;
+    std::vector<Spread> sps;
+    std::vector<Rate> cs;
+    std::vector<Rate> fs;
+    for (unsigned i = 0; i < nGearings; ++i)
+      gs.push_back(gearings[i]);
+    for (unsigned i = 0; i < nSpreads; ++i)
+      sps.push_back(spreads[i]);
+    for (unsigned i = 0; i < nCaps; ++i)
+      cs.push_back(caps[i]);
+    for (unsigned i = 0; i < nFloors; ++i)
+      fs.push_back(floors[i]);
+    return alloc(new FloatingRateBond(settlDays, face, *arg(sched),
+	  *arg(index), *arg(dc), (BusinessDayConvention) payConv, fixDays, gs,
+	  sps, cs, fs, inArrears, redemption, qlNullableDate(issue)));
+  } catch (std::exception& er) {
+    return handleException<Bond *>(e, er);
+  }
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */
