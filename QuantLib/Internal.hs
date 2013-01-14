@@ -218,6 +218,7 @@ class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
+-- XXX ???Create non-finalizable objects and then we won't have to use IO monad
 constructNamed :: NamedSingleton a => String -> IO (Object a)
 constructNamed n = withCString n $ construct . c_construct
 
