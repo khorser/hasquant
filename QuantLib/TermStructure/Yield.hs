@@ -144,7 +144,7 @@ swapRateHelper' rate tenor cal fixedFreq fixedConv fixedDayCount
     withObject7 rate tenor cal fixedDayCount index spread fwdStart
     (\r t c dc i s f ->
       maybeWithObject disc
-      (\dsc -> construct $ c_swapRateHelper' r
+      (construct . c_swapRateHelper' r
                                              t
                                              c
                                              (toQlEnum fixedFreq)
@@ -152,6 +152,5 @@ swapRateHelper' rate tenor cal fixedFreq fixedConv fixedDayCount
                                              dc
                                              i
                                              s
-                                             f
-                                             dsc))
+                                             f))
 
