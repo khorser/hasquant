@@ -76,13 +76,6 @@ static int weekdayValues[] =
   , Thursday
   , Friday
   , Saturday
-  , Sun
-  , Mon
-  , Tue
-  , Wed
-  , Thu
-  , Fri
-  , Sat
   };
 
 static int monthValues[] =
@@ -99,17 +92,6 @@ static int monthValues[] =
   , October
   , November
   , December
-  , Jan
-  , Feb
-  , Mar
-  , Apr
-  , Jun
-  , Jul
-  , Aug
-  , Sep
-  , Oct
-  , Nov
-  , Dec
   };
 
 int *qlEnumerationValue(const char *name, int *c) {
