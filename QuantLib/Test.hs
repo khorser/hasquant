@@ -6,7 +6,6 @@ where
 
 import Control.Exception(catch)
 import Data.List(zip4)
-import Data.Word(Word)
 import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
@@ -268,17 +267,17 @@ schedule = TestList
       ~: do tenor <- Period.period 1 Unit.Months
             cal <- Calendar.russia
             s <- Schedule.schedule
-              (Just (fromGregorian 2012 12 20))
-              (fromGregorian 2013 12 21)
+              (Just $ 20 `december` 2012)
+              (21 `december` 2013)
               tenor
               cal
               BusinessDayConvention.Following
               BusinessDayConvention.Unadjusted
               DateGenerationRule.Forward
               False
-              (Just (fromGregorian 2012 12 21))
-              (Just (fromGregorian 2013 12 21))
-            truncated <- Schedule.until s (fromGregorian 2013 4 15)
+              (Just $ 21 `december` 2012)
+              (Just $ 21 `december` 2013)
+            truncated <- Schedule.until s (15 `april` 2013)
             assertEqual "Schedule dates" [fromGregorian 2012 12 20,
                                           fromGregorian 2012 12 21,
                                           fromGregorian 2013 01 21,
@@ -293,7 +292,17 @@ bondval = TestList
   [
     "bond valuation (QuantLib Bond example)"
       ~: do zcBondsDayCounter <- DayCounter.actual365Fixed
+            actact <- DayCounter.actualActualBond
+            tsdc <- DayCounter.actualActualISDA
+            act360 <- DayCounter.actual360
+            thirty360European <- DayCounter.thirty360European
+            act365 <- DayCounter.actual365Fixed
+
             cal <- Calendar.target
+            nyse <- Calendar.unitedStatesNYSE
+            gcal <- Calendar.unitedStatesGovernmentBond
+            nocal <- Calendar.noCalendar
+
             settlementDate <- Calendar.adjust cal
                                               (18 `september` 2008)
                                               BusinessDayConvention.Following
@@ -304,9 +313,7 @@ bondval = TestList
                                             BusinessDayConvention.Following
                                             False
             Settings.setEvaluationDate (Just todaysDate)
-            gcal <- Calendar.unitedStatesGovernmentBond
-            actact <- DayCounter.actualActualBond
-            depoBondHelpers <- mapM
+            discDepoHelpers <- mapM
               (\(q, p) -> do tenor <- Period.period p Unit.Months
                              rate <- Quote.simpleQuote q
                              Yield.depositRateHelper
@@ -320,7 +327,7 @@ bondval = TestList
               $ zip zcQuotes zcTenors
             quotes <- mapM Quote.simpleQuote marketQuotes
             p6m <- Period.fromFrequency Frequency.Semiannual
-            bondBondHelpers <- mapM
+            discBondHelpers <- mapM
               (\(q, c, i, m) -> do s <- Schedule.schedule
                                           i
                                           m
@@ -343,10 +350,9 @@ bondval = TestList
                                      redemption
                                      i)
               $ zip4 quotes couponRates issueDates maturities
-            tsdc <- DayCounter.actualActualISDA
             ts <- Yield.piecewiseYieldCurve
                     settlementDate
-                    (depoBondHelpers ++ bondBondHelpers)
+                    (discDepoHelpers ++ discBondHelpers)
                     tsdc
                     []
                     tolerance
@@ -370,7 +376,6 @@ bondval = TestList
                                                False
                                                Nothing
                                                Nothing
-            nocal <- Calendar.noCalendar
             fixedBond <- Bond.fixedRateBond settlementDays
                                             faceAmount
                                             fixedSchedule
@@ -394,21 +399,17 @@ bondval = TestList
             znpv <- Instrument.npv zcBond
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
 
-            act360 <- DayCounter.actual360
-            thirty360European <- DayCounter.thirty360European
             depoLiborHelpers <-
               mapM (\(q, (n, u)) ->
                 do quote <- Quote.simpleQuote q
                    p <- Period.period n u
                    Yield.depositRateHelper quote p fixingDays cal
                                                   BusinessDayConvention.ModifiedFollowing
-                                                  True act360
-                   )
+                                                  True act360)
                    $ zip liborDepoQuotes liborDepoTerms
 
             eur6M <- Ibor.euribor p6m Nothing
-            v <- Quote.simpleQuote 0.0
-            q0 <- Quote.simpleQuote 0 -- is this the same as empty quote?
+            spread <- Quote.simpleQuote 0
 
             swapLiborHelpers <-
               mapM (\(q, n) ->
@@ -416,7 +417,7 @@ bondval = TestList
                    p <- Period.period n Unit.Years
                    p1d <- Period.period 1 Unit.Days
                    Yield.swapRateHelper' quote p cal Frequency.Annual BusinessDayConvention.Unadjusted
-                                         thirty360European eur6M q0 p1d Nothing)
+                                         thirty360European eur6M spread p1d Nothing)
                     $ zip liborSwapQuotes liborSwapTerms
 
             fwdCurve <- Yield.piecewiseYieldCurve
@@ -433,7 +434,6 @@ bondval = TestList
             Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
 
             pq <- Period.fromFrequency Frequency.Quarterly
-            nyse <- Calendar.unitedStatesNYSE
             floatSchedule <- Schedule.schedule (Just $ fromGregorian 2005 10 21)
                                                (fromGregorian 2010 10 21)
                                                pq
@@ -459,11 +459,11 @@ bondval = TestList
                                              100.0
                                              (Just $ fromGregorian 2005 10 21)
             Instrument.setPricingEngine floater pricing
-            act365 <- DayCounter.actual365Fixed
+            volval <- Quote.simpleQuote 0
             vol <- Vol.constantOptionletVol settlementDays
                                             cal
                                             BusinessDayConvention.ModifiedFollowing
-                                            v
+                                            volval
                                             act365
             couponPricer <- CouponPricer.blackIborCouponPricer vol
             Bond.setCouponPricer floater couponPricer
@@ -477,7 +477,7 @@ bondval = TestList
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
         zcTenors = [3, 6, 12]
-        fixingDays = 3 :: Word
+        fixingDays = 3
         settlementDays = 3
         redemption = 100.0
         faceAmount = 100.0
