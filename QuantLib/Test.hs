@@ -38,7 +38,7 @@ import qualified QuantLib.TermStructure.Yield as Yield
 import qualified QuantLib.TermStructure.Volatility as Vol
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
 import qualified QuantLib.Time.Calendar as Calendar
-import qualified QuantLib.Time.Date as Date
+import QuantLib.Time.Date
 import qualified QuantLib.Time.DateGenerationRule as DateGenerationRule
 import qualified QuantLib.Time.DayCounter as DayCounter
 import qualified QuantLib.Time.Frequency as Frequency
@@ -62,7 +62,7 @@ settings = TestList
             t2 <- today
             assertEqual "default valuation date" t1 t2
   , "null evaluation date"
-      ~: do Settings.setEvaluationDate $ Just (fromGregorian 2012 12 29)
+      ~: do Settings.setEvaluationDate $ Just (december 29 2012)
             t0 <- Settings.evaluationDate
             assertEqual "new valuation date" t0 (fromGregorian 2012 12 29)
             Settings.setEvaluationDate Nothing
@@ -82,11 +82,11 @@ date :: Test
 date = test
   [
     "min date" ~: "min date" ~:
-      Date.minDate ~?= fromGregorian 1901 01 01
+      minDate ~?= fromGregorian 1901 01 01
   , "max date" ~: "max date" ~:
-      Date.maxDate ~?= fromGregorian 2199 12 31
+      maxDate ~?= fromGregorian 2199 12 31
   , "leap years" ~: "leap year" ~:
-      [False, True, False] ~=? map Date.isLeap
+      [False, True, False] ~=? map isLeap
             [ fromGregorian 2100 10 10,
               fromGregorian 2012 1 1,
               fromGregorian 1981 5 5]
@@ -295,7 +295,7 @@ bondval = TestList
       ~: do zcBondsDayCounter <- DayCounter.actual365Fixed
             cal <- Calendar.target
             settlementDate <- Calendar.adjust cal
-                                              (fromGregorian 2008 09 18)
+                                              (18 `september` 2008)
                                               BusinessDayConvention.Following
             todaysDate <- Calendar.advance  cal
                                             settlementDate
@@ -360,8 +360,8 @@ bondval = TestList
             --df <- Yield.discount ts (fromGregorian 2011 08 03) True
             pricing <- Pricing.discountingBondEngine ts
             -- Fixed 4.5% US Treasury Note
-            fixedSchedule <- Schedule.schedule (Just (fromGregorian 2007 05 15))
-                                               (fromGregorian 2017 05 15)
+            fixedSchedule <- Schedule.schedule (Just (15 `may` 2007))
+                                               (15 `may` 2017)
                                                p6m
                                                gcal
                                                BusinessDayConvention.Unadjusted
@@ -378,7 +378,7 @@ bondval = TestList
                                             actact
                                             BusinessDayConvention.ModifiedFollowing
                                             100.0
-                                            (Just (fromGregorian 2007 05 15))
+                                            (Just (15 `may` 2007))
                                             nocal
             Instrument.setPricingEngine fixedBond pricing
             npv <- Instrument.npv fixedBond
@@ -386,10 +386,10 @@ bondval = TestList
             zcBond <- Bond.zeroCouponBond settlementDays
                                          gcal
                                          faceAmount
-                                         (fromGregorian 2013 08 15)
+                                         (15 `august` 2013)
                                          BusinessDayConvention.Following
                                          116.92
-                                         (Just $ fromGregorian 2003 08 15)
+                                         (Just $ 15 `august` 2003)
             Instrument.setPricingEngine zcBond pricing
             znpv <- Instrument.npv zcBond
             assertBool "Zero coupon bond NPV" $ abs(znpv-100.92) < 0.01
@@ -525,13 +525,13 @@ setAndGetEvaluationDateWithExceptions d =
 prop_validEvaluationDate :: Property
 prop_validEvaluationDate = monadicIO
   $ do d1 <- pick arbitrary
-       pre (Date.isValid d1)
+       pre (isValid d1)
        d2 <- run $ setAndGetEvaluationDate d1
        assert $ d1 == d2
 
 prop_invalidEvaluationDate :: Day -> Property
 prop_invalidEvaluationDate d =
-  not (Date.isValid d)
+  not (isValid d)
     ==> monadicIO
           $ do t <- run today
                _ <- run $ Settings.setEvaluationDate (Just t)
@@ -540,14 +540,14 @@ prop_invalidEvaluationDate d =
 
 prop_singleLegStartDate :: (Double, Day) -> Property
 prop_singleLegStartDate flow@(_, d) =
-  Date.isValid d
+  isValid d
     ==> monadicIO
           $ do l <- run $ Leg.leg [flow]
                assert $ d == Leg.startDate l
 
 prop_legStartDate :: [(Double, Day)] -> Property
 prop_legStartDate flows =
-  not (null flows) && all Date.isValid (map snd flows)
+  not (null flows) && all isValid (map snd flows)
     ==> monadicIO
           $ do l <- run $ Leg.leg flows
                assert $ minimum (map snd flows) == Leg.startDate l
@@ -561,7 +561,7 @@ prop_quoteValue val =
 
 prop_scheduleDates :: [Day] -> Property
 prop_scheduleDates dates =
-  all Date.isValid dates
+  all isValid dates
     ==> monadicIO
       $ do c <- run Calendar.russia
            s <- run $ Schedule.schedule' dates c BusinessDayConvention.Unadjusted
