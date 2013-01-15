@@ -152,11 +152,16 @@ instance Finalizable CLeg where
 foreign import ccall safe "ql.h &qlFreeLeg"
   p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
-foreign import ccall safe "ql.h &qlFreeIborIndex"
-  p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
-
 instance Finalizable CIborIndex where
   finalize = p_freeIborIndex
+instance IsA CIndex CIndex where
+  cast = id
+instance IsA CIndex CIborIndex where
+  cast = c_iborAsIndex
+foreign import ccall safe "ql.h &qlFreeIborIndex"
+  p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
+foreign import ccall safe "ql.h qlIborAsIndex"
+  c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
 
 instance Finalizable CBond where
   finalize = p_freeBond
@@ -166,14 +171,14 @@ instance IsA CBond CBond where
   cast = id
 instance IsA CBond CFixedRateBond where
   cast = castPtr
-foreign import ccall safe "ql.h &qlFreeBond"
-  p_freeBond :: FunPtr (Ptr CBond -> IO ())
-foreign import ccall safe "ql.h qlBondAsInstrument"
-  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
 instance IsA CInstrument CBond where
   cast = c_bondAsInstrument
 instance IsA CInstrument CFixedRateBond where
   cast = c_bondAsInstrument . cast -- delegating to the Bond casting interface
+foreign import ccall safe "ql.h &qlFreeBond"
+  p_freeBond :: FunPtr (Ptr CBond -> IO ())
+foreign import ccall safe "ql.h qlBondAsInstrument"
+  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
 
 instance Finalizable COptionletVolStructure where
   finalize = p_freeOptionletVolStructure

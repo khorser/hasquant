@@ -237,11 +237,6 @@ usdLiborON = createIborON "USDLiborON"
 zibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 zibor = createIbor "Zibor"
 
-foreign import ccall safe "ql.h qlIborAsIndex"
-  c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
-
-instance IsA CIndex CIborIndex where
-  cast = c_iborAsIndex
 foreign import ccall safe "ql.h qlIborIndex"
   c_iborIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
     -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter

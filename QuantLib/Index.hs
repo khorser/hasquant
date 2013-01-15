@@ -9,9 +9,6 @@ where
 import QuantLib.Internal
 import QuantLib.Types
 
-instance IsA CIndex CIndex where
-  cast = id
-
 foreign import ccall safe "ql.h qlIndexAddFixing"
   c_indexAddFixing :: Ptr CIndex -> CDate -> CDouble -> CInt -> Ptr CString
     -> IO ()
