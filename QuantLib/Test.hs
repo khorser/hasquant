@@ -471,7 +471,8 @@ bondval = TestList
             fnpv <- Instrument.npv floater
             assertBool "Floating rate bond NPV" $ abs(fnpv-102.36) < 0.01
  
-            -- putStrLn $ "\nData from QL Bond Example (QuantLib-1.2.1 on Windows x86): " ++ show [100.9221782070444 :: Double, 107.66828913260427, 102.35931459949143]
+            -- putStrLn "\nData from QL Bond Example (QuantLib-1.2 on Windows x86): 100.92217820704442, 107.66828913260436 102.35931459949133"
+            -- putStrLn "\nData from QL Bond Example (QuantLib-1.2.1 on Windows x86): 100.9221782070444, 107.66828913260427, 102.35931459949143"
             -- putStrLn $ "Ours: " ++ show [znpv, npv, fnpv]
   ]
   where zcQuotes = [0.0096, 0.0145, 0.0194]
