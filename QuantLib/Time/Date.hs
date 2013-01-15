@@ -1,13 +1,17 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 module QuantLib.Time.Date
   (
-  -- accessors
     minDate
   , maxDate
+
   , isLeap
   , isValid
   , Weekday(..)
   , Month(..)
+
+  , year
+  , month
+  , weekday
 
   , january
   , february
@@ -29,14 +33,6 @@ import Data.Typeable(Typeable)
 
 import QuantLib.Internal
 
--- |returns the earliest date allowed in QuantLib (qlDateMinDate)
-minDate :: Day
-minDate = fromQlDate c_minDateSerialNumber
-
--- |returns the latest date allowed in QuantLib (qlDateMaxDate)
-maxDate :: Day
-maxDate = fromQlDate c_maxDateSerialNumber
-
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
 
@@ -51,6 +47,34 @@ data Weekday = Sunday | Monday | Tuesday | Wednesday | Thursday | Friday
 data Month = January | February | March | April | May | June | July | August
   | September | October | November | December
   deriving (Show, Eq, Enum, Typeable)
+
+-- |returns the earliest date allowed in QuantLib (qlDateMinDate)
+minDate :: Day
+minDate = fromQlDate c_minDateSerialNumber
+
+-- |returns the latest date allowed in QuantLib (qlDateMaxDate)
+maxDate :: Day
+maxDate = fromQlDate c_maxDateSerialNumber
+
+weekday :: Day -> Weekday
+weekday x = fromQlEnum $ c_weekday (toQlDate x)
+
+month :: Day -> Month
+month x = let (_, m, _) = toGregorian x in
+              case m of
+                1 -> January
+                2 -> February
+                3 -> March
+                4 -> April
+                5 -> May
+                6 -> June
+                7 -> July
+                8 -> August
+                9 -> September
+                10 -> October
+                11 -> November
+                12 -> December
+                _  -> signalError "Invalid month number in the date"
 
 january :: Int -> Int -> Day
 january d y = fromGregorian (fromIntegral y) 1 d

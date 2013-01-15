@@ -33,6 +33,8 @@ module QuantLib.Internal
   , withObjects
   , withString2
   , getDynIntArray
+
+  , c_weekday
   -- convertors
   , fromQlDate
   , toQlDate
@@ -88,6 +90,9 @@ foreign import ccall safe "ql.h qlMinMonth"
   c_minMonth :: CInt
 foreign import ccall safe "ql.h qlMinDay"
   c_minDay :: CInt
+
+foreign import ccall safe "ql.h qlWeekday"
+  c_weekday :: CInt -> CInt
 
 signalError :: String -> a
 signalError = throw . Error

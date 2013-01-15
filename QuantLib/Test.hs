@@ -582,6 +582,8 @@ prop_frequencyFromPeriodFromFrequency freq =
 main :: IO ()
 main = do putStrLn $ "QuantLib version " ++ Utilities.version
             ++ ", Boost " ++ Utilities.boostVersion
+          t <- today
+          putStrLn $ "Today is " ++ show (weekday t)
           _ <- runTestTT $ test
             [
               settings

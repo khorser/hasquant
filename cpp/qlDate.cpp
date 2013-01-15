@@ -24,4 +24,8 @@ int qlMinDay() {
   return Date::minDate().dayOfMonth();
 }
 
+int qlWeekday(int date) {
+  return Date(date).weekday();
+}
+
 /* vim: set ft=cpp ff=unix ts=8 sts=2 sw=2: */

@@ -18,6 +18,7 @@ extern "C" {
   int qlMinYear();
   int qlMinMonth();
   int qlMinDay();
+  int qlWeekday(int date);
 
 #ifdef quantlib_cash_flow_hpp
   /* leg */
