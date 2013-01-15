@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.Calendar
   (
   -- accessors
@@ -68,24 +67,10 @@ import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Unit(Unit)
 
-foreign import ccall safe "ql.h qlCalendar"
-  c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
-foreign import ccall safe "ql.h &qlFreeCalendar"
-  p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
-foreign import ccall safe "ql.h qlCalendarName"
-  c_calendarName :: Ptr CCalendar -> IO CString
 foreign import ccall safe "ql.h qlCalendarAdjust"
   c_calendarAdjust :: Ptr CCalendar -> CDate -> CInt -> IO CDate
 foreign import ccall safe "ql.h qlCalendarAdvance"
   c_calendarAdvance :: Ptr CCalendar -> CDate -> CInt -> CInt -> CInt -> CInt -> IO CDate
-
-instance Finalizable CCalendar where
-  finalize = p_freeCalendar
-
-instance NamedSingleton CCalendar where
-  c_construct = c_calendar
-  c_name = c_calendarName
-
 
 -- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
 adjust :: Calendar -> Day -> BusinessDayConvention -> IO Day

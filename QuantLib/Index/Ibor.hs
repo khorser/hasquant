@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface,MultiParamTypeClasses #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Index.Ibor
   (
   -- makers
@@ -41,17 +40,6 @@ import QuantLib.Internal
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 
-foreign import ccall safe "ql.h qlIborIndex"
-  c_iborIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
-    -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter
-    -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CIborIndex)
-foreign import ccall safe "ql.h &qlFreeIborIndex"
-  p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
-
-instance Finalizable CIborIndex where
-  finalize = p_freeIborIndex
-
--- XXX any point in passing Nothing as the term structure?
 -- | (qlIborIndex)
 iborIndex :: String -> Period -> Word -> Currency -> Calendar
   -> BusinessDayConvention -> Bool -> DayCounter -> Maybe YieldTermStructure
@@ -254,3 +242,7 @@ foreign import ccall safe "ql.h qlIborAsIndex"
 
 instance IsA CIndex CIborIndex where
   cast = c_iborAsIndex
+foreign import ccall safe "ql.h qlIborIndex"
+  c_iborIndex :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
+    -> Ptr CCalendar -> CInt -> CInt -> Ptr CDayCounter
+    -> Ptr CYieldTermStructure -> Ptr CString -> IO (Ptr CIborIndex)

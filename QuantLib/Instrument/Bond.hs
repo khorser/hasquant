@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface,MultiParamTypeClasses,FlexibleContexts #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Instrument.Bond
   (
   -- makers
@@ -26,25 +25,12 @@ import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
 import QuantLib.Time.Frequency(Frequency)
 
-instance Finalizable CBond where
-  finalize = p_freeBond
-
-instance Finalizable CFixedRateBond where
-  finalize = castFinalizer p_freeBond
-
-instance IsA CBond CBond where
-  cast = id
-instance IsA CBond CFixedRateBond where
-  cast = castPtr
-
 foreign import ccall safe "ql.h qlBond"
   c_bond :: CUInt -> Ptr CCalendar -> CDate -> Ptr CLeg -> Ptr CString
   -> IO (Ptr CBond)
 foreign import ccall safe "ql.h qlBond1"
   c_bond' :: CUInt -> Ptr CCalendar -> CDouble -> CDate -> CDate -> Ptr CLeg
   -> Ptr CString -> IO (Ptr CBond)
-foreign import ccall safe "ql.h &qlFreeBond"
-  p_freeBond :: FunPtr (Ptr CBond -> IO ())
 foreign import ccall safe "ql.h qlBondMaturityDate"
   c_maturityDate :: Ptr CBond -> IO CDate
 foreign import ccall safe "ql.h qlBondIssueDate"
@@ -162,15 +148,6 @@ fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
 
 frequency :: FixedRateBond -> Frequency
 frequency x = fromQlEnum $ unsafePerformIO (withObject x c_fixedBondFrequency)
-
-foreign import ccall safe "ql.h qlBondAsInstrument"
-  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
-
-instance IsA CInstrument CBond where
-  cast = c_bondAsInstrument
-
-instance IsA CInstrument CFixedRateBond where
-  cast = c_bondAsInstrument . cast -- delegating to the Bond casting interface
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate

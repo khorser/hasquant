@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.CashFlow.Leg
   (
   -- makers
@@ -16,11 +15,6 @@ foreign import ccall safe "ql.h qlLeg"
   c_leg :: CUInt -> Ptr CDouble -> Ptr CDate -> Ptr CString -> IO (Ptr CLeg)
 foreign import ccall safe "ql.h qlLegStartDate"
   c_legStartDate :: Ptr CLeg -> Ptr CString -> IO CDate
-foreign import ccall safe "ql.h &qlFreeLeg"
-  p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
-
-instance Finalizable CLeg where
-  finalize = p_freeLeg
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg

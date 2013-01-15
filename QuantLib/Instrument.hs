@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface,FlexibleContexts,MultiParamTypeClasses #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Instrument
   (
   -- accessors
@@ -13,9 +12,6 @@ import Control.Monad(liftM)
 
 import QuantLib.Internal
 import QuantLib.Types
-
-instance IsA CInstrument CInstrument where
-  cast = id
 
 foreign import ccall safe "ql.h qlInstrumentNPV"
   c_npv :: Ptr CInstrument -> Ptr CString -> IO CDouble

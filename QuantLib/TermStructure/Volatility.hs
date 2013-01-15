@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.TermStructure.Volatility
   (
   -- makers
@@ -11,15 +10,9 @@ import QuantLib.Internal
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 
-foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
-  p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())
-
 foreign import ccall safe "ql.h qlConstantOptionletVol"
   c_constantOptionletVol :: CUInt -> Ptr CCalendar -> CInt -> Ptr CQuote
     -> Ptr CDayCounter -> Ptr CString -> IO (Ptr COptionletVolStructure)
-
-instance Finalizable COptionletVolStructure where
-  finalize = p_freeOptionletVolStructure
 
 -- |(qlConstantOptionletVolatility)
 constantOptionletVol :: Word -> Calendar -> BusinessDayConvention -> Quote

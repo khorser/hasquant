@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.Schedule
   (
   -- makers
@@ -26,13 +25,8 @@ foreign import ccall safe "ql.h qlSchedule1"
   c_schedule' :: CUInt -> Ptr CDate -> Ptr CCalendar -> CInt -> Ptr CString -> IO (Ptr CSchedule)
 foreign import ccall safe "ql.h qlScheduleUntil"
   c_until :: Ptr CSchedule -> CDate -> Ptr CString -> IO (Ptr CSchedule)
-foreign import ccall safe "ql.h &qlFreeSchedule"
-  p_freeSchedule :: FunPtr (Ptr CSchedule -> IO ())
 foreign import ccall safe "ql.h qlScheduleDates"
   c_scheduleDates :: Ptr CSchedule -> Ptr CInt -> IO (Ptr CDate)
-
-instance Finalizable CSchedule where
-  finalize = p_freeSchedule
 
 -- | (qlSchedule)
 schedule :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention

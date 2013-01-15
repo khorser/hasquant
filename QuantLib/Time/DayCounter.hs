@@ -1,5 +1,3 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.DayCounter
   (
   -- makers
@@ -48,20 +46,6 @@ where
 
 import QuantLib.Internal
 import QuantLib.Types
-
-foreign import ccall safe "ql.h qlDayCounter"
-  c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
-foreign import ccall safe "ql.h &qlFreeDayCounter"
-  p_freeDayCounter :: FunPtr (Ptr CDayCounter -> IO ())
-foreign import ccall safe "ql.h qlDayCounterName"
-  c_dayCounterName :: Ptr CDayCounter -> IO CString
-
-instance Finalizable CDayCounter where
-  finalize = p_freeDayCounter
-
-instance NamedSingleton CDayCounter where
-  c_construct = c_dayCounter
-  c_name = c_dayCounterName
 
 dayCounter      :: IO DayCounter
 noDayCounter    :: IO DayCounter

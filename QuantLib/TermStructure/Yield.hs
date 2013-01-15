@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.TermStructure.Yield
   (
   -- types
@@ -23,9 +22,6 @@ import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Frequency(Frequency)
 
-foreign import ccall safe "ql.h &qlFreeRateHelper"
-  p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
-
 foreign import ccall safe "ql.h qlDepositRateHelper"
   c_depositRateHelper :: Ptr CQuote -> Ptr CPeriod -> CUInt -> Ptr CCalendar
     -> CInt -> CInt -> Ptr CDayCounter -> Ptr CString -> IO (Ptr CRateHelper)
@@ -37,9 +33,6 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
   c_piecewiseYieldCurve :: CDate -> CUInt -> Ptr (Ptr CRateHelper)
     -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble
     -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
-
-instance Finalizable CRateHelper where
-  finalize = p_freeRateHelper
 
 data Trait = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
 
@@ -79,14 +72,9 @@ fixedRateBondHelper quote settlDays face sched coupons dayCount conv
                               (realToFrac redemption)
                               (toQlDate issue)))
 
-foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
-  p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
 foreign import ccall safe "ql.h qlYieldTSDiscount"
   c_yieldTSDiscount :: Ptr CYieldTermStructure -> CDate -> CInt
     -> Ptr CString -> IO CDouble
-
-instance Finalizable CYieldTermStructure
-  where finalize = p_freeYieldTermStructure
 
 piecewiseYieldCurve :: Day -> [RateHelper] -> DayCounter
   -> [(Quote, Day)] -> Double -> Trait -> Interpolation

@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Quote
   (
   -- makers
@@ -16,11 +15,6 @@ foreign import ccall safe "ql.h qlSimpleQuote"
   c_simpleQuote :: CDouble -> Ptr CString -> IO (Ptr CQuote)
 foreign import ccall safe "ql.h qlQuoteValue"
   c_quoteValue :: Ptr CQuote -> Ptr CString -> IO CDouble
-foreign import ccall safe "ql.h &qlFreeQuote"
-  p_freeQuote :: FunPtr (Ptr CQuote -> IO ())
-
-instance Finalizable CQuote where
-  finalize = p_freeQuote
 
 -- | (qlSimpleQuote)
 simpleQuote :: Double -> IO Quote

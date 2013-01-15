@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface,FlexibleContexts,MultiParamTypeClasses #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Index
   (
   -- mutators

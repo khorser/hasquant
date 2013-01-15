@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.Time.Period
   (
   -- makers
@@ -17,15 +16,10 @@ import QuantLib.Time.Unit(Unit)
 
 foreign import ccall safe "ql.h qlPeriod"
   c_period :: CInt -> CInt -> Ptr CString -> IO (Ptr CPeriod)
-foreign import ccall safe "ql.h &qlFreePeriod"
-  p_freePeriod :: FunPtr (Ptr CPeriod -> IO ())
 foreign import ccall safe "ql.h qlPeriodFromFrequency"
   c_periodFromFreq :: CInt -> Ptr CString -> IO (Ptr CPeriod)
 foreign import ccall safe "ql.h qlPeriodToFrequency"
   c_periodToFreq :: Ptr CPeriod -> Ptr CString -> IO CInt
-
-instance Finalizable CPeriod where
-  finalize = p_freePeriod
 
 period :: Int -> Unit -> IO Period
 period n u = construct $ c_period (fromIntegral n) (toQlEnum u)

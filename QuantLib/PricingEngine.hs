@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.PricingEngine
   (
   -- makers
@@ -9,12 +8,6 @@ where
 
 import QuantLib.Internal
 import QuantLib.Types
-
-foreign import ccall safe "ql.h &qlFreePricingEngine"
-  p_freePricingEngine :: FunPtr (Ptr CPricingEngine -> IO ())
-
-instance Finalizable CPricingEngine where
-  finalize = p_freePricingEngine
 
 foreign import ccall safe "ql.h qlDiscountingBondEngine"
   c_discountingBondEngine :: Ptr CYieldTermStructure -> Ptr CString

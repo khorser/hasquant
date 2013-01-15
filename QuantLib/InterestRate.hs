@@ -1,5 +1,4 @@
 {-# LANGUAGE ForeignFunctionInterface #-}
-{-# OPTIONS_GHC -fno-warn-orphans #-}
 module QuantLib.InterestRate
   (
   -- makers
@@ -15,11 +14,6 @@ import QuantLib.Types
 foreign import ccall safe "ql.h qlInterestRate"
   c_interestRate :: CDouble -> Ptr CDayCounter -> CInt -> CInt
     -> Ptr CString -> IO (Ptr CInterestRate)
-foreign import ccall safe "ql.h &qlFreeInterestRate"
-  p_freeInterestRate :: FunPtr (Ptr CInterestRate -> IO ())
-
-instance Finalizable CInterestRate where
-  finalize = p_freeInterestRate
 
 -- | (qlInterestRate)
 interestRate :: Double -> DayCounter -> Compounding -> Frequency
