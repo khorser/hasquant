@@ -291,22 +291,21 @@ bondval :: Test
 bondval = TestList
   [
     "bond valuation (QuantLib Bond example)"
-      ~: do zcBondsDayCounter <- DayCounter.actual365Fixed
-            actact <- DayCounter.actualActualBond
-            tsdc <- DayCounter.actualActualISDA
-            act360 <- DayCounter.actual360
+      ~: do actual365Fixed <- DayCounter.actual365Fixed
+            actActBond <- DayCounter.actualActualBond
+            actActISDA <- DayCounter.actualActualISDA
+            actual360 <- DayCounter.actual360
             thirty360European <- DayCounter.thirty360European
-            act365 <- DayCounter.actual365Fixed
 
-            cal <- Calendar.target
-            nyse <- Calendar.unitedStatesNYSE
-            gcal <- Calendar.unitedStatesGovernmentBond
+            targetCal <- Calendar.target
+            nyseCal <- Calendar.unitedStatesNYSE
+            usGovBondCal <- Calendar.unitedStatesGovernmentBond
             nocal <- Calendar.noCalendar
 
-            settlementDate <- Calendar.adjust cal
+            settlementDate <- Calendar.adjust targetCal
                                               (18 `september` 2008)
                                               BusinessDayConvention.Following
-            todaysDate <- Calendar.advance  cal
+            todaysDate <- Calendar.advance  targetCal
                                             settlementDate
                                             (-(fromIntegral fixingDays))
                                             Unit.Days
@@ -320,10 +319,10 @@ bondval = TestList
                                rate
                                tenor
                                fixingDays
-                               cal
+                               targetCal
                                BusinessDayConvention.ModifiedFollowing
                                True
-                               zcBondsDayCounter)
+                               actual365Fixed)
               $ zip zcQuotes zcTenors
             quotes <- mapM Quote.simpleQuote marketQuotes
             p6m <- Period.fromFrequency Frequency.Semiannual
@@ -332,7 +331,7 @@ bondval = TestList
                                           i
                                           m
                                           p6m
-                                          gcal
+                                          usGovBondCal
                                           BusinessDayConvention.Unadjusted
                                           BusinessDayConvention.Unadjusted
                                           DateGenerationRule.Backward
@@ -345,7 +344,7 @@ bondval = TestList
                                      100.0
                                      s
                                      [c]
-                                     actact
+                                     actActBond
                                      BusinessDayConvention.Unadjusted
                                      redemption
                                      i)
@@ -353,7 +352,7 @@ bondval = TestList
             ts <- Yield.piecewiseYieldCurve
                     settlementDate
                     (discDepoHelpers ++ discBondHelpers)
-                    tsdc
+                    actActISDA
                     []
                     tolerance
                     Yield.Discount
@@ -369,7 +368,7 @@ bondval = TestList
             fixedSchedule <- Schedule.schedule (Just (15 `may` 2007))
                                                (15 `may` 2017)
                                                p6m
-                                               gcal
+                                               usGovBondCal
                                                BusinessDayConvention.Unadjusted
                                                BusinessDayConvention.Unadjusted
                                                DateGenerationRule.Backward
@@ -380,7 +379,7 @@ bondval = TestList
                                             faceAmount
                                             fixedSchedule
                                             [0.045]
-                                            actact
+                                            actActBond
                                             BusinessDayConvention.ModifiedFollowing
                                             100.0
                                             (Just (15 `may` 2007))
@@ -389,7 +388,7 @@ bondval = TestList
             npv <- Instrument.npv fixedBond
             assertBool "Fixed rate bond NPV" $ abs(npv-107.67) < 0.01
             zcBond <- Bond.zeroCouponBond settlementDays
-                                         gcal
+                                         usGovBondCal
                                          faceAmount
                                          (15 `august` 2013)
                                          BusinessDayConvention.Following
@@ -403,9 +402,9 @@ bondval = TestList
               mapM (\(q, (n, u)) ->
                 do quote <- Quote.simpleQuote q
                    p <- Period.period n u
-                   Yield.depositRateHelper quote p fixingDays cal
+                   Yield.depositRateHelper quote p fixingDays targetCal
                                                   BusinessDayConvention.ModifiedFollowing
-                                                  True act360)
+                                                  True actual360)
                    $ zip liborDepoQuotes liborDepoTerms
 
             eur6M <- Ibor.euribor p6m Nothing
@@ -416,14 +415,14 @@ bondval = TestList
                 do quote <- Quote.simpleQuote q
                    p <- Period.period n Unit.Years
                    p1d <- Period.period 1 Unit.Days
-                   Yield.swapRateHelper' quote p cal Frequency.Annual BusinessDayConvention.Unadjusted
+                   Yield.swapRateHelper' quote p targetCal Frequency.Annual BusinessDayConvention.Unadjusted
                                          thirty360European eur6M spread p1d Nothing)
                     $ zip liborSwapQuotes liborSwapTerms
 
             fwdCurve <- Yield.piecewiseYieldCurve
                           settlementDate
                           (depoLiborHelpers ++ swapLiborHelpers)
-                          tsdc
+                          actActISDA
                           []
                           tolerance
                           Yield.Discount
@@ -437,7 +436,7 @@ bondval = TestList
             floatSchedule <- Schedule.schedule (Just $ fromGregorian 2005 10 21)
                                                (fromGregorian 2010 10 21)
                                                pq
-                                               nyse
+                                               nyseCal
                                                BusinessDayConvention.Unadjusted
                                                BusinessDayConvention.Unadjusted
                                                DateGenerationRule.Backward
@@ -448,7 +447,7 @@ bondval = TestList
                                              faceAmount
                                              floatSchedule
                                              usd3m
-                                             act360
+                                             actual360
                                              BusinessDayConvention.ModifiedFollowing
                                              2
                                              [1.0]
@@ -461,10 +460,10 @@ bondval = TestList
             Instrument.setPricingEngine floater pricing
             volval <- Quote.simpleQuote 0
             vol <- Vol.constantOptionletVol settlementDays
-                                            cal
+                                            targetCal
                                             BusinessDayConvention.ModifiedFollowing
                                             volval
-                                            act365
+                                            actual365Fixed
             couponPricer <- CouponPricer.blackIborCouponPricer vol
             Bond.setCouponPricer floater couponPricer
 
