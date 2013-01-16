@@ -1,96 +1,101 @@
 {-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses #-}
 module QuantLib.Types
   (
-    CRateHelper
-  , RateHelper
+  -- cashflows
+    CLeg, Leg
+  , CFloatingRateCouponPricer, FloatingRateCouponPricer
 
-  , CCurrency
-  , Currency
+  -- curencies
+  , CCurrency, Currency
 
-  , CIndex
-  , Index
+  -- indexes
+  , CIndex, Index
+  , CIborIndex, IborIndex
 
-  , CInstrument
-  , Instrument
+  -- instruments
+  , CInstrument, Instrument
+  , CBond, Bond
+  , CFixedRateBond, FixedRateBond
 
-  , CInterestRate
-  , InterestRate
+  -- pricingengines
+  , CPricingEngine, PricingEngine
 
-  , CPricingEngine
-  , PricingEngine
+  -- termstructures
+  , CRateHelper, RateHelper
+  , CYieldTermStructure, YieldTermStructure
+  , CVolTermStructure, VolTermStructure
+  , COptionletVolStructure, OptionletVolStructure
 
-  , CQuote
-  , Quote
+  -- time
+  , CCalendar, Calendar
+  , CDayCounter, DayCounter
+  , CPeriod, Period
+  , CSchedule, Schedule
 
-  , CFloatingRateCouponPricer
-  , FloatingRateCouponPricer
-
-  , CLeg
-  , Leg
-
-  , CIborIndex
-  , IborIndex
-
-  , CBond
-  , Bond
-
-  , CFixedRateBond
-  , FixedRateBond
-
-  , CVolTermStructure
-  , VolTermStructure
-
-  , COptionletVolStructure
-  , OptionletVolStructure
-
-  , CYieldTermStructure
-  , YieldTermStructure
-
-  , CCalendar
-  , Calendar
-
-  , CDayCounter
-  , DayCounter
-
-  , CPeriod
-  , Period
-
-  , CSchedule
-  , Schedule
+  -- common
+  , CInterestRate, InterestRate
+  , CQuote, Quote
   )
 where
 
 import QuantLib.Internal
 
-data CRateHelper
-type RateHelper = Object CRateHelper
+-- cashflows
+data CLeg
+type Leg = Object CLeg
 
-data CCurrency
-type Currency = Object CCurrency
-
-data CIndex
-type Index = Object CIndex
-
-data CInstrument
-type Instrument = Object CInstrument
-
-data CInterestRate
-type InterestRate = Object CInterestRate
-
-data CPricingEngine
-type PricingEngine = Object CPricingEngine
-
-data CQuote
-type Quote = Object CQuote
+instance Finalizable CLeg where
+  finalize = p_freeLeg
+foreign import ccall safe "ql.h &qlFreeLeg"
+  p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
 data CFloatingRateCouponPricer
 type FloatingRateCouponPricer = Object CFloatingRateCouponPricer
 
-data CLeg
-type Leg = Object CLeg
+instance Finalizable CFloatingRateCouponPricer where
+  finalize = p_freeFloatingCouponPricer
+foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
+  p_freeFloatingCouponPricer :: FunPtr (Ptr CFloatingRateCouponPricer -> IO ())
+
+-- currencies
+data CCurrency
+type Currency = Object CCurrency
+
+instance Finalizable CCurrency where
+  finalize = p_freeCurrency
+foreign import ccall safe "ql.h &qlFreeCurrency"
+  p_freeCurrency :: FunPtr (Ptr CCurrency -> IO ())
+
+instance NamedSingleton CCurrency where
+  c_construct = c_currency
+  c_name = c_currencyName
+foreign import ccall safe "ql.h qlCurrency"
+  c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)
+foreign import ccall safe "ql.h qlCurrencyName"
+  c_currencyName :: Ptr CCurrency -> IO CString
+
+-- indexes
+data CIndex
+type Index = Object CIndex
 
 data CIborIndex
 type IborIndex = Object CIborIndex
+
+instance Finalizable CIborIndex where
+  finalize = p_freeIborIndex
+foreign import ccall safe "ql.h &qlFreeIborIndex"
+  p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
+
+instance IsA CIndex CIndex where
+  cast = id
+instance IsA CIndex CIborIndex where
+  cast = c_iborAsIndex
+foreign import ccall safe "ql.h qlIborAsIndex"
+  c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
+
+-- instruments
+data CInstrument
+type Instrument = Object CInstrument
 
 data CBond
 type Bond = Object CBond
@@ -98,15 +103,65 @@ type Bond = Object CBond
 data CFixedRateBond
 type FixedRateBond = Object CFixedRateBond
 
+instance Finalizable CBond where
+  finalize = p_freeBond
+instance Finalizable CFixedRateBond where
+  finalize = castFinalizer p_freeBond
+foreign import ccall safe "ql.h &qlFreeBond"
+  p_freeBond :: FunPtr (Ptr CBond -> IO ())
+
+instance IsA CInstrument CInstrument where
+  cast = id
+instance IsA CInstrument CBond where
+  cast = c_bondAsInstrument
+instance IsA CInstrument CFixedRateBond where
+  cast = c_bondAsInstrument . cast -- delegating to the Bond casting interface
+foreign import ccall safe "ql.h qlBondAsInstrument"
+  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
+
+instance IsA CBond CBond where
+  cast = id
+instance IsA CBond CFixedRateBond where
+  cast = castPtr
+
+-- pricingengines
+data CPricingEngine
+type PricingEngine = Object CPricingEngine
+
+instance Finalizable CPricingEngine where
+  finalize = p_freePricingEngine
+foreign import ccall safe "ql.h &qlFreePricingEngine"
+  p_freePricingEngine :: FunPtr (Ptr CPricingEngine -> IO ())
+
+-- termstructures
+data CRateHelper
+type RateHelper = Object CRateHelper
+
+data CYieldTermStructure
+type YieldTermStructure = Object CYieldTermStructure
+
 data CVolTermStructure
 type VolTermStructure = Object CVolTermStructure
 
 data COptionletVolStructure
 type OptionletVolStructure = Object COptionletVolStructure
 
-data CYieldTermStructure
-type YieldTermStructure = Object CYieldTermStructure
+instance Finalizable CRateHelper where
+  finalize = p_freeRateHelper
+foreign import ccall safe "ql.h &qlFreeRateHelper"
+  p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
 
+instance Finalizable CYieldTermStructure
+  where finalize = p_freeYieldTermStructure
+foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
+  p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
+
+instance Finalizable COptionletVolStructure where
+  finalize = p_freeOptionletVolStructure
+foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
+  p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())
+
+-- time
 data CCalendar
 type Calendar = Object CCalendar
 
@@ -119,89 +174,14 @@ type Period = Object CPeriod
 data CSchedule
 type Schedule = Object CSchedule
 
-instance Finalizable CCurrency where
-  finalize = p_freeCurrency
-instance NamedSingleton CCurrency where
-  c_construct = c_currency
-  c_name = c_currencyName
-foreign import ccall safe "ql.h &qlFreeCurrency"
-  p_freeCurrency :: FunPtr (Ptr CCurrency -> IO ())
-foreign import ccall safe "ql.h &qlFreeInterestRate"
-  p_freeInterestRate :: FunPtr (Ptr CInterestRate -> IO ())
-
-instance Finalizable CInterestRate where
-  finalize = p_freeInterestRate
-foreign import ccall safe "ql.h &qlFreePricingEngine"
-  p_freePricingEngine :: FunPtr (Ptr CPricingEngine -> IO ())
-
-instance Finalizable CPricingEngine where
-  finalize = p_freePricingEngine
-
-instance Finalizable CQuote where
-  finalize = p_freeQuote
-foreign import ccall safe "ql.h &qlFreeQuote"
-  p_freeQuote :: FunPtr (Ptr CQuote -> IO ())
-
-instance Finalizable CFloatingRateCouponPricer where
-  finalize = p_freeFloatingCouponPricer
-foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
-  p_freeFloatingCouponPricer :: FunPtr (Ptr CFloatingRateCouponPricer -> IO ())
-
-instance Finalizable CLeg where
-  finalize = p_freeLeg
-foreign import ccall safe "ql.h &qlFreeLeg"
-  p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
-
-instance Finalizable CIborIndex where
-  finalize = p_freeIborIndex
-instance IsA CIndex CIndex where
-  cast = id
-instance IsA CIndex CIborIndex where
-  cast = c_iborAsIndex
-foreign import ccall safe "ql.h &qlFreeIborIndex"
-  p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
-foreign import ccall safe "ql.h qlIborAsIndex"
-  c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
-
-instance Finalizable CBond where
-  finalize = p_freeBond
-instance Finalizable CFixedRateBond where
-  finalize = castFinalizer p_freeBond
-instance IsA CBond CBond where
-  cast = id
-instance IsA CBond CFixedRateBond where
-  cast = castPtr
-instance IsA CInstrument CBond where
-  cast = c_bondAsInstrument
-instance IsA CInstrument CFixedRateBond where
-  cast = c_bondAsInstrument . cast -- delegating to the Bond casting interface
-foreign import ccall safe "ql.h &qlFreeBond"
-  p_freeBond :: FunPtr (Ptr CBond -> IO ())
-foreign import ccall safe "ql.h qlBondAsInstrument"
-  c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
-
-instance Finalizable COptionletVolStructure where
-  finalize = p_freeOptionletVolStructure
-foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
-  p_freeOptionletVolStructure :: FunPtr (Ptr COptionletVolStructure -> IO ())
-
-instance Finalizable CRateHelper where
-  finalize = p_freeRateHelper
-foreign import ccall safe "ql.h &qlFreeRateHelper"
-  p_freeRateHelper :: FunPtr (Ptr CRateHelper -> IO ())
-
-instance Finalizable CYieldTermStructure
-  where finalize = p_freeYieldTermStructure
-foreign import ccall safe "ql.h &qlFreeYieldTermStructure"
-  p_freeYieldTermStructure :: FunPtr (Ptr CYieldTermStructure -> IO ())
-
 instance Finalizable CCalendar where
   finalize = p_freeCalendar
+foreign import ccall safe "ql.h &qlFreeCalendar"
+  p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
+
 instance NamedSingleton CCalendar where
   c_construct = c_calendar
   c_name = c_calendarName
-foreign import ccall safe "ql.h &qlFreeCalendar"
-  p_freeCalendar :: FunPtr (Ptr CCalendar -> IO ())
 foreign import ccall safe "ql.h qlCalendar"
   c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
 foreign import ccall safe "ql.h qlCalendarName"
@@ -209,11 +189,12 @@ foreign import ccall safe "ql.h qlCalendarName"
 
 instance Finalizable CDayCounter where
   finalize = p_freeDayCounter
+foreign import ccall safe "ql.h &qlFreeDayCounter"
+  p_freeDayCounter :: FunPtr (Ptr CDayCounter -> IO ())
+
 instance NamedSingleton CDayCounter where
   c_construct = c_dayCounter
   c_name = c_dayCounterName
-foreign import ccall safe "ql.h &qlFreeDayCounter"
-  p_freeDayCounter :: FunPtr (Ptr CDayCounter -> IO ())
 foreign import ccall safe "ql.h qlDayCounter"
   c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
 foreign import ccall safe "ql.h qlDayCounterName"
@@ -228,10 +209,20 @@ instance Finalizable CSchedule where
   finalize = p_freeSchedule
 foreign import ccall safe "ql.h &qlFreeSchedule"
   p_freeSchedule :: FunPtr (Ptr CSchedule -> IO ())
-foreign import ccall safe "ql.h qlCurrency"
-  c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)
-foreign import ccall safe "ql.h qlCurrencyName"
-  c_currencyName :: Ptr CCurrency -> IO CString
 
-instance IsA CInstrument CInstrument where
-  cast = id
+-- common
+data CInterestRate
+type InterestRate = Object CInterestRate
+
+data CQuote
+type Quote = Object CQuote
+
+instance Finalizable CInterestRate where
+  finalize = p_freeInterestRate
+foreign import ccall safe "ql.h &qlFreeInterestRate"
+  p_freeInterestRate :: FunPtr (Ptr CInterestRate -> IO ())
+
+instance Finalizable CQuote where
+  finalize = p_freeQuote
+foreign import ccall safe "ql.h &qlFreeQuote"
+  p_freeQuote :: FunPtr (Ptr CQuote -> IO ())
