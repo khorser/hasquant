@@ -94,14 +94,6 @@ namespace QuantLibAddin {
         }
 
         {
-            ObjectHandler::Create<QuantLib::Compounding> create;
-            create.registerType("Compounded", new QuantLib::Compounding(QuantLib::Compounded));
-            create.registerType("Continuous", new QuantLib::Compounding(QuantLib::Continuous));
-            create.registerType("Simple", new QuantLib::Compounding(QuantLib::Simple));
-            create.registerType("SimpleThenCompounded", new QuantLib::Compounding(QuantLib::SimpleThenCompounded));
-        }
-
-        {
             ObjectHandler::Create<QuantLib::CubicInterpolation::BoundaryCondition> create;
             create.registerType("FirstDerivative", new QuantLib::CubicInterpolation::BoundaryCondition(QuantLib::CubicInterpolation::FirstDerivative));
             create.registerType("Lagrange", new QuantLib::CubicInterpolation::BoundaryCondition(QuantLib::CubicInterpolation::Lagrange));

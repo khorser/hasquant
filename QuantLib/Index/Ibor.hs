@@ -13,7 +13,7 @@ module QuantLib.Index.Ibor
   , cadLiborON
   , cdor
   , chfLibor
-  , dailyTenorChfLibor
+  , dailyTenorCHFLibor
   , dkkLibor
   , eonia
   , eurLibor
@@ -30,7 +30,7 @@ module QuantLib.Index.Ibor
   , tibor
   , trLibor
   , usdLibor
-  , dailyTenorUsdLibor
+  , dailyTenorUSDLibor
   , usdLiborON
   , zibor
   )
@@ -175,8 +175,8 @@ cdor = createIbor "Cdor"
 chfLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 chfLibor = createIbor "CHFLibor"
 
-dailyTenorChfLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
-dailyTenorChfLibor = createDailyTenorLibor "DailyTenorCHFLibor"
+dailyTenorCHFLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorCHFLibor = createDailyTenorLibor "DailyTenorCHFLibor"
 
 dkkLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 dkkLibor = createIbor "DKKLibor"
@@ -228,8 +228,8 @@ trLibor = createIbor "TRLibor"
 usdLibor :: Period -> Maybe YieldTermStructure -> IO IborIndex
 usdLibor = createIbor "USDLibor"
 
-dailyTenorUsdLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
-dailyTenorUsdLibor = createDailyTenorLibor "DailyTenorUSDLibor"
+dailyTenorUSDLibor :: Word -> Maybe YieldTermStructure -> IO IborIndex
+dailyTenorUSDLibor = createDailyTenorLibor "DailyTenorUSDLibor"
 
 usdLiborON :: Maybe YieldTermStructure -> IO IborIndex
 usdLiborON = createIborON "USDLiborON"
