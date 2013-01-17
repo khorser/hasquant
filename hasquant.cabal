@@ -84,7 +84,7 @@ Executable Test
   Else
     Buildable:  False
 
-  Main-Is:             QuantLib/Test.hs
+  Main-Is:             QuantLib/Test/Main.hs
   GHC-Options:         -Wall
   Build-Depends:        base == 4.5.*
                         , QuickCheck >=2.5

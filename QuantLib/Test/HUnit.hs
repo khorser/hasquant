@@ -1,5 +1,5 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
-module QuantLib.HUnit (htf_thisModulesTests)
+module QuantLib.Test.HUnit (htf_thisModulesTests)
 where
 
 import Test.Framework

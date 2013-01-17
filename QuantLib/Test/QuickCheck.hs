@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -F -pgmF htfpp #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
-module QuantLib.QuickCheck(htf_thisModulesTests)
+module QuantLib.Test.QuickCheck(htf_thisModulesTests)
 
 where
 
