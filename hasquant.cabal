@@ -90,6 +90,7 @@ Executable Test
                         , QuickCheck >=2.5
                         , HUnit >= 1.2.4.2
                         , time >= 1.4
+                        , HTF == 0.10.*
                         , hasquant
   Extra-Libraries:     QuantLib stdc++
   If os(windows)
