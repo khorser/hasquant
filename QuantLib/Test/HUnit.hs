@@ -4,12 +4,10 @@ where
 
 import Test.Framework
 
-import Control.Exception(catch)
 import Data.List(zip4)
 import Data.Time.Calendar(Day, fromGregorian, addDays)
 import Data.Time.Clock(getCurrentTime)
 import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
-import Prelude hiding(catch)
 import System.Mem(performGC)
 
 import qualified QuantLib.CashFlow.Leg as Leg
@@ -80,11 +78,8 @@ test_leapYears = assertEqual
                   (map isLeap [fromGregorian 2100 10 10, fromGregorian 2012 1 1, fromGregorian 1981 5 5])
 
 test_emptyLegStart :: IO ()
-test_emptyLegStart = catch
-                      (do l <- Leg.leg []
-                          print $ Leg.startDate l
-                          assertFailure "start date of empty leg didn't return an error")
-                      (\e -> assertBool (not (null (Error.message e))))
+test_emptyLegStart = do l <- Leg.leg []
+                        assertThrows (Leg.startDate l) (not . null . Error.message)
 
 test_singleLegToday :: IO ()
 test_singleLegToday = do  t <- today
@@ -473,7 +468,7 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                 liborSwapTerms = [2, 3, 5, 10, 15]
 
 test_final :: IO ()
-test_final = do performGC
+test_final = performGC
           -- if we don't do GC we have a chance of getting 
           -- "could not notify one or more observers: year 2200 out of bounds"
           -- from one of the outstanding rate helpers
