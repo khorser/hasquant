@@ -19,15 +19,7 @@ Flag buildTest
   Description:      Build Test
   Default:          True
 
-Flag buildLib
-  Description:      Build library
-  Default:          False
-
 Library
-  If flag(buildLib)
-    Buildable:  True
-  Else
-    Buildable:  False
   Exposed-modules:     
      QuantLib.Instrument.Bond
    , QuantLib.Time.BusinessDayConvention
@@ -94,31 +86,12 @@ Executable Test
 
   Main-Is:             QuantLib/Test.hs
   GHC-Options:         -Wall
-  C-Sources:           cpp/qlBond.cpp
-                        cpp/qlCalendar.cpp
-                        cpp/qlCouponPricer.cpp
-                        cpp/qlCurrency.cpp
-                        cpp/qlDate.cpp
-                        cpp/qlDayCounter.cpp
-                        cpp/qlEnumerations.cpp
-                        cpp/qlIborIndex.cpp
-                        cpp/qlIndex.cpp
-                        cpp/qlInterestRate.cpp
-                        cpp/qlInstrument.cpp
-                        cpp/qlLeg.cpp
-                        cpp/qlPeriod.cpp
-                        cpp/qlPricingEngine.cpp
-                        cpp/qlQuote.cpp
-                        cpp/qlSchedule.cpp
-                        cpp/qlSettings.cpp
-                        cpp/qlUtilities.cpp
-                        cpp/qlVolatilityTS.cpp
-                        cpp/qlYieldTS.cpp
-                        cpp/qlYieldTSAux.cpp
-  Include-Dirs:        cpp
-  Build-Depends:       base == 4.5.*, QuickCheck >=2.5, HUnit >= 1.2.4.2, time >= 1.4
+  Build-Depends:        base == 4.5.*
+                        , QuickCheck >=2.5
+                        , HUnit >= 1.2.4.2
+                        , time >= 1.4
+                        , hasquant
   Extra-Libraries:     QuantLib stdc++
-  -- don't we really need -static-libstdc++ -static-libgcc?
   If os(windows)
     LD-Options:        -static
 
