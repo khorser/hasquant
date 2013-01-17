@@ -15,16 +15,83 @@ Build-Type:          Simple
 Cabal-Version:       >=1.8
 --tested-with:       GHC-7.4.2
 
---Extra-Source-Files:  cpp/qlDate.cpp cpp/qlLeg.cpp cpp/qlSettings.cpp cpp/qlUtilities.cpp
+Flag buildTest
+  Description:      Build Test
+  Default:          True
 
--- library
---   exposed-modules:     QuantLib.Utilities, QuantLib.Settings, QuantLib.Leg, QuantLib.Error, QuantLib.Date
---   other-modules:       QuantLib.Internal
---   ghc-options:              -Wall
---   build-depends:       base == 4.5.*, time >= 1.4
---   include-dirs:        cpp
+Flag buildLib
+  Description:      Build library
+  Default:          False
+
+Library
+  If flag(buildLib)
+    Buildable:  True
+  Else
+    Buildable:  False
+  Exposed-modules:     
+     QuantLib.Instrument.Bond
+   , QuantLib.Time.BusinessDayConvention
+   , QuantLib.Time.Calendar
+   , QuantLib.Compounding
+   , QuantLib.CashFlow.CouponPricer
+   , QuantLib.Currency
+   , QuantLib.Time.Date
+   , QuantLib.Time.DateGenerationRule
+   , QuantLib.Time.DayCounter
+   , QuantLib.Error
+   , QuantLib.Time.Frequency
+   , QuantLib.Index.Ibor
+   , QuantLib.Index
+   , QuantLib.Instrument
+   , QuantLib.InterestRate
+   , QuantLib.Math.Interpolation
+   , QuantLib.CashFlow.Leg
+   , QuantLib.Time.Period
+   , QuantLib.PricingEngine
+   , QuantLib.Quote
+   , QuantLib.Time.Schedule
+   , QuantLib.Settings
+   , QuantLib.Types
+   , QuantLib.Time.Unit
+   , QuantLib.Utilities
+   , QuantLib.TermStructure.Volatility
+   , QuantLib.TermStructure.Yield   
+  
+  Other-modules:       QuantLib.Internal
+  Ghc-options:         -Wall
+  Build-depends:       base == 4.5.*, time >= 1.4
+
+  C-Sources:           cpp/qlBond.cpp
+                        cpp/qlCalendar.cpp
+                        cpp/qlCouponPricer.cpp
+                        cpp/qlCurrency.cpp
+                        cpp/qlDate.cpp
+                        cpp/qlDayCounter.cpp
+                        cpp/qlEnumerations.cpp
+                        cpp/qlIborIndex.cpp
+                        cpp/qlIndex.cpp
+                        cpp/qlInterestRate.cpp
+                        cpp/qlInstrument.cpp
+                        cpp/qlLeg.cpp
+                        cpp/qlPeriod.cpp
+                        cpp/qlPricingEngine.cpp
+                        cpp/qlQuote.cpp
+                        cpp/qlSchedule.cpp
+                        cpp/qlSettings.cpp
+                        cpp/qlUtilities.cpp
+                        cpp/qlVolatilityTS.cpp
+                        cpp/qlYieldTS.cpp
+                        cpp/qlYieldTSAux.cpp
+  Extra-Libraries:     QuantLib stdc++
+  Include-Dirs:        cpp
 --   install-includes:    ql.h
+
 Executable Test
+  If flag(buildTest)
+    Buildable:  True
+  Else
+    Buildable:  False
+
   Main-Is:             QuantLib/Test.hs
   GHC-Options:         -Wall
   C-Sources:           cpp/qlBond.cpp
