@@ -71,26 +71,24 @@ prop_validEvaluationDate = monadicIO
        assert $ validDay d1 == d2
 
 prop_invalidEvaluationDate :: InvalidDay -> Property
-prop_invalidEvaluationDate (InvalidDay d) =
-  monadicIO
-    $ do t <- run today
-         _ <- run $ Settings.setEvaluationDate (Just t)
-         -- TODO use assertThrowsIO
-         d2 <- run $ setAndGetEvaluationDateWithExceptions d
-         assert $ t == d2
+prop_invalidEvaluationDate (InvalidDay d) = monadicIO
+  $ do t <- run today
+       _ <- run $ Settings.setEvaluationDate (Just t)
+       -- TODO use assertThrowsIO
+       d2 <- run $ setAndGetEvaluationDateWithExceptions d
+       assert $ t == d2
 
 prop_singleLegStartDate :: (Double, ValidDay) -> Property
-prop_singleLegStartDate (a, ValidDay d) =
-  monadicIO
-    $ do  l <- run $ Leg.leg [(a, d)]
-          assert $ d == Leg.startDate l
+prop_singleLegStartDate (a, ValidDay d) = monadicIO
+  $ do  l <- run $ Leg.leg [(a, d)]
+        assert $ d == Leg.startDate l
 
 prop_legStartDate :: [(Double, ValidDay)] -> Property
 prop_legStartDate flows =
   not (null flows)
-    ==> monadicIO
-          $ do l <- run $ Leg.leg f
-               assert $ minimum ds == Leg.startDate l
+  ==> monadicIO
+        $ do l <- run $ Leg.leg f
+             assert $ minimum ds == Leg.startDate l
         where (a, d) = unzip flows
               ds = map validDay d
               f = zip a ds
@@ -98,16 +96,15 @@ prop_legStartDate flows =
 prop_quoteValue :: Double -> Property
 prop_quoteValue val =
   val > 0
-    ==> monadicIO
-          $ do q <- run $ Quote.simpleQuote val
-               assert $ Quote.value q == val
+  ==> monadicIO
+        $ do q <- run $ Quote.simpleQuote val
+             assert $ Quote.value q == val
 
 prop_scheduleDates :: [ValidDay] -> Property
-prop_scheduleDates dates =
-  monadicIO
-      $ do c <- run Calendar.russia
-           s <- run $ Schedule.schedule' (map validDay dates) c BusinessDayConvention.Unadjusted
-           assert $ map validDay dates == Schedule.dates s
+prop_scheduleDates dates = monadicIO
+  $ do c <- run Calendar.russia
+       s <- run $ Schedule.schedule' (map validDay dates) c BusinessDayConvention.Unadjusted
+       assert $ map validDay dates == Schedule.dates s
 
 instance Arbitrary Frequency.Frequency where
   arbitrary = arbitraryBoundedEnum
@@ -115,6 +112,6 @@ instance Arbitrary Frequency.Frequency where
 prop_frequencyFromPeriodFromFrequency :: Frequency.Frequency -> Property
 prop_frequencyFromPeriodFromFrequency freq =
   freq /= Frequency.OtherFrequency
-    ==> monadicIO
-      $ do p <- run $ Period.fromFrequency freq
-           assert $ Period.toFrequency p == freq
+  ==> monadicIO
+    $ do p <- run $ Period.fromFrequency freq
+         assert $ Period.toFrequency p == freq
