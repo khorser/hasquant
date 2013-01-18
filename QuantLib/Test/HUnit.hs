@@ -5,10 +5,10 @@ where
 import Test.Framework
 
 import Data.List(zip4)
-import Data.Time.Calendar(Day, fromGregorian, addDays)
-import Data.Time.Clock(getCurrentTime)
-import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
+import Data.Time.Calendar(fromGregorian, addDays)
 import System.Mem(performGC)
+
+import QuantLib.Test.QuickCheck(today)
 
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.CashFlow.CouponPricer as CouponPricer
@@ -37,12 +37,6 @@ import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
 import qualified QuantLib.Utilities as Utilities
 
-today :: IO Day
-today =
-  do now <- getCurrentTime
-     tz <- getTimeZone now
-     return $ localDay $ utcToLocalTime tz now
-
 test_evalDate :: IO ()
 test_evalDate = do  t1 <- Settings.evaluationDate
                     t2 <- today
@@ -52,9 +46,9 @@ test_nullEvalDate :: IO ()
 test_nullEvalDate = do  Settings.setEvaluationDate $ Just (december 29 2012)
                         t0 <- Settings.evaluationDate
                         assertEqual t0 (fromGregorian 2012 12 29)
+                        t2 <- today
                         Settings.setEvaluationDate Nothing
                         t1 <- Settings.evaluationDate
-                        t2 <- today
                         assertEqual t1 t2
 
 test_defaultTodaysHistFixings :: IO ()
