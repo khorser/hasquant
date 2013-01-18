@@ -37,6 +37,9 @@ import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
 import qualified QuantLib.Utilities as Utilities
 
+-- The annotation kills linking on Windows:
+-- {-# ANN module "HLint: ignore Use camelCase" #-}
+
 test_evalDate :: IO ()
 test_evalDate = do  t1 <- Settings.evaluationDate
                     t2 <- today
