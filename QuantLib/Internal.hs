@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,FlexibleInstances,MultiParamTypeClasses #-}
+{-# LANGUAGE FlexibleInstances,MultiParamTypeClasses #-}
 module QuantLib.Internal
   (
   -- types

@@ -1,4 +1,3 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
 module QuantLib.Settings
   (
   -- accessors and mutators

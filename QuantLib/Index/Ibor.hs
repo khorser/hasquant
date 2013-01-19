@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Index.Ibor
   (
   -- makers

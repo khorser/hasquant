@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,EmptyDataDecls,MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Types
   (
   -- cashflows

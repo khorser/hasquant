@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,FlexibleContexts,MultiParamTypeClasses #-}
+{-# LANGUAGE FlexibleContexts,MultiParamTypeClasses #-}
 module QuantLib.Instrument
   (
   -- accessors

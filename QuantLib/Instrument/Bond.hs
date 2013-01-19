@@ -1,4 +1,4 @@
-{-# LANGUAGE ForeignFunctionInterface,MultiParamTypeClasses,FlexibleContexts #-}
+{-# LANGUAGE MultiParamTypeClasses,FlexibleContexts #-}
 module QuantLib.Instrument.Bond
   (
   -- makers

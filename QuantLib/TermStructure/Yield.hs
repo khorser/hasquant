@@ -1,4 +1,3 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
 module QuantLib.TermStructure.Yield
   (
   -- types

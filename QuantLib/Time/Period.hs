@@ -1,4 +1,3 @@
-{-# LANGUAGE ForeignFunctionInterface #-}
 module QuantLib.Time.Period
   (
   -- makers

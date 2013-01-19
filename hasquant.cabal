@@ -12,7 +12,7 @@ Maintainer:          sergey.khorev@gmail.com
 Category:            Finance
 -- build-type:          Custom
 Build-Type:          Simple
-Cabal-Version:       >=1.8
+Cabal-Version:       >=1.10
 --tested-with:       GHC-7.4.2
 
 Library
@@ -72,19 +72,20 @@ Library
                         cpp/qlYieldTSAux.cpp
   Extra-Libraries:     QuantLib stdc++
   Include-Dirs:        cpp
---   install-includes:    ql.h
+  Default-Language:  Haskell2010
 
 Test-Suite Test
   Type:              exitcode-stdio-1.0
-  Main-Is:             QuantLib/Test/Main.hs
-  GHC-Options:         -Wall
-  Build-Depends:        base == 4.5.*
-                        , QuickCheck >=2.5
-                        , time >= 1.4
-                        , HTF == 0.10.*
-                        , hasquant
-  Extra-Libraries:     QuantLib stdc++
+  Main-Is:           QuantLib/Test/Main.hs
+  GHC-Options:       -Wall
+  Build-Depends:     base == 4.5.*
+                     , QuickCheck >=2.5
+                     , time >= 1.4
+                     , HTF == 0.10.*
+                     , hasquant
+  Extra-Libraries:   QuantLib stdc++
+  Default-Language:  Haskell2010
   If os(windows)
-    LD-Options:        -static
+    LD-Options:      -static
 
 -- vim: set et ts=8 sts=2 sw=2:
