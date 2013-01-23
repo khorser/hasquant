@@ -37,15 +37,20 @@ module QuantLib.Types
   , CQuote, Quote
 
   -- casts
-  , asBond
+  , BondClass(..)
   , InstrumentClass(..)
+  , IndexClass(..)
   )
 where
 
 import QuantLib.Internal
 
-asBond :: FixedRateBond -> Bond
-asBond = castForeignPtr
+class BondClass a where
+  -- it is ok to keep the result of the cast
+  asBond :: a -> Bond
+
+instance BondClass FixedRateBond where
+  asBond = castForeignPtr
 
 -- cashflows
 data CLeg
@@ -96,6 +101,16 @@ foreign import ccall safe "ql.h &qlFreeIborIndex"
 foreign import ccall safe "ql.h qlIborAsIndex"
   c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
 
+class IndexClass a where
+  -- it is NOT ok to keep the argument of the function after the call
+  withIndex :: a -> (Index -> IO b) -> IO b
+
+instance IndexClass IborIndex where
+  withIndex x f =
+    withForeignPtr x
+      (\p -> do ptr <- newForeignPtr_ (c_iborAsIndex p)
+                f ptr)
+
 -- instruments
 data CInstrument
 type Instrument = ForeignPtr CInstrument
@@ -117,6 +132,7 @@ foreign import ccall safe "ql.h qlBondAsInstrument"
   c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
 
 class InstrumentClass a where
+  -- it is NOT ok to keep the argument of the function after the call
   withInstrument :: a -> (Instrument -> IO b) -> IO b
 
 instance InstrumentClass Bond where
@@ -124,6 +140,9 @@ instance InstrumentClass Bond where
     withForeignPtr x
     (\p -> do ptr <- newForeignPtr_ (c_bondAsInstrument p)
               f ptr)
+
+instance InstrumentClass FixedRateBond where
+  withInstrument = withInstrument . asBond
 
 -- pricingengines
 data CPricingEngine

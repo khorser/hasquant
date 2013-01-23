@@ -346,9 +346,8 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                                                     100.0
                                                     (Just (15 `may` 2007))
                                                     nocal
-                    Types.withInstrument (Types.asBond fixedBond)
-                      (\i -> Instrument.setPricingEngine i pricing)
-                    npv <- Types.withInstrument (Types.asBond fixedBond) Instrument.npv
+                    Types.withInstrument fixedBond (`Instrument.setPricingEngine` pricing)
+                    npv <- Types.withInstrument fixedBond Instrument.npv
                     assertBool $ abs(npv-107.67) < 0.01
                     zcBond <- Bond.zeroCouponBond settlementDays
                                                  usGovBondCal
@@ -357,8 +356,7 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                                                  BusinessDayConvention.Following
                                                  116.92
                                                  (Just $ 15 `august` 2003)
-                    Types.withInstrument zcBond
-                      (\i -> Instrument.setPricingEngine i pricing)
+                    Types.withInstrument zcBond (`Instrument.setPricingEngine` pricing)
                     znpv <- Types.withInstrument zcBond Instrument.npv
                     assertBool $ abs(znpv-100.92) < 0.01
         
@@ -394,7 +392,8 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
         
                     p3m <- Period.period 3 Unit.Months
                     usd3m <- Ibor.usdLibor p3m (Just fwdCurve)
-                    Index.addFixing usd3m (fromGregorian 2008 07 17) 0.0278625 False
+                    Types.withIndex usd3m
+                      (\i -> Index.addFixing i (fromGregorian 2008 07 17) 0.0278625 False)
         
                     pq <- Period.fromFrequency Frequency.Quarterly
                     floatSchedule <- Schedule.schedule (Just $ fromGregorian 2005 10 21)
@@ -421,7 +420,7 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                                                      True
                                                      100.0
                                                      (Just $ fromGregorian 2005 10 21)
-                    Instrument.setPricingEngine floater pricing
+                    Types.withInstrument floater (`Instrument.setPricingEngine` pricing)
                     volval <- Quote.simpleQuote 0
                     vol <- Vol.constantOptionletVol settlementDays
                                                     targetCal
@@ -431,7 +430,7 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                     couponPricer <- CouponPricer.blackIborCouponPricer vol
                     Bond.setCouponPricer floater couponPricer
         
-                    fnpv <- Instrument.npv floater
+                    fnpv <- Types.withInstrument floater Instrument.npv
                     assertBool $ abs(fnpv-102.36) < 0.01
          
                     -- putStrLn "\nData from QL Bond Example (QuantLib-1.2 on Windows x86):    100.92217820704442  107.66828913260436 102.35931459949133"
