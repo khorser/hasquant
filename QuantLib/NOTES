@@ -24,3 +24,71 @@ to introduce adjustments)
 as result that Handle/RelinkableHandle machinery isn't going to be much of help
 and might even harm (?)
 I'm thinking of implementing functional reactive programming paradigm if needed
+
+
+ATTEMPTS TO STREAMLINE MARSHALLING
+(an alternative would be to use a preprocessor like Template Haskell)
+
+
+class FfiArg a c where
+  -- this isn't going to work when we map one Haskell argument
+  -- to two C arguments (e.g. an array plus its length :(
+  app :: a -> (c -> IO b) -> IO b
+
+  a' :: a -> (a1 -> c -> IO b) -> a1 -> IO b
+  a' x = (app x .) -- pointfree: a' = (.) . app
+
+instance FfiArg Int CInt where
+  app x f = f (fromIntegral x)
+
+instance FfiArg Double CDouble where
+  app x f = f (realToFrac x)
+
+instance FfiArg B (Ptr CB) where
+  app x f = withForeignPtr x f
+
+instance FfiArg A (Ptr CA) where
+  app x f = withForeignPtr x f
+
+newtype Upcast a = Upcast a
+
+instance FfiArg (Upcast B) (Ptr CA) where
+  app (Upcast x) f = withForeignPtr x (f . c_bAsA)
+
+bmethod0' :: B -> IO ()
+bmethod0' b = (a' b id) c_callBMethod0
+
+b22'' :: B -> B -> Int -> IO ()
+b22'' o b i =
+  (a' o (a' b (a' i id .) .)) c_callBMethod2
+
+bmethod5' :: B -> B -> Int -> Int -> Int -> B -> IO ()
+bmethod5' b b1 i1 i2 i3 b2 =
+  (a' b (a' b1 (a' i1 (a' i2 (a' i3 ((a' b2 id) .) .) .) .) .)) c_callBMethod5
+
+--- some type magic: ---
+a' :: FfiArg a c => a -> (a1 -> c -> IO b) -> a1 -> IO b
+
+let {i :: Int ; i=5}
+let {d :: Double ; d=5.0}
+
+(a' i id)
+    :: FfiArg Int c =>
+    (c -> IO b) -> IO b
+
+(a' i id .)
+    :: FfiArg Int c =>
+    (a -> c -> IO b) -> a -> IO b
+
+a' i (a' d id .)
+    :: (FfiArg Double c1, FfiArg Int c) =>
+    (c -> c1 -> IO b) -> IO b
+
+(a' i (a' d id .) .)
+    :: (FfiArg Double c1, FfiArg Int c) =>
+    (a -> c -> c1 -> IO b) -> a -> IO b
+
+(a' i (a' d (a' i (a' d id .) .) .)) ::
+    (FfiArg Double c3, FfiArg Int c2, FfiArg Double c1, FfiArg Int c) =>
+     (c -> c1 -> c2 -> c3 -> IO b) -> IO b
+--- ---
