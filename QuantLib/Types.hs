@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE MultiParamTypeClasses,TypeSynonymInstances,FlexibleInstances #-}
 module QuantLib.Types
   (
   -- cashflows
@@ -35,10 +35,17 @@ module QuantLib.Types
   -- common
   , CInterestRate, InterestRate
   , CQuote, Quote
+
+  -- casts
+  , asBond
+  , InstrumentClass(..)
   )
 where
 
 import QuantLib.Internal
+
+asBond :: FixedRateBond -> Bond
+asBond = castForeignPtr
 
 -- cashflows
 data CLeg
@@ -108,6 +115,15 @@ foreign import ccall safe "ql.h &qlFreeBond"
 
 foreign import ccall safe "ql.h qlBondAsInstrument"
   c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
+
+class InstrumentClass a where
+  withInstrument :: a -> (Instrument -> IO b) -> IO b
+
+instance InstrumentClass Bond where
+  withInstrument x f =
+    withForeignPtr x
+    (\p -> do ptr <- newForeignPtr_ (c_bondAsInstrument p)
+              f ptr)
 
 -- pricingengines
 data CPricingEngine

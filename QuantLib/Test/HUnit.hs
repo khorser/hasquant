@@ -35,6 +35,7 @@ import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
+import qualified QuantLib.Types as Types
 import qualified QuantLib.Utilities as Utilities
 
 -- The annotation kills linking on Windows:
@@ -166,8 +167,8 @@ test_fixedBondWithWchedule = do c <- Calendar.russia
                                       100
                                       (Just $ fromGregorian 2012 10 11)
                                       c
-                                assertEqual (Just $ fromGregorian 2012 10 11) (Bond.issueDate b)
-                                assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
+                                assertEqual (Just $ fromGregorian 2012 10 11) (Bond.issueDate $ Types.asBond b)
+                                assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate $ Types.asBond b)
                                 assertEqual Frequency.Monthly (Bond.frequency b)
 
 test_fixedBondWithCalendars :: IO ()
@@ -191,8 +192,8 @@ test_fixedBondWithCalendars = do  c <- Calendar.russia
                                     DateGenerationRule.Forward
                                     False
                                     c
-                                  assertEqual (Just $ fromGregorian 2012 10 01) (Bond.issueDate b)
-                                  assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
+                                  assertEqual (Just $ fromGregorian 2012 10 01) (Bond.issueDate $ Types.asBond b)
+                                  assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate $ Types.asBond b)
                                   assertEqual Frequency.Monthly (Bond.frequency b)
 test_fixedBond :: IO ()
 test_fixedBond = do dc <- DayCounter.actual365Fixed
@@ -220,8 +221,8 @@ test_fixedBond = do dc <- DayCounter.actual365Fixed
                             100
                             (Just (fromGregorian 2012 12 21))
                             cal
-                    assertEqual (Just $ fromGregorian 2012 12 21) (Bond.issueDate b)
-                    assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate b)
+                    assertEqual (Just $ fromGregorian 2012 12 21) (Bond.issueDate $ Types.asBond b)
+                    assertEqual (Just $ fromGregorian 2013 12 21) (Bond.maturityDate $ Types.asBond b)
                     assertEqual Frequency.Semiannual (Bond.frequency b)
 
 test_frequency :: IO ()
@@ -345,8 +346,9 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                                                     100.0
                                                     (Just (15 `may` 2007))
                                                     nocal
-                    Instrument.setPricingEngine fixedBond pricing
-                    npv <- Instrument.npv fixedBond
+                    Types.withInstrument (Types.asBond fixedBond)
+                      (\i -> Instrument.setPricingEngine i pricing)
+                    npv <- Types.withInstrument (Types.asBond fixedBond) Instrument.npv
                     assertBool $ abs(npv-107.67) < 0.01
                     zcBond <- Bond.zeroCouponBond settlementDays
                                                  usGovBondCal
@@ -355,8 +357,9 @@ test_bondEval = do  actual365Fixed <- DayCounter.actual365Fixed
                                                  BusinessDayConvention.Following
                                                  116.92
                                                  (Just $ 15 `august` 2003)
-                    Instrument.setPricingEngine zcBond pricing
-                    znpv <- Instrument.npv zcBond
+                    Types.withInstrument zcBond
+                      (\i -> Instrument.setPricingEngine i pricing)
+                    znpv <- Types.withInstrument zcBond Instrument.npv
                     assertBool $ abs(znpv-100.92) < 0.01
         
                     depoLiborHelpers <-
