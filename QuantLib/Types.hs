@@ -42,7 +42,7 @@ import QuantLib.Internal
 
 -- cashflows
 data CLeg
-type Leg = Object CLeg
+type Leg = ForeignPtr CLeg
 
 instance Finalizable CLeg where
   finalize = p_freeLeg
@@ -50,7 +50,7 @@ foreign import ccall safe "ql.h &qlFreeLeg"
   p_freeLeg :: FunPtr (Ptr CLeg -> IO ())
 
 data CFloatingRateCouponPricer
-type FloatingRateCouponPricer = Object CFloatingRateCouponPricer
+type FloatingRateCouponPricer = ForeignPtr CFloatingRateCouponPricer
 
 instance Finalizable CFloatingRateCouponPricer where
   finalize = p_freeFloatingCouponPricer
@@ -59,7 +59,7 @@ foreign import ccall safe "ql.h &qlFreeFloatingCouponPricer"
 
 -- currencies
 data CCurrency
-type Currency = Object CCurrency
+type Currency = ForeignPtr CCurrency
 
 instance Finalizable CCurrency where
   finalize = p_freeCurrency
@@ -76,57 +76,42 @@ foreign import ccall safe "ql.h qlCurrencyName"
 
 -- indexes
 data CIndex
-type Index = Object CIndex
+type Index = ForeignPtr CIndex
 
 data CIborIndex
-type IborIndex = Object CIborIndex
+type IborIndex = ForeignPtr CIborIndex
 
 instance Finalizable CIborIndex where
   finalize = p_freeIborIndex
 foreign import ccall safe "ql.h &qlFreeIborIndex"
   p_freeIborIndex :: FunPtr (Ptr CIborIndex -> IO ())
 
-instance IsA CIndex CIndex where
-  cast = id
-instance IsA CIndex CIborIndex where
-  cast = c_iborAsIndex
 foreign import ccall safe "ql.h qlIborAsIndex"
   c_iborAsIndex :: Ptr CIborIndex -> Ptr CIndex
 
 -- instruments
 data CInstrument
-type Instrument = Object CInstrument
+type Instrument = ForeignPtr CInstrument
 
 data CBond
-type Bond = Object CBond
+type Bond = ForeignPtr CBond
 
 data CFixedRateBond
-type FixedRateBond = Object CFixedRateBond
+type FixedRateBond = ForeignPtr CFixedRateBond
 
 instance Finalizable CBond where
   finalize = p_freeBond
 instance Finalizable CFixedRateBond where
-  finalize = castFinalizer p_freeBond
+  finalize = castFunPtr p_freeBond
 foreign import ccall safe "ql.h &qlFreeBond"
   p_freeBond :: FunPtr (Ptr CBond -> IO ())
 
-instance IsA CInstrument CInstrument where
-  cast = id
-instance IsA CInstrument CBond where
-  cast = c_bondAsInstrument
-instance IsA CInstrument CFixedRateBond where
-  cast = c_bondAsInstrument . cast -- delegating to the Bond casting interface
 foreign import ccall safe "ql.h qlBondAsInstrument"
   c_bondAsInstrument :: Ptr CBond -> Ptr CInstrument
 
-instance IsA CBond CBond where
-  cast = id
-instance IsA CBond CFixedRateBond where
-  cast = castPtr
-
 -- pricingengines
 data CPricingEngine
-type PricingEngine = Object CPricingEngine
+type PricingEngine = ForeignPtr CPricingEngine
 
 instance Finalizable CPricingEngine where
   finalize = p_freePricingEngine
@@ -135,16 +120,16 @@ foreign import ccall safe "ql.h &qlFreePricingEngine"
 
 -- termstructures
 data CRateHelper
-type RateHelper = Object CRateHelper
+type RateHelper = ForeignPtr CRateHelper
 
 data CYieldTermStructure
-type YieldTermStructure = Object CYieldTermStructure
+type YieldTermStructure = ForeignPtr CYieldTermStructure
 
 data CVolTermStructure
-type VolTermStructure = Object CVolTermStructure
+type VolTermStructure = ForeignPtr CVolTermStructure
 
 data COptionletVolStructure
-type OptionletVolStructure = Object COptionletVolStructure
+type OptionletVolStructure = ForeignPtr COptionletVolStructure
 
 instance Finalizable CRateHelper where
   finalize = p_freeRateHelper
@@ -163,16 +148,16 @@ foreign import ccall safe "ql.h &qlFreeOptionletVolatilityStructure"
 
 -- time
 data CCalendar
-type Calendar = Object CCalendar
+type Calendar = ForeignPtr CCalendar
 
 data CDayCounter
-type DayCounter = Object CDayCounter
+type DayCounter = ForeignPtr CDayCounter
 
 data CPeriod
-type Period = Object CPeriod
+type Period = ForeignPtr CPeriod
 
 data CSchedule
-type Schedule = Object CSchedule
+type Schedule = ForeignPtr CSchedule
 
 instance Finalizable CCalendar where
   finalize = p_freeCalendar
@@ -212,10 +197,10 @@ foreign import ccall safe "ql.h &qlFreeSchedule"
 
 -- common
 data CInterestRate
-type InterestRate = Object CInterestRate
+type InterestRate = ForeignPtr CInterestRate
 
 data CQuote
-type Quote = Object CQuote
+type Quote = ForeignPtr CQuote
 
 instance Finalizable CInterestRate where
   finalize = p_freeInterestRate

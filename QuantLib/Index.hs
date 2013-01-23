@@ -14,9 +14,9 @@ foreign import ccall safe "ql.h qlIndexAddFixing"
     -> IO ()
 
 -- |Adds fixings for the given Index object (qlIndexAddFixings)
-addFixing :: IsA CIndex a => Object a -> Day -> Double -> Bool -> IO ()
+addFixing :: Index -> Day -> Double -> Bool -> IO ()
 addFixing i d v o =
-  withCast i
+  withObject i
   (\ii -> handleExceptions $ c_indexAddFixing ii
                                               (toQlDate d)
                                               (realToFrac v)

@@ -2,8 +2,7 @@
 module QuantLib.Internal
   (
   -- types
-    Object
-  , CDate
+    CDate
   -- information
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
@@ -16,7 +15,6 @@ module QuantLib.Internal
   , NamedSingleton(..)
   , constructNamed
   , name
-  , IsA(..)
   -- utils
   , isValid
   , withObject
@@ -45,10 +43,11 @@ module QuantLib.Internal
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
-  , castPtr
+  , castPtr, castFunPtr
   , fromBool, toBool
   , unsafePerformIO
   , Word
+  , ForeignPtr
   -- and the standard day type
   , Day
   )
@@ -56,7 +55,6 @@ module QuantLib.Internal
 where
 
 import Control.Exception(throw)
-import Control.Monad(liftM)
 import Data.List(elemIndex)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
 import Data.Typeable(Typeable, typeOf)
@@ -97,8 +95,6 @@ foreign import ccall safe "ql.h qlWeekday"
 signalError :: String -> a
 signalError = throw . Error
 
-newtype Object a = Object{ptr :: ForeignPtr a}
-
 type CDate = CInt
 
 -- |Julian day of the QuantLib zero date
@@ -112,52 +108,51 @@ qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
 toQlDateUnsafe :: Day -> CDate
 toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
-withObject :: Object a -> (Ptr a -> IO b) -> IO b
-withObject = withForeignPtr . ptr
+withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
+withObject = withForeignPtr
 
-maybeWithObject :: Maybe (Object a) -> (Ptr a -> IO b) -> IO b
+maybeWithObject :: Maybe (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 maybeWithObject (Just o) f = withObject o f
 maybeWithObject Nothing f  = f nullPtr
 
-withObject2 :: Object a1 -> Object a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
+withObject2 :: ForeignPtr a1 -> ForeignPtr a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
 withObject2 o1 o2 f = withObject o1 (withObject o2 . f)
 
-withObject3 :: Object a1 -> Object a2 -> Object a3
+withObject3 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> IO b) -> IO b
 withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
 
-withObject4 :: Object a1 -> Object a2 -> Object a3 -> Object a4
+withObject4 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
 withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 
-withObject5 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
+withObject5 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> IO b) -> IO b
 withObject5 o1 o2 o3 o4 o5 f = withObject o1 (withObject4 o2 o3 o4 o5 . f)
 
-withObject6 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
-  -> Object a6
+withObject6 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
+  -> ForeignPtr a6
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> IO b) -> IO b
 withObject6 o1 o2 o3 o4 o5 o6 f =
   withObject o1 (withObject5 o2 o3 o4 o5 o6 . f)
 
-withObject7 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
-  -> Object a6 -> Object a7
+withObject7 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
+  -> ForeignPtr a6 -> ForeignPtr a7
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> Ptr a7 -> IO b) -> IO b
 withObject7 o1 o2 o3 o4 o5 o6 o7 f =
   withObject o1 (withObject6 o2 o3 o4 o5 o6 o7 . f)
 
-withObject8 :: Object a1 -> Object a2 -> Object a3 -> Object a4 -> Object a5
-  -> Object a6 -> Object a7 -> Object a8
+withObject8 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
+  -> ForeignPtr a6 -> ForeignPtr a7 -> ForeignPtr a8
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> Ptr a7 -> Ptr a8 -> IO b) -> IO b
 withObject8 o1 o2 o3 o4 o5 o6 o7 o8 f =
   withObject o1 (withObject7 o2 o3 o4 o5 o6 o7 o8 . f)
 
-withObjects :: [Object a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
+withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 -- XXX rewrite using folds?
 withObjects objs fn = go objs []
   where go [] ps     = withArrayLen ps (\n p -> fn (fromIntegral n) p)
-        go (o:os) ps = withForeignPtr
-                        (ptr o)
+        go (o:os) ps = withForeignPtr o
                         (\p -> go os (ps ++ [p]))
 
 withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
@@ -208,29 +203,20 @@ class Finalizable a where
 
 -- |Run a C function returning a new object that needs a finalizer.
 -- The function might signal an error
-construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (Object a)
-construct f = handleExceptions f >>= liftM Object . newForeignPtr finalize
-
--- |Specify that `b' is also an `a'
-class IsA a b where
-  cast :: Ptr b -> Ptr a
-  withCast :: Object b -> (Ptr a -> IO c) -> IO c
-  withCast x f = withObject x (f . cast)
-  castFinalizer :: FunPtr (Ptr a -> IO ()) -> FunPtr (Ptr b -> IO ())
-  castFinalizer = castFunPtr
+construct :: Finalizable a => (Ptr CString -> IO (Ptr a)) -> IO (ForeignPtr a)
+construct f = handleExceptions f >>= newForeignPtr finalize
 
 class Finalizable a => NamedSingleton a where
   c_construct :: CString -> Ptr CString -> IO (Ptr a)
   c_name :: Ptr a -> IO CString
 
 -- XXX ???Create non-finalizable objects and then we won't have to use IO monad
-constructNamed :: NamedSingleton a => String -> IO (Object a)
+constructNamed :: NamedSingleton a => String -> IO (ForeignPtr a)
 constructNamed n = withCString n $ construct . c_construct
 
-name :: NamedSingleton a => Object a -> String
+name :: NamedSingleton a => ForeignPtr a -> String
 name c = unsafePerformIO
-          $ withForeignPtr
-              (ptr c)
+          $ withForeignPtr c
               (\cc -> do n <- c_name cc
                          str <- peekCString n
                          c_freeString n

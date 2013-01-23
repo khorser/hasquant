@@ -20,13 +20,13 @@ foreign import ccall safe "ql.h qlInstrumentSetPricingEngine"
     -> IO ()
 
 -- |Returns the NPV for the given Instrument object (qlInstrumentNPV)
-npv :: IsA CInstrument a => Object a -> IO Double
-npv i = liftM realToFrac $ withCast i (handleExceptions . c_npv)
+npv :: Instrument -> IO Double
+npv i = liftM realToFrac $ withObject i (handleExceptions . c_npv)
 
 -- |Sets a new pricing engine to the given Instrument pbject
 -- (qlInstrumentSetPricingEngine)
-setPricingEngine :: IsA CInstrument a => Object a-> PricingEngine -> IO ()
+setPricingEngine :: Instrument -> PricingEngine -> IO ()
 setPricingEngine i e =
-  withCast i
+  withObject i
   (\ii ->
     withObject e (handleExceptions . c_setPricingEngine ii))

@@ -53,13 +53,13 @@ bond' settl cal face maturity issue flows =
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX any exceptions possible?
-maturityDate :: IsA CBond a => Object a -> Maybe Day
-maturityDate b = fromQlDate $ unsafePerformIO (withCast b c_maturityDate)
+maturityDate :: Bond -> Maybe Day
+maturityDate b = fromQlDate $ unsafePerformIO (withObject b c_maturityDate)
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 -- XXX any exceptions possible?
-issueDate :: IsA CBond a => Object a -> Maybe Day
-issueDate b = fromQlDate $ unsafePerformIO (withCast b c_issueDate)
+issueDate :: Bond -> Maybe Day
+issueDate b = fromQlDate $ unsafePerformIO (withObject b c_issueDate)
 
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule
@@ -173,9 +173,9 @@ foreign import ccall safe "ql.h qlBondSetCouponPricer"
 -- |Set the coupon pricer at the given Bond object (qlBondSetCouponPricer)
 -- doing like QuantLibXL here, in QuantLib it is a function working on
 -- cashflows (see the implementation in qlBondSetCouponPricer)
-setCouponPricer :: IsA CBond a => Object a -> FloatingRateCouponPricer -> IO ()
+setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
 setCouponPricer b p = 
-  withCast b
+  withObject b
   (\bb -> withObject p (handleExceptions . c_bondSetCouponPricer bb))
 
 foreign import ccall safe "ql.h qlFloatingRateBond"
