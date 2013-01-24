@@ -28,8 +28,7 @@ import qualified QuantLib.Utilities as Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
 
--- The annotation kills linking on Windows because ghci experience problems with loading .o's
--- {-# ANN module "HLint: ignore Use camelCase" #-}
+{-# ANN module "HLint: ignore Use camelCase" #-}
 
 test_evalDate :: IO ()
 test_evalDate = do  t1 <- Settings.evaluationDate

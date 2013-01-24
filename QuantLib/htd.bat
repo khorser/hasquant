@@ -1,1 +1,1 @@
-h.bat -optl-g -L%DEVLIBS%\QuantLib-1.2.1-noopt\ql\bin\d750f55955fa5ad66fec54f46f00c080
+h.bat -optl-g

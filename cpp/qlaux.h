@@ -2,6 +2,8 @@
 #include <ql/errors.hpp>
 #include <string.h>
 
+int * qlAllocateInts(int size);
+
 char *tracedup(const char *p);
 #define DUP(p) tracedup((p))
 
