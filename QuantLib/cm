@@ -1,4 +1,4 @@
 #!/bin/sh
 # compile C++ files
 mkdir cpp
-make -f M
+make -f M $*

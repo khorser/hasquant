@@ -22,8 +22,13 @@ all: cpp/qlBond.o \
 
 dll: libql.dll
 
+so: libql.so
+
 libql.dll: all
 	g++ --shared -o libql.dll cpp/*.o -Wl,--output-def,cpp/libql.def,--out-implib,cpp/libql.a -lQuantLib $(EXTRA)
+
+libql.so: all
+	g++ --shared -o libql.so cpp/*.o -lQuantLib $(EXTRA)
 
 cpp/qlBond.o: ../cpp/qlaux.h ../cpp/ql.h ../cpp/qlBond.cpp
 	g++ -c -Wall $(EXTRA) -o cpp/qlBond.o ../cpp/qlBond.cpp

@@ -1,3 +1,3 @@
 #!/bin/sh
 # compile C++ files
-make -f M EXTRA="-DQLTRACK_ALLOCATIONS"
+make -f M EXTRA="-DQLTRACK_ALLOCATIONS" $*
