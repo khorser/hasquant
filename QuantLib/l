@@ -1,2 +1,2 @@
 #!/bin/sh
-hlint  -i "Use camelCase" *.hs */*.hs
+hlint *.hs */*.hs
