@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir obj
+ghc -outputdir obj -Wall -o E *.hs cpp/*.o CashFlow/*.hs Index/*.hs Instrument/*.hs Internal/*.hs Math/*.hs TermStructure/*.hs Time/*.hs Example/*.hs -lQuantLib -pgml g++

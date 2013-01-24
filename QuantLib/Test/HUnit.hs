@@ -7,8 +7,6 @@ import Test.Framework
 import Data.Time.Calendar(fromGregorian, addDays)
 import System.Mem(performGC)
 
-import QuantLib.Test.QuickCheck(today)
-
 import qualified QuantLib.CashFlow.Leg as Leg
 import qualified QuantLib.Compounding as Compounding
 import qualified QuantLib.Currency as Currency
@@ -246,15 +244,9 @@ test_truncateSchedule = do  tenor <- Period.period 1 Unit.Months
 
 test_bondEval :: IO ()
 test_bondEval = do  (fixnpv, znpv, fnpv) <- BondExample.npv
-                    assertBool $ abs(fixnpv-107.67) < 0.01
-                    assertBool $ abs(znpv-100.92) < 0.01
-                    assertBool $ abs(fnpv-102.36) < 0.01
-         
-                    -- putStrLn "\nData from QL Bond Example (QuantLib-1.2 on Windows x86):    100.92217820704442  107.66828913260436 102.35931459949133"
-                    -- putStrLn "\nData from QL Bond Example (QuantLib-1.2.1 on Windows x86):  100.9221782070444  107.66828913260427  102.35931459949143"
-                    -- putStrLn "\nData from QL Bond Example (QuantLib-1.2 on Linux x86-64):   100.92217820704460962 107.66828913260425793 102.35931459949132716
-                    -- putStrLn "\nData from QL Bond Example (QuantLib-1.2.1 on Linux x86-64): 100.92217820704460962 107.66828913260425793 102.35931459949128453 
-                    -- putStrLn $ "Ours: " ++ show [znpv, npv, fnpv]
+                    assertBool $ abs(fixnpv-107.6682891) < 1e-7
+                    assertBool $ abs(znpv-100.9221782) < 1e-7
+                    assertBool $ abs(fnpv-102.3593146) < 1e-7
 
 test_final :: IO ()
 test_final = performGC

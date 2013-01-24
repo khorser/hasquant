@@ -9,8 +9,6 @@ import Test.Framework
 
 import Control.Exception(catch)
 import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay)
-import Data.Time.Clock(getCurrentTime)
-import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
 import Prelude hiding(catch)
 
 import Test.QuickCheck.Monadic
@@ -25,12 +23,6 @@ import QuantLib.Time.Date
 import qualified QuantLib.Time.Frequency as Frequency
 import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
-
-today :: IO Day
-today =
-  do now <- getCurrentTime
-     tz <- getTimeZone now
-     return $ localDay $ utcToLocalTime tz now
 
 newtype ValidDay = ValidDay{validDay::Day} deriving (Show, Eq)
 newtype InvalidDay = InvalidDay Day deriving (Show, Eq)

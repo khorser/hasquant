@@ -8,6 +8,7 @@ module QuantLib.Time.Date
   , isValid
   , Weekday(..)
   , Month(..)
+  , today
 
   , year
   , month
@@ -29,6 +30,9 @@ module QuantLib.Time.Date
 where
 
 import Data.Time.Calendar(fromGregorian, toGregorian, isLeapYear)
+import Data.Time.Clock(getCurrentTime)
+import Data.Time.LocalTime(localDay, getTimeZone, utcToLocalTime)
+
 import Data.Typeable(Typeable)
 
 import QuantLib.Internal.Enum
@@ -113,3 +117,9 @@ november d y = fromGregorian (fromIntegral y) 11 d
 
 december :: Int -> Int -> Day
 december d y = fromGregorian (fromIntegral y) 12 d
+
+today :: IO Day
+today =
+  do now <- getCurrentTime
+     tz <- getTimeZone now
+     return $ localDay $ utcToLocalTime tz now
