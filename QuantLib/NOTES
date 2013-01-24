@@ -94,7 +94,7 @@ a' i (a' d id .)
 --- ---
 
 {-# LANGUAGE TemplateHaskell #-}
-module M(f, ff)
+module M(f, ffe, ffd, ffn, ffu)
 where
 
 import Language.Haskell.TH
@@ -117,16 +117,28 @@ a t = case t of
                return $ "AA(" ++ tt1 ++ " " ++ tt2 ++ ")"
           SigT _ _ -> return "S"
 
-ff :: Name -> DecsQ
-ff n = do body <- [|undefined|]
-          return [FunD (mkName "qqq") [Clause [] (NormalB body) [] ]]
--- ff :: Name -> Q Exp
--- ff n = [|undefined|]
+ffd :: Name -> DecsQ
+ffd n = do body <- [|undefined|]
+           return [FunD (mkName "qqq") [Clause [] (NormalB body) [] ]]
+
+ffn :: Name -> DecQ
+ffn n = do body <- [|undefined|]
+           return $ FunD n [Clause [] (NormalB body) [] ]
+
+ffu :: Name -> ExpQ
+ffu n = [|undefined|]
+
+ffe :: Name -> ExpQ
+ffe n =
+  do VarI _ ft _ _ <- reify n
+     s <- a ft
+     return (LitE $ StringL s)
 
 f :: Name -> DecsQ
 f n = runQ $ do VarI _ ft _ _ <- reify n
                 r <- a ft
                 return [FunD (mkName r) []]
+
 ***
 
 {-# LANGUAGE TemplateHaskell #-}
@@ -138,11 +150,19 @@ import QuantLib.Instrument.Bond
 import QuantLib.Internal.Date
 
 
--- ff1 :: Int -> Int
--- $(ff 'ff1)
-$(ff 'bond)
+ff1 :: String
+-- ff1 = undefined
+ff1 = $(ffe 'ff1)
+
+-- ff2 :: a
+-- $(ffn 'ff2)
+
+-- $(ff 'bond)
+
 -- ff1 = $(ff 'ff1)
 
 -- $(f 'bond)
 
 -- $(f 'c_minDateSerialNumber)
+
+main = undefined
