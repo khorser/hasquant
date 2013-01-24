@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses,TypeSynonymInstances,FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses,FlexibleInstances #-}
 module QuantLib.Types
   (
   -- cashflows
@@ -43,7 +43,7 @@ module QuantLib.Types
   )
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Utils
 
 class BondClass a where
   -- it is ok to keep the result of the cast

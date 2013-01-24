@@ -19,7 +19,9 @@ module QuantLib.Instrument.Bond
 
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Date
+import QuantLib.Internal.Enum
+import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)
@@ -175,8 +177,8 @@ foreign import ccall safe "ql.h qlBondSetCouponPricer"
 -- cashflows (see the implementation in qlBondSetCouponPricer)
 setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
 setCouponPricer b p = 
-  withObject b
-  (\bb -> withObject p (handleExceptions . c_bondSetCouponPricer bb))
+  withObject2 b p
+  (\bb pp -> handleExceptions $ c_bondSetCouponPricer bb pp)
 
 foreign import ccall safe "ql.h qlFloatingRateBond"
   c_floatingRateBond :: CUInt -> CDouble -> Ptr CSchedule -> Ptr CIborIndex

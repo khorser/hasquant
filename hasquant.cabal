@@ -45,9 +45,12 @@ Library
    , QuantLib.TermStructure.Volatility
    , QuantLib.TermStructure.Yield   
   
-  Other-modules:       QuantLib.Internal
+  Other-modules:       QuantLib.Internal.Utils
+                        , QuantLib.Internal.Date
+                        , QuantLib.Internal.Enum
+                        , QuantLib.Internal.Syntax
   Ghc-options:         -Wall
-  Build-depends:       base == 4.5.*, time >= 1.4
+  Build-depends:       base == 4.5.*, time >= 1.4, template-haskell
 
   C-Sources:           cpp/qlBond.cpp
                         cpp/qlCalendar.cpp
@@ -70,15 +73,19 @@ Library
                         cpp/qlVolatilityTS.cpp
                         cpp/qlYieldTS.cpp
                         cpp/qlYieldTSAux.cpp
-  Extra-Libraries:     QuantLib stdc++
+  Extra-Libraries:     QuantLib stdc++ 
   Include-Dirs:        cpp
   Default-Language:  Haskell2010
 
 Test-Suite Test
   Type:              exitcode-stdio-1.0
   Main-Is:           QuantLib/Test/Main.hs
+  Other-modules:     QuantLib.Test.HUnit
+                      , QuantLib.Test.QuickCheck
+                      , QuantLib.Example.Bond
   GHC-Options:       -Wall
   Build-Depends:     base == 4.5.*
+                     -- using newer QuickCheck to derive Arbitrary for enumerated types
                      , QuickCheck >=2.5
                      , time >= 1.4
                      , HTF == 0.10.*

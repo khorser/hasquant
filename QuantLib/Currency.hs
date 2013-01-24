@@ -68,7 +68,7 @@ module QuantLib.Currency
   )
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Utils
 import QuantLib.Types
 
 -- TODO add data Currency = ...

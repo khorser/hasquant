@@ -11,7 +11,9 @@ where
 
 import Prelude hiding(until)
 
-import QuantLib.Internal
+import QuantLib.Internal.Date
+import QuantLib.Internal.Enum
+import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.DateGenerationRule(DateGenerationRule)

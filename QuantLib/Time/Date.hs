@@ -31,7 +31,9 @@ where
 import Data.Time.Calendar(fromGregorian, toGregorian, isLeapYear)
 import Data.Typeable(Typeable)
 
-import QuantLib.Internal
+import QuantLib.Internal.Enum
+import QuantLib.Internal.Date
+import QuantLib.Internal.Utils
 
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x

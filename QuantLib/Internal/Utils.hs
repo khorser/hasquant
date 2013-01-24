@@ -1,13 +1,8 @@
 {-# LANGUAGE FlexibleInstances,MultiParamTypeClasses #-}
-module QuantLib.Internal
+module QuantLib.Internal.Utils
   (
-  -- types
-    CDate
-  -- information
-  , c_maxDateSerialNumber
-  , c_minDateSerialNumber
   -- exceptions
-  , signalError
+    signalError
   , handleExceptions
   -- object construction and access
   , Finalizable(..)
@@ -15,8 +10,6 @@ module QuantLib.Internal
   , NamedSingleton(..)
   , constructNamed
   , name
-  -- utils
-  , isValid
   , withObject
   , withObject2
   , withObject3
@@ -26,18 +19,11 @@ module QuantLib.Internal
   , withObject7
   , withObject8
   , maybeWithObject
-  , withDays
   , withAmounts
   , withObjects
   , withString2
   , getDynIntArray
-
-  , c_weekday
-  -- convertors
-  , fromQlDate
-  , toQlDate
-  , fromQlEnum
-  , toQlEnum
+  , getStaticIntArray
   -- re-exporting some popular system stuff
   , withCString
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
@@ -48,16 +34,11 @@ module QuantLib.Internal
   , unsafePerformIO
   , Word
   , ForeignPtr
-  -- and the standard day type
-  , Day
   )
 
 where
 
 import Control.Exception(throw)
-import Data.List(elemIndex)
-import Data.Time.Calendar(Day(ModifiedJulianDay), toModifiedJulianDay, fromGregorian)
-import Data.Typeable(Typeable, typeOf)
 import Data.Word(Word)
 
 import Foreign.C.String
@@ -78,35 +59,8 @@ foreign import ccall safe "ql.h qlFreeString"
 foreign import ccall safe "ql.h qlFreeInts"
   c_freeInts :: Ptr CInt -> IO ()
 
-foreign import ccall safe "ql.h qlMinDateSerialNumber"
-  c_minDateSerialNumber :: CDate
-foreign import ccall safe "ql.h qlMaxDateSerialNumber"
-  c_maxDateSerialNumber :: CDate
-foreign import ccall safe "ql.h qlMinYear"
-  c_minYear :: CInt
-foreign import ccall safe "ql.h qlMinMonth"
-  c_minMonth :: CInt
-foreign import ccall safe "ql.h qlMinDay"
-  c_minDay :: CInt
-
-foreign import ccall safe "ql.h qlWeekday"
-  c_weekday :: CInt -> CInt
-
 signalError :: String -> a
 signalError = throw . Error
-
-type CDate = CInt
-
--- |Julian day of the QuantLib zero date
-qlStart :: Integer
-qlStart = minDateJulianDays - fromIntegral c_minDateSerialNumber
-            where minDateJulianDays = toModifiedJulianDay
-                    $ fromGregorian (fromIntegral c_minYear)
-                                    (fromIntegral c_minMonth)
-                                    (fromIntegral c_minDay)
-
-toQlDateUnsafe :: Day -> CDate
-toQlDateUnsafe x = fromIntegral $ toModifiedJulianDay x - qlStart
 
 withObject :: ForeignPtr a -> (Ptr a -> IO b) -> IO b
 withObject = withForeignPtr
@@ -154,11 +108,6 @@ withObjects objs fn = go objs []
   where go [] ps     = withArrayLen ps (\n p -> fn (fromIntegral n) p)
         go (o:os) ps = withForeignPtr o
                         (\p -> go os (ps ++ [p]))
-
-withDays :: [Day] -> (CUInt -> Ptr CDate -> IO b) -> IO b
-withDays days f = withArrayLen
-                      (map toQlDate days)
-                      (\n d -> f (fromIntegral n) d)
 
 withAmounts :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
 withAmounts amounts f = withArrayLen
@@ -221,50 +170,3 @@ name c = unsafePerformIO
                          str <- peekCString n
                          c_freeString n
                          return str)
-
-class QLDate a where
-  isValid :: a -> Bool
-  toQlDate :: a -> CDate
-  fromQlDate :: CDate -> a
-
-instance QLDate Day where
-  isValid x = num >= c_minDateSerialNumber && num <= c_maxDateSerialNumber
-                where num = toQlDateUnsafe x
-  -- return Either instead?
-  toQlDate x | isValid x = fromIntegral $ toModifiedJulianDay x - qlStart
-                         | otherwise = signalError ("Invalid QuantLib date: " ++ show x)
-  fromQlDate p = ModifiedJulianDay $ fromIntegral p + qlStart
-
-instance QLDate (Maybe Day) where
-  isValid = maybe True isValid
-  toQlDate = maybe 0 toQlDate
-  fromQlDate 0 = Nothing
-  fromQlDate x = Just $ fromQlDate x
-
-foreign import ccall safe "ql.h qlEnumerationValue"
-  c_values :: CString -> Ptr CInt -> IO (Ptr CInt)
-
-values :: String -> [CInt]
-values ename = if null vals
-                 then signalError ("Enumeration " ++ ename ++ " is not known")
-                 else vals
-  where vals = unsafePerformIO $
-                withCString ename (getStaticIntArray . c_values)
-
-toQlEnum :: (Typeable a, Enum a, Show a) => a -> CInt
-toQlEnum x =
-  if index >= length vals
-    then signalError ("Constructor " ++ show x ++ " is not found")
-    else vals !! index
-  where
-    index = fromEnum x
-    vals = values (show $ typeOf x) 
-
-fromQlEnum :: (Typeable a, Enum a) => CInt -> a
--- NB: intermediate computations are using the type of the result:
-fromQlEnum x = enum
-               where enum = result index
-                     result Nothing  =
-                       signalError ("Unknown enumeration code: " ++ show x)
-                     result (Just i) = toEnum i
-                     index = elemIndex x $ values (show $ typeOf enum)

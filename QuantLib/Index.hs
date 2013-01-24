@@ -6,7 +6,8 @@ module QuantLib.Index
   )
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Date
+import QuantLib.Internal.Utils
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlIndexAddFixing"

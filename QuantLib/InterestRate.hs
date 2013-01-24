@@ -7,7 +7,8 @@ where
 
 import QuantLib.Compounding(Compounding)
 import QuantLib.Time.Frequency(Frequency)
-import QuantLib.Internal
+import QuantLib.Internal.Enum
+import QuantLib.Internal.Utils
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlInterestRate"

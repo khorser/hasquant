@@ -10,7 +10,8 @@ where
 
 import Control.Monad(liftM)
 
-import QuantLib.Internal
+import QuantLib.Internal.Date
+import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
   c_evaluationDate :: IO CDate

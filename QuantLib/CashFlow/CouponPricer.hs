@@ -5,7 +5,7 @@ module QuantLib.CashFlow.CouponPricer
   )
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Utils
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlBlackIborCouponPricer"

@@ -9,7 +9,7 @@ where
 
 import Foreign.C.String(peekCString)
 
-import QuantLib.Internal
+import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlVersion"
   c_version :: CString

@@ -8,7 +8,8 @@ module QuantLib.Time.Period
   )
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Enum
+import QuantLib.Internal.Utils
 import QuantLib.Types
 import qualified QuantLib.Time.Frequency as F(Frequency)
 import QuantLib.Time.Unit(Unit)

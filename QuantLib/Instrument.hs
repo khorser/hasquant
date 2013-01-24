@@ -10,7 +10,7 @@ where
 
 import Control.Monad(liftM)
 
-import QuantLib.Internal
+import QuantLib.Internal.Utils
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlInstrumentNPV"
@@ -27,6 +27,5 @@ npv i = liftM realToFrac $ withObject i (handleExceptions . c_npv)
 -- (qlInstrumentSetPricingEngine)
 setPricingEngine :: Instrument -> PricingEngine -> IO ()
 setPricingEngine i e =
-  withObject i
-  (\ii ->
-    withObject e (handleExceptions . c_setPricingEngine ii))
+  withObject2 i e
+  (\ii ee -> handleExceptions $ c_setPricingEngine ii ee)

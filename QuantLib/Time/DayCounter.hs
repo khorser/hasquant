@@ -44,7 +44,7 @@ module QuantLib.Time.DayCounter
 
 where
 
-import QuantLib.Internal
+import QuantLib.Internal.Utils
 import QuantLib.Types
 
 dayCounter      :: IO DayCounter
