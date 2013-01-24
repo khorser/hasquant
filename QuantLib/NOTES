@@ -92,3 +92,57 @@ a' i (a' d id .)
     (FfiArg Double c3, FfiArg Int c2, FfiArg Double c1, FfiArg Int c) =>
      (c -> c1 -> c2 -> c3 -> IO b) -> IO b
 --- ---
+
+{-# LANGUAGE TemplateHaskell #-}
+module M(f, ff)
+where
+
+import Language.Haskell.TH
+
+a :: Type -> Q String
+a t = case t of
+          ForallT _ _ _ -> return "F"
+          VarT _ -> return "V"
+          ConT t -> return $ "C(" ++ show t ++ ")"
+          TupleT _ -> return "T"
+          UnboxedTupleT _ -> return "U"
+          ArrowT -> return "A"
+          ListT -> return "L"
+          AppT (AppT ArrowT (ConT t1)) t2 ->
+            do tt2 <- a t2
+               return $ "AP(" ++ show t1 ++ " " ++ tt2 ++ ")"
+          AppT t1 t2 ->
+            do tt1 <- a t1
+               tt2 <- a t2
+               return $ "AA(" ++ tt1 ++ " " ++ tt2 ++ ")"
+          SigT _ _ -> return "S"
+
+ff :: Name -> DecsQ
+ff n = do body <- [|undefined|]
+          return [FunD (mkName "qqq") [Clause [] (NormalB body) [] ]]
+-- ff :: Name -> Q Exp
+-- ff n = [|undefined|]
+
+f :: Name -> DecsQ
+f n = runQ $ do VarI _ ft _ _ <- reify n
+                r <- a ft
+                return [FunD (mkName r) []]
+***
+
+{-# LANGUAGE TemplateHaskell #-}
+module Main where
+
+import M
+
+import QuantLib.Instrument.Bond
+import QuantLib.Internal.Date
+
+
+-- ff1 :: Int -> Int
+-- $(ff 'ff1)
+$(ff 'bond)
+-- ff1 = $(ff 'ff1)
+
+-- $(f 'bond)
+
+-- $(f 'c_minDateSerialNumber)
