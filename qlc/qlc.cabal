@@ -10,8 +10,6 @@ Maintainer:          sergey.khorev@gmail.com
 -- Copyright:           
 
 Category:            Finance
--- build-type:          Custom
-Build-Type:          Simple
 Cabal-Version:       >=1.10
 --tested-with:       GHC-7.4.2
 --homepage:
