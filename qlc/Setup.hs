@@ -79,6 +79,12 @@ sharedLibName ver basename =
         where
           full_ver = (intercalate "." . map show . versionBranch) ver
 
+staticLibName :: String -> String
+staticLibName basename =
+    case buildOS of
+      Windows -> "lib" ++ addExtension basename ".a"
+      _ -> error "No static libs required on this platform"
+
 -- | Return any linker options required to support shared library creation
 linkCxxOpts :: Version -- ^ Version information to be used for Unix shared libraries
             -> FilePath -- ^ Directory in which library will be built
@@ -217,4 +223,8 @@ myInstHook pkg_descr local_bld_info user_hooks inst_flags =
         inst_lib_dir = libdir $ absoluteInstallDirs pkg_descr local_bld_info NoCopyDest
 
     installOrdinaryFile (fromFlag (installVerbosity inst_flags)) (bld_dir </> lib_name) (inst_lib_dir </> lib_name)
+    when (buildOS == Windows)
+      $ installOrdinaryFile (fromFlag (installVerbosity inst_flags))
+                            (bld_dir </> staticLibName dll_name)
+                            (inst_lib_dir </> staticLibName dll_name)
     ldconfig inst_lib_dir

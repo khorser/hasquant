@@ -10,10 +10,10 @@ Maintainer:          sergey.khorev@gmail.com
 -- Copyright:           
 
 Category:            Finance
--- build-type:          Custom
-Build-Type:          Simple
+Build-Type:          Custom
 Cabal-Version:       >=1.10
 --tested-with:       GHC-7.4.2
+--homepage:
 
 Flag buildExample
   Default: False
@@ -53,31 +53,11 @@ Library
                         , QuantLib.Internal.Enum
                         , QuantLib.Internal.Syntax
   Ghc-options:         -Wall
-  Build-depends:       base == 4.5.*, time >= 1.4, template-haskell
+  Build-depends:       base == 4.5.*
+                        , time >= 1.4
+                        , template-haskell
+                        , qlc
 
-  C-Sources:           cpp/qlBond.cpp
-                        cpp/qlCalendar.cpp
-                        cpp/qlCouponPricer.cpp
-                        cpp/qlCurrency.cpp
-                        cpp/qlDate.cpp
-                        cpp/qlDayCounter.cpp
-                        cpp/qlEnumerations.cpp
-                        cpp/qlIborIndex.cpp
-                        cpp/qlIndex.cpp
-                        cpp/qlInterestRate.cpp
-                        cpp/qlInstrument.cpp
-                        cpp/qlLeg.cpp
-                        cpp/qlPeriod.cpp
-                        cpp/qlPricingEngine.cpp
-                        cpp/qlQuote.cpp
-                        cpp/qlSchedule.cpp
-                        cpp/qlSettings.cpp
-                        cpp/qlUtilities.cpp
-                        cpp/qlVolatilityTS.cpp
-                        cpp/qlYieldTS.cpp
-                        cpp/qlYieldTSAux.cpp
-  Extra-Libraries:     QuantLib stdc++ 
-  Include-Dirs:        cpp
   Default-Language:  Haskell2010
 
 Test-Suite QL-Test
@@ -93,7 +73,6 @@ Test-Suite QL-Test
                      , time >= 1.4
                      , HTF == 0.10.*
                      , hasquant
-  Extra-Libraries:   QuantLib stdc++
   Default-Language:  Haskell2010
   If os(windows)
     LD-Options:      -static
@@ -111,7 +90,6 @@ Executable QL-Example
   Build-Depends:     base == 4.5.*
                      , time >= 1.4
                      , hasquant
-  Extra-Libraries:   QuantLib stdc++
   Default-Language:  Haskell2010
   If os(windows)
     LD-Options:      -static
