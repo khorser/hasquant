@@ -1,0 +1,85 @@
+Name:                qlc
+Version:             0.1.0.0
+Synopsis:            Bindings to QuantLib, C wrappers
+-- Description:         
+
+License:             BSD3
+License-File:        LICENSE
+Author:              Sergey Khorev
+Maintainer:          sergey.khorev@gmail.com
+-- Copyright:           
+
+Category:            Finance
+-- build-type:          Custom
+Build-Type:          Simple
+Cabal-Version:       >=1.10
+--tested-with:       GHC-7.4.2
+--homepage:
+
+Cabal-version: >= 1.2
+Build-type:    Custom
+
+Extra-source-files:
+    cpp/qlBond.cpp
+    cpp/qlCalendar.cpp
+    cpp/qlCouponPricer.cpp
+    cpp/qlCurrency.cpp
+    cpp/qlDate.cpp
+    cpp/qlDayCounter.cpp
+    cpp/qlEnumerations.cpp
+    cpp/qlIborIndex.cpp
+    cpp/qlIndex.cpp
+    cpp/qlInstrument.cpp
+    cpp/qlInterestRate.cpp
+    cpp/qlLeg.cpp
+    cpp/qlPeriod.cpp
+    cpp/qlPricingEngine.cpp
+    cpp/qlQuote.cpp
+    cpp/qlSchedule.cpp
+    cpp/qlSettings.cpp
+    cpp/qlUtilities.cpp
+    cpp/qlVolatilityTS.cpp
+    cpp/qlYieldTS.cpp
+    cpp/qlYieldTSAux.cpp
+
+library
+
+  include-dirs:
+    cpp
+  
+  install-includes:
+    ql.h
+    qlaux.h
+    qlYieldTSAux.h
+
+  build-depends:
+    base >= 4 && < 5
+
+  x-dll-sources:
+    cpp/qlBond.cpp
+    cpp/qlCalendar.cpp
+    cpp/qlCouponPricer.cpp
+    cpp/qlCurrency.cpp
+    cpp/qlDate.cpp
+    cpp/qlDayCounter.cpp
+    cpp/qlEnumerations.cpp
+    cpp/qlIborIndex.cpp
+    cpp/qlIndex.cpp
+    cpp/qlInstrument.cpp
+    cpp/qlInterestRate.cpp
+    cpp/qlLeg.cpp
+    cpp/qlPeriod.cpp
+    cpp/qlPricingEngine.cpp
+    cpp/qlQuote.cpp
+    cpp/qlSchedule.cpp
+    cpp/qlSettings.cpp
+    cpp/qlUtilities.cpp
+    cpp/qlVolatilityTS.cpp
+    cpp/qlYieldTS.cpp
+    cpp/qlYieldTSAux.cpp
+
+  x-dll-name: qlc
+
+  x-dll-extra-libraries: QuantLib
+
+-- vim: set et:

@@ -1,0 +1,94 @@
+Name:                hasquant
+Version:             0.1.0.0
+Synopsis:            Bindings to QuantLib
+-- Description:         
+
+License:             BSD3
+License-File:        LICENSE
+Author:              Sergey Khorev
+Maintainer:          sergey.khorev@gmail.com
+-- Copyright:           
+
+Category:            Finance
+Build-Type:          Custom
+Cabal-Version:       >=1.10
+--tested-with:       GHC-7.4.2
+--homepage:
+
+Flag buildExample
+  Default: False
+
+Library
+  Exposed-modules:     
+     QuantLib.Instrument.Bond
+   , QuantLib.Time.BusinessDayConvention
+   , QuantLib.Time.Calendar
+   , QuantLib.Compounding
+   , QuantLib.CashFlow.CouponPricer
+   , QuantLib.Currency
+   , QuantLib.Time.Date
+   , QuantLib.Time.DateGenerationRule
+   , QuantLib.Time.DayCounter
+   , QuantLib.Error
+   , QuantLib.Time.Frequency
+   , QuantLib.Index.Ibor
+   , QuantLib.Index
+   , QuantLib.Instrument
+   , QuantLib.InterestRate
+   , QuantLib.Math.Interpolation
+   , QuantLib.CashFlow.Leg
+   , QuantLib.Time.Period
+   , QuantLib.PricingEngine
+   , QuantLib.Quote
+   , QuantLib.Time.Schedule
+   , QuantLib.Settings
+   , QuantLib.Types
+   , QuantLib.Time.Unit
+   , QuantLib.Utilities
+   , QuantLib.TermStructure.Volatility
+   , QuantLib.TermStructure.Yield   
+  
+  Other-modules:       QuantLib.Internal.Utils
+                        , QuantLib.Internal.Date
+                        , QuantLib.Internal.Enum
+                        , QuantLib.Internal.Syntax
+  Ghc-options:         -Wall
+  Build-depends:       base == 4.5.*, time >= 1.4, template-haskell, qlc
+
+  Default-Language:  Haskell2010
+
+Test-Suite QL-Test
+  Type:              exitcode-stdio-1.0
+  Main-Is:           QuantLib/Test/Main.hs
+  Other-modules:     QuantLib.Test.HUnit
+                      , QuantLib.Test.QuickCheck
+                      , QuantLib.Example.Bond
+  GHC-Options:       -Wall
+  Build-Depends:     base == 4.5.*
+                     -- using newer QuickCheck to derive Arbitrary for enumerated types
+                     , QuickCheck >=2.5
+                     , time >= 1.4
+                     , HTF == 0.10.*
+                     , hasquant
+  Default-Language:  Haskell2010
+  If os(windows)
+    LD-Options:      -static
+
+Executable QL-Example
+
+  If flag(buildExample)
+    Buildable: True
+  Else
+    Buildable: False
+
+  Main-Is:           QuantLib/Example/Main.hs
+  Other-modules:     QuantLib.Example.Bond
+  GHC-Options:       -Wall
+  Build-Depends:     base == 4.5.*
+                     , time >= 1.4
+                     , hasquant
+  Default-Language:  Haskell2010
+  If os(windows)
+    LD-Options:      -static
+
+-- vim: set et ts=8 sts=2 sw=2:
