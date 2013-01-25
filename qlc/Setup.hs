@@ -89,7 +89,7 @@ linkCxxOpts ver out_dir basename basepath =
     case buildOS of
       Windows -> ["--dll", "-shared", 
                   "-o", out_dir </> sharedLibName ver basename,
-                  "-Wl,--out-implib," ++ "lib" ++ addExtension basename ".a",
+                  "-Wl,--out-implib," ++ out_dir </> "lib" ++ addExtension basename ".a",
                   "-Wl,--enable-auto-import"]
       OSX -> ["-dynamiclib",
                   "-o", out_dir </> sharedLibName ver basename,
