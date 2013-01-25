@@ -3,7 +3,6 @@ module QuantLib.Utilities
   -- accessors
     version
   , boostVersion
-  , name
   )
 where
 

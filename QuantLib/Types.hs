@@ -1,4 +1,4 @@
-{-# LANGUAGE MultiParamTypeClasses,FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses,FlexibleInstances,OverlappingInstances #-}
 module QuantLib.Types
   (
   -- cashflows
@@ -81,6 +81,8 @@ foreign import ccall safe "ql.h &qlFreeCurrency"
 instance NamedSingleton CCurrency where
   c_construct = c_currency
   c_name = c_currencyName
+instance Show Currency where
+  show = name
 foreign import ccall safe "ql.h qlCurrency"
   c_currency :: CString -> Ptr CString -> IO (Ptr CCurrency)
 foreign import ccall safe "ql.h qlCurrencyName"
@@ -202,6 +204,8 @@ foreign import ccall safe "ql.h &qlFreeCalendar"
 instance NamedSingleton CCalendar where
   c_construct = c_calendar
   c_name = c_calendarName
+instance Show Calendar where
+  show = name
 foreign import ccall safe "ql.h qlCalendar"
   c_calendar :: CString -> Ptr CString -> IO (Ptr CCalendar)
 foreign import ccall safe "ql.h qlCalendarName"
@@ -215,6 +219,8 @@ foreign import ccall safe "ql.h &qlFreeDayCounter"
 instance NamedSingleton CDayCounter where
   c_construct = c_dayCounter
   c_name = c_dayCounterName
+instance Show DayCounter where
+  show = name
 foreign import ccall safe "ql.h qlDayCounter"
   c_dayCounter :: CString -> Ptr CString -> IO (Ptr CDayCounter)
 foreign import ccall safe "ql.h qlDayCounterName"

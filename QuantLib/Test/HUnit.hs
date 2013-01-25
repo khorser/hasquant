@@ -24,7 +24,6 @@ import qualified QuantLib.Time.Period as Period
 import qualified QuantLib.Time.Schedule as Schedule
 import qualified QuantLib.Time.Unit as Unit
 import qualified QuantLib.Types as Types
-import qualified QuantLib.Utilities as Utilities
 
 import qualified QuantLib.Example.Bond as BondExample
 
@@ -86,7 +85,7 @@ test_threeLegsSorted = do t <- today
 test_GBPCalendar :: IO ()
 test_GBPCalendar = do c1 <- Calendar.londonStockExchange
                       c2 <- Calendar.gbp
-                      assertEqual (Utilities.name c1) (Utilities.name c2)
+                      assertEqual (show c1) (show c2)
 
 test_calAdjust :: IO ()
 test_calAdjust = do c <- Calendar.russia 
@@ -109,12 +108,12 @@ test_calAdvance = do  c <- Calendar.russia
                               
 test_currency :: IO ()
 test_currency = do  c <- Currency.gbp
-                    assertEqual "British pound sterling" (Utilities.name c)
+                    assertEqual "British pound sterling" (show c)
 
 test_a365fCounter :: IO ()
 test_a365fCounter = do  c1 <- DayCounter.a365F
                         c2 <- DayCounter.actual365Fixed
-                        assertEqual (Utilities.name c1) (Utilities.name c2)
+                        assertEqual (show c1) (show c2)
 
 test_bondStatics :: IO ()
 test_bondStatics = do c <- Calendar.gbp
