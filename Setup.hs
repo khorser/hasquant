@@ -54,4 +54,3 @@ myConfHook (pkg0, pbi) flags = do
     let lpd' = lpd { library = Just lib' }
 
     return $ lbi { localPkgDescr = lpd' }
-
