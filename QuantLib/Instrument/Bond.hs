@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses,FlexibleContexts #-}
 module QuantLib.Instrument.Bond
   (
   -- makers

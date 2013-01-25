@@ -1,4 +1,3 @@
-{-# LANGUAGE MultiParamTypeClasses #-}
 module QuantLib.Index.Ibor
   (
   -- makers

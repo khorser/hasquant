@@ -1,5 +1,3 @@
-{-# LANGUAGE FlexibleContexts,MultiParamTypeClasses #-}
---{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Instrument
   (
   -- accessors
@@ -31,6 +29,3 @@ setPricingEngine :: Instrument -> PricingEngine -> IO ()
 setPricingEngine i e =
   withObject2 i e
   (\ii ee -> handleExceptions $ c_setPricingEngine ii ee)
-
--- TemplateHaskell test:
--- $(ftest 'setPricingEngine)

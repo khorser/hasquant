@@ -1,4 +1,3 @@
-{-# LANGUAGE FlexibleContexts,MultiParamTypeClasses #-}
 module QuantLib.Index
   (
   -- mutators

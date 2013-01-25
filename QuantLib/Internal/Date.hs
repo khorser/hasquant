@@ -1,7 +1,8 @@
 {-# LANGUAGE FlexibleInstances #-}
 module QuantLib.Internal.Date
   (
-    CDate
+    Day
+  , CDate
   , c_maxDateSerialNumber
   , c_minDateSerialNumber
   , isValid
