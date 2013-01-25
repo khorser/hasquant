@@ -12,6 +12,7 @@ import Control.Monad(liftM)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Utils
+import QuantLib.Types(Day)
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
   c_evaluationDate :: IO CDate

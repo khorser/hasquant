@@ -32,14 +32,12 @@ module QuantLib.Internal.Utils
   , castPtr, castFunPtr, castForeignPtr, withForeignPtr, newForeignPtr_
   , fromBool, toBool
   , unsafePerformIO
-  , Word
   , ForeignPtr
   )
 
 where
 
 import Control.Exception(throw)
-import Data.Word(Word)
 
 import Foreign.C.String
 import Foreign.C.Types

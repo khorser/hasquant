@@ -1,8 +1,10 @@
 {-# LANGUAGE MultiParamTypeClasses,FlexibleInstances,OverlappingInstances #-}
 module QuantLib.Types
   (
+    Day
+  , Word
   -- cashflows
-    CLeg, Leg
+  , CLeg, Leg
   , CFloatingRateCouponPricer, FloatingRateCouponPricer
 
   -- curencies
@@ -37,13 +39,15 @@ module QuantLib.Types
   , CQuote, Quote
 
   -- casts
-  , BondClass(..)
-  , InstrumentClass(..)
-  , IndexClass(..)
+  , asBond
+  , withInstrument
+  , withIndex
   )
 where
 
 import QuantLib.Internal.Utils
+import Data.Time.Calendar(Day)
+import Data.Word(Word)
 
 class BondClass a where
   -- it is ok to keep the result of the cast

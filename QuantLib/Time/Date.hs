@@ -38,6 +38,7 @@ import Data.Typeable(Typeable)
 import QuantLib.Internal.Enum
 import QuantLib.Internal.Date
 import QuantLib.Internal.Utils
+import QuantLib.Types(Day)
 
 year :: Day -> Integer
 year x = y where (y, _, _) = toGregorian x
