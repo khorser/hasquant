@@ -94,28 +94,20 @@ a' i (a' d id .)
 --- ---
 
 {-# LANGUAGE TemplateHaskell #-}
-module M(f, ffe, ffd, ffn, ffu)
+module M(f, ffe, ffd, ffn, ffu, ffee)
 where
 
 import Language.Haskell.TH
 
-a :: Type -> Q String
+a :: Type -> String
 a t = case t of
-          ForallT _ _ _ -> return "F"
-          VarT _ -> return "V"
-          ConT t -> return $ "C(" ++ show t ++ ")"
-          TupleT _ -> return "T"
-          UnboxedTupleT _ -> return "U"
-          ArrowT -> return "A"
-          ListT -> return "L"
-          AppT (AppT ArrowT (ConT t1)) t2 ->
-            do tt2 <- a t2
-               return $ "AP(" ++ show t1 ++ " " ++ tt2 ++ ")"
-          AppT t1 t2 ->
-            do tt1 <- a t1
-               tt2 <- a t2
-               return $ "AA(" ++ tt1 ++ " " ++ tt2 ++ ")"
-          SigT _ _ -> return "S"
+          AppT (AppT ArrowT t1) t2 -> (a t1) ++ " -> " ++ (a t2)
+          AppT ListT t1 -> "[" ++ (a t1) ++ "]"
+          AppT (AppT (TupleT 2) t1) t2 -> "(" ++ (a t1) ++ ", " ++ (a t2) ++ ")"
+          AppT (AppT (AppT (TupleT 3) t1) t2) t3 -> "(" ++ a t1 ++ ", " ++ a t2 ++ ", " ++ a t3 ++ ")"
+          AppT t1 t2 -> "(" ++ a t1 ++ " " ++ a t2 ++ ")"
+          ConT t -> show t
+          _ -> fail $ "Unsupported argument type: " ++ show t
 
 ffd :: Name -> DecsQ
 ffd n = do body <- [|undefined|]
@@ -128,15 +120,20 @@ ffn n = do body <- [|undefined|]
 ffu :: Name -> ExpQ
 ffu n = [|undefined|]
 
+ffee :: Name -> ExpQ
+ffee n =
+  do VarI _ ft _ _ <- reify n
+     return $ LitE $ StringL (show ft)
+
 ffe :: Name -> ExpQ
 ffe n =
   do VarI _ ft _ _ <- reify n
-     s <- a ft
+     let s = a ft
      return (LitE $ StringL s)
 
 f :: Name -> DecsQ
 f n = runQ $ do VarI _ ft _ _ <- reify n
-                r <- a ft
+                let r = a ft
                 return [FunD (mkName r) []]
 
 ***
