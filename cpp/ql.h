@@ -12,7 +12,7 @@
 extern "C" {
   /* utilities */
   const char *DLLEXPORT qlVersion();
-  const char *DLLEXPORT boostVersion();
+  const char *DLLEXPORT qlBoostVersion();
 
   void DLLEXPORT qlFreeString(char *p);
   void DLLEXPORT qlFreeInts(int *p);

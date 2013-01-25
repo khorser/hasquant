@@ -13,7 +13,7 @@ const char *qlVersion() {
   return QL_VERSION;
 }
 
-const char *boostVersion() {
+const char *qlBoostVersion() {
   return BOOST_LIB_VERSION;
 }
 

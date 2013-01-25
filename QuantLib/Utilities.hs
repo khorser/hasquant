@@ -12,7 +12,7 @@ import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlVersion"
   c_version :: CString
-foreign import ccall safe "ql.h boostVersion"
+foreign import ccall safe "ql.h qlBoostVersion"
   c_boostVersion :: CString
 
 -- |returns the version number of QuantLib
