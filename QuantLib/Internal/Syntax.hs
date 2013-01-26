@@ -12,17 +12,12 @@ data NestedArg = IntN | DayN | DoubleN | ForeignPtrN
 
 data TopArg = IntA | WordA | DayA | StringA | DoubleA
   | OptDayA | ForeignPtrA | OptForeignPtrA
-  | List NestedArg | List2 NestedArg NestedArg
+  | ListA NestedArg | ListA2 NestedArg NestedArg
+  -- TODO enum
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
 isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double]
-
-data AtomicRet = IntR | WordR | DayR | DoubleR | OptDayR | ForeignPtrR
-  deriving (Show, Eq)
-
-data RetVal = AtomicRV AtomicRet | IORV AtomicRet
-  deriving (Show, Eq)
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -32,23 +27,71 @@ nameToTop n | n == ''String = StringA
 nameToTop n | n == ''Double = DoubleA
 nameToTop _ = error "Not supported yet"
 
+nestedNameToTop :: Name -> NestedArg
+nestedNameToTop n | n == ''Int = IntN
+nestedNameToTop n | n == ''Day = DayN
+nestedNameToTop n | n == ''Double = DoubleN
+-- TODO ForeignPtr
+nestedNameToTop _ = error "Not supported yet"
+
 topArgs :: Type -> Q TopArg
 topArgs (ConT n) | isAtomicTop n = return $ nameToTop n
+topArgs (ConT n) = do
+  r <- reify n
+  case r of
+    TyConI (TySynD _ _ (AppT (ConT p) _))
+      -> if p == ''ForeignPtr
+           then return ForeignPtrA
+           else fail $ "Unsupported top arg synonym type: "
+            ++ show n ++ " reified as " ++ show r
+    _ -> fail $ "Unsupported top arg type: " ++ show n
+            ++ " reified as " ++ show r
+topArgs (AppT (ConT m) (ConT n)) | m == ''Maybe =
+  if n == ''Day
+    then return OptDayA
+  else do
+    r <- reify n
+    case r of
+      TyConI (TySynD _ _ (AppT (ConT p) _))
+        -> if p == ''ForeignPtr
+             then return OptForeignPtrA
+             else fail $ "Unsupported optional top arg synonym type: "
+              ++ show n ++ " reified as " ++ show r
+      _ -> fail $ "Unsupported optional top arg type: " ++ show n
+              ++ " reified as " ++ show r
+topArgs (AppT ListT (ConT n)) = return $ ListA (nestedNameToTop n)
+topArgs (AppT
+          ListT
+          (AppT
+            (AppT
+              (TupleT 2)
+              (ConT n1))
+            (ConT n2))) = return $ ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
 topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
+
+data AtomicRet = IntR | WordR | DayR | DoubleR | StringR
+  | OptDayR | ForeignPtrR
+  deriving (Show, Eq)
+
+data RetVal = AtomicRV AtomicRet | IORV AtomicRet
+  deriving (Show, Eq)
 
 nameToRetVal :: Name -> Q AtomicRet
 nameToRetVal n | n == ''Int = return IntR
 nameToRetVal n | n == ''Word = return WordR
 nameToRetVal n | n == ''Day = return DayR
 nameToRetVal n | n == ''Double = return DoubleR
+nameToRetVal n | n == ''String = return StringR
 nameToRetVal n = do
   r <- reify n
   case r of
     TyConI (TySynD _ _ (AppT (ConT p) _))
       -> if p == ''ForeignPtr
            then return ForeignPtrR
-           else fail $ "Unsupported synonym type: " ++ show r
-    _ -> fail $ "Unsupported return type: " ++ show r
+           else fail $ "Unsupported return synonym type: " ++ show n
+            ++ " reified as " ++ show r
+    _ -> fail $ "Unsupported return type: " ++ show n ++ " reified as "
+            ++ show r
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | m == ''Maybe && d == ''Day =
@@ -81,24 +124,3 @@ ffe n = do
   VarI _ ft _ _ <- reify n
   s <- args ft
   return (LitE $ StringL (show s))
-
--- fft :: Name -> ExpQ
--- fft n =
---   do TyConI (TySynD _ _ (AppT (ConT p) _)) <- reify n
---      return (LitE $ StringL (show $ p == ''ForeignPtr))
--- 
--- ffe :: Name -> ExpQ
--- ffe n =
---   do VarI _ ft _ _ <- reify n
---      let s = a ft
---      return (LitE $ StringL s)
--- 
--- a :: Type -> String
--- a x = case x of
---           AppT (AppT ArrowT t1) t2 -> a t1 ++ " -> " ++ a t2
---           AppT ListT t1 -> "[" ++ a t1 ++ "]"
---           AppT (AppT (TupleT 2) t1) t2 -> "(" ++ a t1 ++ ", " ++ a t2 ++ ")"
---           AppT (AppT (AppT (TupleT 3) t1) t2) t3 -> "(" ++ a t1 ++ ", " ++ a t2 ++ ", " ++ a t3 ++ ")"
---           AppT t1 t2 -> "(" ++ a t1 ++ " " ++ a t2 ++ ")"
---           ConT t -> show t
---           _ -> fail $ "Unsupported argument type: " ++ show x
