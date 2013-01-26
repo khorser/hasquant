@@ -33,11 +33,11 @@ data TopArg = IntA | WordA | DayA | StringA | DoubleA
 isAtomicTop :: Name -> Bool
 isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double]
 
-getEnums :: Q [Name]
-getEnums = do
+isEnum :: Name -> Q Bool
+isEnum n = do
   ClassI _ instances <- reify ''QLEnum
-  return $ map getEnumTypeName instances
-  where getEnumTypeName (InstanceD [] (AppT _ (ConT n)) []) = n
+  return $ n `elem` (map getEnumTypeName instances)
+  where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
         getEnumTypeName x = error $ "Error getting QLEnum instances: " ++ show x
 
 nameToTop :: Name -> TopArg
@@ -60,8 +60,8 @@ nestedNameToTop n =
 topArgs :: Type -> Q TopArg
 topArgs (ConT n) | isAtomicTop n = return $ nameToTop n
 topArgs (ConT n) = do
-  enums <- getEnums
-  if n `elem` enums
+  e <- isEnum n
+  if e
     then return EnumA
     else tryForeignPtr n >>=
           either (\x -> fail $ "Error parsing top arg: " ++ x)
@@ -85,7 +85,7 @@ topArgs (AppT
 topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | StringR
-  | OptDayR | ForeignPtrR
+  | EnumR | OptDayR | ForeignPtrR
   deriving (Show, Eq)
 
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet
@@ -110,10 +110,13 @@ nameToRetVal n | n == ''Word = return WordR
 nameToRetVal n | n == ''Day = return DayR
 nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''String = return StringR
-nameToRetVal n =
-  tryForeignPtr n >>=
-    either (\x -> fail $ "Error parsing ret type: " ++ x)
-      (\_ -> return ForeignPtrR)
+nameToRetVal n = do
+  e <- isEnum n
+  if e
+    then return EnumR
+    else tryForeignPtr n >>=
+          either (\x -> fail $ "Error parsing ret type: " ++ x)
+            (\_ -> return ForeignPtrR)
 
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | m == ''Maybe && d == ''Day =
