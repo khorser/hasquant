@@ -2,7 +2,7 @@
 module QuantLib.Internal.Syntax
   (
     args
-  , ffe
+  , ffiCall
   )
 where
 
@@ -144,8 +144,8 @@ args t@(AppT _ _) = do
   return ([], r)
 args t = fail $ "Unsupported type: " ++ show t
 
-ffe :: Name -> ExpQ
-ffe n = do
+ffiCall :: Name -> ExpQ
+ffiCall n = do
   VarI _ ft _ _ <- reify n
   s <- args ft
-  return (LitE $ StringL (show s))
+  stringE (show s)

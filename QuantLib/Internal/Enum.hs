@@ -19,6 +19,7 @@ values ename = if null vals
   where vals = unsafePerformIO $
                 withCString ename (getStaticIntArray . c_values)
 
+-- when declaring new QLEnum instances, add them into Internal.Enum too!
 class (Typeable a, Enum a, Show a) => QLEnum a where
   toQlEnum :: a -> CInt
   toQlEnum x =
