@@ -6,6 +6,9 @@ module QuantLib.Time.DateGenerationRule
 where
 
 import Data.Typeable(Typeable)
+import QuantLib.Internal.Enum(QLEnum)
+
+instance QLEnum DateGenerationRule
 
 data DateGenerationRule = Backward | Forward | Zero | ThirdWednesday
   | Twentieth | TwentiethIMM | OldCDS | CDS

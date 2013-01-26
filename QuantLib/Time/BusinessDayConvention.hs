@@ -7,6 +7,9 @@ module QuantLib.Time.BusinessDayConvention
 where
 
 import Data.Typeable(Typeable)
+import QuantLib.Internal.Enum(QLEnum)
+
+instance QLEnum BusinessDayConvention
 
 data BusinessDayConvention = Following | ModifiedFollowing | Preceding
   | ModifiedPreceding | Unadjusted
