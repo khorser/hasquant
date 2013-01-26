@@ -36,7 +36,7 @@ isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double]
 isEnum :: Name -> Q Bool
 isEnum n = do
   ClassI _ instances <- reify ''QLEnum
-  return $ n `elem` (map getEnumTypeName instances)
+  return $ n `elem` map getEnumTypeName instances
   where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
         getEnumTypeName x = error $ "Error getting QLEnum instances: " ++ show x
 
