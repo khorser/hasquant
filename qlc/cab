@@ -1,1 +1,2 @@
+ghc-pkg unregister hasquant
 cabal configure && cabal build && cabal install
