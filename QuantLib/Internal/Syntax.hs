@@ -137,15 +137,15 @@ args (ConT n) = liftM ((,) [] . AtomicRV) $ nameToRetVal n
 args t@(AppT _ _) = liftM ((,) []) $ compToRetVal t 
 args t = fail $ "Unsupported type: " ++ show t
 
-ffiCall :: Name -> ExpQ
-ffiCall n = do
-  r <- reify n
+ffiCall :: Name -> Name -> ExpQ
+ffiCall hFun cFun = do
+  r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry genFfiCall
-    _ -> fail $ "Cannot reify type of: " ++ show n
+    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall cFun)
+    _ -> fail $ "Cannot reify type of " ++ show hFun
 
-genFfiCall :: [TopArg] -> RetVal -> ExpQ
-genFfiCall a r = stringE $ show (a, r)
+genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
+genFfiCall n a r = genFfiCallImpl (reverse a) r (varE n)
 
 unmarshal :: AtomicRet -> ExpQ
 unmarshal IntR    = [|fromIntegral :: CInt -> Int|]
@@ -171,5 +171,6 @@ marshal (ListA2 _x1 _x2) = [|undefined|]
 marshal EnumA         = [|fromQlEnum|]
 
 genFfiCallImpl :: [TopArg] -> RetVal -> ExpQ -> ExpQ
-genFfiCallImpl [] _r code = code
-genFfiCallImpl _a _r _code = undefined
+genFfiCallImpl [] (AtomicRV r) code = [|$(unmarshal r) $code|]
+genFfiCallImpl [] (IORV r) code = [|liftM $(unmarshal r) $code|]
+genFfiCallImpl (_a:as) r code = genFfiCallImpl as r code
