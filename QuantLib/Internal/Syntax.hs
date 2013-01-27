@@ -145,32 +145,39 @@ ffiCall hFun cFun = do
     _ -> fail $ "Cannot reify type of " ++ show hFun
 
 genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
-genFfiCall n a r = genFfiCallImpl (reverse a) r (varE n)
+genFfiCall n a r = genFfiCallImpl (reverse a) [|$(unmarshal (null a) r (varE n)) |]
 
-unmarshal :: AtomicRet -> ExpQ
-unmarshal IntR    = [|fromIntegral :: CInt -> Int|]
-unmarshal WordR   = [|fromIntegral :: CUInt -> Word|]
-unmarshal DayR    = [|fromQlDate|]
-unmarshal DoubleR = [|realToFrac :: CDouble -> Double|]
-unmarshal StringR = [|undefined|]
-unmarshal EnumR   = [|fromQlEnum|]
-unmarshal OptDayR = [|fromQlDate|]
-unmarshal ForeignPtrR = [|undefined|]
+unmarshalA :: AtomicRet -> ExpQ
+unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]
+unmarshalA WordR   = [|fromIntegral :: CUInt -> Word|]
+unmarshalA DayR    = [|fromQlDate|]
+unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
+unmarshalA StringR = [|undefined|]
+unmarshalA EnumR   = [|fromQlEnum|]
+unmarshalA OptDayR = [|fromQlDate|]
+unmarshalA ForeignPtrR = [|undefined|]
 
-marshal :: TopArg -> ExpQ
-marshal IntA          = [|fromIntegral :: Int -> CInt|]
-marshal WordA         = [|fromIntegral :: Word -> CUInt |]
-marshal DayA          = [|fromQlDate|]
-marshal StringA       = [|undefined|]
-marshal DoubleA       = [|realToFrac :: Double -> CDouble|]
-marshal OptDayA       = [|fromQlDate|]
-marshal ForeignPtrA   = [|withObject|]
-marshal OptForeignPtrA= [|undefined|]
-marshal (ListA _x)    = [|undefined|] 
-marshal (ListA2 _x1 _x2) = [|undefined|]
-marshal EnumA         = [|fromQlEnum|]
+un1 :: Bool -> ExpQ
+un1 True = [| ($) |]
+un1 False = [| (.) |]
 
-genFfiCallImpl :: [TopArg] -> RetVal -> ExpQ -> ExpQ
-genFfiCallImpl [] (AtomicRV r) code = [|$(unmarshal r) $code|]
-genFfiCallImpl [] (IORV r) code = [|liftM $(unmarshal r) $code|]
-genFfiCallImpl (_a:as) r code = genFfiCallImpl as r code
+unmarshal :: Bool -> RetVal -> ExpQ -> ExpQ
+unmarshal b (AtomicRV r) code = [|$(un1 b) $(unmarshalA r) $ $code|]
+unmarshal b (IORV r) code = [|$(un1 b) (liftM $(unmarshalA r)) $ $code|]
+
+marshal :: TopArg -> ExpQ -> ExpQ
+marshal IntA code         = [|\x -> $code ((fromIntegral :: Int -> CInt) x)|]
+marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
+marshal DayA _code         = [|fromQlDate|]
+marshal StringA _code      = [|undefined|]
+marshal DoubleA _code      = [|realToFrac :: Double -> CDouble|]
+marshal OptDayA _code      = [|fromQlDate|]
+marshal ForeignPtrA _code  = [|withObject|]
+marshal OptForeignPtrA _code = [|undefined|]
+marshal (ListA _x)  _code  = [|undefined|] 
+marshal (ListA2 _x1 _x2) _code = [|undefined|]
+marshal EnumA  _code       = [|fromQlEnum|]
+
+genFfiCallImpl :: [TopArg] -> ExpQ -> ExpQ
+genFfiCallImpl [] code = code
+genFfiCallImpl (a:as) code = genFfiCallImpl as (marshal a code)
