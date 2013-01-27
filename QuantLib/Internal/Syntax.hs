@@ -77,9 +77,7 @@ topArgs (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
 topArgs (AppT
           ListT
           (AppT
-            (AppT
-              (TupleT 2)
-              (ConT n1))
+            (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
 topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
@@ -91,14 +89,14 @@ data AtomicRet = IntR | WordR | DayR | DoubleR | StringR
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet
   deriving (Show, Eq)
 
-tryForeignPtr :: Name -> Q (Either String Bool)
+tryForeignPtr :: Name -> Q (Either String Name)
 tryForeignPtr n = do
   r <- reify n
   return $
     case r of
-      TyConI (TySynD _ [] (AppT (ConT p) _))
+      TyConI (TySynD _ [] (AppT (ConT p) (ConT target)))
         -> if p == ''ForeignPtr
-             then Right True
+             then Right target
              else Left $ "Unsupported synonym type: " ++ show n
                 ++ " reified as " ++ show r
       _ -> Left $ "Unsupported type: " ++ show n ++ " reified as "
@@ -125,9 +123,8 @@ compArgToRetVal (ConT n) = nameToRetVal n
 compArgToRetVal t = fail $ "Unsupported compound type arg: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
-compToRetVal (AppT (ConT n1) t2) | n1 == ''IO = do
-  r <- compArgToRetVal t2
-  return $ IORV r
+compToRetVal (AppT (ConT n1) t2) | n1 == ''IO =
+  liftM IORV $ compArgToRetVal t2
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT?
@@ -136,16 +133,16 @@ args (AppT (AppT ArrowT t1) t2) = do
   top <- topArgs t1
   (rest, ret) <- args t2
   return (top : rest, ret)
-args (ConT n) = do
-  r <- nameToRetVal n
-  return ([], AtomicRV r)
-args t@(AppT _ _) = do
-  r <- compToRetVal t 
-  return ([], r)
+args (ConT n) = liftM ((,) [] . AtomicRV) $ nameToRetVal n
+args t@(AppT _ _) = liftM ((,) []) $ compToRetVal t 
 args t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> ExpQ
 ffiCall n = do
-  VarI _ ft _ _ <- reify n
-  s <- args ft
-  stringE (show s)
+  r <- reify n
+  case r of
+    VarI _ ft _ _  -> args ft >>= uncurry genFfiCall
+    _ -> fail $ "Cannot reify type of: " ++ show n
+
+genFfiCall :: [TopArg] -> RetVal -> ExpQ
+genFfiCall a r = stringE $ show (a, r)
