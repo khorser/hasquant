@@ -10,7 +10,7 @@ import Control.Monad(liftM, liftM2)
 import Language.Haskell.TH
 import QuantLib.Internal.Date
 import QuantLib.Internal.Utils
-import QuantLib.Internal.Enum(QLEnum)
+import QuantLib.Internal.Enum
 
 -- All QLEnum instances should be imported here!
 import QuantLib.Compounding()
@@ -146,3 +146,30 @@ ffiCall n = do
 
 genFfiCall :: [TopArg] -> RetVal -> ExpQ
 genFfiCall a r = stringE $ show (a, r)
+
+unmarshal :: AtomicRet -> ExpQ
+unmarshal IntR    = [|fromIntegral|]
+unmarshal WordR   = [|fromIntegral|]
+unmarshal DayR    = [|fromQlDate|]
+unmarshal DoubleR = [|realToFrac|]
+unmarshal StringR = [|undefined|]
+unmarshal EnumR   = [|fromQlEnum|]
+unmarshal OptDayR = [|fromQlDate|]
+unmarshal ForeignPtrR = [|undefined|]
+
+marshal :: TopArg -> ExpQ
+marshal IntA          = [|fromIntegral|]
+marshal WordA         = [|fromIntegral|]
+marshal DayA          = [|fromQlDate|]
+marshal StringA       = [|undefined|]
+marshal DoubleA       = [|realToFrac|]
+marshal OptDayA       = [|fromQlDate|]
+marshal ForeignPtrA   = [|withObject|]
+marshal OptForeignPtrA= [|undefined|]
+marshal (ListA _x)    = [|undefined|] 
+marshal (ListA2 _x1 _x2) = [|undefined|]
+marshal EnumA         = [|fromQlEnum|]
+
+genFfiCallImpl :: [TopArg] -> RetVal -> ExpQ -> ExpQ
+genFfiCallImpl [] _r code = code
+genFfiCallImpl _a _r _code = undefined
