@@ -148,21 +148,21 @@ genFfiCall :: [TopArg] -> RetVal -> ExpQ
 genFfiCall a r = stringE $ show (a, r)
 
 unmarshal :: AtomicRet -> ExpQ
-unmarshal IntR    = [|fromIntegral|]
-unmarshal WordR   = [|fromIntegral|]
+unmarshal IntR    = [|fromIntegral :: CInt -> Int|]
+unmarshal WordR   = [|fromIntegral :: CUInt -> Word|]
 unmarshal DayR    = [|fromQlDate|]
-unmarshal DoubleR = [|realToFrac|]
+unmarshal DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshal StringR = [|undefined|]
 unmarshal EnumR   = [|fromQlEnum|]
 unmarshal OptDayR = [|fromQlDate|]
 unmarshal ForeignPtrR = [|undefined|]
 
 marshal :: TopArg -> ExpQ
-marshal IntA          = [|fromIntegral|]
-marshal WordA         = [|fromIntegral|]
+marshal IntA          = [|fromIntegral :: Int -> CInt|]
+marshal WordA         = [|fromIntegral :: Word -> CUInt |]
 marshal DayA          = [|fromQlDate|]
 marshal StringA       = [|undefined|]
-marshal DoubleA       = [|realToFrac|]
+marshal DoubleA       = [|realToFrac :: Double -> CDouble|]
 marshal OptDayA       = [|fromQlDate|]
 marshal ForeignPtrA   = [|withObject|]
 marshal OptForeignPtrA= [|undefined|]
