@@ -239,6 +239,9 @@ b1 _ = return 11
 b2 :: Ptr CBond -> Ptr CSchedule -> IO CInt
 b2 _ _ = return 12
 
+b3 :: Ptr CBond -> CInt -> Ptr CSchedule -> IO CInt
+b3 _ _ _ = return 13
+
 bb1 :: Bond -> IO Int
 bb1 = \x -> withObject x (\y -> liftM (fromIntegral :: CInt -> Int) $ b1 y)
 
@@ -246,11 +249,24 @@ bb2 :: Bond -> Schedule -> IO Int
 bb2 =
   \x1 ->
     \x2 ->
-      (withObject x1
-        (\y1 -> 
+      withObject x1
+        (\y1 ->
           withObject x2
             (\y2 ->
-              liftM (fromIntegral :: CInt -> Int) $ b2 y1 y2)))
+              liftM (fromIntegral :: CInt -> Int) $ b2 y1 y2))
+
+bb3 :: Bond -> Int -> Schedule -> IO Int
+bb3 =
+  \x1 ->
+    \x2 ->
+      \x3 ->
+        withObject x1
+          (\y1 ->
+            flip ($) ((fromIntegral :: Int -> CInt) x2)
+              (\y2 ->
+                withObject x3
+                  (\y3 ->
+                    liftM (fromIntegral :: CInt -> Int) $ b3 y1 y2 y3)))
 
 main :: IO ()
 main = do
