@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.Calendar
   (
   -- accessors
@@ -59,10 +60,8 @@ module QuantLib.Time.Calendar
   )
 where
 
-import Control.Monad(liftM)
-
-import QuantLib.Internal.Enum
 import QuantLib.Internal.Date
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
@@ -75,26 +74,11 @@ foreign import ccall safe "ql.h qlCalendarAdvance"
 
 -- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
 adjust :: Calendar -> Day -> BusinessDayConvention -> IO Day
-adjust cal d conv = liftM fromQlDate
-  (withObject
-      cal
-      (\c -> c_calendarAdjust
-               c
-               (toQlDate d)
-               (toQlEnum conv)))
+adjust = $(ffiCall 'adjust 'c_calendarAdjust)
 
 -- |advances a date according to a given calendar (qlCalendarAdvance)
 advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> IO Day
-advance cal d n u conv eom = liftM fromQlDate
-  (withObject
-      cal
-      (\c -> c_calendarAdvance
-               c
-               (toQlDate d)
-               (fromIntegral n)
-               (toQlEnum u)
-               (toQlEnum conv)
-               (fromBool eom)))
+advance = $(ffiCall 'advance 'c_calendarAdvance)
 
 -- TODO add data Calendar = ...
 

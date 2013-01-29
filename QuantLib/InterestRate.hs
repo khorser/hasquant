@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.InterestRate
   (
   -- makers
@@ -7,7 +8,7 @@ where
 
 import QuantLib.Compounding(Compounding)
 import QuantLib.Time.Frequency(Frequency)
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -18,9 +19,4 @@ foreign import ccall safe "ql.h qlInterestRate"
 -- | (qlInterestRate)
 interestRate :: Double -> DayCounter -> Compounding -> Frequency
   -> IO InterestRate
-interestRate r dc comp freq =
-  withObject dc
-  (\c -> construct $ c_interestRate (realToFrac r)
-                                    c
-                                    (toQlEnum comp)
-                                    (toQlEnum freq))
+interestRate = $(ffiConstruct 'interestRate 'c_interestRate)

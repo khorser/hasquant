@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.CashFlow.CouponPricer
   (
   -- makers
@@ -5,6 +6,7 @@ module QuantLib.CashFlow.CouponPricer
   )
 where
 
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -13,4 +15,4 @@ foreign import ccall safe "ql.h qlBlackIborCouponPricer"
     -> IO (Ptr CFloatingRateCouponPricer)
 
 blackIborCouponPricer :: OptionletVolStructure -> IO FloatingRateCouponPricer
-blackIborCouponPricer capletVol = withObject capletVol (construct . c_blackIborCouponPricer)
+blackIborCouponPricer = $(ffiConstruct 'blackIborCouponPricer 'c_blackIborCouponPricer)

@@ -36,7 +36,6 @@ module QuantLib.Index.Ibor
   )
 where
 
-import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types

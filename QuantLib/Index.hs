@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Index
   (
   -- mutators
@@ -6,6 +7,7 @@ module QuantLib.Index
 where
 
 import QuantLib.Internal.Date
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -15,9 +17,4 @@ foreign import ccall safe "ql.h qlIndexAddFixing"
 
 -- |Adds fixings for the given Index object (qlIndexAddFixings)
 addFixing :: Index -> Day -> Double -> Bool -> IO ()
-addFixing i d v o =
-  withObject i
-  (\ii -> handleExceptions $ c_indexAddFixing ii
-                                              (toQlDate d)
-                                              (realToFrac v)
-                                              (fromBool o))
+addFixing = $(ffiCallHandleX 'addFixing 'c_indexAddFixing)

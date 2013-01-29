@@ -20,7 +20,6 @@ module QuantLib.Instrument.Bond
 where
 
 import QuantLib.Internal.Date
-import QuantLib.Internal.Enum
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
@@ -92,7 +91,7 @@ fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
 fixedRateBond'' = $(ffiConstruct 'fixedRateBond'' 'c_fixedRateBond'')
 
 frequency :: FixedRateBond -> Frequency
-frequency x = fromQlEnum $ unsafePerformIO (withObject x c_fixedBondFrequency)
+frequency = $(ffiCall 'frequency 'c_fixedBondFrequency)
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate

@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.CashFlow.Leg
   (
   -- makers
@@ -8,6 +9,7 @@ module QuantLib.CashFlow.Leg
 where
 
 import QuantLib.Internal.Date
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -29,4 +31,4 @@ leg flows = withAmounts
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable
 startDate :: Leg -> Day
-startDate l = fromQlDate $ unsafePerformIO (withObject l (handleExceptions . c_legStartDate))
+startDate = $(ffiCallHandleX 'startDate 'c_legStartDate)

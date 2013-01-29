@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.PricingEngine
   (
   -- makers
@@ -6,6 +7,7 @@ module QuantLib.PricingEngine
 where
 
 import QuantLib.Internal.Utils
+import QuantLib.Internal.Syntax
 import QuantLib.Types
 
 foreign import ccall safe "ql.h qlDiscountingBondEngine"
@@ -14,4 +16,4 @@ foreign import ccall safe "ql.h qlDiscountingBondEngine"
 
 -- |(qlBondEngine)
 discountingBondEngine :: YieldTermStructure -> IO PricingEngine
-discountingBondEngine ts = withObject ts (construct . c_discountingBondEngine)
+discountingBondEngine = $(ffiConstruct 'discountingBondEngine 'c_discountingBondEngine)
