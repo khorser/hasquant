@@ -145,10 +145,10 @@ ffiCall hFun cFun = do
     _ -> fail $ "Cannot reify type of " ++ show hFun
 
 genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
-genFfiCall cn aa r = do
-  hVarNames <- mapM (\_ -> newName "x") aa
-  call <- genFfiCallImpl aa (map varE hVarNames) (varE cn)
-  return $ LamE (map VarP hVarNames) call
+genFfiCall cn aa r =
+  mapM (\_ -> newName "x") aa >>=
+    \varNames -> lamE (map varP varNames)
+                      (genFfiCallImpl aa (map varE varNames) (varE cn))
   where
     genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
     genFfiCallImpl [] [] c_call = [|$(unmarshal r) $c_call|]
