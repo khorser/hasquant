@@ -41,23 +41,15 @@ foreign import ccall safe "ql.h qlBondIssueDate"
 
 -- | (qlBond)
 bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
-bond settl cal issue coupons =
-  withObject2 cal coupons
-  (\c -> construct . c_bond (fromIntegral settl) c (toQlDate issue))
+bond = $(ffiCallConstruct 'bond 'c_bond)
 
 bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
-bond' settl cal face maturity issue flows =
-  withObject2 cal flows
-  (\c -> construct . c_bond' (fromIntegral settl)
-                             c
-                             (realToFrac face)
-                             (toQlDate maturity)
-                             (toQlDate issue))
+bond' = $(ffiCallConstruct 'bond' 'c_bond')
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
--- XXX any exceptions possible?
 maturityDate :: Bond -> Maybe Day
 maturityDate = $(ffiCallUnsafeIO 'maturityDate 'c_maturityDate)
+-- XXX any exceptions possible?
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 issueDate :: Bond -> Maybe Day

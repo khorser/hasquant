@@ -147,29 +147,29 @@ args t@(AppT _ _) = do
 args t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> Name -> ExpQ
-ffiCall hn cn = ffiCallImpl False hn (varE cn)
+ffiCall hn cn = ffiCallImpl False hn (varE cn) [|id|]
 
 ffiCallUnsafeIO :: Name -> Name -> ExpQ
-ffiCallUnsafeIO hn cn = ffiCallImpl True hn (varE cn)
+ffiCallUnsafeIO hn cn = ffiCallImpl True hn (varE cn) [|id|]
 
 ffiCallConstruct :: Name -> Name -> ExpQ
-ffiCallConstruct hn cn = ffiCallImpl False hn [|construct . $(varE cn)|]
+ffiCallConstruct hn cn = ffiCallImpl False hn (varE cn) [|construct|]
 
 ffiCallHandleX :: Name -> Name -> ExpQ
-ffiCallHandleX hn cn = ffiCallImpl False hn [|handleExceptions . $(varE cn)|]
+ffiCallHandleX hn cn = ffiCallImpl False hn (varE cn) [|handleExceptions|]
 
 ffiCallHandleXIO :: Name -> Name -> ExpQ
-ffiCallHandleXIO hn cn = ffiCallImpl True hn [|handleExceptions . $(varE cn)|]
+ffiCallHandleXIO hn cn = ffiCallImpl True hn (varE cn) [|handleExceptions|]
 
-ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
-ffiCallImpl doIO hFun cFun = do
+ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ -> ExpQ
+ffiCallImpl doIO hFun cFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall doIO cFun)
+    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall doIO cFun extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall doIO cn aa r =
+genFfiCall :: Bool -> ExpQ -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall doIO cn extra aa r =
   mapM (\_ -> newName "x") aa >>=
     \varNames -> lamE (map varP varNames)
                       (if doIO
@@ -188,13 +188,25 @@ genFfiCall doIO cn aa r =
     nakedCall varNames = genFfiCallImpl aa (map varE varNames) cn
 
     genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
-    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) $c_call|]
+    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) ($(appE extra c_call))|]
 
     genFfiCallImpl (IntA:as) (v:vs) c_call =
       genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
     genFfiCallImpl (DoubleA:as) (v:vs) c_call =
       genFfiCallImpl as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
+
+    genFfiCallImpl (WordA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
+
+    genFfiCallImpl (DayA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
+
+    genFfiCallImpl (OptDayA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
+
+    genFfiCallImpl (EnumA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call (fromQlEnum $v)|]
 
     genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
@@ -216,11 +228,7 @@ unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
 
--- marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
--- marshal DayA _code         = [|fromQlDate|]
 -- marshal StringA _code      = [|undefined|]
--- marshal OptDayA _code      = [|fromQlDate|]
 -- marshal OptForeignPtrA _code = [|undefined|]
 -- marshal (ListA _x)  _code  = [|undefined|] 
 -- marshal (ListA2 _x1 _x2) _code = [|undefined|]
--- marshal EnumA  _code       = [|fromQlEnum|]
