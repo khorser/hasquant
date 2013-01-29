@@ -13,7 +13,6 @@ module QuantLib.Internal.Utils
   , maybeWithObject
   , withAmounts
   , withObjects
-  , withString2
   , getDynIntArray
   , getStaticIntArray
   -- re-exporting some popular system stuff
@@ -70,9 +69,6 @@ withAmounts :: [Double] -> (CUInt -> Ptr CDouble -> IO b) -> IO b
 withAmounts amounts f = withArrayLen
                         (map realToFrac amounts)
                         (\n a -> f (fromIntegral n) a)
-
-withString2 :: String -> String -> (CString -> CString -> IO b) -> IO b
-withString2 s1 s2 f = withCString s1 (withCString s2 . f)
 
 getDynIntArray :: (Ptr CInt -> IO (Ptr CInt)) -> IO [CInt]
 getDynIntArray = getIntArray c_freeInts
