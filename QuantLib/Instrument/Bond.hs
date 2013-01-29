@@ -48,12 +48,12 @@ bond' = $(ffiCallConstruct 'bond' 'c_bond')
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 maturityDate :: Bond -> Maybe Day
-maturityDate = $(ffiCallUnsafeIO 'maturityDate 'c_maturityDate)
+maturityDate = $(ffiCall 'maturityDate 'c_maturityDate)
 -- XXX any exceptions possible?
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 issueDate :: Bond -> Maybe Day
-issueDate = $(ffiCallUnsafeIO 'issueDate 'c_issueDate)
+issueDate = $(ffiCall 'issueDate 'c_issueDate)
 -- XXX any exceptions possible?
 
 foreign import ccall safe "ql.h qlFixedRateBond"

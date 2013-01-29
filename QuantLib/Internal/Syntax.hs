@@ -3,10 +3,8 @@ module QuantLib.Internal.Syntax
   (
     args
   , ffiCall
-  , ffiCallUnsafeIO
   , ffiCallConstruct
   , ffiCallHandleX
-  , ffiCallHandleXIO
   )
 where
 
@@ -146,72 +144,82 @@ args t@(AppT _ _) = do
     return ([], r)
 args t = fail $ "Unsupported type: " ++ show t
 
-ffiCall :: Name -> Name -> ExpQ
-ffiCall hn cn = ffiCallImpl False hn (varE cn) [|id|]
+isIO :: Type -> Q Bool
+isIO (AppT (AppT ArrowT _) t2) = isIO t2
+isIO (ConT _) = return False
+isIO (AppT (ConT n1) _) = return $ n1 == ''IO
+isIO t = fail $ "Unsupported type: " ++ show t
 
-ffiCallUnsafeIO :: Name -> Name -> ExpQ
-ffiCallUnsafeIO hn cn = ffiCallImpl True hn (varE cn) [|id|]
+ffiCall :: Name -> Name -> ExpQ
+ffiCall hn cn = ffiCallImpl hn cn [|id|]
 
 ffiCallConstruct :: Name -> Name -> ExpQ
-ffiCallConstruct hn cn = ffiCallImpl False hn (varE cn) [|construct|]
+ffiCallConstruct hn cn = ffiCallImpl hn cn [|construct|]
 
 ffiCallHandleX :: Name -> Name -> ExpQ
-ffiCallHandleX hn cn = ffiCallImpl False hn (varE cn) [|handleExceptions|]
+ffiCallHandleX hn cn = ffiCallImpl hn cn [|handleExceptions|]
 
-ffiCallHandleXIO :: Name -> Name -> ExpQ
-ffiCallHandleXIO hn cn = ffiCallImpl True hn (varE cn) [|handleExceptions|]
-
-ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ -> ExpQ
-ffiCallImpl doIO hFun cFun extra = do
+ffiCallImpl :: Name -> Name -> ExpQ -> ExpQ
+ffiCallImpl hFun cFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall doIO cFun extra)
+    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall cFun extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> ExpQ -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall doIO cn extra aa r =
-  mapM (\_ -> newName "x") aa >>=
-    \varNames -> lamE (map varP varNames)
-                      (if doIO
-                         then [|unsafePerformIO $(nakedCall varNames)|]
-                         else nakedCall varNames)
+genFfiCall :: Name -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall cn extra aa r = do
+  cr <- reify cn
+  isio <- case cr of
+            VarI _ ft _ _  -> isIO ft
+            _ -> fail $ "Cannot detect return type of C function" ++ show cn
+  let doIO = isio &&
+    -- C function runs in IO but Haskell function does not
+    -- unsafePerformIO is needed
+        (case r of
+          AtomicRV _ -> True
+          _ -> False)
+  varNames <- mapM (\_ -> newName "x") aa
+  lamE (map varP varNames)
+       (if doIO
+         then [|unsafePerformIO $(nakedCall doIO varNames)|]
+         else nakedCall doIO varNames)
   where
-    ret :: RetVal
-    ret =
+    ret :: Bool -> RetVal
+    ret doIO =
       case (r, doIO) of
         (AtomicRV _, False) -> r
         (AtomicRV a, True) -> IORV a
         (IORV _, False) -> r
         (IORV _, True) -> error "Nested IO not supported"
 
-    nakedCall :: [Name] -> ExpQ
-    nakedCall varNames = genFfiCallImpl aa (map varE varNames) cn
+    nakedCall :: Bool -> [Name] -> ExpQ
+    nakedCall doIO varNames = genFfiCallImpl doIO aa (map varE varNames) (varE cn)
 
-    genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
-    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) ($(appE extra c_call))|]
+    genFfiCallImpl :: Bool -> [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
+    genFfiCallImpl doIO [] [] c_call = [|$(unmarshal (ret doIO)) ($(appE extra c_call))|]
 
-    genFfiCallImpl (IntA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
+    genFfiCallImpl doIO (IntA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
-    genFfiCallImpl (DoubleA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
+    genFfiCallImpl doIO (DoubleA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
 
-    genFfiCallImpl (WordA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
+    genFfiCallImpl doIO (WordA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
 
-    genFfiCallImpl (DayA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
+    genFfiCallImpl doIO (DayA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call (toQlDate $v)|]
 
-    genFfiCallImpl (OptDayA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
+    genFfiCallImpl doIO (OptDayA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call (toQlDate $v)|]
 
-    genFfiCallImpl (EnumA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call (fromQlEnum $v)|]
+    genFfiCallImpl doIO (EnumA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call (fromQlEnum $v)|]
 
-    genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
-      [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
+    genFfiCallImpl doIO (ForeignPtrA:as) (v:vs) c_call =
+      [|withObject $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
 
-    genFfiCallImpl _ _ _ = error "Unreachable code" -- make it more precise
+    genFfiCallImpl _ _ _ _ = error "Unreachable code" -- make it more precise
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
