@@ -31,4 +31,4 @@ leg flows = withAmounts
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable
 startDate :: Leg -> Day
-startDate = $(ffiCallHandleX 'startDate 'c_legStartDate)
+startDate = $(ffiCallXIO 'startDate 'c_legStartDate)

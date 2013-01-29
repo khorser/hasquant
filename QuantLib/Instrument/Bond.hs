@@ -47,12 +47,12 @@ bond' = $(ffiConstruct 'bond' 'c_bond')
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 maturityDate :: Bond -> Maybe Day
-maturityDate = $(ffiCall 'maturityDate 'c_maturityDate)
+maturityDate = $(ffiCallIO 'maturityDate 'c_maturityDate)
 -- XXX any exceptions possible?
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 issueDate :: Bond -> Maybe Day
-issueDate = $(ffiCall 'issueDate 'c_issueDate)
+issueDate = $(ffiCallIO 'issueDate 'c_issueDate)
 -- XXX any exceptions possible?
 
 foreign import ccall safe "ql.h qlFixedRateBond"
@@ -91,7 +91,7 @@ fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
 fixedRateBond'' = $(ffiConstruct 'fixedRateBond'' 'c_fixedRateBond'')
 
 frequency :: FixedRateBond -> Frequency
-frequency = $(ffiCall 'frequency 'c_fixedBondFrequency)
+frequency = $(ffiCallIO 'frequency 'c_fixedBondFrequency)
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate
@@ -110,7 +110,7 @@ foreign import ccall safe "ql.h qlBondSetCouponPricer"
 -- doing like QuantLibXL here, in QuantLib it is a function working on
 -- cashflows (see the implementation in qlBondSetCouponPricer)
 setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
-setCouponPricer = $(ffiCallHandleX 'setCouponPricer 'c_bondSetCouponPricer)
+setCouponPricer = $(ffiCallX 'setCouponPricer 'c_bondSetCouponPricer)
 
 foreign import ccall safe "ql.h qlFloatingRateBond"
   c_floatingRateBond :: CUInt -> CDouble -> Ptr CSchedule -> Ptr CIborIndex

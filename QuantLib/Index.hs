@@ -17,4 +17,4 @@ foreign import ccall safe "ql.h qlIndexAddFixing"
 
 -- |Adds fixings for the given Index object (qlIndexAddFixings)
 addFixing :: Index -> Day -> Double -> Bool -> IO ()
-addFixing = $(ffiCallHandleX 'addFixing 'c_indexAddFixing)
+addFixing = $(ffiCallX 'addFixing 'c_indexAddFixing)

@@ -23,5 +23,5 @@ simpleQuote = $(ffiConstruct 'simpleQuote 'c_simpleQuote)
 
 -- |Returns the current value of the given Quote object (qlQuoteValue)
 value :: Quote -> Double
-value = $(ffiCallHandleX 'value 'c_quoteValue)
+value = $(ffiCallXIO 'value 'c_quoteValue)
 -- XXX assuming quotes are immutable

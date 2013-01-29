@@ -31,4 +31,4 @@ fromFrequency = $(ffiConstruct 'fromFrequency 'c_periodFromFreq)
 
 -- |returns a Frequency from a given Period (e.g. SemiAnnual from 6M) (qlFrequencyFromPeriod)
 toFrequency :: Period -> F.Frequency
-toFrequency = $(ffiCallHandleX 'toFrequency 'c_periodToFreq)
+toFrequency = $(ffiCallXIO 'toFrequency 'c_periodToFreq)

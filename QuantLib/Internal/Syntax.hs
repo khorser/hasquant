@@ -3,8 +3,10 @@ module QuantLib.Internal.Syntax
   (
     args
   , ffiCall
+  , ffiCallIO
   , ffiConstruct
-  , ffiCallHandleX
+  , ffiCallX
+  , ffiCallXIO
   )
 where
 
@@ -144,104 +146,101 @@ args t@(AppT _ _) = do
     return ([], r)
 args t = fail $ "Unsupported type: " ++ show t
 
-isIO :: Type -> Q Bool
-isIO (AppT (AppT ArrowT _) t2) = isIO t2
-isIO (ConT _) = return False
-isIO (AppT (ConT n1) _) = return $ n1 == ''IO
-isIO t = fail $ "Unsupported type: " ++ show t
+-- isIO :: Type -> Q Bool
+-- isIO (AppT (AppT ArrowT _) t2) = isIO t2
+-- isIO (ConT _) = return False
+-- isIO (AppT (ConT n1) _) = return $ n1 == ''IO
+-- isIO t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> Name -> ExpQ
-ffiCall hn cn = ffiCallImpl hn cn [|id|]
+ffiCall hn cn = ffiCallImpl False hn cn [|id|]
+
+ffiCallIO :: Name -> Name -> ExpQ
+ffiCallIO hn cn = ffiCallImpl True hn cn [|id|]
 
 ffiConstruct :: Name -> Name -> ExpQ
-ffiConstruct hn cn = ffiCallImpl hn cn [|construct|]
+ffiConstruct hn cn = ffiCallImpl False hn cn [|construct|]
 
-ffiCallHandleX :: Name -> Name -> ExpQ
-ffiCallHandleX hn cn = ffiCallImpl hn cn [|handleExceptions|]
+ffiCallX :: Name -> Name -> ExpQ
+ffiCallX hn cn = ffiCallImpl False hn cn [|handleExceptions|]
 
-ffiCallImpl :: Name -> Name -> ExpQ -> ExpQ
-ffiCallImpl hFun cFun extra = do
+ffiCallXIO :: Name -> Name -> ExpQ
+ffiCallXIO hn cn = ffiCallImpl True hn cn [|handleExceptions|]
+
+ffiCallImpl :: Bool -> Name -> Name -> ExpQ -> ExpQ
+ffiCallImpl io hFun cFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall cFun extra)
+    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall io cFun extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Name -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall cn extra aa r = do
+genFfiCall :: Bool -> Name -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall io cn extra aa r = do
   cr <- reify cn
-  isio <- case cr of
-            VarI _ ft _ _  -> isIO ft
-            _ -> fail $ "Cannot detect return type of C function" ++ show cn
-  let doIO = isio &&
-    -- C function runs in IO but Haskell function does not
-    -- unsafePerformIO is needed
-        (case r of
-          AtomicRV _ -> True
-          _ -> False)
   varNames <- mapM (\_ -> newName "x") aa
   lamE (map varP varNames)
-       (if doIO
-         then [|unsafePerformIO $(nakedCall doIO varNames)|]
-         else nakedCall doIO varNames)
+       (if io 
+         then [|unsafePerformIO $(nakedCall varNames)|]
+         else nakedCall varNames)
   where
-    ret :: Bool -> RetVal
-    ret doIO =
-      case (r, doIO) of
+    ret :: RetVal
+    ret =
+      case (r, io) of
         (AtomicRV _, False) -> r
         (AtomicRV a, True) -> IORV a
         (IORV _, False) -> r
         (IORV _, True) -> error "Nested IO not supported"
 
-    nakedCall :: Bool -> [Name] -> ExpQ
-    nakedCall doIO varNames = genFfiCallImpl doIO aa (map varE varNames) (varE cn)
+    nakedCall :: [Name] -> ExpQ
+    nakedCall varNames = genFfiCallImpl aa (map varE varNames) (varE cn)
 
-    genFfiCallImpl :: Bool -> [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
-    genFfiCallImpl doIO [] [] c_call = [|$(unmarshal (ret doIO)) ($(appE extra c_call))|]
+    genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
+    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) ($(appE extra c_call))|]
 
-    genFfiCallImpl doIO (IntA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
+    genFfiCallImpl (IntA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
-    genFfiCallImpl doIO (BoolA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call ((fromBool :: Bool -> CInt) $v)|]
+    genFfiCallImpl (BoolA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call ((fromBool :: Bool -> CInt) $v)|]
 
-    genFfiCallImpl doIO (DoubleA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
+    genFfiCallImpl (DoubleA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
 
-    genFfiCallImpl doIO (WordA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
+    genFfiCallImpl (WordA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
 
-    genFfiCallImpl doIO (DayA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call (toQlDate $v)|]
+    genFfiCallImpl (DayA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
 
-    genFfiCallImpl doIO (OptDayA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call (toQlDate $v)|]
+    genFfiCallImpl (OptDayA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
 
-    genFfiCallImpl doIO (StringA:as) (v:vs) c_call =
-      [|withCString $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
+    genFfiCallImpl (StringA:as) (v:vs) c_call =
+      [|withCString $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
-    genFfiCallImpl doIO (EnumA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call (toQlEnum $v)|]
+    genFfiCallImpl (EnumA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call (toQlEnum $v)|]
 
-    genFfiCallImpl doIO (ForeignPtrA:as) (v:vs) c_call =
-      [|withObject $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
+    genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
+      [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
-    genFfiCallImpl doIO (OptForeignPtrA:as) (v:vs) c_call =
-      [|maybeWithObject $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
+    genFfiCallImpl (OptForeignPtrA:as) (v:vs) c_call =
+      [|maybeWithObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
-    genFfiCallImpl doIO (ListA DoubleN:as) (v:vs) c_call =
-      [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
+    genFfiCallImpl (ListA DoubleN:as) (v:vs) c_call =
+      [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl doIO (ListA ForeignPtrN:as) (v:vs) c_call =
-      [|withObjects $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
+    genFfiCallImpl (ListA ForeignPtrN:as) (v:vs) c_call =
+      [|withObjects $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl doIO (ListA DayN:as) (v:vs) c_call =
-      [|withDays $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
+    genFfiCallImpl (ListA DayN:as) (v:vs) c_call =
+      [|withDays $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl _doIO (ListA2 _ _:_as) (_v:_vs) _c_call = error "Not supported yet"
+    genFfiCallImpl (ListA2 _ _:_as) (_v:_vs) _c_call = error "Not supported yet"
 
-    genFfiCallImpl _ (a:_) _ _ = error $ "Unsupported type " ++ show a
+    genFfiCallImpl (a:_) _ _ = error $ "Unsupported type " ++ show a
 
-    genFfiCallImpl _ _ _ _ = error "Impossible"
+    genFfiCallImpl _ _ _ = error "Impossible"
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]

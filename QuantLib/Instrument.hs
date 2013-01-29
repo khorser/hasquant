@@ -20,9 +20,9 @@ foreign import ccall safe "ql.h qlInstrumentSetPricingEngine"
 
 -- |Returns the NPV for the given Instrument object (qlInstrumentNPV)
 npv :: Instrument -> IO Double
-npv = $(ffiCallHandleX 'npv 'c_npv)
+npv = $(ffiCallX 'npv 'c_npv)
 
 -- |Sets a new pricing engine to the given Instrument pbject
 -- (qlInstrumentSetPricingEngine)
 setPricingEngine :: Instrument -> PricingEngine -> IO ()
-setPricingEngine = $(ffiCallHandleX 'setPricingEngine 'c_setPricingEngine)
+setPricingEngine = $(ffiCallX 'setPricingEngine 'c_setPricingEngine)

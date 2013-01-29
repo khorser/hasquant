@@ -86,7 +86,7 @@ piecewiseYieldCurve' = undefined
 
 -- |Returns a discount factor from the given YieldTermStructure object (qlYieldTSDiscount)
 discount :: YieldTermStructure -> Day -> Bool -> IO Double
-discount = $(ffiCallHandleX 'discount 'c_yieldTSDiscount)
+discount = $(ffiCallX 'discount 'c_yieldTSDiscount)
 
 foreign import ccall safe "ql.h qlSwapRateHelper1"
   c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
