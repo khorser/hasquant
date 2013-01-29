@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Instrument.Bond
   (
   -- makers
@@ -20,6 +21,7 @@ where
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
@@ -55,12 +57,12 @@ bond' settl cal face maturity issue flows =
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 -- XXX any exceptions possible?
 maturityDate :: Bond -> Maybe Day
-maturityDate b = fromQlDate $ unsafePerformIO (withObject b c_maturityDate)
+maturityDate = $(ffiCallUnsafeIO 'maturityDate 'c_maturityDate)
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
--- XXX any exceptions possible?
 issueDate :: Bond -> Maybe Day
-issueDate b = fromQlDate $ unsafePerformIO (withObject b c_issueDate)
+issueDate = $(ffiCallUnsafeIO 'issueDate 'c_issueDate)
+-- XXX any exceptions possible?
 
 foreign import ccall safe "ql.h qlFixedRateBond"
   c_fixedRateBond :: CUInt -> CDouble -> Ptr CSchedule

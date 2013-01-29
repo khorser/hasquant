@@ -3,6 +3,7 @@ module QuantLib.Internal.Syntax
   (
     args
   , ffiCall
+  , ffiCallUnsafeIO
   )
 where
 
@@ -129,28 +130,48 @@ compToRetVal (AppT (ConT n1) t2) | n1 == ''IO =
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT?
-args :: Type -> Q ([TopArg], RetVal)
-args (AppT (AppT ArrowT t1) t2) = do
+args :: Bool -> Type -> Q ([TopArg], RetVal)
+args doIO (AppT (AppT ArrowT t1) t2) = do
   top <- topArgs t1
-  (rest, ret) <- args t2
+  (rest, ret) <- args doIO t2
   return (top : rest, ret)
-args (ConT n) = liftM ((,) [] . AtomicRV) $ nameToRetVal n
-args t@(AppT _ _) = liftM ((,) []) $ compToRetVal t 
-args t = fail $ "Unsupported type: " ++ show t
+args doIO (ConT n) = do
+    r <- nameToRetVal n
+    return $
+      if doIO
+        then ([], IORV r)
+        else ([], AtomicRV r)
+args doIO t@(AppT _ _) = do
+    (AtomicRV r) <- compToRetVal t -- assuming we wouldn't want IO (IO ...)
+    return $
+      if doIO
+        then ([], IORV r)
+        else ([], AtomicRV r)
+args _ t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> Name -> ExpQ
-ffiCall hFun cFun = do
+ffiCall hn cn = ffiCallImpl False hn (varE cn)
+
+ffiCallUnsafeIO :: Name -> Name -> ExpQ
+ffiCallUnsafeIO hn cn = ffiCallImpl True hn (varE cn)
+
+ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
+ffiCallImpl doIO hFun cFun = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall cFun)
-    _ -> fail $ "Cannot reify type of " ++ show hFun
+    VarI _ ft _ _  -> args doIO ft >>= uncurry (genFfiCall doIO cFun)
+    _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
-genFfiCall cn aa r =
+genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall doIO cn aa r =
   mapM (\_ -> newName "x") aa >>=
     \varNames -> lamE (map varP varNames)
-                      (genFfiCallImpl aa (map varE varNames) (varE cn))
+                      (if doIO
+                         then [|unsafePerformIO $(nakedCall varNames)|]
+                         else nakedCall varNames)
   where
+    nakedCall varNames = genFfiCallImpl aa (map varE varNames) cn
+
     genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
     genFfiCallImpl [] [] c_call = [|$(unmarshal r) $c_call|]
 
@@ -186,96 +207,3 @@ unmarshalA UnitR   = [|id|]
 -- marshal (ListA _x)  _code  = [|undefined|] 
 -- marshal (ListA2 _x1 _x2) _code = [|undefined|]
 -- marshal EnumA  _code       = [|fromQlEnum|]
-
-{-
-{-# LANGUAGE TemplateHaskell #-}
-module Main where
-
-import Control.Monad(liftM)
-import QuantLib.Types
-import QuantLib.Internal.Syntax
-import QuantLib.Internal.Utils
-
---f :: [Int] -> Maybe Day -> [(Day, Double)] -> Frequency -> Bond -> [Day] -> [InterestRate]
---  -> Maybe Schedule -> String -> IO Bond -- -> IO Frequency
-f :: CInt
-f = 5
-
-fi :: IO CInt
-fi = return 6
-
-f1 :: CInt -> CInt
-f1 = (+1)
-
-fi1 :: CInt -> IO CInt
-fi1 x = return (x + 1)
-
-f2 :: CInt -> CInt -> CInt
-f2 = div
-
-ff :: Int
---ff = $(ffiCall 'ff 'f)
-ff = (fromIntegral :: CInt -> Int) $ f
-
-ffi :: IO Int
---ffi = $(ffiCall 'ffi 'fi)
-ffi = liftM (fromIntegral :: CInt -> Int) $ fi
-
-ff1 :: Int -> Int
---ff1 = $(ffiCall 'ff1 'f1)
-ff1 = \x -> (fromIntegral :: CInt -> Int)
-  $ f1 ((fromIntegral :: Int -> CInt ) x)
-
-ffi1 :: Int -> IO Int
---ffi1 = $(ffiCall 'ffi1 'fi1)
-ffi1 = \x -> liftM (fromIntegral :: CInt -> Int)
-  $ fi1 ((fromIntegral :: Int -> CInt ) x)
-
-ff2 :: Int -> Int -> Int
---ff2 = $(ffiCall 'ff2 'f2)
-ff2 = \x1 -> \x2 -> (fromIntegral :: CInt -> Int)
-  $ f2 ((fromIntegral :: Int -> CInt) x1) ((fromIntegral :: Int -> CInt) x2)
-
-b1 :: Ptr CBond -> IO CInt
-b1 _ = return 11
-
-b2 :: Ptr CBond -> Ptr CSchedule -> IO CInt
-b2 _ _ = return 12
-
-b3 :: Ptr CBond -> CInt -> Ptr CSchedule -> IO CInt
-b3 _ _ _ = return 13
-
-bb1 :: Bond -> IO Int
-bb1 = \x -> withObject x (\y -> liftM (fromIntegral :: CInt -> Int) $ b1 y)
-
-bb2 :: Bond -> Schedule -> IO Int
-bb2 =
-  \x1 ->
-    \x2 ->
-      withObject x1
-        (\y1 ->
-          withObject x2
-            (\y2 ->
-              liftM (fromIntegral :: CInt -> Int) $ b2 y1 y2))
-
-bb3 :: Bond -> Int -> Schedule -> IO Int
-bb3 =
-  \x1 ->
-    \x2 ->
-      \x3 ->
-        withObject x1
-          (\y1 ->
-            flip ($) ((fromIntegral :: Int -> CInt) x2)
-              (\y2 ->
-                withObject x3
-                  (\y3 ->
-                    liftM (fromIntegral :: CInt -> Int) $ b3 y1 y2 y3)))
-
-main :: IO ()
-main = do
-  print ff
-  ffi >>= print
-  print $ ff1 7
-  ffi1 8 >>= print
-  print $ ff2 10 5
--}
