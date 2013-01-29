@@ -26,14 +26,14 @@ data NestedArg = IntN | DayN | DoubleN | ForeignPtrN
   deriving (Show, Eq)
 
 -- XXX use GADTs/SYB/Uniplate?
-data TopArg = IntA | WordA | DayA | StringA | DoubleA
+data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA
   | OptDayA | ForeignPtrA | OptForeignPtrA
   | ListA NestedArg | ListA2 NestedArg NestedArg
   | EnumA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
-isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double]
+isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double, ''Bool]
 
 isEnum :: Name -> Q Bool
 isEnum n = do
@@ -46,6 +46,7 @@ nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
 nameToTop n | n == ''Word = WordA
 nameToTop n | n == ''Day = DayA
+nameToTop n | n == ''Bool = BoolA
 nameToTop n | n == ''String = StringA
 nameToTop n | n == ''Double = DoubleA
 nameToTop n = error $ "Not supported top type: " ++ show n
@@ -201,6 +202,9 @@ genFfiCall cn extra aa r = do
     genFfiCallImpl doIO (IntA:as) (v:vs) c_call =
       genFfiCallImpl doIO as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
+    genFfiCallImpl doIO (BoolA:as) (v:vs) c_call =
+      genFfiCallImpl doIO as vs [|$c_call ((fromBool :: Bool -> CInt) $v)|]
+
     genFfiCallImpl doIO (DoubleA:as) (v:vs) c_call =
       genFfiCallImpl doIO as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
 
@@ -214,10 +218,13 @@ genFfiCall cn extra aa r = do
       genFfiCallImpl doIO as vs [|$c_call (toQlDate $v)|]
 
     genFfiCallImpl doIO (EnumA:as) (v:vs) c_call =
-      genFfiCallImpl doIO as vs [|$c_call (fromQlEnum $v)|]
+      genFfiCallImpl doIO as vs [|$c_call (toQlEnum $v)|]
 
     genFfiCallImpl doIO (ForeignPtrA:as) (v:vs) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
+
+    genFfiCallImpl doIO (ListA DoubleN:as) (v:vs) c_call =
+      [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
 
     genFfiCallImpl _ _ _ _ = error "Unreachable code" -- make it more precise
 
@@ -238,5 +245,4 @@ unmarshalA UnitR   = [|id|]
 
 -- marshal StringA _code      = [|undefined|]
 -- marshal OptForeignPtrA _code = [|undefined|]
--- marshal (ListA _x)  _code  = [|undefined|] 
 -- marshal (ListA2 _x1 _x2) _code = [|undefined|]

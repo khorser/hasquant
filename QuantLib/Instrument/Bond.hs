@@ -77,51 +77,13 @@ foreign import ccall safe "ql.h qlFixedBondFrequency"
 fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
    -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
    -> IO FixedRateBond
-fixedRateBond settl face sched coupons counter conv redemption issue calendar =
-  withObject3 sched counter calendar
-  (\s c cal ->
-        withAmounts
-        coupons
-        (\n cpns ->
-          construct $ c_fixedRateBond (fromIntegral settl)
-                                       (realToFrac face)
-                                       s
-                                       n
-                                       cpns
-                                       c
-                                       (toQlEnum conv)
-                                       (realToFrac redemption)
-                                       (toQlDate issue)
-                                       cal))
+fixedRateBond = $(ffiCallConstruct 'fixedRateBond 'c_fixedRateBond)
 
 fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
   -> DayCounter -> BusinessDayConvention -> BusinessDayConvention -> Double
   -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar
   -> IO FixedRateBond
-fixedRateBond' settl couponCal face start maturity tenor coupons counter accrConv paymentConv
-  redemption issue stub rule eom paymentCal =
-    withObject4 tenor counter couponCal paymentCal
-    (\t dc cc pc ->
-          withAmounts
-          coupons
-          (\n cpns ->
-            construct $ c_fixedRateBond' (fromIntegral settl)
-                                         cc
-                                         (realToFrac face)
-                                         (toQlDate start)
-                                         (toQlDate maturity)
-                                         t
-                                         n
-                                         cpns
-                                         dc
-                                         (toQlEnum accrConv)
-                                         (toQlEnum paymentConv)
-                                         (realToFrac redemption)
-                                         (toQlDate issue)
-                                         (toQlDate stub)
-                                         (toQlEnum rule)
-                                         (fromBool eom)
-                                         pc))
+fixedRateBond' = $(ffiCallConstruct 'fixedRateBond' 'c_fixedRateBond')
                                          
 -- |(qlFixedRateBond2)
 fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
@@ -151,15 +113,7 @@ foreign import ccall safe "ql.h qlZeroCouponBond"
 -- |(qlZeroCouponBond)
 zeroCouponBond :: Word -> Calendar -> Double -> Day -> BusinessDayConvention
   -> Double -> Maybe Day -> IO Bond
-zeroCouponBond settlDays cal face maturity payConv redemption issue =
-  withObject cal
-    (\c -> construct $ c_zeroCouponBond (fromIntegral settlDays)
-                                        c
-                                        (realToFrac face)
-                                        (toQlDate maturity)
-                                        (toQlEnum payConv)
-                                        (realToFrac redemption)
-                                        (toQlDate issue))
+zeroCouponBond = $(ffiCallConstruct 'zeroCouponBond 'c_zeroCouponBond)
 
 foreign import ccall safe "ql.h qlBondSetCouponPricer"
   c_bondSetCouponPricer :: Ptr CBond -> Ptr CFloatingRateCouponPricer
@@ -169,9 +123,7 @@ foreign import ccall safe "ql.h qlBondSetCouponPricer"
 -- doing like QuantLibXL here, in QuantLib it is a function working on
 -- cashflows (see the implementation in qlBondSetCouponPricer)
 setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
-setCouponPricer b p = 
-  withObject2 b p
-  (\bb pp -> handleExceptions $ c_bondSetCouponPricer bb pp)
+setCouponPricer = $(ffiCallHandleX 'setCouponPricer 'c_bondSetCouponPricer)
 
 foreign import ccall safe "ql.h qlFloatingRateBond"
   c_floatingRateBond :: CUInt -> CDouble -> Ptr CSchedule -> Ptr CIborIndex
@@ -183,33 +135,4 @@ foreign import ccall safe "ql.h qlFloatingRateBond"
 floatingRateBond :: Word -> Double -> Schedule -> IborIndex
   -> DayCounter -> BusinessDayConvention -> Word -> [Double] -> [Double]
   -> [Double] -> [Double] -> Bool -> Double -> Maybe Day -> IO Bond
-floatingRateBond settlDays face schedule index accrDayCounter paymentConv
-  fixDays gearings spreads caps floors inArrears redemption issue =
-    withObject3 schedule index accrDayCounter
-    (\sched indx dc ->
-      withAmounts gearings
-      (\ng gs ->
-        withAmounts spreads
-        (\ns sps ->
-          withAmounts caps
-          (\nc cs ->
-            withAmounts floors
-            (\nf fs ->
-              construct $ c_floatingRateBond (fromIntegral settlDays)
-                                             (realToFrac face)
-                                             sched
-                                             indx
-                                             dc
-                                             (toQlEnum paymentConv)
-                                             (fromIntegral fixDays)
-                                             ng
-                                             gs
-                                             ns
-                                             sps
-                                             nc
-                                             cs
-                                             nf
-                                             fs
-                                             (fromBool inArrears)
-                                             (realToFrac redemption)
-                                             (toQlDate issue))))))
+floatingRateBond = $(ffiCallConstruct 'floatingRateBond 'c_floatingRateBond)
