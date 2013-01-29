@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Quote
   (
   -- makers
@@ -7,6 +8,7 @@ module QuantLib.Quote
   )
 where
 
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -17,9 +19,9 @@ foreign import ccall safe "ql.h qlQuoteValue"
 
 -- | (qlSimpleQuote)
 simpleQuote :: Double -> IO Quote
-simpleQuote v = construct $ c_simpleQuote (realToFrac v)
+simpleQuote = $(ffiCallConstruct 'simpleQuote 'c_simpleQuote)
 
 -- |Returns the current value of the given Quote object (qlQuoteValue)
--- XXX assuming quotes are immutable
 value :: Quote -> Double
 value q = realToFrac $ unsafePerformIO (withObject q (handleExceptions . c_quoteValue))
+-- XXX assuming quotes are immutable

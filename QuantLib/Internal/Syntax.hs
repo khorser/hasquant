@@ -4,6 +4,7 @@ module QuantLib.Internal.Syntax
     args
   , ffiCall
   , ffiCallUnsafeIO
+  , ffiCallConstruct
   )
 where
 
@@ -149,6 +150,9 @@ ffiCall hn cn = ffiCallImpl False hn (varE cn)
 ffiCallUnsafeIO :: Name -> Name -> ExpQ
 ffiCallUnsafeIO hn cn = ffiCallImpl True hn (varE cn)
 
+ffiCallConstruct :: Name -> Name -> ExpQ
+ffiCallConstruct hn cn = ffiCallImpl False hn [|construct . $(varE cn)|]
+
 ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl doIO hFun cFun = do
   r <- reify hFun
@@ -181,6 +185,9 @@ genFfiCall doIO cn aa r =
     genFfiCallImpl (IntA:as) (v:vs) c_call =
       genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
+    genFfiCallImpl (DoubleA:as) (v:vs) c_call =
+      genFfiCallImpl as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
+
     genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
@@ -198,13 +205,12 @@ unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshalA StringR = [|undefined|]
 unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
-unmarshalA ForeignPtrR = [|undefined|]
+unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
 
 -- marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
 -- marshal DayA _code         = [|fromQlDate|]
 -- marshal StringA _code      = [|undefined|]
--- marshal DoubleA _code      = [|realToFrac :: Double -> CDouble|]
 -- marshal OptDayA _code      = [|fromQlDate|]
 -- marshal OptForeignPtrA _code = [|undefined|]
 -- marshal (ListA _x)  _code  = [|undefined|] 
