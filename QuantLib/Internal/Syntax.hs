@@ -223,8 +223,14 @@ genFfiCall cn extra aa r = do
     genFfiCallImpl doIO (ForeignPtrA:as) (v:vs) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
 
+    genFfiCallImpl doIO (OptForeignPtrA:as) (v:vs) c_call =
+      [|maybeWithObject $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
+
     genFfiCallImpl doIO (ListA DoubleN:as) (v:vs) c_call =
       [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
+
+    genFfiCallImpl doIO (ListA ForeignPtrN:as) (v:vs) c_call =
+      [|withObjects $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
 
     genFfiCallImpl _ _ _ _ = error "Unreachable code" -- make it more precise
 

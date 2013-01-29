@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Volatility
   (
   -- makers
@@ -5,7 +6,7 @@ module QuantLib.TermStructure.Volatility
   )
 where
 
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
@@ -17,10 +18,4 @@ foreign import ccall safe "ql.h qlConstantOptionletVol"
 -- |(qlConstantOptionletVolatility)
 constantOptionletVol :: Word -> Calendar -> BusinessDayConvention -> Quote
   -> DayCounter -> IO OptionletVolStructure
-constantOptionletVol settlDays cal conv quote dayCount =
-  withObject3 cal quote dayCount
-  (\c q dc -> construct $ c_constantOptionletVol (fromIntegral settlDays)
-                                               c
-                                               (toQlEnum conv)
-                                               q
-                                               dc)
+constantOptionletVol = $(ffiCallConstruct 'constantOptionletVol 'c_constantOptionletVol)

@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Yield
   (
   -- types
@@ -13,10 +14,8 @@ module QuantLib.TermStructure.Yield
   )
 where
 
-import Control.Monad(liftM)
-
 import QuantLib.Internal.Date
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
@@ -40,38 +39,13 @@ data Trait = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
 -- |(qlDepositRateHelper2)
 depositRateHelper :: Quote -> Period -> Word -> Calendar
   -> BusinessDayConvention -> Bool -> DayCounter -> IO RateHelper
-depositRateHelper quote tenor fixDays cal conv eom dayCount =
-  withObject4 quote tenor cal dayCount
-  (\q t c dc -> construct $ c_depositRateHelper
-                            q
-                            t
-                            (fromIntegral fixDays)
-                            c
-                            (toQlEnum conv)
-                            (fromBool eom)
-                            dc)
+depositRateHelper = $(ffiCallConstruct 'depositRateHelper 'c_depositRateHelper)
 
 -- |(qlFixedRateBondHelper)
 fixedRateBondHelper :: Quote -> Word -> Double -> Schedule -> [Double]
   -> DayCounter -> BusinessDayConvention -> Double -> Maybe Day
   -> IO RateHelper
-fixedRateBondHelper quote settlDays face sched coupons dayCount conv
-  redemption issue =
-    withObject3 quote sched dayCount
-    (\q s dc ->
-      withAmounts
-      coupons
-      (\n cpns -> construct $ c_fixedRateBondHelper
-                              q
-                              (fromIntegral settlDays)
-                              (realToFrac face)
-                              s
-                              n
-                              cpns
-                              dc
-                              (toQlEnum conv)
-                              (realToFrac redemption)
-                              (toQlDate issue)))
+fixedRateBondHelper = $(ffiCallConstruct 'fixedRateBondHelper 'c_fixedRateBondHelper)
 
 foreign import ccall safe "ql.h qlYieldTSDiscount"
   c_yieldTSDiscount :: Ptr CYieldTermStructure -> CDate -> CInt
@@ -112,12 +86,7 @@ piecewiseYieldCurve' = undefined
 
 -- |Returns a discount factor from the given YieldTermStructure object (qlYieldTSDiscount)
 discount :: YieldTermStructure -> Day -> Bool -> IO Double
-discount ts d ex = liftM realToFrac (withObject
-                    ts
-                    (\t -> handleExceptions
-                      $ c_yieldTSDiscount t
-                          (toQlDate d)
-                          (fromBool ex)))
+discount = $(ffiCallHandleX 'discount 'c_yieldTSDiscount)
 
 foreign import ccall safe "ql.h qlSwapRateHelper1"
   c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
@@ -128,18 +97,4 @@ foreign import ccall safe "ql.h qlSwapRateHelper1"
 swapRateHelper' :: Quote -> Period -> Calendar -> Frequency
   -> BusinessDayConvention -> DayCounter -> IborIndex -> Quote
   -> Period -> Maybe YieldTermStructure -> IO RateHelper
-swapRateHelper' rate tenor cal fixedFreq fixedConv fixedDayCount
-  index spread fwdStart disc =
-    withObject7 rate tenor cal fixedDayCount index spread fwdStart
-    (\r t c dc i s f ->
-      maybeWithObject disc
-      (construct . c_swapRateHelper' r
-                                             t
-                                             c
-                                             (toQlEnum fixedFreq)
-                                             (toQlEnum fixedConv)
-                                             dc
-                                             i
-                                             s
-                                             f))
-
+swapRateHelper' = $(ffiCallConstruct 'swapRateHelper' 'c_swapRateHelper')

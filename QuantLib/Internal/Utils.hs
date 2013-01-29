@@ -13,10 +13,6 @@ module QuantLib.Internal.Utils
   , withObject2
   , withObject3
   , withObject4
-  , withObject5
-  , withObject6
-  , withObject7
-  , withObject8
   , maybeWithObject
   , withAmounts
   , withObjects
@@ -78,28 +74,6 @@ withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
 withObject4 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4
   -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
 withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
-
-withObject5 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> IO b) -> IO b
-withObject5 o1 o2 o3 o4 o5 f = withObject o1 (withObject4 o2 o3 o4 o5 . f)
-
-withObject6 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
-  -> ForeignPtr a6
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> IO b) -> IO b
-withObject6 o1 o2 o3 o4 o5 o6 f =
-  withObject o1 (withObject5 o2 o3 o4 o5 o6 . f)
-
-withObject7 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
-  -> ForeignPtr a6 -> ForeignPtr a7
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> Ptr a7 -> IO b) -> IO b
-withObject7 o1 o2 o3 o4 o5 o6 o7 f =
-  withObject o1 (withObject6 o2 o3 o4 o5 o6 o7 . f)
-
-withObject8 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4 -> ForeignPtr a5
-  -> ForeignPtr a6 -> ForeignPtr a7 -> ForeignPtr a8
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> Ptr a5 -> Ptr a6 -> Ptr a7 -> Ptr a8 -> IO b) -> IO b
-withObject8 o1 o2 o3 o4 o5 o6 o7 o8 f =
-  withObject o1 (withObject7 o2 o3 o4 o5 o6 o7 o8 . f)
 
 withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 -- XXX rewrite using folds?

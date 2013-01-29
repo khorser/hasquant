@@ -89,19 +89,7 @@ fixedRateBond' = $(ffiCallConstruct 'fixedRateBond' 'c_fixedRateBond')
 fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
   -> IO FixedRateBond
-fixedRateBond'' settl face sched coupons paymentConv redemption issue cal =
-  withObject2 sched cal
-  (\s c ->
-    withObjects coupons
-    (\n cpns -> construct $ c_fixedRateBond'' (fromIntegral settl)
-                                              (realToFrac face)
-                                              s
-                                              n
-                                              cpns
-                                              (toQlEnum paymentConv)
-                                              (realToFrac redemption)
-                                              (toQlDate issue)
-                                              c))
+fixedRateBond'' = $(ffiCallConstruct 'fixedRateBond'' 'c_fixedRateBond'')
 
 frequency :: FixedRateBond -> Frequency
 frequency x = fromQlEnum $ unsafePerformIO (withObject x c_fixedBondFrequency)
