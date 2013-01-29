@@ -5,6 +5,8 @@ module QuantLib.Internal.Syntax
   , ffiCall
   , ffiCallUnsafeIO
   , ffiCallConstruct
+  , ffiCallHandleX
+  , ffiCallHandleXIO
   )
 where
 
@@ -152,6 +154,12 @@ ffiCallUnsafeIO hn cn = ffiCallImpl True hn (varE cn)
 
 ffiCallConstruct :: Name -> Name -> ExpQ
 ffiCallConstruct hn cn = ffiCallImpl False hn [|construct . $(varE cn)|]
+
+ffiCallHandleX :: Name -> Name -> ExpQ
+ffiCallHandleX hn cn = ffiCallImpl False hn [|handleExceptions . $(varE cn)|]
+
+ffiCallHandleXIO :: Name -> Name -> ExpQ
+ffiCallHandleXIO hn cn = ffiCallImpl True hn [|handleExceptions . $(varE cn)|]
 
 ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl doIO hFun cFun = do

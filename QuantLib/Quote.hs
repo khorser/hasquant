@@ -23,5 +23,5 @@ simpleQuote = $(ffiCallConstruct 'simpleQuote 'c_simpleQuote)
 
 -- |Returns the current value of the given Quote object (qlQuoteValue)
 value :: Quote -> Double
-value q = realToFrac $ unsafePerformIO (withObject q (handleExceptions . c_quoteValue))
+value = $(ffiCallHandleXIO 'value 'c_quoteValue)
 -- XXX assuming quotes are immutable
