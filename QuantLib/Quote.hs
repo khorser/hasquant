@@ -19,7 +19,7 @@ foreign import ccall safe "ql.h qlQuoteValue"
 
 -- | (qlSimpleQuote)
 simpleQuote :: Double -> IO Quote
-simpleQuote = $(ffiCallConstruct 'simpleQuote 'c_simpleQuote)
+simpleQuote = $(ffiConstruct 'simpleQuote 'c_simpleQuote)
 
 -- |Returns the current value of the given Quote object (qlQuoteValue)
 value :: Quote -> Double

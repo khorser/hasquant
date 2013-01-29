@@ -39,13 +39,13 @@ data Trait = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
 -- |(qlDepositRateHelper2)
 depositRateHelper :: Quote -> Period -> Word -> Calendar
   -> BusinessDayConvention -> Bool -> DayCounter -> IO RateHelper
-depositRateHelper = $(ffiCallConstruct 'depositRateHelper 'c_depositRateHelper)
+depositRateHelper = $(ffiConstruct 'depositRateHelper 'c_depositRateHelper)
 
 -- |(qlFixedRateBondHelper)
 fixedRateBondHelper :: Quote -> Word -> Double -> Schedule -> [Double]
   -> DayCounter -> BusinessDayConvention -> Double -> Maybe Day
   -> IO RateHelper
-fixedRateBondHelper = $(ffiCallConstruct 'fixedRateBondHelper 'c_fixedRateBondHelper)
+fixedRateBondHelper = $(ffiConstruct 'fixedRateBondHelper 'c_fixedRateBondHelper)
 
 foreign import ccall safe "ql.h qlYieldTSDiscount"
   c_yieldTSDiscount :: Ptr CYieldTermStructure -> CDate -> CInt
@@ -97,4 +97,4 @@ foreign import ccall safe "ql.h qlSwapRateHelper1"
 swapRateHelper' :: Quote -> Period -> Calendar -> Frequency
   -> BusinessDayConvention -> DayCounter -> IborIndex -> Quote
   -> Period -> Maybe YieldTermStructure -> IO RateHelper
-swapRateHelper' = $(ffiCallConstruct 'swapRateHelper' 'c_swapRateHelper')
+swapRateHelper' = $(ffiConstruct 'swapRateHelper' 'c_swapRateHelper')

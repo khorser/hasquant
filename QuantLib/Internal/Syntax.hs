@@ -3,7 +3,7 @@ module QuantLib.Internal.Syntax
   (
     args
   , ffiCall
-  , ffiCallConstruct
+  , ffiConstruct
   , ffiCallHandleX
   )
 where
@@ -154,8 +154,8 @@ isIO t = fail $ "Unsupported type: " ++ show t
 ffiCall :: Name -> Name -> ExpQ
 ffiCall hn cn = ffiCallImpl hn cn [|id|]
 
-ffiCallConstruct :: Name -> Name -> ExpQ
-ffiCallConstruct hn cn = ffiCallImpl hn cn [|construct|]
+ffiConstruct :: Name -> Name -> ExpQ
+ffiConstruct hn cn = ffiCallImpl hn cn [|construct|]
 
 ffiCallHandleX :: Name -> Name -> ExpQ
 ffiCallHandleX hn cn = ffiCallImpl hn cn [|handleExceptions|]
