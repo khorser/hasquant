@@ -147,14 +147,17 @@ ffiCall hFun cFun = do
 genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
 genFfiCall cn aa r = do
   hVarNames <- mapM (\_ -> newName "x") aa
-  call <- genFfiCallImpl aa hVarNames (varE cn)
+  call <- genFfiCallImpl aa (map varE hVarNames) (varE cn)
   return $ LamE (map VarP hVarNames) call
   where
-    genFfiCallImpl :: [TopArg] -> [Name] -> ExpQ -> ExpQ
+    genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
     genFfiCallImpl [] [] c_call = [|$(unmarshal r) $c_call|]
 
     genFfiCallImpl (IntA:as) (v:vs) c_call =
-      genFfiCallImpl as vs (appE c_call [|(fromIntegral :: Int -> CInt) $(varE v)|])
+      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
+
+    genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
+      [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
     genFfiCallImpl _ _ _ = error "Unreachable code"
 
@@ -172,12 +175,6 @@ unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|undefined|]
 
---marshal ForeignPtrA n = do
---  pre <- [|withObject $(varE n)|]
---  var <- newName "y"
---  post <- [|$var|]
---  return (pre, post)
--- marshal _ _ = undefined
 -- marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
 -- marshal DayA _code         = [|fromQlDate|]
 -- marshal StringA _code      = [|undefined|]
