@@ -11,7 +11,9 @@ module QuantLib.Internal.Syntax
 where
 
 import Control.Monad(liftM, liftM2)
+import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
+
 import QuantLib.Internal.Date
 import QuantLib.Internal.Utils
 import QuantLib.Internal.Enum
@@ -24,6 +26,9 @@ import QuantLib.Time.DateGenerationRule()
 import QuantLib.Time.Frequency()
 import QuantLib.Time.Unit()
 
+import QuantLib.Math.Interpolation()
+import QuantLib.TermStructure.Trait()
+
 data NestedArg = DayN | DoubleN | ForeignPtrN
   deriving (Show, Eq)
 
@@ -31,18 +36,25 @@ data NestedArg = DayN | DoubleN | ForeignPtrN
 data TopArg = IntA | WordA | DayA | StringA | DoubleA | BoolA
   | OptDayA | ForeignPtrA | OptForeignPtrA
   | ListA NestedArg | ListA2 NestedArg NestedArg
-  | EnumA
+  | EnumA | LitEnumA
   deriving (Show, Eq)
 
 isAtomicTop :: Name -> Bool
 isAtomicTop x = x `elem` [''Int, ''Word, ''Day, ''String, ''Double, ''Bool]
 
-isEnum :: Name -> Q Bool
-isEnum n = do
+data EnumType = IntEnum | LitEnum
+enumType :: Name -> Q (Maybe EnumType)
+enumType n = do
   ClassI _ instances <- reify ''QLEnum
-  return $ n `elem` map getEnumTypeName instances
+  if n `elem` map getEnumTypeName instances
+    then return (Just IntEnum)
+    else do
+      ClassI _ litinstances <- reify ''QLLitEnum
+      if n `elem` map getEnumTypeName litinstances
+        then return (Just LitEnum)
+        else return Nothing
   where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
-        getEnumTypeName x = error $ "Error getting QLEnum instances: " ++ show x
+        getEnumTypeName x = error $ "Error getting instances: " ++ show x
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -64,10 +76,11 @@ nestedNameToTop n =
 topArgs :: Type -> Q TopArg
 topArgs (ConT n) | isAtomicTop n = return $ nameToTop n
 topArgs (ConT n) = do
-  e <- isEnum n
-  if e
-    then return EnumA
-    else tryForeignPtr n >>=
+  e <- enumType n
+  case e of
+    (Just IntEnum) -> return EnumA
+    (Just LitEnum) -> return LitEnumA
+    _ -> tryForeignPtr n >>=
           either (\x -> fail $ "Error parsing top arg: " ++ x)
           (\_ -> return ForeignPtrA)
 topArgs (AppT (ConT m) (ConT n)) | m == ''Maybe =
@@ -86,7 +99,7 @@ topArgs (AppT
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
 topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
 
-data AtomicRet = IntR | WordR | DayR | DoubleR | StringR
+data AtomicRet = IntR | WordR | DayR | DoubleR | StringR | BoolR
   | EnumR | OptDayR | ForeignPtrR | UnitR
   deriving (Show, Eq)
 
@@ -112,11 +125,13 @@ nameToRetVal n | n == ''Word = return WordR
 nameToRetVal n | n == ''Day = return DayR
 nameToRetVal n | n == ''Double = return DoubleR
 nameToRetVal n | n == ''String = return StringR
+nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n = do
-  e <- isEnum n
-  if e
-    then return EnumR
-    else tryForeignPtr n >>=
+  e <- enumType n
+  case e of
+    (Just IntEnum) -> return EnumR
+    (Just LitEnum) -> fail $ "Literal enum not supported" ++ show n
+    _ -> tryForeignPtr n >>=
           either (\x -> fail $ "Error parsing ret type: " ++ x)
             (\_ -> return ForeignPtrR)
 
@@ -221,6 +236,9 @@ genFfiCall io cn extra aa r = do
     genFfiCallImpl (EnumA:as) (v:vs) c_call =
       genFfiCallImpl as vs [|$c_call (toQlEnum $v)|]
 
+    genFfiCallImpl (LitEnumA:as) (v:vs) c_call =
+      [|withCString (show $v) (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
+
     genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
@@ -235,6 +253,14 @@ genFfiCall io cn extra aa r = do
 
     genFfiCallImpl (ListA DayN:as) (v:vs) c_call =
       [|withDays $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
+
+    genFfiCallImpl (ListA2 DoubleN DayN:as) (v:vs) c_call =
+      [|withAmounts (map fst $v) (\n ams -> withDays (map snd $v)
+        (\_ ds -> $(genFfiCallImpl as vs [|$c_call n ams ds|])))|]
+
+    genFfiCallImpl (ListA2 ForeignPtrN DayN:as) (v:vs) c_call =
+      [|withObjects (map fst $v) (\n ams -> withDays (map snd $v)
+        (\_ ds -> $(genFfiCallImpl as vs [|$c_call n ams ds|])))|]
 
     genFfiCallImpl (ListA2 _ _:_as) (_v:_vs) _c_call = error "Not supported yet"
 
@@ -251,6 +277,7 @@ unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]
 unmarshalA WordR   = [|fromIntegral :: CUInt -> Word|]
 unmarshalA DayR    = [|fromQlDate|]
 unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
+unmarshalA BoolR = [|toBool :: CInt -> Bool|]
 unmarshalA StringR = [|undefined|]
 unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]

@@ -22,7 +22,6 @@ module QuantLib.Internal.Utils
   , CString
   , Ptr, FunPtr
   , castPtr, castFunPtr, castForeignPtr, withForeignPtr, newForeignPtr_
-  , fromBool, toBool
   , unsafePerformIO
   , Word
   , ForeignPtr
@@ -38,7 +37,6 @@ import Foreign.C.Types
 import Foreign.ForeignPtr(ForeignPtr, newForeignPtr, withForeignPtr, castForeignPtr, newForeignPtr_)
 import Foreign.Marshal.Alloc(alloca)
 import Foreign.Marshal.Array(peekArray, withArrayLen)
-import Foreign.Marshal.Utils(fromBool, toBool)
 import Foreign.Ptr(nullPtr, Ptr, FunPtr, castPtr, castFunPtr)
 import Foreign.Storable(peek, poke)
 

@@ -16,6 +16,7 @@ import qualified QuantLib.Math.Interpolation as Interpolation
 import qualified QuantLib.PricingEngine as Pricing
 import qualified QuantLib.Quote as Quote
 import qualified QuantLib.Settings as Settings
+import qualified QuantLib.TermStructure.Trait as Trait
 import qualified QuantLib.TermStructure.Yield as Yield
 import qualified QuantLib.TermStructure.Volatility as Vol
 import qualified QuantLib.Time.BusinessDayConvention as BusinessDayConvention
@@ -98,7 +99,7 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                   actActISDA
                   []
                   tolerance
-                  Yield.Discount
+                  Trait.Discount
                   Interpolation.LogLinear
                   --(Interpolation.Cubic $ Interpolation.NaturalSpline True)
                   --(Interpolation.LogCubic $ Interpolation.Parabolic False)
@@ -165,7 +166,7 @@ npv = do  actual365Fixed <- DayCounter.actual365Fixed
                         actActISDA
                         []
                         tolerance
-                        Yield.Discount
+                        Trait.Discount
                         Interpolation.LogLinear
         
           usd3m <- Ibor.usdLibor p3m (Just fwdCurve)

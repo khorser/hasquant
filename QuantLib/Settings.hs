@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Settings
   (
   -- accessors and mutators
@@ -8,9 +9,8 @@ module QuantLib.Settings
   )
 where
 
-import Control.Monad(liftM)
-
 import QuantLib.Internal.Date
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 
 foreign import ccall safe "ql.h qlSettingsEvaluationDate"
@@ -24,19 +24,20 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
 
 -- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
 evaluationDate :: IO Day
-evaluationDate = liftM fromQlDate c_evaluationDate
+evaluationDate = $(ffiCall 'evaluationDate 'c_evaluationDate)
 
 -- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
 setEvaluationDate :: Maybe Day -> IO ()
-setEvaluationDate x = handleExceptions $ c_setEvaluationDate (toQlDate x)
+setEvaluationDate = $(ffiCallX 'setEvaluationDate 'c_setEvaluationDate)
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date (qlSettingsEnforceTodaysHistoricFixings)
 enforceTodaysHistoricFixings :: IO Bool
-enforceTodaysHistoricFixings = liftM toBool c_enforceTodaysHistoricFixings
+enforceTodaysHistoricFixings =
+  $(ffiCall 'enforceTodaysHistoricFixings 'c_enforceTodaysHistoricFixings)
 
 -- |sets the value of the boolean which enforce the usage of historic fixings
 -- for today's date (qlSettingsSetEnforceTodaysHistoricFixings)
 setEnforceTodaysHistoricFixings :: Bool -> IO ()
-setEnforceTodaysHistoricFixings x = handleExceptions $
-      c_setEnforceTodaysHistoricFixings (fromBool x)
+setEnforceTodaysHistoricFixings =
+  $(ffiCallX 'setEnforceTodaysHistoricFixings 'c_setEnforceTodaysHistoricFixings)

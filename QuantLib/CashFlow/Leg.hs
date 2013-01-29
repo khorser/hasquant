@@ -20,13 +20,7 @@ foreign import ccall safe "ql.h qlLegStartDate"
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
-leg flows = withAmounts
-            amounts
-            (\_ ams ->
-              withDays
-              dates
-              (\n ds -> construct $ c_leg n ams ds))
-  where (amounts, dates) = unzip flows
+leg = $(ffiConstruct 'leg 'c_leg)
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable

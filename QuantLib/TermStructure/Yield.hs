@@ -1,10 +1,8 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.TermStructure.Yield
   (
-  -- types
-    Trait(..)
   -- makers
-  , depositRateHelper
+    depositRateHelper
   , fixedRateBondHelper
   , swapRateHelper'
   , piecewiseYieldCurve
@@ -21,6 +19,7 @@ import QuantLib.Types
 import QuantLib.Math.Interpolation(Interpolation)
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 import QuantLib.Time.Frequency(Frequency)
+import QuantLib.TermStructure.Trait(Trait)
 
 foreign import ccall safe "ql.h qlDepositRateHelper"
   c_depositRateHelper :: Ptr CQuote -> Ptr CPeriod -> CUInt -> Ptr CCalendar
@@ -33,8 +32,6 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
   c_piecewiseYieldCurve :: CDate -> CUInt -> Ptr (Ptr CRateHelper)
     -> Ptr CDayCounter -> CUInt -> Ptr (Ptr CQuote) -> Ptr CDate -> CDouble
     -> CString -> CString -> Ptr CString -> IO (Ptr CYieldTermStructure)
-
-data Trait = Discount | ZeroYield | ForwardRate deriving (Show, Eq)
 
 -- |(qlDepositRateHelper2)
 depositRateHelper :: Quote -> Period -> Word -> Calendar
@@ -54,29 +51,8 @@ foreign import ccall safe "ql.h qlYieldTSDiscount"
 piecewiseYieldCurve :: Day -> [RateHelper] -> DayCounter
   -> [(Quote, Day)] -> Double -> Trait -> Interpolation
   -> IO YieldTermStructure
-piecewiseYieldCurve refDate instr dayCounter jumps accuracy trait interp =
-  withObjects instr
-  (\ni i ->
-    withObjects quotes
-    (\nq q ->
-      withDays dates
-      (\_ ds ->
-        withObject dayCounter
-          (\dc ->
-            withString2 (show trait) (show interp)
-            (\t int ->
-              construct $ c_piecewiseYieldCurve
-                            (toQlDate refDate)
-                            ni
-                            i
-                            dc
-                            nq
-                            q
-                            ds
-                            (realToFrac accuracy)
-                            t
-                            int)))))
-  where (quotes, dates) = unzip jumps
+piecewiseYieldCurve =
+  $(ffiConstruct 'piecewiseYieldCurve 'c_piecewiseYieldCurve)
 
 -- |(qlPiecewiseYieldCurve)
 piecewiseYieldCurve' :: Word -> Calendar -> [RateHelper] -> DayCounter

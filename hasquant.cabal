@@ -45,6 +45,7 @@ Library
    , QuantLib.Types
    , QuantLib.Time.Unit
    , QuantLib.Utilities
+   , QuantLib.TermStructure.Trait   
    , QuantLib.TermStructure.Volatility
    , QuantLib.TermStructure.Yield   
   

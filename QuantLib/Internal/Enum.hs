@@ -3,6 +3,7 @@ module QuantLib.Internal.Enum
     QLEnum
   , toQlEnum
   , fromQlEnum
+  , QLLitEnum
   )
 where
 
@@ -23,6 +24,8 @@ values ename = if null vals
 
 -- when declaring new QLEnum instances, add them into Internal.Enum too!
 class (Typeable a, Enum a, Show a) => QLEnum a
+
+class (Show a) => QLLitEnum a -- enum passed literally as a string to QL
 
 toQlEnum :: (QLEnum a) => a -> CInt
 toQlEnum x =

@@ -6,6 +6,8 @@ module QuantLib.Math.Interpolation
 
 where
 
+import QuantLib.Internal.Enum
+
 -- bool indicates if the approximation is monotonic
 data Approximation = NaturalSpline Bool | Parabolic Bool | Kruger
   | FritschButland
@@ -14,3 +16,5 @@ data Approximation = NaturalSpline Bool | Parabolic Bool | Kruger
 data Interpolation = BackwardFlat | ForwardFlat | Linear | LogLinear
   | Cubic Approximation | LogCubic Approximation | Abcd
  deriving (Show, Eq)
+
+instance QLLitEnum Interpolation
