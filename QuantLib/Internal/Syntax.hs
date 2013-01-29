@@ -83,7 +83,7 @@ topArgs (AppT
 topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | StringR
-  | EnumR | OptDayR | ForeignPtrR
+  | EnumR | OptDayR | ForeignPtrR | UnitR
   deriving (Show, Eq)
 
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet
@@ -120,6 +120,7 @@ compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | m == ''Maybe && d == ''Day =
   return OptDayR
 compArgToRetVal (ConT n) = nameToRetVal n
+compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type arg: " ++ show t
 
 compToRetVal :: Type -> Q RetVal
@@ -174,6 +175,7 @@ unmarshalA StringR = [|undefined|]
 unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|undefined|]
+unmarshalA UnitR   = [|id|]
 
 -- marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
 -- marshal DayA _code         = [|fromQlDate|]
