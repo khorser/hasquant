@@ -147,17 +147,14 @@ ffiCall hFun cFun = do
 genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
 genFfiCall cn aa r = do
   hVarNames <- mapM (\_ -> newName "x") aa
-  call <- genFfiCallImpl aa hVarNames []
+  call <- genFfiCallImpl aa hVarNames (varE cn)
   return $ LamE (map VarP hVarNames) call
   where
-    genFfiCallImpl :: [TopArg] -> [Name] -> [Exp] -> ExpQ
-    genFfiCallImpl [] [] cargs = [|$(unmarshal r) $(finalCall)|]
-      where finalCall = return $ foldl AppE (VarE cn) cargs
+    genFfiCallImpl :: [TopArg] -> [Name] -> ExpQ -> ExpQ
+    genFfiCallImpl [] [] c_call = [|$(unmarshal r) $c_call|]
 
-    genFfiCallImpl (a:as) (v:vs) cexprs = do
-      (pre, post) <- marshal a v
-      rest <- genFfiCallImpl as vs (cexprs ++ [post])
-      return $ AppE pre rest
+    genFfiCallImpl (IntA:as) (v:vs) c_call =
+      genFfiCallImpl as vs (appE c_call [|(fromIntegral :: Int -> CInt) $(varE v)|])
 
     genFfiCallImpl _ _ _ = error "Unreachable code"
 
@@ -175,19 +172,12 @@ unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|undefined|]
 
--- XXX get rid of this (pre, post) stuff by the means of mutual recursion
--- of marshal and genFfiCall?
-marshal :: TopArg -> Name -> Q (Exp, Exp)
-marshal IntA n = do
-  pre <- [|id|]
-  post <- [|(fromIntegral :: Int -> CInt) $(varE n)|]
-  return (pre, post)
 --marshal ForeignPtrA n = do
 --  pre <- [|withObject $(varE n)|]
 --  var <- newName "y"
 --  post <- [|$var|]
 --  return (pre, post)
-marshal _ _ = undefined
+-- marshal _ _ = undefined
 -- marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
 -- marshal DayA _code         = [|fromQlDate|]
 -- marshal StringA _code      = [|undefined|]
