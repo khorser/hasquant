@@ -130,24 +130,18 @@ compToRetVal (AppT (ConT n1) t2) | n1 == ''IO =
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT?
-args :: Bool -> Type -> Q ([TopArg], RetVal)
-args doIO (AppT (AppT ArrowT t1) t2) = do
+args :: Type -> Q ([TopArg], RetVal)
+args (AppT (AppT ArrowT t1) t2) = do
   top <- topArgs t1
-  (rest, ret) <- args doIO t2
+  (rest, ret) <- args t2
   return (top : rest, ret)
-args doIO (ConT n) = do
+args (ConT n) = do
     r <- nameToRetVal n
-    return $
-      if doIO
-        then ([], IORV r)
-        else ([], AtomicRV r)
-args doIO t@(AppT _ _) = do
-    (AtomicRV r) <- compToRetVal t -- assuming we wouldn't want IO (IO ...)
-    return $
-      if doIO
-        then ([], IORV r)
-        else ([], AtomicRV r)
-args _ t = fail $ "Unsupported type: " ++ show t
+    return ([], AtomicRV r)
+args t@(AppT _ _) = do
+    r <- compToRetVal t
+    return ([], r)
+args t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> Name -> ExpQ
 ffiCall hn cn = ffiCallImpl False hn (varE cn)
@@ -159,7 +153,7 @@ ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl doIO hFun cFun = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args doIO ft >>= uncurry (genFfiCall doIO cFun)
+    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall doIO cFun)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
 genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
@@ -170,10 +164,19 @@ genFfiCall doIO cn aa r =
                          then [|unsafePerformIO $(nakedCall varNames)|]
                          else nakedCall varNames)
   where
+    ret :: RetVal
+    ret =
+      case (r, doIO) of
+        (AtomicRV _, False) -> r
+        (AtomicRV a, True) -> IORV a
+        (IORV _, False) -> r
+        (IORV _, True) -> error "Nested IO not supported"
+
+    nakedCall :: [Name] -> ExpQ
     nakedCall varNames = genFfiCallImpl aa (map varE varNames) cn
 
     genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
-    genFfiCallImpl [] [] c_call = [|$(unmarshal r) $c_call|]
+    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) $c_call|]
 
     genFfiCallImpl (IntA:as) (v:vs) c_call =
       genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
@@ -181,7 +184,7 @@ genFfiCall doIO cn aa r =
     genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
       [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
 
-    genFfiCallImpl _ _ _ = error "Unreachable code"
+    genFfiCallImpl _ _ _ = error "Unreachable code" -- make it more precise
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
