@@ -145,7 +145,25 @@ ffiCall hFun cFun = do
     _ -> fail $ "Cannot reify type of " ++ show hFun
 
 genFfiCall :: Name -> [TopArg] -> RetVal -> ExpQ
-genFfiCall n a r = genFfiCallImpl (reverse a) [|$(unmarshal (null a) r (varE n)) |]
+genFfiCall cn aa r = do
+  hVarNames <- mapM (\_ -> newName "x") aa
+  call <- genFfiCallImpl aa hVarNames []
+  return $ LamE (map VarP hVarNames) call
+  where
+    genFfiCallImpl :: [TopArg] -> [Name] -> [Exp] -> ExpQ
+    genFfiCallImpl [] [] cargs = [|$(unmarshal r) $(finalCall)|]
+      where finalCall = return $ foldl AppE (VarE cn) cargs
+
+    genFfiCallImpl (a:as) (v:vs) cexprs = do
+      (pre, post) <- marshal a v
+      rest <- genFfiCallImpl as vs (cexprs ++ [post])
+      return $ AppE pre rest
+
+    genFfiCallImpl _ _ _ = error "Unreachable code"
+
+unmarshal :: RetVal -> ExpQ
+unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
+unmarshal (IORV r) = [|liftM $(unmarshalA r)|]
 
 unmarshalA :: AtomicRet -> ExpQ
 unmarshalA IntR    = [|fromIntegral :: CInt -> Int|]
@@ -157,30 +175,28 @@ unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|undefined|]
 
-un1 :: Bool -> ExpQ
-un1 True = [| ($) |]
-un1 False = [| (.) |]
-
-unmarshal :: Bool -> RetVal -> ExpQ -> ExpQ
-unmarshal b (AtomicRV r) code = [|$(un1 b) $(unmarshalA r) $ $code|]
-unmarshal b (IORV r) code = [|$(un1 b) (liftM $(unmarshalA r)) $ $code|]
-
-marshal :: TopArg -> ExpQ -> ExpQ
-marshal IntA code         = [|\x -> $code ((fromIntegral :: Int -> CInt) x)|]
-marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
-marshal DayA _code         = [|fromQlDate|]
-marshal StringA _code      = [|undefined|]
-marshal DoubleA _code      = [|realToFrac :: Double -> CDouble|]
-marshal OptDayA _code      = [|fromQlDate|]
-marshal ForeignPtrA _code  = [|withObject|]
-marshal OptForeignPtrA _code = [|undefined|]
-marshal (ListA _x)  _code  = [|undefined|] 
-marshal (ListA2 _x1 _x2) _code = [|undefined|]
-marshal EnumA  _code       = [|fromQlEnum|]
-
-genFfiCallImpl :: [TopArg] -> ExpQ -> ExpQ
-genFfiCallImpl [] code = code
-genFfiCallImpl (a:as) code = genFfiCallImpl as (marshal a code)
+-- XXX get rid of this (pre, post) stuff by the means of mutual recursion
+-- of marshal and genFfiCall?
+marshal :: TopArg -> Name -> Q (Exp, Exp)
+marshal IntA n = do
+  pre <- [|id|]
+  post <- [|(fromIntegral :: Int -> CInt) $(varE n)|]
+  return (pre, post)
+--marshal ForeignPtrA n = do
+--  pre <- [|withObject $(varE n)|]
+--  var <- newName "y"
+--  post <- [|$var|]
+--  return (pre, post)
+marshal _ _ = undefined
+-- marshal WordA   _code      = [|fromIntegral :: Word -> CUInt |]
+-- marshal DayA _code         = [|fromQlDate|]
+-- marshal StringA _code      = [|undefined|]
+-- marshal DoubleA _code      = [|realToFrac :: Double -> CDouble|]
+-- marshal OptDayA _code      = [|fromQlDate|]
+-- marshal OptForeignPtrA _code = [|undefined|]
+-- marshal (ListA _x)  _code  = [|undefined|] 
+-- marshal (ListA2 _x1 _x2) _code = [|undefined|]
+-- marshal EnumA  _code       = [|fromQlEnum|]
 
 {-
 {-# LANGUAGE TemplateHaskell #-}
@@ -190,8 +206,6 @@ import Control.Monad(liftM)
 import QuantLib.Types
 import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
-
-data AA = AA | BB deriving (Show, Enum)
 
 --f :: [Int] -> Maybe Day -> [(Day, Double)] -> Frequency -> Bond -> [Day] -> [InterestRate]
 --  -> Maybe Schedule -> String -> IO Bond -- -> IO Frequency

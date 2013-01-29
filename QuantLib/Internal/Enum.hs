@@ -1,6 +1,8 @@
 module QuantLib.Internal.Enum
   (
-    QLEnum(..)
+    QLEnum
+  , toQlEnum
+  , fromQlEnum
   )
 where
 
@@ -20,22 +22,23 @@ values ename = if null vals
                 withCString ename (getStaticIntArray . c_values)
 
 -- when declaring new QLEnum instances, add them into Internal.Enum too!
-class (Typeable a, Enum a, Show a) => QLEnum a where
-  toQlEnum :: a -> CInt
-  toQlEnum x =
-    if index >= length vals
-      then signalError ("Constructor " ++ show x ++ " is not found")
-      else vals !! index
-    where
-      index = fromEnum x
-      vals = values (show $ typeOf x) 
+class (Typeable a, Enum a, Show a) => QLEnum a
 
-  fromQlEnum :: (Typeable a, Enum a) => CInt -> a
-  -- NB: intermediate computations are using the type of the result:
-  fromQlEnum x =
-    enum
-    where enum = result index
-          result Nothing  =
-            signalError ("Unknown enumeration code: " ++ show x)
-          result (Just i) = toEnum i
-          index = elemIndex x $ values (show $ typeOf enum)
+toQlEnum :: (QLEnum a) => a -> CInt
+toQlEnum x =
+  if index >= length vals
+    then signalError ("Constructor " ++ show x ++ " is not found")
+    else vals !! index
+  where
+    index = fromEnum x
+    vals = values (show $ typeOf x) 
+
+fromQlEnum :: (QLEnum a) => CInt -> a
+-- NB: intermediate computations are using the type of the result:
+fromQlEnum x =
+  enum
+  where enum = result index
+        result Nothing  =
+          signalError ("Unknown enumeration code: " ++ show x)
+        result (Just i) = toEnum i
+        index = elemIndex x $ values (show $ typeOf enum)
