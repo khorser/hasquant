@@ -22,7 +22,7 @@ import QuantLib.Time.DateGenerationRule()
 import QuantLib.Time.Frequency()
 import QuantLib.Time.Unit()
 
-data NestedArg = IntN | DayN | DoubleN | ForeignPtrN
+data NestedArg = DayN | DoubleN | ForeignPtrN
   deriving (Show, Eq)
 
 -- XXX use GADTs/SYB/Uniplate?
@@ -52,7 +52,6 @@ nameToTop n | n == ''Double = DoubleA
 nameToTop n = error $ "Not supported top type: " ++ show n
 
 nestedNameToTop :: Name -> Q NestedArg
-nestedNameToTop n | n == ''Int = return IntN
 nestedNameToTop n | n == ''Day = return DayN
 nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n =
@@ -217,6 +216,9 @@ genFfiCall cn extra aa r = do
     genFfiCallImpl doIO (OptDayA:as) (v:vs) c_call =
       genFfiCallImpl doIO as vs [|$c_call (toQlDate $v)|]
 
+    genFfiCallImpl doIO (StringA:as) (v:vs) c_call =
+      [|withCString $v (\y -> $(genFfiCallImpl doIO as vs [|$c_call y|]))|]
+
     genFfiCallImpl doIO (EnumA:as) (v:vs) c_call =
       genFfiCallImpl doIO as vs [|$c_call (toQlEnum $v)|]
 
@@ -232,7 +234,14 @@ genFfiCall cn extra aa r = do
     genFfiCallImpl doIO (ListA ForeignPtrN:as) (v:vs) c_call =
       [|withObjects $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl _ _ _ _ = error "Unreachable code" -- make it more precise
+    genFfiCallImpl doIO (ListA DayN:as) (v:vs) c_call =
+      [|withDays $v (\y1 y2 -> $(genFfiCallImpl doIO as vs [|$c_call y1 y2|]))|]
+
+    genFfiCallImpl _doIO (ListA2 _ _:_as) (_v:_vs) _c_call = error "Not supported yet"
+
+    genFfiCallImpl _ (a:_) _ _ = error $ "Unsupported type " ++ show a
+
+    genFfiCallImpl _ _ _ _ = error "Impossible"
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
@@ -248,7 +257,3 @@ unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
-
--- marshal StringA _code      = [|undefined|]
--- marshal OptForeignPtrA _code = [|undefined|]
--- marshal (ListA2 _x1 _x2) _code = [|undefined|]

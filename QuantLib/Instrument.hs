@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Instrument
   (
   -- accessors
@@ -9,7 +10,7 @@ where
 
 import Control.Monad(liftM)
 
---import QuantLib.Internal.Syntax
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 
@@ -26,6 +27,4 @@ npv i = liftM realToFrac $ withObject i (handleExceptions . c_npv)
 -- |Sets a new pricing engine to the given Instrument pbject
 -- (qlInstrumentSetPricingEngine)
 setPricingEngine :: Instrument -> PricingEngine -> IO ()
-setPricingEngine i e =
-  withObject2 i e
-  (\ii ee -> handleExceptions $ c_setPricingEngine ii ee)
+setPricingEngine = $(ffiCallHandleX 'setPricingEngine 'c_setPricingEngine)

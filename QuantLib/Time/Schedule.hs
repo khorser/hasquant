@@ -1,3 +1,4 @@
+{-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Time.Schedule
   (
   -- makers
@@ -12,7 +13,7 @@ where
 import Prelude hiding(until)
 
 import QuantLib.Internal.Date
-import QuantLib.Internal.Enum
+import QuantLib.Internal.Syntax
 import QuantLib.Internal.Utils
 import QuantLib.Types
 import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
@@ -33,32 +34,11 @@ foreign import ccall safe "ql.h qlScheduleDates"
 schedule :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention
   -> BusinessDayConvention -> DateGenerationRule -> Bool
   -> Maybe Day -> Maybe Day -> IO Schedule
-schedule effective term tenor cal conv termConv rule eom first nextToLast =
-  withObject2 tenor cal
-    (\t c ->
-                construct
-                $ c_schedule
-                (toQlDate effective)
-                (toQlDate term)
-                t
-                c
-                (toQlEnum conv)
-                (toQlEnum termConv)
-                (toQlEnum rule)
-                (fromBool eom)
-                (toQlDate first)
-                (toQlDate nextToLast))
-
+schedule = $(ffiConstruct 'schedule 'c_schedule)
 
 -- | (qlScheduleFromDateVector)
 schedule' :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
-schedule' days cal conv =
-  withDays
-  days
-  (\n d ->
-    withObject
-      cal
-      (\c -> construct $ c_schedule' n d c (toQlEnum conv)))
+schedule' = $(ffiConstruct 'schedule' 'c_schedule')
 
 -- | (qlScheduleTruncated)
 -- DO NOT call this on schedules created with 'schedule'
@@ -68,11 +48,7 @@ schedule' days cal conv =
 -- TODO Introduce another Schedule type with restricted interface?
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
 until :: Schedule -> Day -> IO Schedule
-until sched d =
-  withObject
-  sched
-  (\s -> construct $ c_until s (toQlDate d))
-
+until = $(ffiConstruct 'until 'c_until)
 
 -- |returns the dates for the given Schedule object (qlScheduleDates)
 dates :: Schedule -> [Day]

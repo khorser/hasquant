@@ -10,9 +10,6 @@ module QuantLib.Internal.Utils
   , constructNamed
   , name
   , withObject
-  , withObject2
-  , withObject3
-  , withObject4
   , maybeWithObject
   , withAmounts
   , withObjects
@@ -63,17 +60,6 @@ withObject = withForeignPtr
 maybeWithObject :: Maybe (ForeignPtr a) -> (Ptr a -> IO b) -> IO b
 maybeWithObject (Just o) f = withObject o f
 maybeWithObject Nothing f  = f nullPtr
-
-withObject2 :: ForeignPtr a1 -> ForeignPtr a2 -> (Ptr a1 -> Ptr a2 -> IO b) -> IO b
-withObject2 o1 o2 f = withObject o1 (withObject o2 . f)
-
-withObject3 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> IO b) -> IO b
-withObject3 o1 o2 o3 f = withObject o1 (withObject2 o2 o3 . f)
-
-withObject4 :: ForeignPtr a1 -> ForeignPtr a2 -> ForeignPtr a3 -> ForeignPtr a4
-  -> (Ptr a1 -> Ptr a2 -> Ptr a3 -> Ptr a4 -> IO b) -> IO b
-withObject4 o1 o2 o3 o4 f = withObject o1 (withObject3 o2 o3 o4 . f)
 
 withObjects :: [ForeignPtr a] -> (CUInt -> Ptr (Ptr a) -> IO b) -> IO b
 -- XXX rewrite using folds?
