@@ -5,9 +5,11 @@ import Data.Maybe (fromJust)
 import Distribution.PackageDescription hiding (includeDirs)
 import Distribution.InstalledPackageInfo(includeDirs)
 import Distribution.Simple
-import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, localPkgDescr, installedPkgs)
+import Distribution.Simple.Program
+import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, localPkgDescr, installedPkgs, withPrograms)
 import Distribution.Simple.PackageIndex(SearchResult (..), searchByName)
 import Distribution.Simple.Setup
+import Distribution.System (OS (..), buildOS)
 import System.Directory (doesFileExist)
 import System.FilePath ((</>), takeDirectory)
 
@@ -48,9 +50,22 @@ myConfHook (pkg0, pbi) flags = do
     let libbi' = libbi
           { extraLibDirs = extraLibDirs libbi ++ [qlcDirectory]
           , extraLibs    = extraLibs    libbi ++ ["qlc"]
-          , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ qlcDirectory]  }
+          , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ qlcDirectory]
+          }
 
     let lib' = lib { libBuildInfo = libbi' }
     let lpd' = lpd { library = Just lib' }
 
-    return $ lbi { localPkgDescr = lpd' }
+    let qlcFile = qlcDirectory </>
+          case buildOS of
+            Windows -> "qlc.dll"
+            OSX -> "libqlc.dylib"
+            _ -> "libqlc.so"
+
+    -- a workaround for problems with unresolved symbold when TH is combined with FFI
+    let progs = withPrograms lbi
+    let ghc = fromJust (lookupProgram (simpleProgram "ghc") progs)
+    let ghc' = ghc {programOverrideArgs = programOverrideArgs ghc ++ [qlcFile]}
+    let progs' = updateProgram ghc' progs
+
+    return $ lbi { localPkgDescr = lpd', withPrograms = progs' }
