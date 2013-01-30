@@ -74,11 +74,11 @@ foreign import ccall safe "ql.h qlCalendarAdvance"
 
 -- |Adjusts a non-business day to the appropriate near business day according to a given calendar with respect to the given convention (qlCalendarAdjust)
 adjust :: Calendar -> Day -> BusinessDayConvention -> IO Day
-adjust = $(ffiCall 'adjust 'c_calendarAdjust)
+adjust = $(ffiCall 'adjust) c_calendarAdjust
 
 -- |advances a date according to a given calendar (qlCalendarAdvance)
 advance :: Calendar -> Day -> Int -> Unit -> BusinessDayConvention -> Bool -> IO Day
-advance = $(ffiCall 'advance 'c_calendarAdvance)
+advance = $(ffiCall 'advance) c_calendarAdvance
 
 -- TODO add data Calendar = ...
 

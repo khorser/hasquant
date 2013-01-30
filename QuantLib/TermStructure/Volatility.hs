@@ -19,4 +19,4 @@ foreign import ccall safe "ql.h qlConstantOptionletVol"
 -- |(qlConstantOptionletVolatility)
 constantOptionletVol :: Word -> Calendar -> BusinessDayConvention -> Quote
   -> DayCounter -> IO OptionletVolStructure
-constantOptionletVol = $(ffiConstruct 'constantOptionletVol 'c_constantOptionletVol)
+constantOptionletVol = $(ffiConstruct 'constantOptionletVol) c_constantOptionletVol

@@ -19,4 +19,4 @@ foreign import ccall safe "ql.h qlInterestRate"
 -- | (qlInterestRate)
 interestRate :: Double -> DayCounter -> Compounding -> Frequency
   -> IO InterestRate
-interestRate = $(ffiConstruct 'interestRate 'c_interestRate)
+interestRate = $(ffiConstruct 'interestRate) c_interestRate

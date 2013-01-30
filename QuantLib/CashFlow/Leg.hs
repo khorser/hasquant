@@ -20,9 +20,9 @@ foreign import ccall safe "ql.h qlLegStartDate"
 
 -- | (qlLeg)
 leg :: [(Double, Day)] -> IO Leg
-leg = $(ffiConstruct 'leg 'c_leg)
+leg = $(ffiConstruct 'leg) c_leg
 
 -- |Returns the start (i.e. first accrual) date for the given Leg object (qlLegStartDate)
 -- XXX assuming legs are immutable
 startDate :: Leg -> Day
-startDate = $(ffiCallXIO 'startDate 'c_legStartDate)
+startDate = $(ffiCallXIO 'startDate) c_legStartDate

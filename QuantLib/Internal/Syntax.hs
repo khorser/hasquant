@@ -164,36 +164,36 @@ args t@(AppT _ _) = do
     return ([], r)
 args t = fail $ "Unsupported type: " ++ show t
 
-ffiCall :: Name -> Name -> ExpQ
-ffiCall hn cn = ffiCallImpl False hn cn [|id|]
+ffiCall :: Name -> ExpQ
+ffiCall hn = ffiCallImpl False hn [|id|]
 
-ffiCallIO :: Name -> Name -> ExpQ
-ffiCallIO hn cn = ffiCallImpl True hn cn [|id|]
+ffiCallIO :: Name -> ExpQ
+ffiCallIO hn = ffiCallImpl True hn [|id|]
 
-ffiConstruct :: Name -> Name -> ExpQ
-ffiConstruct hn cn = ffiCallImpl False hn cn [|construct|]
+ffiConstruct :: Name -> ExpQ
+ffiConstruct hn = ffiCallImpl False hn [|construct|]
 
-ffiCallX :: Name -> Name -> ExpQ
-ffiCallX hn cn = ffiCallImpl False hn cn [|handleExceptions|]
+ffiCallX :: Name -> ExpQ
+ffiCallX hn = ffiCallImpl False hn [|handleExceptions|]
 
-ffiCallXIO :: Name -> Name -> ExpQ
-ffiCallXIO hn cn = ffiCallImpl True hn cn [|handleExceptions|]
+ffiCallXIO :: Name -> ExpQ
+ffiCallXIO hn = ffiCallImpl True hn [|handleExceptions|]
 
-ffiCallImpl :: Bool -> Name -> Name -> ExpQ -> ExpQ
-ffiCallImpl io hFun cFun extra = do
+ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
+ffiCallImpl io hFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall io cFun extra)
+    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall io extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
-genFfiCall :: Bool -> Name -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall io cFun extra aa r = do
-  cr <- reify cFun
+genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
+genFfiCall io extra aa r = do
   varNames <- mapM (\_ -> newName "x") aa
-  lamE (map varP varNames)
+  cFunName <- newName "fun"
+  lamE (map varP (cFunName : varNames))
        (if io 
-         then [|unsafePerformIO $(nakedCall varNames)|]
-         else nakedCall varNames)
+         then [|unsafePerformIO $(nakedCall varNames cFunName)|]
+         else nakedCall varNames cFunName)
   where
     ret :: RetVal
     ret =
@@ -210,8 +210,8 @@ genFfiCall io cFun extra aa r = do
         (AtomicRV DayListR) -> [|getDynIntArray $(appE extra c_call)|]
         _ -> appE extra c_call
 
-    nakedCall :: [Name] -> ExpQ
-    nakedCall varNames = genFfiCallImpl (zip aa (map varE varNames)) (varE cFun)
+    nakedCall :: [Name] -> Name -> ExpQ
+    nakedCall varNames cFunName = genFfiCallImpl (zip aa (map varE varNames)) (varE cFunName)
 
     genFfiCallImpl :: [(TopArg, ExpQ)] -> ExpQ -> ExpQ
     genFfiCallImpl [] c_call = [|$(unmarshal ret) ($(finalCCall c_call))|]

@@ -46,7 +46,7 @@ import QuantLib.Time.BusinessDayConvention(BusinessDayConvention)
 iborIndex :: String -> Period -> Word -> Currency -> Calendar
   -> BusinessDayConvention -> Bool -> DayCounter -> Maybe YieldTermStructure
   -> IO IborIndex
-iborIndex = $(ffiConstruct 'iborIndex 'c_iborIndex)
+iborIndex = $(ffiConstruct 'iborIndex) c_iborIndex
 
 foreign import ccall safe "ql.h qlLibor"
   c_libor :: CString -> Ptr CPeriod -> CUInt -> Ptr CCurrency
@@ -56,7 +56,7 @@ foreign import ccall safe "ql.h qlLibor"
 -- |(qlLibor)
 libor :: String -> Period -> Word -> Currency -> Calendar -> DayCounter
   -> Maybe YieldTermStructure -> IO IborIndex
-libor = $(ffiConstruct 'libor 'c_libor)
+libor = $(ffiConstruct 'libor) c_libor
 
 foreign import ccall safe "ql.h qlDailyTenorLibor"
   c_dailyTenorLibor :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
@@ -65,7 +65,7 @@ foreign import ccall safe "ql.h qlDailyTenorLibor"
 
 dailyTenorLibor :: String -> Word -> Currency -> Calendar -> DayCounter
   -> Maybe YieldTermStructure -> IO IborIndex
-dailyTenorLibor = $(ffiConstruct 'dailyTenorLibor 'c_dailyTenorLibor)
+dailyTenorLibor = $(ffiConstruct 'dailyTenorLibor) c_dailyTenorLibor
 
 foreign import ccall safe "ql.h qlOvernightIndex"
   c_overnightIndex :: CString -> CUInt -> Ptr CCurrency -> Ptr CCalendar
@@ -75,7 +75,7 @@ foreign import ccall safe "ql.h qlOvernightIndex"
 -- |(qlOvernightIndex)
 overnightIndex :: String -> Word -> Currency -> Calendar -> DayCounter
   -> Maybe YieldTermStructure -> IO IborIndex
-overnightIndex = $(ffiConstruct 'overnightIndex 'c_overnightIndex)
+overnightIndex = $(ffiConstruct 'overnightIndex) c_overnightIndex
 
 foreign import ccall safe "ql.h qlCreateIbor"
   c_createIbor :: CString -> Ptr CPeriod -> Ptr CYieldTermStructure
@@ -88,14 +88,14 @@ foreign import ccall safe "ql.h qlCreateDailyTenorIbor"
     -> Ptr CString -> IO (Ptr CIborIndex)
 
 createIbor :: String -> Period -> Maybe YieldTermStructure -> IO IborIndex
-createIbor = $(ffiConstruct 'createIbor 'c_createIbor)
+createIbor = $(ffiConstruct 'createIbor) c_createIbor
 
 createIborON :: String -> Maybe YieldTermStructure -> IO IborIndex
-createIborON = $(ffiConstruct 'createIborON 'c_createIborON)
+createIborON = $(ffiConstruct 'createIborON) c_createIborON
 
 createDailyTenorLibor :: String -> Word -> Maybe YieldTermStructure
   -> IO IborIndex
-createDailyTenorLibor = $(ffiConstruct 'createDailyTenorLibor 'c_createDailyTenorLibor)
+createDailyTenorLibor = $(ffiConstruct 'createDailyTenorLibor) c_createDailyTenorLibor
 
 -- |(qlEuribor)
 euribor :: Period -> Maybe YieldTermStructure -> IO IborIndex

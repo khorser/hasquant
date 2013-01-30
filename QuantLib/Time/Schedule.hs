@@ -35,11 +35,11 @@ foreign import ccall safe "ql.h qlScheduleDates"
 schedule :: Maybe Day -> Day -> Period -> Calendar -> BusinessDayConvention
   -> BusinessDayConvention -> DateGenerationRule -> Bool
   -> Maybe Day -> Maybe Day -> IO Schedule
-schedule = $(ffiConstruct 'schedule 'c_schedule)
+schedule = $(ffiConstruct 'schedule) c_schedule
 
 -- | (qlScheduleFromDateVector)
 schedule' :: [Day] -> Calendar -> BusinessDayConvention -> IO Schedule
-schedule' = $(ffiConstruct 'schedule' 'c_schedule')
+schedule' = $(ffiConstruct 'schedule') c_schedule'
 
 -- | (qlScheduleTruncated)
 -- DO NOT call this on schedules created with 'schedule'
@@ -49,8 +49,8 @@ schedule' = $(ffiConstruct 'schedule' 'c_schedule')
 -- TODO Introduce another Schedule type with restricted interface?
 -- moreover, a fixed rate bond can be constructed from a full schedule only!
 until :: Schedule -> Day -> IO Schedule
-until = $(ffiConstruct 'until 'c_until)
+until = $(ffiConstruct 'until) c_until
 
 -- |returns the dates for the given Schedule object (qlScheduleDates)
 dates :: Schedule -> [Day]
-dates = $(ffiCallIO 'dates 'c_scheduleDates)
+dates = $(ffiCallIO 'dates) c_scheduleDates

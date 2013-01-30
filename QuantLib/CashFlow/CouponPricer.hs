@@ -15,4 +15,4 @@ foreign import ccall safe "ql.h qlBlackIborCouponPricer"
     -> IO (Ptr CFloatingRateCouponPricer)
 
 blackIborCouponPricer :: OptionletVolStructure -> IO FloatingRateCouponPricer
-blackIborCouponPricer = $(ffiConstruct 'blackIborCouponPricer 'c_blackIborCouponPricer)
+blackIborCouponPricer = $(ffiConstruct 'blackIborCouponPricer) c_blackIborCouponPricer

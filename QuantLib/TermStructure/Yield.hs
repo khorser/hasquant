@@ -37,13 +37,13 @@ foreign import ccall safe "ql.h qlPiecewiseYieldCurve"
 -- |(qlDepositRateHelper2)
 depositRateHelper :: Quote -> Period -> Word -> Calendar
   -> BusinessDayConvention -> Bool -> DayCounter -> IO RateHelper
-depositRateHelper = $(ffiConstruct 'depositRateHelper 'c_depositRateHelper)
+depositRateHelper = $(ffiConstruct 'depositRateHelper) c_depositRateHelper
 
 -- |(qlFixedRateBondHelper)
 fixedRateBondHelper :: Quote -> Word -> Double -> Schedule -> [Double]
   -> DayCounter -> BusinessDayConvention -> Double -> Maybe Day
   -> IO RateHelper
-fixedRateBondHelper = $(ffiConstruct 'fixedRateBondHelper 'c_fixedRateBondHelper)
+fixedRateBondHelper = $(ffiConstruct 'fixedRateBondHelper) c_fixedRateBondHelper
 
 foreign import ccall safe "ql.h qlYieldTSDiscount"
   c_yieldTSDiscount :: Ptr CYieldTermStructure -> CDate -> CInt
@@ -53,7 +53,7 @@ piecewiseYieldCurve :: Day -> [RateHelper] -> DayCounter
   -> [(Quote, Day)] -> Double -> Trait -> Interpolation
   -> IO YieldTermStructure
 piecewiseYieldCurve =
-  $(ffiConstruct 'piecewiseYieldCurve 'c_piecewiseYieldCurve)
+  $(ffiConstruct 'piecewiseYieldCurve) c_piecewiseYieldCurve
 
 -- |(qlPiecewiseYieldCurve)
 piecewiseYieldCurve' :: Word -> Calendar -> [RateHelper] -> DayCounter
@@ -63,7 +63,7 @@ piecewiseYieldCurve' = undefined
 
 -- |Returns a discount factor from the given YieldTermStructure object (qlYieldTSDiscount)
 discount :: YieldTermStructure -> Day -> Bool -> IO Double
-discount = $(ffiCallX 'discount 'c_yieldTSDiscount)
+discount = $(ffiCallX 'discount) c_yieldTSDiscount
 
 foreign import ccall safe "ql.h qlSwapRateHelper1"
   c_swapRateHelper' :: Ptr CQuote -> Ptr CPeriod -> Ptr CCalendar -> CInt
@@ -74,4 +74,4 @@ foreign import ccall safe "ql.h qlSwapRateHelper1"
 swapRateHelper' :: Quote -> Period -> Calendar -> Frequency
   -> BusinessDayConvention -> DayCounter -> IborIndex -> Quote
   -> Period -> Maybe YieldTermStructure -> IO RateHelper
-swapRateHelper' = $(ffiConstruct 'swapRateHelper' 'c_swapRateHelper')
+swapRateHelper' = $(ffiConstruct 'swapRateHelper') c_swapRateHelper'

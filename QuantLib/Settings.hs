@@ -24,20 +24,20 @@ foreign import ccall safe "ql.h qlSettingsSetEnforceTodaysHistoricFixings"
 
 -- |returns the current value of the Evaluation Date (qlSettingsEvaluationDate)
 evaluationDate :: IO Day
-evaluationDate = $(ffiCall 'evaluationDate 'c_evaluationDate)
+evaluationDate = $(ffiCall 'evaluationDate) c_evaluationDate
 
 -- |sets the value of the Evaluation Date (qlSettingsSetEvaluationDate)
 setEvaluationDate :: Maybe Day -> IO ()
-setEvaluationDate = $(ffiCallX 'setEvaluationDate 'c_setEvaluationDate)
+setEvaluationDate = $(ffiCallX 'setEvaluationDate) c_setEvaluationDate
 
 -- |returns the current value of the boolean which enforce the usage of historic
 -- fixings for today's date (qlSettingsEnforceTodaysHistoricFixings)
 enforceTodaysHistoricFixings :: IO Bool
 enforceTodaysHistoricFixings =
-  $(ffiCall 'enforceTodaysHistoricFixings 'c_enforceTodaysHistoricFixings)
+  $(ffiCall 'enforceTodaysHistoricFixings) c_enforceTodaysHistoricFixings
 
 -- |sets the value of the boolean which enforce the usage of historic fixings
 -- for today's date (qlSettingsSetEnforceTodaysHistoricFixings)
 setEnforceTodaysHistoricFixings :: Bool -> IO ()
 setEnforceTodaysHistoricFixings =
-  $(ffiCallX 'setEnforceTodaysHistoricFixings 'c_setEnforceTodaysHistoricFixings)
+  $(ffiCallX 'setEnforceTodaysHistoricFixings) c_setEnforceTodaysHistoricFixings

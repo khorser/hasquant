@@ -41,19 +41,19 @@ foreign import ccall safe "ql.h qlBondIssueDate"
 
 -- | (qlBond)
 bond :: Word -> Calendar -> Maybe Day -> Leg -> IO Bond
-bond = $(ffiConstruct 'bond 'c_bond)
+bond = $(ffiConstruct 'bond) c_bond
 
 bond' :: Word -> Calendar -> Double -> Maybe Day -> Maybe Day -> Leg -> IO Bond
-bond' = $(ffiConstruct 'bond' 'c_bond')
+bond' = $(ffiConstruct 'bond') c_bond'
 
 -- |Returns the maturity date of the bond (qlBondMaturityDate)
 maturityDate :: Bond -> Maybe Day
-maturityDate = $(ffiCallIO 'maturityDate 'c_maturityDate)
+maturityDate = $(ffiCallIO 'maturityDate) c_maturityDate
 -- XXX any exceptions possible?
 
 -- |Returns the issue date of the bond (qlBondIssueDate)
 issueDate :: Bond -> Maybe Day
-issueDate = $(ffiCallIO 'issueDate 'c_issueDate)
+issueDate = $(ffiCallIO 'issueDate) c_issueDate
 -- XXX any exceptions possible?
 
 foreign import ccall safe "ql.h qlFixedRateBond"
@@ -77,22 +77,22 @@ foreign import ccall safe "ql.h qlFixedBondFrequency"
 fixedRateBond :: Word -> Double -> Schedule -> [Double] -> DayCounter
    -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
    -> IO FixedRateBond
-fixedRateBond = $(ffiConstruct 'fixedRateBond 'c_fixedRateBond)
+fixedRateBond = $(ffiConstruct 'fixedRateBond) c_fixedRateBond
 
 fixedRateBond' :: Word -> Calendar -> Double -> Day -> Day -> Period -> [Double]
   -> DayCounter -> BusinessDayConvention -> BusinessDayConvention -> Double
   -> Maybe Day -> Maybe Day -> DateGenerationRule -> Bool -> Calendar
   -> IO FixedRateBond
-fixedRateBond' = $(ffiConstruct 'fixedRateBond' 'c_fixedRateBond')
+fixedRateBond' = $(ffiConstruct 'fixedRateBond') c_fixedRateBond'
                                          
 -- |(qlFixedRateBond2)
 fixedRateBond'' :: Word -> Double -> Schedule -> [InterestRate]
   -> BusinessDayConvention -> Double -> Maybe Day -> Calendar
   -> IO FixedRateBond
-fixedRateBond'' = $(ffiConstruct 'fixedRateBond'' 'c_fixedRateBond'')
+fixedRateBond'' = $(ffiConstruct 'fixedRateBond'') c_fixedRateBond''
 
 frequency :: FixedRateBond -> Frequency
-frequency = $(ffiCallIO 'frequency 'c_fixedBondFrequency)
+frequency = $(ffiCallIO 'frequency) c_fixedBondFrequency
 
 foreign import ccall safe "ql.h qlZeroCouponBond"
   c_zeroCouponBond :: CUInt -> Ptr CCalendar -> CDouble -> CDate
@@ -101,7 +101,7 @@ foreign import ccall safe "ql.h qlZeroCouponBond"
 -- |(qlZeroCouponBond)
 zeroCouponBond :: Word -> Calendar -> Double -> Day -> BusinessDayConvention
   -> Double -> Maybe Day -> IO Bond
-zeroCouponBond = $(ffiConstruct 'zeroCouponBond 'c_zeroCouponBond)
+zeroCouponBond = $(ffiConstruct 'zeroCouponBond) c_zeroCouponBond
 
 foreign import ccall safe "ql.h qlBondSetCouponPricer"
   c_bondSetCouponPricer :: Ptr CBond -> Ptr CFloatingRateCouponPricer
@@ -111,7 +111,7 @@ foreign import ccall safe "ql.h qlBondSetCouponPricer"
 -- doing like QuantLibXL here, in QuantLib it is a function working on
 -- cashflows (see the implementation in qlBondSetCouponPricer)
 setCouponPricer :: Bond -> FloatingRateCouponPricer -> IO ()
-setCouponPricer = $(ffiCallX 'setCouponPricer 'c_bondSetCouponPricer)
+setCouponPricer = $(ffiCallX 'setCouponPricer) c_bondSetCouponPricer
 
 foreign import ccall safe "ql.h qlFloatingRateBond"
   c_floatingRateBond :: CUInt -> CDouble -> Ptr CSchedule -> Ptr CIborIndex
@@ -123,4 +123,4 @@ foreign import ccall safe "ql.h qlFloatingRateBond"
 floatingRateBond :: Word -> Double -> Schedule -> IborIndex
   -> DayCounter -> BusinessDayConvention -> Word -> [Double] -> [Double]
   -> [Double] -> [Double] -> Bool -> Double -> Maybe Day -> IO Bond
-floatingRateBond = $(ffiConstruct 'floatingRateBond 'c_floatingRateBond)
+floatingRateBond = $(ffiConstruct 'floatingRateBond) c_floatingRateBond
