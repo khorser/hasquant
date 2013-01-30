@@ -5,8 +5,8 @@
 import Control.Monad (when)
 import Data.List (intercalate)
 import Data.Maybe (fromJust)
-import Distribution.PackageDescription
-import Distribution.Simple
+import Distribution.PackageDescription (package, PackageDescription, library, libBuildInfo, customFieldsBI, ccOptions, ldOptions, includeDirs, extraLibs, extraLibDirs)
+import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, pkgVersion, versionBranch, Version, UserHooks, instHook, buildHook)
 import Distribution.Simple.InstallDirs (InstallDirs(..))
 import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, withPrograms, buildDir, absoluteInstallDirs)
 import Distribution.Simple.Program (ConfiguredProgram (..), lookupProgram, runProgram, simpleProgram)

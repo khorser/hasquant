@@ -3,12 +3,12 @@
 import Control.Monad (filterM)
 import Data.Maybe (fromJust)
 import Distribution.PackageDescription hiding (includeDirs)
-import Distribution.InstalledPackageInfo(includeDirs)
-import Distribution.Simple
-import Distribution.Simple.Program
+import Distribution.InstalledPackageInfo (includeDirs)
+import Distribution.Simple (defaultMainWithHooks, simpleUserHooks, confHook)
+import Distribution.Simple.Program (lookupProgram, ghcProgram, haddockProgram, programOverrideArgs, updateProgram)
 import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, localPkgDescr, installedPkgs, withPrograms)
-import Distribution.Simple.PackageIndex(SearchResult (..), searchByName)
-import Distribution.Simple.Setup
+import Distribution.Simple.PackageIndex (SearchResult (..), searchByName)
+import Distribution.Simple.Setup (ConfigFlags)
 import System.Directory (doesFileExist)
 import System.FilePath ((</>), takeDirectory)
 
@@ -42,27 +42,27 @@ myConfHook (pkg0, pbi) flags = do
     lbi <- confHook simpleUserHooks (pkg0, pbi) flags
     qlcDirectory <- qlcInstallDir lbi
 
-    let lpd       = localPkgDescr lbi
-    let lib       = fromJust (library lpd)
-    let libbi     = libBuildInfo lib
+    let
+      lpd       = localPkgDescr lbi
+      lib       = fromJust (library lpd)
+      libbi     = libBuildInfo lib
 
-    let libbi' = libbi
-          { extraLibDirs = extraLibDirs libbi ++ [qlcDirectory]
-          , extraLibs    = extraLibs    libbi ++ ["qlc"]
-          , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ qlcDirectory]
-          }
+      libbi' = libbi
+        { extraLibDirs = extraLibDirs libbi ++ [qlcDirectory]
+        , extraLibs    = extraLibs    libbi ++ ["qlc"]
+        , ldOptions    = ldOptions    libbi ++ ["-Wl,-rpath," ++ qlcDirectory]
+        }
 
-    let lib' = lib { libBuildInfo = libbi' }
-    let lpd' = lpd { library = Just lib' }
+      lib' = lib { libBuildInfo = libbi' }
+      lpd' = lpd { library = Just lib' }
 
     -- workarounds for problems with unresolved symbols when TH is combined with FFI
-    let progs = withPrograms lbi
-    let ghc = fromJust (lookupProgram ghcProgram progs)
-    let ghc' = ghc {programOverrideArgs = programOverrideArgs ghc ++ ["-L"++qlcDirectory, "-lqlc"]}
-    let progs' = updateProgram ghc' progs
+      progs = withPrograms lbi
+      ghc = fromJust (lookupProgram ghcProgram progs)
+      haddock = fromJust (lookupProgram haddockProgram progs)
+      ghc' = ghc {programOverrideArgs = programOverrideArgs ghc
+        ++ ["-L"++qlcDirectory, "-lqlc"]}
+      haddock' = haddock {programOverrideArgs = programOverrideArgs haddock
+        ++ ["--optghc=-L"++qlcDirectory, "--optghc=-lqlc"]}
 
-    let haddock = fromJust (lookupProgram haddockProgram progs')
-    let haddock' = haddock {programOverrideArgs = programOverrideArgs haddock ++ ["--optghc=-L"++qlcDirectory, "--optghc=-lqlc"]}
-    let progs'' = updateProgram haddock' progs'
-
-    return $ lbi { localPkgDescr = lpd', withPrograms = progs'' }
+    return $ lbi { localPkgDescr = lpd', withPrograms = updateProgram haddock' (updateProgram ghc' progs) }
