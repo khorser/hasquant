@@ -56,7 +56,7 @@ enumType n = do
           then Just LitEnum
           else Nothing
   where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
-        getEnumTypeName x = error $ "Error getting instances: " ++ show x
+        getEnumTypeName x = error $ "Unsupported pattern in instance declaration: " ++ show x
 
 nameToTop :: Name -> TopArg
 nameToTop n | n == ''Int = IntA
@@ -72,7 +72,7 @@ nestedNameToTop n | n == ''Day = return DayN
 nestedNameToTop n | n == ''Double = return DoubleN
 nestedNameToTop n =
   tryForeignPtr n >>=
-    either (\x -> fail $ "Error parsing nested arg" ++ show x)
+    either (\x -> fail $ "Error parsing nested arg: " ++ show x)
       (\_ -> return ForeignPtrN)
 
 topArgs :: Type -> Q TopArg
@@ -211,66 +211,63 @@ genFfiCall io cFun extra aa r = do
         _ -> appE extra c_call
 
     nakedCall :: [Name] -> ExpQ
-    nakedCall varNames = genFfiCallImpl aa (map varE varNames) (varE cFun)
+    nakedCall varNames = genFfiCallImpl (zip aa (map varE varNames)) (varE cFun)
 
-    genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
-    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) ($(finalCCall c_call))|]
+    genFfiCallImpl :: [(TopArg, ExpQ)] -> ExpQ -> ExpQ
+    genFfiCallImpl [] c_call = [|$(unmarshal ret) ($(finalCCall c_call))|]
 
-    genFfiCallImpl (IntA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
+    genFfiCallImpl ((IntA, v):as) c_call =
+      genFfiCallImpl as [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
 
-    genFfiCallImpl (BoolA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((fromBool :: Bool -> CInt) $v)|]
+    genFfiCallImpl ((BoolA, v):as) c_call =
+      genFfiCallImpl as [|$c_call ((fromBool :: Bool -> CInt) $v)|]
 
-    genFfiCallImpl (DoubleA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
+    genFfiCallImpl ((DoubleA, v):as) c_call =
+      genFfiCallImpl as [|$c_call ((realToFrac :: Double -> CDouble) $v)|]
 
-    genFfiCallImpl (WordA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
+    genFfiCallImpl ((WordA, v):as) c_call =
+      genFfiCallImpl as [|$c_call ((fromIntegral :: Word -> CUInt) $v)|]
 
-    genFfiCallImpl (DayA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
+    genFfiCallImpl ((DayA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (toQlDate $v)|]
 
-    genFfiCallImpl (OptDayA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call (toQlDate $v)|]
+    genFfiCallImpl ((OptDayA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (toQlDate $v)|]
 
-    genFfiCallImpl (StringA:as) (v:vs) c_call =
-      [|withCString $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
+    genFfiCallImpl ((StringA, v):as) c_call =
+      [|withCString $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl (EnumA:as) (v:vs) c_call =
-      genFfiCallImpl as vs [|$c_call (toQlEnum $v)|]
+    genFfiCallImpl ((EnumA, v):as) c_call =
+      genFfiCallImpl as [|$c_call (toQlEnum $v)|]
 
-    genFfiCallImpl (LitEnumA:as) (v:vs) c_call =
-      [|withCString (show $v) (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
+    genFfiCallImpl ((LitEnumA, v):as) c_call =
+      [|withCString (show $v) (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl (ForeignPtrA:as) (v:vs) c_call =
-      [|withObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
+    genFfiCallImpl ((ForeignPtrA, v):as) c_call =
+      [|withObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl (OptForeignPtrA:as) (v:vs) c_call =
-      [|maybeWithObject $v (\y -> $(genFfiCallImpl as vs [|$c_call y|]))|]
+    genFfiCallImpl ((OptForeignPtrA, v):as) c_call =
+      [|maybeWithObject $v (\y -> $(genFfiCallImpl as [|$c_call y|]))|]
 
-    genFfiCallImpl (ListA DoubleN:as) (v:vs) c_call =
-      [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
+    genFfiCallImpl ((ListA DoubleN, v):as) c_call =
+      [|withAmounts $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl (ListA ForeignPtrN:as) (v:vs) c_call =
-      [|withObjects $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
+    genFfiCallImpl ((ListA ForeignPtrN, v):as) c_call =
+      [|withObjects $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl (ListA DayN:as) (v:vs) c_call =
-      [|withDays $v (\y1 y2 -> $(genFfiCallImpl as vs [|$c_call y1 y2|]))|]
+    genFfiCallImpl ((ListA DayN, v):as) c_call =
+      [|withDays $v (\y1 y2 -> $(genFfiCallImpl as [|$c_call y1 y2|]))|]
 
-    genFfiCallImpl (ListA2 DoubleN DayN:as) (v:vs) c_call =
+    genFfiCallImpl ((ListA2 DoubleN DayN, v):as) c_call =
       [|withAmounts (map fst $v) (\n ams -> withDays (map snd $v)
-        (\_ ds -> $(genFfiCallImpl as vs [|$c_call n ams ds|])))|]
+        (\_ ds -> $(genFfiCallImpl as [|$c_call n ams ds|])))|]
 
-    genFfiCallImpl (ListA2 ForeignPtrN DayN:as) (v:vs) c_call =
+    genFfiCallImpl ((ListA2 ForeignPtrN DayN, v):as) c_call =
       [|withObjects (map fst $v) (\n ams -> withDays (map snd $v)
-        (\_ ds -> $(genFfiCallImpl as vs [|$c_call n ams ds|])))|]
+        (\_ ds -> $(genFfiCallImpl as [|$c_call n ams ds|])))|]
 
-    genFfiCallImpl (ListA2 _ _:_as) (_v:_vs) _c_call = error "Not supported yet"
-
-    genFfiCallImpl (a:_) _ _ = error $ "Unsupported type " ++ show a
-
-    genFfiCallImpl _ _ _ = error "Impossible"
+    genFfiCallImpl ((t@(ListA2 _ _), _v):_as) _c_call =
+      error $ show t ++ "Not supported yet"
 
 unmarshal :: RetVal -> ExpQ
 unmarshal (AtomicRV r) = [|$(unmarshalA r)|]
