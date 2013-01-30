@@ -39,6 +39,8 @@ Extra-source-files:
     cpp/qlVolatilityTS.cpp
     cpp/qlYieldTS.cpp
     cpp/qlYieldTSAux.cpp
+    cpp/qlaux.h
+    cpp/qlYieldTSAux.h
 
 library
 
@@ -47,8 +49,6 @@ library
   
   install-includes:
     ql.h
-    qlaux.h
-    qlYieldTSAux.h
 
   build-depends:
     base >= 4 && < 5
@@ -79,5 +79,7 @@ library
   x-dll-name: qlc
 
   x-dll-extra-libraries: QuantLib
+
+-- Source-Repository head
 
 -- vim: set et:

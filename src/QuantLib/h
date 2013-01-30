@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir obj
+ghc -outputdir obj -Wall -o T *.hs CashFlow/*.hs Index/*.hs Instrument/*.hs Internal/*.hs Math/*.hs TermStructure/*.hs ../../test/QuantLib/Test/*.hs Time/*.hs ../../test/QuantLib/Example/Bond.hs -lql -L. -pgml g++ -optl-Wl,-rpath,.

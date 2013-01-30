@@ -60,6 +60,7 @@ Library
                         , qlc == 0.1.0.0
 
   Default-Language:  Haskell2010
+  Hs-source-dirs: src
 
 Test-Suite QL-Test
   Type:              exitcode-stdio-1.0
@@ -74,10 +75,10 @@ Test-Suite QL-Test
                      , time >= 1.4
                      , HTF == 0.10.*
                      , hasquant
-                     , template-haskell
   Default-Language:  Haskell2010
   If os(windows)
     LD-Options:      -static
+  Hs-source-dirs: test
 
 Executable QL-Example
 
@@ -95,5 +96,6 @@ Executable QL-Example
   Default-Language:  Haskell2010
   If os(windows)
     LD-Options:      -static
+  Hs-source-dirs: test
 
 -- vim: set et ts=8 sts=2 sw=2:
