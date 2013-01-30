@@ -62,9 +62,9 @@ myConfHook (pkg0, pbi) flags = do
             OSX -> "libqlc.dylib"
             _ -> "libqlc.so"
 
-    -- a workaround for problems with unresolved symbold when TH is combined with FFI
+    -- a workaround for problems with unresolved symbols when TH is combined with FFI
     let progs = withPrograms lbi
-    let ghc = fromJust (lookupProgram (simpleProgram "ghc") progs)
+    let ghc = fromJust (lookupProgram ghcProgram progs)
     let ghc' = ghc {programOverrideArgs = programOverrideArgs ghc ++ [qlcFile]}
     let progs' = updateProgram ghc' progs
 
