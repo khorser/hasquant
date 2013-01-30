@@ -13,6 +13,7 @@ where
 import Control.Monad(liftM, liftM2)
 import Foreign.Marshal.Utils(fromBool, toBool)
 import Language.Haskell.TH
+import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Date
 import QuantLib.Internal.Utils
@@ -50,9 +51,10 @@ enumType n = do
     then return (Just IntEnum)
     else do
       ClassI _ litinstances <- reify ''QLLitEnum
-      if n `elem` map getEnumTypeName litinstances
-        then return (Just LitEnum)
-        else return Nothing
+      return $
+        if n `elem` map getEnumTypeName litinstances
+          then Just LitEnum
+          else Nothing
   where getEnumTypeName (InstanceD [] (AppT _ (ConT x)) []) = x
         getEnumTypeName x = error $ "Error getting instances: " ++ show x
 
@@ -99,8 +101,9 @@ topArgs (AppT
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
 topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
 
-data AtomicRet = IntR | WordR | DayR | DoubleR | StringR | BoolR
+data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
   | EnumR | OptDayR | ForeignPtrR | UnitR
+  | DayListR
   deriving (Show, Eq)
 
 data RetVal = AtomicRV AtomicRet | IORV AtomicRet
@@ -124,7 +127,6 @@ nameToRetVal n | n == ''Int = return IntR
 nameToRetVal n | n == ''Word = return WordR
 nameToRetVal n | n == ''Day = return DayR
 nameToRetVal n | n == ''Double = return DoubleR
-nameToRetVal n | n == ''String = return StringR
 nameToRetVal n | n == ''Bool = return BoolR
 nameToRetVal n = do
   e <- enumType n
@@ -138,6 +140,7 @@ nameToRetVal n = do
 compArgToRetVal :: Type -> Q AtomicRet
 compArgToRetVal (AppT (ConT m) (ConT d)) | m == ''Maybe && d == ''Day =
   return OptDayR
+compArgToRetVal (AppT ListT (ConT n)) | n == ''Day = return DayListR
 compArgToRetVal (ConT n) = nameToRetVal n
 compArgToRetVal (TupleT 0) = return UnitR
 compArgToRetVal t = fail $ "Unsupported compound type arg: " ++ show t
@@ -160,12 +163,6 @@ args t@(AppT _ _) = do
     r <- compToRetVal t
     return ([], r)
 args t = fail $ "Unsupported type: " ++ show t
-
--- isIO :: Type -> Q Bool
--- isIO (AppT (AppT ArrowT _) t2) = isIO t2
--- isIO (ConT _) = return False
--- isIO (AppT (ConT n1) _) = return $ n1 == ''IO
--- isIO t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> Name -> ExpQ
 ffiCall hn cn = ffiCallImpl False hn cn [|id|]
@@ -190,8 +187,8 @@ ffiCallImpl io hFun cFun extra = do
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
 genFfiCall :: Bool -> Name -> ExpQ -> [TopArg] -> RetVal -> ExpQ
-genFfiCall io cn extra aa r = do
-  cr <- reify cn
+genFfiCall io cFun extra aa r = do
+  cr <- reify cFun
   varNames <- mapM (\_ -> newName "x") aa
   lamE (map varP varNames)
        (if io 
@@ -206,11 +203,18 @@ genFfiCall io cn extra aa r = do
         (IORV _, False) -> r
         (IORV _, True) -> error "Nested IO not supported"
 
+    finalCCall :: ExpQ -> ExpQ
+    finalCCall c_call =
+      case r of
+        -- last argument is pointer to the length of the returned array
+        (AtomicRV DayListR) -> [|getDynIntArray $(appE extra c_call)|]
+        _ -> appE extra c_call
+
     nakedCall :: [Name] -> ExpQ
-    nakedCall varNames = genFfiCallImpl aa (map varE varNames) (varE cn)
+    nakedCall varNames = genFfiCallImpl aa (map varE varNames) (varE cFun)
 
     genFfiCallImpl :: [TopArg] -> [ExpQ] -> ExpQ -> ExpQ
-    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) ($(appE extra c_call))|]
+    genFfiCallImpl [] [] c_call = [|$(unmarshal ret) ($(finalCCall c_call))|]
 
     genFfiCallImpl (IntA:as) (v:vs) c_call =
       genFfiCallImpl as vs [|$c_call ((fromIntegral :: Int -> CInt) $v)|]
@@ -278,8 +282,8 @@ unmarshalA WordR   = [|fromIntegral :: CUInt -> Word|]
 unmarshalA DayR    = [|fromQlDate|]
 unmarshalA DoubleR = [|realToFrac :: CDouble -> Double|]
 unmarshalA BoolR = [|toBool :: CInt -> Bool|]
-unmarshalA StringR = [|undefined|]
 unmarshalA EnumR   = [|fromQlEnum|]
 unmarshalA OptDayR = [|fromQlDate|]
 unmarshalA ForeignPtrR = [|id|] -- works with construct only?
 unmarshalA UnitR   = [|id|]
+unmarshalA DayListR = [|map fromQlDate|]

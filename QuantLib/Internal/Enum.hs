@@ -9,6 +9,7 @@ where
 
 import Data.List(elemIndex)
 import Data.Typeable(Typeable, typeOf)
+import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Utils
 

@@ -53,5 +53,4 @@ until = $(ffiConstruct 'until 'c_until)
 
 -- |returns the dates for the given Schedule object (qlScheduleDates)
 dates :: Schedule -> [Day]
-dates sched = map fromQlDate (unsafePerformIO
-                $ withObject sched (getDynIntArray . c_scheduleDates))
+dates = $(ffiCallIO 'dates 'c_scheduleDates)

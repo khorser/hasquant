@@ -15,14 +15,13 @@ module QuantLib.Internal.Utils
   , withObjects
   , getDynIntArray
   , getStaticIntArray
-  -- re-exporting some popular system stuff
+  -- re-exporting some popular stuff
+  , Word
   , withCString
   , CInt(CInt), CDouble(CDouble), CUInt(CUInt)
   , CString
   , Ptr, FunPtr
   , castPtr, castFunPtr, castForeignPtr, withForeignPtr, newForeignPtr_
-  , unsafePerformIO
-  , Word
   , ForeignPtr
   )
 

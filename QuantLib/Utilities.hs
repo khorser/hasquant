@@ -7,6 +7,7 @@ module QuantLib.Utilities
 where
 
 import Foreign.C.String(peekCString)
+import System.IO.Unsafe(unsafePerformIO)
 
 import QuantLib.Internal.Utils
 
