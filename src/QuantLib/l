@@ -1,2 +1,2 @@
 #!/bin/sh
-hlint *.hs */*.hs
+hlint *.hs */*.hs ../../test/QuantLib/*.hs
