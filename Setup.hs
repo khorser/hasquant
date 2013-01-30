@@ -9,7 +9,6 @@ import Distribution.Simple.Program
 import Distribution.Simple.LocalBuildInfo (LocalBuildInfo, localPkgDescr, installedPkgs, withPrograms)
 import Distribution.Simple.PackageIndex(SearchResult (..), searchByName)
 import Distribution.Simple.Setup
-import Distribution.System (OS (..), buildOS)
 import System.Directory (doesFileExist)
 import System.FilePath ((</>), takeDirectory)
 
@@ -56,16 +55,10 @@ myConfHook (pkg0, pbi) flags = do
     let lib' = lib { libBuildInfo = libbi' }
     let lpd' = lpd { library = Just lib' }
 
-    let qlcFile = qlcDirectory </>
-          case buildOS of
-            Windows -> "qlc.dll"
-            OSX -> "libqlc.dylib"
-            _ -> "libqlc.so"
-
     -- workarounds for problems with unresolved symbols when TH is combined with FFI
     let progs = withPrograms lbi
     let ghc = fromJust (lookupProgram ghcProgram progs)
-    let ghc' = ghc {programOverrideArgs = programOverrideArgs ghc ++ [qlcFile]}
+    let ghc' = ghc {programOverrideArgs = programOverrideArgs ghc ++ ["-L"++qlcDirectory, "-lqlc"]}
     let progs' = updateProgram ghc' progs
 
     let haddock = fromJust (lookupProgram haddockProgram progs')
