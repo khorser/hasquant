@@ -62,10 +62,14 @@ myConfHook (pkg0, pbi) flags = do
             OSX -> "libqlc.dylib"
             _ -> "libqlc.so"
 
-    -- a workaround for problems with unresolved symbols when TH is combined with FFI
+    -- workarounds for problems with unresolved symbols when TH is combined with FFI
     let progs = withPrograms lbi
     let ghc = fromJust (lookupProgram ghcProgram progs)
     let ghc' = ghc {programOverrideArgs = programOverrideArgs ghc ++ [qlcFile]}
     let progs' = updateProgram ghc' progs
 
-    return $ lbi { localPkgDescr = lpd', withPrograms = progs' }
+    let haddock = fromJust (lookupProgram haddockProgram progs')
+    let haddock' = haddock {programOverrideArgs = programOverrideArgs haddock ++ ["--optghc=-L"++qlcDirectory, "--optghc=-lqlc"]}
+    let progs'' = updateProgram haddock' progs'
+
+    return $ lbi { localPkgDescr = lpd', withPrograms = progs'' }
