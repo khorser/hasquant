@@ -1,8 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 module QuantLib.Internal.Syntax
   (
-    args
-  , ffiCall
+    ffiCall
   , ffiCallIO
   , ffiConstruct
   , ffiCallX
@@ -75,9 +74,9 @@ nestedNameToTop n =
     either (\x -> fail $ "Error parsing nested arg: " ++ show x)
       (\_ -> return ForeignPtrN)
 
-topArgs :: Type -> Q TopArg
-topArgs (ConT n) | isAtomicTop n = return $ nameToTop n
-topArgs (ConT n) = do
+topArgType :: Type -> Q TopArg
+topArgType (ConT n) | isAtomicTop n = return $ nameToTop n
+topArgType (ConT n) = do
   e <- enumType n
   case e of
     (Just IntEnum) -> return EnumA
@@ -85,21 +84,21 @@ topArgs (ConT n) = do
     _ -> tryForeignPtr n >>=
           either (\x -> fail $ "Error parsing top arg: " ++ x)
           (\_ -> return ForeignPtrA)
-topArgs (AppT (ConT m) (ConT n)) | m == ''Maybe =
+topArgType (AppT (ConT m) (ConT n)) | m == ''Maybe =
   if n == ''Day
     then return OptDayA
   else
     tryForeignPtr n >>=
       either (\x -> fail $ "Error parsing optional top arg: " ++ x)
         (\_ -> return OptForeignPtrA)
-topArgs (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
-topArgs (AppT
+topArgType (AppT ListT (ConT n)) = liftM ListA (nestedNameToTop n)
+topArgType (AppT
           ListT
           (AppT
             (AppT (TupleT 2) (ConT n1))
             (ConT n2))) =
               liftM2 ListA2 (nestedNameToTop n1) (nestedNameToTop n2)
-topArgs t = fail $ "Unsupported top-level arg type: " ++ show t
+topArgType t = fail $ "Unsupported top-level arg type: " ++ show t
 
 data AtomicRet = IntR | WordR | DayR | DoubleR | BoolR
   | EnumR | OptDayR | ForeignPtrR | UnitR
@@ -151,18 +150,18 @@ compToRetVal (AppT (ConT n1) t2) | n1 == ''IO =
 compToRetVal t = liftM AtomicRV $ compArgToRetVal t
 
 -- use WriterT?
-args :: Type -> Q ([TopArg], RetVal)
-args (AppT (AppT ArrowT t1) t2) = do
-  top <- topArgs t1
-  (rest, ret) <- args t2
+parseSignature :: Type -> Q ([TopArg], RetVal)
+parseSignature (AppT (AppT ArrowT t1) t2) = do
+  top <- topArgType t1
+  (rest, ret) <- parseSignature t2
   return (top : rest, ret)
-args (ConT n) = do
+parseSignature (ConT n) = do
     r <- nameToRetVal n
     return ([], AtomicRV r)
-args t@(AppT _ _) = do
+parseSignature t@(AppT _ _) = do
     r <- compToRetVal t
     return ([], r)
-args t = fail $ "Unsupported type: " ++ show t
+parseSignature t = fail $ "Unsupported type: " ++ show t
 
 ffiCall :: Name -> ExpQ
 ffiCall hn = ffiCallImpl False hn [|id|]
@@ -183,7 +182,7 @@ ffiCallImpl :: Bool -> Name -> ExpQ -> ExpQ
 ffiCallImpl io hFun extra = do
   r <- reify hFun
   case r of
-    VarI _ ft _ _  -> args ft >>= uncurry (genFfiCall io extra)
+    VarI _ ft _ _  -> parseSignature ft >>= uncurry (genFfiCall io extra)
     _ -> fail $ "Cannot reify the type of " ++ show hFun
 
 genFfiCall :: Bool -> ExpQ -> [TopArg] -> RetVal -> ExpQ
