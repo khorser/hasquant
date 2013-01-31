@@ -264,19 +264,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="215" bodyend="218"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="240" bodyend="243"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

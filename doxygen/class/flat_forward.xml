@@ -155,19 +155,6 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="107" bodyend="110"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
       <header>YieldTermStructure implementation</header>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>

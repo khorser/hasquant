@@ -5,27 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="variable" id="class_quant_lib_1_1_rounding_1a2703c4b421326ff43d8af5cdf0e77ed8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
-        <definition>Integer precision_</definition>
-        <argsstring></argsstring>
-        <name>precision_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_rounding_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
-        <definition>Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_rounding_1a7f21d021140e2448288b2bfd5691cd5e" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
-        <definition>Integer digit_</definition>
-        <argsstring></argsstring>
-        <name>digit_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a242cddb670f123b7cf2ec6b244514c8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer precision</definition>
