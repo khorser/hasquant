@@ -99,22 +99,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>DefaultProbabilityTermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a9ea9cd8b6b75f0c6e5ed1d907dfe63e1" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
-        <definition>Probability survivalProbabilityImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>survivalProbabilityImpl</name>
-        <reimplements refid="class_quant_lib_1_1_default_probability_term_structure_1a344fea84748c884236cd26be3f3b1dd5">survivalProbabilityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>survival probability calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="74" bodyend="76"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Flat hazard-rate curve. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="35" bodyend="70"/>

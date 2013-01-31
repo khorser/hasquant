@@ -154,22 +154,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="97" bodyend="100"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="user-defined">
-      <header>YieldTermStructure implementation</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discountImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>discountImpl</name>
-        <reimplements refid="class_quant_lib_1_1_yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        </param>
-        <briefdescription>
-<para>discount factor calculation </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="102" bodyend="105"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a6968bd096b10d7259e742fa324abade3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
