@@ -42,9 +42,5 @@
     <innerclass refid="class_quant_lib_1_1_m_c_european_g_j_r_g_a_r_c_h_engine" prot="public">QuantLib::MCEuropeanGJRGARCHEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_m_c_european_heston_engine" prot="public">QuantLib::MCEuropeanHestonEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_m_c_vanilla_engine" prot="public">QuantLib::MCVanillaEngine</innerclass>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
   </compounddef>
 </doxygen>

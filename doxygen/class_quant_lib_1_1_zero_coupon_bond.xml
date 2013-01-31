@@ -41,12 +41,6 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/zerocouponbond.hpp" line="46"/>
       </memberdef>
       </sectiondef>

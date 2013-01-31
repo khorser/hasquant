@@ -15,12 +15,6 @@
         <definition>Real exerciseTimeSquareRoot_</definition>
         <argsstring></argsstring>
         <name>exerciseTimeSquareRoot_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
@@ -28,12 +22,6 @@
         <definition>std::vector&lt;Rate&gt; strikes_</definition>
         <argsstring></argsstring>
         <name>strikes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a7e045438d429730668e385687214e270" prot="private" static="no" mutable="no">
@@ -41,12 +29,6 @@
         <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; stdDevHandles_</definition>
         <argsstring></argsstring>
         <name>stdDevHandles_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a2eda9ffb470e96ef36034f671a237037" prot="private" static="no" mutable="no">
@@ -54,12 +36,6 @@
         <definition>Handle&lt;Quote&gt; atmLevel_</definition>
         <argsstring></argsstring>
         <name>atmLevel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" static="no" mutable="yes">
@@ -67,12 +43,6 @@
         <definition>std::vector&lt;Volatility&gt; vols_</definition>
         <argsstring></argsstring>
         <name>vols_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" static="no" mutable="yes">
@@ -80,12 +50,6 @@
         <definition>Interpolation interpolation_</definition>
         <argsstring></argsstring>
         <name>interpolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -121,12 +85,6 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="89" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a7dd86624a8e18acc73f7cf44855a6059" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -160,12 +118,6 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="111" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ae3fd450eeda02800e544c596502af8aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -204,12 +156,6 @@
           <declname>referenceDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="136" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ab9f0deb66c55974bf7a8d47950e5816c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -248,12 +194,6 @@
           <declname>referenceDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="158" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -261,12 +201,6 @@
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="184" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -278,12 +212,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1af871b9faf83959bd9e9a5e3f96fabc45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -295,12 +223,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -308,12 +230,6 @@
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -321,12 +237,6 @@
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ad8f0f9c721168150e102eba19df26273" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -334,12 +244,6 @@
         <definition>virtual Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -347,19 +251,9 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="77"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="37" bodyend="85"/>
   </compounddef>
 </doxygen>

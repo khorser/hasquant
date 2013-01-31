@@ -15,12 +15,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcessArray&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
@@ -28,12 +22,6 @@
         <definition>bool brownianBridge_</definition>
         <argsstring></argsstring>
         <name>brownianBridge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
@@ -41,12 +29,6 @@
         <definition>bool antithetic_</definition>
         <argsstring></argsstring>
         <name>antithetic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a1c27fd78e44f207125a15990d39ad4f5" prot="private" static="no" mutable="no">
@@ -54,12 +36,6 @@
         <definition>bool controlVariate_</definition>
         <argsstring></argsstring>
         <name>controlVariate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" static="no" mutable="no">
@@ -67,12 +43,6 @@
         <definition>Size steps_</definition>
         <argsstring></argsstring>
         <name>steps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" static="no" mutable="no">
@@ -80,12 +50,6 @@
         <definition>Size stepsPerYear_</definition>
         <argsstring></argsstring>
         <name>stepsPerYear_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -93,12 +57,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -106,12 +64,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a7ff206b890b8b59edb2a71e34f6836ac" prot="private" static="no" mutable="no">
@@ -119,12 +71,6 @@
         <definition>Size calibrationSamples_</definition>
         <argsstring></argsstring>
         <name>calibrationSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -132,12 +78,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -145,12 +85,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -164,12 +98,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt; &amp;</type>
           <defname>process</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="165" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a1c46a58fbd22c3cd231eacab5cf44017" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -181,12 +109,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="176" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1afa3fe34815ad2ea76d1d6eec1b8d474a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -198,12 +120,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="183" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a78653aa49a75aad6715570308033e3e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -216,12 +132,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="190" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a7d225bedfcb0355e44bd9ca8d374878d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -234,12 +144,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="197" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a3c570d063b03b1a132fd338ada9c99fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -252,12 +156,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="204" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1ae786372932dc28f0cfbb3106cd24927b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -269,12 +167,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="211" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a93fc8b75ac49eca0489efb2d41369724" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -286,12 +178,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="220" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1aca0c7e321de9ab03eaf5540c0312faa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -303,12 +189,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="232" bodyend="235"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a73728359d38f61a1f588dfc31fb1eb56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -320,12 +200,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="239" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a88e0cb1dcf4ede91064d6f13718cd477" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -337,12 +211,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="246" bodyend="249"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_path_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -350,19 +218,11 @@
         <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="254" bodyend="271"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo American basket-option engine factory. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcamericanpathengine.hpp" bodystart="63" bodyend="86"/>
   </compounddef>
 </doxygen>

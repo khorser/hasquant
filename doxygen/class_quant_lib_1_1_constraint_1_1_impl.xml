@@ -15,12 +15,6 @@
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constraint_1_1_impl_1a8efc263c16ea9e44152789acc3b87166" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -34,17 +28,11 @@
         </param>
         <briefdescription>
 <para>Tests if params satisfy the constraint. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for constraint implementations. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="35" bodyend="40"/>
   </compounddef>
 </doxygen>

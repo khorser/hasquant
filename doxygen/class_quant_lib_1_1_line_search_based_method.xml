@@ -17,12 +17,6 @@
           <declname>lSearch</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a8e7c066922fd3c11a5a68bc193d1f6ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -30,12 +24,6 @@
         <definition>virtual ~LineSearchBasedMethod</definition>
         <argsstring>()</argsstring>
         <name>~LineSearchBasedMethod</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -51,19 +39,9 @@
           <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
           <declname>endCriteria</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" bodystart="36" bodyend="52"/>
   </compounddef>
 </doxygen>

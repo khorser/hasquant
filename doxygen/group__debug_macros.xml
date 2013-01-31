@@ -11,8 +11,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga69b168aeab2ef4ff9033469b8214a279" kindref="member" tooltip="enable tracing">QL_TRACE_ENABLE</ref>;</highlight></codeline>
 </programlisting> can be used to enable tracing. Such statement might be ignored; refer to QL_TRACE for details. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="263" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="263" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga7d42ce8732ee6ca70a9c15a56f0049e1" prot="public" static="no">
@@ -22,8 +20,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga7d42ce8732ee6ca70a9c15a56f0049e1" kindref="member" tooltip="disable tracing">QL_TRACE_DISABLE</ref>;</highlight></codeline>
 </programlisting> can be used to disable tracing. Such statement might be ignored; refer to QL_TRACE for details. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="264" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="264" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga0fc8fb98e72d1a8357ead633a5d53163" prot="public" static="no">
@@ -34,8 +30,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga0fc8fb98e72d1a8357ead633a5d53163" kindref="member" tooltip="set tracing stream">QL_TRACE_ON</ref>(stream);</highlight></codeline>
 </programlisting> can be used to set the stream where tracing messages are output. Such statement might be ignored; refer to QL_TRACE for details. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="265" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="265" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga456b5371fdc64479d393a04b505df5d0" prot="public" static="no">
@@ -46,8 +40,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga456b5371fdc64479d393a04b505df5d0" kindref="member" tooltip="output tracing information">QL_TRACE</ref>(message);</highlight></codeline>
 </programlisting> can be used to output a trace of the code being executed. If tracing was disabled during configuration, such statements are removed by the preprocessor for maximum performance; if it was enabled, whether and where the message is output depends on the current settings. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="266" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga903ea9f035842ee3560fd787c84887d7" prot="public" static="no">
@@ -57,8 +49,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga903ea9f035842ee3560fd787c84887d7" kindref="member" tooltip="output tracing information">QL_TRACE_ENTER_FUNCTION</ref>;</highlight></codeline>
 </programlisting> can be used at the beginning of a function to trace the fact that the program execution is entering such function. It should be paired with a corresponding QL_TRACE_EXIT_FUNCTION macro. Such statement might be ignored; refer to QL_TRACE for details. Also, function information might not be available depending on the compiler. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="267" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga33c013fea8c974f6781441deaa3ea53b" prot="public" static="no">
@@ -68,8 +58,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga33c013fea8c974f6781441deaa3ea53b" kindref="member" tooltip="output tracing information">QL_TRACE_EXIT_FUNCTION</ref>;</highlight></codeline>
 </programlisting> can be used before returning from a function to trace the fact that the program execution is exiting such function. It should be paired with a corresponding QL_TRACE_ENTER_FUNCTION macro. Such statement might be ignored; refer to QL_TRACE for details. Also, function information might not be available depending on the compiler. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="268" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="268" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga4b80d6b6b9d0d17493ac81428934f1c0" prot="public" static="no">
@@ -79,8 +67,6 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga4b80d6b6b9d0d17493ac81428934f1c0" kindref="member" tooltip="output tracing information">QL_TRACE_LOCATION</ref>;</highlight></codeline>
 </programlisting> can be used to trace the current file and line. Such statement might be ignored; refer to QL_TRACE for details. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="269" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="269" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__debug_macros_1ga7d82587448e3f5531f79cfb215b905af" prot="public" static="no">
@@ -91,13 +77,9 @@
         <detaileddescription>
 <para>The statement <programlisting><codeline><highlight class="normal"><ref refid="group__debug_macros_1ga7d82587448e3f5531f79cfb215b905af" kindref="member" tooltip="output tracing information">QL_TRACE_VARIABLE</ref>(variable);</highlight></codeline>
 </programlisting> can be used to trace the current value of a variable. Such statement might be ignored; refer to QL_TRACE for details. Also, the variable type must allow sending it to an output stream. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="270" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="270" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>For debugging purposes, macros can be used to output information about the code being executed. </para>    </detaileddescription>
   </compounddef>

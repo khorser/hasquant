@@ -12,12 +12,6 @@
         <definition>virtual ~Index</definition>
         <argsstring>()</argsstring>
         <name>~Index</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -32,8 +26,6 @@
 <para>Returns the name of the index. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -45,10 +37,6 @@
         <reimplementedby refid="class_quant_lib_1_1_inflation_index_1abd47d61ed23fb73440b0c02534236330">fixingCalendar</reimplementedby>
         <briefdescription>
 <para>returns the calendar defining valid fixing dates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1abaaf5b4d83d8e96c321a71b3eec62a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -65,10 +53,6 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -93,8 +77,6 @@
 <para>returns the fixing at the given date </para>        </briefdescription>
         <detaileddescription>
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -104,10 +86,6 @@
         <name>timeSeries</name>
         <briefdescription>
 <para>returns the fixing <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -133,8 +111,6 @@
 <para>stores the historical fixing at the given date </para>        </briefdescription>
         <detaileddescription>
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -155,8 +131,6 @@
 <para>stores historical fixings from a <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
         <detaileddescription>
 <para>the dates in the <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -193,8 +167,6 @@
 <para>stores historical fixings at the given dates </para>        </briefdescription>
         <detaileddescription>
 <para>the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="85" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -204,10 +176,6 @@
         <name>clearFixings</name>
         <briefdescription>
 <para>clears all stored historical fixings </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="129"/>
       </memberdef>
       </sectiondef>

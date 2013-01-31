@@ -12,15 +12,7 @@
           <name>SGX</name>
           <briefdescription>
 <para><ref refid="class_quant_lib_1_1_singapore" kindref="compound">Singapore</ref> exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" bodystart="66" bodyend="67"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_singapore_1abe41cfffd960e29a5d8b07be00aeda42a57ad7a3f1c5edfdcb8ead8238d45978f" kindref="member">SGX</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/singapore.hpp" line="68"/>
       </memberdef>
       </sectiondef>

@@ -9,12 +9,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" bodystart="125" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_united_states_1_1_settlement_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -25,19 +19,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="126"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" bodystart="123" bodyend="127"/>
   </compounddef>
 </doxygen>

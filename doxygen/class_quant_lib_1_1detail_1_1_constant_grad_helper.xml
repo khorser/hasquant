@@ -9,12 +9,6 @@
         <definition>Real fPrev_</definition>
         <argsstring></argsstring>
         <name>fPrev_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="356" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="356" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1a5729e1e3ef27c35c151a71c985ef2d64" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real prevPrimitive_</definition>
         <argsstring></argsstring>
         <name>prevPrimitive_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="356" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="356" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1af6f710f0bf0d038d201ef6f9c53d09da" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real xPrev_</definition>
         <argsstring></argsstring>
         <name>xPrev_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="356" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="356" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1a531cf26dbe6ab3601497993fca0ff37e" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Real fGrad_</definition>
         <argsstring></argsstring>
         <name>fGrad_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="356" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="356" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1ac10f717ba9b15ab09b9a97a181bc627c" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Real fNext_</definition>
         <argsstring></argsstring>
         <name>fNext_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="356" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="356" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -96,12 +66,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>fNext</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="344" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="340" bodyend="344"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -113,12 +77,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="346" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="346" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -130,12 +88,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="349" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="349" bodyend="351"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -143,19 +95,9 @@
         <definition>Real fNext</definition>
         <argsstring>() const </argsstring>
         <name>fNext</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="352" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="352" bodyend="354"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="338" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="338" bodyend="357"/>
   </compounddef>
 </doxygen>

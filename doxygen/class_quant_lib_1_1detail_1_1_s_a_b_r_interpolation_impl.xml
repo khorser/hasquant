@@ -20,12 +20,6 @@
         <definition>boost::shared_ptr&lt;EndCriteria&gt; endCriteria_</definition>
         <argsstring></argsstring>
         <name>endCriteria_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="329" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="329" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a07aca2a493642202460cc76d1048d52f" prot="private" static="no" mutable="no">
@@ -33,12 +27,6 @@
         <definition>boost::shared_ptr&lt;OptimizationMethod&gt; optMethod_</definition>
         <argsstring></argsstring>
         <name>optMethod_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="330" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="330" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a11bb2e42f766fea06e9209a55f29e1d9" prot="private" static="no" mutable="no">
@@ -46,12 +34,6 @@
         <definition>const Real&amp; forward_</definition>
         <argsstring></argsstring>
         <name>forward_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="331" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="331" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1aa68519070d2409fbca4d7f59355583b2" prot="private" static="no" mutable="no">
@@ -59,12 +41,6 @@
         <definition>bool vegaWeighted_</definition>
         <argsstring></argsstring>
         <name>vegaWeighted_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="332" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="332" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1ab6f86a6c4eb502d68c63e01209e7a1a1" prot="private" static="no" mutable="no">
@@ -72,12 +48,6 @@
         <definition>boost::shared_ptr&lt;ParametersTransformation&gt; transformation_</definition>
         <argsstring></argsstring>
         <name>transformation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="333" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="333" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a7d4422a860d0fe4b0dbf2d6bf25d5722" prot="private" static="no" mutable="no">
@@ -85,12 +55,6 @@
         <definition>NoConstraint constraint_</definition>
         <argsstring></argsstring>
         <name>constraint_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="334" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="334" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -164,12 +128,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
           <declname>optMethod</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="105" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -177,12 +135,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="138" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -194,12 +146,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="215" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="215" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a507366f504ec3d518920b39da4243edc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -210,12 +156,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="221" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="221" bodyend="223"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a40d5931c8135350130ddb69962b5c760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -226,12 +166,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="224" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -242,12 +176,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="227" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="227" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a875ab867bb04a64ab7ad4ff465ee38b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -255,12 +183,6 @@
         <definition>Real interpolationSquaredError</definition>
         <argsstring>() const </argsstring>
         <name>interpolationSquaredError</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="231" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a03df75a74f115f2863b7b1db164d4bab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -271,12 +193,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="243" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="243" bodyend="253"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1ab213963365f932f9c7ae9a9847926cf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -284,12 +200,6 @@
         <definition>Real interpolationError</definition>
         <argsstring>() const </argsstring>
         <name>interpolationError</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="255" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="255" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1a65cefbb4f0e1cadf2d0ef66b7b84f325" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -297,19 +207,9 @@
         <definition>Real interpolationMaxError</definition>
         <argsstring>() const </argsstring>
         <name>interpolationMaxError</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="261" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="261" bodyend="270"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="102" bodyend="336"/>
   </compounddef>
 </doxygen>

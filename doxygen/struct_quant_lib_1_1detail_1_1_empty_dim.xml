@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="struct_quant_lib_1_1detail_1_1_empty_dim" kind="struct" prot="public">
     <compoundname>QuantLib::detail::EmptyDim</compoundname>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="44" bodyend="44"/>
   </compounddef>
 </doxygen>

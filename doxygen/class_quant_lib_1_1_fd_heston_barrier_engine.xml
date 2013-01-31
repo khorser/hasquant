@@ -10,12 +10,6 @@
         <definition>const Size tGrid_</definition>
         <argsstring></argsstring>
         <name>tGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Size xGrid_</definition>
         <argsstring></argsstring>
         <name>xGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1a4a9d2eb047a6d0d329c5ec9ba01e39b5" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Size vGrid_</definition>
         <argsstring></argsstring>
         <name>vGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Size dampingSteps_</definition>
         <argsstring></argsstring>
         <name>dampingSteps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -106,12 +76,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_barrier_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -120,12 +84,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="59"/>
       </memberdef>
       </sectiondef>

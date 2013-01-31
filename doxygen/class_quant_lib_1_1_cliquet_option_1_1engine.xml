@@ -9,8 +9,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp</includes>
     <briefdescription>
 <para>Cliquet engine base class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" bodystart="77" bodyend="79"/>
   </compounddef>
 </doxygen>

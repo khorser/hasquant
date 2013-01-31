@@ -10,12 +10,6 @@
         <definition>Parameter fitting_</definition>
         <argsstring></argsstring>
         <name>fitting_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +31,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sigma</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="77" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -61,10 +49,6 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -83,10 +67,6 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       </sectiondef>

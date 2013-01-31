@@ -10,12 +10,6 @@
         <definition>PEICurrency</definition>
         <argsstring>()</argsstring>
         <name>PEICurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="171" bodyend="178"/>
       </memberdef>
       </sectiondef>

@@ -32,10 +32,6 @@
         </param>
         <briefdescription>
 <para>linear regression y_i = a_0 + a_1*x_0 +..+a_n*x_{n-1} + eps </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="103" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_linear_regression_1ab16acb1ffaa57d83c0125772f9d29cc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -66,19 +62,9 @@
           <type>const vContainer &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="112" bodyend="116"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="89" bodyend="99"/>
   </compounddef>
 </doxygen>

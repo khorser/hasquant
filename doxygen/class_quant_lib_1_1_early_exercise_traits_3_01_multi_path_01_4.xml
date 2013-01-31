@@ -2,20 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_early_exercise_traits_3_01_multi_path_01_4" kind="class" prot="public">
     <compoundname>QuantLib::EarlyExerciseTraits&lt; MultiPath &gt;</compoundname>
-    <templateparamlist>
-    </templateparamlist>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_early_exercise_traits_3_01_multi_path_01_4_1ae32593f3d7c3d67df2399b593bc1df6d" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
         <definition>typedef Array StateType</definition>
         <argsstring></argsstring>
         <name>StateType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -29,19 +21,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="49" bodyend="55"/>
   </compounddef>
 </doxygen>

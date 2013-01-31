@@ -48,18 +48,12 @@
           <type>const Kernel &amp;</type>
           <declname>kernel</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para><simplesectsep/><para>kernel needs a Real operator()(Real x) implementation </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="209" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="206" bodyend="216"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Implementation of the 2D kernel interpolation approach, which can be found in &quot;Foreign Exchange Risk&quot; by Hakala, Wystup page 256.</para><para>The kernel in the implementation is kept general, although a Gaussian is considered in the cited text. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="200" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="200" bodyend="217"/>

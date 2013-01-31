@@ -10,12 +10,6 @@
         <definition>bool payer_</definition>
         <argsstring></argsstring>
         <name>payer_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_option_1a10eb26663e86e8ab1d9683296b33dbbc" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>boost::shared_ptr&lt;RiskyAssetSwap&gt; asw_</definition>
         <argsstring></argsstring>
         <name>asw_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_option_1a2f223582546e586f22efea97cf5b17d1" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Date expiry_</definition>
         <argsstring></argsstring>
         <name>expiry_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_option_1a66ff708d6936ebe014784f31cf1939b5" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Rate marketSpread_</definition>
         <argsstring></argsstring>
         <name>marketSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_option_1a031cd242cb3117dfaad5e3ad6b19fb1d" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Volatility spreadVolatility_</definition>
         <argsstring></argsstring>
         <name>spreadVolatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -97,12 +67,6 @@
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>spreadVolatility</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="39"/>
       </memberdef>
       </sectiondef>
@@ -115,10 +79,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_option_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -127,19 +87,13 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Option on risky asset swap </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswapoption.hpp" bodystart="33" bodyend="49"/>
   </compounddef>
 </doxygen>

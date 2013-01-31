@@ -9,12 +9,6 @@
         <definition>typedef FdmExtOUJumpModelInnerValue::Shape Shape</definition>
         <argsstring></argsstring>
         <name>Shape</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>const boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
         <argsstring></argsstring>
         <name>rTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a03eaa61142f7435ea76aa4ccfbf60c09" prot="private" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>const boost::shared_ptr&lt;Shape&gt; shape_</definition>
         <argsstring></argsstring>
         <name>shape_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
@@ -63,12 +39,6 @@
         <definition>const Size tGrid_</definition>
         <argsstring></argsstring>
         <name>tGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
@@ -76,12 +46,6 @@
         <definition>const Size xGrid_</definition>
         <argsstring></argsstring>
         <name>xGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" static="no" mutable="no">
@@ -89,12 +53,6 @@
         <definition>const Size yGrid_</definition>
         <argsstring></argsstring>
         <name>yGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -102,12 +60,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -150,12 +102,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -163,19 +109,9 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="39" bodyend="60"/>
   </compounddef>
 </doxygen>

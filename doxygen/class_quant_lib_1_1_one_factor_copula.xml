@@ -33,12 +33,6 @@
           <declname>minimum</declname>
           <defval>-5.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" bodystart="103" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a150d8a5373b942a7411cad42857ac0c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -58,8 +52,6 @@
 <para>Density function of M. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a4d78de201751058a580a4104b569252f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -79,8 +71,6 @@
 <para>Cumulative distribution of Z. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1aa5a31f6c22dc65de5eefc911e33d230e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -97,8 +87,6 @@
 <para>Cumulative distribution of Y. </para>        </briefdescription>
         <detaileddescription>
 <para>This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="130"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a37961e30f2d8786a4e4e6d1ef65516ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -115,8 +103,6 @@
 <para>Inverse cumulative distribution of Y. </para>        </briefdescription>
         <detaileddescription>
 <para>This is the default implementation based on tabulated data. The table needs to be filled by derived classes. If analytic calculation is feasible, this method can also be overridden. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -126,10 +112,6 @@
         <name>correlation</name>
         <briefdescription>
 <para>Single correlation parameter. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" bodystart="261" bodyend="263"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a2f12fdc46df584c77c692449afb0f70f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -149,8 +131,6 @@
 <para>Conditional probability. </para>        </briefdescription>
         <detaileddescription>
 <para><formula id="112">\[ \hat p(m) = F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]</formula> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a43021a316d68b67fe3baacd8b41060ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -170,8 +150,6 @@
 <para>Vector of conditional probabilities. </para>        </briefdescription>
         <detaileddescription>
 <para><formula id="113">\[ \hat p_i(m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]</formula> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a3466ad62259b66bd721d275d6f37b3b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -183,12 +161,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Integral over the density <formula id="114">$ \rho(m) $</formula> of M and the conditional probability related to p:</para><para><formula id="115">\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, F_Z \left( \frac{F_Y^{-1}(p)-a\,m}{\sqrt{1-a^2}}\right) \]</formula> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" bodystart="167" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1ab0919dadc85dad55932aae6f76a373a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -209,12 +183,8 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Integral over the density <formula id="114">$ \rho(m) $</formula> of M and a one-dimensional function <formula id="37">$ f $</formula> of conditional probabilities related to the input vector of probabilities p:</para><para><formula id="116">\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i (m) = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}} \right) \]</formula> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" bodystart="192" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1aa05d4372c6545648d67b4feac3ea358c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -239,12 +209,8 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Integral over the density <formula id="114">$ \rho(m) $</formula> of M and a multi-dimensional function <formula id="37">$ f $</formula> of conditional probabilities related to the input vector of probabilities p:</para><para><formula id="117">\[ \int_{-\infty}^\infty\,dm\,\rho(m)\, f (\hat p_1, \hat p_2, \dots, \hat p_N), \qquad \hat p_i = F_Z \left( \frac{F_Y^{-1}(p_i)-a\,m}{\sqrt{1-a^2}}\right) \]</formula> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="218" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" bodystart="216" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1a3a370ec01879c1aafe26f2b74c305205" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -256,12 +222,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Check moments (unit norm, zero mean and unit variance) of the distributions of M, Z, and Y by numerically integrating the respective density. <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> tolerance is the maximum tolerable absolute error. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp" line="237"/>
       </memberdef>
       </sectiondef>
@@ -270,7 +232,6 @@
     <detaileddescription>
 <para>Reference: John Hull and Alan White, The Perfect Copula, June 2006 <verbatim>   Let \form#87 be the cumulative probability of default of
    counterparty i before time t.
-
    In a one-factor model, consider random variables
 </verbatim> <formula id="88">\[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \]</formula> where <formula id="89">$M$</formula> and <formula id="90">$Z_i$</formula> have independent zero-mean unit-variance distributions and <formula id="91">$-1\leq a_i \leq 1$</formula>. The correlation between <formula id="92">$Y_i$</formula> and <formula id="93">$Y_j$</formula> is then <formula id="94">$a_i a_j$</formula>. <verbatim>  Let \form#95 be the cumulative distribution function of \form#92.
 </verbatim> <formula id="96">$y$</formula> is mapped to <formula id="97">$t$</formula> such that percentiles match, i.e. <formula id="98">$F_Y(y)=Q_i(t)$</formula> or <formula id="99">$y=F_Y^{-1}(Q_i(t))$</formula>. <verbatim>  Now let \form#100 be the cumulated distribution function of

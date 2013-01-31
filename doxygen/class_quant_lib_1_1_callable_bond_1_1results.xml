@@ -6,8 +6,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
     <briefdescription>
 <para>results for a callable bond calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="132" bodyend="135"/>
   </compounddef>
 </doxygen>

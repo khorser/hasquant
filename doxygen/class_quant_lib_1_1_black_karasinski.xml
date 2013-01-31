@@ -12,12 +12,6 @@
         <definition>Parameter&amp; a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_karasinski_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="private" static="no" mutable="no">
@@ -25,12 +19,6 @@
         <definition>Parameter&amp; sigma_</definition>
         <argsstring></argsstring>
         <name>sigma_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -54,12 +42,6 @@
           <declname>sigma</declname>
           <defval>0.1</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -70,10 +52,6 @@
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -88,10 +66,6 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="51"/>
       </memberdef>
       </sectiondef>
@@ -101,12 +75,6 @@
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a78bca11664a7d403bde6a9842f72ae61" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -114,12 +82,6 @@
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       </sectiondef>

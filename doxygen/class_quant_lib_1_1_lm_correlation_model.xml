@@ -20,12 +20,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nArguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1a2817622116ad383444aa06f36ee20ce8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -33,12 +27,6 @@
         <definition>virtual ~LmCorrelationModel</definition>
         <argsstring>()</argsstring>
         <name>~LmCorrelationModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1aa816fa6ea150c48362fa3b105866a96f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -46,12 +34,6 @@
         <definition>virtual Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -60,12 +42,6 @@
         <argsstring>() const </argsstring>
         <name>factors</name>
         <reimplementedby refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -73,12 +49,6 @@
         <definition>std::vector&lt;Parameter&gt;&amp; params</definition>
         <argsstring>()</argsstring>
         <name>params</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -90,12 +60,6 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1a6ffd4397b3f271a1f2983b7bd9c8663f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -114,12 +78,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1a76b6af06f81c4bb4a3a3ca10f98ffc1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -138,12 +96,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1a2163be175b4a3739ebfe7474bc85d708" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -170,12 +122,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_correlation_model_1ac0c142358bb6b07bc7dabb4489de7f84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -185,19 +131,11 @@
         <name>isTimeIndependent</name>
         <reimplementedby refid="class_quant_lib_1_1_lm_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c">isTimeIndependent</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c">isTimeIndependent</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>libor forward correlation model </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmcorrmodel.hpp" bodystart="35" bodyend="61"/>
   </compounddef>
 </doxygen>

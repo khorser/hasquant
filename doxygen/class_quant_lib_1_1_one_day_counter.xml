@@ -11,19 +11,11 @@
         <definition>OneDayCounter</definition>
         <argsstring>()</argsstring>
         <name>OneDayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="50" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>1/1 day count convention </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="33" bodyend="53"/>
   </compounddef>
 </doxygen>

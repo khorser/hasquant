@@ -9,12 +9,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_japan_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -25,12 +19,6 @@
         <param>
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_japan_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -41,19 +29,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" bodystart="63" bodyend="68"/>
   </compounddef>
 </doxygen>

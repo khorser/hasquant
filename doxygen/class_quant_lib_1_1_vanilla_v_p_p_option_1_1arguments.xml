@@ -9,12 +9,6 @@
         <definition>Real heatRate</definition>
         <argsstring></argsstring>
         <name>heatRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a99c07913b6f7fb4e99d8cc5bcbd00c5c" prot="public" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real pMin</definition>
         <argsstring></argsstring>
         <name>pMin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a6cefda6ccfbc01888d89130bf3879f6a" prot="public" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real pMax</definition>
         <argsstring></argsstring>
         <name>pMax</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a379adf13032bc286e3c2e56532dffcaf" prot="public" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size tMinUp</definition>
         <argsstring></argsstring>
         <name>tMinUp</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a8e4eb1ac5dbaff5b978d061a074e8079" prot="public" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Size tMinDown</definition>
         <argsstring></argsstring>
         <name>tMinDown</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1aa18f282bb709dfcc6acb55684aff61e4" prot="public" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Real startUpFuel</definition>
         <argsstring></argsstring>
         <name>startUpFuel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a5a5a3388c49421af31ae3cc96d087f97" prot="public" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>Real startUpFixCost</definition>
         <argsstring></argsstring>
         <name>startUpFixCost</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a0f1297ffcede16ba2514238ffa44db20" prot="public" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>Size initialState</definition>
         <argsstring></argsstring>
         <name>initialState</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -115,12 +67,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -128,19 +74,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="58"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="54" bodyend="65"/>
   </compounddef>
 </doxygen>

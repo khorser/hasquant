@@ -6,8 +6,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp</includes>
     <briefdescription>
 <para>Results from variance-option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="81" bodyend="81"/>
   </compounddef>
 </doxygen>

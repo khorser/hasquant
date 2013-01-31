@@ -10,12 +10,6 @@
         <definition>ISKCurrency</definition>
         <argsstring>()</argsstring>
         <name>ISKCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="222" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="222" bodyend="229"/>
       </memberdef>
       </sectiondef>

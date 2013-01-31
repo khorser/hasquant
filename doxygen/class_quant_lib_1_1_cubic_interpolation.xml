@@ -18,8 +18,6 @@
         <name>DerivativeApprox</name>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6a73a1396ca8adb89d7ff481ff55974c1e" prot="public">
           <name>Spline</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Spline approximation (non-local, non-monotonic, linear[?]). Different boundary conditions can be used on the left and right boundaries: see <ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">BoundaryCondition</ref>. </para>          </detaileddescription>
         </enumvalue>
@@ -27,57 +25,37 @@
           <name>SplineOM1</name>
           <briefdescription>
 <para>Overshooting minimization 1st derivative. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6a5230bf2465bab97aecd7087ee1a8ce1e" prot="public">
           <name>SplineOM2</name>
           <briefdescription>
 <para>Overshooting minimization 2nd derivative. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6a8908df67d5fb494d1799a270564789f8" prot="public">
           <name>FourthOrder</name>
           <briefdescription>
 <para>Fourth-order approximation (local, non-monotonic, linear) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6a6c56130d695e3aea964232dacfa2c298" prot="public">
           <name>Parabolic</name>
           <briefdescription>
 <para>Parabolic approximation (local, non-monotonic, linear) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6ac194b4cb0838c7c484b13eb6d6dc0010" prot="public">
           <name>FritschButland</name>
           <briefdescription>
 <para>Fritsch-Butland approximation (local, monotonic, non-linear) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6ab1ddc152184a0f96b8f6e9be8168e708" prot="public">
           <name>Akima</name>
           <briefdescription>
 <para>Akima approximation (local, non-monotonic, non-linear) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6a065fa14c1b83af108fdae0c713695951" prot="public">
           <name>Kruger</name>
           <briefdescription>
 <para>Kruger approximation (local, monotonic, non-linear) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="102" bodyend="129"/>
       </memberdef>
       <memberdef kind="enum" id="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" prot="public" static="no">
@@ -86,43 +64,27 @@
           <name>NotAKnot</name>
           <briefdescription>
 <para>Make second(-last) point an inactive knot. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555aaf8392865aea8f24355012391183d9e9" prot="public">
           <name>FirstDerivative</name>
           <briefdescription>
 <para>Match value of end-slope. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a23de8c854eb282410ba10963837c94b5" prot="public">
           <name>SecondDerivative</name>
           <briefdescription>
 <para>Match value of second derivative at end. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a6db09e3bc054df6f996a45de2ccfeacd" prot="public">
           <name>Periodic</name>
           <briefdescription>
 <para>Match first and second derivative at either end. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a1e1c27164b52b5cdf7df7f110dbb0fd3" prot="public">
           <name>Lagrange</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Match end-slope to the slope of the cubic that matches the first four data at the respective end </para>          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="130" bodyend="147"/>
       </memberdef>
       </sectiondef>
@@ -132,12 +94,6 @@
         <definition>boost::shared_ptr&lt;detail::CoefficientHolder&gt; coeffs_</definition>
         <argsstring></argsstring>
         <name>coeffs_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -191,13 +147,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rightConditionValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="150" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a294c76c9e77213bbb3da550152033826" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -205,12 +157,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; primitiveConstants</definition>
         <argsstring>() const </argsstring>
         <name>primitiveConstants</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="171" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a4119d6ba4d3f11be628a129a7a2bfe6f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -218,12 +164,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; aCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>aCoefficients</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="174" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1aaca6dd10570ae2dbc6e5ea6ab8a7e9bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -231,12 +171,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; bCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>bCoefficients</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a7746999062e0736bd067da1e60548069" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -244,12 +178,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; cCoefficients</definition>
         <argsstring>() const </argsstring>
         <name>cCoefficients</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a7f8698aec8c4a956e68c3a9d6b19f23a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -257,12 +185,6 @@
         <definition>const std::vector&lt;bool&gt;&amp; monotonicityAdjustments</definition>
         <argsstring>() const </argsstring>
         <name>monotonicityAdjustments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       </sectiondef>

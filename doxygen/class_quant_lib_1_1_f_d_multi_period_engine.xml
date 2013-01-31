@@ -19,19 +19,9 @@
         <definition>typedef FiniteDifferenceModel&lt;Scheme&lt;TridiagonalOperator&gt; &gt; model_type</definition>
         <argsstring></argsstring>
         <name>model_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="37" bodyend="85"/>
   </compounddef>
 </doxygen>

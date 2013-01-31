@@ -3,10 +3,6 @@
   <compounddef id="class_s" kind="class" prot="public">
     <compoundname>S</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_generic_risk_statistics" prot="public" virt="non-virtual">GenericRiskStatistics&lt; S &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/riskstatistics.hpp" line="42"/>
   </compounddef>
 </doxygen>

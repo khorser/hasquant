@@ -3,10 +3,6 @@
   <compounddef id="class_quant_lib_1_1_himalaya_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::HimalayaOption::results</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_multi_asset_option_1_1results" prot="public" virt="non-virtual">MultiAssetOption::results</basecompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="66" bodyend="66"/>
   </compounddef>
 </doxygen>

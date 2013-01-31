@@ -8,12 +8,6 @@
         <definition>Size timeIndex</definition>
         <argsstring></argsstring>
         <name>timeIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_multi_product_1_1_cash_flow_1a97dc362a0df831201a29780ff74a5356" prot="public" static="no" mutable="no">
@@ -21,19 +15,9 @@
         <definition>Real amount</definition>
         <argsstring></argsstring>
         <name>amount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" bodystart="52" bodyend="55"/>
   </compounddef>
 </doxygen>

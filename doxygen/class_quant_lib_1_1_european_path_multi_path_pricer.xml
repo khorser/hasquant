@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;PathPayoff&gt; payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a9584b8ba9709f6a9559dbc9d2df9b808" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Size&gt; timePositions_</definition>
         <argsstring></argsstring>
         <name>timePositions_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a622edfbc9c32032e94fe333cc06e722e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Handle&lt;YieldTermStructure&gt; &gt; forwardTermStructures_</definition>
         <argsstring></argsstring>
         <name>forwardTermStructures_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a795cf527bfd996d44c6654f2e63365ce" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Array discounts_</definition>
         <argsstring></argsstring>
         <name>discounts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -79,12 +55,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>discounts</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_european_path_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -96,19 +66,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="96"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="90" bodyend="102"/>
   </compounddef>
 </doxygen>

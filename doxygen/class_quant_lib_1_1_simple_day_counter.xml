@@ -11,12 +11,6 @@
         <definition>SimpleDayCounter</definition>
         <argsstring>()</argsstring>
         <name>SimpleDayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/simpledaycounter.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/simpledaycounter.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
       </sectiondef>

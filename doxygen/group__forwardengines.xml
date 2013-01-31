@@ -8,9 +8,5 @@
     <innerclass refid="class_quant_lib_1_1_forward_performance_vanilla_engine" prot="public">QuantLib::ForwardPerformanceVanillaEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_m_c_variance_swap_engine" prot="public">QuantLib::MCVarianceSwapEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_replicating_variance_swap_engine" prot="public">QuantLib::ReplicatingVarianceSwapEngine</innerclass>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
   </compounddef>
 </doxygen>

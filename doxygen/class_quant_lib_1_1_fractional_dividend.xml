@@ -17,8 +17,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="83" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a4331227e15dd6175bbb270e7e6311a43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -31,12 +29,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlying</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="87" bodyend="89"/>
       </memberdef>
       </sectiondef>
@@ -47,12 +39,6 @@
         <definition>Real rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +46,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       </sectiondef>
@@ -83,12 +63,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="76" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1abd37cb9ff2205d88d83bde5d932d6cc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -108,12 +82,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="79" bodyend="80"/>
       </memberdef>
       </sectiondef>

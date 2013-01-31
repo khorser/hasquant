@@ -13,25 +13,11 @@
         <enumvalue id="class_quant_lib_1_1_c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       </sectiondef>
@@ -41,12 +27,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -54,12 +34,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1ae4ee592b8a38342bbfc3eb27708359df" prot="private" static="no" mutable="no">
@@ -67,12 +41,6 @@
         <definition>bool subtractInflationNominal_</definition>
         <argsstring></argsstring>
         <name>subtractInflationNominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
@@ -80,12 +48,6 @@
         <definition>Spread spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a52317f2d9d20fcdf6da1753974274a67" prot="private" static="no" mutable="no">
@@ -93,12 +55,6 @@
         <definition>DayCounter floatDayCount_</definition>
         <argsstring></argsstring>
         <name>floatDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1ad4f33c99a2047c5198329c060045f1cf" prot="private" static="no" mutable="no">
@@ -106,12 +62,6 @@
         <definition>Schedule floatSchedule_</definition>
         <argsstring></argsstring>
         <name>floatSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a33809bfcc9c3268350162f09ec422cbe" prot="private" static="no" mutable="no">
@@ -119,12 +69,6 @@
         <definition>BusinessDayConvention floatPaymentRoll_</definition>
         <argsstring></argsstring>
         <name>floatPaymentRoll_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a7b5758dc357368c9bcb7920c66084351" prot="private" static="no" mutable="no">
@@ -132,12 +76,6 @@
         <definition>Natural fixingDays_</definition>
         <argsstring></argsstring>
         <name>fixingDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1ae089fc6a6a2dfa69f6e846a8c6031e08" prot="private" static="no" mutable="no">
@@ -145,12 +83,6 @@
         <definition>boost::shared_ptr&lt;IborIndex&gt; floatIndex_</definition>
         <argsstring></argsstring>
         <name>floatIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" static="no" mutable="no">
@@ -158,12 +90,6 @@
         <definition>Rate fixedRate_</definition>
         <argsstring></argsstring>
         <name>fixedRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1abe43b8a81a0545ff4254dde4f2a8270e" prot="private" static="no" mutable="no">
@@ -171,12 +97,6 @@
         <definition>Real baseCPI_</definition>
         <argsstring></argsstring>
         <name>baseCPI_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a417ce99525ff934e161e933d540c0409" prot="private" static="no" mutable="no">
@@ -184,12 +104,6 @@
         <definition>DayCounter fixedDayCount_</definition>
         <argsstring></argsstring>
         <name>fixedDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a7cac1393ff1d3224ff1cac0cb392cecf" prot="private" static="no" mutable="no">
@@ -197,12 +111,6 @@
         <definition>Schedule fixedSchedule_</definition>
         <argsstring></argsstring>
         <name>fixedSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a2337a0bbabec3a5d371ba7c257a0a862" prot="private" static="no" mutable="no">
@@ -210,12 +118,6 @@
         <definition>BusinessDayConvention fixedPaymentRoll_</definition>
         <argsstring></argsstring>
         <name>fixedPaymentRoll_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a86150838beb8bf9e289e07495c983f42" prot="private" static="no" mutable="no">
@@ -223,12 +125,6 @@
         <definition>boost::shared_ptr&lt;ZeroInflationIndex&gt; fixedIndex_</definition>
         <argsstring></argsstring>
         <name>fixedIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a2f0b22e1c17db6dd8f558f4dfc8dfff6" prot="private" static="no" mutable="no">
@@ -236,12 +132,6 @@
         <definition>Period observationLag_</definition>
         <argsstring></argsstring>
         <name>observationLag_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1ab9868f55e165fea77c2a710d346fb713" prot="private" static="no" mutable="no">
@@ -249,12 +139,6 @@
         <definition>CPI::InterpolationType observationInterpolation_</definition>
         <argsstring></argsstring>
         <name>observationInterpolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a127c770a5f1efa6ddbb6026bd11112e5" prot="private" static="no" mutable="no">
@@ -262,12 +146,6 @@
         <definition>Real inflationNominal_</definition>
         <argsstring></argsstring>
         <name>inflationNominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1a492c911c409c868717797a52dda59333" prot="private" static="no" mutable="yes">
@@ -275,12 +153,6 @@
         <definition>Spread fairSpread_</definition>
         <argsstring></argsstring>
         <name>fairSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1abe098d2fe72aba947e592db7309a60fd" prot="private" static="no" mutable="yes">
@@ -288,12 +160,6 @@
         <definition>Rate fairRate_</definition>
         <argsstring></argsstring>
         <name>fairRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -377,12 +243,6 @@
           <declname>inflationNominal</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ac83078708d7f39ee5937d2c0d4d99434" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -390,12 +250,6 @@
         <definition>virtual Real floatLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a8519db12d1035aea8bc0b73b531fa1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -403,12 +257,6 @@
         <definition>virtual Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1acae4e2138e8dbe8c12a605ea79086d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -416,12 +264,6 @@
         <definition>virtual Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a5d5b9c2299952391c66f5b080295e747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -429,12 +271,6 @@
         <definition>virtual Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1af9ee3189838631f5f8aa9175389dad1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -442,12 +278,6 @@
         <definition>CPISwap::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="193" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -455,12 +285,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="194" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1aa69bebfcfe33bfa4259ffffc5c55c392" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -468,12 +292,6 @@
         <definition>bool subtractInflationNominal</definition>
         <argsstring>() const </argsstring>
         <name>subtractInflationNominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="195" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -481,12 +299,6 @@
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="198" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a9ace77b155fec783a7f1e2f27cef14b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -494,12 +306,6 @@
         <definition>const DayCounter &amp; floatDayCount</definition>
         <argsstring>() const </argsstring>
         <name>floatDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="199" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a8105c4a20b2b9e022001c33e9f933341" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -507,12 +313,6 @@
         <definition>const Schedule &amp; floatSchedule</definition>
         <argsstring>() const </argsstring>
         <name>floatSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="200" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a489855877bac655a8a40a1ccf0e12ee6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -520,12 +320,6 @@
         <definition>const BusinessDayConvention &amp; floatPaymentRoll</definition>
         <argsstring>() const </argsstring>
         <name>floatPaymentRoll</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="201" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -533,12 +327,6 @@
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="202" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a94ae66b439f89cd551508d38e4775e23" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -546,12 +334,6 @@
         <definition>const boost::shared_ptr&lt; IborIndex &gt; &amp; floatIndex</definition>
         <argsstring>() const </argsstring>
         <name>floatIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="203" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -559,12 +341,6 @@
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="206" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ae3688411e63b836688fe6d77f87549be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -572,12 +348,6 @@
         <definition>Real baseCPI</definition>
         <argsstring>() const </argsstring>
         <name>baseCPI</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="207" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -585,12 +355,6 @@
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="208" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -598,12 +362,6 @@
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="209" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a417e96d4a1906168e11cf64d73190df0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -611,12 +369,6 @@
         <definition>const BusinessDayConvention &amp; fixedPaymentRoll</definition>
         <argsstring>() const </argsstring>
         <name>fixedPaymentRoll</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="210" bodyend="210"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -624,12 +376,6 @@
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="211" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a5c24e955816d960f087a5d88805d981d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -637,12 +383,6 @@
         <definition>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp; fixedIndex</definition>
         <argsstring>() const </argsstring>
         <name>fixedIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="212" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a62db405966d340dced7d2c24418e43d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -650,12 +390,6 @@
         <definition>CPI::InterpolationType observationInterpolation</definition>
         <argsstring>() const </argsstring>
         <name>observationInterpolation</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="213" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a6ec2404f611183ccedff6a9e227eedc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -663,12 +397,6 @@
         <definition>Real inflationNominal</definition>
         <argsstring>() const </argsstring>
         <name>inflationNominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="214" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a80d571527c5ae24798704b5e3bbf0f30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -676,12 +404,6 @@
         <definition>const Leg &amp; cpiLeg</definition>
         <argsstring>() const </argsstring>
         <name>cpiLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="216" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a5a62986f612f359daf7619f30c31c9c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -689,12 +411,6 @@
         <definition>const Leg &amp; floatLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -706,12 +422,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -724,12 +436,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="133"/>
       </memberdef>
       </sectiondef>
@@ -740,12 +448,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="136"/>
       </memberdef>
       </sectiondef>
@@ -756,7 +460,6 @@
    against (cpi ratio - 1), by using differnt nominals on each
    leg and setting subtractInflationNominal to true.  ALSO -
    there must be just one date in each schedule.
-
    The two legs can have different schedules, fixing (days vs
    lag), settlement, and roll conventions.  N.B. accrual
    adjustment periods are already in the schedules.  Trade date

@@ -9,12 +9,6 @@
         <definition>friend class NumericHaganPricer</definition>
         <argsstring></argsstring>
         <name>NumericHaganPricer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="270" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="270" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -60,12 +54,6 @@
           <type>Option::Type</type>
           <declname>optionType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="281"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -77,19 +65,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="282"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="269" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="269" bodyend="299"/>
   </compounddef>
 </doxygen>

@@ -7,24 +7,10 @@
         <name>Type</name>
         <enumvalue id="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7afbe5087b942deaaa3202c7ca87dbc327" prot="public">
           <name>Long</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7af5a4874501b800b316e5817874430c98" prot="public">
           <name>Short</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/position.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/position.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       </sectiondef>
@@ -40,19 +26,9 @@
         <param>
           <type>Position::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/position.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/position.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/position.hpp" bodystart="32" bodyend="34"/>
   </compounddef>
 </doxygen>

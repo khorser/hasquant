@@ -32,8 +32,6 @@
     <innerclass refid="class_quant_lib_1_1_ornstein_uhlenbeck_process" prot="public">QuantLib::OrnsteinUhlenbeckProcess</innerclass>
     <innerclass refid="class_quant_lib_1_1_square_root_process" prot="public">QuantLib::SquareRootProcess</innerclass>
     <innerclass refid="class_quant_lib_1_1_stochastic_process_array" prot="public">QuantLib::StochasticProcessArray</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>The classes <computeroutput><ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">QuantLib::StochasticProcess</ref></computeroutput> and <computeroutput><ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">QuantLib::StochasticProcess1D</ref></computeroutput> provide the interface for a generic stochastic process. A number of specific processes is contained in the <computeroutput>ql/Processes</computeroutput> directory. </para>    </detaileddescription>
   </compounddef>

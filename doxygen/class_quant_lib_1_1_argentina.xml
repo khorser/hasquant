@@ -12,15 +12,7 @@
           <name>Merval</name>
           <briefdescription>
 <para>Buenos Aires stock exchange calendar. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" bodystart="63" bodyend="64"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_argentina_1abe41cfffd960e29a5d8b07be00aeda42a2ad9b9ebcb271f008e9595be4016188b" kindref="member">Merval</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp" line="65"/>
       </memberdef>
       </sectiondef>

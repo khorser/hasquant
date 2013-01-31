@@ -8,38 +8,18 @@
         <name>Type</name>
         <enumvalue id="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7aebfbf7dc5cde0772efb1aa49712bd76b" prot="public">
           <name>Simple</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7aa169bd239b5186fa112d9424e3a55167" prot="public">
           <name>Macaulay</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7a68c800404093521f6e4df855dd531971" prot="public">
           <name>Modified</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/duration.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/duration.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>duration type </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/duration.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/duration.hpp" bodystart="35" bodyend="37"/>
   </compounddef>
 </doxygen>

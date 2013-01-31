@@ -76,12 +76,6 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_bond_1ad6359baf95606fc168fe07e87912b603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -186,12 +180,6 @@
           <declname>endOfMonth</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/floatingratebond.hpp" line="85"/>
       </memberdef>
       </sectiondef>

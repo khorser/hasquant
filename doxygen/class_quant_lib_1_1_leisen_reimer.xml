@@ -25,12 +25,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_leisen_reimer_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -46,12 +40,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="180" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_leisen_reimer_1aaad4caa3a86af086a7032fec98c26182" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -69,19 +57,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="184" bodyend="186"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Leisen &amp; Reimer tree: multiplicative approach. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="174" bodyend="189"/>
   </compounddef>
 </doxygen>

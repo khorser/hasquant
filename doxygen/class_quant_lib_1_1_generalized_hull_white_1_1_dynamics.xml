@@ -10,12 +10,6 @@
         <definition>Parameter fitting_</definition>
         <argsstring></argsstring>
         <name>fitting_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +31,6 @@
           <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt; &amp;</type>
           <declname>sigma</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="101" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -58,12 +46,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="108" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,12 +61,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       </sectiondef>
@@ -92,7 +68,6 @@
 <para>Short-rate dynamics in the generalized Hull-White model. </para>    </briefdescription>
     <detaileddescription>
 <para>The short-rate is here <verbatim>   f(r_t) = x_t + g(t)
-
    where g is the deterministic time-dependent
    parameter (which can not be determined analytically)
    used for term-structure fitting and  x_t is the state

@@ -18,12 +18,6 @@
         <definition>typedef std::map&lt;Real, boost::shared_ptr&lt;detail::SectionHelper&gt; &gt; helper_map</definition>
         <argsstring></argsstring>
         <name>helper_map</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="753" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="753" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +61,6 @@
           <declname>preExistingHelpers</declname>
           <defval>helper_map()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="760" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="755" bodyend="771"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1acd198c9e05035dbcc984bad80de3440b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -84,12 +72,6 @@
           <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &amp;</type>
           <declname>interp</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="774" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="773" bodyend="774"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1a3564e6366dd012b3ea99a597e814c3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -97,12 +79,6 @@
         <definition>std::map&lt;Real, boost::shared_ptr&lt;detail::SectionHelper&gt; &gt; getExistingHelpers</definition>
         <argsstring>()</argsstring>
         <name>getExistingHelpers</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="777" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="777" bodyend="782"/>
       </memberdef>
       </sectiondef>

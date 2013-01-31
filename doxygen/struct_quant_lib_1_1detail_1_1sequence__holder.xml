@@ -13,12 +13,6 @@
         <definition>InputIterator begin</definition>
         <argsstring></argsstring>
         <name>begin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1sequence__holder_1a8877f759cfc55450f57fee7e9d92711c" prot="public" static="no" mutable="no">
@@ -26,12 +20,6 @@
         <definition>InputIterator end</definition>
         <argsstring></argsstring>
         <name>end</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,19 +37,9 @@
           <type>InputIterator</type>
           <declname>end</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="62" bodyend="63"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="61" bodyend="65"/>
   </compounddef>
 </doxygen>

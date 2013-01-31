@@ -70,19 +70,11 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingcmsratebond.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>amortizing CMS-rate bond </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingcmsratebond.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingcmsratebond.hpp" bodystart="35" bodyend="53"/>
   </compounddef>
 </doxygen>

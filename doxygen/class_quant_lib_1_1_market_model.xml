@@ -15,12 +15,6 @@
         <definition>std::vector&lt;Matrix&gt; covariance_</definition>
         <argsstring></argsstring>
         <name>covariance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_1a5a5a420aa8690c2b903b0f4ca8956294" prot="private" static="no" mutable="yes">
@@ -28,12 +22,6 @@
         <definition>std::vector&lt;Matrix&gt; totalCovariance_</definition>
         <argsstring></argsstring>
         <name>totalCovariance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +31,6 @@
         <definition>virtual ~MarketModel</definition>
         <argsstring>()</argsstring>
         <name>~MarketModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1adc217a0c2cb706bc4f845d44424e1b06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -57,12 +39,6 @@
         <argsstring>() const =0</argsstring>
         <name>initialRates</name>
         <reimplementedby refid="class_quant_lib_1_1_abcd_vol_1af28aec1bf0cbe34b36fd0ecc90fbb780">initialRates</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a77c3a5ee494fde88b9eca13f27fd28eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -71,12 +47,6 @@
         <argsstring>() const =0</argsstring>
         <name>displacements</name>
         <reimplementedby refid="class_quant_lib_1_1_abcd_vol_1a38bd6b5501b4957ac4effffc83be5ce5">displacements</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -85,12 +55,6 @@
         <argsstring>() const =0</argsstring>
         <name>evolution</name>
         <reimplementedby refid="class_quant_lib_1_1_abcd_vol_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd">evolution</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1ae0b5ee9b6e485b66f6cb44a08904136d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -99,12 +63,6 @@
         <argsstring>() const =0</argsstring>
         <name>numberOfRates</name>
         <reimplementedby refid="class_quant_lib_1_1_abcd_vol_1ab4f4847a3bfe9c8a8ea499a4e20643cf">numberOfRates</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a23e12972a841e8410cafc8a15056196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -113,12 +71,6 @@
         <argsstring>() const =0</argsstring>
         <name>numberOfFactors</name>
         <reimplementedby refid="class_quant_lib_1_1_abcd_vol_1a5a984db39a3d1f2e80e8a889cd279e27">numberOfFactors</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1abe6f647dd9a9c3dc968ac76116801348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -127,12 +79,6 @@
         <argsstring>() const =0</argsstring>
         <name>numberOfSteps</name>
         <reimplementedby refid="class_quant_lib_1_1_abcd_vol_1aed640b8d340edab41683b6aadd89665b">numberOfSteps</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a6fba75f39ffbed5d1523150428b94d2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -145,12 +91,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -162,12 +102,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -179,12 +113,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>endIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -196,12 +124,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="51"/>
       </memberdef>
       </sectiondef>

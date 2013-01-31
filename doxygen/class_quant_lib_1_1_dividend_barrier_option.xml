@@ -12,12 +12,6 @@
         <definition>DividendSchedule cashFlow_</definition>
         <argsstring></argsstring>
         <name>cashFlow_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,19 +49,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>dividends</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-asset barrier option with discrete dividends. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" bodystart="37" bodyend="53"/>
   </compounddef>
 </doxygen>

@@ -13,19 +13,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="70" bodyend="76"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="68" bodyend="77"/>
   </compounddef>
 </doxygen>

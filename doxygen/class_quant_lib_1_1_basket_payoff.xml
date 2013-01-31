@@ -13,12 +13,6 @@
         <definition>boost::shared_ptr&lt;Payoff&gt; basePayoff_</definition>
         <argsstring></argsstring>
         <name>basePayoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -32,12 +26,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a9b8b91f2b5d451870eecd88a14db32bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -45,12 +33,6 @@
         <definition>virtual ~BasketPayoff</definition>
         <argsstring>()</argsstring>
         <name>~BasketPayoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -58,12 +40,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -71,12 +47,6 @@
         <definition>std::string description</definition>
         <argsstring>() const </argsstring>
         <name>description</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -88,12 +58,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>price</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1acdddb691e7a91527a509d3d51951834c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -105,12 +69,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1ae04dcd96c5a2ea87a6d09a4f7b77c7f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -122,12 +80,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a440d118e6b1d4c8a91b66f39338b4c17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -135,19 +87,9 @@
         <definition>const boost::shared_ptr&lt;Payoff&gt; basePayoff</definition>
         <argsstring>()</argsstring>
         <name>basePayoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="49" bodyend="51"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="35" bodyend="52"/>
   </compounddef>
 </doxygen>

@@ -9,12 +9,6 @@
         <definition>Size order_</definition>
         <argsstring></argsstring>
         <name>order_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a7224479b2679870fad1a3f9383d2b7e9" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Real* w_</definition>
         <argsstring></argsstring>
         <name>w_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="237" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="237" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1ad66b620fee7854688e3ec37c9d435d0a" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Real* x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="238" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="239" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="239" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -63,12 +39,6 @@
         <definition>const Real w6[3]</definition>
         <argsstring>[3]</argsstring>
         <name>w6</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="241" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1aa2e2ff9f46f9642a5ae8910170ff928e" prot="private" static="yes" mutable="no">
@@ -76,12 +46,6 @@
         <definition>const Real x6[3]</definition>
         <argsstring>[3]</argsstring>
         <name>x6</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="242" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a0744a1149a803ead956331c068b19dee" prot="private" static="yes" mutable="no">
@@ -89,12 +53,6 @@
         <definition>const Size n6</definition>
         <argsstring></argsstring>
         <name>n6</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="243" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="243" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a6011e6db3c0ca3e6d3d53ceb1f2feeb1" prot="private" static="yes" mutable="no">
@@ -102,12 +60,6 @@
         <definition>const Real w7[4]</definition>
         <argsstring>[4]</argsstring>
         <name>w7</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="245" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a8b0e622c7463954b0415b45fd36611c1" prot="private" static="yes" mutable="no">
@@ -115,12 +67,6 @@
         <definition>const Real x7[4]</definition>
         <argsstring>[4]</argsstring>
         <name>x7</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="246" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="246" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a5e8048c3414c3d87798ffa1a62c2f4f3" prot="private" static="yes" mutable="no">
@@ -128,12 +74,6 @@
         <definition>const Size n7</definition>
         <argsstring></argsstring>
         <name>n7</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="247" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="247" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a76f1c36c58237b527cfd2acc7256f903" prot="private" static="yes" mutable="no">
@@ -141,12 +81,6 @@
         <definition>const Real w12[6]</definition>
         <argsstring>[6]</argsstring>
         <name>w12</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="249" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a43ef7ae9ddd7a52b143125e8156082f2" prot="private" static="yes" mutable="no">
@@ -154,12 +88,6 @@
         <definition>const Real x12[6]</definition>
         <argsstring>[6]</argsstring>
         <name>x12</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="250" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="250" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a21d318ef79ea282694f4c95eebbffca7" prot="private" static="yes" mutable="no">
@@ -167,12 +95,6 @@
         <definition>const Size n12</definition>
         <argsstring></argsstring>
         <name>n12</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="251" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a71a9d75df1219bb117cdfaea1a6f4ebf" prot="private" static="yes" mutable="no">
@@ -180,12 +102,6 @@
         <definition>const Real w20[10]</definition>
         <argsstring>[10]</argsstring>
         <name>w20</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="253" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1ada09d6813bf33201f22b49ab0c3c9493" prot="private" static="yes" mutable="no">
@@ -193,12 +109,6 @@
         <definition>const Real x20[10]</definition>
         <argsstring>[10]</argsstring>
         <name>x20</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="254" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tabulated_gauss_legendre_1acb06b149a66f4d551e2e30f85568ac5f" prot="private" static="yes" mutable="no">
@@ -206,12 +116,6 @@
         <definition>const Size n20</definition>
         <argsstring></argsstring>
         <name>n20</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="255" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="255" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -226,12 +130,6 @@
           <declname>n</declname>
           <defval>20</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="205" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1afd92625955969b8a4a77603f3ad45c6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -248,12 +146,6 @@
           <type>const F &amp;</type>
           <declname>f</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="207" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a64fd5c4d322e0d8d4160fa59b79628b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -264,12 +156,6 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="231"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tabulated_gauss_legendre_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -277,19 +163,11 @@
         <definition>Size order</definition>
         <argsstring>() const </argsstring>
         <name>order</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="232" bodyend="232"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>tabulated Gauss-Legendre quadratures </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="203" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="203" bodyend="256"/>
   </compounddef>
 </doxygen>

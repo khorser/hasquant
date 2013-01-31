@@ -10,12 +10,6 @@
         <definition>PTECurrency</definition>
         <argsstring>()</argsstring>
         <name>PTECurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="697" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="697" bodyend="705"/>
       </memberdef>
       </sectiondef>

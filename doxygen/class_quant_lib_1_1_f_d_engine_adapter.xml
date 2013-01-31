@@ -52,12 +52,6 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="93" bodyend="99"/>
       </memberdef>
       </sectiondef>
@@ -67,19 +61,9 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="101" bodyend="104"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="91" bodyend="105"/>
   </compounddef>
 </doxygen>

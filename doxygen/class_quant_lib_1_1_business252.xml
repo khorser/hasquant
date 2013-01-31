@@ -16,19 +16,11 @@
           <declname>c</declname>
           <defval><ref refid="class_quant_lib_1_1_brazil" kindref="compound">Brazil</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Business/252 day count convention. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" bodystart="36" bodyend="55"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;Merton76Process&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_jump_diffusion_engine_1a143abeb112e1d03d1fad1fde1f082a89" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real relativeAccuracy_</definition>
         <argsstring></argsstring>
         <name>relativeAccuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_jump_diffusion_engine_1af75d2bb304cdff446e507879467b2582" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Size maxIterations_</definition>
         <argsstring></argsstring>
         <name>maxIterations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +46,6 @@
           <declname>maxIterations</declname>
           <defval>100</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -77,12 +53,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="47"/>
       </memberdef>
       </sectiondef>

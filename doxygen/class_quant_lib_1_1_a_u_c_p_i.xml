@@ -27,19 +27,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" bodystart="35" bodyend="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>AU CPI index (either quarterly or annual) </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/aucpi.hpp" bodystart="33" bodyend="48"/>
   </compounddef>
 </doxygen>

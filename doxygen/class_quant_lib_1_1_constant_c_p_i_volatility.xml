@@ -44,10 +44,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="44"/>
       </memberdef>
       </sectiondef>
@@ -61,10 +57,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a325a26f342dc0d36ac376c98e79f7565" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -75,10 +67,6 @@
         <reimplements refid="class_quant_lib_1_1_c_p_i_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -89,10 +77,6 @@
         <reimplements refid="class_quant_lib_1_1_c_p_i_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +86,6 @@
         <definition>Volatility volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -126,19 +104,13 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Implements the actual volatility surface calculation in derived classes e.g. bilinear interpolation. N.B. does not derive the surface. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant surface, no K or T dependence. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="32" bodyend="59"/>
   </compounddef>
 </doxygen>

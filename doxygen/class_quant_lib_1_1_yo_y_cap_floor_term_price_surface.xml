@@ -16,8 +16,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>you don&apos;t know if price() is a cap or a floor without checking the YoYSwapATM level. </para><simplesectsep/><para>atm cap/floor prices are generally inaccurate because they are from extrapolation and intersection. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a66ae1670ab70ecea30f86c1b5eaa653a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -25,12 +23,6 @@
         <definition>virtual Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1af795a62966504d6b26ffb161572797fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -46,12 +38,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a3865afb328cec09b4512ae69e5a82e46" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -67,12 +53,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1afceb2ce2173f39b779bd9dfd23a987c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -88,12 +68,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1aad94b91de3255d72427351385836bc9f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -110,12 +84,6 @@
           <declname>extrapolate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a1c97b1fddfa032899b738da50e4e4ed7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -137,12 +105,6 @@
           <declname>extrapolate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a2ea5ddf46c50a3e2b33395d26f36aa6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -158,12 +120,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a1ce119f293f0f19fd4b44e7f903f50d2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -179,12 +135,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a2d57becb3d47aa1a7a4d7c8252e79d73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -200,12 +150,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a61e4712c1e12f002db0b14411ebb7280" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -222,12 +166,6 @@
           <declname>extrapolate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a87c9095b42a04690bf706c7f1cd1f1f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -249,12 +187,6 @@
           <declname>extrapolate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a1b89821fd50ae8ad7335bb45f0f7ecf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -262,12 +194,6 @@
         <definition>virtual std::vector&lt;Rate&gt; strikes</definition>
         <argsstring>() const </argsstring>
         <name>strikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a8eecc5b9075172047970adbe20dbd7d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -275,12 +201,6 @@
         <definition>virtual std::vector&lt;Rate&gt; capStrikes</definition>
         <argsstring>() const </argsstring>
         <name>capStrikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1ac4646f67e6fdfb4083ede53dee441d31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -288,12 +208,6 @@
         <definition>virtual std::vector&lt;Rate&gt; floorStrikes</definition>
         <argsstring>() const </argsstring>
         <name>floorStrikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="105" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a111b99f9d70e1cfb1bcc9c538603fca5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -301,12 +215,6 @@
         <definition>virtual std::vector&lt;Period&gt; maturities</definition>
         <argsstring>() const </argsstring>
         <name>maturities</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="106" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a5e7f4a8423be791d84c2f637f5f36309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -314,12 +222,6 @@
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="107" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a665e35ebe818f3866d6a3946ed399432" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -327,12 +229,6 @@
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="108" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1abb9aea62a11dd6518a0917629cee8a77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -340,12 +236,6 @@
         <definition>virtual Date minMaturity</definition>
         <argsstring>() const </argsstring>
         <name>minMaturity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a4d69d735cba1249dbca85bbb32cf1cb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -353,12 +243,6 @@
         <definition>virtual Date maxMaturity</definition>
         <argsstring>() const </argsstring>
         <name>maxMaturity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="110" bodyend="110"/>
       </memberdef>
       </sectiondef>
@@ -420,12 +304,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>fPrice</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a20be174e308919cf524a2c32e83be976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -437,8 +315,6 @@
 <para>atm yoy swaps from put-call parity on cap/floor data </para>        </briefdescription>
         <detaileddescription>
 <para>uses interpolation (on surface price data), yearly maturities. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1aa4ceb2dffd1afea0039aefc5fea3a969" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -446,12 +322,6 @@
         <definition>virtual std::pair&lt;std::vector&lt;Date&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapDateRates</definition>
         <argsstring>() const =0</argsstring>
         <name>atmYoYSwapDateRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1a3946879dbf926c969577ab4f3262979b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -461,10 +331,6 @@
         <name>YoYTS</name>
         <briefdescription>
 <para>derived from yoy swap rates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1ad94033818bd70fcd47a5446733c778a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -474,10 +340,6 @@
         <name>yoyIndex</name>
         <briefdescription>
 <para>index yoy is based on </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1abe1e2c5babe12eb5b56bb7f2f8c92eba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -489,12 +351,6 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="113"/>
       </memberdef>
       </sectiondef>

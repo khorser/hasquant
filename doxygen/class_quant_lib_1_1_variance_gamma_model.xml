@@ -14,12 +14,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_model_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,12 +21,6 @@
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_model_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -40,12 +28,6 @@
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_model_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -53,12 +35,6 @@
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_model_1ad3133515422aa6fbc4fb7babd1de296a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -66,12 +42,6 @@
         <definition>boost::shared_ptr&lt;VarianceGammaProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>

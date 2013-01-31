@@ -30,20 +30,14 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="83" bodyend="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>log-linear interpolation between discrete points </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="79" bodyend="90"/>
   </compounddef>
 </doxygen>

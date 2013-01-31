@@ -15,10 +15,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="46"/>
       </memberdef>
       </sectiondef>
@@ -32,10 +28,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -46,10 +38,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="51"/>
       </memberdef>
       </sectiondef>
@@ -61,12 +49,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -75,12 +57,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="56"/>
       </memberdef>
       </sectiondef>
@@ -98,10 +76,6 @@
         </param>
         <briefdescription>
 <para>implements the actual smile calculation in derived classes </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1ae1dad241c14ce021b1b9e0ff138a5e85" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -120,10 +94,6 @@
         </param>
         <briefdescription>
 <para>implements the actual volatility calculation in derived classes </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="65"/>
       </memberdef>
       </sectiondef>
@@ -133,12 +103,6 @@
         <definition>const boost::shared_ptr&lt;StrippedOptionletBase&gt; optionletStripper_</definition>
         <argsstring></argsstring>
         <name>optionletStripper_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a90c30356ef0ba05e4c9eacc8df7ec953" prot="private" static="no" mutable="no">
@@ -146,12 +110,6 @@
         <definition>Size nInterpolations_</definition>
         <argsstring></argsstring>
         <name>nInterpolations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a7fd81bca9c55969d4c19b6f0d47c9950" prot="private" static="no" mutable="yes">
@@ -159,12 +117,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;Interpolation&gt; &gt; strikeInterpolations_</definition>
         <argsstring></argsstring>
         <name>strikeInterpolations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -177,17 +129,9 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Adapter class for turning a <ref refid="class_quant_lib_1_1_stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> object into an <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref>. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="38" bodyend="71"/>

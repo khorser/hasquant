@@ -20,12 +20,6 @@
         <definition>typedef MCVanillaEngine&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +61,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="96" bodyend="104"/>
       </memberdef>
       </sectiondef>

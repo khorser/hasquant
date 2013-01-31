@@ -14,12 +14,6 @@
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       </sectiondef>
@@ -44,10 +38,6 @@
         </param>
         <briefdescription>
 <para>initialize an asset at the given time. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_1ac284e0bd252bb0977c06d28bdefdfc06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -67,12 +57,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>to</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Roll back an asset until the given time, performing any needed adjustment. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_1a014c376879c97eb1268c460dfeeebb4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -92,15 +78,11 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>to</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Roll back an asset until the given time, but do not perform the final adjustment.</para><para><xrefsect id="caveats_1_caveats000084"><xreftitle>Warning</xreftitle><xrefdescription><para>In version 0.3.7 and earlier, this method was called rollAlmostBack method and performed pre-adjustment. This is no longer true; when migrating your code, you&apos;ll have to replace calls such as: </para></xrefdescription></xrefsect><programlisting><codeline><highlight class="normal">method-&gt;rollAlmostBack(asset,t);</highlight></codeline>
 </programlisting> with the two statements: <programlisting><codeline><highlight class="normal">method-&gt;partialRollback(asset,t);</highlight></codeline>
 <codeline><highlight class="normal">asset-&gt;preAdjustValues();</highlight></codeline>
 </programlisting> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_1a0fe7a4c02a090391b474654cf43ddb56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -117,10 +99,6 @@
         </param>
         <briefdescription>
 <para>computes the present value of an asset. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="87"/>
       </memberdef>
       </sectiondef>
@@ -134,12 +112,6 @@
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_1a3254b8af4162c70d213eb9153fe8dc8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -147,12 +119,6 @@
         <definition>virtual ~Lattice</definition>
         <argsstring>()</argsstring>
         <name>~Lattice</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_1a85dadec35b0b9775e93b8c0d826447ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -168,19 +134,11 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="92"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Lattice (tree, finite-differences) base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" bodystart="36" bodyend="95"/>
   </compounddef>
 </doxygen>

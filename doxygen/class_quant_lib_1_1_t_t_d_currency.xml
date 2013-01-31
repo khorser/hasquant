@@ -10,12 +10,6 @@
         <definition>TTDCurrency</definition>
         <argsstring>()</argsstring>
         <name>TTDCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="210" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="210" bodyend="217"/>
       </memberdef>
       </sectiondef>

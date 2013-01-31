@@ -22,12 +22,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a7497e7909612438d08247986fe9b2310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -46,12 +40,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a0ad1848fe7d61e048e54112565af0eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,12 +62,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1aee7f38961be4bffcb20b26bb301df183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -102,12 +84,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -121,10 +97,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
@@ -141,10 +113,6 @@
         </param>
         <briefdescription>
 <para>hazard rate calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>
@@ -161,10 +129,6 @@
         </param>
         <briefdescription>
 <para>survival probability calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
@@ -174,19 +138,11 @@
         <definition>Handle&lt;Quote&gt; hazardRate_</definition>
         <argsstring></argsstring>
         <name>hazardRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Flat hazard-rate curve. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="35" bodyend="70"/>
   </compounddef>
 </doxygen>

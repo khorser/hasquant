@@ -62,12 +62,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountTermStructure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -78,10 +72,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1acf62c1e22a09f8f6ae515de3e07bef53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -89,12 +79,6 @@
         <definition>Integer payReceive</definition>
         <argsstring>() const </argsstring>
         <name>payReceive</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1a2fe503ac9d18fc8d0c7f17f6e10e7939" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -102,12 +86,6 @@
         <definition>const Money&amp; fixedPrice</definition>
         <argsstring>() const </argsstring>
         <name>fixedPrice</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1a423c35ce58ee5f94178842c9b58ff90b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -115,12 +93,6 @@
         <definition>const UnitOfMeasure&amp; fixedPriceUnitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>fixedPriceUnitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" bodystart="54" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1ad77f58399fcfa7ab11e68f8adcf6242b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -128,19 +100,11 @@
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt;&amp; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Vanilla energy swap. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyvanillaswap.hpp" bodystart="34" bodyend="71"/>
   </compounddef>
 </doxygen>

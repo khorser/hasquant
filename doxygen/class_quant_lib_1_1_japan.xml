@@ -11,12 +11,6 @@
         <definition>Japan</definition>
         <argsstring>()</argsstring>
         <name>Japan</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="70"/>
       </memberdef>
       </sectiondef>

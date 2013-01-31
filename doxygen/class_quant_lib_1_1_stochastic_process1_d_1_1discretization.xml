@@ -11,12 +11,6 @@
         <definition>virtual ~discretization</definition>
         <argsstring>()</argsstring>
         <name>~discretization</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="167" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1afe744d667f97faf96e673cbde379b597" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -41,12 +35,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="169"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a2b3c25680a5820b79568dcd4b9a81b65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -71,12 +59,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a45a2880c7e449f4fa332d25b1f9bbfcb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -101,19 +83,11 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="173"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>discretization of a 1-D stochastic process </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="165" bodyend="174"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>COPCurrency</definition>
         <argsstring>()</argsstring>
         <name>COPCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="114" bodyend="121"/>
       </memberdef>
       </sectiondef>

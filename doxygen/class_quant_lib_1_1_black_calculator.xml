@@ -10,12 +10,6 @@
         <definition>friend class Calculator</definition>
         <argsstring></argsstring>
         <name>Calculator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +36,6 @@
           <declname>discount</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a2920114426078b8deba090acbfcc90c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -76,12 +64,6 @@
           <declname>discount</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a3cfb065da998301703ed796e399a4e15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -89,12 +71,6 @@
         <definition>virtual ~BlackCalculator</definition>
         <argsstring>()</argsstring>
         <name>~BlackCalculator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -102,12 +78,6 @@
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a46dff13c5db3dc12f768cdf4d4cc5b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -115,12 +85,8 @@
         <definition>Real deltaForward</definition>
         <argsstring>() const </argsstring>
         <name>deltaForward</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to change in the underlying forward price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1abd77e62b63781915cc05be90c29ade86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -132,12 +98,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>spot</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to change in the underlying spot price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ae21b5d8931ed83b6ce0f8f80039f4789" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -145,12 +107,8 @@
         <definition>Real elasticityForward</definition>
         <argsstring>() const </argsstring>
         <name>elasticityForward</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity in percent to a percent change in the underlying forward price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ad1038ed391cff8fa11082293e2dd524c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -162,12 +120,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>spot</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity in percent to a percent change in the underlying spot price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ad11bcb2919c3355037ad2f3c9dadb26f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -175,12 +129,8 @@
         <definition>Real gammaForward</definition>
         <argsstring>() const </argsstring>
         <name>gammaForward</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Second order derivative with respect to change in the underlying forward price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a50f95bfa73f23492b64d7de4b3274f71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -192,12 +142,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>spot</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Second order derivative with respect to change in the underlying spot price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1aaa4eafefa825f26cb526e13cdec63e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -213,12 +159,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to time to maturity. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a100e24c42cc4cd95b51242a6adf782ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -234,12 +176,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to time to maturity per day, assuming 365 day per year. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="118" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a0c37734c53fa52703c6f0d22677b05ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -251,12 +189,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to volatility. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -268,12 +202,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to discounting rate. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ab880a4d01e68c373077c2c6cf68af259" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -285,12 +215,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to dividend/growth rate. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1aee3252e0cf020c5878f35dae85bd1107" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -298,12 +224,8 @@
         <definition>Real itmCashProbability</definition>
         <argsstring>() const </argsstring>
         <name>itmCashProbability</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Probability of being in the money in the bond martingale measure, i.e. N(d2). It is a risk-neutral probability, not the real world one. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1abb479ae11d5c444f5ef42ac09dc14765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -311,12 +233,8 @@
         <definition>Real itmAssetProbability</definition>
         <argsstring>() const </argsstring>
         <name>itmAssetProbability</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1acfc72cb510f6de42cc315f39a34da0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -324,12 +242,8 @@
         <definition>Real strikeSensitivity</definition>
         <argsstring>() const </argsstring>
         <name>strikeSensitivity</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to strike. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -337,12 +251,6 @@
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -350,12 +258,6 @@
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="135" bodyend="137"/>
       </memberdef>
       </sectiondef>

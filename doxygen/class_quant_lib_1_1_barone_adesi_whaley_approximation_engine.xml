@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -41,12 +29,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="50"/>
       </memberdef>
       </sectiondef>
@@ -77,12 +59,6 @@
           <declname>tolerance</declname>
           <defval>1e-6</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="49"/>
       </memberdef>
       </sectiondef>

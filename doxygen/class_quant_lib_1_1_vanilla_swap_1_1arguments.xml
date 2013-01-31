@@ -11,12 +11,6 @@
         <definition>Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
@@ -24,12 +18,6 @@
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1ac087ed31c7c86f346a554482c05e01bd" prot="public" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>std::vector&lt;Date&gt; fixedResetDates</definition>
         <argsstring></argsstring>
         <name>fixedResetDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a9ae1b87c848fe690cc0fb8aae7a1ad53" prot="public" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>std::vector&lt;Date&gt; fixedPayDates</definition>
         <argsstring></argsstring>
         <name>fixedPayDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1af1b3c69bb089af944f809949cc9b5f34" prot="public" static="no" mutable="no">
@@ -63,12 +39,6 @@
         <definition>std::vector&lt;Time&gt; floatingAccrualTimes</definition>
         <argsstring></argsstring>
         <name>floatingAccrualTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a0c1a8eb80d3c37a524935c7519d008e0" prot="public" static="no" mutable="no">
@@ -76,12 +46,6 @@
         <definition>std::vector&lt;Date&gt; floatingResetDates</definition>
         <argsstring></argsstring>
         <name>floatingResetDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a732fd5612eea5324a0246b31f7119141" prot="public" static="no" mutable="no">
@@ -89,12 +53,6 @@
         <definition>std::vector&lt;Date&gt; floatingFixingDates</definition>
         <argsstring></argsstring>
         <name>floatingFixingDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1affddd738e0a1ca4074d4742686ce7e7c" prot="public" static="no" mutable="no">
@@ -102,12 +60,6 @@
         <definition>std::vector&lt;Date&gt; floatingPayDates</definition>
         <argsstring></argsstring>
         <name>floatingPayDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1af3b796aad3df6d60ab2749eb66836af6" prot="public" static="no" mutable="no">
@@ -115,12 +67,6 @@
         <definition>std::vector&lt;Real&gt; fixedCoupons</definition>
         <argsstring></argsstring>
         <name>fixedCoupons</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a217747684dc5dfb5f77382787c63182e" prot="public" static="no" mutable="no">
@@ -128,12 +74,6 @@
         <definition>std::vector&lt;Spread&gt; floatingSpreads</definition>
         <argsstring></argsstring>
         <name>floatingSpreads</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1ae2f96326e1598927863981facf1f31e5" prot="public" static="no" mutable="no">
@@ -141,12 +81,6 @@
         <definition>std::vector&lt;Real&gt; floatingCoupons</definition>
         <argsstring></argsstring>
         <name>floatingCoupons</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -156,12 +90,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="137" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -169,19 +97,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="152"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for simple swap calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="135" bodyend="153"/>
   </compounddef>
 </doxygen>

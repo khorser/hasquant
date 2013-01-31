@@ -20,10 +20,6 @@
         </param>
         <briefdescription>
 <para>volatility is the quoted fwd yield volatility, not price vol </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="79" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_callable_zero_coupon_bond_engine_1a4396aa52215d00e91f1a8642b26ca246" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -41,10 +37,6 @@
         </param>
         <briefdescription>
 <para>volatility is the quoted fwd yield volatility, not price vol </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="85" bodyend="88"/>
       </memberdef>
       </sectiondef>

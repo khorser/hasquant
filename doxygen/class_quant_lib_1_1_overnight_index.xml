@@ -36,12 +36,6 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_index_1a1a7804d7c4d753ee70800b8913a50622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -55,17 +49,9 @@
         </param>
         <briefdescription>
 <para>returns a copy of itself linked to a different forwarding curve </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="100"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" bodystart="89" bodyend="101"/>
   </compounddef>
 </doxygen>

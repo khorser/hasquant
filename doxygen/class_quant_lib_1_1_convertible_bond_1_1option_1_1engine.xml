@@ -4,10 +4,6 @@
     <compoundname>QuantLib::ConvertibleBond::option::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ConvertibleBond::option::arguments, ConvertibleBond::option::results &gt;</basecompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_binomial_convertible_engine" prot="public" virt="non-virtual">BinomialConvertibleEngine&lt; T &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="211" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="209" bodyend="211"/>
   </compounddef>
 </doxygen>

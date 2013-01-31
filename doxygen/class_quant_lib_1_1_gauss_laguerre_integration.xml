@@ -19,12 +19,6 @@
           <declname>s</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="83" bodyend="84"/>
       </memberdef>
       </sectiondef>

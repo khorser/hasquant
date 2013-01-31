@@ -64,20 +64,14 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rightConditionValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="97" bodyend="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>mixed linear/cubic interpolation between discrete points </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="93" bodyend="115"/>
   </compounddef>
 </doxygen>

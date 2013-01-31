@@ -9,12 +9,6 @@
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_everest_option_1_1arguments_1a7643684d28332a3f3956ea6404d2c9d2" prot="public" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Rate guarantee</definition>
         <argsstring></argsstring>
         <name>guarantee</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +25,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_everest_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -50,19 +32,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="49" bodyend="56"/>
   </compounddef>
 </doxygen>

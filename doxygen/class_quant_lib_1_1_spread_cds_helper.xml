@@ -60,12 +60,6 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spread_cds_helper_1ae916f44275ce56de80a36c911e62bb0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -123,12 +117,6 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spread_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -137,12 +125,6 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="132"/>
       </memberdef>
       </sectiondef>
@@ -153,19 +135,11 @@
         <argsstring>()</argsstring>
         <name>resetEngine</name>
         <reimplements refid="class_quant_lib_1_1_cds_helper_1ab3774009db0f4540cff6c9a7e50b73c2">resetEngine</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="134"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Spread-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="105" bodyend="135"/>
   </compounddef>
 </doxygen>

@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_surface_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -42,10 +34,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="59"/>
       </memberdef>
       </sectiondef>
@@ -59,10 +47,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -73,10 +57,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="64"/>
       </memberdef>
       </sectiondef>
@@ -91,12 +71,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="68"/>
       </memberdef>
       </sectiondef>
@@ -106,12 +80,6 @@
         <definition>Handle&lt;BlackVolTermStructure&gt; blackTS_</definition>
         <argsstring></argsstring>
         <name>blackTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_local_vol_surface_1a9f6a5e08837c62a8bb68bcf7b48dc505" prot="private" static="no" mutable="no">
@@ -119,12 +87,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; riskFreeTS_</definition>
         <argsstring></argsstring>
         <name>riskFreeTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_local_vol_surface_1ad0da92f6a2f81cd0ccaab113a9e32e90" prot="private" static="no" mutable="no">
@@ -132,12 +94,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; dividendTS_</definition>
         <argsstring></argsstring>
         <name>dividendTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_local_vol_surface_1a21ff7e103ff0427a482adc07228f8092" prot="private" static="no" mutable="no">
@@ -145,12 +101,6 @@
         <definition>Handle&lt;Quote&gt; underlying_</definition>
         <argsstring></argsstring>
         <name>underlying_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -176,12 +126,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_surface_1af5d251ea796a2a4b537152220293306f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -205,12 +149,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlying</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolsurface.hpp" line="54"/>
       </memberdef>
       </sectiondef>

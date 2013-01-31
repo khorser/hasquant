@@ -11,12 +11,6 @@
         <definition>virtual ~Curve</definition>
         <argsstring>()</argsstring>
         <name>~Curve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -28,19 +22,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>abstract curve class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" bodystart="33" bodyend="37"/>
   </compounddef>
 </doxygen>

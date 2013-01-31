@@ -8,12 +8,6 @@
         <definition>boost::shared_ptr&lt;AlphaForm&gt; parametricform_</definition>
         <argsstring></argsstring>
         <name>parametricform_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1aac779282137a827ce6b053ec54d398d5" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Integer stepindex_</definition>
         <argsstring></argsstring>
         <name>stepindex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1ac93b0c0f1cd43c2e872e7833f0034d23" prot="private" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>std::vector&lt;Volatility&gt; rateonevols_</definition>
         <argsstring></argsstring>
         <name>rateonevols_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a4567e1f98916f4b45c24a638cb5ad868" prot="private" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>std::vector&lt;Volatility&gt; ratetwohomogeneousvols_</definition>
         <argsstring></argsstring>
         <name>ratetwohomogeneousvols_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1ae81a858e3e4a2eec3c89ce328848c451" prot="private" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>std::vector&lt;Volatility&gt; putativevols_</definition>
         <argsstring></argsstring>
         <name>putativevols_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1ada4f8cc3621cb2f7cf1f862d84a12e36" prot="private" static="no" mutable="no">
@@ -73,12 +43,6 @@
         <definition>std::vector&lt;Real&gt; correlations_</definition>
         <argsstring></argsstring>
         <name>correlations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a28aa6ce1d9fdd988aafbb94299018ec9" prot="private" static="no" mutable="no">
@@ -86,12 +50,6 @@
         <definition>Real w0_</definition>
         <argsstring></argsstring>
         <name>w0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a9f487a5c26e28c66af672d3543ab3761" prot="private" static="no" mutable="no">
@@ -99,12 +57,6 @@
         <definition>Real w1_</definition>
         <argsstring></argsstring>
         <name>w1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a742cbb3ac6a59c2db97859f0d75bc538" prot="private" static="no" mutable="no">
@@ -112,12 +64,6 @@
         <definition>Real constantPart_</definition>
         <argsstring></argsstring>
         <name>constantPart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a259777fb52d4f05f08f4124fe11a3016" prot="private" static="no" mutable="no">
@@ -125,12 +71,6 @@
         <definition>Real linearPart_</definition>
         <argsstring></argsstring>
         <name>linearPart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1afe40a2459b32971cf578cff6e5a8156b" prot="private" static="no" mutable="no">
@@ -138,12 +78,6 @@
         <definition>Real quadraticPart_</definition>
         <argsstring></argsstring>
         <name>quadraticPart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a782b02c377e6d725635df314cb19a3cd" prot="private" static="no" mutable="no">
@@ -151,12 +85,6 @@
         <definition>Real totalVar_</definition>
         <argsstring></argsstring>
         <name>totalVar_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_finder_1a59e81e623fe87d7d1f3ebdc70b09c524" prot="private" static="no" mutable="no">
@@ -164,12 +92,6 @@
         <definition>Real targetVariance_</definition>
         <argsstring></argsstring>
         <name>targetVariance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -183,12 +105,6 @@
           <type>boost::shared_ptr&lt; AlphaForm &gt;</type>
           <declname>parametricform</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="31"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1aa3db6f08205aef4ed57648df26d1b476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -260,12 +176,6 @@
           <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>ratetwovols</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a81960a8ba8173e3c03d53c98aa770c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -337,12 +247,6 @@
           <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>ratetwovols</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="66"/>
       </memberdef>
       </sectiondef>
@@ -356,12 +260,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1aa97e0dffa183daaf976a57227f3c65a5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -373,12 +271,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a6b4085087edcc88993ab9168db09358a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -390,12 +282,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a345e7197a2021d76bfa4e61a30360b64" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -407,12 +293,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a5c629cfdc3057d05be0320ed4ca499b5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -424,12 +304,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a8b723899019c2a4263311ff807a0b3cf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -477,12 +351,6 @@
           <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
           <declname>ratetwovols</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a3654c063da2d77bf862261a195d4ba4b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -494,19 +362,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="83"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="29" bodyend="92"/>
   </compounddef>
 </doxygen>

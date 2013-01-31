@@ -17,12 +17,6 @@
         <definition>const Handle&lt;KlugeExtOUProcess&gt; klugeOUProcess_</definition>
         <argsstring></argsstring>
         <name>klugeOUProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
@@ -30,12 +24,6 @@
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
         <argsstring></argsstring>
         <name>rTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
@@ -43,12 +31,6 @@
         <definition>const FdmSolverDesc solverDesc_</definition>
         <argsstring></argsstring>
         <name>solverDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -56,12 +38,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1abadd509255a2cb4d7a91dfe48e09dfe4" prot="private" static="no" mutable="yes">
@@ -69,12 +45,6 @@
         <definition>boost::shared_ptr&lt;FdmNdimSolver&lt;N&gt; &gt; solver_</definition>
         <argsstring></argsstring>
         <name>solver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -101,12 +71,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="43" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a8fcae2fd9f5d31f416d09e94d2768d2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -118,19 +82,9 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="57" bodyend="60"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="41" bodyend="81"/>
   </compounddef>
 </doxygen>

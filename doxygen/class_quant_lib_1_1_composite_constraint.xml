@@ -19,19 +19,11 @@
           <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="124" bodyend="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constraint enforcing both given sub-constraints </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="110" bodyend="127"/>
   </compounddef>
 </doxygen>

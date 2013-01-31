@@ -9,12 +9,6 @@
         <definition>Array x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a6ffc447ad0b001ceac4dfb00d5eddc7d" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Array a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a04e55ddbef8343698e08c0375cf09c3e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const std::vector&lt;Time&gt; averageTimes_</definition>
         <argsstring></argsstring>
         <name>averageTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a01c4f2114509ce39aacb2958f5e75406" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const Real fixedSum_</definition>
         <argsstring></argsstring>
         <name>fixedSum_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a805080c5fec14d20dbb74fa24573559f" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const Size pastFixings_</definition>
         <argsstring></argsstring>
         <name>pastFixings_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a4811dfbbc9dfb36b4560d2f6826d6d23" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>const Size equityDirection_</definition>
         <argsstring></argsstring>
         <name>equityDirection_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -122,12 +80,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>equityDirection</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_arithmetic_average_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -143,19 +95,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="40"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmarithmeticaveragecondition.hpp" bodystart="32" bodyend="51"/>
   </compounddef>
 </doxygen>

@@ -9,12 +9,6 @@
         <definition>boost::numeric::ublas::compressed_matrix&lt;Real&gt; L_</definition>
         <argsstring></argsstring>
         <name>L_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1a2bbd29191d51cd1eb0619c465a5fccbd" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::numeric::ublas::compressed_matrix&lt;Real&gt; U_</definition>
         <argsstring></argsstring>
         <name>U_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1a92920861a83bc8bb747e004bd32d07cb" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Size&gt; lBands_</definition>
         <argsstring></argsstring>
         <name>lBands_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1abefd8384ce2abe2eafd1eb33a7dec18a" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>std::vector&lt;Size&gt; uBands_</definition>
         <argsstring></argsstring>
         <name>uBands_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -72,12 +48,6 @@
           <declname>lfil</declname>
           <defval>1</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1a288c280afa370a83193ca14029ce371c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -85,12 +55,6 @@
         <definition>const boost::numeric::ublas::compressed_matrix&lt;Real&gt;&amp; L</definition>
         <argsstring>() const </argsstring>
         <name>L</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1acc38f92d1ef4e594c63b2a24241f2659" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -98,12 +62,6 @@
         <definition>const boost::numeric::ublas::compressed_matrix&lt;Real&gt;&amp; U</definition>
         <argsstring>() const </argsstring>
         <name>U</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1a007bd13ea8abb54cde5bd401295a9276" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -115,12 +73,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="60"/>
       </memberdef>
       </sectiondef>
@@ -134,12 +86,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sparse_i_l_u_preconditioner_1a684e0c40bcf0c62238f46e1615c2e157" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -151,17 +97,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/sparseilupreconditioner.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>References: <verbatim>   Saad, Yousef. 1996, Iterative methods for sparse linear systems,
    http://www-users.cs.umn.edu/~saad/books.html</verbatim> </para>    </detaileddescription>

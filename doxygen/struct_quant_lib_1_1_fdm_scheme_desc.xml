@@ -7,52 +7,22 @@
         <name>FdmSchemeType</name>
         <enumvalue id="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179af588792bcf9942c15fa476ea27434941" prot="public">
           <name>HundsdorferType</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a5c1a3e290f125ac052d1e9b0ac19ba41" prot="public">
           <name>DouglasType</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a3fb12bfbb4f42c81aec7bbbb0610521c" prot="public">
           <name>CraigSneydType</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a817bb12ff21d3a054c9a300e3b792f6b" prot="public">
           <name>ModifiedCraigSneydType</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a9e59b10cff30dfcc07c3d90ba9e03ce4" prot="public">
           <name>ImplicitEulerType</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179abda58cfadc362ab3e3fe96819977dcf9" prot="public">
           <name>ExplicitEulerType</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="36" bodyend="38"/>
       </memberdef>
       </sectiondef>
@@ -62,12 +32,6 @@
         <definition>const FdmSchemeType type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_scheme_desc_1a10f468e7786f066e29f562fcae039a87" prot="public" static="no" mutable="no">
@@ -75,12 +39,6 @@
         <definition>const Real theta</definition>
         <argsstring></argsstring>
         <name>theta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_scheme_desc_1a6040775a62badb3287320f921e52aac0" prot="public" static="no" mutable="no">
@@ -88,12 +46,6 @@
         <definition>const Real mu</definition>
         <argsstring></argsstring>
         <name>mu</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -115,12 +67,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>mu</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="40"/>
       </memberdef>
       </sectiondef>
@@ -130,12 +76,6 @@
         <definition>static FdmSchemeDesc Douglas</definition>
         <argsstring>()</argsstring>
         <name>Douglas</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_fdm_scheme_desc_1af47acad1f645e1147c623bf9a72c9bab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -143,12 +83,6 @@
         <definition>static FdmSchemeDesc ImplicitEuler</definition>
         <argsstring>()</argsstring>
         <name>ImplicitEuler</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_fdm_scheme_desc_1a9696d9642bc713b001ee47f728ae73a1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -156,12 +90,6 @@
         <definition>static FdmSchemeDesc ExplicitEuler</definition>
         <argsstring>()</argsstring>
         <name>ExplicitEuler</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_fdm_scheme_desc_1a6e312abeba2d1b3f0b7cae540801d36f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -169,12 +97,6 @@
         <definition>static FdmSchemeDesc CraigSneyd</definition>
         <argsstring>()</argsstring>
         <name>CraigSneyd</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_fdm_scheme_desc_1a1462340e051d7c2af547c29b77b11459" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -182,12 +104,6 @@
         <definition>static FdmSchemeDesc ModifiedCraigSneyd</definition>
         <argsstring>()</argsstring>
         <name>ModifiedCraigSneyd</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_fdm_scheme_desc_1afce89f5c626893465b70dce3ebf77935" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -195,12 +111,6 @@
         <definition>static FdmSchemeDesc Hundsdorfer</definition>
         <argsstring>()</argsstring>
         <name>Hundsdorfer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_fdm_scheme_desc_1adc090a4531b22012522231b528340e97" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -208,19 +118,9 @@
         <definition>static FdmSchemeDesc ModifiedHundsdorfer</definition>
         <argsstring>()</argsstring>
         <name>ModifiedHundsdorfer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="35" bodyend="53"/>
   </compounddef>
 </doxygen>

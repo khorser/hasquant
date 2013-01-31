@@ -12,15 +12,7 @@
           <name>ICEX</name>
           <briefdescription>
 <para><ref refid="class_quant_lib_1_1_iceland" kindref="compound">Iceland</ref> stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/iceland.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/iceland.hpp" bodystart="61" bodyend="62"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_iceland_1abe41cfffd960e29a5d8b07be00aeda42ab99c13187300a8891f4d715ef19f388c" kindref="member">ICEX</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/iceland.hpp" line="63"/>
       </memberdef>
       </sectiondef>

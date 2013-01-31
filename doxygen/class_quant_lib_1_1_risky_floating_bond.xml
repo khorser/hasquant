@@ -10,12 +10,6 @@
         <definition>Schedule schedule_</definition>
         <argsstring></argsstring>
         <name>schedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1ac4d3193ede2b988faca5add6071ef3dc" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>boost::shared_ptr&lt;IborIndex&gt; index_</definition>
         <argsstring></argsstring>
         <name>index_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1adc5cb56631f52f6c159dc07fd11f28bf" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Integer fixingDays_</definition>
         <argsstring></argsstring>
         <name>fixingDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1accd0b7c94edce093c72655b8f407dce9" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Real spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1ab0c2ba6da16ec8c201da972e61b08334" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>BusinessDayConvention paymentConvention_</definition>
         <argsstring></argsstring>
         <name>paymentConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1a6bbb9ef180bf5ecb750bbb9a698708c7" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>std::vector&lt;Real&gt; notionals_</definition>
         <argsstring></argsstring>
         <name>notionals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1af00981e3db10d723c89c5d9fae7ed26e" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; leg_</definition>
         <argsstring></argsstring>
         <name>leg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1a584b34c61b5c097312b83b8a5ed6cdc3" prot="private" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; interestLeg_</definition>
         <argsstring></argsstring>
         <name>interestLeg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_floating_bond_1a717e610d37479c65bc445906f244692f" prot="private" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; redemptionLeg_</definition>
         <argsstring></argsstring>
         <name>redemptionLeg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -182,12 +122,6 @@
           <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
           <declname>yieldTS</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="153"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1afa370ed34023fad18a16a731b4db2f33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -196,12 +130,6 @@
         <argsstring>() const </argsstring>
         <name>cashflows</name>
         <reimplements refid="class_quant_lib_1_1_risky_bond_1a65472f32ffe45cf2966fe454256b53d1">cashflows</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="154"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1aa2384a4500da600292b83a9dd7df4164" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -215,12 +143,6 @@
           <declname>date</declname>
           <defval><ref refid="class_quant_lib_1_1_date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="155"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a5a7ce2cc06cc4f622cfd651e7d22776f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -229,12 +151,6 @@
         <argsstring>() const </argsstring>
         <name>effectiveDate</name>
         <reimplements refid="class_quant_lib_1_1_risky_bond_1a4fd16e05df63a0060efd55ab4d2396bd">effectiveDate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -243,12 +159,6 @@
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <reimplements refid="class_quant_lib_1_1_risky_bond_1a580b196687c62f4d8576f11ef8987477">maturityDate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a9e4418003f465fb39df82e28d2879099" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -257,12 +167,6 @@
         <argsstring>() const </argsstring>
         <name>interestFlows</name>
         <reimplements refid="class_quant_lib_1_1_risky_bond_1a4587be7cee2cbaec53a7773806961f95">interestFlows</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a8a460b368ba6b41ae68c27347281a1ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -271,17 +175,9 @@
         <argsstring>() const </argsstring>
         <name>notionalFlows</name>
         <reimplements refid="class_quant_lib_1_1_risky_bond_1a0f39350cd04b9af24095c5345c33e103">notionalFlows</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="159"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Default risky floating bonds </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="142" bodyend="171"/>

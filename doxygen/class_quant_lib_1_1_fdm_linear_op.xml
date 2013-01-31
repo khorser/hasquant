@@ -11,12 +11,6 @@
         <definition>typedef Array array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -26,12 +20,6 @@
         <definition>virtual ~FdmLinearOp</definition>
         <argsstring>()</argsstring>
         <name>~FdmLinearOp</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_1adbd8c74d39db458bcb26da7d42d0039d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -43,19 +31,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" line="37"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" bodystart="33" bodyend="38"/>
   </compounddef>
 </doxygen>

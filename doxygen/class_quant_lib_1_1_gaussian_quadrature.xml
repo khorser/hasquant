@@ -17,12 +17,6 @@
         <definition>Array x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_quadrature_1a26573986379a1661fd23fad2dde2a1de" prot="private" static="no" mutable="no">
@@ -30,12 +24,6 @@
         <definition>Array w_</definition>
         <argsstring></argsstring>
         <name>w_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -53,12 +41,6 @@
           <type>const <ref refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial" kindref="compound">GaussianOrthogonalPolynomial</ref> &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -75,12 +57,6 @@
           <type>const F &amp;</type>
           <declname>f</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="53" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -88,12 +64,6 @@
         <definition>Size order</definition>
         <argsstring>() const </argsstring>
         <name>order</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -101,12 +71,6 @@
         <definition>const Array&amp; weights</definition>
         <argsstring>()</argsstring>
         <name>weights</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -114,12 +78,6 @@
         <definition>const Array&amp; x</definition>
         <argsstring>()</argsstring>
         <name>x</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>

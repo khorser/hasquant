@@ -34,12 +34,6 @@
         <definition>typedef MC&lt;RNG&gt;::path_type path_type</definition>
         <argsstring></argsstring>
         <name>path_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine_1a9e8c6745d46fec52af674b05ce5b75d7" prot="public" static="no">
@@ -47,12 +41,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine_1a7922dd7fea2c004ef3dc817d274cfe84" prot="public" static="no">
@@ -60,12 +48,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine_1a2e301ff1e9761ffd43e2e8a626d5ae90" prot="public" static="no">
@@ -73,12 +55,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -133,12 +109,6 @@
           <declname>nCalibrationSamples</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" bodystart="90" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -147,12 +117,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mclongstaffschwartzpathengine.hpp" bodystart="143" bodyend="162"/>
       </memberdef>
       </sectiondef>

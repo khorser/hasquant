@@ -48,17 +48,9 @@
         </param>
         <briefdescription>
 <para>quote constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="340" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="330" bodyend="343"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="327" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="326" bodyend="344"/>
   </compounddef>
 </doxygen>

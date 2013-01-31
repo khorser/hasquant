@@ -21,12 +21,6 @@
         <definition>std::vector&lt;Interpolation&gt; splines_</definition>
         <argsstring></argsstring>
         <name>splines_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -56,12 +50,6 @@
           <type>const M &amp;</type>
           <declname>zData</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="49" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1afe1d8348c24e6589bc7c0b3f689316a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -69,12 +57,6 @@
         <definition>void calculate</definition>
         <argsstring>()</argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="57" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1abea3518f04c55492b47c8a8d1a04ca12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -90,12 +72,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="67" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1a35279b56a8a434738b5210e5abe66376" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -111,12 +87,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="80" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1a23a1235d8e8f0ee2fe7f2bbf7ceb2f78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -132,12 +102,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="94" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1a9bb70b34a017142d208a3439a59238cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -153,12 +117,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="109" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1ab6aae1be2b04ee5d4eadd9d90dacd8b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -174,12 +132,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="122" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1a96c8f7599965301834826364d48349fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -195,19 +147,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="136" bodyend="148"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="45" bodyend="152"/>
   </compounddef>
 </doxygen>

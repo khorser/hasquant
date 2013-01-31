@@ -9,12 +9,6 @@
         <definition>const Handle&lt;HestonProcess&gt; hestonProcess_</definition>
         <argsstring></argsstring>
         <name>hestonProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a8744f9e6c6ce0b186aaf8006cd35a902" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Handle&lt;HullWhiteProcess&gt; hwProcess_</definition>
         <argsstring></argsstring>
         <name>hwProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a07da734fcac172a3a7f03a79b23d6282" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Real corrEquityShortRate_</definition>
         <argsstring></argsstring>
         <name>corrEquityShortRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const FdmSolverDesc solverDesc_</definition>
         <argsstring></argsstring>
         <name>solverDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1ae10c7ae34ed0e3ce83e1a5a1721fdc90" prot="private" static="no" mutable="yes">
@@ -74,12 +44,6 @@
         <definition>boost::shared_ptr&lt;Fdm3DimSolver&gt; solver_</definition>
         <argsstring></argsstring>
         <name>solver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -110,12 +74,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a8ca899964d252f44a19848b2df44f189" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -135,12 +93,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a3960366c3417f23b49058fc176e70142" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -160,12 +112,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a1ef1d27ef40702ffe91d44cd5b4bc6cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -189,12 +135,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>eps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_solver_1a7fb8adf61bb5c8b278aa1792fabdb514" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -218,19 +158,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>eps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonhullwhitesolver.hpp" bodystart="39" bodyend="71"/>
   </compounddef>
 </doxygen>

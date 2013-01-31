@@ -9,12 +9,6 @@
         <definition>Size numberOfExercises_</definition>
         <argsstring></argsstring>
         <name>numberOfExercises_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Time&gt; rateTimes_</definition>
         <argsstring></argsstring>
         <name>rateTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a218eed94df9c96a0b5fc23cacf4519dd" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>MarketModelMultiProduct::CashFlow cf_</definition>
         <argsstring></argsstring>
         <name>cf_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -80,12 +50,8 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="todo_1_todo000047"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>use <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="31"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1a5065f03e9f9e90f1a6ca2a593ab037b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -93,12 +59,6 @@
         <definition>Size numberOfExercises</definition>
         <argsstring>() const </argsstring>
         <name>numberOfExercises</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="32"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -106,12 +66,6 @@
         <definition>const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1a56865e26489f9b92ffd7aa1adf6cbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -119,12 +73,6 @@
         <definition>std::vector&lt;Time&gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1aa10274c0393aff9841d8518b3d839d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -135,12 +83,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -148,12 +90,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1aadcdfbd9bd7b7f0ac735eee073ac16c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -161,12 +97,6 @@
         <definition>std::valarray&lt;bool&gt; isExerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>isExerciseTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1a3f2baf413c69aaa28620e811247c6d05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -177,12 +107,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1a8568dae9b09cf4187f6823409cbf1a3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -190,19 +114,9 @@
         <definition>std::auto_ptr&lt;MarketModelExerciseValue&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="28" bodyend="49"/>
   </compounddef>
 </doxygen>

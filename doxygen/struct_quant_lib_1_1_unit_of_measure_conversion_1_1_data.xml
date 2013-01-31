@@ -8,12 +8,6 @@
         <definition>CommodityType commodityType</definition>
         <argsstring></argsstring>
         <name>commodityType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a66c4616a029db5ed59bff533aa1a8a8c" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>UnitOfMeasure source</definition>
         <argsstring></argsstring>
         <name>source</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a2ee40be10d97e428321d01988a33d969" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>UnitOfMeasure target</definition>
         <argsstring></argsstring>
         <name>target</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1acbaac6b0f096083c973ed8834116081f" prot="public" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>Real conversionFactor</definition>
         <argsstring></argsstring>
         <name>conversionFactor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" static="no" mutable="no">
@@ -73,12 +43,6 @@
         <definition>std::string code</definition>
         <argsstring></argsstring>
         <name>code</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a63e0fb715621eb4188bd9ec80f27019b" prot="public" static="no" mutable="no">
@@ -86,12 +50,6 @@
         <definition>std::pair&lt;boost::shared_ptr&lt;UnitOfMeasureConversion&gt;, boost::shared_ptr&lt;UnitOfMeasureConversion&gt; &gt; conversionFactorChain</definition>
         <argsstring></argsstring>
         <name>conversionFactorChain</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -121,12 +79,6 @@
           <type>Type</type>
           <declname>type</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1aaac39388f08bef694c95f9491182deb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -142,19 +94,9 @@
           <type>const UnitOfMeasureConversion &amp;</type>
           <declname>r2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="102"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="85" bodyend="103"/>
   </compounddef>
 </doxygen>

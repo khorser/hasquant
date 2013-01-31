@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;std::string&gt; message_</definition>
         <argsstring></argsstring>
         <name>message_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +36,8 @@
           <declname>message</declname>
           <defval>&quot;&quot;</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The explicit use of this constructor is not advised. Use the QL_FAIL macro instead. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_error_1a9e90ca50dff9f67db785f712731faa43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -56,12 +46,8 @@
         <argsstring>()</argsstring>
         <name>~Error</name>
         <exceptions> throw ()</exceptions>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>the automatically generated destructor would not have the throw specifier. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_error_1a586eee248fedb7de1b50219e14b99c7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -72,17 +58,11 @@
         <exceptions> throw ()</exceptions>
         <briefdescription>
 <para>returns the error message. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base error class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="38" bodyend="55"/>
   </compounddef>
 </doxygen>

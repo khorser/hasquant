@@ -17,10 +17,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="50"/>
       </memberdef>
       </sectiondef>
@@ -31,12 +27,6 @@
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -44,12 +34,6 @@
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +41,6 @@
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a4487eeb30731c49f34adc51f011ee981" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +48,6 @@
         <definition>boost::shared_ptr&lt; Payoff &gt; payoff</definition>
         <argsstring>() const </argsstring>
         <name>payoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       </sectiondef>
@@ -101,12 +73,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -118,12 +84,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/varianceoption.hpp" line="59"/>
       </memberdef>
       </sectiondef>

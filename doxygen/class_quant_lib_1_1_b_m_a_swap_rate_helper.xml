@@ -12,12 +12,6 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="295"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -28,12 +22,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="296"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +36,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="300"/>
       </memberdef>
       </sectiondef>
@@ -99,19 +81,11 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="292"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Rate helper for bootstrapping over BMA swap rates. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="280" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="280" bodyend="315"/>
   </compounddef>
 </doxygen>

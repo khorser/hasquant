@@ -17,12 +17,6 @@
         <definition>Time time</definition>
         <argsstring>() const </argsstring>
         <name>time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a252c914b2d10cfe6e7d555128185d5d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -30,12 +24,6 @@
         <definition>Time&amp; time</definition>
         <argsstring>()</argsstring>
         <name>time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a48c7f1d36a56d07e9e3e80d431cbd83f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -43,12 +31,6 @@
         <definition>const Array&amp; values</definition>
         <argsstring>() const </argsstring>
         <name>values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1aa3153146194de0ef429000ccd8c7eb25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -56,12 +38,6 @@
         <definition>Array&amp; values</definition>
         <argsstring>()</argsstring>
         <name>values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1ac84cebad0f78a2f5a5e9228b900bfab5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -69,12 +45,6 @@
         <definition>const boost::shared_ptr&lt;Lattice&gt;&amp; method</definition>
         <argsstring>() const </argsstring>
         <name>method</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="50" bodyend="52"/>
       </memberdef>
       </sectiondef>
@@ -94,12 +64,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="182" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1aef4cbc1d4c3994be66cc8b8a943e5151" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -111,12 +75,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>to</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="189" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1aa2f3ac04333282912860221a3b90e23b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -128,12 +86,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>to</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a6c08e31d5f5a5d45b311bae8c7f4b0f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -141,12 +93,6 @@
         <definition>Real presentValue</definition>
         <argsstring>()</argsstring>
         <name>presentValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="197" bodyend="199"/>
       </memberdef>
       </sectiondef>
@@ -164,12 +110,8 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>size</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method should initialize the asset values to an <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -177,12 +119,8 @@
         <definition>void preAdjustValues</definition>
         <argsstring>()</argsstring>
         <name>preAdjustValues</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method will be invoked after rollback and before any other asset (i.e., an option on this one) has any chance to look at the values. For instance, payments happening at times already spanned by the rollback will be added here.</para><para>This method is not virtual; derived classes must override the protected <ref refid="class_quant_lib_1_1_discretized_asset_1a1cd0989529ea6494ee706dd772506455" kindref="member">preAdjustValuesImpl()</ref> method instead. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="201" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -190,12 +128,8 @@
         <definition>void postAdjustValues</definition>
         <argsstring>()</argsstring>
         <name>postAdjustValues</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method will be invoked after rollback and after any other asset had their chance to look at the values. For instance, payments happening at the present time (and therefore not included in an option to be exercised at this time) will be added here.</para><para>This method is not virtual; derived classes must override the protected <ref refid="class_quant_lib_1_1_discretized_asset_1a371a4f1247c8ff3fc41d288a3ab3164a" kindref="member">postAdjustValuesImpl()</ref> method instead. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="208" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -203,12 +137,8 @@
         <definition>void adjustValues</definition>
         <argsstring>()</argsstring>
         <name>adjustValues</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method performs both pre- and post-adjustment </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="112" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1ace8de2f1297ce9bfbfb64cdf13f98ddc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -218,13 +148,9 @@
         <name>mandatoryTimes</name>
         <reimplementedby refid="class_quant_lib_1_1_discretized_discount_bond_1a6e828e998575c34212a2a16f6cba617d">mandatoryTimes</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_discretized_option_1abf1a1554b3879da28736befc32b88312">mandatoryTimes</reimplementedby>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method returns the times at which the numerical method should stop while rolling back the asset. Typical examples include payment times, exercise times and such.</para><para><simplesect kind="note"><para>The returned values are not guaranteed to be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="123"/>
       </memberdef>
       </sectiondef>
@@ -234,12 +160,6 @@
         <definition>boost::shared_ptr&lt;Lattice&gt; method_</definition>
         <argsstring></argsstring>
         <name>method_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -249,12 +169,6 @@
         <definition>DiscretizedAsset</definition>
         <argsstring>()</argsstring>
         <name>DiscretizedAsset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="37" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a2790be8448a44e9a466515cec789566d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -262,19 +176,11 @@
         <definition>virtual ~DiscretizedAsset</definition>
         <argsstring>()</argsstring>
         <name>~DiscretizedAsset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Discretized asset class used by numerical methods. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="35" bodyend="139"/>
   </compounddef>
 </doxygen>

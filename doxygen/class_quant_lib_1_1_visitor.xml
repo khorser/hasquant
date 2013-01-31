@@ -14,12 +14,6 @@
         <definition>virtual ~Visitor</definition>
         <argsstring>()</argsstring>
         <name>~Visitor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_visitor_1a6d7e98e3f298924633a9ba9bf5b04a83" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -30,19 +24,11 @@
         <param>
           <type>T &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Visitor for a specific class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="40" bodyend="44"/>
   </compounddef>
 </doxygen>

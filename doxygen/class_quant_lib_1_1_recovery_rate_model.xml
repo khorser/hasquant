@@ -20,12 +20,8 @@
           <declname>defaultKey</declname>
           <defval><ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the expected recovery rate at a future time conditional on some default event type and seniority. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="38" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a8be5f6243e76fbc12665e1111531fb66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -37,12 +33,8 @@
         <param>
           <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns true if the model will return recovery rates for the requested seniority. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a37915b226f19351027ec846e3af7e44e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -50,17 +42,9 @@
         <definition>virtual ~RecoveryRateModel</definition>
         <argsstring>()</argsstring>
         <name>~RecoveryRateModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Models of the recovery rate provide future values of a recovery rate in the event of a default. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="33" bodyend="55"/>

@@ -71,8 +71,6 @@
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
         <detaileddescription>
 <para>The dates are those of the volatility ... there is no lag on the dates <bold>but</bold> they are relative to a start date earlier than the reference date as always for inflation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="125" bodyend="161"/>
       </memberdef>
       </sectiondef>
@@ -86,10 +84,6 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -100,10 +94,6 @@
         <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -115,10 +105,6 @@
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="71" bodyend="75"/>
       </memberdef>
       </sectiondef>
@@ -130,12 +116,6 @@
         <argsstring>() const </argsstring>
         <name>times</name>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1aa338cfa77dc3c8dc467f4225459094fd">times</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a89257bfeb91871645a70c5370fd7cbc5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -144,12 +124,6 @@
         <argsstring>() const </argsstring>
         <name>dates</name>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a021de10463e6e18e294494d7cbb2b75d">dates</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abe2ca418f8f3bcc37a8bcbe60533b40b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -158,12 +132,6 @@
         <argsstring>() const </argsstring>
         <name>data</name>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f">data</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -172,12 +140,6 @@
         <argsstring>() const </argsstring>
         <name>nodes</name>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ad18c145fb4f30b90c7f7a93f9b36417e">nodes</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       </sectiondef>
@@ -187,12 +149,6 @@
         <definition>virtual ~InterpolatedYoYOptionletVolatilityCurve</definition>
         <argsstring>()</argsstring>
         <name>~InterpolatedYoYOptionletVolatilityCurve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyinflationoptionletvolatilitystructure2.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>

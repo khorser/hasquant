@@ -9,12 +9,6 @@
         <definition>const Handle&lt;ExtendedOrnsteinUhlenbeckProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
         <argsstring></argsstring>
         <name>rTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const FdmSolverDesc solverDesc_</definition>
         <argsstring></argsstring>
         <name>solverDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
@@ -61,12 +37,6 @@
         <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
         <argsstring></argsstring>
         <name>solver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +63,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a54a3d3adf137f4c0b938cea30a8c2022" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -114,19 +78,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="39" bodyend="74"/>
   </compounddef>
 </doxygen>

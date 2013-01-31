@@ -17,10 +17,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -31,12 +27,6 @@
         <definition>Real strike</definition>
         <argsstring>() const </argsstring>
         <name>strike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1a9b0616b9de40e7e78a627c74bfa3dd03" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -44,12 +34,6 @@
         <definition>Position::Type position</definition>
         <argsstring>() const </argsstring>
         <name>position</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +41,6 @@
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +48,6 @@
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -83,12 +55,6 @@
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -96,12 +62,6 @@
         <definition>Real variance</definition>
         <argsstring>() const </argsstring>
         <name>variance</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="63"/>
       </memberdef>
       </sectiondef>
@@ -131,12 +91,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -148,12 +102,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -166,12 +116,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="67"/>
       </memberdef>
       </sectiondef>

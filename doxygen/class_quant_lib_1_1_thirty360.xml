@@ -12,45 +12,19 @@
         <name>Convention</name>
         <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a0b949744f995e4aac602f82be588ce52" prot="public">
           <name>USA</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578afe525918c971133e32a527175e35536a" prot="public">
           <name>BondBasis</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public">
           <name>European</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a0ece34ef1403167787124ec002789bc9" prot="public">
           <name>EurobondBasis</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a38200c77a50e3b8a545863777de3bb57" prot="public">
           <name>Italian</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +38,6 @@
           <type>Convention</type>
           <declname>c</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="93"/>
       </memberdef>
       </sectiondef>
@@ -84,12 +52,6 @@
           <declname>c</declname>
           <defval>Thirty360::BondBasis</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="95" bodyend="96"/>
       </memberdef>
       </sectiondef>

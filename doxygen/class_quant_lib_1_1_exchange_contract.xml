@@ -8,12 +8,6 @@
         <definition>ExchangeContract</definition>
         <argsstring>()</argsstring>
         <name>ExchangeContract</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_contract_1a0b4f988db4375fadf6e5edaa4c644d92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -37,12 +31,6 @@
           <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
           <declname>underlyingEndDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="53" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_contract_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -50,12 +38,6 @@
         <definition>const std::string &amp; code</definition>
         <argsstring>() const </argsstring>
         <name>code</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_contract_1ac739e63239160e19b2966f2b4e6633ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -63,12 +45,6 @@
         <definition>const Date &amp; expirationDate</definition>
         <argsstring>() const </argsstring>
         <name>expirationDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_contract_1a67bfc88e4dabb491decb148a640f8096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -76,12 +52,6 @@
         <definition>const Date &amp; underlyingStartDate</definition>
         <argsstring>() const </argsstring>
         <name>underlyingStartDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_contract_1a13d5cf7d79bb8518be7001833044b0c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -89,19 +59,9 @@
         <definition>const Date &amp; underlyingEndDate</definition>
         <argsstring>() const </argsstring>
         <name>underlyingEndDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="32" bodyend="49"/>
   </compounddef>
 </doxygen>

@@ -8,12 +8,6 @@
         <definition>Period p</definition>
         <argsstring></argsstring>
         <name>p</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -27,19 +21,9 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="111" bodyend="114"/>
   </compounddef>
 </doxygen>

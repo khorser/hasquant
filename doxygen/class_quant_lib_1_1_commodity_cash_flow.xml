@@ -10,12 +10,6 @@
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       </sectiondef>
@@ -26,12 +20,6 @@
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="76"/>
       </memberdef>
       </sectiondef>
@@ -60,12 +42,6 @@
         <definition>Date date_</definition>
         <argsstring></argsstring>
         <name>date_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1a08cd4e6fb04071f05afd05b5bff9c53b" prot="private" static="no" mutable="no">
@@ -73,12 +49,6 @@
         <definition>Money discountedAmount_</definition>
         <argsstring></argsstring>
         <name>discountedAmount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1afea7578367a27314fd6834469ebfb3be" prot="private" static="no" mutable="no">
@@ -86,12 +56,6 @@
         <definition>Money undiscountedAmount_</definition>
         <argsstring></argsstring>
         <name>undiscountedAmount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1afd974ea5c618910e5d39e6e4eedbad00" prot="private" static="no" mutable="no">
@@ -99,12 +63,6 @@
         <definition>Money discountedPaymentAmount_</definition>
         <argsstring></argsstring>
         <name>discountedPaymentAmount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1a6ed9380701f0cd249d64b1d1c6fbbae1" prot="private" static="no" mutable="no">
@@ -112,12 +70,6 @@
         <definition>Money undiscountedPaymentAmount_</definition>
         <argsstring></argsstring>
         <name>undiscountedPaymentAmount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1a66b4140fae915e18de3885d515814f78" prot="private" static="no" mutable="no">
@@ -125,12 +77,6 @@
         <definition>Real discountFactor_</definition>
         <argsstring></argsstring>
         <name>discountFactor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1ac25ef1ec8eec75b409ef5e05075e5e2f" prot="private" static="no" mutable="no">
@@ -138,12 +84,6 @@
         <definition>Real paymentDiscountFactor_</definition>
         <argsstring></argsstring>
         <name>paymentDiscountFactor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1ae3118963d637df1bf46db66f470747e6" prot="private" static="no" mutable="no">
@@ -151,12 +91,6 @@
         <definition>bool finalized_</definition>
         <argsstring></argsstring>
         <name>finalized_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -198,12 +132,6 @@
           <type>bool</type>
           <declname>finalized</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="35" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -211,12 +139,6 @@
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1ab04d5221505107ea155d143d01a7cbe2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -224,12 +146,6 @@
         <definition>const Money&amp; discountedAmount</definition>
         <argsstring>() const </argsstring>
         <name>discountedAmount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1a38edc7ec71e7a51c6765b7bebc9ca9ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -237,12 +153,6 @@
         <definition>const Money&amp; undiscountedAmount</definition>
         <argsstring>() const </argsstring>
         <name>undiscountedAmount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1a97ff16ba4e32b820a6911442c4b8b035" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -250,12 +160,6 @@
         <definition>const Money&amp; discountedPaymentAmount</definition>
         <argsstring>() const </argsstring>
         <name>discountedPaymentAmount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1a42e73bc768a738ead747416432788acf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -263,12 +167,6 @@
         <definition>const Money&amp; undiscountedPaymentAmount</definition>
         <argsstring>() const </argsstring>
         <name>undiscountedPaymentAmount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1acecc6b85124ee43e451d5ade7febad2a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -276,12 +174,6 @@
         <definition>Real discountFactor</definition>
         <argsstring>() const </argsstring>
         <name>discountFactor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1a618f954645d8081b34c2bd86f97cee57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -289,12 +181,6 @@
         <definition>Real paymentDiscountFactor</definition>
         <argsstring>() const </argsstring>
         <name>paymentDiscountFactor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1a80c4a5e88b88fe723a7536ab6456faab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -302,19 +188,9 @@
         <definition>bool finalized</definition>
         <argsstring>() const </argsstring>
         <name>finalized</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="33" bodyend="84"/>
   </compounddef>
 </doxygen>

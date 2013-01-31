@@ -10,12 +10,6 @@
         <definition>Real variance</definition>
         <argsstring></argsstring>
         <name>variance</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,19 +19,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="97" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from variance-swap calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="94" bodyend="101"/>
   </compounddef>
 </doxygen>

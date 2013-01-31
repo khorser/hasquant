@@ -9,12 +9,6 @@
         <definition>Option::Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ae4163a3dd4d0d8f6bd5c9c82321ff0f0" prot="public" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Date fixDate</definition>
         <argsstring></argsstring>
         <name>fixDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1aebed7f368494937495cfdf5ee9e85cab" prot="public" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Date payDate</definition>
         <argsstring></argsstring>
         <name>payDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a7147aec61f1b39b7940bbfd1cd859f47" prot="public" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Real baseCPI</definition>
         <argsstring></argsstring>
         <name>baseCPI</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a43cdf885457559a4b455fed55a1a27dd" prot="public" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>Date maturity</definition>
         <argsstring></argsstring>
         <name>maturity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a8b6b1f982a630c25d1addb947caaba20" prot="public" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>Calendar fixCalendar</definition>
         <argsstring></argsstring>
         <name>fixCalendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a564ccb9747850bf2b905b55aab9aaaf5" prot="public" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>Calendar payCalendar</definition>
         <argsstring></argsstring>
         <name>payCalendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ada67439b509ef6c29b3ea133750d0253" prot="public" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>BusinessDayConvention fixConvention</definition>
         <argsstring></argsstring>
         <name>fixConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ac5be8de9a77f16aae5dcedd748b64c2c" prot="public" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>BusinessDayConvention payConvention</definition>
         <argsstring></argsstring>
         <name>payConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a9a4a33b294edec6ebb0de2820c5f8408" prot="public" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>Rate strike</definition>
         <argsstring></argsstring>
         <name>strike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a4d7374959254cdc28051707949d34a53" prot="public" static="no" mutable="no">
@@ -165,12 +93,6 @@
         <definition>Handle&lt;ZeroInflationIndex&gt; infIndex</definition>
         <argsstring></argsstring>
         <name>infIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a70e540d91380c6a734f04886ff863e8e" prot="public" static="no" mutable="no">
@@ -178,12 +100,6 @@
         <definition>Period observationLag</definition>
         <argsstring></argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1accbbdff5a9957196a62671150550449d" prot="public" static="no" mutable="no">
@@ -191,12 +107,6 @@
         <definition>CPI::InterpolationType observationInterpolation</definition>
         <argsstring></argsstring>
         <name>observationInterpolation</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -206,19 +116,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="131"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="117" bodyend="132"/>
   </compounddef>
 </doxygen>

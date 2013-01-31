@@ -9,12 +9,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1_1_u_s___impl_1a3b9b190e8748f2ad7cf3e9591ad52a0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -30,12 +24,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1_1_u_s___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,19 +45,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="65" bodyend="69"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="60" bodyend="70"/>
   </compounddef>
 </doxygen>

@@ -12,12 +12,6 @@
         <definition>DividendSchedule cashFlow_</definition>
         <argsstring></argsstring>
         <name>cashFlow_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +37,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>dividends</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_vanilla_option_1a95c0837ce9c4bcc4cb9b9ff975f3bfe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -84,19 +72,13 @@
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000055"><xreftitle>Warning</xreftitle><xrefdescription><para>see <ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref> for notes on implied-volatility calculation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-asset vanilla option (no barriers) with discrete dividends. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="37" bodyend="60"/>
   </compounddef>
 </doxygen>

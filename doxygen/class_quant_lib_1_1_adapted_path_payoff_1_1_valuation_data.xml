@@ -8,12 +8,6 @@
         <definition>friend class AdaptedPathPayoff</definition>
         <argsstring></argsstring>
         <name>AdaptedPathPayoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -23,12 +17,6 @@
         <definition>const Matrix&amp; path_</definition>
         <argsstring></argsstring>
         <name>path_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ab74a9b33ec948b2a4614894b4e996798" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const std::vector&lt;Handle&lt;YieldTermStructure&gt; &gt;&amp; forwardTermStructures_</definition>
         <argsstring></argsstring>
         <name>forwardTermStructures_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ab8d572f490945a2a251f5435006d0983" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Array&amp; payments_</definition>
         <argsstring></argsstring>
         <name>payments_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a1608af2f8dfa82baa65721f3a1257ecf" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Array&amp; exercises_</definition>
         <argsstring></argsstring>
         <name>exercises_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a1d32222ae0be0c19a85a7cb37b1253b8" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>std::vector&lt;Array&gt;&amp; states_</definition>
         <argsstring></argsstring>
         <name>states_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a2d8654d02951034f8d696086cb87b57b" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>Size maximumTimeRead_</definition>
         <argsstring></argsstring>
         <name>maximumTimeRead_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -103,12 +61,6 @@
         <definition>Size numberOfTimes</definition>
         <argsstring>() const </argsstring>
         <name>numberOfTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a0a804d35ee0bc871bf757c4db1ca905a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -116,12 +68,6 @@
         <definition>Size numberOfAssets</definition>
         <argsstring>() const </argsstring>
         <name>numberOfAssets</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ae3650f31c99da4860d1aba3056cc3e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -137,12 +83,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>asset</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a73eeecaf6052dadb5fc2447aff7b2d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -154,12 +94,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>time</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ac0c2a2fde164119aa0db6a59c3039999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -175,12 +109,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a4747e7f3d78af594cb1590bd7d32581e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -200,12 +128,6 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>state</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="47"/>
       </memberdef>
       </sectiondef>
@@ -235,19 +157,9 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &amp;</type>
           <declname>states</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="34" bodyend="67"/>
   </compounddef>
 </doxygen>

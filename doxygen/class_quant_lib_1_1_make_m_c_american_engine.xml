@@ -19,12 +19,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
@@ -32,12 +26,6 @@
         <definition>bool antithetic_</definition>
         <argsstring></argsstring>
         <name>antithetic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a1c27fd78e44f207125a15990d39ad4f5" prot="private" static="no" mutable="no">
@@ -45,12 +33,6 @@
         <definition>bool controlVariate_</definition>
         <argsstring></argsstring>
         <name>controlVariate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" static="no" mutable="no">
@@ -58,12 +40,6 @@
         <definition>Size steps_</definition>
         <argsstring></argsstring>
         <name>steps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" static="no" mutable="no">
@@ -71,12 +47,6 @@
         <definition>Size stepsPerYear_</definition>
         <argsstring></argsstring>
         <name>stepsPerYear_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -84,12 +54,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -97,12 +61,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a7ff206b890b8b59edb2a71e34f6836ac" prot="private" static="no" mutable="no">
@@ -110,12 +68,6 @@
         <definition>Size calibrationSamples_</definition>
         <argsstring></argsstring>
         <name>calibrationSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -123,12 +75,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -136,12 +82,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a72b1f12993111e76ce1324e1cda416b3" prot="private" static="no" mutable="no">
@@ -149,12 +89,6 @@
         <definition>Size polynomOrder_</definition>
         <argsstring></argsstring>
         <name>polynomOrder_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_american_engine_1a9314a66fb961746487facfea82d9eeeb" prot="private" static="no" mutable="no">
@@ -162,12 +96,6 @@
         <definition>LsmBasisSystem::PolynomType polynomType_</definition>
         <argsstring></argsstring>
         <name>polynomType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -181,12 +109,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <defname>process</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="247" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a1e2014ef955181953e7cee89a8bc45b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -198,12 +120,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="274" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a6173cdad29cb3457267df9c4e9765bfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -215,12 +131,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="281" bodyend="284"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a22eb14626e60b0100c56f06c3962ae82" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -232,12 +142,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="288" bodyend="293"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1ac6cd895b87605c2e2c2abd1595c2d94e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -249,12 +153,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="297" bodyend="305"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1acb1a2381e08ae45cb0b8fe92eec53482" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -266,12 +164,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="309" bodyend="312"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a5189c6e021ad3b7b9def772f3387512d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -283,12 +175,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="323" bodyend="326"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a8635128ef9a58a27fb2e766facfc5ceb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -301,12 +187,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="330" bodyend="333"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1ac52db43cccebc8db7feda06184e1d158" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -319,12 +199,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="337" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1ad31e3487ee6cf17bdb33452b92462364" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -336,12 +210,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>polynomOrer</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="259" bodyend="262"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a4f791c58ab6c1f807affdd8645543e57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -353,12 +221,6 @@
           <type>LsmBasisSystem::PolynomType</type>
           <defname>polynomType</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="266" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a79fd7d285b4900128879823c52e68e2c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -370,12 +232,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>calibrationSamples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="316" bodyend="319"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_american_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -383,19 +239,11 @@
         <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="345" bodyend="363"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo American engine factory. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="103" bodyend="131"/>
   </compounddef>
 </doxygen>

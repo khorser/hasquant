@@ -9,12 +9,6 @@
         <definition>Time exerciseTime_</definition>
         <argsstring></argsstring>
         <name>exerciseTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a73cfad8707a6a802108b5bb7e04aca75" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a916e217d41c78e01caf44eab39c2f47d" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>boost::shared_ptr&lt;HybridHestonHullWhiteProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -62,12 +44,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a2ecf590215498be156b97e02b2bc327c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -79,19 +55,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="102"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="95" bodyend="108"/>
   </compounddef>
 </doxygen>

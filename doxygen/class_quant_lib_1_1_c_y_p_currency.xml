@@ -10,12 +10,6 @@
         <definition>CYPCurrency</definition>
         <argsstring>()</argsstring>
         <name>CYPCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="96" bodyend="103"/>
       </memberdef>
       </sectiondef>

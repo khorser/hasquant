@@ -12,12 +12,6 @@
         <definition>Real delta</definition>
         <argsstring></argsstring>
         <name>delta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1aeb695f823ca39262c951705759792d22" prot="public" static="no" mutable="no">
@@ -25,12 +19,6 @@
         <definition>Real gamma</definition>
         <argsstring></argsstring>
         <name>gamma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1a2c52330fe605e3d67b38b448db51a49c" prot="public" static="no" mutable="no">
@@ -38,12 +26,6 @@
         <definition>Real theta</definition>
         <argsstring></argsstring>
         <name>theta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1af9da45f4580b5165ceb0da994368b510" prot="public" static="no" mutable="no">
@@ -51,12 +33,6 @@
         <definition>Real vega</definition>
         <argsstring></argsstring>
         <name>vega</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1ae07d6de71cc56577f5d379b54839ba8c" prot="public" static="no" mutable="no">
@@ -64,12 +40,6 @@
         <definition>Real rho</definition>
         <argsstring></argsstring>
         <name>rho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1a7c5d299a74a83de4dd1b4ef52afb6209" prot="public" static="no" mutable="no">
@@ -77,12 +47,6 @@
         <definition>Real dividendRho</definition>
         <argsstring></argsstring>
         <name>dividendRho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -92,19 +56,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="71" bodyend="74"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>additional option results </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="69" bodyend="79"/>
   </compounddef>
 </doxygen>

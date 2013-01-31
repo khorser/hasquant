@@ -9,12 +9,6 @@
         <definition>Handle&lt;DefaultProbabilityTermStructure&gt; probability_</definition>
         <argsstring></argsstring>
         <name>probability_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real recoveryRate_</definition>
         <argsstring></argsstring>
         <name>recoveryRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
         <argsstring></argsstring>
         <name>discountCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a4c03bc11ff086bfab1c39eb1409e968a" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>boost::optional&lt;bool&gt; includeSettlementDateFlows_</definition>
         <argsstring></argsstring>
         <name>includeSettlementDateFlows_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -79,12 +55,6 @@
           <declname>includeSettlementDateFlows</declname>
           <defval>boost::none</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mid_point_cds_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -92,19 +62,9 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="40"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="33" bodyend="46"/>
   </compounddef>
 </doxygen>

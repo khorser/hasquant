@@ -19,12 +19,6 @@
           <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
           <declname>mesher</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a11bab5c39534effd2a44c4e4d509e37d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -36,12 +30,6 @@
           <type>const TripleBandLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a9122005cf83508433737ae6e442fd482" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -53,12 +41,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt; &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a572b1e1e16afcea51552436497fbb7d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -70,12 +52,6 @@
           <type>const TripleBandLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a585060eaa7e0eea2cf8fd5cfeb1001f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -87,12 +63,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; TripleBandLinearOp &gt; &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -104,12 +74,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1ab600bd5bcc452143dc9a119770105596" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -130,12 +94,6 @@
           <declname>b</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a5c2399c01dda1dc7a7a644bf952be9d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -147,12 +105,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>u</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1aceb2c2e48cf546c87dd85b17cc6b1a87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -164,12 +116,6 @@
           <type>const TripleBandLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a2d8a9665e40e497d6002f382ec9654fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -181,12 +127,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>u</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1a5b3cacf9588f76379b365403874a3ae1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -210,12 +150,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1ac58acdb9da28bd0608d8996a51d99242" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -227,19 +161,9 @@
           <type>TripleBandLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="62"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="40" bodyend="73"/>
   </compounddef>
 </doxygen>

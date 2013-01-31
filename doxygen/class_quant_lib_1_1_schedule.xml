@@ -10,12 +10,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1abea66c4e6c7c0c704595dc74f62928b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,12 +21,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="144" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1ad8552a3b104393c179d57ae4c2a631db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -44,12 +32,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="152" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a85d2e0e17f5004717b41200157dd4a14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -61,12 +43,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a51fc99caf0d0a0ba4d3f2c38c0d5d4ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -78,12 +54,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a5e307fb35beca9fe67dad8cddbb205b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -95,12 +65,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a6a149d4beeac42703f37f63defbff974" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -108,12 +72,6 @@
         <definition>const std::vector&lt;Date&gt;&amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a439b40d8814b479267bf0c02db12b78c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -125,12 +83,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="65"/>
       </memberdef>
       </sectiondef>
@@ -141,12 +93,6 @@
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -154,12 +100,6 @@
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9deedb3b118e820860f37c71cd37ce15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -167,12 +107,6 @@
         <definition>const Date &amp; startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="160" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a8d374dd66ad92e67b93771d7bcbe96b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -180,12 +114,6 @@
         <definition>const Date &amp; endDate</definition>
         <argsstring>() const </argsstring>
         <name>endDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="164" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a64d90b59ffaef1de9780c3c509bb4789" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -193,12 +121,6 @@
         <definition>const Period &amp; tenor</definition>
         <argsstring>() const </argsstring>
         <name>tenor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="168" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -206,12 +128,6 @@
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a2ff4fd27cc61edade690751ad64c9787" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -219,12 +135,6 @@
         <definition>BusinessDayConvention terminationDateBusinessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>terminationDateBusinessDayConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="178" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a0c65bb19459f2af9f74de89865036dcf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -232,12 +142,6 @@
         <definition>DateGeneration::Rule rule</definition>
         <argsstring>() const </argsstring>
         <name>rule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="183" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a4bea961a3d8f31ed8c30118ed855cc92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -245,12 +149,6 @@
         <definition>bool endOfMonth</definition>
         <argsstring>() const </argsstring>
         <name>endOfMonth</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="188" bodyend="191"/>
       </memberdef>
       </sectiondef>
@@ -261,12 +159,6 @@
         <definition>typedef std::vector&lt;Date&gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -274,12 +166,6 @@
         <definition>const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -287,12 +173,6 @@
         <definition>const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9811026ccee1b6de7481c37c0c781473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -305,12 +185,6 @@
           <declname>d</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="84"/>
       </memberdef>
       </sectiondef>
@@ -327,10 +201,6 @@
         </param>
         <briefdescription>
 <para>truncated schedule </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="89"/>
       </memberdef>
       </sectiondef>
@@ -340,12 +210,6 @@
         <definition>bool fullInterface_</definition>
         <argsstring></argsstring>
         <name>fullInterface_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a6f1e4aec3cba6f7cea92368273728ec8" prot="private" static="no" mutable="no">
@@ -353,12 +217,6 @@
         <definition>Period tenor_</definition>
         <argsstring></argsstring>
         <name>tenor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
@@ -366,12 +224,6 @@
         <definition>Calendar calendar_</definition>
         <argsstring></argsstring>
         <name>calendar_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a80921adec5b2e5641608d33585ec2a17" prot="private" static="no" mutable="no">
@@ -379,12 +231,6 @@
         <definition>BusinessDayConvention convention_</definition>
         <argsstring></argsstring>
         <name>convention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a6400d52ef03354136025a33925114cad" prot="private" static="no" mutable="no">
@@ -392,12 +238,6 @@
         <definition>BusinessDayConvention terminationDateConvention_</definition>
         <argsstring></argsstring>
         <name>terminationDateConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a8a0428b85c9033946cc024aa41a482eb" prot="private" static="no" mutable="no">
@@ -405,12 +245,6 @@
         <definition>DateGeneration::Rule rule_</definition>
         <argsstring></argsstring>
         <name>rule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a0f9cce4f14d75f9e75dcba9a025ee764" prot="private" static="no" mutable="no">
@@ -418,12 +252,6 @@
         <definition>bool endOfMonth_</definition>
         <argsstring></argsstring>
         <name>endOfMonth_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a694f4875a6fafbb45f10ca444b27896b" prot="private" static="no" mutable="no">
@@ -431,12 +259,6 @@
         <definition>Date firstDate_</definition>
         <argsstring></argsstring>
         <name>firstDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1afde7abedc2b785ed6f3af2ddf11c7b23" prot="private" static="no" mutable="no">
@@ -444,12 +266,6 @@
         <definition>Date nextToLastDate_</definition>
         <argsstring></argsstring>
         <name>nextToLastDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="private" static="no" mutable="no">
@@ -457,12 +273,6 @@
         <definition>std::vector&lt;Date&gt; dates_</definition>
         <argsstring></argsstring>
         <name>dates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_schedule_1a5880186a12471095562194711a2dc8ba" prot="private" static="no" mutable="no">
@@ -470,12 +280,6 @@
         <definition>std::vector&lt;bool&gt; isRegular_</definition>
         <argsstring></argsstring>
         <name>isRegular_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -498,12 +302,6 @@
           <declname>convention</declname>
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a5fb8b90b7fdf1a3a228fbbc083e64547" kindref="member">Unadjusted</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a79964effbd46511798359c767d9b57cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -553,12 +351,6 @@
           <declname>nextToLastDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_schedule_1ab534bc60e45c15592f49ea029f95e81e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -566,19 +358,11 @@
         <definition>Schedule</definition>
         <argsstring>()</argsstring>
         <name>Schedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Payment schedule. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="40" bodyend="101"/>
   </compounddef>
 </doxygen>

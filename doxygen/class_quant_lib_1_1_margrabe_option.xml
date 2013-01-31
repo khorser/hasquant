@@ -24,12 +24,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -41,12 +35,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a80047a0f4c6aa402065a92d49a30909e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -54,12 +44,6 @@
         <definition>Real delta1</definition>
         <argsstring>() const </argsstring>
         <name>delta1</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a5d5e115b72bfe6f0934eac38ae511a97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -67,12 +51,6 @@
         <definition>Real delta2</definition>
         <argsstring>() const </argsstring>
         <name>delta2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a5e3b5ce99d39f637fef69ac70d191c11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -80,12 +58,6 @@
         <definition>Real gamma1</definition>
         <argsstring>() const </argsstring>
         <name>gamma1</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a4e1c296e0cc1a8c434730a1e7d548ae5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -93,12 +65,6 @@
         <definition>Real gamma2</definition>
         <argsstring>() const </argsstring>
         <name>gamma2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -111,12 +77,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="50"/>
       </memberdef>
       </sectiondef>

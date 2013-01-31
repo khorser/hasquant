@@ -41,8 +41,6 @@
     <innerclass refid="class_quant_lib_1_1_united_kingdom" prot="public">QuantLib::UnitedKingdom</innerclass>
     <innerclass refid="class_quant_lib_1_1_united_states" prot="public">QuantLib::UnitedStates</innerclass>
     <innerclass refid="class_quant_lib_1_1_weekends_only" prot="public">QuantLib::WeekendsOnly</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>The class <computeroutput><ref refid="class_quant_lib_1_1_calendar" kindref="compound">QuantLib::Calendar</ref></computeroutput> provides the interface for determining whether a date is a business day or a holiday for a given exchange or a given country, and for incrementing/decrementing a date of a given number of business days. A number of calendars is contained in the <computeroutput>ql/Calendars</computeroutput> directory. </para>    </detaileddescription>
   </compounddef>

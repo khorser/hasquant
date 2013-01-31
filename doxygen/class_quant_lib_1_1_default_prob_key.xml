@@ -10,12 +10,6 @@
         <definition>DefaultProbKey</definition>
         <argsstring>()</argsstring>
         <name>DefaultProbKey</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_prob_key_1af3b96dcf5df37be84fae5fb34afc09d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -35,12 +29,6 @@
           <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
           <declname>sen</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_prob_key_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -48,12 +36,6 @@
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_prob_key_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -61,12 +43,6 @@
         <definition>Seniority seniority</definition>
         <argsstring>() const </argsstring>
         <name>seniority</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_prob_key_1ada1c87ba549de5a9ad051cf3da483370" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -74,12 +50,6 @@
         <definition>const std::vector&lt;boost::shared_ptr&lt;DefaultType&gt; &gt;&amp; eventTypes</definition>
         <argsstring>() const </argsstring>
         <name>eventTypes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_prob_key_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -87,17 +57,9 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Used to index market implied credit curve probabilities. It is a proxy to the defaultable bond or class of bonds which determines the credit contract conditions. It aggregates the atomic default types in a group defining the contract conditions and which serves to index the probability curves calibrated to the market. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="41" bodyend="64"/>

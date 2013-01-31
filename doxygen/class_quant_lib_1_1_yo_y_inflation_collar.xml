@@ -22,19 +22,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>floorRates</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="126" bodyend="130"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Concrete YoY Inflation collar class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="124" bodyend="131"/>
   </compounddef>
 </doxygen>

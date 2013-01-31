@@ -9,12 +9,6 @@
         <definition>Barrier::Type barrierType_</definition>
         <argsstring></argsstring>
         <name>barrierType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a70ca946cc3b0a75548f7f38eedd3a7a6" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real barrier_</definition>
         <argsstring></argsstring>
         <name>barrier_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1ad6e88a4eb440388c167742fc333e8fd5" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real rebate_</definition>
         <argsstring></argsstring>
         <name>rebate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; diffProcess_</definition>
         <argsstring></argsstring>
         <name>diffProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>PseudoRandom::ursg_type sequenceGen_</definition>
         <argsstring></argsstring>
         <name>sequenceGen_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>PlainVanillaPayoff payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>std::vector&lt;DiscountFactor&gt; discounts_</definition>
         <argsstring></argsstring>
         <name>discounts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -134,12 +92,6 @@
           <type>const <ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref> &amp;</type>
           <declname>sequenceGen</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_barrier_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -151,19 +103,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="151"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="140" bodyend="160"/>
   </compounddef>
 </doxygen>

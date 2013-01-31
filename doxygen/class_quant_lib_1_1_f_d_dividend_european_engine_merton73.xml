@@ -17,12 +17,6 @@
         <definition>typedef FDEngineAdapter&lt;FDDividendEngineMerton73&lt;Scheme&gt;, DividendVanillaOption::engine&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -51,19 +45,9 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="63" bodyend="67"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="57" bodyend="68"/>
   </compounddef>
 </doxygen>

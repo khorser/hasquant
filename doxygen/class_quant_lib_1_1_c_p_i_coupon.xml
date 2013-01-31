@@ -13,10 +13,6 @@
         <name>fixedRate</name>
         <briefdescription>
 <para>fixed rate that will be inflated by the index ratio </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a9180ec724c28efa1fac9bfe986bde5e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -26,10 +22,6 @@
         <name>spread</name>
         <briefdescription>
 <para>spread paid over the fixing of the underlying index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -39,10 +31,6 @@
         <name>adjustedFixing</name>
         <briefdescription>
 <para>adjusted fixing (already divided by the base fixing) </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="228" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -53,10 +41,6 @@
         <reimplements refid="class_quant_lib_1_1_inflation_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
         <briefdescription>
 <para>allows for a different interpolation from the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="232" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a7076f32553ee48e0680b92904cf7cecd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -68,8 +52,6 @@
 <para>base value for the CPI index </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000003"><xreftitle>Warning</xreftitle><xrefdescription><para>make sure that the interpolation used to create this is what you are using for the fixing, i.e. the observationInterpolation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="236" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a62db405966d340dced7d2c24418e43d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,10 +61,6 @@
         <name>observationInterpolation</name>
         <briefdescription>
 <para>how do you observe the index? as-is, flat, linear? </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="240" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a5da913aeed0edf77297364893db12269" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -96,10 +74,6 @@
         </param>
         <briefdescription>
 <para>utility method, calls indexFixing </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="244" bodyend="246"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a7d55ac3f4ee40d96136b8aab08ea81bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -109,10 +83,6 @@
         <name>cpiIndex</name>
         <briefdescription>
 <para>index used </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="248" bodyend="250"/>
       </memberdef>
       </sectiondef>
@@ -127,12 +97,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="107"/>
       </memberdef>
       </sectiondef>
@@ -201,12 +165,6 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="78"/>
       </memberdef>
       </sectiondef>
@@ -219,7 +177,6 @@
    InflationCoupon which uses ModifiedPreceding with fixing days
    assumed positive meaning earlier, i.e. always stay in same
    month (relative to referencePeriodEnd).
-
    This is more sophisticated than an %IndexedCashFlow because it
    does date calculations itself.
 </verbatim></para><para><xrefsect id="todo_1_todo000002"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>we do not do any convexity adjustment for lags different to the natural ZCIIS lag that was used to create the forward inflation curve. </para></xrefdescription></xrefsect></para>    </detaileddescription>

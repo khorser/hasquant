@@ -11,12 +11,6 @@
         <definition>Australia</definition>
         <argsstring>()</argsstring>
         <name>Australia</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/australia.hpp" line="59"/>
       </memberdef>
       </sectiondef>

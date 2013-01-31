@@ -19,12 +19,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_surface_1ab10d8c4f72856ffe3a2927be1c9b9b99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -32,12 +26,6 @@
         <definition>virtual boost::shared_ptr&lt;Domain&gt; domain</definition>
         <argsstring>() const =0</argsstring>
         <name>domain</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_surface_1adf9a9acd7daf9d6c50faf9640b3ca938" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -45,19 +33,11 @@
         <definition>virtual ~Surface</definition>
         <argsstring>()</argsstring>
         <name>~Surface</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Surface abstract class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" bodystart="36" bodyend="41"/>
   </compounddef>
 </doxygen>

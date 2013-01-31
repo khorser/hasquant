@@ -9,12 +9,6 @@
         <definition>JointCalendarRule rule_</definition>
         <argsstring></argsstring>
         <name>rule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1aa16c127ef5c19c39a81af0debfac0744" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Calendar&gt; calendars_</definition>
         <argsstring></argsstring>
         <name>calendars_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
         <param>
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1a032b5c794ae282dcbbeccf3e6e3f068b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -71,12 +53,6 @@
         <param>
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1a80d323ac3c7a5a277548722a7d301065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -99,12 +75,6 @@
         <param>
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -112,12 +82,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -128,12 +92,6 @@
         <param>
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -144,19 +102,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" bodystart="56" bodyend="71"/>
   </compounddef>
 </doxygen>

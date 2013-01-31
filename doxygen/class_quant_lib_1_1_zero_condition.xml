@@ -23,12 +23,6 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" bodystart="37" bodyend="41"/>
       </memberdef>
       </sectiondef>

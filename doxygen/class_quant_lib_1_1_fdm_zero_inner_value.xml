@@ -15,12 +15,6 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_zero_inner_value_1ace64998c5d06f06e9b4d7dc754901d28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -34,19 +28,9 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="81" bodyend="85"/>
   </compounddef>
 </doxygen>

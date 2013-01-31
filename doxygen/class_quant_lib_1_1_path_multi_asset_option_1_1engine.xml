@@ -5,10 +5,6 @@
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; PathMultiAssetOption::arguments, PathMultiAssetOption::results &gt;</basecompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzPathEngine&lt; PathMultiAssetOption::engine, MultiVariate, RNG &gt;</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_m_c_path_basket_engine" prot="public" virt="non-virtual">MCPathBasketEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="79" bodyend="81"/>
   </compounddef>
 </doxygen>

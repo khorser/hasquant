@@ -11,12 +11,6 @@
         <definition>Real liborFraction</definition>
         <argsstring>() const </argsstring>
         <name>liborFraction</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1aea41d9796ef730b280d153450ee61964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -24,12 +18,6 @@
         <definition>Spread liborSpread</definition>
         <argsstring>() const </argsstring>
         <name>liborSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -37,12 +25,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -52,10 +34,6 @@
         <name>type</name>
         <briefdescription>
 <para>&quot;payer&quot; or &quot;receiver&quot; refer to the BMA leg </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1acfe03e2a4aaefd6669112baf333cc14c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -63,12 +41,6 @@
         <definition>const Leg&amp; bmaLeg</definition>
         <argsstring>() const </argsstring>
         <name>bmaLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a5ad7aa63cd6fb992654999bb656882f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -76,12 +48,6 @@
         <definition>const Leg&amp; liborLeg</definition>
         <argsstring>() const </argsstring>
         <name>liborLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="59"/>
       </memberdef>
       </sectiondef>
@@ -92,12 +58,6 @@
         <definition>Real liborLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>liborLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a3cff4d8e54d979f67f92f98ed4c5db18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -105,12 +65,6 @@
         <definition>Real liborLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>liborLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a147bf5d06b5f2177c6307feb7e1b370c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -118,12 +72,6 @@
         <definition>Rate fairLiborFraction</definition>
         <argsstring>() const </argsstring>
         <name>fairLiborFraction</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a06f94595a0296dc414b7f53316cf35be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -131,12 +79,6 @@
         <definition>Spread fairLiborSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairLiborSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a45e18fdf92b40a73aa3e99e9e06f27e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -144,12 +86,6 @@
         <definition>Real bmaLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>bmaLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1ad3113cd2f1fb8b6611e478df44affdf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -157,12 +93,6 @@
         <definition>Real bmaLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>bmaLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="70"/>
       </memberdef>
       </sectiondef>
@@ -172,25 +102,11 @@
         <enumvalue id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       </sectiondef>
@@ -200,12 +116,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -213,12 +123,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1aadb83d9343aed52cd8e4ad929429024e" prot="private" static="no" mutable="no">
@@ -226,12 +130,6 @@
         <definition>Rate liborFraction_</definition>
         <argsstring></argsstring>
         <name>liborFraction_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1a68df81f84ff876c153127481a690291e" prot="private" static="no" mutable="no">
@@ -239,12 +137,6 @@
         <definition>Rate liborSpread_</definition>
         <argsstring></argsstring>
         <name>liborSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -294,19 +186,11 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>bmaDayCount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>swap paying <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> against BMA coupons </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="35" bodyend="78"/>
   </compounddef>
 </doxygen>

@@ -14,12 +14,6 @@
         <definition>typedef Curve::traits_type Traits</definition>
         <argsstring></argsstring>
         <name>Traits</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_local_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" static="no">
@@ -27,12 +21,6 @@
         <definition>typedef Curve::interpolator_type Interpolator</definition>
         <argsstring></argsstring>
         <name>Interpolator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +30,6 @@
         <definition>bool validCurve_</definition>
         <argsstring></argsstring>
         <name>validCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1aa1c2b6a55e098a66c64ac699025eda08" prot="private" static="no" mutable="no">
@@ -55,12 +37,6 @@
         <definition>Curve* ts_</definition>
         <argsstring></argsstring>
         <name>ts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1aaafa151c3c244b107a148e67b39cdc61" prot="private" static="no" mutable="no">
@@ -68,12 +44,6 @@
         <definition>Size localisation_</definition>
         <argsstring></argsstring>
         <name>localisation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1a2e33aee3148dccfadec4cc0a83b10179" prot="private" static="no" mutable="no">
@@ -81,12 +51,6 @@
         <definition>bool forcePositive_</definition>
         <argsstring></argsstring>
         <name>forcePositive_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -106,12 +70,6 @@
           <declname>forcePositive</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="107" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -123,12 +81,6 @@
           <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
           <declname>ts</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="114" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -136,12 +88,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="133" bodyend="247"/>
       </memberdef>
       </sectiondef>

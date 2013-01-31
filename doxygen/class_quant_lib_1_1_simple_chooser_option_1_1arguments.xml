@@ -10,12 +10,6 @@
         <definition>Date choosingDate</definition>
         <argsstring></argsstring>
         <name>choosingDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simple_chooser_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -38,19 +26,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Extra arguments for single chooser option. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="50" bodyend="56"/>
   </compounddef>
 </doxygen>

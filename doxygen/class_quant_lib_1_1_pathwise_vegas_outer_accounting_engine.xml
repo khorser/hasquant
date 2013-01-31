@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;LogNormalFwdRateEuler&gt; evolver_</definition>
         <argsstring></argsstring>
         <name>evolver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="214" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="214" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1aec8fbac78979feb02a7dffeaa5cb6c9a" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Clone&lt;MarketModelPathwiseMultiProduct&gt; product_</definition>
         <argsstring></argsstring>
         <name>product_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="215" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="215" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a98020c27c50b336674cfc8238f03c11e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>boost::shared_ptr&lt;MarketModel&gt; pseudoRootStructure_</definition>
         <argsstring></argsstring>
         <name>pseudoRootStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="216" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="216" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a654f3e0201a96cc4dc87d55e95b12d8a" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>std::vector&lt;std::vector&lt;Matrix&gt; &gt; vegaBumps_</definition>
         <argsstring></argsstring>
         <name>vegaBumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="217" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="217" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1abb7156564b68949da210cac6b9a562dd" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>std::vector&lt;Size&gt; numeraires_</definition>
         <argsstring></argsstring>
         <name>numeraires_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="218" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a72ee3009f0ae910cbbe75ea95d0e9992" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Real initialNumeraireValue_</definition>
         <argsstring></argsstring>
         <name>initialNumeraireValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="220" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a4472a0e32e19632546affb5977062d24" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>Size numberProducts_</definition>
         <argsstring></argsstring>
         <name>numberProducts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="221" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>Size numberRates_</definition>
         <argsstring></argsstring>
         <name>numberRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="222" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ac3de0171f3e38961105eb6083f7d0edd" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>Size numberCashFlowTimes_</definition>
         <argsstring></argsstring>
         <name>numberCashFlowTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="223" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="223" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a931816d93b5b11828f7fa8c8f00d412d" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>Size numberSteps_</definition>
         <argsstring></argsstring>
         <name>numberSteps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="224" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="224" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>Size factors_</definition>
         <argsstring></argsstring>
         <name>factors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="225" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a67921ca7df824b046fc691bc45270d4a" prot="private" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>Size numberBumps_</definition>
         <argsstring></argsstring>
         <name>numberBumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="226" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a7f8dce24e93ce6c693a8b402faba5fc6" prot="private" static="no" mutable="no">
@@ -165,12 +93,6 @@
         <definition>Size numberElementaryVegas_</definition>
         <argsstring></argsstring>
         <name>numberElementaryVegas_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="227" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ac30faf9a9e44bff16a85e06d60678ca2" prot="private" static="no" mutable="no">
@@ -178,12 +100,6 @@
         <definition>std::vector&lt;RatePseudoRootJacobianAllElements&gt; jacobianComputers_</definition>
         <argsstring></argsstring>
         <name>jacobianComputers_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="229" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a6d656956c3f28049b65a96268d7cc96f" prot="private" static="no" mutable="no">
@@ -191,12 +107,6 @@
         <definition>bool doDeflation_</definition>
         <argsstring></argsstring>
         <name>doDeflation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="232" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a96bec6f5c38489ca54fba50ec2c5cf0d" prot="private" static="no" mutable="no">
@@ -204,12 +114,6 @@
         <definition>std::vector&lt;Real&gt; currentForwards_</definition>
         <argsstring></argsstring>
         <name>currentForwards_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="236" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ac90416a85ca0edc45f17ef4ea6d67ea1" prot="private" static="no" mutable="no">
@@ -217,12 +121,6 @@
         <definition>std::vector&lt;Real&gt; lastForwards_</definition>
         <argsstring></argsstring>
         <name>lastForwards_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="236" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ac02019c3e5395ae9a13d95e65733c56d" prot="private" static="no" mutable="no">
@@ -230,12 +128,6 @@
         <definition>std::vector&lt;Real&gt; numerairesHeld_</definition>
         <argsstring></argsstring>
         <name>numerairesHeld_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="237" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="237" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1aa728e4b75a27d68ae924976413ac154b" prot="private" static="no" mutable="no">
@@ -243,12 +135,6 @@
         <definition>std::vector&lt;Size&gt; numberCashFlowsThisStep_</definition>
         <argsstring></argsstring>
         <name>numberCashFlowsThisStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="238" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a4cd199c6bb3d51d1f4af9bfa8c7cb84d" prot="private" static="no" mutable="no">
@@ -256,12 +142,6 @@
         <definition>std::vector&lt;std::vector&lt;MarketModelPathwiseMultiProduct::CashFlow&gt; &gt; cashFlowsGenerated_</definition>
         <argsstring></argsstring>
         <name>cashFlowsGenerated_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="240" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1aff2e753db3879769968d441687c80f87" prot="private" static="no" mutable="no">
@@ -269,12 +149,6 @@
         <definition>std::vector&lt;MarketModelPathwiseDiscounter&gt; discounters_</definition>
         <argsstring></argsstring>
         <name>discounters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="241" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ae754bda00735e18e8430bb2e88b9901d" prot="private" static="no" mutable="no">
@@ -282,12 +156,6 @@
         <definition>std::vector&lt;Matrix&gt; V_</definition>
         <argsstring></argsstring>
         <name>V_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="243" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="243" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1aa32252d7c230bbf09b01884340ffd922" prot="private" static="no" mutable="no">
@@ -295,12 +163,6 @@
         <definition>Matrix LIBORRatios_</definition>
         <argsstring></argsstring>
         <name>LIBORRatios_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="245" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a1ddaba4034cb9e8606d53cb3e2f84b08" prot="private" static="no" mutable="no">
@@ -308,12 +170,6 @@
         <definition>Matrix Discounts_</definition>
         <argsstring></argsstring>
         <name>Discounts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="246" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="246" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a626068aaf5269cad6e73f2827abaeac3" prot="private" static="no" mutable="no">
@@ -321,12 +177,6 @@
         <definition>Matrix StepsDiscountsSquared_</definition>
         <argsstring></argsstring>
         <name>StepsDiscountsSquared_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="248" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ac1f18372fb6b56a03782946be85ff92f" prot="private" static="no" mutable="no">
@@ -334,12 +184,6 @@
         <definition>std::vector&lt;Real&gt; stepsDiscounts_</definition>
         <argsstring></argsstring>
         <name>stepsDiscounts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="249" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1addd0e65f95670db52f5b8a9f00b44171" prot="private" static="no" mutable="no">
@@ -347,12 +191,6 @@
         <definition>Matrix LIBORRates_</definition>
         <argsstring></argsstring>
         <name>LIBORRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="251" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a401e1d99affdf1e8a804d5bc8835a640" prot="private" static="no" mutable="no">
@@ -360,12 +198,6 @@
         <definition>Matrix partials_</definition>
         <argsstring></argsstring>
         <name>partials_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="252" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a933e1d81ea854fcc2573dc878e548b33" prot="private" static="no" mutable="no">
@@ -373,12 +205,6 @@
         <definition>std::vector&lt;std::vector&lt;Matrix&gt; &gt; elementary_vegas_ThisPath_</definition>
         <argsstring></argsstring>
         <name>elementary_vegas_ThisPath_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="254" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a8acb3bd2c8db38ebe2573bb2547c636c" prot="private" static="no" mutable="no">
@@ -386,12 +212,6 @@
         <definition>std::vector&lt;std::vector&lt;Matrix&gt; &gt; jacobiansThisPaths_</definition>
         <argsstring></argsstring>
         <name>jacobiansThisPaths_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="255" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a307582e9f58e6f2dddf9bc77b8badafb" prot="private" static="no" mutable="no">
@@ -399,12 +219,6 @@
         <definition>std::vector&lt;Real&gt; deflatorAndDerivatives_</definition>
         <argsstring></argsstring>
         <name>deflatorAndDerivatives_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="257" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a0230552ae65a3dbf382f36d13f53840a" prot="private" static="no" mutable="no">
@@ -412,12 +226,6 @@
         <definition>std::vector&lt;Real&gt; fullDerivatives_</definition>
         <argsstring></argsstring>
         <name>fullDerivatives_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="258" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="258" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a5edd1f5a82f966c57195e94daecaad84" prot="private" static="no" mutable="no">
@@ -425,12 +233,6 @@
         <definition>std::vector&lt;std::vector&lt;Size&gt; &gt; numberCashFlowsThisIndex_</definition>
         <argsstring></argsstring>
         <name>numberCashFlowsThisIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="260" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1ac2df86aa71404b6b419b88432f0ffba7" prot="private" static="no" mutable="no">
@@ -438,12 +240,6 @@
         <definition>std::vector&lt;Matrix&gt; totalCashFlowsThisIndex_</definition>
         <argsstring></argsstring>
         <name>totalCashFlowsThisIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="261" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1accf79d00d6e2d724ab5731b5e882ab1a" prot="private" static="no" mutable="no">
@@ -451,12 +247,6 @@
         <definition>std::vector&lt;std::vector&lt;Size&gt; &gt; cashFlowIndicesThisStep_</definition>
         <argsstring></argsstring>
         <name>cashFlowIndicesThisStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="263" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="263" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -486,12 +276,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>initialNumeraireValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="199"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a0958e29608202ff7ab0e3d8a79418e26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -513,10 +297,6 @@
         </param>
         <briefdescription>
 <para>Use to get vegas with respect to VegaBumps. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pathwise_vegas_outer_accounting_engine_1a37e0777069c895c824596c30c7f2337e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -538,10 +318,6 @@
         </param>
         <briefdescription>
 <para>Use to get vegas with respect to pseudo-root-elements. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="209"/>
       </memberdef>
       </sectiondef>
@@ -555,19 +331,11 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>values</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="212"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Engine collecting cash flows along a market-model simulation for doing pathwise computation of Deltas and vegas. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" line="193" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwiseaccountingengine.hpp" bodystart="192" bodyend="273"/>
   </compounddef>
 </doxygen>

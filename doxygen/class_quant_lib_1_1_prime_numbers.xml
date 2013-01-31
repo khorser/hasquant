@@ -9,12 +9,6 @@
         <definition>std::vector&lt;BigNatural&gt; primeNumbers_</definition>
         <argsstring></argsstring>
         <name>primeNumbers_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -30,10 +24,6 @@
         </param>
         <briefdescription>
 <para>Get and store one after another. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="48"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +33,6 @@
         <definition>PrimeNumbers</definition>
         <argsstring>()</argsstring>
         <name>PrimeNumbers</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       </sectiondef>
@@ -58,12 +42,6 @@
         <definition>static BigNatural nextPrimeNumber</definition>
         <argsstring>()</argsstring>
         <name>nextPrimeNumber</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="51"/>
       </memberdef>
       </sectiondef>

@@ -9,12 +9,6 @@
         <definition>DeltaVolQuote::DeltaType dt_</definition>
         <argsstring></argsstring>
         <name>dt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a4a4e797d1f8e22f5d55e8479abd3dbbb" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Option::Type ot_</definition>
         <argsstring></argsstring>
         <name>ot_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a4df4cd0ac3e6b22c4dd65a721732600d" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>DiscountFactor dDiscount_</definition>
         <argsstring></argsstring>
         <name>dDiscount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a42fead3ec2ea94275ce0bf0a1a24c16b" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>DiscountFactor fDiscount_</definition>
         <argsstring></argsstring>
         <name>fDiscount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a558676275dc818fb808f33a998dfa3e1" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Real stdDev_</definition>
         <argsstring></argsstring>
         <name>stdDev_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1ad368d415c7aa16fe7d97d156ecb70bff" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Real spot_</definition>
         <argsstring></argsstring>
         <name>spot_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a6080532cd8596049370f5002b384806a" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>Real forward_</definition>
         <argsstring></argsstring>
         <name>forward_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a4fd8791a668628eba1471c2926d36eb3" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>Integer phi_</definition>
         <argsstring></argsstring>
         <name>phi_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a3d43cc7ff786a6730d87914d85b5f03f" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>Real d1_</definition>
         <argsstring></argsstring>
         <name>d1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a18e9bf2fdae9b34227ff9e9d82b368fb" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>Real d2_</definition>
         <argsstring></argsstring>
         <name>d2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a4ddeb748af0d6315b4d6d1f26e057a3f" prot="private" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>Real fExpPos_</definition>
         <argsstring></argsstring>
         <name>fExpPos_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_calculator_1a2d4039d65a5ef7b071cca3f752d0ab67" prot="private" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>Real fExpNeg_</definition>
         <argsstring></argsstring>
         <name>fExpNeg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -191,12 +119,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>stdDev</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1af21c1e320e11c719a1bdc7a3844ce7d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -208,12 +130,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1ab6d7007264040c106eea8dd57935334f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -225,12 +141,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>delta</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a57e8325fdb3550953469520a47252606" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -242,12 +152,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a4542ea9587c45bd875673934a6ff7357" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -259,12 +163,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a3bdc6c35dfa49a8b6bbf867b089c1a67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -276,12 +174,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a9fac81f2874ab025b4d33cd34be9a781" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -293,12 +185,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a74f62bb41e5e6046394e053fb605c637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -310,12 +196,6 @@
           <type>DeltaVolQuote::DeltaType</type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a3ed7a84bd09bb386627eff272fcb882a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -327,12 +207,6 @@
           <type>Option::Type</type>
           <declname>ot</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1afe9d0eb583b6cb13e02b5da89403615e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -344,12 +218,6 @@
           <type>DeltaVolQuote::AtmType</type>
           <declname>atmT</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="68"/>
       </memberdef>
       </sectiondef>
@@ -367,12 +235,6 @@
           <type>DeltaVolQuote::DeltaType</type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="72"/>
       </memberdef>
       </sectiondef>

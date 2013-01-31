@@ -9,19 +9,9 @@
         <definition>MBUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>MBUnitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="51" bodyend="56"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="49" bodyend="57"/>
   </compounddef>
 </doxygen>

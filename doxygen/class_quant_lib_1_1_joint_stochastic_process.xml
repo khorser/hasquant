@@ -10,12 +10,6 @@
         <definition>typedef std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_joint_stochastic_process_1ad9d72b339a9139f25a4b0c45170902e1" prot="private" static="no">
@@ -23,12 +17,6 @@
         <definition>typedef std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt;::iterator iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -38,12 +26,6 @@
         <definition>Size size_</definition>
         <argsstring></argsstring>
         <name>size_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" static="no" mutable="no">
@@ -51,12 +33,6 @@
         <definition>Size factors_</definition>
         <argsstring></argsstring>
         <name>factors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1aca88982d9e57d7e326b4b4bf941f6f71" prot="private" static="no" mutable="no">
@@ -64,12 +40,6 @@
         <definition>Size modelFactors_</definition>
         <argsstring></argsstring>
         <name>modelFactors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1a93b792b3666cdd5cbe916a6c36e10bb3" prot="private" static="no" mutable="no">
@@ -77,12 +47,6 @@
         <definition>std::vector&lt;Size&gt; vsize_</definition>
         <argsstring></argsstring>
         <name>vsize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1a731d3bf691075bd5360a369d828c3a9a" prot="private" static="no" mutable="no">
@@ -90,12 +54,6 @@
         <definition>std::vector&lt;Size&gt; vfactors_</definition>
         <argsstring></argsstring>
         <name>vfactors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1a6a3d4ab138baaed72f7469ca960918d3" prot="private" static="no" mutable="yes">
@@ -103,12 +61,6 @@
         <definition>std::map&lt;CachingKey, Matrix&gt; correlationCache_</definition>
         <argsstring></argsstring>
         <name>correlationCache_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -127,12 +79,6 @@
           <declname>factors</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -140,12 +86,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -153,12 +93,6 @@
         <definition>Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -166,12 +100,6 @@
         <definition>Disposable&lt;Array&gt; initialValues</definition>
         <argsstring>() const </argsstring>
         <name>initialValues</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -187,12 +115,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a30a103c583af9320f08337052d38c622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -212,12 +134,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -233,12 +149,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1aa35146549bd167f407791342e89927e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -258,12 +168,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1ab55b8ade4729f4509ad40bbaab050a0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -283,12 +187,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -304,12 +202,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dx</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -333,12 +225,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a74d60b763f457e5e704430993e299921" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -362,12 +248,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1ab5f887b196ae4e77af2ef2f875b46b79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -395,12 +275,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>y0</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a68b5a72cfb3db8ddefaf8cf04cc3ab65" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -416,12 +290,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a78f42eaa1b4d4ffa9ae5027e1edd1763" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -429,12 +297,6 @@
         <definition>virtual bool correlationIsStateDependent</definition>
         <argsstring>() const =0</argsstring>
         <name>correlationIsStateDependent</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a5669afa101f7e3d2f10d8e21d36ebd92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -450,12 +312,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1adfd3c50fd8254a227325875bd0524352" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -463,12 +319,6 @@
         <definition>const std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt;&amp; constituents</definition>
         <argsstring>() const </argsstring>
         <name>constituents</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -476,12 +326,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a748380f774765c5190c570c0c8a8091e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -493,19 +337,9 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="71"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="34" bodyend="101"/>
   </compounddef>
 </doxygen>

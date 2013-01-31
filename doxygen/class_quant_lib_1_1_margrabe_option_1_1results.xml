@@ -10,12 +10,6 @@
         <definition>Real delta1</definition>
         <argsstring></argsstring>
         <name>delta1</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a8eb7e5c2ea99fa314dd5f1352b4cfa82" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real delta2</definition>
         <argsstring></argsstring>
         <name>delta2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a7e2dabd72cd24f0dbd090b020598c5c8" prot="public" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real gamma1</definition>
         <argsstring></argsstring>
         <name>gamma1</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a0c592742a5ffd3af304a17afd68df742" prot="public" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Real gamma2</definition>
         <argsstring></argsstring>
         <name>gamma2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +40,6 @@
         <definition>results</definition>
         <argsstring>()</argsstring>
         <name>results</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -77,19 +47,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="80" bodyend="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Extra results for Margrabe option. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="69" bodyend="87"/>
   </compounddef>
 </doxygen>

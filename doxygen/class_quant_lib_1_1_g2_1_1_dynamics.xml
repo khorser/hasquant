@@ -9,12 +9,6 @@
         <definition>Parameter fitting_</definition>
         <argsstring></argsstring>
         <name>fitting_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +42,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="124" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_dynamics_1a5214cecca17100330a48b406d11aa1d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -73,19 +61,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="136" bodyend="140"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="122" bodyend="143"/>
   </compounddef>
 </doxygen>

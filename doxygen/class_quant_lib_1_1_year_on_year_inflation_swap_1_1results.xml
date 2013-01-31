@@ -10,12 +10,6 @@
         <definition>Rate fairRate</definition>
         <argsstring></argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Spread fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="148" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -38,19 +26,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="149"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from YoY swap calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="145" bodyend="150"/>
   </compounddef>
 </doxygen>

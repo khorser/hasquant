@@ -8,31 +8,13 @@
         <name>Type</name>
         <enumvalue id="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7a3e53f06234367d0e453fa5ea0ad2ab34" prot="public">
           <name>Sub</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7a7ab3a5cea583da15b13bfe3742dca4f8" prot="public">
           <name>Central</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7a3993abca9102c73083a66e9e0bf08fba" prot="public">
           <name>Super</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +30,6 @@
         <param>
           <type>Replication::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="42"/>
       </memberdef>
       </sectiondef>

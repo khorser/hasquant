@@ -23,12 +23,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nBuckets</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="201" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="199" bodyend="203"/>
       </memberdef>
       </sectiondef>
@@ -42,19 +36,11 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="205" bodyend="212"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, loss disctribution bucketing for finite inhomogeneous pool. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="197" bodyend="216"/>
   </compounddef>
 </doxygen>

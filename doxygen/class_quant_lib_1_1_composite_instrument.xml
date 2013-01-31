@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -26,12 +22,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="64"/>
       </memberdef>
       </sectiondef>
@@ -41,12 +33,6 @@
         <definition>typedef std::pair&lt;boost::shared_ptr&lt;Instrument&gt;, Real&gt; component</definition>
         <argsstring></argsstring>
         <name>component</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_composite_instrument_1a41ec75c6f54e64a5088be2b40f8a1bc0" prot="private" static="no">
@@ -54,12 +40,6 @@
         <definition>typedef std::list&lt;component&gt;::iterator iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_composite_instrument_1a471472ddb60c9cd6c61d099349916893" prot="private" static="no">
@@ -67,12 +47,6 @@
         <definition>typedef std::list&lt;component&gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -82,12 +56,6 @@
         <definition>std::list&lt;component&gt; components_</definition>
         <argsstring></argsstring>
         <name>components_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -108,10 +76,6 @@
         </param>
         <briefdescription>
 <para>adds an instrument to the composite </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1af781618b4ac4bee06da95a7c8b2ee662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -130,10 +94,6 @@
         </param>
         <briefdescription>
 <para>shorts an instrument from the composite </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="59"/>
       </memberdef>
       </sectiondef>

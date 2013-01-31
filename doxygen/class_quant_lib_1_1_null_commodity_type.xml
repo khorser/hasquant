@@ -9,19 +9,9 @@
         <definition>NullCommodityType</definition>
         <argsstring>()</argsstring>
         <name>NullCommodityType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="90" bodyend="91"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="88" bodyend="92"/>
   </compounddef>
 </doxygen>

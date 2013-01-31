@@ -16,12 +16,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_box_muller_gaussian_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
@@ -29,12 +23,6 @@
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
         <definition>RNG uniformGenerator_</definition>
         <argsstring></argsstring>
         <name>uniformGenerator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a9d3ab0815e2e17da9f48e7698084b349" prot="private" static="no" mutable="yes">
@@ -57,12 +39,6 @@
         <definition>bool returnFirst_</definition>
         <argsstring></argsstring>
         <name>returnFirst_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a81192de3cd67ffcc64fef65390d76404" prot="private" static="no" mutable="yes">
@@ -70,12 +46,6 @@
         <definition>Real firstValue_</definition>
         <argsstring></argsstring>
         <name>firstValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a69b570e69a6eaf258006d69e3205f13c" prot="private" static="no" mutable="yes">
@@ -83,12 +53,6 @@
         <definition>Real secondValue_</definition>
         <argsstring></argsstring>
         <name>secondValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a34c6ebea157c9bb540320a989b358c19" prot="private" static="no" mutable="yes">
@@ -96,12 +60,6 @@
         <definition>Real firstWeight_</definition>
         <argsstring></argsstring>
         <name>firstWeight_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a920ab08f5edd00f11d3e94b4dff806fe" prot="private" static="no" mutable="yes">
@@ -109,12 +67,6 @@
         <definition>Real secondWeight_</definition>
         <argsstring></argsstring>
         <name>secondWeight_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a80d0fcd3822859ef62fc293b8f83c8d4" prot="private" static="no" mutable="yes">
@@ -122,12 +74,6 @@
         <definition>Real weight_</definition>
         <argsstring></argsstring>
         <name>weight_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -141,12 +87,6 @@
           <type>const RNG &amp;</type>
           <declname>uniformGenerator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_box_muller_gaussian_rng_1a4a64ccd36c2dcd7e844dcd3ae37698bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -156,10 +96,6 @@
         <name>next</name>
         <briefdescription>
 <para>returns a sample from a Gaussian distribution </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="67" bodyend="91"/>
       </memberdef>
       </sectiondef>

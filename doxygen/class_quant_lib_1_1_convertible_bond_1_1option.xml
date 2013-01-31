@@ -11,12 +11,6 @@
         <definition>const ConvertibleBond* bond_</definition>
         <argsstring></argsstring>
         <name>bond_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1a0917d29fab7a992c792c9ca306c56704" prot="private" static="no" mutable="no">
@@ -24,12 +18,6 @@
         <definition>Real conversionRatio_</definition>
         <argsstring></argsstring>
         <name>conversionRatio_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1ab47aa82e7652aec164a5020771a98d46" prot="private" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>CallabilitySchedule callability_</definition>
         <argsstring></argsstring>
         <name>callability_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1abab30617bf36bfc9a09b3e2a7dc1594a" prot="private" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>DividendSchedule dividends_</definition>
         <argsstring></argsstring>
         <name>dividends_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1ad6b83ffe0d331da015bb6a057c34061e" prot="private" static="no" mutable="no">
@@ -63,12 +39,6 @@
         <definition>Handle&lt;Quote&gt; creditSpread_</definition>
         <argsstring></argsstring>
         <name>creditSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1a915caf90abf1e890d88b441d84d7ed44" prot="private" static="no" mutable="no">
@@ -76,12 +46,6 @@
         <definition>Leg cashflows_</definition>
         <argsstring></argsstring>
         <name>cashflows_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -89,12 +53,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1aa99ac89090fd236a5d29db55f21003a9" prot="private" static="no" mutable="no">
@@ -102,12 +60,6 @@
         <definition>Date issueDate_</definition>
         <argsstring></argsstring>
         <name>issueDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1a070ed82c6cab5f05e2874979f4193388" prot="private" static="no" mutable="no">
@@ -115,12 +67,6 @@
         <definition>Schedule schedule_</definition>
         <argsstring></argsstring>
         <name>schedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1a8cb58608de54286272715a08a7492a7e" prot="private" static="no" mutable="no">
@@ -128,12 +74,6 @@
         <definition>Natural settlementDays_</definition>
         <argsstring></argsstring>
         <name>settlementDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1ada8aca1dd8c0ade1c41c216226d21a41" prot="private" static="no" mutable="no">
@@ -141,12 +81,6 @@
         <definition>Real redemption_</definition>
         <argsstring></argsstring>
         <name>redemption_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -204,12 +138,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>redemption</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1_1option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -220,19 +148,9 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="168"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="151" bodyend="181"/>
   </compounddef>
 </doxygen>

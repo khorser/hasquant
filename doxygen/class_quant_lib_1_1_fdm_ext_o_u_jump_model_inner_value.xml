@@ -9,12 +9,6 @@
         <definition>typedef std::vector&lt;std::pair&lt;Time, Real&gt; &gt; Shape</definition>
         <argsstring></argsstring>
         <name>Shape</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>const boost::shared_ptr&lt;Payoff&gt; payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a03eaa61142f7435ea76aa4ccfbf60c09" prot="private" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>const boost::shared_ptr&lt;Shape&gt; shape_</definition>
         <argsstring></argsstring>
         <name>shape_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +54,6 @@
           <declname>shape</declname>
           <defval>boost::shared_ptr&lt; Shape &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="39" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -99,12 +69,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="47" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -120,19 +84,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="35" bodyend="66"/>
   </compounddef>
 </doxygen>

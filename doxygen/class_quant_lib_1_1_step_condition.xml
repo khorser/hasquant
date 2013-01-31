@@ -19,12 +19,6 @@
         <definition>virtual ~StepCondition</definition>
         <argsstring>()</argsstring>
         <name>~StepCondition</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -42,19 +36,11 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>condition to be applied at every time step </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="35" bodyend="39"/>
   </compounddef>
 </doxygen>

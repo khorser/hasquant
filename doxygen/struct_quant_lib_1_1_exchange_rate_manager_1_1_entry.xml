@@ -8,12 +8,6 @@
         <definition>ExchangeRate rate</definition>
         <argsstring></argsstring>
         <name>rate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1ac342ae2125b437a76ece3ac962e0d9a3" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>Date endDate</definition>
         <argsstring></argsstring>
         <name>endDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +31,6 @@
         <definition>Entry</definition>
         <argsstring>()</argsstring>
         <name>Entry</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1a5d93217bb594db2ad36e25a084e5daea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -74,19 +50,9 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>end</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="72" bodyend="79"/>
   </compounddef>
 </doxygen>

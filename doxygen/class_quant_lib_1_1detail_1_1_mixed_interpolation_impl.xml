@@ -23,12 +23,6 @@
         <definition>I1 xBegin2_</definition>
         <argsstring></argsstring>
         <name>xBegin2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
@@ -36,12 +30,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1aee25a51434e64527c2a50f7800523fcb" prot="private" static="no" mutable="no">
@@ -49,12 +37,6 @@
         <definition>Interpolation interpolation1_</definition>
         <argsstring></argsstring>
         <name>interpolation1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1acebdb5c92fc297f9490a0a1e11d0d066" prot="private" static="no" mutable="no">
@@ -62,12 +44,6 @@
         <definition>Interpolation interpolation2_</definition>
         <argsstring></argsstring>
         <name>interpolation2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -103,12 +79,6 @@
           <declname>factory2</declname>
           <defval>Interpolator2()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="39" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -116,12 +86,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -133,12 +97,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="63" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -150,12 +108,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="68" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -167,12 +119,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="73" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -184,12 +130,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="78" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9f6eaafbc5eb99a39fdb32ca6e71f732" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -197,19 +137,9 @@
         <definition>Size switchIndex</definition>
         <argsstring>()</argsstring>
         <name>switchIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="36" bodyend="88"/>
   </compounddef>
 </doxygen>

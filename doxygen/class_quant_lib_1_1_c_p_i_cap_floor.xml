@@ -14,12 +14,6 @@
         <definition>Option::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,12 +21,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a4fc51b15e0ddcd286e54d1d5d0f18984" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -42,10 +30,6 @@
         <name>strike</name>
         <briefdescription>
 <para><formula id="144">$ K $</formula> in the above formula. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -53,12 +37,6 @@
         <definition>Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a2915ae916f733e8452c0320c8fd3f977" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -66,12 +44,6 @@
         <definition>Date payDate</definition>
         <argsstring>() const </argsstring>
         <name>payDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1aca3f0afb8c42c2854ff124d0074b6363" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,12 +51,6 @@
         <definition>Handle&lt;ZeroInflationIndex&gt; inflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>inflationIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +58,6 @@
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="90" bodyend="90"/>
       </memberdef>
       </sectiondef>
@@ -111,10 +71,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -126,12 +82,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -144,12 +96,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="97"/>
       </memberdef>
       </sectiondef>
@@ -212,12 +160,6 @@
           <declname>observationInterpolation</declname>
           <defval>CPI::AsIndex</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="79"/>
       </memberdef>
       </sectiondef>

@@ -15,10 +15,6 @@
         <name>type</name>
         <briefdescription>
 <para>&quot;payer&quot; or &quot;receiver&quot; refer to the inflation-indexed leg </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -26,12 +22,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -39,12 +29,6 @@
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -52,12 +36,6 @@
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1ab9e413e66044d8ab7b8f80ebd8f471bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -65,12 +43,6 @@
         <definition>Calendar fixedCalendar</definition>
         <argsstring>() const </argsstring>
         <name>fixedCalendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1ac7cdb251791e6e4d12853badaa58da45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -78,12 +50,6 @@
         <definition>BusinessDayConvention fixedConvention</definition>
         <argsstring>() const </argsstring>
         <name>fixedConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -91,12 +57,6 @@
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -106,10 +66,6 @@
         <name>fixedRate</name>
         <briefdescription>
 <para><formula id="144">$ K $</formula> in the above formula. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a0d277706e1bfc70cd7b7064b27ef52bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -117,12 +73,6 @@
         <definition>boost::shared_ptr&lt;ZeroInflationIndex&gt; inflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>inflationIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -130,12 +80,6 @@
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="102" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1acf834e1786b9a5f63a47733083710085" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -143,12 +87,6 @@
         <definition>bool adjustObservationDates</definition>
         <argsstring>() const </argsstring>
         <name>adjustObservationDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1ac7dc73ea9157eab0abcf59d3e1eedef0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -156,12 +94,6 @@
         <definition>Calendar inflationCalendar</definition>
         <argsstring>() const </argsstring>
         <name>inflationCalendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a1ec9f557d6611208720dd1e39b7c750f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -169,12 +101,6 @@
         <definition>BusinessDayConvention inflationConvention</definition>
         <argsstring>() const </argsstring>
         <name>inflationConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a720acf11b744a6529b383940d01117a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -184,10 +110,6 @@
         <name>fixedLeg</name>
         <briefdescription>
 <para>just one cashflow (that is not a coupon) in each leg </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1ab0f29d5c3f917ed7a34615719dcd24c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -197,10 +119,6 @@
         <name>inflationLeg</name>
         <briefdescription>
 <para>just one cashflow (that is not a coupon) in each leg </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="111"/>
       </memberdef>
       </sectiondef>
@@ -215,12 +133,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -233,12 +147,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="117"/>
       </memberdef>
       </sectiondef>
@@ -249,12 +159,6 @@
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1ac075884f1de71118f4d84b558bf35d30" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -262,12 +166,6 @@
         <definition>Real inflationLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>inflationLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a66129d40442a389121feb6e330d54f79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -275,12 +173,6 @@
         <definition>Real fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="124"/>
       </memberdef>
       </sectiondef>
@@ -290,25 +182,11 @@
         <enumvalue id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_zero_coupon_inflation_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       </sectiondef>
@@ -373,12 +251,6 @@
           <declname>infConvention</declname>
           <defval><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="83"/>
       </memberdef>
       </sectiondef>

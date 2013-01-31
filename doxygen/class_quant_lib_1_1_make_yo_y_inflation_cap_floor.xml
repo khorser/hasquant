@@ -9,12 +9,6 @@
         <definition>YoYInflationCapFloor::Type capFloorType_</definition>
         <argsstring></argsstring>
         <name>capFloorType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a63a20fb28b234a6ebc695416ec21c0a5" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Size length_</definition>
         <argsstring></argsstring>
         <name>length_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Calendar calendar_</definition>
         <argsstring></argsstring>
         <name>calendar_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a501723adcbda98a1b1dc8594a298153b" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; index_</definition>
         <argsstring></argsstring>
         <name>index_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a2f0b22e1c17db6dd8f558f4dfc8dfff6" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Period observationLag_</definition>
         <argsstring></argsstring>
         <name>observationLag_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Rate strike_</definition>
         <argsstring></argsstring>
         <name>strike_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a372994af3e97d8b3e9eef891109c4708" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>bool firstCapletExcluded_</definition>
         <argsstring></argsstring>
         <name>firstCapletExcluded_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aaf8849e372b95794dfde616057a9d75f" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>bool asOptionlet_</definition>
         <argsstring></argsstring>
         <name>asOptionlet_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>Date effectiveDate_</definition>
         <argsstring></argsstring>
         <name>effectiveDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>Period forwardStart_</definition>
         <argsstring></argsstring>
         <name>forwardStart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a41417dab9908d060a94e64e709035804" prot="private" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>BusinessDayConvention roll_</definition>
         <argsstring></argsstring>
         <name>roll_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a7b5758dc357368c9bcb7920c66084351" prot="private" static="no" mutable="no">
@@ -165,12 +93,6 @@
         <definition>Natural fixingDays_</definition>
         <argsstring></argsstring>
         <name>fixingDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -178,12 +100,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aec8a3d48bdab47e807560f973bfa1569" prot="private" static="no" mutable="no">
@@ -191,12 +107,6 @@
         <definition>boost::shared_ptr&lt;PricingEngine&gt; engine_</definition>
         <argsstring></argsstring>
         <name>engine_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -236,12 +146,6 @@
           <declname>forwardStart</declname>
           <defval>0 *Days</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a88ed76c947d26a44600fda78ab2ee682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -253,12 +157,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a08cd1531eb162e74385c6863ec98f099" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -270,12 +168,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>effectiveDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a22ed723f0c176c54abf47904b02cb019" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -283,12 +175,6 @@
         <definition>MakeYoYInflationCapFloor&amp; withFirstCapletExcluded</definition>
         <argsstring>()</argsstring>
         <name>withFirstCapletExcluded</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a772da1f62e4e16289a8e6a8d73eac37a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -299,12 +185,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a16a95b38695948c73114164ddaff7a59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -315,12 +195,6 @@
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a958da617eb93dc592fc6214a7e9d63ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -332,12 +206,6 @@
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aa7c58d5b4554cea444bb491822fb05a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -345,12 +213,6 @@
         <definition>operator YoYInflationCapFloor</definition>
         <argsstring>() const </argsstring>
         <name>operator YoYInflationCapFloor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1ac2c89e120c1183c0a748926d7feff65f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -358,12 +220,6 @@
         <definition>operator boost::shared_ptr&lt; YoYInflationCapFloor &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; YoYInflationCapFloor &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a554c10f085b8efda37e357575aaafba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -378,10 +234,6 @@
         </param>
         <briefdescription>
 <para>only get last coupon </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aacb8d8bdc958d22907668e19f93eef98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -393,12 +245,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
           <declname>engine</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="60"/>
       </memberdef>
       </sectiondef>

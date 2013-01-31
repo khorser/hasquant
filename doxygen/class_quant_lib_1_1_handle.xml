@@ -30,12 +30,6 @@
           <declname>registerAsObserver</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1a7382e5e4476438ef39a23de9e22542a1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
@@ -52,12 +46,6 @@
           <declname>registerAsObserver</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="79" bodyend="81"/>
       </memberdef>
       </sectiondef>
@@ -69,10 +57,6 @@
         <name>currentLink</name>
         <briefdescription>
 <para>dereferencing </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="152" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1aa7f131d2a22209986c1097a8495d20ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -80,12 +64,6 @@
         <definition>const boost::shared_ptr&lt; T &gt; &amp; operator-&gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator-&gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="158" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1abf958a1f0614967f9ad7ee7aa1f98dc6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -93,12 +71,6 @@
         <definition>const boost::shared_ptr&lt; T &gt; &amp; operator*</definition>
         <argsstring>() const </argsstring>
         <name>operator*</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="164" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -108,10 +80,6 @@
         <name>empty</name>
         <briefdescription>
 <para>checks if the contained shared pointer points to anything </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="170" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1ac0b3ed61a44036fb7b305892a1546385" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -121,10 +89,6 @@
         <name>operator boost::shared_ptr&lt; Observable &gt;</name>
         <briefdescription>
 <para>allows registration as observable </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="175" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1addb704db2fc67cd1a460ffcefc4edfc3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -143,10 +107,6 @@
         </param>
         <briefdescription>
 <para>equality test </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1afd8dd188c1e3841781aed424af314ce8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -165,10 +125,6 @@
         </param>
         <briefdescription>
 <para>disequality test </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1aa5d79ded650949461ffd1e66aa3a72ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -187,10 +143,6 @@
         </param>
         <briefdescription>
 <para>strict weak ordering </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="100" bodyend="100"/>
       </memberdef>
       </sectiondef>

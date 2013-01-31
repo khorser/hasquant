@@ -14,12 +14,6 @@
         <definition>typedef Evolver::traits traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
@@ -27,12 +21,6 @@
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
@@ -40,12 +28,6 @@
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
@@ -53,12 +35,6 @@
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
@@ -66,12 +42,6 @@
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +51,6 @@
         <definition>Evolver evolver_</definition>
         <argsstring></argsstring>
         <name>evolver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_finite_difference_model_1a189f7cccf06d556536bc82aa0e426a13" prot="private" static="no" mutable="no">
@@ -94,12 +58,6 @@
         <definition>std::vector&lt;Time&gt; stoppingTimes_</definition>
         <argsstring></argsstring>
         <name>stoppingTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -122,12 +80,6 @@
           <declname>stoppingTimes</declname>
           <defval>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="44" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a4e737d230d9084ebe057df0ba5b37175" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -144,12 +96,6 @@
           <declname>stoppingTimes</declname>
           <defval>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="54" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1ac4b07289afb96749cb9e3ac7ba843954" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -157,12 +103,6 @@
         <definition>const Evolver&amp; evolver</definition>
         <argsstring>() const </argsstring>
         <name>evolver</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a29eb8c23b64571be731ffa8f4df2590a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -186,12 +126,8 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>solves the problem between the given times. <xrefsect id="caveats_1_caveats000078"><xreftitle>Warning</xreftitle><xrefdescription><para>being this a rollback, <computeroutput>from</computeroutput> must be a later time than <computeroutput>to</computeroutput>. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="70" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a65ea4e753878a94e9daa438b1bd1cb75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -219,12 +155,8 @@
           <type>const condition_type &amp;</type>
           <declname>condition</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>solves the problem between the given times, applying a condition at every step. <xrefsect id="caveats_1_caveats000079"><xreftitle>Warning</xreftitle><xrefdescription><para>being this a rollback, <computeroutput>from</computeroutput> must be a later time than <computeroutput>to</computeroutput>. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="81" bodyend="87"/>
       </memberdef>
       </sectiondef>
@@ -254,19 +186,11 @@
           <type>const condition_type *</type>
           <declname>condition</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="89" bodyend="144"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Generic finite difference model. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="36" bodyend="147"/>
   </compounddef>
 </doxygen>

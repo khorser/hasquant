@@ -14,12 +14,6 @@
           <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
           <declname>bond</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a2d8dab916bcf79ae6132b0560e85c475" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -31,12 +25,6 @@
           <type>const <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &amp;</type>
           <declname>bond</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aa8fd83e1f2eeda781b50c64402a3bb48" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -53,12 +41,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="58"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +60,6 @@
           <declname>refDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a2895331baa91857bd5e5927222873310" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -100,12 +76,6 @@
           <declname>refDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a5be084b5cc758f43a2689b3265441d37" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -122,12 +92,6 @@
           <declname>refDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a2db8c3629e923ab1dbc374db1ae0baa1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -144,12 +108,6 @@
           <declname>refDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a87896ea9adb64b99fd69ba81b4ab6c5d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -166,12 +124,6 @@
           <declname>refDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a84595077e07f3ac0c46e01c540cb7bb5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -188,12 +140,6 @@
           <declname>refDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="75"/>
       </memberdef>
       </sectiondef>
@@ -213,12 +159,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a0dddebe2dde236dcd6f922aacdbe4a91" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -235,12 +175,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a59a92a6db209be147345a9ee692b0293" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -257,12 +191,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aa55ec09c514f10274a1dba5b82dcf92f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -279,12 +207,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a9ea38d8b3ca1d41d386f793692504997" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -301,12 +223,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ad80e49f26dcf493ea92cc1d5f1544aef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -323,12 +239,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ab270aa07186519e2484998ca3f44e236" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -345,12 +255,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a331193754a0b1f0adeeeabf435f69113" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -367,12 +271,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a8c91230959a00cfef282014f2e4ccf4c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -389,12 +287,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a18f810eec082dab6613e0d314822e114" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -411,12 +303,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a13980378a267634b8653bff6f1107068" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -433,12 +319,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="101"/>
       </memberdef>
       </sectiondef>
@@ -462,12 +342,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ac68cda2c2458f8b69cfa6fca2b1773ee" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -488,12 +362,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a5c73987074f0b19106b99a15323a242d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -519,12 +387,6 @@
           <declname>cleanPrice</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="115"/>
       </memberdef>
       </sectiondef>
@@ -548,12 +410,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ad541e767c07c9acb712a3fd036046609" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -586,12 +442,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="128"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aada2e8fc2aa2268cb4d9be49dca113b7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -612,12 +462,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1af75112e58ce3e4d584e98ad08a9cb4fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -650,12 +494,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a7586eb670f9c6593816ac56a842c33ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -703,12 +541,6 @@
           <declname>guess</declname>
           <defval>0.05</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1aa08110bee1ad217cf07d88b5ca525a5d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -734,12 +566,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="150"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a759f1d35b136a7edae2bb8e17d84c58f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -777,12 +603,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ad394820c22d967a3a97a734e1386e989" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -803,12 +623,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="160"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ab3cb571a101f89b46d05515fd4990a41" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -841,12 +655,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="166"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a459861a9569599f4cc27167f0f8c3cef" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -867,12 +675,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="169"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1af2f55c70337d4c93a5a6cbe262be0c94" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -905,12 +707,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="175"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1ac89d7a397ebf318e3db1908276af9478" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -931,12 +727,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="178"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a00e708b10c9cf504733f04135698f485" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -969,12 +759,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="184"/>
       </memberdef>
       </sectiondef>
@@ -1014,12 +798,6 @@
           <declname>settlementDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="195"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_bond_functions_1a972943b86726e6ae40becf565b0fc08a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1070,12 +848,6 @@
           <declname>guess</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="205"/>
       </memberdef>
       </sectiondef>
@@ -1086,7 +858,6 @@
    Bond cashflows, the dirty price (i.e. npv) calculated from clean
    price, the bond settlement date (unless another date is given), zero
    ex-dividend days, and excluding any cashflow on the settlement date.
-
    Prices are always clean, as per market convention.</verbatim> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/bond/bondfunctions.hpp" bodystart="52" bodyend="208"/>
   </compounddef>

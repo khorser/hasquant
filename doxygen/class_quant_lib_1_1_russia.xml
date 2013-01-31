@@ -11,12 +11,6 @@
         <definition>Russia</definition>
         <argsstring>()</argsstring>
         <name>Russia</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/russia.hpp" line="57"/>
       </memberdef>
       </sectiondef>

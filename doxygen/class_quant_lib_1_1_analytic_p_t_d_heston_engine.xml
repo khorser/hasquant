@@ -10,12 +10,6 @@
         <definition>const boost::shared_ptr&lt;AnalyticHestonEngine::Integration&gt; integration_</definition>
         <argsstring></argsstring>
         <name>integration_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +31,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxEvaluations</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1ab3cabff5450770405b8bea135479b89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -59,12 +47,6 @@
           <declname>integrationOrder</declname>
           <defval>144</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -73,12 +55,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" line="72"/>
       </memberdef>
       </sectiondef>
@@ -89,10 +65,8 @@
    with Stochastic Volatility with Applications to Bond and
    Currency Options.  The review of Financial Studies, Volume 6,
    Issue 2, 327-343.
-
    J. Gatheral, The Volatility Surface: A Practitioner&apos;s Guide,
    Wiley Finance
-
    A. Elices, Models with time-dependent parameters using 
    transform methods: application to Heston’s model,
    http://arxiv.org/pdf/0708.2020</verbatim> </para>    </detaileddescription>

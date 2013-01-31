@@ -11,12 +11,6 @@
         <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVol_</definition>
         <argsstring></argsstring>
         <name>capletVol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -31,12 +25,6 @@
           <declname>v</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1adfef2cab50b0c3b85151beaabf9309b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -44,12 +32,6 @@
         <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1ad26418d5cb34209463153a8b64491999" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -62,19 +44,11 @@
           <declname>v</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="71" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base pricer for capped/floored Ibor coupons </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="62" bodyend="81"/>
   </compounddef>
 </doxygen>

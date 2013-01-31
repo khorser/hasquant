@@ -9,12 +9,6 @@
         <definition>typedef BootstrapHelper&lt;YoYOptionletVolatilitySurface&gt; helper</definition>
         <argsstring></argsstring>
         <name>helper</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
           <type>const <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> *</type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="40" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1add60ca0b8e145256dc34660cc9315fb1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -45,12 +33,6 @@
           <type>const <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> *</type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="44" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a3d588d285d1bab9713203106b9b86a9a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -78,12 +60,6 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="54" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1adb45509f2b9bad68dc02d371a2f5664b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -110,12 +86,6 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="71" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a37bffa13fcb33069d36109f4c7d7119a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -142,12 +112,6 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="79" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1add4d45aa8267ecbd478ea4e9bca49429" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -167,12 +131,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="88" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -180,19 +138,11 @@
         <definition>static Size maxIterations</definition>
         <argsstring>()</argsstring>
         <name>maxIterations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>traits for inflation-volatility bootstrap </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="35" bodyend="95"/>
   </compounddef>
 </doxygen>

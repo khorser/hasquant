@@ -10,12 +10,6 @@
         <definition>ESPCurrency</definition>
         <argsstring>()</argsstring>
         <name>ESPCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="529" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="529" bodyend="537"/>
       </memberdef>
       </sectiondef>

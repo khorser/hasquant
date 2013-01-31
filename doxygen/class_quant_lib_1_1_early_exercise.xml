@@ -12,12 +12,6 @@
         <definition>bool payoffAtExpiry_</definition>
         <argsstring></argsstring>
         <name>payoffAtExpiry_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -36,12 +30,6 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_1afc233529c1530b5a9409277a3e75242f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +37,6 @@
         <definition>bool payoffAtExpiry</definition>
         <argsstring>() const </argsstring>
         <name>payoffAtExpiry</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>

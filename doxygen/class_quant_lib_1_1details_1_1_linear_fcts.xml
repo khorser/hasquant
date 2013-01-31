@@ -16,12 +16,6 @@
         <definition>typedef xContainer::value_type ArgumentType</definition>
         <argsstring></argsstring>
         <name>ArgumentType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -31,12 +25,6 @@
         <definition>std::vector&lt; boost::function1&lt;Real, ArgumentType&gt; &gt; v</definition>
         <argsstring></argsstring>
         <name>v</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -54,12 +42,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>intercept</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="54" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fcts_1a5f84e474aca6cd7b9de3c7a4963c7b63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -67,19 +49,9 @@
         <definition>const std::vector&lt; boost::function1&lt;Real, ArgumentType&gt; &gt;&amp; fcts</definition>
         <argsstring>()</argsstring>
         <name>fcts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="51" bodyend="66"/>
   </compounddef>
 </doxygen>

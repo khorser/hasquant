@@ -10,12 +10,6 @@
         <definition>const Real s_</definition>
         <argsstring></argsstring>
         <name>s_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -30,12 +24,6 @@
           <declname>s</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_laguerre_polynomial_1a2ad28899a5762c677631c246bbd07d7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -44,12 +32,6 @@
         <argsstring>() const </argsstring>
         <name>mu_0</name>
         <reimplements refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a285550e8d0f3964935a6301d1d2f4037">mu_0</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_laguerre_polynomial_1a5636c42b75b9162dfc03348bdf0e46db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -62,12 +44,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_laguerre_polynomial_1aef8dfcc10e1813645475edd1b30ca109" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -80,12 +56,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_laguerre_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -98,19 +68,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Laguerre polynomial. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="63" bodyend="74"/>
   </compounddef>
 </doxygen>

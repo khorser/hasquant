@@ -34,12 +34,6 @@
           <declname>p</declname>
           <defval>0.5</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1ac0a375ee03ecb1eebd62648f8aaa38e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -47,12 +41,6 @@
         <definition>Real p</definition>
         <argsstring>() const </argsstring>
         <name>p</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1aecbaa94cf482cd93bcc9e60fa3a69434" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +48,6 @@
         <definition>Real nuDown</definition>
         <argsstring>() const </argsstring>
         <name>nuDown</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a54e6a38c08af90b015809f708b7bd194" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -73,12 +55,6 @@
         <definition>Real nuUp</definition>
         <argsstring>() const </argsstring>
         <name>nuUp</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -86,19 +62,9 @@
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="67" bodyend="77"/>
   </compounddef>
 </doxygen>

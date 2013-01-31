@@ -9,12 +9,6 @@
         <definition>Array weights_</definition>
         <argsstring></argsstring>
         <name>weights_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -32,12 +26,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_average_basket_payoff_1aad64b8bf50c5baaa6bc2a0ea4e504d68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -53,12 +41,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_average_basket_payoff_1a8af5614e309a5b2a685b9c4ac364dc46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -70,19 +52,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="80" bodyend="84"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="72" bodyend="87"/>
   </compounddef>
 </doxygen>

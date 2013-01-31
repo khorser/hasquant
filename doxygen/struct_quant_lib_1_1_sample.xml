@@ -16,12 +16,6 @@
         <definition>typedef T value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -31,12 +25,6 @@
         <definition>T value</definition>
         <argsstring></argsstring>
         <name>value</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_sample_1a4ddbf238c21d1f8db5aa4efe1aabe9aa" prot="public" static="no" mutable="no">
@@ -44,12 +32,6 @@
         <definition>Real weight</definition>
         <argsstring></argsstring>
         <name>weight</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -67,19 +49,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>weight</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" bodystart="37" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>weighted sample </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" bodystart="34" bodyend="41"/>
   </compounddef>
 </doxygen>

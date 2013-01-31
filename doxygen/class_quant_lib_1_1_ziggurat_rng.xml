@@ -9,12 +9,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>MersenneTwisterUniformRng mt32_</definition>
         <argsstring></argsstring>
         <name>mt32_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
           <declname>seed</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ziggurat_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +39,6 @@
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       </sectiondef>
@@ -72,12 +48,6 @@
         <definition>Real nextGaussian</definition>
         <argsstring>() const </argsstring>
         <name>nextGaussian</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="61"/>
       </memberdef>
       </sectiondef>

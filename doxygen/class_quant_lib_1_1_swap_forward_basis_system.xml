@@ -9,12 +9,6 @@
         <definition>std::vector&lt;Time&gt; rateTimes_</definition>
         <argsstring></argsstring>
         <name>rateTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_forward_basis_system_1aa010100d61810501bed98b1773802fe5" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Time&gt; exerciseTimes_</definition>
         <argsstring></argsstring>
         <name>exerciseTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_forward_basis_system_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_forward_basis_system_1a0e6b881d8f8f11a9b53c51056f185ba0" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>std::vector&lt;Size&gt; rateIndex_</definition>
         <argsstring></argsstring>
         <name>rateIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_forward_basis_system_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -84,12 +54,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>exerciseTimes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1a5065f03e9f9e90f1a6ca2a593ab037b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -97,12 +61,6 @@
         <definition>Size numberOfExercises</definition>
         <argsstring>() const </argsstring>
         <name>numberOfExercises</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1affc4cb235f5204ff23418e080281700d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -110,12 +68,6 @@
         <definition>std::vector&lt;Size&gt; numberOfFunctions</definition>
         <argsstring>() const </argsstring>
         <name>numberOfFunctions</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -123,12 +75,6 @@
         <definition>const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1aa10274c0393aff9841d8518b3d839d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -139,12 +85,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -152,12 +92,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1aadcdfbd9bd7b7f0ac735eee073ac16c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -165,12 +99,6 @@
         <definition>std::valarray&lt;bool&gt; isExerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>isExerciseTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1af07b2f61cfdaf5aa88726afc22aea5c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -185,12 +113,6 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>results</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_basis_system_1af5f0c9adadc877be7f156eccce2f6d8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -198,19 +120,9 @@
         <definition>std::auto_ptr&lt;MarketModelBasisSystem&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="45"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapforwardbasissystem.hpp" bodystart="29" bodyend="51"/>
   </compounddef>
 </doxygen>

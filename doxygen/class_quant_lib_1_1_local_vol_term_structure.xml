@@ -29,12 +29,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000125"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_term_structure_1a22dbcfb670e37c7b778f6a53a8a39fe6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -56,8 +52,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000126"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_term_structure_1ad6bec7ca8be90c47f0b0a16b906898a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -86,10 +80,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_term_structure_1a8db8952b2a6a0c4ab6a4f06e952d1d97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -116,10 +106,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="70"/>
       </memberdef>
       </sectiondef>
@@ -143,12 +129,6 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_term_structure_1af51829f96ba20ca7f57a773a99db269d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -169,12 +149,6 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="80"/>
       </memberdef>
       </sectiondef>
@@ -191,12 +165,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="84"/>
       </memberdef>
       </sectiondef>
@@ -221,10 +189,6 @@
         </param>
         <briefdescription>
 <para>local vol calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="96"/>
       </memberdef>
       </sectiondef>
@@ -234,17 +198,9 @@
         <definition>virtual ~LocalVolTermStructure</definition>
         <argsstring>()</argsstring>
         <name>~LocalVolTermStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>This abstract class defines the interface of concrete local-volatility term structures which will be derived from this one.</para><para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp" bodystart="38" bodyend="98"/>

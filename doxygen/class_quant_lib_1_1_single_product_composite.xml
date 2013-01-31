@@ -12,12 +12,6 @@
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a0a292c0068ae301d400b2e4b24e8847f">numberOfProducts</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/singleproductcomposite.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_single_product_composite_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -26,12 +20,6 @@
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54">maxNumberOfCashFlowsPerProductPerStep</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/singleproductcomposite.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_single_product_composite_1a5ba8c0749807b349f90cbc0465907c3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -54,10 +42,6 @@
         </param>
         <briefdescription>
 <para>return value indicates whether path is finished, TRUE means done </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/singleproductcomposite.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_single_product_composite_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -68,10 +52,6 @@
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a20a5dca0cfe5503409e87a1e1ea80ebb">clone</reimplements>
         <briefdescription>
 <para>returns a newly-allocated copy of itself </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/singleproductcomposite.hpp" line="43"/>
       </memberdef>
       </sectiondef>

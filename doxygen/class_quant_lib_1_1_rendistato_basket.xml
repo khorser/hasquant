@@ -11,12 +11,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="100" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1a6a8b20951583ba00b93b21f116ef6122" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -24,12 +18,6 @@
         <definition>const std::vector&lt; boost::shared_ptr&lt; BTP &gt; &gt; &amp; btps</definition>
         <argsstring>() const </argsstring>
         <name>btps</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="204" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1ad21e8f5ed789ee96327386bca6eb08ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -37,12 +25,6 @@
         <definition>const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp; cleanPriceQuotes</definition>
         <argsstring>() const </argsstring>
         <name>cleanPriceQuotes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1a8605d6bcc154514448692b0eb305668f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -50,12 +32,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; outstandings</definition>
         <argsstring>() const </argsstring>
         <name>outstandings</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1af188ed1bb2d72ec34e3c15041d54c1b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -63,12 +39,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; weights</definition>
         <argsstring>() const </argsstring>
         <name>weights</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="104" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_basket_1a22d90e90edebfef547c4fcba1a76296c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -76,12 +46,6 @@
         <definition>Real outstanding</definition>
         <argsstring>() const </argsstring>
         <name>outstanding</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="105" bodyend="105"/>
       </memberdef>
       </sectiondef>
@@ -92,12 +56,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       </sectiondef>
@@ -107,12 +65,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;BTP&gt; &gt; btps_</definition>
         <argsstring></argsstring>
         <name>btps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_basket_1ab9c36249af7a917dc745daa1c0ffc662" prot="private" static="no" mutable="no">
@@ -120,12 +72,6 @@
         <definition>std::vector&lt;Real&gt; outstandings_</definition>
         <argsstring></argsstring>
         <name>outstandings_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_basket_1ac61a095b89dde0494f5f7316eb32efdc" prot="private" static="no" mutable="no">
@@ -133,12 +79,6 @@
         <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; quotes_</definition>
         <argsstring></argsstring>
         <name>quotes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_basket_1a228d805234a9be4bea5159d0f19baefb" prot="private" static="no" mutable="no">
@@ -146,12 +86,6 @@
         <definition>Real outstanding_</definition>
         <argsstring></argsstring>
         <name>outstanding_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_basket_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
@@ -159,12 +93,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_basket_1aaa10e053085ec93c9731779170933b1d" prot="private" static="no" mutable="no">
@@ -172,12 +100,6 @@
         <definition>std::vector&lt;Real&gt; weights_</definition>
         <argsstring></argsstring>
         <name>weights_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -199,19 +121,9 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>cleanPriceQuotes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="97"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="92" bodyend="118"/>
   </compounddef>
 </doxygen>

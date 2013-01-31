@@ -11,12 +11,6 @@
         <definition>TARGET</definition>
         <argsstring>()</argsstring>
         <name>TARGET</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/target.hpp" line="58"/>
       </memberdef>
       </sectiondef>

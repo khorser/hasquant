@@ -10,12 +10,6 @@
         <definition>LVLCurrency</definition>
         <argsstring>()</argsstring>
         <name>LVLCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="258" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="258" bodyend="265"/>
       </memberdef>
       </sectiondef>

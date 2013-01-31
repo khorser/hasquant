@@ -55,8 +55,6 @@
     <innerclass refid="class_quant_lib_1_1_vanilla_option" prot="public">QuantLib::VanillaOption</innerclass>
     <innerclass refid="class_quant_lib_1_1_vanilla_swap" prot="public">QuantLib::VanillaSwap</innerclass>
     <innerclass refid="class_quant_lib_1_1_variance_swap" prot="public">QuantLib::VarianceSwap</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Since version 0.3.4, the <computeroutput>Instrument</computeroutput> class was reworked as shown in the following figure.</para><para><latexonly> 
    \begin{center}

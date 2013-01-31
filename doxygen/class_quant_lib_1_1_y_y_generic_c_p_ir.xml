@@ -35,19 +35,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="87" bodyend="102"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Fake year-on-year <ref refid="class_quant_lib_1_1_generic_c_p_i" kindref="compound">GenericCPI</ref> (i.e. a ratio) </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="85" bodyend="103"/>
   </compounddef>
 </doxygen>

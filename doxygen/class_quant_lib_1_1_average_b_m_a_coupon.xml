@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff">fixingDate</reimplements>
         <briefdescription>
 <para>not applicable here; use <ref refid="class_quant_lib_1_1_average_b_m_a_coupon_1a7f00f23080f829019ba5a986a64f79ff" kindref="member">fixingDates()</ref> instead </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_average_b_m_a_coupon_1a7f00f23080f829019ba5a986a64f79ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -27,10 +23,6 @@
         <name>fixingDates</name>
         <briefdescription>
 <para>fixing dates of the rates to be averaged </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_average_b_m_a_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -41,10 +33,6 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
         <briefdescription>
 <para>not applicable here; use <ref refid="class_quant_lib_1_1_average_b_m_a_coupon_1a39b677b1780af304cd199b748fb139b6" kindref="member">indexFixings()</ref> instead </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_average_b_m_a_coupon_1a39b677b1780af304cd199b748fb139b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -54,10 +42,6 @@
         <name>indexFixings</name>
         <briefdescription>
 <para>fixings of the underlying index to be averaged </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_average_b_m_a_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -68,10 +52,6 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
         <briefdescription>
 <para>not applicable here </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="70"/>
       </memberdef>
       </sectiondef>
@@ -86,12 +66,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="75"/>
       </memberdef>
       </sectiondef>
@@ -101,12 +75,6 @@
         <definition>Schedule fixingSchedule_</definition>
         <argsstring></argsstring>
         <name>fixingSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -161,12 +129,6 @@
           <declname>dayCounter</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="55"/>
       </memberdef>
       </sectiondef>

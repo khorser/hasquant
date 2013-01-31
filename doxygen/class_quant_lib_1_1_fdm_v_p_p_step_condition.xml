@@ -9,12 +9,6 @@
         <definition>const Real heatRate_</definition>
         <argsstring></argsstring>
         <name>heatRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1aee06cd02341796b9e83ede8be2ad0ee2" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Real pMin_</definition>
         <argsstring></argsstring>
         <name>pMin_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ada99e5388b503fa12e045c2060aa9475" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Real pMax_</definition>
         <argsstring></argsstring>
         <name>pMax_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1acf629de0b7ded06172785e50f2c0ecef" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const Size tMinUp_</definition>
         <argsstring></argsstring>
         <name>tMinUp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ab06b54dddf49030f931b40aa717b3fa9" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const Size tMinDown_</definition>
         <argsstring></argsstring>
         <name>tMinDown_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1af2411cd32232caa591bd390c8b5b03eb" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>const Real startUpFuel_</definition>
         <argsstring></argsstring>
         <name>startUpFuel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ad85e46c0c1e963f423e0a72082a05994" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>const Real startUpFixCost_</definition>
         <argsstring></argsstring>
         <name>startUpFixCost_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a670c4c1cfaff8bb46b1cfd39c79d1b8e" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>const Real carbonPrice_</definition>
         <argsstring></argsstring>
         <name>carbonPrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a7de2e03d2f2654a504f17cd726ca7aaa" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>const Size stateDirection_</definition>
         <argsstring></argsstring>
         <name>stateDirection_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a70b22468747b8b9e61f7dd273fa957ac" prot="private" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; gasPrice_</definition>
         <argsstring></argsstring>
         <name>gasPrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a84287b044e79aa45bdcc598b93eacbd1" prot="private" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; sparkSpreadPrice_</definition>
         <argsstring></argsstring>
         <name>sparkSpreadPrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ac8a0a3266983be69d3be316cee347456" prot="private" static="no" mutable="no">
@@ -165,12 +93,6 @@
         <definition>std::vector&lt;boost::function&lt;Real (Real)&gt; &gt; stateEvolveFcts_</definition>
         <argsstring></argsstring>
         <name>stateEvolveFcts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -228,12 +150,6 @@
           <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;</type>
           <declname>sparkSpreadPrice</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -249,12 +165,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="51"/>
       </memberdef>
       </sectiondef>
@@ -268,12 +178,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sparkSpread</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1abf8a75ac0bd22d6f661577aea9131c21" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -285,12 +189,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sparkSpread</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a52e3691417bceefcc489782cd53fa03e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -306,12 +204,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a45edd93c5f47f69c7b548e77bf6e8be8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -331,19 +223,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="59"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="38" bodyend="73"/>
   </compounddef>
 </doxygen>

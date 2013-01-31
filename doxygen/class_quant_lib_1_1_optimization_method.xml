@@ -12,12 +12,6 @@
         <definition>virtual ~OptimizationMethod</definition>
         <argsstring>()</argsstring>
         <name>~OptimizationMethod</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -37,17 +31,11 @@
         </param>
         <briefdescription>
 <para>minimize the optimization problem P </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Abstract class for constrained optimization method. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" bodystart="36" bodyend="43"/>
   </compounddef>
 </doxygen>

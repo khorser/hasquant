@@ -20,12 +20,6 @@
         <definition>std::set&lt;Date&gt; addedHolidays</definition>
         <argsstring></argsstring>
         <name>addedHolidays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" static="no" mutable="no">
@@ -33,12 +27,6 @@
         <definition>std::set&lt;Date&gt; removedHolidays</definition>
         <argsstring></argsstring>
         <name>removedHolidays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +36,6 @@
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -61,12 +43,6 @@
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_impl_1a1291315ff78a8c6c1d8b21d99e724a2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -77,12 +53,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_impl_1a5a7ad21cda86451725622b5d32783548" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -95,19 +65,11 @@
         <param>
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>abstract base class for calendar implementations </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="61" bodyend="68"/>
   </compounddef>
 </doxygen>

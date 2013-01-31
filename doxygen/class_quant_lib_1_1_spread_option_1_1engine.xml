@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp</includes>
     <briefdescription>
 <para>Spread option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp" bodystart="42" bodyend="44"/>
   </compounddef>
 </doxygen>

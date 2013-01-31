@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="56" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       </sectiondef>
@@ -49,10 +41,6 @@
         </param>
         <briefdescription>
 <para>returns the difference between the new value and the old value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="65" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +48,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
@@ -75,12 +57,6 @@
         <definition>Real value_</definition>
         <argsstring></argsstring>
         <name>value_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -95,19 +71,11 @@
           <declname>value</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="53" bodyend="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>market element returning a stored value </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="33" bodyend="49"/>
   </compounddef>
 </doxygen>

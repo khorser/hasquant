@@ -17,12 +17,6 @@
         <definition>std::vector&lt;Real&gt; primitive_</definition>
         <argsstring></argsstring>
         <name>primitive_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +38,6 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +45,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -74,12 +56,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="50" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -91,12 +67,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="59" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1a40d5931c8135350130ddb69962b5c760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -107,12 +77,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -123,19 +87,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="35" bodyend="72"/>
   </compounddef>
 </doxygen>

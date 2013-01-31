@@ -10,12 +10,6 @@
         <definition>const Real lambda_</definition>
         <argsstring></argsstring>
         <name>lambda_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1ab93aabd725036e18018464e4d104a097" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Real delta_</definition>
         <argsstring></argsstring>
         <name>delta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1aa75da5258630a6e16f71bc04f43a33f6" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Real nu_</definition>
         <argsstring></argsstring>
         <name>nu_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1a049bf2fd17a24d5efdf571600ff749ec" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Real m_</definition>
         <argsstring></argsstring>
         <name>m_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1af1fc88eee476d12a7fe5d010bbb5c8e2" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const CumulativeNormalDistribution cumNormalDist_</definition>
         <argsstring></argsstring>
         <name>cumNormalDist_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -126,12 +96,6 @@
           <declname>d</declname>
           <defval>HestonProcess::FullTruncation</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -142,10 +106,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -164,10 +124,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -192,12 +148,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -205,12 +157,6 @@
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -218,12 +164,6 @@
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -231,12 +171,6 @@
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="67"/>
       </memberdef>
       </sectiondef>

@@ -18,12 +18,6 @@
         <definition>typedef FDEngineAdapter&lt;FDShoutCondition&lt;FDDividendEngine&lt;Scheme&gt; &gt;, DividendVanillaOption::engine&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -52,19 +46,11 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="44" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Finite-differences shout engine with dividends. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="38" bodyend="49"/>
   </compounddef>
 </doxygen>

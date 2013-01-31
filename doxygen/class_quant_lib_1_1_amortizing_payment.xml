@@ -16,12 +16,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="107" bodyend="114"/>
       </memberdef>
       </sectiondef>
@@ -39,12 +33,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       </sectiondef>

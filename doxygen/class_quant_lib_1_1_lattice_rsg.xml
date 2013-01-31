@@ -8,12 +8,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -23,12 +17,6 @@
         <definition>Size dimensionality_</definition>
         <argsstring></argsstring>
         <name>dimensionality_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lattice_rsg_1a7f499082c4cc12301dec25999dae6edc" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Size N_</definition>
         <argsstring></argsstring>
         <name>N_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lattice_rsg_1a79b47745a0c1869e27de4715a8c32ed8" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Size i_</definition>
         <argsstring></argsstring>
         <name>i_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lattice_rsg_1a585c5a1819f797bf907fe72e4bf14127" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>std::vector&lt;Real&gt; z_</definition>
         <argsstring></argsstring>
         <name>z_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lattice_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>sample_type sequence_</definition>
         <argsstring></argsstring>
         <name>sequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lattice_rsg_1a8341d8d3a5dc5ebce448001cb4fb4234" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>Real Ninv_</definition>
         <argsstring></argsstring>
         <name>Ninv_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -115,12 +73,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>N</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_rsg_1aaa2d30eb47ba0545410f2a87ebbacf1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -132,12 +84,8 @@
           <type>unsigned long</type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>skip to the n-th sample in the low-discrepancy sequence </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_rsg_1a47a6cd9599a7b653b403a6fb7b86c78c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -145,12 +93,6 @@
         <definition>const LatticeRsg::sample_type&amp; nextSequence</definition>
         <argsstring>()</argsstring>
         <name>nextSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -158,12 +100,6 @@
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -171,19 +107,9 @@
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticersg.hpp" bodystart="33" bodyend="55"/>
   </compounddef>
 </doxygen>

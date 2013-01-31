@@ -10,12 +10,6 @@
         <definition>virtual ~TimeSetter</definition>
         <argsstring>()</argsstring>
         <name>~TimeSetter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="114" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1afe6b35c7276438094855ba4bf9f6290b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -31,19 +25,11 @@
           <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <declname>L</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="116"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>encapsulation of time-setting logic </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="112" bodyend="117"/>
   </compounddef>
 </doxygen>

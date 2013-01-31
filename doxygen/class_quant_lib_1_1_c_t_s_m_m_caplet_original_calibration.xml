@@ -9,12 +9,6 @@
         <definition>std::vector&lt;Real&gt; alpha_</definition>
         <argsstring></argsstring>
         <name>alpha_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1a4dc6c3b9a9787a1b5f4ff4f0b6971fd2" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>bool lowestRoot_</definition>
         <argsstring></argsstring>
         <name>lowestRoot_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1afc28dec9c08c3a91202235244aef519a" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>bool useFullApprox_</definition>
         <argsstring></argsstring>
         <name>useFullApprox_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -86,12 +68,6 @@
           <type>bool</type>
           <declname>useFullApprox</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="41"/>
       </memberdef>
       </sectiondef>
@@ -145,12 +121,6 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="61"/>
       </memberdef>
       </sectiondef>
@@ -170,19 +140,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="28" bodyend="69"/>
   </compounddef>
 </doxygen>

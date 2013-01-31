@@ -15,12 +15,6 @@
           <type>const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;</type>
           <declname>secondaryCosts</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_1ae3794650bbfcd5cdc7cfce815dcda82e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -28,12 +22,6 @@
         <definition>const boost::shared_ptr&lt;SecondaryCosts&gt;&amp; secondaryCosts</definition>
         <argsstring>() const </argsstring>
         <name>secondaryCosts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_1a34142b1dd8c4ea5624f6f48757d70340" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -41,12 +29,6 @@
         <definition>const SecondaryCostAmounts&amp; secondaryCostAmounts</definition>
         <argsstring>() const </argsstring>
         <name>secondaryCostAmounts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_1a23f2960fa1d326be0357be9c9fdd1ac1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -54,12 +36,6 @@
         <definition>const PricingErrors&amp; pricingErrors</definition>
         <argsstring>() const </argsstring>
         <name>pricingErrors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_1adcf5b5285c0e8f1aa49d6e93ee8a27be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -80,19 +56,11 @@
           <declname>detail</declname>
           <defval>&quot;&quot;</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="71"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_commodity" kindref="compound">Commodity</ref> base class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" bodystart="63" bodyend="76"/>
   </compounddef>
 </doxygen>

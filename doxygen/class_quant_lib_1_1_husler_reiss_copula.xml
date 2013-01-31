@@ -10,12 +10,6 @@
         <definition>Real theta_</definition>
         <argsstring></argsstring>
         <name>theta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_husler_reiss_copula_1a5b23e05459a0a98161bb150b69040963" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>CumulativeNormalDistribution cumNormal_</definition>
         <argsstring></argsstring>
         <name>cumNormal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +30,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>theta_</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_husler_reiss_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -63,19 +45,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" line="37"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Husler-Reiss copula. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/huslerreisscopula.hpp" bodystart="34" bodyend="41"/>
   </compounddef>
 </doxygen>

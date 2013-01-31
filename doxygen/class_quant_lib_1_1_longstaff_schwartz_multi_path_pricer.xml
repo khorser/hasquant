@@ -29,12 +29,6 @@
         <param>
           <type>LsmBasisSystem::PolynomType</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -47,12 +41,6 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a8946c11a6ad8cd19bc92048019269157" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -60,12 +48,6 @@
         <definition>virtual void calibrate</definition>
         <argsstring>()</argsstring>
         <name>calibrate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="58"/>
       </memberdef>
       </sectiondef>

@@ -29,12 +29,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="67" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equal_probabilities_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -50,12 +44,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="72" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equal_probabilities_binomial_tree_1a8bc8de40659e05e8da8823d40dabe123" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -72,19 +60,11 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for equal probabilities binomial tree. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="65" bodyend="80"/>
   </compounddef>
 </doxygen>

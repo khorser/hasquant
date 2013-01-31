@@ -28,12 +28,8 @@
           <declname>forecastTodaysFixing</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000041"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="156"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +40,6 @@
         <definition>Handle&lt; ZeroInflationTermStructure &gt; zeroInflationTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>zeroInflationTermStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="249" bodyend="251"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a07e5121e8d142b09d0810142e07d6107" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -61,12 +51,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="162"/>
       </memberdef>
       </sectiondef>
@@ -76,12 +60,6 @@
         <definition>Handle&lt;ZeroInflationTermStructure&gt; zeroInflation_</definition>
         <argsstring></argsstring>
         <name>zeroInflation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -126,10 +104,6 @@
         </param>
         <briefdescription>
 <para>Always use the evaluation date as the reference date. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="148"/>
       </memberdef>
       </sectiondef>
@@ -143,12 +117,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="165"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a31402c8dcd6c83166c07900d7f440bca" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -160,19 +128,11 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="166"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for zero inflation indices. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="137" bodyend="168"/>
   </compounddef>
 </doxygen>

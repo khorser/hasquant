@@ -9,19 +9,9 @@
         <definition>everywhere</definition>
         <argsstring>()</argsstring>
         <name>everywhere</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="70" bodyend="73"/>
   </compounddef>
 </doxygen>

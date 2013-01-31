@@ -9,36 +9,22 @@
           <name>AsIndex</name>
           <briefdescription>
 <para>same interpolation as index </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa5a9e3347876551cd38b961213ff1ccde" prot="public">
           <name>Flat</name>
           <briefdescription>
 <para>flat from previous fixing </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa1a1f3bc55fefa098d9034cc46e2e7a2b" prot="public">
           <name>Linear</name>
           <briefdescription>
 <para>linearly between bracketing fixings </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>when you observe an index, how do you interpolate between fixings? </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="36" bodyend="40"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="34" bodyend="41"/>
   </compounddef>
 </doxygen>

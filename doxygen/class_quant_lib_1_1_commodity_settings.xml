@@ -10,12 +10,6 @@
         <definition>friend class Singleton&lt; CommoditySettings &gt;</definition>
         <argsstring></argsstring>
         <name>Singleton&lt; CommoditySettings &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <definition>Currency currency_</definition>
         <argsstring></argsstring>
         <name>currency_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_settings_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" static="no" mutable="no">
@@ -38,12 +26,6 @@
         <definition>UnitOfMeasure unitOfMeasure_</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -53,12 +35,6 @@
         <definition>CommoditySettings</definition>
         <argsstring>()</argsstring>
         <name>CommoditySettings</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="37"/>
       </memberdef>
       </sectiondef>
@@ -68,12 +44,6 @@
         <definition>Currency&amp; currency</definition>
         <argsstring>()</argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1adf4b5f459e5fd38f36759f17d4d0cd68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -81,19 +51,11 @@
         <definition>UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>unitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="41"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>global repository for run-time library settings </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="34" bodyend="45"/>
   </compounddef>
 </doxygen>

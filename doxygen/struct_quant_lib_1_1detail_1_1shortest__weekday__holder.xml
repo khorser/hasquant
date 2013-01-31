@@ -8,12 +8,6 @@
         <definition>Weekday d</definition>
         <argsstring></argsstring>
         <name>d</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -27,19 +21,9 @@
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" bodystart="74" bodyend="77"/>
   </compounddef>
 </doxygen>

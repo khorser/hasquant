@@ -20,12 +20,6 @@
         <definition>typedef MCVanillaEngine&lt;SingleVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_engine_1af24f9f2c0de053e45d36f3d549af4d5b" prot="public" static="no">
@@ -33,12 +27,6 @@
         <definition>typedef MCVanillaEngine&lt;SingleVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_engine_1ada2759e0be1476c26ab996d38fbeae01" prot="public" static="no">
@@ -46,12 +34,6 @@
         <definition>typedef MCVanillaEngine&lt;SingleVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -97,12 +79,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="110" bodyend="129"/>
       </memberdef>
       </sectiondef>

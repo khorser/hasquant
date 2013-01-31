@@ -13,12 +13,6 @@
         <definition>LossDist</definition>
         <argsstring>()</argsstring>
         <name>LossDist</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1a5546766df1db78def3db23dd75033fe9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -26,12 +20,6 @@
         <definition>virtual ~LossDist</definition>
         <argsstring>()</argsstring>
         <name>~LossDist</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1a750367f603a71c5a87707600f677ea41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -51,12 +39,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>probabilities</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1ab143530071a3af08da7f3df1640d33e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -68,12 +50,6 @@
         <reimplementedby refid="class_quant_lib_1_1_loss_dist_homogeneous_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_loss_dist_bucketing_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1a6adb04174b3fd47dcf4a4d6a401d563e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -85,12 +61,6 @@
         <reimplementedby refid="class_quant_lib_1_1_loss_dist_homogeneous_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_loss_dist_bucketing_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_loss_dist_monte_carlo_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="45"/>
       </memberdef>
       </sectiondef>
@@ -108,12 +78,8 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Binomial probability of n defaults using prob[0] </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1acf9cea8bbac2609ec13be76d762ea137" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -129,12 +95,8 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Binomial probability of at least n defaults using prob[0] </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1a2d7794e813cefafdac6576166cbdd06b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -146,13 +108,9 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Probability of exactly n default events Xiaofong Ma, &quot;Numerical Methods for the Valuation of Synthetic
          Collateralized Debt Obligations&quot;, PhD Thesis, Graduate Department of Computer Science, University of Toronto, 2007 <ulink url="http://www.cs.toronto.edu/pub/reports/na/ma-07-phd.pdf">http://www.cs.toronto.edu/pub/reports/na/ma-07-phd.pdf</ulink> (formula 2.1) </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1aa00098d738a49d32f49d9e57a76bd984" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -168,12 +126,6 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1aaed4b6db418b52611e4fb134d0cb6b8d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -189,19 +141,13 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Probability of at least n defaults </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Probability formulas and algorithms. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="37" bodyend="68"/>
   </compounddef>
 </doxygen>

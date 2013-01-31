@@ -9,12 +9,6 @@
         <definition>Array diagonal_</definition>
         <argsstring></argsstring>
         <name>diagonal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_symmetric_schur_decomposition_1a567fec5753f16416f938273edd3c99fc" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Matrix eigenVectors_</definition>
         <argsstring></argsstring>
         <name>eigenVectors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -41,13 +29,9 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>s must be symmetric </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_symmetric_schur_decomposition_1aeb9833fe31a4739b5075f2a4cbd5dddd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -55,12 +39,6 @@
         <definition>const Array&amp; eigenvalues</definition>
         <argsstring>() const </argsstring>
         <name>eigenvalues</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_symmetric_schur_decomposition_1a41aa0134fde9e36a14c3a0938903e4b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -68,12 +46,6 @@
         <definition>const Matrix&amp; eigenvectors</definition>
         <argsstring>() const </argsstring>
         <name>eigenvectors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
@@ -113,10 +85,6 @@
         </param>
         <briefdescription>
 <para>This routines implements the Jacobi, a.k.a. Givens, rotation. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="67" bodyend="75"/>
       </memberdef>
       </sectiondef>

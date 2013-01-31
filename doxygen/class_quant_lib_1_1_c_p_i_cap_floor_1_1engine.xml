@@ -4,10 +4,6 @@
     <compoundname>QuantLib::CPICapFloor::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CPICapFloor::arguments, CPICapFloor::results &gt;</basecompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine" prot="public" virt="non-virtual">InterpolatingCPICapFloorEngine</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="141" bodyend="143"/>
   </compounddef>
 </doxygen>

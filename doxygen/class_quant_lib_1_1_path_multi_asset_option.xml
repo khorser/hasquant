@@ -17,10 +17,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -32,12 +28,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a3762cf1ede25044eb5380658e479a49f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -45,12 +37,6 @@
         <definition>virtual boost::shared_ptr&lt;PathPayoff&gt; pathPayoff</definition>
         <argsstring>() const =0</argsstring>
         <name>pathPayoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a1aa73071c45512677295c1e059e47060" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -58,12 +44,6 @@
         <definition>virtual std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -72,12 +52,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="56"/>
       </memberdef>
       </sectiondef>
@@ -92,12 +68,6 @@
           <declname>engine</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a0803235b46bc121d4737d821c1e4e277" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -105,19 +75,11 @@
         <definition>virtual ~PathMultiAssetOption</definition>
         <argsstring>()</argsstring>
         <name>~PathMultiAssetOption</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for path-dependent options on multiple assets. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="35" bodyend="58"/>
   </compounddef>
 </doxygen>

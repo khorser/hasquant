@@ -40,19 +40,11 @@
           <type>const M &amp;</type>
           <declname>z</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="98" bodyend="102"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>polynomial2D-spline-interpolation factory </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="95" bodyend="103"/>
   </compounddef>
 </doxygen>

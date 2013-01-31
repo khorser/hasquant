@@ -28,12 +28,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000116"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a78c3b4b9eed5cd633319bba3e4d8d303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -50,12 +46,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000117"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a5995d58d27d3a346d3373f3df4a4681f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -82,10 +74,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a76c9c7be73b01bfe368d629468950ea7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -111,10 +99,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="67"/>
       </memberdef>
       </sectiondef>
@@ -140,10 +124,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given cap/floor length and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="93" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a4152aa0bedc71194ddd908caffdb6631" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -164,12 +144,6 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="101" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_volatility_structure_1a8c3285fcf4b32b98557cd4270e77bdae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -192,10 +166,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given end time and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="110" bodyend="116"/>
       </memberdef>
       </sectiondef>
@@ -205,12 +175,6 @@
         <definition>virtual ~CapFloorTermVolatilityStructure</definition>
         <argsstring>()</argsstring>
         <name>~CapFloorTermVolatilityStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       </sectiondef>

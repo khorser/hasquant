@@ -9,12 +9,6 @@
         <definition>typedef std::pair&lt;Size,Size&gt; range</definition>
         <argsstring></argsstring>
         <name>range</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>Size numberOfRates_</definition>
         <argsstring></argsstring>
         <name>numberOfRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>std::vector&lt;Time&gt; rateTimes_</definition>
         <argsstring></argsstring>
         <name>rateTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1af051a5fac945acae7bc4256d87825405" prot="private" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>std::vector&lt;Time&gt; evolutionTimes_</definition>
         <argsstring></argsstring>
         <name>evolutionTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a125cc7df9b1915820ac221e4fa52df6f" prot="private" static="no" mutable="no">
@@ -63,12 +39,6 @@
         <definition>std::vector&lt;std::pair&lt;Size,Size&gt; &gt; relevanceRates_</definition>
         <argsstring></argsstring>
         <name>relevanceRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1aa688289997396acdd1ad9b7c64735213" prot="private" static="no" mutable="no">
@@ -76,12 +46,6 @@
         <definition>std::vector&lt;Time&gt; rateTaus_</definition>
         <argsstring></argsstring>
         <name>rateTaus_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a1862cdc142ad9865dcb859afa61135c7" prot="private" static="no" mutable="no">
@@ -89,12 +53,6 @@
         <definition>std::vector&lt;Size&gt; firstAliveRate_</definition>
         <argsstring></argsstring>
         <name>firstAliveRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -104,12 +62,6 @@
         <definition>EvolutionDescription</definition>
         <argsstring>()</argsstring>
         <name>EvolutionDescription</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1aecf292561e16fe6df3c652f7b07ee82c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
@@ -131,12 +83,6 @@
           <declname>relevanceRates</declname>
           <defval>std::vector&lt; range &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -144,12 +90,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; rateTimes</definition>
         <argsstring>() const </argsstring>
         <name>rateTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a354ca1793c355a773e185886211db03a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -157,12 +97,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; rateTaus</definition>
         <argsstring>() const </argsstring>
         <name>rateTaus</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a0dac97b4b0bffee5390d8e79f635963a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -170,12 +104,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; evolutionTimes</definition>
         <argsstring>() const </argsstring>
         <name>evolutionTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1abca2bff1bd358cec29095d1073726857" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -183,12 +111,6 @@
         <definition>const std::vector&lt;Size&gt;&amp; firstAliveRate</definition>
         <argsstring>() const </argsstring>
         <name>firstAliveRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a0fb9d12ce3c6ee872a153fe766ea9489" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -196,12 +118,6 @@
         <definition>const std::vector&lt;std::pair&lt;Size,Size&gt; &gt;&amp; relevanceRates</definition>
         <argsstring>() const </argsstring>
         <name>relevanceRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -209,12 +125,6 @@
         <definition>Size numberOfRates</definition>
         <argsstring>() const </argsstring>
         <name>numberOfRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -222,12 +132,6 @@
         <definition>Size numberOfSteps</definition>
         <argsstring>() const </argsstring>
         <name>numberOfSteps</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="73"/>
       </memberdef>
       </sectiondef>

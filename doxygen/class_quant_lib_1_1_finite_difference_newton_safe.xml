@@ -23,12 +23,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xAccuracy</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/finitedifferencenewtonsafe.hpp" bodystart="39" bodyend="93"/>
       </memberdef>
       </sectiondef>

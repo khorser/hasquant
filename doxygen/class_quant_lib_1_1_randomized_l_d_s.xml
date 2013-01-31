@@ -18,12 +18,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -33,12 +27,6 @@
         <definition>LDS ldsg_</definition>
         <argsstring></argsstring>
         <name>ldsg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a1f5db3849f6c7fb351346e5687d1b048" prot="private" static="no" mutable="yes">
@@ -46,12 +34,6 @@
         <definition>LDS pristineldsg_</definition>
         <argsstring></argsstring>
         <name>pristineldsg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a12741f316babcec57022ce10d15dc1d4" prot="private" static="no" mutable="no">
@@ -59,12 +41,6 @@
         <definition>PRS prsg_</definition>
         <argsstring></argsstring>
         <name>prsg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a101ac2fd4059964925dda5d18055f99c" prot="private" static="no" mutable="no">
@@ -72,12 +48,6 @@
         <definition>Size dimension_</definition>
         <argsstring></argsstring>
         <name>dimension_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1ae1f845a270331b98285cfdd363dee595" prot="private" static="no" mutable="yes">
@@ -85,12 +55,6 @@
         <definition>sample_type x</definition>
         <argsstring></argsstring>
         <name>x</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a8ffc66dfe45ee8f2180feaa67e6ea02c" prot="private" static="no" mutable="yes">
@@ -98,12 +62,6 @@
         <definition>sample_type randomizer_</definition>
         <argsstring></argsstring>
         <name>randomizer_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -121,12 +79,6 @@
           <type>const PRS &amp;</type>
           <declname>prsg</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="87" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1afd982aebe39f5fb3b1d5b556c3909859" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -138,12 +90,6 @@
           <type>const LDS &amp;</type>
           <declname>ldsg</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="102" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1ad5cd3bf450cb608c0a9c7c516a5d5009" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -165,12 +111,6 @@
           <declname>prsSeed</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="112" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1a2ea25ac8138d4099afda3642057335ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -180,10 +120,6 @@
         <name>nextSequence</name>
         <briefdescription>
 <para>returns next sample using a given randomizing vector </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="124" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -191,12 +127,6 @@
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1aa917583553cf612af05e8b75e7e161dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -204,12 +134,8 @@
         <definition>void nextRandomizer</definition>
         <argsstring>()</argsstring>
         <name>nextRandomizer</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>update the randomizing vector and re-initialize the low discrepancy generator </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -217,12 +143,6 @@
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
       </sectiondef>

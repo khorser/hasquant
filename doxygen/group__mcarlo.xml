@@ -14,8 +14,6 @@
     <innerclass refid="class_quant_lib_1_1_path_generator" prot="public">QuantLib::PathGenerator</innerclass>
     <innerclass refid="class_quant_lib_1_1_path_pricer" prot="public">QuantLib::PathPricer</innerclass>
     <innerclass refid="struct_quant_lib_1_1_sample" prot="public">QuantLib::Sample</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>This framework (corresponding to the ql/MonteCarlo directory) contains basic building blocks for Monte Carlo simulations. </para>    </detaileddescription>
   </compounddef>

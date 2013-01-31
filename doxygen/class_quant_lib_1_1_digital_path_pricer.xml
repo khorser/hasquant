@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;CashOrNothingPayoff&gt; payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a01fc48156161326ae94fa67cc6c11601" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::shared_ptr&lt;AmericanExercise&gt; exercise_</definition>
         <argsstring></argsstring>
         <name>exercise_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; diffProcess_</definition>
         <argsstring></argsstring>
         <name>diffProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>PseudoRandom::ursg_type sequenceGen_</definition>
         <argsstring></argsstring>
         <name>sequenceGen_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a9a6e1109fcdac96e12417721c9041ce8" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; discountTS_</definition>
         <argsstring></argsstring>
         <name>discountTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -96,12 +66,6 @@
           <type>const <ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref> &amp;</type>
           <declname>sequenceGen</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -113,19 +77,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="120"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="112" bodyend="127"/>
   </compounddef>
 </doxygen>

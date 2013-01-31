@@ -30,12 +30,6 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a8154e95cbc2d2bd852e2394941136557" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -67,12 +61,6 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a6ee5dc6bd250148da726adfbcd50cef9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -80,12 +68,6 @@
         <definition>virtual ~BlackScholesCalculator</definition>
         <argsstring>()</argsstring>
         <name>~BlackScholesCalculator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -93,12 +75,8 @@
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to change in the underlying spot price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a789f1dd91bf031b93eecd46b14154c75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -106,12 +84,8 @@
         <definition>Real elasticity</definition>
         <argsstring>() const </argsstring>
         <name>elasticity</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity in percent to a percent change in the underlying spot price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -119,12 +93,8 @@
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Second order derivative with respect to change in the underlying spot price. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1acfadae38267887f344854fae069b38e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -136,12 +106,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to time to maturity. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a77ee03b6feb4bdd44acb8ef149f985d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -153,19 +119,13 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>maturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Sensitivity to time to maturity per day (assuming 365 day in a year). </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-Scholes 1973 calculator class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="32" bodyend="63"/>
   </compounddef>
 </doxygen>

@@ -31,12 +31,6 @@
           <declname>d</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="168"/>
       </memberdef>
       </sectiondef>

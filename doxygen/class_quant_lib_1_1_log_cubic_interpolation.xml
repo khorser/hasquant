@@ -60,20 +60,14 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rightConditionValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="109" bodyend="124"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>log-cubic interpolation between discrete points </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="105" bodyend="125"/>
   </compounddef>
 </doxygen>

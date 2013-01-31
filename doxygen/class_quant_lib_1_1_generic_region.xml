@@ -10,19 +10,11 @@
         <definition>GenericRegion</definition>
         <argsstring>()</argsstring>
         <name>GenericRegion</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="34" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Generic geographical/economic region. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="32" bodyend="39"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>const std::vector&lt;Size&gt; seconds_</definition>
         <argsstring></argsstring>
         <name>seconds_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -34,12 +28,6 @@
           <declname>seconds</declname>
           <defval>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a86a73dda254c228aa836fc63225035e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -59,12 +47,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>stepSizeSecs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a4a96ab5e0b859956a62bd5ecebe9e3d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -72,12 +54,6 @@
         <definition>const std::vector&lt;Size&gt;&amp; seconds</definition>
         <argsstring>() const </argsstring>
         <name>seconds</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1acac4050de15bd932950bb7cce7056791" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -93,12 +69,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="46"/>
       </memberdef>
       </sectiondef>

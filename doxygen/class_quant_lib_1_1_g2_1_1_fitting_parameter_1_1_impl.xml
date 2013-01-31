@@ -9,12 +9,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
         <argsstring></argsstring>
         <name>termStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1_1_impl_1a114bd3f70557109ba551776610bb2dc1" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1_1_impl_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real sigma_</definition>
         <argsstring></argsstring>
         <name>sigma_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1_1_impl_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Real b_</definition>
         <argsstring></argsstring>
         <name>b_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1_1_impl_1a06e2d64229bb485ee1dbf0abef8a0d4d" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Real eta_</definition>
         <argsstring></argsstring>
         <name>eta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1_1_impl_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Real rho_</definition>
         <argsstring></argsstring>
         <name>rho_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -113,12 +77,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="159" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_fitting_parameter_1_1_impl_1ae8b7f7095eb4359d77e946884117e3c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -133,19 +91,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="168" bodyend="177"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="157" bodyend="182"/>
   </compounddef>
 </doxygen>

@@ -25,19 +25,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Jarrow-Rudd (multiplicative) equal probabilities binomial tree. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="108" bodyend="114"/>
   </compounddef>
 </doxygen>

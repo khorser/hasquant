@@ -14,12 +14,6 @@
         <definition>typedef std::unary_function&lt;Point&lt;Real, typename X::argument_type&gt;, Real&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="304" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="304" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1aa91b0ef834fa3ce8c160e7fcd85d6285" prot="public" static="no">
@@ -27,12 +21,6 @@
         <definition>typedef Data&lt;base_data, typename X::data&gt; data</definition>
         <argsstring></argsstring>
         <name>data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="305" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="305" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a406c9d62f5e5f3152713996ba9fc87aa" prot="public" static="no">
@@ -40,12 +28,6 @@
         <definition>typedef DataTable&lt;typename X::data_table&gt; data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="306" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="306" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a4a40386dad3dd1a5090c757d9a35ccff" prot="public" static="no">
@@ -53,12 +35,6 @@
         <definition>typedef Point&lt;Size, typename X::dimensions&gt; dimensions</definition>
         <argsstring></argsstring>
         <name>dimensions</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="307" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="307" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1acfc455c96d779248db3eff8e5da03ab2" prot="public" static="no">
@@ -66,12 +42,6 @@
         <definition>typedef Point&lt;base_output_data, typename X::output_data&gt; output_data</definition>
         <argsstring></argsstring>
         <name>output_data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="308" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="308" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1ad8d9028d731c0df0fa73016f7de5fb1c" prot="public" static="no">
@@ -79,12 +49,6 @@
         <definition>typedef Point&lt;typename super::result_type, typename X::return_type&gt; return_type</definition>
         <argsstring></argsstring>
         <name>return_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="310" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="310" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -94,12 +58,6 @@
         <definition>const return_type&amp; a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="332" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="332" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a9e8545f4bb932639db0187c55ef18f5a" prot="private" static="no" mutable="no">
@@ -107,12 +65,6 @@
         <definition>const return_type &amp; b_</definition>
         <argsstring></argsstring>
         <name>b_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="332" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="332" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a96a60581129fb338d767d43df1e2ca37" prot="private" static="no" mutable="no">
@@ -120,12 +72,6 @@
         <definition>const return_type &amp; a2_</definition>
         <argsstring></argsstring>
         <name>a2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="332" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="332" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a912b7ce63d4047511398d540e48ddd6f" prot="private" static="no" mutable="no">
@@ -133,12 +79,6 @@
         <definition>const return_type &amp; b2_</definition>
         <argsstring></argsstring>
         <name>b2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="332" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="332" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1ac809be5f13593250eaa2f02615544579" prot="private" static="no" mutable="no">
@@ -146,12 +86,6 @@
         <definition>const dimensions&amp; i_</definition>
         <argsstring></argsstring>
         <name>i_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="333" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="333" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a582a83fcbbf2db2f8d51c5ae749c5b5e" prot="private" static="no" mutable="no">
@@ -159,12 +93,6 @@
         <definition>const data&amp; d_</definition>
         <argsstring></argsstring>
         <name>d_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="334" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="334" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a77d015539f2a2a09c89a8aa0a5727da5" prot="private" static="no" mutable="no">
@@ -172,12 +100,6 @@
         <definition>const data &amp; d2_</definition>
         <argsstring></argsstring>
         <name>d2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="334" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="334" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1accf46bcd8cb837b7b34c0f6c35cc6f4e" prot="private" static="no" mutable="no">
@@ -185,12 +107,6 @@
         <definition>const data_table&amp; y_</definition>
         <argsstring></argsstring>
         <name>y_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="335" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="335" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a50d523b30e828df6c4123843e7737e67" prot="private" static="no" mutable="no">
@@ -198,12 +114,6 @@
         <definition>data_table&amp; y2_</definition>
         <argsstring></argsstring>
         <name>y2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="336" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="336" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1afec3f9c9ad784475758c6c245d0e8686" prot="private" static="no" mutable="no">
@@ -211,12 +121,6 @@
         <definition>output_data&amp; v_</definition>
         <argsstring></argsstring>
         <name>v_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="337" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="337" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1a26f8813b6739bb7d65c75ab1a7f508bb" prot="private" static="no" mutable="no">
@@ -224,12 +128,6 @@
         <definition>output_data &amp; v1_</definition>
         <argsstring></argsstring>
         <name>v1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="337" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="337" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1af593673c797be76b3379a02e895bbbc2" prot="private" static="no" mutable="no">
@@ -237,12 +135,6 @@
         <definition>output_data &amp; v2_</definition>
         <argsstring></argsstring>
         <name>v2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="337" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="337" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -304,12 +196,6 @@
           <type>typename super::result_type &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="318" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="311" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1n__cubic__splint_1aba8a532308a54ef39a30594bf480fb4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -317,19 +203,9 @@
         <definition>~n_cubic_splint</definition>
         <argsstring>()</argsstring>
         <name>~n_cubic_splint</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="330" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="330" bodyend="330"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="301" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="300" bodyend="338"/>
   </compounddef>
 </doxygen>

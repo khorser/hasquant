@@ -27,10 +27,6 @@
         <name>firstDate</name>
         <briefdescription>
 <para>returns the first date for which a historical datum exists </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="244" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -40,10 +36,6 @@
         <name>lastDate</name>
         <briefdescription>
 <para>returns the last date for which a historical datum exists </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="250" bodyend="253"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -53,10 +45,6 @@
         <name>size</name>
         <briefdescription>
 <para>returns the number of historical data including null ones </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="256" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -66,10 +54,6 @@
         <name>empty</name>
         <briefdescription>
 <para>returns whether the series contains any data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="261" bodyend="263"/>
       </memberdef>
       </sectiondef>
@@ -86,10 +70,6 @@
         </param>
         <briefdescription>
 <para>returns the (possibly null) datum corresponding to the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="95" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a3f62282db5196704781ec6e5caa6c48f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -101,12 +81,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="101" bodyend="105"/>
       </memberdef>
       </sectiondef>
@@ -117,12 +91,6 @@
         <definition>typedef Container::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a2878d2ee9f1778d403b2182847be3e98" prot="public" static="no">
@@ -130,12 +98,6 @@
         <definition>typedef const_iterator::iterator_category iterator_category</definition>
         <argsstring></argsstring>
         <name>iterator_category</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a7a72a3f02e1280fbc781131354a238d4" prot="public" static="no">
@@ -143,12 +105,6 @@
         <definition>typedef boost::mpl::if_&lt; boost::mpl::or_ &lt; boost::is_same&lt;iterator_category, std::bidirectional_iterator_tag&gt;, boost::is_base_of&lt;std::bidirectional_iterator_tag, iterator_category&gt; &gt;, std::bidirectional_iterator_tag, std::input_iterator_tag&gt;::type enable_reverse</definition>
         <argsstring></argsstring>
         <name>enable_reverse</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1ad2e38d522cf4cf9741a1cd206e407827" prot="public" static="no">
@@ -156,12 +112,6 @@
         <definition>typedef reverse&lt;Container, enable_reverse&gt;::const_reverse_iterator const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1adfa4ecaac56b7d08d4be0e2628fe99b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -169,12 +119,6 @@
         <definition>TimeSeries&lt; T, C &gt;::const_iterator cbegin</definition>
         <argsstring>() const </argsstring>
         <name>cbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="267" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a070fb0160557357d1da2136167cae197" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -182,12 +126,6 @@
         <definition>TimeSeries&lt; T, C &gt;::const_iterator cend</definition>
         <argsstring>() const </argsstring>
         <name>cend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="273" bodyend="275"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -195,12 +133,6 @@
         <definition>const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="162" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -208,12 +140,6 @@
         <definition>const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="163" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ad46fdce4a2ae356bce3b801db2bcc918" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -221,12 +147,6 @@
         <definition>const_reverse_iterator crbegin</definition>
         <argsstring>() const </argsstring>
         <name>crbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="164" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a0ec903d2e9ea165b0460f1f6d40da203" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -234,12 +154,6 @@
         <definition>const_reverse_iterator crend</definition>
         <argsstring>() const </argsstring>
         <name>crend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="167" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a04886aa70c34d66738e78bf70c675e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -247,12 +161,6 @@
         <definition>const_reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="170" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab3c414470d5cea2986cfab7a90146cb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -260,12 +168,6 @@
         <definition>const_reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
         <name>rend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="171" bodyend="171"/>
       </memberdef>
       </sectiondef>
@@ -276,12 +178,6 @@
         <definition>typedef boost::transform_iterator&lt;projection_time, const_iterator&gt; const_time_iterator</definition>
         <argsstring></argsstring>
         <name>const_time_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1ab013c8ecd3104d80275dcffe6bd3f832" prot="public" static="no">
@@ -289,12 +185,6 @@
         <definition>typedef boost::transform_iterator&lt;projection_value, const_iterator&gt; const_value_iterator</definition>
         <argsstring></argsstring>
         <name>const_value_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="188" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="188" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a1f45529030690957b9056280e0c9b9f4" prot="public" static="no">
@@ -302,12 +192,6 @@
         <definition>typedef boost::transform_iterator&lt;projection_time, const_reverse_iterator&gt; const_reverse_time_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_time_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="191" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a6d61c242afa234175931e1a22bc17def" prot="public" static="no">
@@ -315,12 +199,6 @@
         <definition>typedef boost::transform_iterator&lt;projection_value, const_reverse_iterator&gt; const_reverse_value_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_value_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="194" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1abdd30016a6436914a62b13ba3de0903a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -328,12 +206,6 @@
         <definition>const_value_iterator cbegin_values</definition>
         <argsstring>() const </argsstring>
         <name>cbegin_values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="196" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ad0669ab57125e3f515111a834811156a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -341,12 +213,6 @@
         <definition>const_value_iterator cend_values</definition>
         <argsstring>() const </argsstring>
         <name>cend_values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="199" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9c6e35946c44a2f0c3b07540d9744f93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -354,12 +220,6 @@
         <definition>const_reverse_value_iterator crbegin_values</definition>
         <argsstring>() const </argsstring>
         <name>crbegin_values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a72dc5bc6e2cc8cb0f0903c37917e3e5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -367,12 +227,6 @@
         <definition>const_reverse_value_iterator crend_values</definition>
         <argsstring>() const </argsstring>
         <name>crend_values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a37aa772e9d8e45e75e5b96059e94b7ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -380,12 +234,6 @@
         <definition>const_time_iterator cbegin_time</definition>
         <argsstring>() const </argsstring>
         <name>cbegin_time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="209" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1aabed837e1be8183331ca2d748d9da284" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -393,12 +241,6 @@
         <definition>const_time_iterator cend_time</definition>
         <argsstring>() const </argsstring>
         <name>cend_time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="212" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="212" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a5bceffdab80dd4eb627aa93ed62b64e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -406,12 +248,6 @@
         <definition>const_reverse_time_iterator crbegin_time</definition>
         <argsstring>() const </argsstring>
         <name>crbegin_time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="215" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="215" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ad497641edba218b035841660a6eb897d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -419,12 +255,6 @@
         <definition>const_reverse_time_iterator crend_time</definition>
         <argsstring>() const </argsstring>
         <name>crend_time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="218" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="218" bodyend="220"/>
       </memberdef>
       </sectiondef>
@@ -439,12 +269,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <defname>d</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="224" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="279" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab7b03c23ac83d89c3637b46769c665b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -454,10 +278,6 @@
         <name>dates</name>
         <briefdescription>
 <para>returns the dates for which historical data exist </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="226" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="289" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1afbac7e75441b2d40f9f5de2897f3604b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -467,10 +287,6 @@
         <name>values</name>
         <briefdescription>
 <para>returns the historical data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="228" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="298" bodyend="304"/>
       </memberdef>
       </sectiondef>
@@ -480,12 +296,6 @@
         <definition>typedef Date key_type</definition>
         <argsstring></argsstring>
         <name>key_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a265a253612b46abed17c61b0a5e5ce30" prot="public" static="no">
@@ -493,12 +303,6 @@
         <definition>typedef T value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -508,12 +312,6 @@
         <definition>typedef Container::value_type container_value_type</definition>
         <argsstring></argsstring>
         <name>container_value_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1ad794d5ad317585b3a6a3413a2d0bdc1c" prot="private" static="no">
@@ -521,12 +319,6 @@
         <definition>typedef boost::function1&lt;Date, const container_value_type&amp;&gt; projection_time</definition>
         <argsstring></argsstring>
         <name>projection_time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a73eaf2541e71ac68dd6d52951f4472a3" prot="private" static="no">
@@ -534,12 +326,6 @@
         <definition>typedef boost::function1&lt;T, const container_value_type&amp;&gt; projection_value</definition>
         <argsstring></argsstring>
         <name>projection_value</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -549,12 +335,6 @@
         <definition>Container values_</definition>
         <argsstring></argsstring>
         <name>values_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -564,12 +344,8 @@
         <definition>TimeSeries</definition>
         <argsstring>()</argsstring>
         <name>TimeSeries</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Default constructor </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a54ab85f64119aaa3d8c3f36cd0f4721b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -597,12 +373,8 @@
           <type>ValueIterator</type>
           <declname>vBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This constructor initializes the history with a set of values passed as two sequences, the first containing dates and the second containing corresponding values. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="64" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a8da6e1561f3db735697a77e87f7c937f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -627,12 +399,8 @@
           <type>ValueIterator</type>
           <declname>end</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This constructor initializes the history with a set of values. Such values are assigned to a corresponding number of consecutive dates starting from <bold><emphasis>firstDate</emphasis></bold> included. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="75" bodyend="80"/>
       </memberdef>
       </sectiondef>
@@ -646,12 +414,6 @@
           <type>const container_value_type &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="232" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9d6a8f8b01c0b1a988bf7f051dba4926" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -663,12 +425,6 @@
           <type>const container_value_type &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="235" bodyend="237"/>
       </memberdef>
       </sectiondef>

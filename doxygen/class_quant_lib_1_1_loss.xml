@@ -8,12 +8,6 @@
         <definition>Real time</definition>
         <argsstring></argsstring>
         <name>time</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_loss_1a97dc362a0df831201a29780ff74a5356" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Real amount</definition>
         <argsstring></argsstring>
         <name>amount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,19 +34,9 @@
           <declname>a</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/loss.hpp" bodystart="31" bodyend="35"/>
   </compounddef>
 </doxygen>

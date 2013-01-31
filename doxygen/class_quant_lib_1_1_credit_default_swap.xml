@@ -125,8 +125,6 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a39ad57353c0f6d00b1e20ef3b370fdb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -268,8 +266,6 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="121"/>
       </memberdef>
       </sectiondef>
@@ -283,10 +279,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -298,12 +290,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -316,12 +304,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -330,12 +314,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="227"/>
       </memberdef>
       </sectiondef>
@@ -346,12 +326,6 @@
         <definition>Protection::Side side</definition>
         <argsstring>() const </argsstring>
         <name>side</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -359,12 +333,6 @@
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a63b91855ec1848afb6dca91b5b53a3b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -372,12 +340,6 @@
         <definition>Rate runningSpread</definition>
         <argsstring>() const </argsstring>
         <name>runningSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="133"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a5a44ea6a59c7913843c89ea5acf6fc72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -385,12 +347,6 @@
         <definition>boost::optional&lt;Rate&gt; upfront</definition>
         <argsstring>() const </argsstring>
         <name>upfront</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a6c2c2b3c3323b9e8b7b7e9b6d9a381bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -398,12 +354,6 @@
         <definition>bool settlesAccrual</definition>
         <argsstring>() const </argsstring>
         <name>settlesAccrual</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="135"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a3a9c322458ea5f2f207bbbda4d63f63c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -411,12 +361,6 @@
         <definition>bool paysAtDefaultTime</definition>
         <argsstring>() const </argsstring>
         <name>paysAtDefaultTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a7570cd83c9c52257a28a15125b553207" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -424,12 +368,6 @@
         <definition>const Leg&amp; coupons</definition>
         <argsstring>() const </argsstring>
         <name>coupons</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a061ac789f04857311e0ac77349c5470d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -439,10 +377,6 @@
         <name>protectionStartDate</name>
         <briefdescription>
 <para>The first date for which defaults will trigger the contract. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a771353eb0b622464172d74dd95225aae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -452,10 +386,6 @@
         <name>protectionEndDate</name>
         <briefdescription>
 <para>The last date for which defaults will trigger the contract. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="141"/>
       </memberdef>
       </sectiondef>
@@ -466,12 +396,8 @@
         <definition>Rate fairUpfront</definition>
         <argsstring>() const </argsstring>
         <name>fairUpfront</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the upfront spread that, given the running spread and the quoted recovery rate, will make the instrument have an NPV of 0. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="149"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1ad5fc81080d467478294f70a2982808d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -479,13 +405,9 @@
         <definition>Rate fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.</para><para><simplesect kind="note"><para>This calculation does not take any upfront into account, even if one was given. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a3479180b25f065f25ae8e60bdf858488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -493,12 +415,8 @@
         <definition>Real couponLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>couponLegBPS</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the variation of the fixed-leg value given a one-basis-point change in the running spread. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="160"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1abad29773115638e00029dcf11e635ed4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -506,12 +424,6 @@
         <definition>Real upfrontBPS</definition>
         <argsstring>() const </argsstring>
         <name>upfrontBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aff1e2188d21b77de2dcf0d7760517876" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -519,12 +431,6 @@
         <definition>Real couponLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>couponLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a765fd58f395da55f01c62d5af5ba1c01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -532,12 +438,6 @@
         <definition>Real defaultLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>defaultLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aad9137d80be70b001150a4bd3231f6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -545,12 +445,6 @@
         <definition>Real upfrontNPV</definition>
         <argsstring>() const </argsstring>
         <name>upfrontNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a191f03cc383196d7f37049a45ca2c488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -587,8 +481,6 @@
 <listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
 </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aae9e3995e52f04f34657c731af050db3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -616,8 +508,6 @@
 <listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
 </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="222"/>
       </memberdef>
       </sectiondef>

@@ -9,12 +9,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>Size dimensionality_</definition>
         <argsstring></argsstring>
         <name>dimensionality_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="yes">
@@ -37,12 +25,6 @@
         <definition>sample_type sequence_</definition>
         <argsstring></argsstring>
         <name>sequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a89e718360f70fcbaffbbddcdde80d87b" prot="private" static="no" mutable="yes">
@@ -50,12 +32,6 @@
         <definition>std::vector&lt;long int&gt; integerSequence_</definition>
         <argsstring></argsstring>
         <name>integerSequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1af7e5a1677c2d306ee54893a4f4a1fb48" prot="private" static="no" mutable="yes">
@@ -63,12 +39,6 @@
         <definition>std::vector&lt;long int&gt; bary_</definition>
         <argsstring></argsstring>
         <name>bary_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a5887dca4032d27bced3e70c6dc219b3c" prot="private" static="no" mutable="yes">
@@ -76,12 +46,6 @@
         <definition>std::vector&lt;std::vector&lt;long int&gt; &gt; gray_</definition>
         <argsstring></argsstring>
         <name>gray_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a0b6b6deeaf234f4fe1458a6320c8f772" prot="private" static="no" mutable="no">
@@ -89,12 +53,6 @@
         <definition>Size base_</definition>
         <argsstring></argsstring>
         <name>base_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1aa3c4688fab345016517ac455a5dd2018" prot="private" static="no" mutable="no">
@@ -102,12 +60,6 @@
         <definition>Size mbit_</definition>
         <argsstring></argsstring>
         <name>mbit_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1aad624c6efaa33f6cc9e8038ab896f324" prot="private" static="no" mutable="no">
@@ -115,12 +67,6 @@
         <definition>std::vector&lt;std::vector&lt;long int&gt; &gt; powBase_</definition>
         <argsstring></argsstring>
         <name>powBase_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a7f0114915436207b8d706475877ee08b" prot="private" static="no" mutable="no">
@@ -128,12 +74,6 @@
         <definition>std::vector&lt;long int&gt; addOne_</definition>
         <argsstring></argsstring>
         <name>addOne_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1ad5eb34b6873bc9721086f68f87a04dba" prot="private" static="no" mutable="no">
@@ -141,12 +81,6 @@
         <definition>std::vector&lt;std::vector&lt;std::vector&lt;long int&gt; &gt; &gt; pascal3D</definition>
         <argsstring></argsstring>
         <name>pascal3D</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a28cbabc560b9c8f545909732163c6d26" prot="private" static="no" mutable="no">
@@ -154,12 +88,6 @@
         <definition>double normalizationFactor_</definition>
         <argsstring></argsstring>
         <name>normalizationFactor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -173,12 +101,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>dimensionality</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1a3e80401ccf7e47af752cab6942c4abe8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -186,12 +108,6 @@
         <definition>const std::vector&lt;long int&gt;&amp; nextIntSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextIntSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1aa2f24701d450ecd0a50744a24900a1c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -199,12 +115,6 @@
         <definition>const std::vector&lt;long int&gt;&amp; lastIntSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastIntSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="54" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1a15b541124ea01ca45ea29f675c261246" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -212,12 +122,6 @@
         <definition>const sample_type&amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="57" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -225,12 +129,6 @@
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -238,12 +136,6 @@
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       </sectiondef>
@@ -253,12 +145,6 @@
         <definition>void generateNextIntSequence</definition>
         <argsstring>() const </argsstring>
         <name>generateNextIntSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="66"/>
       </memberdef>
       </sectiondef>

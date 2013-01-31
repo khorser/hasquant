@@ -28,12 +28,6 @@
           <declname>factors</declname>
           <defval>1</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a98f01d842b650489da3c57e779f73c93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -51,12 +45,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0278d24739a9bfc281246d6172530b49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -74,12 +62,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1abadf15cf4c8136891d2e91d8f36a0baf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -97,12 +79,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="53"/>
       </memberdef>
       </sectiondef>

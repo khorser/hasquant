@@ -11,10 +11,6 @@
         <initializer>&quot;1.2.1&quot;</initializer>
         <briefdescription>
 <para>version string </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/version.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/version.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__macros_1gabad58a5fe5235ef402aad82e6a7a166d" prot="public" static="no">
@@ -22,10 +18,6 @@
         <initializer>0x010201f0</initializer>
         <briefdescription>
 <para>version hexadecimal number </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/version.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/version.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__macros_1ga8a6c910e40a554b9a198326dc1eb8f90" prot="public" static="no">
@@ -33,15 +25,9 @@
         <initializer>&quot;1_2_1&quot;</initializer>
         <briefdescription>
 <para>version string for output lib name </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/version.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/version.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Global definitions and a few macros which help porting the code to different compilers. </para>    </detaileddescription>
   </compounddef>

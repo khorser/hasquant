@@ -18,12 +18,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_parameter_1_1_impl" kindref="compound">Parameter::Impl</ref> &gt; &amp;</type>
           <declname>impl</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="187" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1a35657d170b9c194d5cdd82cdf3bf91a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -35,19 +29,11 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>term</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="191" bodyend="196"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Deterministic time-dependent parameter used for yield-curve fitting. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="153" bodyend="197"/>
   </compounddef>
 </doxygen>

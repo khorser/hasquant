@@ -8,12 +8,6 @@
         <definition>Time t0_</definition>
         <argsstring></argsstring>
         <name>t0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_joint_stochastic_process_1_1_caching_key_1a6be603d8547f31e72817d2aaf219e325" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Time dt_</definition>
         <argsstring></argsstring>
         <name>dt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
           <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="89" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_joint_stochastic_process_1_1_caching_key_1ab4445177b68f2bdb06a218e80e3c7360" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -61,19 +43,9 @@
           <type>const CachingKey &amp;</type>
           <declname>key</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="92" bodyend="95"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="88" bodyend="98"/>
   </compounddef>
 </doxygen>

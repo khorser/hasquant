@@ -39,19 +39,9 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" bodystart="38" bodyend="42"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" bodystart="36" bodyend="49"/>
   </compounddef>
 </doxygen>

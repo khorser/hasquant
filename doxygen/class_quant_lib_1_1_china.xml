@@ -12,15 +12,7 @@
           <name>SSE</name>
           <briefdescription>
 <para>Shanghai stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" bodystart="65" bodyend="66"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_china_1abe41cfffd960e29a5d8b07be00aeda42a403b03371fd04961f31f99b254cf8e57" kindref="member">SSE</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/china.hpp" line="67"/>
       </memberdef>
       </sectiondef>

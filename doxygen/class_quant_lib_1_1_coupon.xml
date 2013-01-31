@@ -15,13 +15,9 @@
         <argsstring>() const </argsstring>
         <name>date</name>
         <reimplements refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       </sectiondef>
@@ -32,12 +28,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a8ff50d13a6583a8a5f97ba3a8d2187df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -47,10 +37,6 @@
         <name>accrualStartDate</name>
         <briefdescription>
 <para>start of the accrual period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a6cf202b8e6db203736e43b79932e87c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,10 +46,6 @@
         <name>accrualEndDate</name>
         <briefdescription>
 <para>end of the accrual period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" bodystart="101" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a2979aa5e7dc27591cc1687c5379b416c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -73,10 +55,6 @@
         <name>referencePeriodStart</name>
         <briefdescription>
 <para>start date of the reference period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1aca57f98b3b3ab2457890bba3eabe81a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -86,10 +64,6 @@
         <name>referencePeriodEnd</name>
         <briefdescription>
 <para>end date of the reference period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" bodystart="109" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -99,10 +73,6 @@
         <name>accrualPeriod</name>
         <briefdescription>
 <para>accrual period as fraction of year </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -112,10 +82,6 @@
         <name>accrualDays</name>
         <briefdescription>
 <para>accrual period in days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -131,10 +97,6 @@
         <reimplementedby refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22">rate</reimplementedby>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -147,10 +109,6 @@
         <reimplementedby refid="class_quant_lib_1_1_floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
         <briefdescription>
 <para>day counter for accrual calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -163,10 +121,6 @@
         </param>
         <briefdescription>
 <para>accrued period as fraction of year at the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -179,10 +133,6 @@
         </param>
         <briefdescription>
 <para>accrued days at the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -198,10 +148,6 @@
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="78"/>
       </memberdef>
       </sectiondef>
@@ -230,12 +176,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="82"/>
       </memberdef>
       </sectiondef>
@@ -271,12 +211,8 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000002"><xreftitle>Warning</xreftitle><xrefdescription><para>the coupon does not adjust the payment date which must already be a business day. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/coupon.hpp" line="49"/>
       </memberdef>
       </sectiondef>

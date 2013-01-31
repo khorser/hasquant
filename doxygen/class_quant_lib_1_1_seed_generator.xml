@@ -10,12 +10,6 @@
         <definition>friend class Singleton&lt; SeedGenerator &gt;</definition>
         <argsstring></argsstring>
         <name>Singleton&lt; SeedGenerator &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <definition>MersenneTwisterUniformRng rng_</definition>
         <argsstring></argsstring>
         <name>rng_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -40,12 +28,6 @@
         <definition>unsigned long get</definition>
         <argsstring>()</argsstring>
         <name>get</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="41"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +37,6 @@
         <definition>SeedGenerator</definition>
         <argsstring>()</argsstring>
         <name>SeedGenerator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_seed_generator_1a25a40b6614565f755233080a384c35f1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -68,12 +44,6 @@
         <definition>void initialize</definition>
         <argsstring>()</argsstring>
         <name>initialize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="44"/>
       </memberdef>
       </sectiondef>

@@ -9,12 +9,6 @@
         <definition>typedef std::list&lt;boost::shared_ptr&lt;StepCondition&lt;Array&gt; &gt; &gt; Conditions</definition>
         <argsstring></argsstring>
         <name>Conditions</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>std::vector&lt;Time&gt; stoppingTimes_</definition>
         <argsstring></argsstring>
         <name>stoppingTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_step_condition_composite_1ac5b98f63bb83984de5a13c2d49caa098" prot="private" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>const Conditions conditions_</definition>
         <argsstring></argsstring>
         <name>conditions_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -60,12 +42,6 @@
           <type>const Conditions &amp;</type>
           <declname>conditions</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -81,12 +57,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1ae273746d46d552b36e079755fa097178" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -94,12 +64,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; stoppingTimes</definition>
         <argsstring>() const </argsstring>
         <name>stoppingTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1a273bef697c0714099c4268d1dcf15be2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -107,12 +71,6 @@
         <definition>const Conditions&amp; conditions</definition>
         <argsstring>() const </argsstring>
         <name>conditions</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="53"/>
       </memberdef>
       </sectiondef>
@@ -130,12 +88,6 @@
           <type>const boost::shared_ptr&lt; FdmStepConditionComposite &gt; &amp;</type>
           <declname>c2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1ac74c9d62ffde57df16d50ce6a788c741" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -167,19 +119,9 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="43" bodyend="70"/>
   </compounddef>
 </doxygen>

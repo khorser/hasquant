@@ -8,12 +8,6 @@
         <definition>boost::shared_ptr&lt;MarketModel&gt; inputModel_</definition>
         <argsstring></argsstring>
         <name>inputModel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1ac06562f94b91e275e1fb8d2541b98c33" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>std::vector&lt;Matrix&gt; varianceDerivatives_</definition>
         <argsstring></argsstring>
         <name>varianceDerivatives_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1aa1ffcd296066282de075b6649a0e0dff" prot="private" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>std::vector&lt;Matrix&gt; volatilityDerivatives_</definition>
         <argsstring></argsstring>
         <name>volatilityDerivatives_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a8192c66d14a3d9fee44e82ecf27c0f97" prot="private" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>Real impliedVolatility_</definition>
         <argsstring></argsstring>
         <name>impliedVolatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a35a6031d373fd3a059caa000189a7b37" prot="private" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>Real expiry_</definition>
         <argsstring></argsstring>
         <name>expiry_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a24129c87c49238b3cfb21fe9478f0a07" prot="private" static="no" mutable="no">
@@ -73,12 +43,6 @@
         <definition>Real variance_</definition>
         <argsstring></argsstring>
         <name>variance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -100,12 +64,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>endIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a061575e2908a30f5f646b4f4297db0bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -117,12 +75,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a6f48fc2301b8f7e4a4e0c28e7d55407a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -134,12 +86,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a8ec1750ec5666ad6ac99e955ce196170" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -147,12 +93,6 @@
         <definition>Real impliedVolatility</definition>
         <argsstring>() const </argsstring>
         <name>impliedVolatility</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -160,12 +100,6 @@
         <definition>Real variance</definition>
         <argsstring>() const </argsstring>
         <name>variance</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a6f26ea87fa9cec3be05613ed6a61caed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -173,19 +107,9 @@
         <definition>Real expiry</definition>
         <argsstring>() const </argsstring>
         <name>expiry</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="38" bodyend="65"/>
   </compounddef>
 </doxygen>

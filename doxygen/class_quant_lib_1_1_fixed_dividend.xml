@@ -17,8 +17,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_dividend_1afb22d24f9de61304f9bf6072e9206a0e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -30,12 +28,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       </sectiondef>
@@ -53,12 +45,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="61" bodyend="62"/>
       </memberdef>
       </sectiondef>

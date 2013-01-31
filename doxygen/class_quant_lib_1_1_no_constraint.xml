@@ -11,19 +11,11 @@
         <definition>NoConstraint</definition>
         <argsstring>()</argsstring>
         <name>NoConstraint</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>No constraint. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="53" bodyend="65"/>
   </compounddef>
 </doxygen>

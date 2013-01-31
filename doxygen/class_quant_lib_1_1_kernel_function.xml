@@ -10,12 +10,6 @@
         <definition>virtual ~KernelFunction</definition>
         <argsstring>()</argsstring>
         <name>~KernelFunction</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_kernel_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -28,17 +22,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Kernel function in the statistical sense, e.g. a nonnegative, real-valued function which integrates to one and is symmetric.</para><para>Derived classes will serve as functors. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="36" bodyend="40"/>

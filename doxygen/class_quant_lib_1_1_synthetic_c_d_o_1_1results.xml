@@ -9,12 +9,6 @@
         <definition>Real premiumValue</definition>
         <argsstring></argsstring>
         <name>premiumValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1a25c5f5f067a0f5058224651b6500d1ea" prot="public" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real protectionValue</definition>
         <argsstring></argsstring>
         <name>protectionValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1a04f2b8d15b5d0ef7329a472ffc13f2b1" prot="public" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real upfrontPremiumValue</definition>
         <argsstring></argsstring>
         <name>upfrontPremiumValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1a86a7c77b7334d48ce1f1e6b51f188264" prot="public" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Real remainingNotional</definition>
         <argsstring></argsstring>
         <name>remainingNotional</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1a5d9a5c32aae294ecbaf741ab095b39d8" prot="public" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Real xMin</definition>
         <argsstring></argsstring>
         <name>xMin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1afaa4dd2fa5fef4cf9037dc50da09d04e" prot="public" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>Real xMax</definition>
         <argsstring></argsstring>
         <name>xMax</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1ac7cb3fcb566e2e45d1ffb938c547f9c9" prot="public" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>Size error</definition>
         <argsstring></argsstring>
         <name>error</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1results_1aba37f0fb59f08d96685d70830054e4e0" prot="public" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>std::vector&lt;Real&gt; expectedTrancheLoss</definition>
         <argsstring></argsstring>
         <name>expectedTrancheLoss</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -115,19 +67,9 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="177"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="175" bodyend="185"/>
   </compounddef>
 </doxygen>

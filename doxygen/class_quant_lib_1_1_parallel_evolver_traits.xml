@@ -13,12 +13,6 @@
         <definition>typedef std::vector&lt;typename traits::array_type&gt; array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_traits_1ab8c3c3096d90df85367ed8b287c4b1eb" prot="public" static="no">
@@ -26,12 +20,6 @@
         <definition>typedef std::vector&lt;typename traits::operator_type&gt; operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_traits_1abf468e2c1e1531c9b1e0caee3bf49cd2" prot="public" static="no">
@@ -39,12 +27,6 @@
         <definition>typedef std::vector&lt;typename traits::bc_type&gt; bc_type</definition>
         <argsstring></argsstring>
         <name>bc_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_traits_1a8326041f10e2a86c105f003382341dbc" prot="public" static="no">
@@ -52,12 +34,6 @@
         <definition>typedef BoundaryConditionSet&lt;typename traits::bc_set&gt; bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_traits_1a45df0d8169ed3e36b292a57d8b1dd06f" prot="public" static="no">
@@ -65,19 +41,9 @@
         <definition>typedef StepConditionSet&lt;typename traits::array_type&gt; condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="73" bodyend="80"/>
   </compounddef>
 </doxygen>

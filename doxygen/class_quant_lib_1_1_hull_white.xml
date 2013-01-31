@@ -13,12 +13,6 @@
         <definition>Parameter phi_</definition>
         <argsstring></argsstring>
         <name>phi_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +36,6 @@
           <declname>sigma</declname>
           <defval>0.01</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -62,10 +50,6 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -76,10 +60,6 @@
         <reimplements refid="class_quant_lib_1_1_vasicek_1ab819304423e7791547c3089322a190be">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="154" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -104,12 +84,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="60"/>
       </memberdef>
       </sectiondef>
@@ -139,13 +113,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>a</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Futures convexity bias (i.e., the difference between futures implied rate and forward rate) calculated as in G. Kirikos, D. Novak, &quot;Convexity Conundrums&quot;, Risk Magazine, March 1997.</para><para><simplesect kind="note"><para>t and T should be expressed in yearfraction using deposit day counter, F_quoted is futures&apos; market price. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="74"/>
       </memberdef>
       </sectiondef>

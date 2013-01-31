@@ -16,12 +16,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_clayton_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
@@ -29,12 +23,6 @@
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
         <definition>Real theta_</definition>
         <argsstring></argsstring>
         <name>theta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_clayton_copula_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" static="no" mutable="no">
@@ -57,12 +39,6 @@
         <definition>RNG uniformGenerator_</definition>
         <argsstring></argsstring>
         <name>uniformGenerator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -80,12 +56,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>theta</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="48" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_clayton_copula_rng_1a8882bec40b8d894e3d743ddff183d903" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -93,19 +63,11 @@
         <definition>ClaytonCopulaRng&lt; RNG &gt;::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="58" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Clayton copula random-number generator. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/claytoncopularng.hpp" bodystart="36" bodyend="45"/>
   </compounddef>
 </doxygen>

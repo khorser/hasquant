@@ -15,12 +15,6 @@
         <definition>typedef EarlyExerciseTraits&lt;PathType&gt;::StateType StateType</definition>
         <argsstring></argsstring>
         <name>StateType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +36,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="75" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a973b5f4a40082fdcd2ccbb91e5116756" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -60,12 +48,6 @@
           <type>const PathType &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="94" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1ad4a7316a51b17d0f691bb3e33b95a5ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -73,12 +55,6 @@
         <definition>void calibrate</definition>
         <argsstring>()</argsstring>
         <name>calibrate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="126" bodyend="179"/>
       </memberdef>
       </sectiondef>

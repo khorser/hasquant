@@ -19,10 +19,6 @@
         <name>instance</name>
         <briefdescription>
 <para>access to the unique instance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="77" bodyend="88"/>
       </memberdef>
       </sectiondef>

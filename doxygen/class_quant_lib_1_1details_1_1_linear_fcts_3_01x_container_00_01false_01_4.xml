@@ -13,12 +13,6 @@
         <definition>typedef xContainer::value_type ArgumentType</definition>
         <argsstring></argsstring>
         <name>ArgumentType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
         <definition>std::vector&lt; boost::function1&lt;Real, ArgumentType&gt; &gt; v</definition>
         <argsstring></argsstring>
         <name>v</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -51,12 +39,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>intercept</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="73" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fcts_3_01x_container_00_01false_01_4_1a5f84e474aca6cd7b9de3c7a4963c7b63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -64,19 +46,9 @@
         <definition>const std::vector&lt; boost::function1&lt;Real, ArgumentType&gt; &gt;&amp; fcts</definition>
         <argsstring>()</argsstring>
         <name>fcts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="81" bodyend="83"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="70" bodyend="86"/>
   </compounddef>
 </doxygen>

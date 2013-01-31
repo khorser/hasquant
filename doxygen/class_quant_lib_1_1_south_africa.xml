@@ -11,12 +11,6 @@
         <definition>SouthAfrica</definition>
         <argsstring>()</argsstring>
         <name>SouthAfrica</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southafrica.hpp" line="63"/>
       </memberdef>
       </sectiondef>

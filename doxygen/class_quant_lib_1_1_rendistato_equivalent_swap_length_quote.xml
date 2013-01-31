@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;RendistatoCalculator&gt; r_</definition>
         <argsstring></argsstring>
         <name>r_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -29,12 +23,6 @@
           <type>const boost::shared_ptr&lt; RendistatoCalculator &gt; &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -45,10 +33,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="283" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -59,17 +43,11 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="175"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>RendistatoCalculator equivalent swap lenth <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> adapter. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="170" bodyend="178"/>
   </compounddef>
 </doxygen>

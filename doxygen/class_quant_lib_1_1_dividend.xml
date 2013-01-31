@@ -14,13 +14,9 @@
         <argsstring>() const </argsstring>
         <name>date</name>
         <reimplements refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       </sectiondef>
@@ -39,8 +35,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="46"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +49,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="51"/>
       </memberdef>
       </sectiondef>
@@ -74,12 +62,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_1a4851910d5646519c98bb6ee48bab8648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -93,12 +75,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlying</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="48"/>
       </memberdef>
       </sectiondef>

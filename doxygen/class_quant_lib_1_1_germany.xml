@@ -16,43 +16,29 @@
           <name>Settlement</name>
           <briefdescription>
 <para>generic settlement calendar </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42ae0e12eee5eb2e2598e1ef9c6a8652e67" prot="public">
           <name>FrankfurtStockExchange</name>
           <briefdescription>
 <para>Frankfurt stock-exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a9a85bf5d2876a88b66d3f2439c1a6af9" prot="public">
           <name>Xetra</name>
           <briefdescription>
 <para>Xetra. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a563ccad8cd2c9459a3fff06290054160" prot="public">
           <name>Eurex</name>
           <briefdescription>
 <para>Eurex. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a2bbb60d45dbb80a79c0b1dd828af92db" prot="public">
           <name>Euwax</name>
           <briefdescription>
 <para>Euwax. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>German calendars. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/germany.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/germany.hpp" bodystart="146" bodyend="151"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +53,6 @@
           <declname>market</declname>
           <defval><ref refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42ae0e12eee5eb2e2598e1ef9c6a8652e67" kindref="member">FrankfurtStockExchange</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/germany.hpp" line="152"/>
       </memberdef>
       </sectiondef>

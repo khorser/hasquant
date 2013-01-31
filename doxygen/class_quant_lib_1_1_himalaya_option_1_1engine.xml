@@ -4,10 +4,6 @@
     <compoundname>QuantLib::HimalayaOption::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; HimalayaOption::arguments, HimalayaOption::results &gt;</basecompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_m_c_himalaya_engine" prot="public" virt="non-virtual">MCHimalayaEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="68" bodyend="70"/>
   </compounddef>
 </doxygen>

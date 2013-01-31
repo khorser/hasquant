@@ -10,12 +10,6 @@
         <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_ratchet_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_ratchet_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_ratchet_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="81" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_ratchet_1a5ba8c0749807b349f90cbc0465907c3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,12 +50,6 @@
           <type>std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;</type>
           <declname>cashFlowsGenerated</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_ratchet_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -87,12 +57,6 @@
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="48"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +66,6 @@
         <definition>std::vector&lt;Real&gt; accruals_</definition>
         <argsstring></argsstring>
         <name>accruals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
@@ -115,12 +73,6 @@
         <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
         <argsstring></argsstring>
         <name>paymentTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a69a341a242842005f14c5f8673b76d40" prot="private" static="no" mutable="no">
@@ -128,12 +80,6 @@
         <definition>Real gearingOfFloor_</definition>
         <argsstring></argsstring>
         <name>gearingOfFloor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1ae6c236abe212fc670972a6d0a9e9a78c" prot="private" static="no" mutable="no">
@@ -141,12 +87,6 @@
         <definition>Real gearingOfFixing_</definition>
         <argsstring></argsstring>
         <name>gearingOfFixing_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a3f0851c9e0b40796c7df506af34612f6" prot="private" static="no" mutable="no">
@@ -154,12 +94,6 @@
         <definition>Rate spreadOfFloor_</definition>
         <argsstring></argsstring>
         <name>spreadOfFloor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a864ddee4085241c41fbb46146da0150e" prot="private" static="no" mutable="no">
@@ -167,12 +101,6 @@
         <definition>Rate spreadOfFixing_</definition>
         <argsstring></argsstring>
         <name>spreadOfFixing_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a8c62f834ee93d2c8dbbb49d9da2cc3e6" prot="private" static="no" mutable="no">
@@ -180,12 +108,6 @@
         <definition>bool payer_</definition>
         <argsstring></argsstring>
         <name>payer_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a64a39b19c9c0e793eab7cc04265b2308" prot="private" static="no" mutable="no">
@@ -193,12 +115,6 @@
         <definition>Real multiplier_</definition>
         <argsstring></argsstring>
         <name>multiplier_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a4db1170620701c092375336c1c0427d7" prot="private" static="no" mutable="no">
@@ -206,12 +122,6 @@
         <definition>Size lastIndex_</definition>
         <argsstring></argsstring>
         <name>lastIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a27021e76e0b5064c298aa9f9c7bad897" prot="private" static="no" mutable="no">
@@ -219,12 +129,6 @@
         <definition>Real initialFloor_</definition>
         <argsstring></argsstring>
         <name>initialFloor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1af3de0f413226362efc2dd14d845395fb" prot="private" static="no" mutable="no">
@@ -232,12 +136,6 @@
         <definition>Real floor_</definition>
         <argsstring></argsstring>
         <name>floor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_ratchet_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -245,12 +143,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -297,19 +189,9 @@
           <declname>payer</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="37"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" line="27" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepratchet.hpp" bodystart="27" bodyend="62"/>
   </compounddef>
 </doxygen>

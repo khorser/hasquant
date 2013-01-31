@@ -12,15 +12,7 @@
           <name>USE</name>
           <briefdescription>
 <para>Ukrainian stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/ukraine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/ukraine.hpp" bodystart="60" bodyend="61"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_ukraine_1abe41cfffd960e29a5d8b07be00aeda42a38fc47ee68141485d1af6a85ff84ed99" kindref="member">USE</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/ukraine.hpp" line="62"/>
       </memberdef>
       </sectiondef>

@@ -35,12 +35,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a7922dd7fea2c004ef3dc817d274cfe84" prot="protected" static="no">
@@ -48,12 +42,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a9e8c6745d46fec52af674b05ce5b75d7" prot="protected" static="no">
@@ -61,12 +49,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a07e1e84bbe02891bd31885fe3fc4c181" prot="protected" static="no">
@@ -74,12 +56,6 @@
         <definition>typedef McSimulation&lt;MC,RNG,S&gt;::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -89,19 +65,11 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="40" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for vanilla options using Monte Carlo simulation. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="37" bodyend="89"/>
   </compounddef>
 </doxygen>

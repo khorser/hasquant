@@ -10,12 +10,6 @@
         <definition>SITCurrency</definition>
         <argsstring>()</argsstring>
         <name>SITCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="387" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="387" bodyend="394"/>
       </memberdef>
       </sectiondef>

@@ -26,12 +26,6 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine_1a6c95d92dec5732fade8b82de214eaba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -51,12 +45,6 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -66,12 +54,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
         <argsstring></argsstring>
         <name>termStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -82,19 +64,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for callable fixed rate bonds. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" bodystart="34" bodyend="57"/>
   </compounddef>
 </doxygen>

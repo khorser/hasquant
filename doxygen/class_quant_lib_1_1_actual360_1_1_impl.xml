@@ -9,12 +9,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_actual360_1_1_impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,19 +30,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" bodystart="42" bodyend="47"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" bodystart="39" bodyend="48"/>
   </compounddef>
 </doxygen>

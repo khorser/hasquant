@@ -13,12 +13,6 @@
         <definition>typedef container::const_reverse_iterator const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
         <definition>const container&amp; c_</definition>
         <argsstring></argsstring>
         <name>c_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -47,12 +35,6 @@
           <type>const container &amp;</type>
           <declname>c</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="139" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_time_series_1_1reverse_3_01container_00_01std_1_1bidirectional__iterator__tag_01_4_1a04886aa70c34d66738e78bf70c675e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +42,6 @@
         <definition>const_reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="140" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_time_series_1_1reverse_3_01container_00_01std_1_1bidirectional__iterator__tag_01_4_1ab3c414470d5cea2986cfab7a90146cb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -73,19 +49,9 @@
         <definition>const_reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
         <name>rend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="141" bodyend="141"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="136" bodyend="143"/>
   </compounddef>
 </doxygen>

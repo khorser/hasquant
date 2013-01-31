@@ -20,12 +20,6 @@
           <declname>firstValidIndex</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="58"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +39,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>j</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aac1391a5c503e87b171babebba6d4a60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -63,12 +51,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -81,12 +63,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aea7368686f038e0fdbc9341faf4003a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -103,12 +79,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -125,12 +95,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -151,12 +115,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -165,12 +123,6 @@
         <argsstring>() const </argsstring>
         <name>forwardRates</name>
         <reimplements refid="class_quant_lib_1_1_curve_state_1a943f9270e4109d9730df315863246349">forwardRates</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -179,12 +131,6 @@
         <argsstring>() const </argsstring>
         <name>coterminalSwapRates</name>
         <reimplements refid="class_quant_lib_1_1_curve_state_1af917754216210a5e5ffca04bff64bebd">coterminalSwapRates</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a2c2d3c56715486e94144c87531f19fcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -197,12 +143,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="73"/>
       </memberdef>
       </sectiondef>
@@ -212,12 +152,6 @@
         <definition>Size first_</definition>
         <argsstring></argsstring>
         <name>first_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ab8d29fabefdf5e5204a438a31c5fc3b2" prot="private" static="no" mutable="no">
@@ -225,12 +159,6 @@
         <definition>std::vector&lt;DiscountFactor&gt; discRatios_</definition>
         <argsstring></argsstring>
         <name>discRatios_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a218b3ef267a412453606bf24443f6895" prot="private" static="no" mutable="yes">
@@ -238,12 +166,6 @@
         <definition>std::vector&lt;Rate&gt; forwardRates_</definition>
         <argsstring></argsstring>
         <name>forwardRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a808e0b8f5ace9bf605daacd91d771cfa" prot="private" static="no" mutable="yes">
@@ -251,12 +173,6 @@
         <definition>std::vector&lt;Rate&gt; cmSwapRates_</definition>
         <argsstring></argsstring>
         <name>cmSwapRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ab296e61d38edd3b52e2f204b1b3797d3" prot="private" static="no" mutable="yes">
@@ -264,12 +180,6 @@
         <definition>std::vector&lt;Real&gt; cmSwapAnnuities_</definition>
         <argsstring></argsstring>
         <name>cmSwapAnnuities_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aa2fd64eca22c89d70009196c51e707f3" prot="private" static="no" mutable="no">
@@ -277,12 +187,6 @@
         <definition>std::vector&lt;Rate&gt; cotSwapRates_</definition>
         <argsstring></argsstring>
         <name>cotSwapRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1adfb5766f14d0211cca86ab652bce182f" prot="private" static="no" mutable="no">
@@ -290,12 +194,6 @@
         <definition>std::vector&lt;Real&gt; cotAnnuities_</definition>
         <argsstring></argsstring>
         <name>cotAnnuities_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -309,12 +207,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a8c46c0cde27036afcca8fe94bf19101d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -323,12 +215,6 @@
         <argsstring>() const </argsstring>
         <name>clone</name>
         <reimplements refid="class_quant_lib_1_1_curve_state_1ac4251f8df2d9997d128346d29af2080a">clone</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="75" bodyend="78"/>
       </memberdef>
       </sectiondef>

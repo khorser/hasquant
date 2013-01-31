@@ -10,12 +10,6 @@
         <definition>HKDCurrency</definition>
         <argsstring>()</argsstring>
         <name>HKDCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="78" bodyend="85"/>
       </memberdef>
       </sectiondef>

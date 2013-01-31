@@ -10,12 +10,6 @@
         <definition>NormalDistribution density_</definition>
         <argsstring></argsstring>
         <name>density_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a2a2a48958acddd428b4a6db501094bc7" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>CumulativeNormalDistribution cumulative_</definition>
         <argsstring></argsstring>
         <name>cumulative_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_copula_1ae9cb0a5e7a05c76a7d9ee384da384ff1" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>InverseCumulativeNormal inverseCumulative_</definition>
         <argsstring></argsstring>
         <name>inverseCumulative_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -65,12 +47,6 @@
           <declname>integrationSteps</declname>
           <defval>50</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="42" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -87,8 +63,6 @@
 <para>Density function of M. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -105,8 +79,6 @@
 <para>Cumulative distribution of Z. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a712150bf4c40b6443a311f2569117760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -119,12 +91,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>overrides the base class implementation based on table data </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a6d7feb2a05b8754fe0a79ff0f26b704e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -136,12 +104,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a309f9b6f2c8476ddc7d4d750a0f7d75c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -154,12 +116,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>overrides the base class implementation based on table data </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
@@ -170,12 +128,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>

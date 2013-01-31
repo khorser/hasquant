@@ -17,19 +17,11 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_basket" kindref="compound">Basket</ref> option on a number of assets. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="103" bodyend="108"/>
   </compounddef>
 </doxygen>

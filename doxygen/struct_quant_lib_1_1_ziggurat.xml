@@ -8,17 +8,7 @@
         <enumvalue id="struct_quant_lib_1_1_ziggurat_1a06fc87d81c62e9abb8790b6e5713c55ba4cf0a75076c0e93010640ad9b584b0ce" prot="public">
           <name>allowsErrorEstimate</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_ziggurat_1a999b90124f308be1e4dc441d337ad046" prot="public" static="no">
@@ -26,12 +16,6 @@
         <definition>typedef ZigguratRng rng_type</definition>
         <argsstring></argsstring>
         <name>rng_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_ziggurat_1acd4cba61f7a52c8551bebe4d5686d6f9" prot="public" static="no">
@@ -39,12 +23,6 @@
         <definition>typedef RandomSequenceGenerator&lt;rng_type&gt; rsg_type</definition>
         <argsstring></argsstring>
         <name>rsg_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -62,19 +40,9 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="65" bodyend="76"/>
   </compounddef>
 </doxygen>

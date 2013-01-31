@@ -73,12 +73,6 @@
           <declname>isInArrears</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredcoupon.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredcoupon.hpp" bodystart="100" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_ibor_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -90,19 +84,9 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredcoupon.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredcoupon.hpp" bodystart="120" bodyend="127"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredcoupon.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredcoupon.hpp" bodystart="98" bodyend="128"/>
   </compounddef>
 </doxygen>

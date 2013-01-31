@@ -14,19 +14,9 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="161" bodyend="163"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="139" bodyend="164"/>
   </compounddef>
 </doxygen>

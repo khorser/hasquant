@@ -18,10 +18,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function value in x </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -36,10 +32,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function values in x </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="47"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +41,6 @@
         <definition>Size numberOfFreeParameters_</definition>
         <argsstring></argsstring>
         <name>numberOfFreeParameters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1a03bb44c14b10b9d468db8b13699979c7" prot="private" static="no" mutable="no">
@@ -62,12 +48,6 @@
         <definition>const Array fixedParameters_</definition>
         <argsstring></argsstring>
         <name>fixedParameters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1ac9a17c23e4d1617568455beceaa3d7d4" prot="private" static="no" mutable="yes">
@@ -75,12 +55,6 @@
         <definition>Array actualParameters_</definition>
         <argsstring></argsstring>
         <name>actualParameters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1afd84a3cb5baa388d977f8d87dcb5f204" prot="private" static="no" mutable="no">
@@ -88,12 +62,6 @@
         <definition>const std::vector&lt;bool&gt;&amp; parametersFreedoms_</definition>
         <argsstring></argsstring>
         <name>parametersFreedoms_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1a3fbcb1659c22a689f2c8223653a60b8a" prot="private" static="no" mutable="no">
@@ -101,12 +69,6 @@
         <definition>const CostFunction&amp; costFunction_</definition>
         <argsstring></argsstring>
         <name>costFunction_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -128,12 +90,6 @@
           <type>const std::vector&lt; bool &gt; &amp;</type>
           <declname>parametersFreedoms</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a53236e8f6234e3ee642043cd1229ea83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -147,10 +103,6 @@
         </param>
         <briefdescription>
 <para>returns the subset of free parameters corresponding </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a345a5a5e4b2957ac72edb57ec2f43728" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -164,10 +116,6 @@
         </param>
         <briefdescription>
 <para>returns whole set of parameters corresponding to the set </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="57"/>
       </memberdef>
       </sectiondef>
@@ -181,12 +129,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>parametersValues</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="60"/>
       </memberdef>
       </sectiondef>

@@ -20,10 +20,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       </sectiondef>
@@ -34,12 +30,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -47,12 +37,6 @@
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +44,6 @@
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a86a2497b9c215843d6c3e42517776511" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -73,12 +51,6 @@
         <definition>const std::vector&lt; DiscountFactor &gt; &amp; discounts</definition>
         <argsstring>() const </argsstring>
         <name>discounts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -86,12 +58,6 @@
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="145" bodyend="150"/>
       </memberdef>
       </sectiondef>
@@ -108,10 +74,6 @@
         </param>
         <briefdescription>
 <para>discount factor calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="96"/>
       </memberdef>
       </sectiondef>
@@ -153,12 +115,6 @@
           <declname>interpolator</declname>
           <defval>Interpolator()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a6113b500cd6d2ee2ea94e277c047b36a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -186,12 +142,6 @@
           <type>const Interpolator &amp;</type>
           <declname>interpolator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a5f57ebccd5c2b3a5d49277a583c46ed3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -215,12 +165,6 @@
           <type>const Interpolator &amp;</type>
           <declname>interpolator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="62"/>
       </memberdef>
       </sectiondef>
@@ -230,19 +174,11 @@
         <definition>void initialize</definition>
         <argsstring>()</argsstring>
         <name>initialize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="244" bodyend="280"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of discount factors. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="40" bodyend="101"/>
   </compounddef>
 </doxygen>

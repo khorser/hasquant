@@ -10,12 +10,6 @@
         <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>const EvolutionDescription &amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -62,12 +38,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="77" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a283de6131ea2db647e886d8ec976c498" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -84,12 +54,6 @@
         <param>
           <type>std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -97,12 +61,6 @@
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="44"/>
       </memberdef>
       </sectiondef>
@@ -113,12 +71,6 @@
         <definition>const MarketModelExerciseValue &amp; exerciseValue</definition>
         <argsstring>() const </argsstring>
         <name>exerciseValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       </sectiondef>
@@ -128,12 +80,6 @@
         <definition>Clone&lt;MarketModelExerciseValue&gt; exercise_</definition>
         <argsstring></argsstring>
         <name>exercise_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
@@ -141,12 +87,6 @@
         <definition>Size numberOfProducts_</definition>
         <argsstring></argsstring>
         <name>numberOfProducts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" static="no" mutable="no">
@@ -154,12 +94,6 @@
         <definition>std::valarray&lt;bool&gt; isExerciseTime_</definition>
         <argsstring></argsstring>
         <name>isExerciseTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -167,12 +101,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -191,19 +119,9 @@
           <declname>numberOfProducts</declname>
           <defval>1</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="33"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="30" bodyend="55"/>
   </compounddef>
 </doxygen>

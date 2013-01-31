@@ -13,12 +13,6 @@
         <definition>virtual ~MarketModelFactory</definition>
         <argsstring>()</argsstring>
         <name>~MarketModelFactory</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_factory_1a20dc781ed3be433dc386daf56859e6b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -33,19 +27,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numberOfFactors</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for market-model factories </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="57" bodyend="63"/>
   </compounddef>
 </doxygen>

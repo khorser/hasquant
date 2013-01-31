@@ -12,59 +12,25 @@
         <name>Convention</name>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ad4f4e6a61c8904675510f6531295b438" prot="public">
           <name>ISMA</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ab6eb09f3e2e2185fb94794f3645744b7" prot="public">
           <name>Bond</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a98585fde8dc70056789d25e9b7263825" prot="public">
           <name>ISDA</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a3b28d2384d6b47d3bbc877a6a59e9d95" prot="public">
           <name>Historical</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a359e9a601e2f250db2a26e811b34cda9" prot="public">
           <name>Actual365</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578aac90391ea0f8cf15843763043f1f0d79" prot="public">
           <name>AFB</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ace4bbf6b266e46026b96604c29c2f39b" prot="public">
           <name>Euro</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +44,6 @@
           <type>Convention</type>
           <declname>c</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="86"/>
       </memberdef>
       </sectiondef>
@@ -98,12 +58,6 @@
           <declname>c</declname>
           <defval>ActualActual::ISDA</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="88" bodyend="89"/>
       </memberdef>
       </sectiondef>
@@ -116,7 +70,6 @@
    - the ISMA and US Treasury convention, also known as
      &quot;Actual/Actual (Bond)&quot;;
    - the AFB convention, also known as &quot;Actual/Actual (Euro)&quot;.
-
    For more details, refer to
    http://www.isda.org/publications/pdf/Day-Count-Fracation1999.pdf
 </verbatim></para><para><xrefsect id="test_1_test000154"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the results is checked against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>

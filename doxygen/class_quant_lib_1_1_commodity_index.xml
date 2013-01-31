@@ -12,12 +12,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       </sectiondef>
@@ -29,12 +23,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="110" bodyend="112"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
         <definition>const CommodityType &amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ae1a84781300fdb3e7b7f3b719fda0610" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -58,12 +40,6 @@
         <definition>const Currency &amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a04ebdb0779a676fed38122c80f7190e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -71,12 +47,6 @@
         <definition>const UnitOfMeasure &amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -84,12 +54,6 @@
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a1f34ae89e89dbd1e8b6b819fab67d876" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -97,12 +61,6 @@
         <definition>const boost::shared_ptr&lt; CommodityCurve &gt; &amp; forwardCurve</definition>
         <argsstring>() const </argsstring>
         <name>forwardCurve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a49ef143f1d484eafaa99baa3c7ea9b09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -110,12 +68,6 @@
         <definition>Real lotQuantity</definition>
         <argsstring>() const </argsstring>
         <name>lotQuantity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac495fd9bc1177fa5ff37da1dd4382f13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -127,12 +79,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="147" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ada34e3301903ed5c0e42cc0dc0bdf770" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -144,12 +90,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="158" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac2415a2511bd3784612e1b83ed7ed876" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -157,12 +97,6 @@
         <definition>Date lastQuoteDate</definition>
         <argsstring>() const </argsstring>
         <name>lastQuoteDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="169" bodyend="173"/>
       </memberdef>
       </sectiondef>
@@ -208,12 +142,6 @@
           <type>int</type>
           <declname>nearbyOffset</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a6e7c2f06156bc986266ded7619af86ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -229,12 +157,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>quote</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="185" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ad224c1a7c70301d545c2d63ece164d8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -246,12 +168,6 @@
           <type>const std::map&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>quotes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="71" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a47256ff46c55a4a73152af3b83350ddf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -259,12 +175,6 @@
         <definition>void clearQuotes</definition>
         <argsstring>()</argsstring>
         <name>clearQuotes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="195" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a7d2fba75b27aca061c42efea5b80f7fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -278,10 +188,6 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the quote date is valid </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="199" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -289,12 +195,6 @@
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="175" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a28a48365ab4d6d488ed5d2ce442fe524" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -302,12 +202,6 @@
         <definition>bool forwardCurveEmpty</definition>
         <argsstring>() const </argsstring>
         <name>forwardCurveEmpty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="179" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a45a42a373bc45cab8cb46d7d4f079b38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -315,12 +209,6 @@
         <definition>const TimeSeries&lt; Real &gt; &amp; quotes</definition>
         <argsstring>() const </argsstring>
         <name>quotes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="143" bodyend="145"/>
       </memberdef>
       </sectiondef>
@@ -336,19 +224,11 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_commodity_index" kindref="compound">CommodityIndex</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for commodity indexes </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityindex.hpp" bodystart="35" bodyend="101"/>
   </compounddef>
 </doxygen>

@@ -34,12 +34,6 @@
           <type>const vContainer &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="85" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1a5637741cbd3150cf1590687f484d9806" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -82,12 +76,6 @@
           <type>vIterator</type>
           <declname>vEnd</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="96" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1a850ee065655ad4c6801782bcea67c2b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -95,12 +83,6 @@
         <definition>const Array&amp; coefficients</definition>
         <argsstring>() const </argsstring>
         <name>coefficients</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1af32f46c4d02d5fcd2a8f84629c975073" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -108,12 +90,6 @@
         <definition>const Array&amp; residuals</definition>
         <argsstring>() const </argsstring>
         <name>residuals</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1a0aab363c45329f8469d3909b3dc39074" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -123,10 +99,6 @@
         <name>standardErrors</name>
         <briefdescription>
 <para>standard parameter errors as given by Excel, R etc. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1a0787f8e1f87d04dceb6b20b946e0a7f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -136,10 +108,6 @@
         <name>error</name>
         <briefdescription>
 <para>modeling uncertainty as definied in Numerical Recipes </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1a203fe3243a3de44e98f050f96c7eb9cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -147,12 +115,6 @@
         <definition>const Array&amp; a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -160,12 +122,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1afa84867f88524a9a9a96915dcc644f85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -173,12 +129,6 @@
         <definition>Size dim</definition>
         <argsstring>() const </argsstring>
         <name>dim</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       </sectiondef>

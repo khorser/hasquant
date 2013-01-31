@@ -41,20 +41,14 @@
           <type>const M &amp;</type>
           <declname>zData</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> and <formula id="13">$ y $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="85" bodyend="91"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>polynomial2D-spline interpolation between discrete points </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="81" bodyend="92"/>
   </compounddef>
 </doxygen>

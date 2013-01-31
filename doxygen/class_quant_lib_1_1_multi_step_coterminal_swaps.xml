@@ -10,12 +10,6 @@
         <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a5ba8c0749807b349f90cbc0465907c3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,12 +50,6 @@
           <type>std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;</type>
           <declname>cashFlowsGenerated</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -87,12 +57,6 @@
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="45"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +66,6 @@
         <definition>std::vector&lt;Real&gt; fixedAccruals_</definition>
         <argsstring></argsstring>
         <name>fixedAccruals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a27ab05f4ebf0871b131b91330353d146" prot="private" static="no" mutable="no">
@@ -115,12 +73,6 @@
         <definition>std::vector&lt;Real&gt; floatingAccruals_</definition>
         <argsstring></argsstring>
         <name>floatingAccruals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
@@ -128,12 +80,6 @@
         <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
         <argsstring></argsstring>
         <name>paymentTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1ad95df7ff70abb810f7e848c7d25d8321" prot="private" static="no" mutable="no">
@@ -141,12 +87,6 @@
         <definition>double fixedRate_</definition>
         <argsstring></argsstring>
         <name>fixedRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a4db1170620701c092375336c1c0427d7" prot="private" static="no" mutable="no">
@@ -154,12 +94,6 @@
         <definition>Size lastIndex_</definition>
         <argsstring></argsstring>
         <name>lastIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_coterminal_swaps_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -167,12 +101,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -202,19 +130,9 @@
           <type>double</type>
           <declname>fixedRate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="34"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="28" bodyend="54"/>
   </compounddef>
 </doxygen>

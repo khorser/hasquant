@@ -13,22 +13,12 @@
           <name>Settlement</name>
           <briefdescription>
 <para>Public holidays. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_south_korea_1abe41cfffd960e29a5d8b07be00aeda42a27eb21ee5297bb50ae0947b93b24d449" prot="public">
           <name>KRX</name>
           <briefdescription>
 <para>Korea exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" bodystart="88" bodyend="90"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +33,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_south_korea_1abe41cfffd960e29a5d8b07be00aeda42a27eb21ee5297bb50ae0947b93b24d449" kindref="member">KRX</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" line="91"/>
       </memberdef>
       </sectiondef>

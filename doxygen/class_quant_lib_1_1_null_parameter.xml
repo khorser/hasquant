@@ -11,19 +11,11 @@
         <definition>NullParameter</definition>
         <argsstring>()</argsstring>
         <name>NullParameter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="110" bodyend="115"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Parameter which is always zero <formula id="287">$ a(t) = 0 $</formula> </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="101" bodyend="116"/>
   </compounddef>
 </doxygen>

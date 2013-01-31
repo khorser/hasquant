@@ -19,12 +19,6 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gbp_libor_swap_isda_fix_1a90a72776303342580ba6a533d77ae02b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -44,12 +38,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/gbpliborswap.hpp" line="48"/>
       </memberdef>
       </sectiondef>

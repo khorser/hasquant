@@ -12,12 +12,6 @@
         <definition>typedef std::map&lt;boost::shared_ptr&lt;StrikedTypePayoff&gt;, Real&gt; PayoffResultMap</definition>
         <argsstring></argsstring>
         <name>PayoffResultMap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_f_f_t_engine_1afe9f927867529ee02bdf18a8b3d9e5d1" prot="private" static="no">
@@ -25,12 +19,6 @@
         <definition>typedef std::map&lt;Date, PayoffResultMap&gt; ResultMap</definition>
         <argsstring></argsstring>
         <name>ResultMap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -40,12 +28,6 @@
         <definition>ResultMap resultMap_</definition>
         <argsstring></argsstring>
         <name>resultMap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -63,12 +45,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>logStrikeSpacing</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -76,12 +52,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -89,12 +59,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1afd32d8654dad09cba7b323c7c9d6cbb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -106,12 +70,6 @@
           <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_instrument" kindref="compound">Instrument</ref> &gt; &gt; &amp;</type>
           <declname>optionList</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1a957725ec1d11493d09636c2a11701d87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -121,12 +79,6 @@
         <name>clone</name>
         <reimplementedby refid="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a0428dab69dd3bc7d09cfa5127bf039ab">clone</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_f_f_t_vanilla_engine_1a0428dab69dd3bc7d09cfa5127bf039ab">clone</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="56"/>
       </memberdef>
       </sectiondef>

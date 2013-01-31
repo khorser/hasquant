@@ -15,19 +15,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/gbplibor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/gbplibor.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Overnight GBP Libor index. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/gbplibor.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/gbplibor.hpp" bodystart="65" bodyend="70"/>
   </compounddef>
 </doxygen>

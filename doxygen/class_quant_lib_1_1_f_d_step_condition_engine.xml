@@ -37,19 +37,11 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="41" bodyend="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Finite-differences pricing engine for American-style vanilla options. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="39" bodyend="55"/>
   </compounddef>
 </doxygen>

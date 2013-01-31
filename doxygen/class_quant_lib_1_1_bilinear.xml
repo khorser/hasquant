@@ -40,19 +40,11 @@
           <type>const M &amp;</type>
           <declname>z</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="86" bodyend="90"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>bilinear-interpolation factory </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="83" bodyend="91"/>
   </compounddef>
 </doxygen>

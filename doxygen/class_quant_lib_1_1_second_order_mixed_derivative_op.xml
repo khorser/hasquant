@@ -21,19 +21,9 @@
           <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
           <declname>mesher</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/secondordermixedderivativeop.hpp" line="36"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/secondordermixedderivativeop.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/secondordermixedderivativeop.hpp" bodystart="33" bodyend="37"/>
   </compounddef>
 </doxygen>

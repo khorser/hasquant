@@ -9,12 +9,6 @@
         <definition>virtual ~LeastSquareProblem</definition>
         <argsstring>()</argsstring>
         <name>~LeastSquareProblem</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a6c7ce2556129af8c0e1081fa87bfe83c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -24,10 +18,6 @@
         <name>size</name>
         <briefdescription>
 <para>size of the problem ie size of target vector </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a11233390acce28369d1979816543f542" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -49,10 +39,6 @@
         </param>
         <briefdescription>
 <para>compute the target vector and the values of the function to fit </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a5329bc9538315cd8ef49584ad144c526" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -76,19 +62,13 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>fct2fit</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>compute the target vector, the values of the function to fit and the matrix of derivatives </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for least square problem. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="38" bodyend="54"/>
   </compounddef>
 </doxygen>

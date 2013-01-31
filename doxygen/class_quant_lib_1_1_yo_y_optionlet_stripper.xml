@@ -23,10 +23,6 @@
         </param>
         <briefdescription>
 <para><ref refid="class_quant_lib_1_1_yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> interface. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -35,12 +31,6 @@
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
         <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a5e7f4a8423be791d84c2f637f5f36309">minStrike</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -49,12 +39,6 @@
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
         <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a665e35ebe818f3866d6a3946ed399432">maxStrike</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1ac959cc382e922f194db0da80ec9984d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -63,12 +47,6 @@
         <argsstring>() const =0</argsstring>
         <name>strikes</name>
         <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a1b89821fd50ae8ad7335bb45f0f7ecf4">strikes</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1aea33d9a19826d827d20a9e73fe51298c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -81,12 +59,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="51"/>
       </memberdef>
       </sectiondef>
@@ -96,12 +68,6 @@
         <definition>virtual ~YoYOptionletStripper</definition>
         <argsstring>()</argsstring>
         <name>~YoYOptionletStripper</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>

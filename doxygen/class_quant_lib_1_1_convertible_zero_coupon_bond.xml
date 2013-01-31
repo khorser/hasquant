@@ -51,12 +51,6 @@
           <declname>redemption</declname>
           <defval>100</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="99"/>
       </memberdef>
       </sectiondef>

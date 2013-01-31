@@ -29,12 +29,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="104" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_jumps_binomial_tree_1a6cf1e640c46646e875655549dacb92a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -42,12 +36,6 @@
         <definition>virtual ~ExtendedEqualJumpsBinomialTree</definition>
         <argsstring>()</argsstring>
         <name>~ExtendedEqualJumpsBinomialTree</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_jumps_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -63,12 +51,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_jumps_binomial_tree_1ac326a0e4dd82a1c167149d70a8c3f7ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -87,19 +69,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>branch</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="118" bodyend="123"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for equal jumps binomial tree. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp" bodystart="102" bodyend="131"/>
   </compounddef>
 </doxygen>

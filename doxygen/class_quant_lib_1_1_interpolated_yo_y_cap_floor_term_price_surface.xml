@@ -20,10 +20,6 @@
         <name>maxDate</name>
         <briefdescription>
 <para>inflation term structure interface </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="168" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -31,12 +27,6 @@
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="169" bodyend="169"/>
       </memberdef>
       </sectiondef>
@@ -47,12 +37,6 @@
         <definition>virtual std::pair&lt;std::vector&lt;Time&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapTimeRates</definition>
         <argsstring>() const </argsstring>
         <name>atmYoYSwapTimeRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ac977401fe72609c0fadd05093a4d33a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -60,12 +44,6 @@
         <definition>virtual std::pair&lt;std::vector&lt;Date&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapDateRates</definition>
         <argsstring>() const </argsstring>
         <name>atmYoYSwapDateRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="178" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1aa190eb1cb9b0a3927a42ac74533d88f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -73,12 +51,6 @@
         <definition>virtual boost::shared_ptr&lt;YoYInflationTermStructure&gt; YoYTS</definition>
         <argsstring>() const </argsstring>
         <name>YoYTS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="180" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a32c3ce6a2e2fb8dee9bec0d95bcf9d04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -94,12 +66,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="299" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ae57ffbfd1f2184c2b16f624f469d5fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -115,12 +81,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="315" bodyend="318"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a755e3777a6105eeac8815811006a1ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -136,12 +96,6 @@
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="307" bodyend="310"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a21a177d6e9d869c5e070ffef9946b901" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -158,12 +112,6 @@
           <declname>extrapolate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="184" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ac1b9a6bc2b5350cef4de2667f317e05a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -185,12 +133,6 @@
           <declname>extrapolate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="190" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="188" bodyend="195"/>
       </memberdef>
       </sectiondef>
@@ -201,12 +143,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="200" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="269" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -214,12 +150,6 @@
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="201" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="276" bodyend="284"/>
       </memberdef>
       </sectiondef>
@@ -291,12 +221,6 @@
           <declname>interpolator1d</declname>
           <defval>Interpolator1D()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a66ae1670ab70ecea30f86c1b5eaa653a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -304,19 +228,9 @@
         <definition>virtual Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="171" bodyend="171"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="146" bodyend="231"/>
   </compounddef>
 </doxygen>

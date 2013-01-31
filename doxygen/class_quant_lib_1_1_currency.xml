@@ -79,10 +79,6 @@
         <name>name</name>
         <briefdescription>
 <para>currency name, e.g, &quot;U.S. Dollar&quot; </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -92,10 +88,6 @@
         <name>code</name>
         <briefdescription>
 <para>ISO 4217 three-letter code, e.g, &quot;USD&quot;. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -105,10 +97,6 @@
         <name>numericCode</name>
         <briefdescription>
 <para>ISO 4217 numeric code, e.g, &quot;840&quot;. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -118,10 +106,6 @@
         <name>symbol</name>
         <briefdescription>
 <para>symbol, e.g, &quot;$&quot; </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -131,10 +115,6 @@
         <name>fractionSymbol</name>
         <briefdescription>
 <para>fraction symbol, e.g, &quot;¢&quot; </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -144,10 +124,6 @@
         <name>fractionsPerUnit</name>
         <briefdescription>
 <para>number of fractionary parts in a unit, e.g, 100 </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="135" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -157,10 +133,6 @@
         <name>rounding</name>
         <briefdescription>
 <para>rounding convention </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -172,8 +144,6 @@
 <para>output format </para>        </briefdescription>
         <detaileddescription>
 <para>The format will be fed three positional parameters, namely, value, code, and symbol, in this order. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="143" bodyend="145"/>
       </memberdef>
       </sectiondef>
@@ -186,10 +156,6 @@
         <name>empty</name>
         <briefdescription>
 <para>is this a usable instance? </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="147" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -199,10 +165,6 @@
         <name>triangulationCurrency</name>
         <briefdescription>
 <para>currency used for triangulated exchange when required </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="151" bodyend="153"/>
       </memberdef>
       </sectiondef>
@@ -216,8 +178,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para>Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="113" bodyend="113"/>
       </memberdef>
       </sectiondef>
@@ -233,12 +193,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="155" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -252,12 +206,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="159" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -271,19 +219,11 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Currency specification </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="35" bodyend="76"/>
   </compounddef>
 </doxygen>

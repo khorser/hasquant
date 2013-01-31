@@ -23,12 +23,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>oldGradient</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +37,6 @@
           <declname>lineSearch</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/conjugategradient.hpp" bodystart="44" bodyend="46"/>
       </memberdef>
       </sectiondef>

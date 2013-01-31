@@ -15,17 +15,7 @@
         <enumvalue id="struct_quant_lib_1_1_single_variate_1abc6126af1d45847bc59afa0aa3216b04a4cf0a75076c0e93010640ad9b584b0ce" prot="public">
           <name>allowsErrorEstimate</name>
           <initializer>= RNG::allowsErrorEstimate</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_single_variate_1a3b06460378c6160a0308efbecfc7a63f" prot="public" static="no">
@@ -33,12 +23,6 @@
         <definition>typedef RNG rng_traits</definition>
         <argsstring></argsstring>
         <name>rng_traits</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_single_variate_1aa8c6f99a3d9fc9757f1adb70a39d61e4" prot="public" static="no">
@@ -46,12 +30,6 @@
         <definition>typedef Path path_type</definition>
         <argsstring></argsstring>
         <name>path_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_single_variate_1af0d94abd55c1f5d59f118fb07b43de07" prot="public" static="no">
@@ -59,12 +37,6 @@
         <definition>typedef PathPricer&lt;path_type&gt; path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_single_variate_1a6048845f2c9ca8e5856abbd3eda84f6e" prot="public" static="no">
@@ -72,12 +44,6 @@
         <definition>typedef RNG::rsg_type rsg_type</definition>
         <argsstring></argsstring>
         <name>rsg_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_single_variate_1a6250dc20ffb598ccb01d0ebc3e0a5e89" prot="public" static="no">
@@ -85,19 +51,11 @@
         <definition>typedef PathGenerator&lt;rsg_type&gt; path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>default Monte Carlo traits for single-variate models </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="39" bodyend="46"/>
   </compounddef>
 </doxygen>

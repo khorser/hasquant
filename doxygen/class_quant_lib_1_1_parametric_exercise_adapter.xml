@@ -9,12 +9,6 @@
         <definition>Clone&lt;MarketModelParametricExercise&gt; exercise_</definition>
         <argsstring></argsstring>
         <name>exercise_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1afd83397529bc22ef01f0fb0b782ce8e9" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; parameters_</definition>
         <argsstring></argsstring>
         <name>parameters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1aa010100d61810501bed98b1773802fe5" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Time&gt; exerciseTimes_</definition>
         <argsstring></argsstring>
         <name>exerciseTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a0cd1da9c234a65843ed1783da733f913" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size currentStep_</definition>
         <argsstring></argsstring>
         <name>currentStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a3eac9ea0fb436d6a6f72379588b39921" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Size currentExercise_</definition>
         <argsstring></argsstring>
         <name>currentExercise_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>std::valarray&lt;bool&gt; isExerciseTime_</definition>
         <argsstring></argsstring>
         <name>isExerciseTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a3b7c47d0e999001cf2378ec95e660bac" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>std::vector&lt;Size&gt; numberOfVariables_</definition>
         <argsstring></argsstring>
         <name>numberOfVariables_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a7a0ba563aebb3a7b4df558ae61d61e70" prot="private" static="no" mutable="yes">
@@ -100,12 +58,6 @@
         <definition>std::vector&lt;Real&gt; variables_</definition>
         <argsstring></argsstring>
         <name>variables_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -123,12 +75,6 @@
           <type>const std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
           <declname>parameters</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1aa8dcb0de162131db7bd1609d221445ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -136,12 +82,6 @@
         <definition>std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>() const </argsstring>
         <name>exerciseTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -149,12 +89,6 @@
         <definition>std::vector&lt;Time&gt; relevantTimes</definition>
         <argsstring>() const </argsstring>
         <name>relevantTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -162,12 +96,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1aec2d702d48459594eb8f12eaec1920bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -179,12 +107,6 @@
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>currentState</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1af66beb74da59fb4825934b77b8d2c469" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -196,12 +118,6 @@
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>currentState</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1acd9318273e52073d486e779f628ca372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -209,19 +125,9 @@
         <definition>std::auto_ptr&lt;ExerciseStrategy&lt;CurveState&gt; &gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="33" bodyend="52"/>
   </compounddef>
 </doxygen>

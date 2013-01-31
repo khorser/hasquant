@@ -20,10 +20,6 @@
         <name>empty</name>
         <briefdescription>
 <para>Returns whether or not the day counter is initialized. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -35,8 +31,6 @@
 <para>Returns the name of the day counter. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000145"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between day counters. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -54,10 +48,6 @@
         </param>
         <briefdescription>
 <para>Returns the number of days between two dates. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="120" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -85,10 +75,6 @@
         </param>
         <briefdescription>
 <para>Returns the period between two dates as a fraction of year. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="126" bodyend="130"/>
       </memberdef>
       </sectiondef>
@@ -98,12 +84,8 @@
         <definition>DayCounter</definition>
         <argsstring>()</argsstring>
         <name>DayCounter</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The default constructor returns a day counter with a null implementation, which is therefore unusable except as a placeholder. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       </sectiondef>
@@ -119,12 +101,8 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the two day counters belong to the same derived class. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="133" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -138,12 +116,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -157,12 +129,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="142" bodyend="144"/>
       </memberdef>
       </sectiondef>

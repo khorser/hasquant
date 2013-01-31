@@ -10,8 +10,6 @@
     <innerclass refid="class_quant_lib_1_1_one_day_counter" prot="public">QuantLib::OneDayCounter</innerclass>
     <innerclass refid="class_quant_lib_1_1_simple_day_counter" prot="public">QuantLib::SimpleDayCounter</innerclass>
     <innerclass refid="class_quant_lib_1_1_thirty360" prot="public">QuantLib::Thirty360</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>The class <computeroutput><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">QuantLib::DayCounter</ref></computeroutput> provides more advanced means of measuring the distance between two dates according to a given market convention, both as number of days of fraction of year. A number of such conventions is contained in the <computeroutput>ql/DayCounters</computeroutput> directory. </para>    </detaileddescription>
   </compounddef>

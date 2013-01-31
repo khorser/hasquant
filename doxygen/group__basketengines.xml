@@ -9,9 +9,5 @@
     <innerclass refid="class_quant_lib_1_1_m_c_american_basket_engine" prot="public">QuantLib::MCAmericanBasketEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_m_c_european_basket_engine" prot="public">QuantLib::MCEuropeanBasketEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_stulz_engine" prot="public">QuantLib::StulzEngine</innerclass>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
   </compounddef>
 </doxygen>

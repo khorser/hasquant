@@ -28,12 +28,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/survivalprobabilitystructure.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_survival_probability_structure_1acc00d3c3b43cbac49da988431f883024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -65,12 +59,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/survivalprobabilitystructure.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_survival_probability_structure_1a635efc6d6d8cd153ff4d53b1f769825b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -101,12 +89,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/survivalprobabilitystructure.hpp" line="65"/>
       </memberdef>
       </sectiondef>
@@ -125,8 +107,6 @@
 <para>instantaneous default density at a given time </para>        </briefdescription>
         <detaileddescription>
 <para>implemented in terms of the survival probability <formula id="371">$ S(t) $</formula> as <formula id="372">$ p(t) = -\frac{d}{dt} S(t). $</formula></para><para><xrefsect id="caveats_1_caveats000112"><xreftitle>Warning</xreftitle><xrefdescription><para>This implementation uses numerical differentiation, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/survivalprobabilitystructure.hpp" line="79"/>
       </memberdef>
       </sectiondef>

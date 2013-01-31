@@ -9,12 +9,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <argsstring></argsstring>
         <name>N</name>
         <initializer>= 624</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1abc87b880bad973b4298d524f70a60337" prot="private" static="yes" mutable="no">
@@ -39,12 +27,6 @@
         <argsstring></argsstring>
         <name>M</name>
         <initializer>= 397</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aae6bd956f0258c269712512790cc2ac7" prot="private" static="yes" mutable="no">
@@ -52,12 +34,6 @@
         <definition>const unsigned long MATRIX_A</definition>
         <argsstring></argsstring>
         <name>MATRIX_A</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a377fc4326ff55bfb0a133460a9af6a0f" prot="private" static="yes" mutable="no">
@@ -65,12 +41,6 @@
         <definition>const unsigned long UPPER_MASK</definition>
         <argsstring></argsstring>
         <name>UPPER_MASK</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a7fb3c1e33e9a85be6b95e55a3ffd15bd" prot="private" static="yes" mutable="no">
@@ -78,12 +48,6 @@
         <definition>const unsigned long LOWER_MASK</definition>
         <argsstring></argsstring>
         <name>LOWER_MASK</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +57,6 @@
         <definition>unsigned long mt[N]</definition>
         <argsstring>[N]</argsstring>
         <name>mt</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a64d8071a5dc5f8fb14953be5395013f5" prot="private" static="no" mutable="yes">
@@ -106,12 +64,6 @@
         <definition>Size mti</definition>
         <argsstring></argsstring>
         <name>mti</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -126,12 +78,8 @@
           <declname>seed</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a46caedf21e71280f2aec10497d054cfc" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
@@ -143,12 +91,6 @@
           <type>const std::vector&lt; unsigned long &gt; &amp;</type>
           <declname>seeds</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -156,12 +98,8 @@
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns a sample with weight 1.0 containing a random number in the (0.0, 1.0) interval </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a7a373094f55dbe4015ab0ccfe21c01de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -171,10 +109,6 @@
         <name>nextReal</name>
         <briefdescription>
 <para>return a random number in the (0.0, 1.0)-interval </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1ae929c4400225267d39ac32d4bd99caf1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -184,10 +118,6 @@
         <name>nextInt32</name>
         <briefdescription>
 <para>return a random integer in the [0,0xffffffff]-interval </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="60" bodyend="72"/>
       </memberdef>
       </sectiondef>
@@ -201,12 +131,6 @@
           <type>unsigned long</type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a61b55f5db7fdcca2b05ee35105554b65" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -214,12 +138,6 @@
         <definition>void twist</definition>
         <argsstring>() const </argsstring>
         <name>twist</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="75"/>
       </memberdef>
       </sectiondef>

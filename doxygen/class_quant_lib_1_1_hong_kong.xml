@@ -12,15 +12,7 @@
           <name>HKEx</name>
           <briefdescription>
 <para>Hong Kong stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" bodystart="71" bodyend="72"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_hong_kong_1abe41cfffd960e29a5d8b07be00aeda42a06e529684fda4e065fb1e2cb432ca864" kindref="member">HKEx</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp" line="73"/>
       </memberdef>
       </sectiondef>

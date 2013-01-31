@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       </sectiondef>
@@ -31,10 +27,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_swaption_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       </sectiondef>
@@ -62,10 +50,6 @@
         <reimplements refid="class_quant_lib_1_1_swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0">maxSwapTenor</reimplements>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       </sectiondef>
@@ -75,12 +59,6 @@
         <definition>Handle&lt;Quote&gt; volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_constant_swaption_volatility_1aca87fdc23f27a95afdb4e07ac44da1af" prot="private" static="no" mutable="no">
@@ -88,12 +66,6 @@
         <definition>Period maxSwapTenor_</definition>
         <argsstring></argsstring>
         <name>maxSwapTenor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -125,10 +97,6 @@
         </param>
         <briefdescription>
 <para>floating reference date, floating market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_swaption_volatility_1a44f7e8257817c139f36061d06b68b4a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -158,10 +126,6 @@
         </param>
         <briefdescription>
 <para>fixed reference date, floating market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_swaption_volatility_1afb0e261f50a4e073f292237779de8409" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -191,10 +155,6 @@
         </param>
         <briefdescription>
 <para>floating reference date, fixed market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_swaption_volatility_1aac1b070e2673b35cd576f4c932a1e035" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -224,17 +184,11 @@
         </param>
         <briefdescription>
 <para>fixed reference date, fixed market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant swaption volatility, no time-strike dependence. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionconstantvol.hpp" bodystart="36" bodyend="89"/>
   </compounddef>
 </doxygen>

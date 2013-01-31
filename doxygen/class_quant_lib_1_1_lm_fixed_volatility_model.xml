@@ -9,12 +9,6 @@
         <definition>const Array volatilities_</definition>
         <argsstring></argsstring>
         <name>volatilities_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lm_fixed_volatility_model_1afa53808254a9d329c9cd25509b317ef2" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const std::vector&lt;Time&gt; startTimes_</definition>
         <argsstring></argsstring>
         <name>startTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>startTimes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -67,12 +49,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1ae4a8be640d1ad9269e3e4ff61ad54a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -92,12 +68,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>
       </memberdef>
       </sectiondef>
@@ -107,19 +77,9 @@
         <definition>void generateArguments</definition>
         <argsstring>()</argsstring>
         <name>generateArguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="31" bodyend="45"/>
   </compounddef>
 </doxygen>

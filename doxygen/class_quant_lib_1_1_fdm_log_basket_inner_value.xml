@@ -9,12 +9,6 @@
         <definition>const boost::shared_ptr&lt;BasketPayoff&gt; payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_log_basket_inner_value_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
           <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
           <declname>mesher</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_log_basket_inner_value_1af4289de69a24fdda61b56f5049bbc585" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -65,12 +47,6 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_log_basket_inner_value_1a7206bb7a6d96928abd9e64238636a05a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -85,19 +61,9 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="74"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="68" bodyend="79"/>
   </compounddef>
 </doxygen>

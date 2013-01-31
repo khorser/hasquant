@@ -9,12 +9,6 @@
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -37,19 +25,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="62"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="59" bodyend="64"/>
   </compounddef>
 </doxygen>

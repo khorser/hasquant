@@ -30,20 +30,14 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="79" bodyend="85"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward-flat interpolation between discrete points. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="75" bodyend="86"/>
   </compounddef>
 </doxygen>

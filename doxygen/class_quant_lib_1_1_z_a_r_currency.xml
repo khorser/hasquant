@@ -10,12 +10,6 @@
         <definition>ZARCurrency</definition>
         <argsstring>()</argsstring>
         <name>ZARCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/africa.hpp" bodystart="42" bodyend="49"/>
       </memberdef>
       </sectiondef>

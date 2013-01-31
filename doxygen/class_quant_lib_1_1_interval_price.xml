@@ -10,12 +10,6 @@
         <definition>Real open</definition>
         <argsstring>() const </argsstring>
         <name>open</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a760e68e04a1de187b12f14ed431d5b7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Real close</definition>
         <argsstring>() const </argsstring>
         <name>close</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1ae4747a97e5319952aad4d2fdcbd922fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Real high</definition>
         <argsstring>() const </argsstring>
         <name>high</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a3885ecba4d75226d09b5da5b50219e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>Real low</definition>
         <argsstring>() const </argsstring>
         <name>low</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1acee7d35150d5eb317f1297520ab7ff03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -65,12 +41,6 @@
         <param>
           <type>IntervalPrice::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="79"/>
       </memberdef>
       </sectiondef>
@@ -88,12 +58,6 @@
         <param>
           <type>IntervalPrice::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1ad3ee0adc80b6bdc7e977553d09dced95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -117,12 +81,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>low</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="85"/>
       </memberdef>
       </sectiondef>
@@ -153,12 +111,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>low</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a5dd7dfe99440e13129f9b91c84ba1f75" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -172,12 +124,6 @@
         <param>
           <type>IntervalPrice::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1aa2975db12f512e672d6f5180295464e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -191,12 +137,6 @@
         <param>
           <type>enum IntervalPrice::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="101"/>
       </memberdef>
       </sectiondef>
@@ -205,38 +145,16 @@
         <name>Type</name>
         <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ac8e6944e998ac466c3cc4a648dde8291" prot="public">
           <name>Open</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ab0d2fc8a61cc30fce240ad6df88447d4" prot="public">
           <name>Close</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a24c57acd029e3f96fede49402ea01e6f" prot="public">
           <name>High</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a7a352a3dd2accc1dd65a4538c3754ee8" prot="public">
           <name>Low</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       </sectiondef>
@@ -246,12 +164,6 @@
         <definition>Real open_</definition>
         <argsstring></argsstring>
         <name>open_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1ab345b763ee4f5eeaef8a098c7c76b1e9" prot="private" static="no" mutable="no">
@@ -259,12 +171,6 @@
         <definition>Real close_</definition>
         <argsstring></argsstring>
         <name>close_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" static="no" mutable="no">
@@ -272,12 +178,6 @@
         <definition>Real high_</definition>
         <argsstring></argsstring>
         <name>high_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a390b29a166814f8834fa8caea46ee97c" prot="private" static="no" mutable="no">
@@ -285,12 +185,6 @@
         <definition>Real low_</definition>
         <argsstring></argsstring>
         <name>low_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -300,12 +194,6 @@
         <definition>IntervalPrice</definition>
         <argsstring>()</argsstring>
         <name>IntervalPrice</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a55fb9afa8813c4d56212a946fbb4527f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -329,19 +217,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>low</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="71"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>interval price </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="66" bodyend="105"/>
   </compounddef>
 </doxygen>

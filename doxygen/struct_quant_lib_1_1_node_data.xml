@@ -8,12 +8,6 @@
         <definition>Real exerciseValue</definition>
         <argsstring></argsstring>
         <name>exerciseValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_node_data_1a8d06cad9924953471d0f94b47480e3be" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Real cumulatedCashFlows</definition>
         <argsstring></argsstring>
         <name>cumulatedCashFlows</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_node_data_1a5b35b61cd4da6b33787016a2c5c1fede" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>std::vector&lt;Real&gt; values</definition>
         <argsstring></argsstring>
         <name>values</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_node_data_1a6b73a7fc0ea701fc4c21189e5e70a200" prot="public" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>Real controlValue</definition>
         <argsstring></argsstring>
         <name>controlValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_node_data_1a8cc8d1cb67b70386f41455552f3a56f4" prot="public" static="no" mutable="no">
@@ -60,19 +36,9 @@
         <definition>bool isValid</definition>
         <argsstring></argsstring>
         <name>isValid</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="34" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="29" bodyend="35"/>
   </compounddef>
 </doxygen>

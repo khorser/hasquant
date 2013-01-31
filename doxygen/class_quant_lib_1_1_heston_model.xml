@@ -17,12 +17,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -30,12 +24,6 @@
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1a925b952838ecbba1d743cab564c69dc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -43,12 +31,6 @@
         <definition>Real kappa</definition>
         <argsstring>() const </argsstring>
         <name>kappa</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -56,12 +38,6 @@
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -69,12 +45,6 @@
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -82,12 +52,6 @@
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1a57e932938bc12589eb93ad22a7402d2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -95,12 +59,6 @@
         <definition>boost::shared_ptr&lt;HestonProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       </sectiondef>

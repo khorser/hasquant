@@ -9,12 +9,6 @@
         <definition>const std::vector&lt;Parameter&gt;&amp; arguments_</definition>
         <argsstring></argsstring>
         <name>arguments_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="143" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -45,19 +33,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="145" bodyend="156"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="141" bodyend="159"/>
   </compounddef>
 </doxygen>

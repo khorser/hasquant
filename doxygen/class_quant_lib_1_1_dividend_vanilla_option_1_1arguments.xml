@@ -10,12 +10,6 @@
         <definition>DividendSchedule cashFlow</definition>
         <argsstring></argsstring>
         <name>cashFlow</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_vanilla_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -38,19 +26,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="68"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for dividend vanilla option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="64" bodyend="69"/>
   </compounddef>
 </doxygen>

@@ -14,12 +14,6 @@
         <definition>PdeClass::grid_type grid_</definition>
         <argsstring></argsstring>
         <name>grid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_generic_time_setter_1a9c40ac6b2609150bc1d62f06b3bffad6" prot="private" static="no" mutable="no">
@@ -27,12 +21,6 @@
         <definition>PdeClass pde_</definition>
         <argsstring></argsstring>
         <name>pde_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +43,6 @@
           <type>T</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="84" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -76,19 +58,9 @@
           <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <declname>L</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="86" bodyend="89"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="81" bodyend="93"/>
   </compounddef>
 </doxygen>

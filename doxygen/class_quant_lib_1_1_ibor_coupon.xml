@@ -11,12 +11,6 @@
         <definition>const boost::shared_ptr&lt;IborIndex&gt;&amp; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
       </sectiondef>
@@ -30,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
         <briefdescription>
 <para>Implemented in order to manage the case of par coupon. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="60"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +38,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="64"/>
       </memberdef>
       </sectiondef>
@@ -63,12 +47,6 @@
         <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
         <argsstring></argsstring>
         <name>iborIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
@@ -76,12 +54,6 @@
         <definition>Date fixingDate_</definition>
         <argsstring></argsstring>
         <name>fixingDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a507cd6e556e2c7d8da6796730b888312" prot="private" static="no" mutable="no">
@@ -89,12 +61,6 @@
         <definition>Date fixingValueDate_</definition>
         <argsstring></argsstring>
         <name>fixingValueDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a42f732a216448fbafe184c1610d62ea9" prot="private" static="no" mutable="no">
@@ -102,12 +68,6 @@
         <definition>Date fixingEndDate_</definition>
         <argsstring></argsstring>
         <name>fixingEndDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a20c1c621e2e3fb6928372c48e4bd0463" prot="private" static="no" mutable="no">
@@ -115,12 +75,6 @@
         <definition>Time spanningTime_</definition>
         <argsstring></argsstring>
         <name>spanningTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -184,19 +138,11 @@
           <declname>isInArrears</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a Libor-type index </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="37" bodyend="70"/>
   </compounddef>
 </doxygen>

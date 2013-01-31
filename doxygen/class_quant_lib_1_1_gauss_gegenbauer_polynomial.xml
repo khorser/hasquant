@@ -14,19 +14,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>lambda</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Gegenbauer polynomial. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="124" bodyend="127"/>
   </compounddef>
 </doxygen>

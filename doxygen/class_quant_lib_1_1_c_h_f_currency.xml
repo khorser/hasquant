@@ -10,12 +10,6 @@
         <definition>CHFCurrency</definition>
         <argsstring>()</argsstring>
         <name>CHFCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="78" bodyend="85"/>
       </memberdef>
       </sectiondef>

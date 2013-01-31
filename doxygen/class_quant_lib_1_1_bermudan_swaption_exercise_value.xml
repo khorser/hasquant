@@ -9,12 +9,6 @@
         <definition>Size numberOfExercises_</definition>
         <argsstring></argsstring>
         <name>numberOfExercises_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Time&gt; rateTimes_</definition>
         <argsstring></argsstring>
         <name>rateTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1ab447a3ce694c189458446faa90938385" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;Payoff&gt; &gt; payoffs_</definition>
         <argsstring></argsstring>
         <name>payoffs_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a218eed94df9c96a0b5fc23cacf4519dd" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>MarketModelMultiProduct::CashFlow cf_</definition>
         <argsstring></argsstring>
         <name>cf_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -96,12 +60,6 @@
         <param>
           <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a5065f03e9f9e90f1a6ca2a593ab037b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -109,12 +67,6 @@
         <definition>Size numberOfExercises</definition>
         <argsstring>() const </argsstring>
         <name>numberOfExercises</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -122,12 +74,6 @@
         <definition>const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a56865e26489f9b92ffd7aa1adf6cbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -135,12 +81,6 @@
         <definition>std::vector&lt;Time&gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1aa10274c0393aff9841d8518b3d839d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -151,12 +91,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -164,12 +98,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1aadcdfbd9bd7b7f0ac735eee073ac16c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -177,12 +105,6 @@
         <definition>std::valarray&lt;bool&gt; isExerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>isExerciseTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a3f2baf413c69aaa28620e811247c6d05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -193,12 +115,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_swaption_exercise_value_1a8568dae9b09cf4187f6823409cbf1a3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -206,19 +122,9 @@
         <definition>std::auto_ptr&lt;MarketModelExerciseValue&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/bermudanswaptionexercisevalue.hpp" bodystart="33" bodyend="55"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>TWDCurrency</definition>
         <argsstring>()</argsstring>
         <name>TWDCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="312" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="312" bodyend="319"/>
       </memberdef>
       </sectiondef>

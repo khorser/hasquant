@@ -8,12 +8,6 @@
         <definition>Money amount_</definition>
         <argsstring></argsstring>
         <name>amount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_unit_cost_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>UnitOfMeasure unitOfMeasure_</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -36,12 +24,6 @@
         <definition>CommodityUnitCost</definition>
         <argsstring>()</argsstring>
         <name>CommodityUnitCost</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1afa109e53a596e5ad2d985ba8dd96cd9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +39,6 @@
           <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>unitOfMeasure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="35" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1ac5c99f8389e4128d193cce78549e69d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +46,6 @@
         <definition>const Money&amp; amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -83,19 +53,9 @@
         <definition>const UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="32" bodyend="45"/>
   </compounddef>
 </doxygen>

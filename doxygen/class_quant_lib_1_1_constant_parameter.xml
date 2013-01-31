@@ -15,12 +15,6 @@
           <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>constraint</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="80" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_parameter_1af7e3832d393aa756c2e82802a63320d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -36,19 +30,11 @@
           <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>constraint</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="87" bodyend="96"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Standard constant parameter <formula id="286">$ a(t) = a $</formula>. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="71" bodyend="98"/>
   </compounddef>
 </doxygen>

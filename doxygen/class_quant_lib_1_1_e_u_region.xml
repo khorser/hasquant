@@ -10,19 +10,11 @@
         <definition>EURegion</definition>
         <argsstring>()</argsstring>
         <name>EURegion</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="71"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>European Union as geographical/economic region. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="69" bodyend="72"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>Time swapStartTime_</definition>
         <argsstring></argsstring>
         <name>swapStartTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a718c30b5c4f83fd313a878524086b1a4" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Time shapedPaymentTime_</definition>
         <argsstring></argsstring>
         <name>shapedPaymentTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a7a7130151e012a56d7af5c16957457e3" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>std::vector&lt;Time&gt; shapedSwapPaymentTimes_</definition>
         <argsstring></argsstring>
         <name>shapedSwapPaymentTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a52f8a64708ab13ec421bfbd29e2c254a" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>std::vector&lt;Time&gt; accruals_</definition>
         <argsstring></argsstring>
         <name>accruals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1af8ba2264c8c1d389081c39bcf429915a" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>std::vector&lt;Real&gt; swapPaymentDiscounts_</definition>
         <argsstring></argsstring>
         <name>swapPaymentDiscounts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a005856bfb868bb73f115fe1279308ac1" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>Real discountAtStart_</definition>
         <argsstring></argsstring>
         <name>discountAtStart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a67f009f95e2d3eba823782e3cf1c72a0" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>Real discountRatio_</definition>
         <argsstring></argsstring>
         <name>discountRatio_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a67eddce69abdd6f17b5dc9150699eabf" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>Real swapRateValue_</definition>
         <argsstring></argsstring>
         <name>swapRateValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a2b50f8924eff549cb145d2ced86b9749" prot="private" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>Handle&lt;Quote&gt; meanReversion_</definition>
         <argsstring></argsstring>
         <name>meanReversion_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a11bef2b84f1f9546d6a2718d8c4de973" prot="private" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>Real calibratedShift_</definition>
         <argsstring></argsstring>
         <name>calibratedShift_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a4940ad4d52fb38d390257803e11da9ef" prot="private" static="no" mutable="no">
@@ -140,12 +80,6 @@
         <definition>Real tmpRs_</definition>
         <argsstring></argsstring>
         <name>tmpRs_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1af9292c8029283028a1236892ebe87463" prot="private" static="no" mutable="no">
@@ -153,12 +87,6 @@
         <definition>const Real accuracy_</definition>
         <argsstring></argsstring>
         <name>accuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a4f4efec6898f313f313e6d9a5a1c292e" prot="private" static="no" mutable="no">
@@ -166,12 +94,6 @@
         <definition>boost::shared_ptr&lt;ObjectiveFunction&gt; objectiveFunction_</definition>
         <argsstring></argsstring>
         <name>objectiveFunction_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -181,12 +103,6 @@
         <definition>friend class ObjectiveFunction</definition>
         <argsstring></argsstring>
         <name>ObjectiveFunction</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -200,12 +116,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1ae0143d990273797e0304c7722629b1a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -217,12 +127,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>Rs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1ae417291f29602b7e714936a8cdfed4f1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -234,12 +138,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a7f9d7e72022788243d4b5f3937240902" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -251,12 +149,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a8e37dd5edc75aaee6d316087ab4eb5c3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -268,12 +160,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a5d44a3c135960e3b885bdf48bd0b2724" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -285,12 +171,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="147"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a45f8d94e8525ad363acc5b474b424db2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -302,12 +182,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="148"/>
       </memberdef>
       </sectiondef>
@@ -325,12 +199,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a9442defbbad440139e420aa43415e7ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -342,12 +210,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="172"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a2b0e508fbef761b58361ccb516db59ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -359,12 +221,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1aa0c141f9a05d4e49ee3750a947bb1cd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -376,19 +232,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="174"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="123" bodyend="175"/>
   </compounddef>
 </doxygen>

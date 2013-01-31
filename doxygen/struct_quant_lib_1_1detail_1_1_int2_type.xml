@@ -15,12 +15,6 @@
         <definition>typedef cubic_spline_01 c_spline</definition>
         <argsstring></argsstring>
         <name>c_spline</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="373" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="373" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1detail_1_1_int2_type_1ae8b1efa562cd124428ead00a2507fa59" prot="public" static="no">
@@ -28,19 +22,9 @@
         <definition>typedef cubic_splint_01 c_splint</definition>
         <argsstring></argsstring>
         <name>c_splint</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="374" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="374" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="372" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="372" bodyend="375"/>
   </compounddef>
 </doxygen>

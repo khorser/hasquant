@@ -9,12 +9,6 @@
         <definition>std::vector&lt;double&gt; cs_</definition>
         <argsstring></argsstring>
         <name>cs_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fast_fourier_transform_1a1e8a188246324c2c8b4094329f03f012" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;double&gt; sn_</definition>
         <argsstring></argsstring>
         <name>sn_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -43,10 +31,6 @@
         </param>
         <briefdescription>
 <para>the minimum order required for the given input size </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="42" bodyend="45"/>
       </memberdef>
       </sectiondef>
@@ -60,12 +44,6 @@
           <type>std::size_t</type>
           <declname>order</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="47" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a75e2c0c0deb0a74fdb9df4d2767a0a29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -75,10 +53,6 @@
         <name>output_size</name>
         <briefdescription>
 <para>The required size for the output vector. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1ad295b84fb61f06da7058f34c4021e7c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -110,8 +84,6 @@
 <para>FFT transform. </para>        </briefdescription>
         <detaileddescription>
 <para>The output sequence must be allocated by the user </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a38b5f227d390596a7ccfd835d7803bcf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -143,8 +115,6 @@
 <para>Inverse FFT transform. </para>        </briefdescription>
         <detaileddescription>
 <para>The output sequence must be allocated by the user. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="74" bodyend="77"/>
       </memberdef>
       </sectiondef>
@@ -178,12 +148,6 @@
           <type>bool</type>
           <declname>inverse</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="83" bodyend="110"/>
       </memberdef>
       </sectiondef>
@@ -201,19 +165,11 @@
           <type>std::size_t</type>
           <declname>order</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="112" bodyend="120"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>FFT implementation. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="38" bodyend="121"/>
   </compounddef>
 </doxygen>

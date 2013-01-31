@@ -19,19 +19,11 @@
           <declname>digit</declname>
           <defval>5</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Up-rounding. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="91" bodyend="96"/>
   </compounddef>
 </doxygen>

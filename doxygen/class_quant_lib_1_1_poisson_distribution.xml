@@ -10,12 +10,6 @@
         <definition>Real mu_</definition>
         <argsstring></argsstring>
         <name>mu_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_poisson_distribution_1ae5a65bc3b6e86c64637e8017d0d20edb" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real logMu_</definition>
         <argsstring></argsstring>
         <name>logMu_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +30,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>mu</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="90" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -59,12 +41,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="99" bodyend="106"/>
       </memberdef>
       </sectiondef>

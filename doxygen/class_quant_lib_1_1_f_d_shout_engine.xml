@@ -18,12 +18,6 @@
         <definition>typedef FDEngineAdapter&lt;FDShoutCondition&lt; FDStepConditionEngine&lt;Scheme&gt; &gt;, OneAssetOption::engine&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -52,12 +46,6 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" bodystart="49" bodyend="53"/>
       </memberdef>
       </sectiondef>

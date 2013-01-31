@@ -14,12 +14,6 @@
         <definition>std::vector&lt;Leg&gt; legs</definition>
         <argsstring></argsstring>
         <name>legs</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1arguments_1aef10c42b7e9e25bc16b34890cb780037" prot="public" static="no" mutable="no">
@@ -27,12 +21,6 @@
         <definition>std::vector&lt;Real&gt; payer</definition>
         <argsstring></argsstring>
         <name>payer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,19 +30,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="121"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" bodystart="117" bodyend="122"/>
   </compounddef>
 </doxygen>

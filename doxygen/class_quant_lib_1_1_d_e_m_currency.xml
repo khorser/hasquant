@@ -10,12 +10,6 @@
         <definition>DEMCurrency</definition>
         <argsstring>()</argsstring>
         <name>DEMCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="508" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="508" bodyend="516"/>
       </memberdef>
       </sectiondef>

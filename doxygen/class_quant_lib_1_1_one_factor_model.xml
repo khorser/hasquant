@@ -19,12 +19,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nArguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1aa58d01bd47bbd015e07402677e91d39e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -32,12 +26,6 @@
         <definition>virtual ~OneFactorModel</definition>
         <argsstring>()</argsstring>
         <name>~OneFactorModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -53,10 +41,6 @@
         <reimplementedby refid="class_quant_lib_1_1_generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd">dynamics</reimplementedby>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -75,17 +59,11 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Single-factor short-rate model abstract class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="37" bodyend="50"/>
   </compounddef>
 </doxygen>

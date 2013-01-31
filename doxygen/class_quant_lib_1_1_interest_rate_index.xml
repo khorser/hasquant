@@ -20,8 +20,6 @@
 <para>Returns the name of the index. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1abd47d61ed23fb73440b0c02534236330" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -32,10 +30,6 @@
         <reimplements refid="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a">fixingCalendar</reimplements>
         <briefdescription>
 <para>returns the calendar defining valid fixing dates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -50,10 +44,6 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -75,8 +65,6 @@
 <para>returns the fixing at the given date </para>        </briefdescription>
         <detaileddescription>
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="54"/>
       </memberdef>
       </sectiondef>
@@ -88,12 +76,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       </sectiondef>
@@ -104,12 +86,6 @@
         <definition>std::string familyName</definition>
         <argsstring>() const </argsstring>
         <name>familyName</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1aa71982300427118fd251ac6bb7fa89da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -117,12 +93,6 @@
         <definition>Period tenor</definition>
         <argsstring>() const </argsstring>
         <name>tenor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -130,12 +100,6 @@
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1ae9bc5cf19c2ae0701adf3cccbfb7f514" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -147,12 +111,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="115" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -160,12 +118,6 @@
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -173,12 +125,6 @@
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       </sectiondef>
@@ -196,12 +142,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="121" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a272504b2735ffa618889e575d93212a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -218,12 +158,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="77"/>
       </memberdef>
       </sectiondef>
@@ -244,10 +178,6 @@
         </param>
         <briefdescription>
 <para>It can be overridden to implement particular conventions. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1a8c8876b15f54345f4c91f930498ad4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -259,12 +189,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="127" bodyend="131"/>
       </memberdef>
       </sectiondef>
@@ -274,12 +198,6 @@
         <definition>std::string name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_index_1af1ed03a737a75f4ce678edf42fe3dc7b" prot="private" static="no" mutable="no">
@@ -287,12 +205,6 @@
         <definition>Calendar fixingCalendar_</definition>
         <argsstring></argsstring>
         <name>fixingCalendar_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -326,12 +238,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="47"/>
       </memberdef>
       </sectiondef>

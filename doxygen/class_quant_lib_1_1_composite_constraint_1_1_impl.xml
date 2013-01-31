@@ -9,12 +9,6 @@
         <definition>Constraint c1_</definition>
         <argsstring></argsstring>
         <name>c1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1ab3621e87adf3a9b3086633435deeb327" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Constraint c2_</definition>
         <argsstring></argsstring>
         <name>c2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
           <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -62,19 +44,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="112" bodyend="122"/>
   </compounddef>
 </doxygen>

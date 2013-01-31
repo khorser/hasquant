@@ -17,12 +17,6 @@
         <definition>virtual Size size</definition>
         <argsstring>() const =0</argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_composite_1a65f9a00866252efbf8b84e32fcd0a5b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -40,10 +34,6 @@
         </param>
         <briefdescription>
 <para>Time <formula id="284">$t1 &lt;= t2$</formula> is required. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_composite_1a6ae97c408d016fb12af247af56ee67a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -55,12 +45,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_composite_1a4085e54ce764c545f5bb73a11320e37d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -76,12 +60,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_composite_1a9ee9fc2e0f66a9c268e944675c279587" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -101,12 +79,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_composite_1ad8b12f8ec6911c0c0dba38ff9baacfea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -122,19 +94,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="47"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" bodystart="33" bodyend="48"/>
   </compounddef>
 </doxygen>

@@ -12,12 +12,8 @@
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000017"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a77d7003fa5d2e29669371413d5662141" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -25,12 +21,6 @@
         <definition>virtual std::string description</definition>
         <argsstring>() const =0</argsstring>
         <name>description</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a9febbc13f6d1310bada5929dde07e411" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -58,12 +48,6 @@
           <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &amp;</type>
           <declname>states</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a04619d6110aa5a91bd45584e3cb76681" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -71,12 +55,6 @@
         <definition>virtual Size basisSystemDimension</definition>
         <argsstring>() const =0</argsstring>
         <name>basisSystemDimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="72"/>
       </memberdef>
       </sectiondef>
@@ -91,12 +69,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" bodystart="84" bodyend="90"/>
       </memberdef>
       </sectiondef>
@@ -106,19 +78,11 @@
         <definition>virtual ~PathPayoff</definition>
         <argsstring>()</argsstring>
         <name>~PathPayoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Abstract base class for path-dependent option payoffs. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" bodystart="36" bodyend="79"/>
   </compounddef>
 </doxygen>

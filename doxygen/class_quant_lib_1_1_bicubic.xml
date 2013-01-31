@@ -40,19 +40,11 @@
           <type>const M &amp;</type>
           <declname>z</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="197" bodyend="201"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>bicubic-spline-interpolation factory </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="194" bodyend="202"/>
   </compounddef>
 </doxygen>

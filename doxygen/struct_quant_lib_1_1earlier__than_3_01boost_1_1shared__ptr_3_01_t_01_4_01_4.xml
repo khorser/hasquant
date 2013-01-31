@@ -22,19 +22,9 @@
           <type>const boost::shared_ptr&lt; T &gt; &amp;</type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" bodystart="96" bodyend="99"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" bodystart="92" bodyend="100"/>
   </compounddef>
 </doxygen>

@@ -9,12 +9,6 @@
         <definition>NonCentralChiSquareDistribution nonCentralDist_</definition>
         <argsstring></argsstring>
         <name>nonCentralDist_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1ad6e56820e860fc7f0f2c82030c0758db" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Real guess_</definition>
         <argsstring></argsstring>
         <name>guess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a199f2b4515f1ed005f51f93afa7bfd4e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Size maxEvaluations_</definition>
         <argsstring></argsstring>
         <name>maxEvaluations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1af9292c8029283028a1236892ebe87463" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const Real accuracy_</definition>
         <argsstring></argsstring>
         <name>accuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +57,6 @@
           <declname>accuracy</declname>
           <defval>1e-8</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -98,19 +68,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="51" bodyend="64"/>
   </compounddef>
 </doxygen>

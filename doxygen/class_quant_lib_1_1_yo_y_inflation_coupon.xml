@@ -14,10 +14,6 @@
         <name>gearing</name>
         <briefdescription>
 <para>index gearing, i.e. multiplicative coefficient for the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,10 +23,6 @@
         <name>spread</name>
         <briefdescription>
 <para>spread paid over the fixing of the underlying index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -38,12 +30,6 @@
         <definition>Rate adjustedFixing</definition>
         <argsstring>() const </argsstring>
         <name>adjustedFixing</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1ada943da84e02289058804b4a0c292f32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -51,12 +37,6 @@
         <definition>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp; yoyIndex</definition>
         <argsstring>() const </argsstring>
         <name>yoyIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       </sectiondef>
@@ -72,12 +52,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="65"/>
       </memberdef>
       </sectiondef>
@@ -87,12 +61,6 @@
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; yoyIndex_</definition>
         <argsstring></argsstring>
         <name>yoyIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -154,19 +122,11 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a YoY-inflation type index </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="35" bodyend="75"/>
   </compounddef>
 </doxygen>

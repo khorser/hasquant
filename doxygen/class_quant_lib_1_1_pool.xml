@@ -8,12 +8,6 @@
         <definition>std::map&lt;std::string,Issuer&gt; data_</definition>
         <argsstring></argsstring>
         <name>data_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pool_1a4a4e8d4b717c21589a060b4a2d56c4ce" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>std::map&lt;std::string,Real&gt; time_</definition>
         <argsstring></argsstring>
         <name>time_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pool_1ab0040ffc4275fed51da172ce1ee71f8b" prot="private" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>std::vector&lt;std::string&gt; names_</definition>
         <argsstring></argsstring>
         <name>names_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +31,6 @@
         <definition>Pool</definition>
         <argsstring>()</argsstring>
         <name>Pool</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -62,12 +38,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -75,12 +45,6 @@
         <definition>void clear</definition>
         <argsstring>()</argsstring>
         <name>clear</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1a11f7868ebc12b98cb7c2cc4a44d7d6f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -92,12 +56,6 @@
           <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1a9d2d4c566fe08564a3458c96fc6030c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -113,12 +71,6 @@
           <type>const Issuer &amp;</type>
           <declname>issuer</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1a79fb7a2e3d3215adb63c99bcf611ed34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -130,12 +82,6 @@
           <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1aa4a828f3ad25a750a311f4495766cb52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -151,12 +97,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>time</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1adadede9310fa9603982ad9d6f867d6b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -168,12 +108,6 @@
           <type>const std::string &amp;</type>
           <declname>name</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1a5b0387412c808499b36a396389c29a83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -181,19 +115,9 @@
         <definition>const std::vector&lt;std::string&gt;&amp; names</definition>
         <argsstring>() const </argsstring>
         <name>names</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="32" bodyend="47"/>
   </compounddef>
 </doxygen>

@@ -4,10 +4,6 @@
     <compoundname>QuantLib::EverestOption::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; EverestOption::arguments, EverestOption::results &gt;</basecompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_m_c_everest_engine" prot="public" virt="non-virtual">MCEverestEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="65" bodyend="67"/>
   </compounddef>
 </doxygen>

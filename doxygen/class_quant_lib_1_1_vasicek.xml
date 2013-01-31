@@ -37,12 +37,6 @@
           <declname>lambda</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1a7c92e4a748c8ff38b33f1460ee56dceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -68,12 +62,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -85,10 +73,6 @@
         <reimplementedby refid="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be">dynamics</reimplementedby>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="101" bodyend="104"/>
       </memberdef>
       </sectiondef>

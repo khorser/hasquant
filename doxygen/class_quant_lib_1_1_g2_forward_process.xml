@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_forward_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_forward_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -50,10 +42,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_forward_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -72,10 +60,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_forward_process_1a30a103c583af9320f08337052d38c622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -96,12 +80,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the expectation <formula id="353">$ E(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_forward_process_1ab55b8ade4729f4509ad40bbaab050a0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -122,12 +102,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the standard deviation <formula id="355">$ S(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g2_forward_process_1aa35146549bd167f407791342e89927e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -148,12 +124,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the covariance <formula id="356">$ V(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="75"/>
       </memberdef>
       </sectiondef>
@@ -183,19 +155,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward G2 stochastic process </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/g2process.hpp" bodystart="63" bodyend="85"/>
   </compounddef>
 </doxygen>

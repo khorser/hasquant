@@ -10,12 +10,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
         <argsstring></argsstring>
         <name>paymentTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a0cdfce4daff0a90a480838c61b53e39e" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Matrix amounts_</definition>
         <argsstring></argsstring>
         <name>amounts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Size numberOfProducts_</definition>
         <argsstring></argsstring>
         <name>numberOfProducts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +63,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numberOfProducts</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -107,12 +71,6 @@
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1aaf1f37e1319c6476e12d03c295b74260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -121,12 +79,6 @@
         <argsstring>() const </argsstring>
         <name>evolution</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -135,12 +87,6 @@
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1ae76494005108a03d01db60b6bb685116">possibleCashFlowTimes</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -149,12 +95,6 @@
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0a292c0068ae301d400b2e4b24e8847f">numberOfProducts</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1ae9340ad78cd16947af851ac186443907" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -163,12 +103,6 @@
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54">maxNumberOfCashFlowsPerProductPerStep</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -179,10 +113,6 @@
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
         <briefdescription>
 <para>during simulation put product at start of path </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -191,12 +121,6 @@
         <argsstring>() const </argsstring>
         <name>alreadyDeflated</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a164f79bb7fcc17d83d7201fd191ae054">alreadyDeflated</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1ab323de6c99257ba28ce5fc12da07241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -219,10 +143,6 @@
         </param>
         <briefdescription>
 <para>return value indicates whether path is finished, TRUE means done </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -233,15 +153,9 @@
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0c4d55a1d5639736ddbf050d163c0d37">clone</reimplements>
         <briefdescription>
 <para>returns a newly-allocated copy of itself </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> for doing simple cash rebate. Fairly useless when used directly, but if we want to look a breakable swap it becomes useful. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="42" bodyend="74"/>

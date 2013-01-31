@@ -10,12 +10,6 @@
         <definition>THBCurrency</definition>
         <argsstring>()</argsstring>
         <name>THBCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="294" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="294" bodyend="301"/>
       </memberdef>
       </sectiondef>

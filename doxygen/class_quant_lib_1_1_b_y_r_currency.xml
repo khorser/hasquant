@@ -10,12 +10,6 @@
         <definition>BYRCurrency</definition>
         <argsstring>()</argsstring>
         <name>BYRCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="60" bodyend="67"/>
       </memberdef>
       </sectiondef>

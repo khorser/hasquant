@@ -34,8 +34,6 @@
 <para>Returns the volatility for a given maturity date and strike rate. </para>        </briefdescription>
         <detaileddescription>
 <para>by default, inflation is observed with the lag of the term structure.</para><para>Because inflation is highly linked to dates (for interpolation, periods, etc) time-based overload of the methods are not provided. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1a8bec322449324878a9b8c3d56eee84ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -63,10 +61,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option tenor and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1ab3fc5836b8ffe33d09eca494369576a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -92,12 +86,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the total integrated variance for a given exercise date and strike rate.</para><para>Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called &quot;total&quot; because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1ac18bd55fdc43f49b20dd1ba29250bb92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -123,12 +113,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the total integrated variance for a given option tenor and strike rate. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="87"/>
       </memberdef>
       </sectiondef>
@@ -139,12 +125,8 @@
         <definition>virtual Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The term structure observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -152,12 +134,6 @@
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1a660491a5abacf3aa1128ee5c6ef8a6c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -165,12 +141,6 @@
         <definition>virtual bool indexIsInterpolated</definition>
         <argsstring>() const </argsstring>
         <name>indexIsInterpolated</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -178,12 +148,6 @@
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1a108bd0a09df4aa94c9bb9254632040b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -202,10 +166,6 @@
         </param>
         <briefdescription>
 <para>base date will be in the past because of observation lag </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1a856d0e8b9c3e30ebb9e8ca6ecde17986" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -213,12 +173,6 @@
         <definition>virtual Volatility baseLevel</definition>
         <argsstring>() const </argsstring>
         <name>baseLevel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" bodystart="107" bodyend="111"/>
       </memberdef>
       </sectiondef>
@@ -233,10 +187,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -248,10 +198,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="119"/>
       </memberdef>
       </sectiondef>
@@ -288,12 +234,8 @@
           <type>bool</type>
           <declname>indexIsInterpolated</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>calculates the reference date based on the global evaluation date. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="47"/>
       </memberdef>
       </sectiondef>

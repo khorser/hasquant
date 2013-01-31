@@ -15,10 +15,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_value_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -29,10 +25,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="42"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +34,6 @@
         <definition>boost::shared_ptr&lt;Index&gt; index_</definition>
         <argsstring></argsstring>
         <name>index_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_forward_value_quote_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
@@ -55,12 +41,6 @@
         <definition>Date fixingDate_</definition>
         <argsstring></argsstring>
         <name>fixingDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +58,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_value_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -92,19 +66,11 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>quote for the forward value of an index </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" bodystart="34" bodyend="48"/>
   </compounddef>
 </doxygen>

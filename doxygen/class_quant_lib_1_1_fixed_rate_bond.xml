@@ -53,10 +53,6 @@
         </param>
         <briefdescription>
 <para>simple annual compounding coupon rates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1aa5969561a3a16fdd3894e96dc4ab5f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -136,12 +132,8 @@
           <declname>paymentCalendar</declname>
           <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>simple annual compounding coupon rates with internal schedule calculation </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1ae2dbb843321a550af383fb2d6bdd87f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -187,10 +179,6 @@
         </param>
         <briefdescription>
 <para>generic compounding and frequency <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> coupons </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -198,12 +186,6 @@
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -211,12 +193,6 @@
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       </sectiondef>

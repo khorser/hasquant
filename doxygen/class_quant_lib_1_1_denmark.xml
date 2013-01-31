@@ -11,12 +11,6 @@
         <definition>Denmark</definition>
         <argsstring>()</argsstring>
         <name>Denmark</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/denmark.hpp" line="58"/>
       </memberdef>
       </sectiondef>

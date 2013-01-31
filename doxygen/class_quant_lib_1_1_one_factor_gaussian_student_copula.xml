@@ -10,12 +10,6 @@
         <definition>NormalDistribution density_</definition>
         <argsstring></argsstring>
         <name>density_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1af8176fbedaa19a90b95c63211ec07dd2" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>CumulativeStudentDistribution cumulative_</definition>
         <argsstring></argsstring>
         <name>cumulative_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1acd1dac754e079daeb635aa09373b1065" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>int nz_</definition>
         <argsstring></argsstring>
         <name>nz_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a37a4c02d77c92244eea1a25559c8aee7" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Real scaleZ_</definition>
         <argsstring></argsstring>
         <name>scaleZ_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -82,12 +58,6 @@
           <declname>integrationSteps</declname>
           <defval>200</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -104,8 +74,6 @@
 <para>Density function of M. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -122,8 +90,6 @@
 <para>Cumulative distribution of Z. </para>        </briefdescription>
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       </sectiondef>
@@ -136,10 +102,6 @@
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
         <briefdescription>
 <para><ref refid="class_quant_lib_1_1_observer" kindref="compound">Observer</ref> interface. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a8073a564a69fffcb46d729de62e32c5d" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -151,12 +113,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="131"/>
       </memberdef>
       </sectiondef>
@@ -167,7 +123,6 @@
   for \form#120 ( \form#121) to a Student t-distributions
   with \form#124 degrees of freedom, and for \form#122
   ( \form#123) to a Gaussian.
-
   The variance of the Student t-distribution with \form#126
   degrees of freedom is \form#127. Since the
   copula approach requires zero mean and unit variance

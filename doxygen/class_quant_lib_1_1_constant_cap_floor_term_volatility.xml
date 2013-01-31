@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" bodystart="79" bodyend="81"/>
       </memberdef>
       </sectiondef>
@@ -31,10 +27,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_cap_floor_term_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" bodystart="87" bodyend="89"/>
       </memberdef>
       </sectiondef>
@@ -58,12 +46,6 @@
         <definition>Handle&lt;Quote&gt; volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -95,10 +77,6 @@
         </param>
         <briefdescription>
 <para>floating reference date, floating market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_cap_floor_term_volatility_1a2cde5fc42c6e7fcd50a8c476e4f70d7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -128,10 +106,6 @@
         </param>
         <briefdescription>
 <para>fixed reference date, floating market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_cap_floor_term_volatility_1a8d4cb5d9cbba22d6aef6359312543efa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -161,10 +135,6 @@
         </param>
         <briefdescription>
 <para>floating reference date, fixed market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_cap_floor_term_volatility_1ad4cece93e6e958c3e861b382514d95ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -194,17 +164,11 @@
         </param>
         <briefdescription>
 <para>fixed reference date, fixed market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant caplet volatility, no time-strike dependence. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/constantcapfloortermvol.hpp" bodystart="34" bodyend="74"/>
   </compounddef>
 </doxygen>

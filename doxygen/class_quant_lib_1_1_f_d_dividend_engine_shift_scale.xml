@@ -40,12 +40,6 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="111" bodyend="117"/>
       </memberdef>
       </sectiondef>
@@ -56,12 +50,6 @@
         <argsstring>() const </argsstring>
         <name>setGridLimits</name>
         <reimplements refid="class_quant_lib_1_1_f_d_dividend_engine_base_1a1e6712a71412ac850e1068b04878d9a3">setGridLimits</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="213" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_engine_shift_scale_1abb94448804c271bc25e384c98b241a5b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -74,12 +62,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>step</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="229" bodyend="249"/>
       </memberdef>
       </sectiondef>

@@ -66,12 +66,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountTermStructure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_basis_swap_1ad21e756c2457580a89328c7a198141a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,12 +73,6 @@
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt;&amp; payIndex</definition>
         <argsstring>() const </argsstring>
         <name>payIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_basis_swap_1abdddeb225f5e97b39c54bf7434d2941c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +80,6 @@
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt;&amp; receiveIndex</definition>
         <argsstring>() const </argsstring>
         <name>receiveIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_basis_swap_1ab8fc94744eb949c50cc19fa4341ffb09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -105,19 +87,11 @@
         <definition>const CommodityUnitCost&amp; basis</definition>
         <argsstring>() const </argsstring>
         <name>basis</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Energy basis swap. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energybasisswap.hpp" bodystart="34" bodyend="71"/>
   </compounddef>
 </doxygen>

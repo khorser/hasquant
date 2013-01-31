@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp</includes>
     <briefdescription>
 <para>Continuous fixed lookback engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="87" bodyend="89"/>
   </compounddef>
 </doxygen>

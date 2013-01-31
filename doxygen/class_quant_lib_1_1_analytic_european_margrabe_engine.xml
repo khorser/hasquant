@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process1_</definition>
         <argsstring></argsstring>
         <name>process1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_european_margrabe_engine_1a93dcfbc17d2d778387747616c9208336" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process2_</definition>
         <argsstring></argsstring>
         <name>process2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_european_margrabe_engine_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real rho_</definition>
         <argsstring></argsstring>
         <name>rho_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -63,12 +45,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>correlation</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_european_margrabe_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -77,12 +53,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp" line="47"/>
       </memberdef>
       </sectiondef>

@@ -12,10 +12,6 @@
         <name>Date</name>
         <briefdescription>
 <para>Default constructor returning a null date. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1aa331455552468c0198d57df46efc08f8" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
@@ -29,10 +25,6 @@
         </param>
         <briefdescription>
 <para>Constructor taking a serial number as given by Applix or Excel. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1aa157820c6a6e7518f7215e2213616aee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -54,10 +46,6 @@
         </param>
         <briefdescription>
 <para>More traditional constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="98"/>
       </memberdef>
       </sectiondef>
@@ -68,12 +56,6 @@
         <definition>Weekday weekday</definition>
         <argsstring>() const </argsstring>
         <name>weekday</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="253" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a1abc2fd6d46857840592b215117cd332" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -81,12 +63,6 @@
         <definition>Day dayOfMonth</definition>
         <argsstring>() const </argsstring>
         <name>dayOfMonth</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="258" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a763db58d72c7d2cb79f910d073157b38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -96,10 +72,6 @@
         <name>dayOfYear</name>
         <briefdescription>
 <para>One-based (Jan 1st = 1) </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="262" bodyend="264"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1aaf6068a327702eb87fab7c893d63c3cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -107,12 +79,6 @@
         <definition>Month month</definition>
         <argsstring>() const </argsstring>
         <name>month</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a6b547238a0bb413fe80f74b6ce04bb69" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -120,12 +86,6 @@
         <definition>Year year</definition>
         <argsstring>() const </argsstring>
         <name>year</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a412eb3ac472f875e0017df004a9d0ee2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -133,12 +93,6 @@
         <definition>BigInteger serialNumber</definition>
         <argsstring>() const </argsstring>
         <name>serialNumber</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="266" bodyend="268"/>
       </memberdef>
       </sectiondef>
@@ -155,10 +109,6 @@
         </param>
         <briefdescription>
 <para>increments date by the given number of days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a07d81fcf62cbe8eb96e3643555931b46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -171,10 +121,6 @@
         </param>
         <briefdescription>
 <para>increments date by the given period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ae766493ec3fd4018080f00af808dfbe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -188,10 +134,6 @@
         </param>
         <briefdescription>
 <para>decrement date by the given number of days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a0b5789977f91e47ef9ea2ec8a921215a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -204,10 +146,6 @@
         </param>
         <briefdescription>
 <para>decrements date by the given period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ae6a991aa97305857a8f1f3ce86e56a8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -217,10 +155,6 @@
         <name>operator++</name>
         <briefdescription>
 <para>1-day pre-increment </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a6541a6651456d8bc1622a24291841647" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -233,10 +167,6 @@
         </param>
         <briefdescription>
 <para>1-day post-increment </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ad96f835929dff451238fe944b8855797" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -246,10 +176,6 @@
         <name>operator--</name>
         <briefdescription>
 <para>1-day pre-decrement </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a382393929522ea82108942354ca727f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -262,10 +188,6 @@
         </param>
         <briefdescription>
 <para>1-day post-decrement </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a6de85b04ffcb972a60918bb63cb571e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -279,10 +201,6 @@
         </param>
         <briefdescription>
 <para>returns a new date incremented by the given number of days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="270" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1aa51ddbd8d8f33c4abde8bd8603fc8fed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -296,10 +214,6 @@
         </param>
         <briefdescription>
 <para>returns a new date incremented by the given period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="278" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a83028e338e164409c00c44b170b1ad94" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -313,10 +227,6 @@
         </param>
         <briefdescription>
 <para>returns a new date decremented by the given number of days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="274" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a9f749d07ec5fbb465a2b618a159c513d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -330,10 +240,6 @@
         </param>
         <briefdescription>
 <para>returns a new date decremented by the given period </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="282" bodyend="284"/>
       </memberdef>
       </sectiondef>
@@ -346,10 +252,6 @@
         <name>todaysDate</name>
         <briefdescription>
 <para>today&apos;s date. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a23625bfa1e742192c8983792debcf7c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -359,10 +261,6 @@
         <name>minDate</name>
         <briefdescription>
 <para>earliest allowed date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ab16674c4f64b17d89302cf0805f1fdbd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -372,10 +270,6 @@
         <name>maxDate</name>
         <briefdescription>
 <para>latest allowed date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a586c8f2317d6b5165f60304a391eb587" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -389,10 +283,6 @@
         </param>
         <briefdescription>
 <para>whether the given year is a leap one </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a7c1704dd4c31093571b353b270e160cd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -406,10 +296,6 @@
         </param>
         <briefdescription>
 <para>last day of the month to which the given date belongs </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="286" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1aa0e9cb47a55168ecd2af13d7be0e8a86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -423,10 +309,6 @@
         </param>
         <briefdescription>
 <para>whether a date is the last day of its month </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a9caf3cd25686bb9e2eefc53a9eadcafb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -446,8 +328,6 @@
 <para>next given weekday following or equal to the given date </para>        </briefdescription>
         <detaileddescription>
 <para>E.g., the Friday following Tuesday, January 15th, 2002 was January 18th, 2002.</para><para>see <ulink url="http://www.cpearson.com/excel/DateTimeWS.htm">http://www.cpearson.com/excel/DateTimeWS.htm</ulink> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="160"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ac3b059c7dcdc19487c1f95542218c888" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -475,8 +355,6 @@
 <para>n-th given weekday in the given month and year </para>        </briefdescription>
         <detaileddescription>
 <para>E.g., the 4th Thursday of March, 1998 was March 26th, 1998.</para><para>see <ulink url="http://www.cpearson.com/excel/DateTimeWS.htm">http://www.cpearson.com/excel/DateTimeWS.htm</ulink> </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="170"/>
       </memberdef>
       </sectiondef>
@@ -486,12 +364,6 @@
         <definition>BigInteger serialNumber_</definition>
         <argsstring></argsstring>
         <name>serialNumber_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="173" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -512,12 +384,6 @@
         <param>
           <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="174"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a0aa07cb3fd00c5891f306156a4932623" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -533,12 +399,6 @@
           <type>bool</type>
           <declname>leapYear</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ade4d8a8ea2160e4fa3f2e794ee00935b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -554,12 +414,6 @@
           <type>bool</type>
           <declname>leapYear</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="176"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a9893829c8af5e7b6dae52084d77ddf70" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -571,12 +425,6 @@
           <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a55989419aef0302ecc99c1c8d52cccf9" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -584,12 +432,6 @@
         <definition>static BigInteger minimumSerialNumber</definition>
         <argsstring>()</argsstring>
         <name>minimumSerialNumber</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="178"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1adf15bfe61be8943465c57b674d848f7f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -597,12 +439,6 @@
         <definition>static BigInteger maximumSerialNumber</definition>
         <argsstring>()</argsstring>
         <name>maximumSerialNumber</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1abd18a31f6e9937ea5d409535cd6385d7" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -614,12 +450,6 @@
           <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
           <declname>serialNumber</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="180"/>
       </memberdef>
       </sectiondef>
@@ -637,10 +467,6 @@
         </param>
         <briefdescription>
 <para>Difference in days between dates. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="296" bodyend="298"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1ad51822da99f2cc001b6326ac28bd49d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -654,12 +480,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="300" bodyend="302"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a5ac1b43688828377f31de974e061006f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -673,12 +493,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="304" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1acbc7a012dc46ebcd65dfd2887e3a3ad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -692,12 +506,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="193" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="308" bodyend="310"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1aec251fea3c00fa40e6e9e07a90620f78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -711,12 +519,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="312" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a042bfc86a816127e316415634bb99107" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -730,12 +532,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="316" bodyend="318"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a04118d56c46df4ac9054f0e34d2a6ce2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -749,12 +545,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="320" bodyend="322"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a65ff0f219c6817d3b8b6e57724dc680a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -768,12 +558,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="201"/>
       </memberdef>
       </sectiondef>

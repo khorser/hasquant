@@ -35,12 +35,6 @@
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_mc_simulation_1ae4588b42428cb979b0fad7369aef51a6" prot="public" static="no">
@@ -48,12 +42,6 @@
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_mc_simulation_1a38a0f2b84a876f1da1a5805922d8bb7b" prot="public" static="no">
@@ -61,12 +49,6 @@
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_mc_simulation_1a94aa31e474a79b56b5921e9b5e59090d" prot="public" static="no">
@@ -74,12 +56,6 @@
         <definition>typedef MonteCarloModel&lt;MC,RNG,S&gt;::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -89,12 +65,6 @@
         <definition>virtual ~McSimulation</definition>
         <argsstring>()</argsstring>
         <name>~McSimulation</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1af5af70b152b72f235dc275464058ef69" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -118,10 +88,6 @@
         </param>
         <briefdescription>
 <para>add samples until the required absolute tolerance is reached </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="106" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1acabb99b71d14507ebd13797c9d904ffc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -135,10 +101,6 @@
         </param>
         <briefdescription>
 <para>simulate a fixed number of samples </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="144" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1aedf5500bc16aadda7266e3d70e86102c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -148,10 +110,6 @@
         <name>errorEstimate</name>
         <briefdescription>
 <para>error estimated using the samples simulated so far </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="211" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1a97a9254d199bc4ea4a78d11eaf2d713d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -164,10 +122,6 @@
         </param>
         <briefdescription>
 <para>access to the sample accumulator for richer statistics </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="217" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1a778f370c51e99a9f99dc8eb03cbe6140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -189,10 +143,6 @@
         </param>
         <briefdescription>
 <para>basic calculate method provided to inherited pricing engines </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="159" bodyend="207"/>
       </memberdef>
       </sectiondef>
@@ -211,12 +161,6 @@
           <type>const Sequence &amp;</type>
           <declname>sequence</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1ab8fcdfbea80f9ee9882c197655216b2d" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -228,12 +172,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>error</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       </sectiondef>

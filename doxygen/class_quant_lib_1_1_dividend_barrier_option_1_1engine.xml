@@ -6,8 +6,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp</includes>
     <briefdescription>
 <para>Dividend-barrier-option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" bodystart="65" bodyend="67"/>
   </compounddef>
 </doxygen>

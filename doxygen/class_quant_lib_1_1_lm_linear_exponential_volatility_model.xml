@@ -11,12 +11,6 @@
         <definition>const std::vector&lt;Time&gt; fixingTimes_</definition>
         <argsstring></argsstring>
         <name>fixingTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +40,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -69,12 +57,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a39d7d490201f2ef18de08691f8dd398a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -96,12 +78,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -127,12 +103,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="58"/>
       </memberdef>
       </sectiondef>
@@ -143,12 +113,6 @@
         <argsstring>()</argsstring>
         <name>generateArguments</name>
         <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="61"/>
       </memberdef>
       </sectiondef>
@@ -156,7 +120,6 @@
 <para>linear exponential volatility model </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes a linear-exponential volatility model</para><para><formula id="164">\[ \sigma_i(t)=(a*(T_{i}-t)+d)*e^{-b(T_{i}-t)}+c \]</formula> <verbatim>  References:
-
   Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003,
   Different Covariance Parameterizations of Libor Market Model and Joint
   Caps/Swaptions Calibration,

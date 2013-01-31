@@ -10,12 +10,6 @@
         <definition>typedef std::map&lt;std::string, ObservableValue&lt;TimeSeries&lt;Real&gt; &gt; &gt; history_map</definition>
         <argsstring></argsstring>
         <name>history_map</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <definition>friend class Singleton&lt; IndexManager &gt;</definition>
         <argsstring></argsstring>
         <name>Singleton&lt; IndexManager &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -40,12 +28,6 @@
         <definition>history_map data_</definition>
         <argsstring></argsstring>
         <name>data_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +37,6 @@
         <definition>IndexManager</definition>
         <argsstring>()</argsstring>
         <name>IndexManager</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
@@ -76,10 +52,6 @@
         </param>
         <briefdescription>
 <para>returns whether historical fixings were stored for the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -93,10 +65,6 @@
         </param>
         <briefdescription>
 <para>returns the (possibly empty) history of the index fixings </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a9ec05a3736796561dedbc52be053940b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -113,10 +81,6 @@
         </param>
         <briefdescription>
 <para>stores the historical fixings of the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a996c0c436b3d99f1ccf6449bd588f608" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -130,10 +94,6 @@
         </param>
         <briefdescription>
 <para>observer notifying of changes in the index fixings </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a43ed480ac14a9943843719bdf928c64d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -143,10 +103,6 @@
         <name>histories</name>
         <briefdescription>
 <para>returns all names of the indexes for which fixings were stored </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1aefc1fd999512aefe154064e77d3c5a18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -160,10 +116,6 @@
         </param>
         <briefdescription>
 <para>clears the historical fixings of the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a86d5defd0569fa7fe6c33f358a50a7e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -173,10 +125,6 @@
         <name>clearHistories</name>
         <briefdescription>
 <para>clears all stored fixings </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="54"/>
       </memberdef>
       </sectiondef>

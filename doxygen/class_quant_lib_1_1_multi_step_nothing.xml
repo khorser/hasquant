@@ -10,12 +10,6 @@
         <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_nothing_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_nothing_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_nothing_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_nothing_1a283de6131ea2db647e886d8ec976c498" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -71,12 +47,6 @@
         <param>
           <type>std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_nothing_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -84,12 +54,6 @@
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="42"/>
       </memberdef>
       </sectiondef>
@@ -99,12 +63,6 @@
         <definition>Size numberOfProducts_</definition>
         <argsstring></argsstring>
         <name>numberOfProducts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_nothing_1a391569f65984f9bc96bed1a9e9b5492a" prot="private" static="no" mutable="no">
@@ -112,12 +70,6 @@
         <definition>Size doneIndex_</definition>
         <argsstring></argsstring>
         <name>doneIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_nothing_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -125,12 +77,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -154,19 +100,9 @@
           <declname>doneIndex</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="32"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepnothing.hpp" bodystart="28" bodyend="48"/>
   </compounddef>
 </doxygen>

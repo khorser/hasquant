@@ -3,8 +3,6 @@
   <compounddef id="group__math" kind="group">
     <compoundname>math</compoundname>
     <title>Math tools</title>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Math facilities of the library include:</para><sect1 id="group__math_1randomnumbers">
 <title>Pseudo-random number and low-discrepancy sequence generators</title>

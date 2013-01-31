@@ -15,12 +15,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="53"/>
       </memberdef>
       </sectiondef>
@@ -79,19 +73,11 @@
           <declname>replication</declname>
           <defval>boost::shared_ptr&lt; DigitalReplication &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Ibor rate coupon with digital digital call/put option. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" bodystart="36" bodyend="55"/>
   </compounddef>
 </doxygen>

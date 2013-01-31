@@ -28,12 +28,6 @@
         <definition>typedef EarlyExerciseTraits&lt;PathType&gt;::StateType StateType</definition>
         <argsstring></argsstring>
         <name>StateType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +37,6 @@
         <definition>virtual ~EarlyExercisePathPricer</definition>
         <argsstring>()</argsstring>
         <name>~EarlyExercisePathPricer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_path_pricer_1a89ca8ea340a039f3c3afebf38c77a723" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -64,12 +52,6 @@
           <type>TimeType</type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_path_pricer_1a62de965db0bd3d8e840074c25404fa0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -85,12 +67,6 @@
           <type>TimeType</type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_path_pricer_1a12c18a2b05f3a447c06ea637b3754fd1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -98,12 +74,6 @@
         <definition>virtual std::vector&lt;boost::function1&lt;ValueType, StateType&gt; &gt; basisSystem</definition>
         <argsstring>() const =0</argsstring>
         <name>basisSystem</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="75"/>
       </memberdef>
       </sectiondef>

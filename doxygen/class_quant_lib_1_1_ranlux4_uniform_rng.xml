@@ -8,12 +8,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -23,12 +17,6 @@
         <definition>boost::ranlux64_4_01 ranlux4_</definition>
         <argsstring></argsstring>
         <name>ranlux4_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +31,6 @@
           <declname>seed</declname>
           <defval>19780503u</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="64" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ranlux4_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -56,19 +38,9 @@
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="60" bodyend="73"/>
   </compounddef>
 </doxygen>

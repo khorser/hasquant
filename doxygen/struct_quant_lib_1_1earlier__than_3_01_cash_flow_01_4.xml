@@ -3,8 +3,6 @@
   <compounddef id="struct_quant_lib_1_1earlier__than_3_01_cash_flow_01_4" kind="struct" prot="public">
     <compoundname>QuantLib::earlier_than&lt; CashFlow &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; CashFlow, CashFlow, bool &gt;</basecompoundref>
-    <templateparamlist>
-    </templateparamlist>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="struct_quant_lib_1_1earlier__than_3_01_cash_flow_01_4_1a8771adc3cd8d1622ddf12c5d52a9955a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -19,19 +17,9 @@
           <type>const <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &amp;</type>
           <declname>c2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" bodystart="74" bodyend="77"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" bodystart="72" bodyend="78"/>
   </compounddef>
 </doxygen>

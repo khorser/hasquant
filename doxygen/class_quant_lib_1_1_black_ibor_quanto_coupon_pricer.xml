@@ -9,12 +9,6 @@
         <definition>Handle&lt;BlackVolTermStructure&gt; fxRateBlackVolatility_</definition>
         <argsstring></argsstring>
         <name>fxRateBlackVolatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer_1ab2529c340dc6a70f98a658efa8ec9b37" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Handle&lt;Quote&gt; underlyingFxCorrelation_</definition>
         <argsstring></argsstring>
         <name>underlyingFxCorrelation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,19 +37,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>capletVolatility</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="35" bodyend="44"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="33" bodyend="52"/>
   </compounddef>
 </doxygen>

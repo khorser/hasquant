@@ -18,12 +18,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
@@ -31,12 +25,6 @@
         <definition>bool antithetic_</definition>
         <argsstring></argsstring>
         <name>antithetic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -44,12 +32,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -57,12 +39,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -70,12 +46,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
@@ -83,12 +53,6 @@
         <definition>bool brownianBridge_</definition>
         <argsstring></argsstring>
         <name>brownianBridge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -96,12 +60,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -115,12 +73,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="160" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a6696604e1b17ce806adf7a3ca082e7d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -133,12 +85,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="204" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1ac47c2b01099e3c1a0febd8780c00953d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -150,12 +96,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="168" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1aad2d997277aacde290024aae4efa8fa3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -167,12 +107,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="177" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1ad63f28ef34ba1f7d30f5565a2e571ab5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -184,12 +118,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="190" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a923a37c35a088b3d3dd43ea2fbd2e697" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -201,12 +129,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="197" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1aa580cf72c584dae27c4833050f99069c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -219,12 +141,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -232,19 +148,9 @@
         <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="218" bodyend="227"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="136" bodyend="156"/>
   </compounddef>
 </doxygen>

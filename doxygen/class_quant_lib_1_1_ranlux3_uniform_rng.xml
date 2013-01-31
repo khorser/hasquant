@@ -9,12 +9,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>boost::ranlux64_3_01 ranlux3_</definition>
         <argsstring></argsstring>
         <name>ranlux3_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
           <declname>seed</declname>
           <defval>19780503u</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="49" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ranlux3_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +39,6 @@
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       </sectiondef>
@@ -73,7 +49,6 @@
    number generator. For more detail see the boost documentation and:
      M.Luescher, A portable high-quality random number generator for
      lattice field theory simulations, Comp. Phys. Comm. 79 (1994) 100
-
    Available luxury levels:
    Ranlux3: Any theoretically possible correlations have very small change
             of being observed.

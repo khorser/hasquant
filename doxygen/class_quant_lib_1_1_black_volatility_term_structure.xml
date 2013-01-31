@@ -27,12 +27,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000120"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_volatility_term_structure_1a1ee866739267db6a169a63971c8edd9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -54,8 +50,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000121"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="165"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_volatility_term_structure_1a66abdee64cb9e46b819f99acff854edc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -84,10 +78,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_volatility_term_structure_1a323a8efbb2829ff57eca2166cf0f6946" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,10 +105,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="175"/>
       </memberdef>
       </sectiondef>
@@ -135,12 +121,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="297" bodyend="304"/>
       </memberdef>
       </sectiondef>

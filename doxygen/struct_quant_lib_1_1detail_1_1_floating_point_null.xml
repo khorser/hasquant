@@ -7,10 +7,6 @@
         <type>bool</type>
       </param>
     </templateparamlist>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="42" bodyend="-1"/>
   </compounddef>
 </doxygen>

@@ -15,12 +15,6 @@
         <argsstring>() const </argsstring>
         <name>swapletPrice</name>
         <reimplements refid="class_quant_lib_1_1_inflation_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -29,12 +23,6 @@
         <argsstring>() const </argsstring>
         <name>swapletRate</name>
         <reimplements refid="class_quant_lib_1_1_inflation_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb">swapletRate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -47,12 +35,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -65,12 +47,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -83,12 +59,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -101,12 +71,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a45e3444b97c506c9c7e4134f52c95bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -118,12 +82,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_inflation_coupon" kindref="compound">InflationCoupon</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="103"/>
       </memberdef>
       </sectiondef>
@@ -138,12 +96,6 @@
           <declname>capletVol</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a8913a18449d60f7f821d45bffee446a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -151,12 +103,6 @@
         <definition>virtual Handle&lt;YoYOptionletVolatilitySurface&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="87" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a72e496727fc864420dbb21f076968266" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -168,12 +114,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
           <declname>capletVol</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="92"/>
       </memberdef>
       </sectiondef>

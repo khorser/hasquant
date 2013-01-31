@@ -3,8 +3,6 @@
   <compounddef id="group__utilities" kind="group">
     <compoundname>utilities</compoundname>
     <title>Utilities</title>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Iterators are meant to build a sequence on the fly from one or more other sequences, without having to allocate place for storing it. A couple of examples: suppose we have a function which calculates the average of a sequence, and that for genericity we have implemented it as a template function which takes the beginning and the end of the sequence, so that its declaration is:</para><para><programlisting><codeline><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Iterator&gt;</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Iterator::value_type</highlight></codeline>

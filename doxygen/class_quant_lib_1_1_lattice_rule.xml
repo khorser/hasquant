@@ -7,38 +7,16 @@
         <name>type</name>
         <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da42a4ade1acd55a49164099104990e09f" prot="public">
           <name>A</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da3f2a77ecd272aa6d6b5902faa5e5fc68" prot="public">
           <name>B</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da739ce3f516592d245d16fd8a3893472c" prot="public">
           <name>C</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da77a6b11f9898c052926f1d49765861e8" prot="public">
           <name>D</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
@@ -60,19 +38,9 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>N</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" bodystart="35" bodyend="44"/>
   </compounddef>
 </doxygen>

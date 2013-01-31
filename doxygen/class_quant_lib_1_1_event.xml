@@ -25,10 +25,6 @@
         <reimplementedby refid="class_quant_lib_1_1_default_event_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
         <briefdescription>
 <para>returns the date at which the event occurs </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -51,8 +47,6 @@
 <para>returns true if an event has already occurred before a date </para>        </briefdescription>
         <detaileddescription>
 <para>If includeRefDate is true, then an event has not occurred if its date is the same as the refDate, i.e. this method returns false if the event date is the same as the refDate. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="54"/>
       </memberdef>
       </sectiondef>
@@ -89,12 +83,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="59"/>
       </memberdef>
       </sectiondef>
@@ -104,12 +92,6 @@
         <definition>virtual ~Event</definition>
         <argsstring>()</argsstring>
         <name>~Event</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>

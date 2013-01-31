@@ -16,19 +16,11 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/inflation/inflationcapfloorengines.hpp" line="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Unit Displaced Black-formula inflation cap/floor engine (standalone, i.e. no coupon pricer) </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/inflation/inflationcapfloorengines.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/inflation/inflationcapfloorengines.hpp" bodystart="103" bodyend="116"/>
   </compounddef>
 </doxygen>

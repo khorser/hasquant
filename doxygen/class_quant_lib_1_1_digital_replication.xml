@@ -8,12 +8,6 @@
         <definition>Real gap_</definition>
         <argsstring></argsstring>
         <name>gap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_replication_1aab6cebbb5dcd43e84bd6d3b5f0c489a1" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Replication::Type replicationType_</definition>
         <argsstring></argsstring>
         <name>replicationType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
           <declname>gap</declname>
           <defval>1e-4</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a93fe2704df3e3ae39e5e991b9370399f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -59,12 +41,6 @@
         <definition>Replication::Type replicationType</definition>
         <argsstring>() const </argsstring>
         <name>replicationType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a763599594f2a726834f274e8b224a6e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -72,19 +48,9 @@
         <definition>Real gap</definition>
         <argsstring>() const </argsstring>
         <name>gap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="44" bodyend="53"/>
   </compounddef>
 </doxygen>

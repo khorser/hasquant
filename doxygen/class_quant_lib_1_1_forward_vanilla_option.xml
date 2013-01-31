@@ -11,12 +11,6 @@
         <definition>typedef ForwardOptionArguments&lt;OneAssetOption::arguments&gt; arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_forward_vanilla_option_1a2d3bc9f3bc17aa9ecb42314b5932aa74" prot="public" static="no">
@@ -24,12 +18,6 @@
         <definition>typedef OneAssetOption::results results</definition>
         <argsstring></argsstring>
         <name>results</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -39,12 +27,6 @@
         <definition>Real moneyness_</definition>
         <argsstring></argsstring>
         <name>moneyness_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_forward_vanilla_option_1af38bdd338214148a5eb151666356c911" prot="private" static="no" mutable="no">
@@ -52,12 +34,6 @@
         <definition>Date resetDate_</definition>
         <argsstring></argsstring>
         <name>resetDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -83,12 +59,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_vanilla_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -100,12 +70,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -119,19 +85,13 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward version of a vanilla option </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="48" bodyend="62"/>
   </compounddef>
 </doxygen>

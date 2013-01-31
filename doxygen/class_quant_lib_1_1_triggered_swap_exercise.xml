@@ -9,12 +9,6 @@
         <definition>std::vector&lt;Time&gt; rateTimes_</definition>
         <argsstring></argsstring>
         <name>rateTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_triggered_swap_exercise_1aa010100d61810501bed98b1773802fe5" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Time&gt; exerciseTimes_</definition>
         <argsstring></argsstring>
         <name>exerciseTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_triggered_swap_exercise_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Rate&gt; strikes_</definition>
         <argsstring></argsstring>
         <name>strikes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_triggered_swap_exercise_1a0cd1da9c234a65843ed1783da733f913" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size currentStep_</definition>
         <argsstring></argsstring>
         <name>currentStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_triggered_swap_exercise_1a0e6b881d8f8f11a9b53c51056f185ba0" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>std::vector&lt;Size&gt; rateIndex_</definition>
         <argsstring></argsstring>
         <name>rateIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_triggered_swap_exercise_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -101,12 +65,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="32"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1a5065f03e9f9e90f1a6ca2a593ab037b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -114,12 +72,6 @@
         <definition>Size numberOfExercises</definition>
         <argsstring>() const </argsstring>
         <name>numberOfExercises</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -127,12 +79,6 @@
         <definition>const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1aa10274c0393aff9841d8518b3d839d2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -143,12 +89,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -156,12 +96,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1aadcdfbd9bd7b7f0ac735eee073ac16c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -169,12 +103,6 @@
         <definition>std::valarray&lt;bool&gt; isExerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>isExerciseTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1af07b2f61cfdaf5aa88726afc22aea5c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -189,12 +117,6 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>results</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1a3ef21fdb835f90e1fc2c12564435e541" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -202,12 +124,6 @@
         <definition>std::vector&lt;Size&gt; numberOfVariables</definition>
         <argsstring>() const </argsstring>
         <name>numberOfVariables</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1a914c274264cca3b0c4a762eaa8e77dd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -215,12 +131,6 @@
         <definition>std::vector&lt;Size&gt; numberOfParameters</definition>
         <argsstring>() const </argsstring>
         <name>numberOfParameters</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1a2996586f3c042e3f9482ff7d31f4d61a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -240,12 +150,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>variables</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1a6e6fd2cd48d0e9c0bacecf190078c2d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -261,12 +165,6 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>parameters</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_triggered_swap_exercise_1a800c10126903398f7ba741b7246e3505" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -274,19 +172,9 @@
         <definition>std::auto_ptr&lt;MarketModelParametricExercise&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/triggeredswapexercise.hpp" bodystart="28" bodyend="60"/>
   </compounddef>
 </doxygen>

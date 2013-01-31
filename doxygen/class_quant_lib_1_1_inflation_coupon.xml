@@ -20,8 +20,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       </sectiondef>
@@ -36,12 +34,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -52,10 +44,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
         <briefdescription>
 <para>day counter for accrual calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -69,10 +57,6 @@
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -83,10 +67,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="70"/>
       </memberdef>
       </sectiondef>
@@ -99,10 +79,6 @@
         <name>index</name>
         <briefdescription>
 <para>yoy inflation index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -112,10 +88,6 @@
         <name>observationLag</name>
         <briefdescription>
 <para>how the coupon observes the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -125,10 +97,6 @@
         <name>fixingDays</name>
         <briefdescription>
 <para>fixing days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -138,10 +106,6 @@
         <name>fixingDate</name>
         <briefdescription>
 <para>fixing date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -152,10 +116,6 @@
         <reimplementedby refid="class_quant_lib_1_1_c_p_i_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41">indexFixing</reimplementedby>
         <briefdescription>
 <para>fixing of the underlying index, as observed by the coupon </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="84"/>
       </memberdef>
       </sectiondef>
@@ -167,12 +127,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       </sectiondef>
@@ -191,12 +145,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="116" bodyend="123"/>
       </memberdef>
       </sectiondef>
@@ -248,12 +196,6 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1ae7966ebd166412b5df373c165c0521e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -264,12 +206,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_inflation_coupon_pricer" kindref="compound">InflationCouponPricer</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_1a41faf0510c702617500fa3b2cfef4dda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -277,12 +213,6 @@
         <definition>boost::shared_ptr&lt; InflationCouponPricer &gt; pricer</definition>
         <argsstring>() const </argsstring>
         <name>pricer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       </sectiondef>

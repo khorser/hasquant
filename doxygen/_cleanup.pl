@@ -44,3 +44,8 @@ for $f (glob("*.xml"))
     }
     close O;
 }
+
+# extra cleanup in Vim:
+# :silent! argdo %s/^\s*<\(.*\)>\n\s*<\/\1>/
+# :silent! argdo g/^$/delete
+# :silent! xa

@@ -15,12 +15,6 @@
           <declname>constrainAtZero</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -31,10 +25,6 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="49"/>
       </memberdef>
       </sectiondef>
@@ -47,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>total number of coefficients to fit/solve for </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_splines_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -71,8 +57,6 @@
 <para>derived classes must set this </para>        </briefdescription>
         <detaileddescription>
 <para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="52"/>
       </memberdef>
       </sectiondef>

@@ -12,12 +12,6 @@
         <argsstring>() const </argsstring>
         <name>numeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1adb4ceea26c9274fc282a70be25a6b619">numeraires</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -26,12 +20,6 @@
         <argsstring>()</argsstring>
         <name>startNewPath</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1ad1c69e6aa71f890350ca8abcb15b0763">startNewPath</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a280269ace6d9053b78eeb52702cef9d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -40,12 +28,6 @@
         <argsstring>()</argsstring>
         <name>advanceStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1a6aee9def9c9ccdc14907fb93fb96631c">advanceStep</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a3c05dea1b785c4581cfc8488127805b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -54,12 +36,6 @@
         <argsstring>() const </argsstring>
         <name>currentStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1ac01af761e87531c158e375b36520bdcf">currentStep</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -68,12 +44,6 @@
         <argsstring>() const </argsstring>
         <name>currentState</name>
         <reimplements refid="class_quant_lib_1_1_market_model_evolver_1ac7e44f09b21966a9dab1e65674346ecd">currentState</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1ad2a4cd43598d0be484849363691856cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -85,12 +55,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="50"/>
       </memberdef>
       </sectiondef>
@@ -100,12 +64,6 @@
         <definition>Size spanningForwards_</definition>
         <argsstring></argsstring>
         <name>spanningForwards_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a02c27076c46c977d7b3729f02449bfdd" prot="private" static="no" mutable="no">
@@ -113,12 +71,6 @@
         <definition>boost::shared_ptr&lt;MarketModel&gt; marketModel_</definition>
         <argsstring></argsstring>
         <name>marketModel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1abb7156564b68949da210cac6b9a562dd" prot="private" static="no" mutable="no">
@@ -126,12 +78,6 @@
         <definition>std::vector&lt;Size&gt; numeraires_</definition>
         <argsstring></argsstring>
         <name>numeraires_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1abc9c05a6469d174fc9a1051c5bbf2c84" prot="private" static="no" mutable="no">
@@ -139,12 +85,6 @@
         <definition>Size initialStep_</definition>
         <argsstring></argsstring>
         <name>initialStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1aa9436790c59c414be1ef5cc407aa035f" prot="private" static="no" mutable="no">
@@ -152,12 +92,6 @@
         <definition>boost::shared_ptr&lt;BrownianGenerator&gt; generator_</definition>
         <argsstring></argsstring>
         <name>generator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a661b4ebc9fed408f3518d5e717f3405a" prot="private" static="no" mutable="no">
@@ -165,12 +99,6 @@
         <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; fixedDrifts_</definition>
         <argsstring></argsstring>
         <name>fixedDrifts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
@@ -178,12 +106,6 @@
         <definition>Size numberOfRates_</definition>
         <argsstring></argsstring>
         <name>numberOfRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1ab08d17d726b407bc7365c916b7827528" prot="private" static="no" mutable="no">
@@ -191,12 +113,6 @@
         <definition>Size numberOfFactors_</definition>
         <argsstring></argsstring>
         <name>numberOfFactors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a557ee3042bea9082022e16a07ed43852" prot="private" static="no" mutable="no">
@@ -204,12 +120,6 @@
         <definition>CMSwapCurveState curveState_</definition>
         <argsstring></argsstring>
         <name>curveState_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a0cd1da9c234a65843ed1783da733f913" prot="private" static="no" mutable="no">
@@ -217,12 +127,6 @@
         <definition>Size currentStep_</definition>
         <argsstring></argsstring>
         <name>currentStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1aa0360c2dc548b707066f0430fb365cce" prot="private" static="no" mutable="no">
@@ -230,12 +134,6 @@
         <definition>std::vector&lt;Rate&gt; swapRates_</definition>
         <argsstring></argsstring>
         <name>swapRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a0ff28d4cf71ea5bea960268ee6fc2c89" prot="private" static="no" mutable="no">
@@ -243,12 +141,6 @@
         <definition>std::vector&lt;Rate&gt; displacements_</definition>
         <argsstring></argsstring>
         <name>displacements_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1af00c571c723d9c8fee0471c5c18e2570" prot="private" static="no" mutable="no">
@@ -256,12 +148,6 @@
         <definition>std::vector&lt;Rate&gt; logSwapRates_</definition>
         <argsstring></argsstring>
         <name>logSwapRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a09a52f29fa36b3a7952af0facd5db02b" prot="private" static="no" mutable="no">
@@ -269,12 +155,6 @@
         <definition>std::vector&lt;Rate&gt; initialLogSwapRates_</definition>
         <argsstring></argsstring>
         <name>initialLogSwapRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a0a1b95fd58220e0a663105ab22783beb" prot="private" static="no" mutable="no">
@@ -282,12 +162,6 @@
         <definition>std::vector&lt;Real&gt; drifts1_</definition>
         <argsstring></argsstring>
         <name>drifts1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a69d939305bf4f9d8891735456dd768ad" prot="private" static="no" mutable="no">
@@ -295,12 +169,6 @@
         <definition>std::vector&lt;Real&gt; drifts2_</definition>
         <argsstring></argsstring>
         <name>drifts2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1aa52994fe79637e0446f0e842409bf19c" prot="private" static="no" mutable="no">
@@ -308,12 +176,6 @@
         <definition>std::vector&lt;Real&gt; initialDrifts_</definition>
         <argsstring></argsstring>
         <name>initialDrifts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a4e6cfba5f09362ebbdf11c6bb68003ef" prot="private" static="no" mutable="no">
@@ -321,12 +183,6 @@
         <definition>std::vector&lt;Real&gt; brownians_</definition>
         <argsstring></argsstring>
         <name>brownians_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1ac3c44b232b2cdfbb356431f5f723f3a0" prot="private" static="no" mutable="no">
@@ -334,12 +190,6 @@
         <definition>std::vector&lt;Real&gt; correlatedBrownians_</definition>
         <argsstring></argsstring>
         <name>correlatedBrownians_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a79d3778caa2d7b0d876b76afaa68b058" prot="private" static="no" mutable="no">
@@ -347,12 +197,6 @@
         <definition>std::vector&lt;Size&gt; alive_</definition>
         <argsstring></argsstring>
         <name>alive_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1abd287da11e3e61b41fe9dd485e548f6b" prot="private" static="no" mutable="no">
@@ -360,12 +204,6 @@
         <definition>std::vector&lt;CMSMMDriftCalculator&gt; calculators_</definition>
         <argsstring></argsstring>
         <name>calculators_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -394,12 +232,6 @@
           <declname>initialStep</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="42"/>
       </memberdef>
       </sectiondef>
@@ -413,19 +245,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>swapRates</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Predictor-Corrector. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalcmswapratepc.hpp" bodystart="36" bodyend="72"/>
   </compounddef>
 </doxygen>

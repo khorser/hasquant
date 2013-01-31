@@ -10,19 +10,11 @@
         <definition>GaussLegendrePolynomial</definition>
         <argsstring>()</argsstring>
         <name>GaussLegendrePolynomial</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="108"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Legendre polynomial. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="106" bodyend="109"/>
   </compounddef>
 </doxygen>

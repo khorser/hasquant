@@ -13,12 +13,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -32,12 +26,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -45,12 +33,6 @@
         <definition>virtual ~ShortRateDynamics</definition>
         <argsstring>()</argsstring>
         <name>~ShortRateDynamics</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -73,10 +55,6 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -99,10 +77,6 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -112,17 +86,11 @@
         <name>process</name>
         <briefdescription>
 <para>Returns the risk-neutral dynamics of the state variable. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class describing the short-rate dynamics. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="53" bodyend="72"/>
   </compounddef>
 </doxygen>

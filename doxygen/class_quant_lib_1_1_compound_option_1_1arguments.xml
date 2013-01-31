@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;OneAssetOption&gt; motherOption</definition>
         <argsstring></argsstring>
         <name>motherOption</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,19 +18,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="56"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" bodystart="53" bodyend="57"/>
   </compounddef>
 </doxygen>

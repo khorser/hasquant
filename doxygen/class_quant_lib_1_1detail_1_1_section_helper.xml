@@ -16,12 +16,6 @@
         <definition>virtual ~SectionHelper</definition>
         <argsstring>()</argsstring>
         <name>~SectionHelper</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_section_helper_1aa8fdcfe8b317c451761fa363b7ce102b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -33,12 +27,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_section_helper_1a1c19f4f415b75a71df7fee6c325cf92d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -50,12 +38,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_section_helper_1a23cc106efc6e5031ef910ea2b386c7f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -63,19 +45,9 @@
         <definition>virtual Real fNext</definition>
         <argsstring>() const =0</argsstring>
         <name>fNext</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="34" bodyend="40"/>
   </compounddef>
 </doxygen>

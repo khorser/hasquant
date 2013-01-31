@@ -10,12 +10,6 @@
         <definition>const std::vector&lt; Rate &gt; &amp; initialRates</definition>
         <argsstring>() const </argsstring>
         <name>initialRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1a38bd6b5501b4957ac4effffc83be5ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>const std::vector&lt; Spread &gt; &amp; displacements</definition>
         <argsstring>() const </argsstring>
         <name>displacements</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>const EvolutionDescription &amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>Size numberOfRates</definition>
         <argsstring>() const </argsstring>
         <name>numberOfRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -62,12 +38,6 @@
         <definition>Size numberOfFactors</definition>
         <argsstring>() const </argsstring>
         <name>numberOfFactors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -75,12 +45,6 @@
         <definition>Size numberOfSteps</definition>
         <argsstring>() const </argsstring>
         <name>numberOfSteps</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +56,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="86" bodyend="91"/>
       </memberdef>
       </sectiondef>
@@ -107,12 +65,6 @@
         <definition>Size numberOfFactors_</definition>
         <argsstring></argsstring>
         <name>numberOfFactors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pseudo_root_facade_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
@@ -120,12 +72,6 @@
         <definition>Size numberOfRates_</definition>
         <argsstring></argsstring>
         <name>numberOfRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pseudo_root_facade_1a7096f7840a57cff837d27141bc085e5c" prot="private" static="no" mutable="no">
@@ -133,12 +79,6 @@
         <definition>Size numberOfSteps_</definition>
         <argsstring></argsstring>
         <name>numberOfSteps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pseudo_root_facade_1a8b89a8c8a2eeefb8fb7fcf981aab2498" prot="private" static="no" mutable="no">
@@ -146,12 +86,6 @@
         <definition>std::vector&lt;Rate&gt; initialRates_</definition>
         <argsstring></argsstring>
         <name>initialRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pseudo_root_facade_1a247c5d7048480396e3b561b6fb8193e9" prot="private" static="no" mutable="no">
@@ -159,12 +93,6 @@
         <definition>std::vector&lt;Spread&gt; displacements_</definition>
         <argsstring></argsstring>
         <name>displacements_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pseudo_root_facade_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -172,12 +100,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pseudo_root_facade_1ae8113626cf8d8b8ae2f9dc8ebfb47062" prot="private" static="no" mutable="no">
@@ -185,12 +107,6 @@
         <definition>std::vector&lt;Matrix&gt; covariancePseudoRoots_</definition>
         <argsstring></argsstring>
         <name>covariancePseudoRoots_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -204,12 +120,6 @@
           <type>const boost::shared_ptr&lt; CTSMMCapletCalibration &gt;</type>
           <declname>calibrator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pseudo_root_facade_1a0499deac3dc47d036deb4ae7c2d45c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -233,19 +143,9 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>displacements</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="41"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="33" bodyend="58"/>
   </compounddef>
 </doxygen>

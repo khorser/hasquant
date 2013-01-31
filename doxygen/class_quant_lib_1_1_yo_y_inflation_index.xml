@@ -34,12 +34,8 @@
           <declname>forecastTodaysFixing</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000042"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="193"/>
       </memberdef>
       </sectiondef>
@@ -50,12 +46,6 @@
         <definition>bool ratio</definition>
         <argsstring>() const </argsstring>
         <name>ratio</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="253" bodyend="255"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1a9c3c66040e9a444f6331bc4a40590e51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -63,12 +53,6 @@
         <definition>Handle&lt; YoYInflationTermStructure &gt; yoyInflationTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>yoyInflationTermStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="258" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1adf7343dbc0a657bd0b93e258c9f5c0f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -80,12 +64,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="202"/>
       </memberdef>
       </sectiondef>
@@ -95,12 +73,6 @@
         <definition>bool ratio_</definition>
         <argsstring></argsstring>
         <name>ratio_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="206" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="206" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_index_1a1073cfc296260f253b9860914d0ca680" prot="private" static="no" mutable="no">
@@ -108,12 +80,6 @@
         <definition>Handle&lt;YoYInflationTermStructure&gt; yoyInflation_</definition>
         <argsstring></argsstring>
         <name>yoyInflation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="207" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -160,12 +126,6 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="186"/>
       </memberdef>
       </sectiondef>
@@ -179,12 +139,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="205"/>
       </memberdef>
       </sectiondef>

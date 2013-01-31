@@ -16,10 +16,6 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1aa1525d9d1f8f851f1371337be8d9a587" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -29,10 +25,6 @@
         <name>~LineSearch</name>
         <briefdescription>
 <para>Destructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a73029249454596185357bd919ecc66e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -42,10 +34,6 @@
         <name>lastX</name>
         <briefdescription>
 <para>return last x value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1af69b05a05ba75aa93dad2aa580f192d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -55,10 +43,6 @@
         <name>lastFunctionValue</name>
         <briefdescription>
 <para>return last cost function value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a0a99d489f61c963d573fb9eb2a404c1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -68,10 +52,6 @@
         <name>lastGradient</name>
         <briefdescription>
 <para>return last gradient </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a54f1c9dd805235c94fb4145a860411d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -81,10 +61,6 @@
         <name>lastGradientNorm2</name>
         <briefdescription>
 <para>return square norm of last gradient </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a493a40ac48f746089050c94b6b01ca52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +68,6 @@
         <definition>bool succeed</definition>
         <argsstring>()</argsstring>
         <name>succeed</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a97d8cb294aaa9a7bc88678370e80f31e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -123,10 +93,6 @@
         </param>
         <briefdescription>
 <para>Perform line search. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a5014094d4595b63fad08d361f70bea98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -150,12 +116,6 @@
           <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>constraint</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1ab43e31a0f04f11a616b9a1b08dbac7c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -165,10 +125,6 @@
         <name>searchDirection</name>
         <briefdescription>
 <para>current value of the search direction </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a8925a1dc9b83be8f1181b1c638804a1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -176,19 +132,11 @@
         <definition>Array&amp; searchDirection</definition>
         <argsstring>()</argsstring>
         <name>searchDirection</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for line search. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="38" bodyend="80"/>
   </compounddef>
 </doxygen>

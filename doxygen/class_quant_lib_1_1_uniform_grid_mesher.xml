@@ -9,12 +9,6 @@
         <definition>boost::scoped_array&lt;Real&gt; dx_</definition>
         <argsstring></argsstring>
         <name>dx_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_uniform_grid_mesher_1a1ffb050911a38093f0d1074b3bf77ec5" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; locations_</definition>
         <argsstring></argsstring>
         <name>locations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
           <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
           <declname>boundaries</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1ad6116d14d2287697638fee156cc1a829" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -65,12 +47,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>direction</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="40" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1a3b1a44b0b29d619d966246423e77346b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -85,12 +61,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>direction</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="43" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1ac75f3b532910f0e8af46e5811fb37783" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -106,12 +76,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>direction</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1ab2fc59ff4ab60aa3c6e6f37c4171b005" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -123,19 +87,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>direction</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="34" bodyend="57"/>
   </compounddef>
 </doxygen>

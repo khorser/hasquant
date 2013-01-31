@@ -8,8 +8,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp</includes>
     <briefdescription>
 <para>base class for cap/floor engines </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="150" bodyend="151"/>
   </compounddef>
 </doxygen>

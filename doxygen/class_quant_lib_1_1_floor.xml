@@ -18,19 +18,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>exerciseRates</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="114" bodyend="117"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Concrete floor class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="112" bodyend="118"/>
   </compounddef>
 </doxygen>

@@ -27,12 +27,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x0</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -52,10 +46,6 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -75,10 +65,6 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       </sectiondef>

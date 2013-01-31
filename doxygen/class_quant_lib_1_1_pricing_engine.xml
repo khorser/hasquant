@@ -58,12 +58,6 @@
         <definition>virtual ~PricingEngine</definition>
         <argsstring>()</argsstring>
         <name>~PricingEngine</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1acadfc179f7be93951a88d8d9785402d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -117,12 +111,6 @@
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -176,12 +164,6 @@
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -235,12 +217,6 @@
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -317,19 +293,11 @@
         <reimplementedby refid="class_quant_lib_1_1_integral_c_d_o_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>interface for pricing engines </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="34" bodyend="43"/>
   </compounddef>
 </doxygen>

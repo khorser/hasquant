@@ -10,12 +10,6 @@
         <argsstring></argsstring>
         <name>global</name>
         <initializer>= true</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
@@ -24,12 +18,6 @@
         <argsstring></argsstring>
         <name>requiredPoints</name>
         <initializer>= 2</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -39,12 +27,6 @@
         <definition>CubicInterpolation::DerivativeApprox da_</definition>
         <argsstring></argsstring>
         <name>da_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a49d945dc193acbcea43c3f0572a9469c" prot="private" static="no" mutable="no">
@@ -52,12 +34,6 @@
         <definition>bool monotonic_</definition>
         <argsstring></argsstring>
         <name>monotonic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a820a774ea04c6c1ec4df64e4a7ce26cf" prot="private" static="no" mutable="no">
@@ -65,12 +41,6 @@
         <definition>CubicInterpolation::BoundaryCondition leftType_</definition>
         <argsstring></argsstring>
         <name>leftType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a51645ba519df3134cb5c26c778132e40" prot="private" static="no" mutable="no">
@@ -78,12 +48,6 @@
         <definition>CubicInterpolation::BoundaryCondition rightType_</definition>
         <argsstring></argsstring>
         <name>rightType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a2b8746419d279974ca34ef65d3aa80f9" prot="private" static="no" mutable="no">
@@ -91,12 +55,6 @@
         <definition>Real leftValue_</definition>
         <argsstring></argsstring>
         <name>leftValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1ab7ae2a0cb5b514dcc8f2612d21d2b316" prot="private" static="no" mutable="no">
@@ -104,12 +62,6 @@
         <definition>Real rightValue_</definition>
         <argsstring></argsstring>
         <name>rightValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -148,12 +100,6 @@
           <declname>rightConditionValue</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="130" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_cubic_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -181,19 +127,11 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="142" bodyend="148"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>log-cubic interpolation factory and traits </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="128" bodyend="156"/>
   </compounddef>
 </doxygen>

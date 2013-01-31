@@ -8,12 +8,6 @@
         <definition>friend class ManipulateDistribution</definition>
         <argsstring></argsstring>
         <name>ManipulateDistribution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -23,12 +17,6 @@
         <definition>int size_</definition>
         <argsstring></argsstring>
         <name>size_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a5553f94e6524a15d7facb5e49b71d36a" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real xmin_</definition>
         <argsstring></argsstring>
         <name>xmin_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1ad884cafafc283f54e01b05278541fb3a" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Real xmax_</definition>
         <argsstring></argsstring>
         <name>xmax_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a96ecb7e6ad50d525c4b07494f64d7866" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>std::vector&lt;int&gt; count_</definition>
         <argsstring></argsstring>
         <name>count_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>std::vector&lt;Real&gt; x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1aef7f39f95dbbf62fd365a1ec2a0e70bf" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>std::vector&lt;Real&gt; dx_</definition>
         <argsstring></argsstring>
         <name>dx_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a150b4ae3fb02cc740cd3112578c7921a" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>std::vector&lt;Real&gt; density_</definition>
         <argsstring></argsstring>
         <name>density_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a9ac1c0f9ec7435a8d2304dc44bc9167b" prot="private" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>std::vector&lt;Real&gt; cumulativeDensity_</definition>
         <argsstring></argsstring>
         <name>cumulativeDensity_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a29203f81351411e68e51fedb2adee42e" prot="private" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>std::vector&lt;Real&gt; excessProbability_</definition>
         <argsstring></argsstring>
         <name>excessProbability_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1aa6f7b4c47a89dc6d37539c6d0c87ca8b" prot="private" static="no" mutable="no">
@@ -140,12 +80,6 @@
         <definition>std::vector&lt;Real&gt; cumulativeExcessProbability_</definition>
         <argsstring></argsstring>
         <name>cumulativeExcessProbability_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1afe7b2838c18683eb6d4b1088f7f0bb39" prot="private" static="no" mutable="no">
@@ -153,12 +87,6 @@
         <definition>std::vector&lt;Real&gt; average_</definition>
         <argsstring></argsstring>
         <name>average_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a26c64d36a5605abf6971d7fa054c36dc" prot="private" static="no" mutable="no">
@@ -166,12 +94,6 @@
         <definition>int overFlow_</definition>
         <argsstring></argsstring>
         <name>overFlow_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1a3b0372e8ffdc6a3b4385c842ac248e8f" prot="private" static="no" mutable="no">
@@ -179,12 +101,6 @@
         <definition>int underFlow_</definition>
         <argsstring></argsstring>
         <name>underFlow_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_distribution_1aa68d5acd9cd8cd63dca6540e62a612f3" prot="private" static="no" mutable="no">
@@ -192,12 +108,6 @@
         <definition>bool isNormalized_</definition>
         <argsstring></argsstring>
         <name>isNormalized_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -219,12 +129,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xmax</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a97e7a46e54c1954b71dbf6e135c469ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -232,12 +136,6 @@
         <definition>Distribution</definition>
         <argsstring>()</argsstring>
         <name>Distribution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a66988e47ca0a8186d7af846cf2378e53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -249,12 +147,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1aebb76be371542621628f2f6c069d0fa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -270,12 +162,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1afee087822aef4b6a05ca1e04c5e81676" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -291,12 +177,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1acd0de676568888d848beb97dcc53ae47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -304,12 +184,6 @@
         <definition>void normalize</definition>
         <argsstring>()</argsstring>
         <name>normalize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -317,12 +191,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a9767c3368d909fa4808154888039d303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -334,12 +202,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1ad5f0a3ed2a9e197cd9f52a79bea4bd3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -347,12 +209,6 @@
         <definition>std::vector&lt;Real&gt;&amp; x</definition>
         <argsstring>()</argsstring>
         <name>x</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a28040c7c6c6eb0308e009db2fe8da501" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -364,12 +220,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a596f92c473957228b1f9a858cf24740e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -377,12 +227,6 @@
         <definition>std::vector&lt;Real&gt;&amp; dx</definition>
         <argsstring>()</argsstring>
         <name>dx</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1ad0376574654f71c420ff995da814076f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -394,12 +238,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a5b6e140a751abc4ecf26029fe449dc13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -411,12 +249,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a0592aa888c132e0f1dc49b1de21cb84d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -428,12 +260,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a5fe27432421977a8fc63d81c6c7b6de0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -445,12 +271,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1aa417d2a314b7c5e49fc719513d1a47ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -462,12 +282,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1ab32a13d6f1b280b69c0385faaf9d1e97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -479,12 +293,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a8a70402157f35d0454e13badfb207b59" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -496,12 +304,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>quantil</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a63e7c55b99cf2ad663454ed08bd0051e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -513,12 +315,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a86293df508fd9aca424cf12eaefd6d2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -534,12 +330,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1aae04a7d4811a84de1b765c12da82b574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -547,12 +337,6 @@
         <definition>Real expectedValue</definition>
         <argsstring>()</argsstring>
         <name>expectedValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1aa995fbb949e9bebc3b965179ca5a4dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -568,12 +352,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a7defc9abf3488674b0dc8c241b995331" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -590,12 +368,6 @@
           <type>F &amp;</type>
           <declname>f</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="80" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a0c23b12d3541a5cbd498c9045879a822" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -611,12 +383,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>detachmentPoint</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Transform the loss distribution into the tranche loss distribution for losses L_T = min(L,D) - min(L,A). The effects are: 1) shift the distribution to the left by A, then 2) cut off at D-A, Pr(L_T &gt; D-A) = 0 3) ensure Pr(L_T &gt;= 0) = 1, i.e. a density spike at L_T = 0 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_distribution_1a76c7f4735a8763cd10f83c9fb6985b41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -628,19 +396,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="103"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="37" bodyend="123"/>
   </compounddef>
 </doxygen>

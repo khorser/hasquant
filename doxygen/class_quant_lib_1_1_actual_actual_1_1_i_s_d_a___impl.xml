@@ -9,12 +9,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -36,19 +30,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="73"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="65" bodyend="74"/>
   </compounddef>
 </doxygen>

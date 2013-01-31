@@ -11,12 +11,6 @@
         <definition>virtual ~ConstrainedEvolver</definition>
         <argsstring>()</argsstring>
         <name>~ConstrainedEvolver</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constrained_evolver_1a72f1f210b87697658d04a4580e8d451c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -35,10 +29,6 @@
         </param>
         <briefdescription>
 <para>call once </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constrained_evolver_1a39d0015d10b643e28baba86edcd66b0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -57,10 +47,6 @@
         </param>
         <briefdescription>
 <para>call before each path </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp" line="49"/>
       </memberdef>
       </sectiondef>

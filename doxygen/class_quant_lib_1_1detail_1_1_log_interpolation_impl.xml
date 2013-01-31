@@ -20,12 +20,6 @@
         <definition>std::vector&lt;Real&gt; logY_</definition>
         <argsstring></argsstring>
         <name>logY_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" static="no" mutable="no">
@@ -33,12 +27,6 @@
         <definition>Interpolation interpolation_</definition>
         <argsstring></argsstring>
         <name>interpolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -65,12 +53,6 @@
           <declname>factory</declname>
           <defval>Interpolator()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="40" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -78,12 +60,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="49" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -95,12 +71,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a507366f504ec3d518920b39da4243edc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -111,12 +81,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -128,12 +92,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -145,19 +103,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="37" bodyend="74"/>
   </compounddef>
 </doxygen>

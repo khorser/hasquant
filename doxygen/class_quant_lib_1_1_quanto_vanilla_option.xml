@@ -11,12 +11,6 @@
         <definition>Real qvega</definition>
         <argsstring>() const </argsstring>
         <name>qvega</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1a5b5e28f6a223305ec770c593eb8ba609" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -24,12 +18,6 @@
         <definition>Real qrho</definition>
         <argsstring>() const </argsstring>
         <name>qrho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1ad8c7fcabc3c58c835d409bda7853f4e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -37,12 +25,6 @@
         <definition>Real qlambda</definition>
         <argsstring>() const </argsstring>
         <name>qlambda</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="60"/>
       </memberdef>
       </sectiondef>
@@ -52,12 +34,6 @@
         <definition>typedef OneAssetOption::arguments arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_quanto_vanilla_option_1af88f225b41d278d86ff29218006529b2" prot="public" static="no">
@@ -65,12 +41,6 @@
         <definition>typedef QuantoOptionResults&lt;OneAssetOption::results&gt; results</definition>
         <argsstring></argsstring>
         <name>results</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_quanto_vanilla_option_1ac74fffeebb92b4fafa5d01655b5d5a87" prot="public" static="no">
@@ -78,12 +48,6 @@
         <definition>typedef GenericEngine&lt;arguments, results&gt; engine</definition>
         <argsstring></argsstring>
         <name>engine</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +57,6 @@
         <definition>Real qvega_</definition>
         <argsstring></argsstring>
         <name>qvega_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_vanilla_option_1a8d41d78beaffcfea2b09b86a0569642b" prot="private" static="no" mutable="yes">
@@ -106,12 +64,6 @@
         <definition>Real qrho_</definition>
         <argsstring></argsstring>
         <name>qrho_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_vanilla_option_1a08c77a7026c7a6cfff2afd8fcee489ac" prot="private" static="no" mutable="yes">
@@ -119,12 +71,6 @@
         <definition>Real qlambda_</definition>
         <argsstring></argsstring>
         <name>qlambda_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -140,12 +86,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -158,12 +98,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="62"/>
       </memberdef>
       </sectiondef>
@@ -174,19 +110,13 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_one_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>quanto version of a vanilla option </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="49" bodyend="67"/>
   </compounddef>
 </doxygen>

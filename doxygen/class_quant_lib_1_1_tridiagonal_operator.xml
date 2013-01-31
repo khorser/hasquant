@@ -23,10 +23,6 @@
         </param>
         <briefdescription>
 <para>apply operator to a given array </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1a73742343dfce6f478b7a7d11d07aa63e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -40,10 +36,6 @@
         </param>
         <briefdescription>
 <para>solve linear system for a given right-hand side </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1ab98bc0891800b58aa3b2bea357884124" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -59,12 +51,8 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>result</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>solve linear system for a given right-hand side without result <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> allocation. The rhs and result parameters can be the same <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref>, in which case rhs will be changed </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1a23e7cd3f97a88ebf7495659fbb9c7612" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -82,10 +70,6 @@
         </param>
         <briefdescription>
 <para>solve linear system with SOR approach </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1af7d138b877b39e9af280942629d871c5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -99,10 +83,6 @@
         </param>
         <briefdescription>
 <para>identity instance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="89"/>
       </memberdef>
       </sectiondef>
@@ -113,12 +93,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1aadf78a9a7f0763ac460c36286b51093f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -126,12 +100,6 @@
         <definition>bool isTimeDependent</definition>
         <argsstring>() const </argsstring>
         <name>isTimeDependent</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1aa9ffb885f8454676f62eec587622cc95" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -139,12 +107,6 @@
         <definition>const Array&amp; lowerDiagonal</definition>
         <argsstring>() const </argsstring>
         <name>lowerDiagonal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1a7750fe82fcf1c7eccd9ebda149e2ff16" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -152,12 +114,6 @@
         <definition>const Array&amp; diagonal</definition>
         <argsstring>() const </argsstring>
         <name>diagonal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1aef1be2122e6b404d52ac60819893a55d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -165,12 +121,6 @@
         <definition>const Array&amp; upperDiagonal</definition>
         <argsstring>() const </argsstring>
         <name>upperDiagonal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       </sectiondef>
@@ -189,12 +139,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>valC</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="137" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1af67f1e3dddc642501ce58c719f54f177" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -218,12 +162,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>valC</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="143" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1aa442c4c252e0cc87b8f0bfce245e1776" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -243,12 +181,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>valC</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="154" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1a9bd33a0848dba9e558cb8f546bcee5d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -264,12 +196,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>valB</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="164" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1aa3452028876895626738d87042ea6a1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -281,12 +207,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       </sectiondef>
@@ -301,12 +221,6 @@
           <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="175" bodyend="183"/>
       </memberdef>
       </sectiondef>
@@ -316,12 +230,6 @@
         <definition>typedef Array array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -335,12 +243,6 @@
           <type>const <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <defname>D</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="189" bodyend="192"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_tridiagonal_operator_1a64f8f2cc203476034528c90f771bcd82" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -352,12 +254,6 @@
           <type>const <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <defname>D</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="195" bodyend="201"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_tridiagonal_operator_1a4fec5f63e9beefa954422720737be98e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -373,12 +269,6 @@
           <type>const <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <defname>D2</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="204" bodyend="211"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_tridiagonal_operator_1a6ec547a38441de451ba57f8c7a5ca7a0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -394,12 +284,6 @@
           <type>const <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <defname>D2</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="214" bodyend="221"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_tridiagonal_operator_1ae01006b83cd67643be665bb99fc98db0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -415,12 +299,6 @@
           <type>const <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <defname>D</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="224" bodyend="231"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_tridiagonal_operator_1aa60a95835dd40e7c3eb718914702b1c0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -436,12 +314,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>a</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="234" bodyend="241"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_tridiagonal_operator_1a5062187e8c44a47abeb5dddcb351a4c9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -457,12 +329,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>a</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="244" bodyend="251"/>
       </memberdef>
       </sectiondef>
@@ -477,12 +343,6 @@
           <declname>size</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1a47ce685a88cd2ab45ae0875fb5574f0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -502,12 +362,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>high</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1aaa4521540895eb521cadae239c7a29c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -518,12 +372,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1a8f66389fe4aab7671101792bec064118" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -535,12 +383,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt; &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="131" bodyend="135"/>
       </memberdef>
       </sectiondef>

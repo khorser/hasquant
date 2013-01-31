@@ -13,22 +13,14 @@
           <name>Settlement</name>
           <briefdescription>
 <para>generic settlement calendar </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a89fe455d57ae52cfe608090a0ffe2979" prot="public">
           <name>Exchange</name>
           <briefdescription>
 <para>BOVESPA calendar. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>Brazilian calendars. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +35,6 @@
           <declname>market</declname>
           <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" line="93"/>
       </memberdef>
       </sectiondef>

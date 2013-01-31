@@ -8,8 +8,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp</includes>
     <briefdescription>
 <para>Margrabe option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp" bodystart="90" bodyend="92"/>
   </compounddef>
 </doxygen>

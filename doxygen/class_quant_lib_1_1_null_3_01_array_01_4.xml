@@ -3,20 +3,12 @@
   <compounddef id="class_quant_lib_1_1_null_3_01_array_01_4" kind="class" prot="public">
     <compoundname>QuantLib::Null&lt; Array &gt;</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/array.hpp</includes>
-    <templateparamlist>
-    </templateparamlist>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_null_3_01_array_01_4_1a10b15a39fff7b4b5e889dc502186253c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Null</definition>
         <argsstring>()</argsstring>
         <name>Null</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" bodystart="146" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_null_3_01_array_01_4_1aac0a0df9147413ce551751079915b2e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -24,19 +16,11 @@
         <definition>operator Array</definition>
         <argsstring>() const </argsstring>
         <name>operator Array</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" bodystart="147" bodyend="147"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>specialization of null template for this class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" bodystart="144" bodyend="148"/>
   </compounddef>
 </doxygen>

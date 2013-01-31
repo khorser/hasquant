@@ -17,12 +17,6 @@
         <definition>virtual ~LocalVolatilityEstimator</definition>
         <argsstring>()</argsstring>
         <name>~LocalVolatilityEstimator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -34,19 +28,9 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; T &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="34" bodyend="39"/>
   </compounddef>
 </doxygen>

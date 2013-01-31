@@ -8,12 +8,6 @@
         <definition>std::string name</definition>
         <argsstring></argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1a7ec11d2afdbee6ed91f40584c319f923" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>EventType eventType</definition>
         <argsstring></argsstring>
         <name>eventType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1ad574a26f94e97270ded97bff02bdaf14" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>Integer offsetDays</definition>
         <argsstring></argsstring>
         <name>offsetDays</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>Calendar calendar</definition>
         <argsstring></argsstring>
         <name>calendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -78,19 +54,9 @@
           <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="82" bodyend="87"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="56" bodyend="64"/>
   </compounddef>
 </doxygen>

@@ -30,12 +30,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000026"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_vol_surface_1a7f954b457571433df27468af92b2d99e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -56,12 +52,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000027"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_vol_surface_1a6618dc335c612c9bd2f08040338a06c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -93,10 +85,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_vol_surface_1a32a83dbe248d5d85d1fd10859c4b76ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -126,10 +114,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="75"/>
       </memberdef>
       </sectiondef>
@@ -145,10 +129,6 @@
         </param>
         <briefdescription>
 <para>period/date conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="80"/>
       </memberdef>
       </sectiondef>
@@ -164,12 +144,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="85"/>
       </memberdef>
       </sectiondef>
@@ -179,12 +153,6 @@
         <definition>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/interestratevolsurface.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       </sectiondef>

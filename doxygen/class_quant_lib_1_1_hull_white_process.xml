@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -36,10 +32,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -58,10 +50,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a81842299056bb82662dce099fca6bcba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -82,12 +70,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the expectation <formula id="362">$ E(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -108,12 +92,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the standard deviation <formula id="363">$ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1aec618e405b3e8c104f58b6616d3d482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -134,12 +114,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the variance <formula id="364">$ V(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -147,12 +123,6 @@
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -160,12 +130,6 @@
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a65387ea280e5a966d21a2a97988acee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -177,12 +141,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="51"/>
       </memberdef>
       </sectiondef>
@@ -204,19 +162,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sigma</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Hull-White stochastic process. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hullwhiteprocess.hpp" bodystart="35" bodyend="57"/>
   </compounddef>
 </doxygen>

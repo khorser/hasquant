@@ -9,12 +9,6 @@
         <definition>std::vector&lt;VegaBumpCluster&gt; allBumps_</definition>
         <argsstring></argsstring>
         <name>allBumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_collection_1a54142273841155884704623946521692" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::shared_ptr&lt;MarketModel&gt; associatedVolStructure_</definition>
         <argsstring></argsstring>
         <name>associatedVolStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_collection_1a8d3cb58f00982412ad02c027e3f130ff" prot="private" static="no" mutable="yes">
@@ -35,12 +23,6 @@
         <definition>bool checked_</definition>
         <argsstring></argsstring>
         <name>checked_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_collection_1ac565c89bb47d2f63a4a0c6ff43761875" prot="private" static="no" mutable="yes">
@@ -48,12 +30,6 @@
         <definition>bool nonOverlapped_</definition>
         <argsstring></argsstring>
         <name>nonOverlapped_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_collection_1ab2ef1002d7fa98d2a5123f5546565488" prot="private" static="no" mutable="yes">
@@ -61,12 +37,6 @@
         <definition>bool full_</definition>
         <argsstring></argsstring>
         <name>full_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -85,12 +55,6 @@
           <declname>allowFactorwiseBumping</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a675f35cec38522cbb7819d855cc01293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -106,12 +70,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a0a87126359f062bf1cf7e3b1f5388d11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -119,12 +77,6 @@
         <definition>Size numberBumps</definition>
         <argsstring>() const </argsstring>
         <name>numberBumps</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1af630bf4038f58f37c8dc2aaca33043c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -132,12 +84,6 @@
         <definition>const boost::shared_ptr&lt;MarketModel&gt;&amp; associatedModel</definition>
         <argsstring>() const </argsstring>
         <name>associatedModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="110" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a4d1f10402c8899701f98b86b09233b28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -145,12 +91,6 @@
         <definition>const std::vector&lt;VegaBumpCluster&gt;&amp; allBumps</definition>
         <argsstring>() const </argsstring>
         <name>allBumps</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a7ffe8a6212a0eb3fc7bbc8e9bc51dfcd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -158,12 +98,6 @@
         <definition>bool isFull</definition>
         <argsstring>() const </argsstring>
         <name>isFull</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a2d80b7ff7f5079612af444b6bf528d1a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -171,12 +105,6 @@
         <definition>bool isNonOverlapping</definition>
         <argsstring>() const </argsstring>
         <name>isNonOverlapping</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a32c4f3ea89e1a400b29a505a410ef98e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -184,17 +112,9 @@
         <definition>bool isSensible</definition>
         <argsstring>() const </argsstring>
         <name>isSensible</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="120"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>There are too many pseudo-root elements to allow bumping them all independently so we cluster them together and then divide all elements into a collection of such clusters. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="99" bodyend="132"/>

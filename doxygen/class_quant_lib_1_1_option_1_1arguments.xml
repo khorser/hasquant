@@ -18,12 +18,6 @@
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" static="no" mutable="no">
@@ -31,12 +25,6 @@
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
         <argsstring></argsstring>
         <name>exercise</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -59,19 +41,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="60" bodyend="63"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>basic option arguments </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="57" bodyend="66"/>
   </compounddef>
 </doxygen>

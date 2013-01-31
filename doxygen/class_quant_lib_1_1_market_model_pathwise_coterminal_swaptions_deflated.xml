@@ -10,12 +10,6 @@
         <definition>std::vector&lt;Real&gt; rateTimes_</definition>
         <argsstring></argsstring>
         <name>rateTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>std::vector&lt;Rate&gt; strikes_</definition>
         <argsstring></argsstring>
         <name>strikes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Size numberRates_</definition>
         <argsstring></argsstring>
         <name>numberRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -85,12 +55,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ade0687278a8477205ea14f019af4bd17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -98,12 +62,6 @@
         <definition>virtual ~MarketModelPathwiseCoterminalSwaptionsDeflated</definition>
         <argsstring>()</argsstring>
         <name>~MarketModelPathwiseCoterminalSwaptionsDeflated</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -112,12 +70,6 @@
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1aaf1f37e1319c6476e12d03c295b74260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -126,12 +78,6 @@
         <argsstring>() const </argsstring>
         <name>evolution</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -140,12 +86,6 @@
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1ae76494005108a03d01db60b6bb685116">possibleCashFlowTimes</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -154,12 +94,6 @@
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0a292c0068ae301d400b2e4b24e8847f">numberOfProducts</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ae9340ad78cd16947af851ac186443907" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -168,12 +102,6 @@
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54">maxNumberOfCashFlowsPerProductPerStep</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -182,12 +110,6 @@
         <argsstring>() const </argsstring>
         <name>alreadyDeflated</name>
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a164f79bb7fcc17d83d7201fd191ae054">alreadyDeflated</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -198,10 +120,6 @@
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
         <briefdescription>
 <para>during simulation put product at start of path </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ab323de6c99257ba28ce5fc12da07241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -224,10 +142,6 @@
         </param>
         <briefdescription>
 <para>return value indicates whether path is finished, TRUE means done </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -238,15 +152,9 @@
         <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0c4d55a1d5639736ddbf050d163c0d37">clone</reimplements>
         <briefdescription>
 <para>returns a newly-allocated copy of itself </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="70"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Main use is to test market pathwise vegas. The swaptions are payers and co-terminal. The class is tested in TestPathwiseVegas by running against the numerical version below. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="40" bodyend="80"/>

@@ -12,9 +12,5 @@
     <innergroup refid="group__quantoengines">Quanto option engines</innergroup>
     <innergroup refid="group__swaptionengines">Swaption engines</innergroup>
     <innergroup refid="group__vanillaengines">Vanilla option engines</innergroup>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
   </compounddef>
 </doxygen>

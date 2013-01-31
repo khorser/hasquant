@@ -10,12 +10,6 @@
         <definition>Real lambda_</definition>
         <argsstring></argsstring>
         <name>lambda_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -30,12 +24,6 @@
           <declname>lambda</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="109" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -47,12 +35,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="114" bodyend="130"/>
       </memberdef>
       </sectiondef>
@@ -66,12 +48,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="132" bodyend="135"/>
       </memberdef>
       </sectiondef>

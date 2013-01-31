@@ -20,10 +20,6 @@
         </param>
         <briefdescription>
 <para>enable extrapolation in subsequent calls </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extrapolator_1abab5047522a68771f2b1d51d1ac78383" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -38,10 +34,6 @@
         </param>
         <briefdescription>
 <para>disable extrapolation in subsequent calls </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>
@@ -54,10 +46,6 @@
         <name>allowsExtrapolation</name>
         <briefdescription>
 <para>tells whether extrapolation is enabled </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +55,6 @@
         <definition>bool extrapolate_</definition>
         <argsstring></argsstring>
         <name>extrapolate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -82,12 +64,6 @@
         <definition>Extrapolator</definition>
         <argsstring>()</argsstring>
         <name>Extrapolator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extrapolator_1a73300245f5c6c28e6b91da76454c00fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -95,19 +71,11 @@
         <definition>virtual ~Extrapolator</definition>
         <argsstring>()</argsstring>
         <name>~Extrapolator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for classes possibly allowing extrapolation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="32" bodyend="50"/>
   </compounddef>
 </doxygen>

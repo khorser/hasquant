@@ -20,10 +20,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
@@ -34,12 +30,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="96" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_survival_probability_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -47,12 +37,6 @@
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_survival_probability_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +44,6 @@
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="108" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_survival_probability_curve_1a3ed854b99e0169195496d1b7d6400726" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -73,12 +51,6 @@
         <definition>const std::vector&lt; Probability &gt; &amp; survivalProbabilities</definition>
         <argsstring>() const </argsstring>
         <name>survivalProbabilities</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_survival_probability_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -86,12 +58,6 @@
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="120" bodyend="125"/>
       </memberdef>
       </sectiondef>
@@ -108,10 +74,6 @@
         </param>
         <briefdescription>
 <para>survival probability calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_survival_probability_curve_1aacf490703e42933ebc53ef281a4a38fb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -125,10 +87,6 @@
         </param>
         <briefdescription>
 <para>default density calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="82"/>
       </memberdef>
       </sectiondef>
@@ -170,19 +128,11 @@
           <declname>interpolator</declname>
           <defval>Interpolator()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> based on interpolation of survival probabilities. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolatedsurvivalprobabilitycurve.hpp" bodystart="36" bodyend="85"/>
   </compounddef>
 </doxygen>

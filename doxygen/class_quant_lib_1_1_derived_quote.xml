@@ -20,10 +20,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_derived_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -34,10 +30,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +41,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +50,6 @@
         <definition>Handle&lt;Quote&gt; element_</definition>
         <argsstring></argsstring>
         <name>element_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_derived_quote_1ac9d81f9b9cab814ebe5c735e90e4a491" prot="private" static="no" mutable="no">
@@ -77,12 +57,6 @@
         <definition>UnaryFunction f_</definition>
         <argsstring></argsstring>
         <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -100,12 +74,6 @@
           <type>const UnaryFunction &amp;</type>
           <declname>f</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="59" bodyend="64"/>
       </memberdef>
       </sectiondef>

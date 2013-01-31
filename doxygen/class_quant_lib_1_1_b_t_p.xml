@@ -21,8 +21,6 @@
 <para>accrued amount at a given date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="198" bodyend="201"/>
       </memberdef>
       </sectiondef>
@@ -50,12 +48,6 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1aed15b2ba17315cba44cad24d16540192" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -85,12 +77,8 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>constructor needed for legacy non-par redemption BTPs. As of today the only remaining one is IT123456789012 that will redeem 99.999 on xx-may-2037 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1a88a4605ce00014426d599efc7c3ff68a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -121,15 +109,11 @@
 <para><ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> yield given a (clean) price and settlement date. </para>        </briefdescription>
         <detaileddescription>
 <para>The default <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Italian <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> (Buono Poliennali del Tesoro) fixed rate bond. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="62" bodyend="90"/>
   </compounddef>
 </doxygen>

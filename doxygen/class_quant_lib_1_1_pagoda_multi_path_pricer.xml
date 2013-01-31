@@ -9,12 +9,6 @@
         <definition>DiscountFactor discount_</definition>
         <argsstring></argsstring>
         <name>discount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1a95c0170051dff1bbdc70bbe6cdd63f4c" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real roof_</definition>
         <argsstring></argsstring>
         <name>roof_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1af0abba39c7f061e53d00e11883af4d3f" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real fraction_</definition>
         <argsstring></argsstring>
         <name>fraction_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -62,12 +44,6 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -79,19 +55,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="117"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="113" bodyend="121"/>
   </compounddef>
 </doxygen>

@@ -41,20 +41,14 @@
           <type>const M &amp;</type>
           <declname>zData</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> and <formula id="13">$ y $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="72" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>bilinear interpolation between discrete points </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="68" bodyend="80"/>
   </compounddef>
 </doxygen>

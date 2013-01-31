@@ -10,9 +10,5 @@
     <innerclass refid="class_quant_lib_1_1_m_c_discrete_arithmetic_a_s_engine" prot="public">QuantLib::MCDiscreteArithmeticASEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine" prot="public">QuantLib::MCDiscreteGeometricAPEngine</innerclass>
     <innerclass refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" prot="public">QuantLib::MCDiscreteAveragingAsianEngine</innerclass>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
   </compounddef>
 </doxygen>

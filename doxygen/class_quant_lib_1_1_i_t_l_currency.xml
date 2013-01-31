@@ -10,12 +10,6 @@
         <definition>ITLCurrency</definition>
         <argsstring>()</argsstring>
         <name>ITLCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="634" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="634" bodyend="642"/>
       </memberdef>
       </sectiondef>

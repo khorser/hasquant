@@ -9,12 +9,6 @@
         <definition>Option::Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>DiscountFactor discount_</definition>
         <argsstring></argsstring>
         <name>discount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1aaee5bbffb5384cd94617c3afbf6fb824" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real runningSum_</definition>
         <argsstring></argsstring>
         <name>runningSum_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1af7b74f117d77bca61083800382057efe" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size pastFixings_</definition>
         <argsstring></argsstring>
         <name>pastFixings_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +57,6 @@
           <declname>pastFixings</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -98,19 +68,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="59" bodyend="71"/>
   </compounddef>
 </doxygen>

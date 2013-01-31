@@ -10,12 +10,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1af006f735a20172e3270200865bb4f05d" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; kluge_</definition>
         <argsstring></argsstring>
         <name>kluge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a17d01b48e15925b5924626d1106f1405" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; extOU_</definition>
         <argsstring></argsstring>
         <name>extOU_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
         <argsstring></argsstring>
         <name>rTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const FdmBoundaryConditionSet bcSet_</definition>
         <argsstring></argsstring>
         <name>bcSet_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1aab054b5ea2257fd3d0b838c3146b031d" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>const boost::shared_ptr&lt;FdmExtOUJumpOp&gt; klugeOp_</definition>
         <argsstring></argsstring>
         <name>klugeOp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a7c506e612bc53209c1b6a065523f9781" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>const boost::shared_ptr&lt;FdmExtendedOrnsteinUhlenbackOp&gt; ouOp_</definition>
         <argsstring></argsstring>
         <name>ouOp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ab34235771f6460dc69ebe21ba2a73575" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>const NinePointLinearOp corrMap_</definition>
         <argsstring></argsstring>
         <name>corrMap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -136,12 +88,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>integroIntegrationOrder</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -149,12 +95,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -170,12 +110,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -187,12 +121,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -204,12 +132,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -225,12 +147,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -250,12 +166,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -271,17 +181,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="83"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>This class describes a correlated Kluge - extended Ornstein-Uhlenbeck process governed by <formula id="133">\[ \begin{array}{rcl} P_t &amp;=&amp; \exp(p_t + X_t + Y_t) \\ dX_t &amp;=&amp; -\alpha X_tdt + \sigma_x dW_t^x \\ dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J) &amp;=&amp; \eta e^{-\eta J} \\ G_t &amp;=&amp; \exp(g_t + U_t) \\ dU_t &amp;=&amp; -\kappa U_tdt + \sigma_udW_t^u \\ \rho &amp;=&amp; \mathrm{corr} (dW_t^x, dW_t^u) \end{array} \]</formula></para><para>References: Kluge, Timo L., 2008. Pricing Swing Options and other Electricity Derivatives, <ulink url="http://eprints.maths.ox.ac.uk/246/1/kluge.pdf">http://eprints.maths.ox.ac.uk/246/1/kluge.pdf</ulink></para><para><ulink url="http://spanderen.de/2011/06/13/vpp-pricing-i-stochastic-processes-partial-integro-differential-equation/">http://spanderen.de/2011/06/13/vpp-pricing-i-stochastic-processes-partial-integro-differential-equation/</ulink> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="64" bodyend="98"/>

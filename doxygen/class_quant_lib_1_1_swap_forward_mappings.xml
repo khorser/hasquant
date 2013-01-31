@@ -26,10 +26,6 @@
         </param>
         <briefdescription>
 <para>compute annuity of arbitrary swap-rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1a657a498e2add58b42f5468150aeb2450" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -55,10 +51,6 @@
         </param>
         <briefdescription>
 <para>compute derivative of swap-rate to underlying forward rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1ac52d83cc4d9c5a1a0551bb546d79cfc4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -70,12 +62,8 @@
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the dsr[i]/df[j] jacobian between coterminal swap rates and forward rates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1a847fa61ca5255b5b073c3389e6212f74" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -91,12 +79,8 @@
           <type>const <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>displacement</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the Z matrix to switch base from forward to coterminal swap rates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1ab2535fdf165dae0bc5b40cedaa3b4baa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -108,12 +92,8 @@
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the dsr[i]/df[j] jacobian between coinitial swap rates and forward rates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1aba40ea0c703b159921cce8c1312bd854" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -129,12 +109,8 @@
           <type>const <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>displacement</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the Z matrix to switch base from forward to coinitial swap rates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1a1c7da6df009ef66bc1f5dce4485f13d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -150,12 +126,8 @@
           <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the dsr[i]/df[j] jacobian between constant maturity swap rates and forward rates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1a4d62b4cfbe182923a867b97597168947" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -175,12 +147,8 @@
           <type>const <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
           <declname>displacement</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the Z matrix to switch base from forward to constant maturity swap rates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_forward_mappings_1ab94dc92f45208e3609d9d512151a23cb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -200,19 +168,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>endIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>computes the implied vol of a swaption specified by two indices using the freezing coefficients methdodology. This routine is easy to use but not very efficient and if you want to do a lot of cases, then a different approach should be used.</para><para>Tested in SwapForwardMappingsTest::testSwaptionImpliedVolatility() in swapforwardmappings.cpp </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="95"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" bodystart="35" bodyend="97"/>
   </compounddef>
 </doxygen>

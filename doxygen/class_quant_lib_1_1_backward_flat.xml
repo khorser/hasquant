@@ -10,12 +10,6 @@
         <argsstring></argsstring>
         <name>global</name>
         <initializer>= false</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_backward_flat_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
@@ -24,12 +18,6 @@
         <argsstring></argsstring>
         <name>requiredPoints</name>
         <initializer>= 2</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -59,19 +47,11 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="94" bodyend="97"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Backward-flat interpolation factory and traits. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="91" bodyend="100"/>
   </compounddef>
 </doxygen>

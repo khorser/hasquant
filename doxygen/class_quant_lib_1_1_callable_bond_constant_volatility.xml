@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a7d242cf24fadcf875b9e2f621014c4ef">maxBondTenor</reimplements>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1aeddd916230722ca9ad5f39884802d280" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -59,10 +47,6 @@
         <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a5a56f9ec1c7f3fdf00e72197fa64bf82">maxBondLength</reimplements>
         <briefdescription>
 <para>the largest bondLength for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -73,10 +57,6 @@
         <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -87,10 +67,6 @@
         <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a47909aba7db97bc5c0f7488dd5aff4da" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -113,10 +89,6 @@
         </param>
         <briefdescription>
 <para>implements the actual volatility calculation in derived classes </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1acb4caa90bf5be93d7aafe6d04a038315" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -135,10 +107,6 @@
         </param>
         <briefdescription>
 <para>return smile section </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a0ae7b5a492d2300c7aedd3a0885d7d19" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -156,12 +124,6 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="67"/>
       </memberdef>
       </sectiondef>
@@ -171,12 +133,6 @@
         <definition>Handle&lt;Quote&gt; volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -184,12 +140,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_constant_volatility_1aca62bedce5f800f5dceaa2e85b2bc9e1" prot="private" static="no" mutable="no">
@@ -197,12 +147,6 @@
         <definition>Period maxBondTenor_</definition>
         <argsstring></argsstring>
         <name>maxBondTenor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -224,12 +168,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a70946fb2c5f6a2637486a04e1e8c1152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -249,12 +187,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a2b909f742a1de122e5ad98561c672007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -277,12 +209,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a281345af118d31c01c35f2b2870d4587" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -305,19 +231,11 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant callable-bond volatility, no time-strike dependence. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="35" bodyend="73"/>
   </compounddef>
 </doxygen>

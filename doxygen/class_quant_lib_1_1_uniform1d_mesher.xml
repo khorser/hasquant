@@ -21,19 +21,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>size</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniform1dmesher.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniform1dmesher.hpp" bodystart="37" bodyend="50"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniform1dmesher.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniform1dmesher.hpp" bodystart="35" bodyend="51"/>
   </compounddef>
 </doxygen>

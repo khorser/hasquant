@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;MarketModelFactory&gt; forwardFactory_</definition>
         <argsstring></argsstring>
         <name>forwardFactory_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -29,12 +23,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_factory" kindref="compound">MarketModelFactory</ref> &gt; &amp;</type>
           <declname>forwardFactory</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -49,12 +37,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numberOfFactors</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -62,19 +44,9 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="60"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="53" bodyend="63"/>
   </compounddef>
 </doxygen>

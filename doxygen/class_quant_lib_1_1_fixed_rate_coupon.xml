@@ -45,12 +45,6 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1a6bb4eba95b70ed784647ced08b5e7440" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -88,12 +82,6 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="56"/>
       </memberdef>
       </sectiondef>
@@ -110,8 +98,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="60"/>
       </memberdef>
       </sectiondef>
@@ -125,10 +111,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1a5634e3d28452e24584f5db12be063f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -136,12 +118,6 @@
         <definition>InterestRate interestRate</definition>
         <argsstring>() const </argsstring>
         <name>interestRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -152,10 +128,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
         <briefdescription>
 <para>day counter for accrual calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -169,10 +141,6 @@
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="67"/>
       </memberdef>
       </sectiondef>
@@ -188,12 +156,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="108" bodyend="115"/>
       </memberdef>
       </sectiondef>
@@ -203,19 +165,11 @@
         <definition>InterestRate rate_</definition>
         <argsstring></argsstring>
         <name>rate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Coupon paying a fixed interest rate </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="38" bodyend="75"/>
   </compounddef>
 </doxygen>

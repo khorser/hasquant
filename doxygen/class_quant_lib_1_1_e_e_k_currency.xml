@@ -10,12 +10,6 @@
         <definition>EEKCurrency</definition>
         <argsstring>()</argsstring>
         <name>EEKCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="150" bodyend="157"/>
       </memberdef>
       </sectiondef>

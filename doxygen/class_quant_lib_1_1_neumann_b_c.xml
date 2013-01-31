@@ -10,12 +10,6 @@
         <definition>Real value_</definition>
         <argsstring></argsstring>
         <name>value_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_neumann_b_c_1a9d351c0a52db8c1927580ab4dfd42812" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Side side_</definition>
         <argsstring></argsstring>
         <name>side_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
           <type><ref refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00" kindref="member">Side</ref></type>
           <declname>side</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1ab906412b49c195a549d177f62342ef0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -63,12 +45,8 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method modifies an operator <formula id="46">$ L $</formula> before it is applied to an array <formula id="271">$ u $</formula> so that <formula id="272">$ v = Lu $</formula> will satisfy the given condition. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a518faf0242362b370a0b7686ed73f88c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -80,12 +58,8 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method modifies an array <formula id="271">$ u $</formula> so that it satisfies the given condition. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a64b4db3a4c8c7be8a29a179de646e929" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -101,12 +75,8 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method modifies an operator <formula id="46">$ L $</formula> before the linear system <formula id="273">$ Lu&apos; = u $</formula> is solved so that <formula id="274">$ u&apos; $</formula> will satisfy the given condition. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a7468ddf74a36a677b124dfcf09015a22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -118,12 +88,8 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method modifies an array <formula id="271">$ u $</formula> so that it satisfies the given condition. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_neumann_b_c_1a6e60101b2af13783da6aa3d7cee67acb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -136,12 +102,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method sets the current time for time-dependent boundary conditions. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       </sectiondef>

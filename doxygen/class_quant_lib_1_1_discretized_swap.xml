@@ -9,12 +9,6 @@
         <definition>VanillaSwap::arguments arguments_</definition>
         <argsstring></argsstring>
         <name>arguments_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swap_1a40e0825fb7864f48ac089b4c805b7c69" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Time&gt; fixedResetTimes_</definition>
         <argsstring></argsstring>
         <name>fixedResetTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swap_1ac7e1f98a10cff59e78339f9652a43783" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Time&gt; fixedPayTimes_</definition>
         <argsstring></argsstring>
         <name>fixedPayTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swap_1a5b4705310acb09053f9ff015e8b6ab32" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>std::vector&lt;Time&gt; floatingResetTimes_</definition>
         <argsstring></argsstring>
         <name>floatingResetTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swap_1a103c2994eb6700556889cfe58a1955e8" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>std::vector&lt;Time&gt; floatingPayTimes_</definition>
         <argsstring></argsstring>
         <name>floatingPayTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -87,12 +57,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_swap_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -104,12 +68,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>size</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_swap_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -117,19 +75,9 @@
         <definition>std::vector&lt;Time&gt; mandatoryTimes</definition>
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discretizedswap.hpp" bodystart="33" bodyend="49"/>
   </compounddef>
 </doxygen>

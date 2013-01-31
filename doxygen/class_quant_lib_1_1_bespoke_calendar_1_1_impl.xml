@@ -9,12 +9,6 @@
         <definition>std::set&lt;Weekday&gt; weekend_</definition>
         <argsstring></argsstring>
         <name>weekend_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::string name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +30,6 @@
           <declname>name</declname>
           <defval>&quot;&quot;</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -55,12 +37,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -71,12 +47,6 @@
         <param>
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -87,12 +57,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a4fd5f300b4e29a8d91452121d64ca6e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -103,19 +67,9 @@
         <param>
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="48"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="42" bodyend="52"/>
   </compounddef>
 </doxygen>

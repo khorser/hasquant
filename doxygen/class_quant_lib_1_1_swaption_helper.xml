@@ -10,12 +10,6 @@
         <definition>Rate exerciseRate_</definition>
         <argsstring></argsstring>
         <name>exerciseRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_helper_1a32ea77a274fa82ee6a3adfd66f3a8e6f" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>boost::shared_ptr&lt;VanillaSwap&gt; swap_</definition>
         <argsstring></argsstring>
         <name>swap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_helper_1aba07e8aaad2ee3e76ab368e77f089a75" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>boost::shared_ptr&lt;Swaption&gt; swaption_</definition>
         <argsstring></argsstring>
         <name>swaption_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -88,12 +70,6 @@
           <declname>errorType</declname>
           <defval>CalibrationHelper::RelativePriceError</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -106,12 +82,6 @@
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -122,10 +92,6 @@
         <reimplements refid="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -140,10 +106,6 @@
         </param>
         <briefdescription>
 <para>Black price given a volatility. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="52"/>
       </memberdef>
       </sectiondef>

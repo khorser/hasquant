@@ -10,12 +10,6 @@
         <definition>Real lambda_</definition>
         <argsstring></argsstring>
         <name>lambda_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1a9bb28cdfff977585169d516b07f42a10" prot="private" static="no" mutable="yes">
@@ -23,12 +17,6 @@
         <definition>std::vector&lt;Array&gt; vertices_</definition>
         <argsstring></argsstring>
         <name>vertices_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1a99a3a78defaeab5ede226107da665b96" prot="private" static="no" mutable="yes">
@@ -36,12 +24,6 @@
         <definition>Array values_</definition>
         <argsstring></argsstring>
         <name>values_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1aa17da009a6611e09a96444ce08b6ea18" prot="private" static="no" mutable="yes">
@@ -49,12 +31,6 @@
         <definition>Array sum_</definition>
         <argsstring></argsstring>
         <name>sum_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -68,12 +44,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>lambda</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Constructor taking as input the characteristic length </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -92,10 +64,6 @@
         </param>
         <briefdescription>
 <para>minimize the optimization problem P </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="44"/>
       </memberdef>
       </sectiondef>
@@ -117,19 +85,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
           <declname>factor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Multi-dimensional simplex class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="39" bodyend="52"/>
   </compounddef>
 </doxygen>

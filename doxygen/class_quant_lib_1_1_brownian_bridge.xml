@@ -10,12 +10,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a1caecd902d2960755b349a552a9b92f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1acc334fdc4c74e84a410b2022b06dcef0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>const std::vector&lt;Size&gt;&amp; bridgeIndex</definition>
         <argsstring>() const </argsstring>
         <name>bridgeIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a2adda291c848191a796ea80d38b94254" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>const std::vector&lt;Size&gt;&amp; leftIndex</definition>
         <argsstring>() const </argsstring>
         <name>leftIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1af70d531bbebf23527e17b6f90783cb7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -62,12 +38,6 @@
         <definition>const std::vector&lt;Size&gt;&amp; rightIndex</definition>
         <argsstring>() const </argsstring>
         <name>rightIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a760321c6a2e07dcb679a43eb94b081af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -75,12 +45,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; leftWeight</definition>
         <argsstring>() const </argsstring>
         <name>leftWeight</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1af618b502e4b1bd0b9f3d99d224ac0520" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -88,12 +52,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; rightWeight</definition>
         <argsstring>() const </argsstring>
         <name>rightWeight</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a6f4d0c5e8845b51c55ae7e309b513160" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -101,12 +59,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; stdDeviation</definition>
         <argsstring>() const </argsstring>
         <name>stdDeviation</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       </sectiondef>
@@ -116,12 +68,6 @@
         <definition>Size size_</definition>
         <argsstring></argsstring>
         <name>size_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a6b4cd39a8eca4c81bee1cda0cda93305" prot="private" static="no" mutable="no">
@@ -129,12 +75,6 @@
         <definition>std::vector&lt;Time&gt; t_</definition>
         <argsstring></argsstring>
         <name>t_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a5cc07694df39759b7c646902548e294f" prot="private" static="no" mutable="no">
@@ -142,12 +82,6 @@
         <definition>std::vector&lt;Real&gt; sqrtdt_</definition>
         <argsstring></argsstring>
         <name>sqrtdt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1aa70bcc753b785e13a69444a9a6471b5e" prot="private" static="no" mutable="no">
@@ -155,12 +89,6 @@
         <definition>std::vector&lt;Size&gt; bridgeIndex_</definition>
         <argsstring></argsstring>
         <name>bridgeIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a297bd720420f5e71b46aef8aca552fe2" prot="private" static="no" mutable="no">
@@ -168,12 +96,6 @@
         <definition>std::vector&lt;Size&gt; leftIndex_</definition>
         <argsstring></argsstring>
         <name>leftIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a63f9c9cfcf8994e7f5ebd5f460630293" prot="private" static="no" mutable="no">
@@ -181,12 +103,6 @@
         <definition>std::vector&lt;Size&gt; rightIndex_</definition>
         <argsstring></argsstring>
         <name>rightIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1ab2ada1faae18d7e9c1ff070fc10eecec" prot="private" static="no" mutable="no">
@@ -194,12 +110,6 @@
         <definition>std::vector&lt;Real&gt; leftWeight_</definition>
         <argsstring></argsstring>
         <name>leftWeight_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a8cf534bc88f638485a81998085c5db99" prot="private" static="no" mutable="no">
@@ -207,12 +117,6 @@
         <definition>std::vector&lt;Real&gt; rightWeight_</definition>
         <argsstring></argsstring>
         <name>rightWeight_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a86183c1eb79b83a8c4c769c79a959672" prot="private" static="no" mutable="no">
@@ -220,12 +124,6 @@
         <definition>std::vector&lt;Real&gt; stdDev_</definition>
         <argsstring></argsstring>
         <name>stdDev_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -239,8 +137,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The constructor generates the time grid so that each step is of unit-time length.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -251,8 +147,6 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1ae5cedbfa759d6a0f2748422b60d0539c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -264,8 +158,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The step times are copied from the supplied vector</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -277,8 +169,6 @@
 </parameterlist>
 <simplesect kind="note"><para>the starting time of the path is assumed to be 0 and must not be included </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a904c629dba6743d9c82df7755f7d9c9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -290,8 +180,6 @@
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The step times are copied from the <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> object</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -302,8 +190,6 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a8bbfa9d91f03b618eea0205fa2026bae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -358,8 +244,6 @@
 </parameterlist>
 <simplesect kind="note"><para>To get the canonical Brownian bridge which starts and finishes at the same value, the first element of the input sequence must be zero. Conversely, to get a sloped bridge set the first element to a non-zero value. In this case, the final value in the bridge will be sqrt(last time point)*(first element of input sequence). </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="107" bodyend="137"/>
       </memberdef>
       </sectiondef>
@@ -369,12 +253,6 @@
         <definition>void initialize</definition>
         <argsstring>()</argsstring>
         <name>initialize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="139"/>
       </memberdef>
       </sectiondef>

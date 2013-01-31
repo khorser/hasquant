@@ -6,10 +6,6 @@
     <derivedcompoundref refid="class_quant_lib_1_1_convergence_statistics" prot="public" virt="non-virtual">ConvergenceStatistics&lt; T, U &gt;</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_disposable" prot="public" virt="non-virtual">Disposable&lt; T &gt;</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_open_close" prot="public" virt="non-virtual">GarmanKlassOpenClose&lt; T &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="58"/>
   </compounddef>
 </doxygen>

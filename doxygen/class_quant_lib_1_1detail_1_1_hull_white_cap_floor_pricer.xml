@@ -9,12 +9,6 @@
         <definition>CapFloor::arguments args_</definition>
         <argsstring></argsstring>
         <name>args_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ae17cd1f7f9373246a88cdb16ec452491" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::shared_ptr&lt;HullWhite&gt; model_</definition>
         <argsstring></argsstring>
         <name>model_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a317182705f8bfb652d113309b7f4b109" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Time forwardMeasureTime_</definition>
         <argsstring></argsstring>
         <name>forwardMeasureTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a45cd34204ac2aa3c508a521d3f5c2530" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>DiscountFactor endDiscount_</definition>
         <argsstring></argsstring>
         <name>endDiscount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ad9c8f547e3e532d4be646472b0a2cc58" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>std::vector&lt;Time&gt; startTimes_</definition>
         <argsstring></argsstring>
         <name>startTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a93cf51d5f36c6055582b0ef5136f0f37" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>std::vector&lt;Time&gt; endTimes_</definition>
         <argsstring></argsstring>
         <name>endTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ab8d80d95c018986943e14d484b6ff9c6" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>std::vector&lt;Time&gt; fixingTimes_</definition>
         <argsstring></argsstring>
         <name>fixingTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -112,12 +70,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>forwardMeasureTime</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -129,19 +81,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="37" bodyend="49"/>
   </compounddef>
 </doxygen>

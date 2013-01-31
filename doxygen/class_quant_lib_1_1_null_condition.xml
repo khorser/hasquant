@@ -22,19 +22,11 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="111" bodyend="111"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>null step condition </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="109" bodyend="112"/>
   </compounddef>
 </doxygen>

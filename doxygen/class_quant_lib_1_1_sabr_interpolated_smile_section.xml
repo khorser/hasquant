@@ -93,10 +93,6 @@
         </param>
         <briefdescription>
 <para>all market data are quotes </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aaf9dac04211a3b13bfb6f9ee64ac9872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -186,10 +182,6 @@
         </param>
         <briefdescription>
 <para>no quotes </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="77"/>
       </memberdef>
       </sectiondef>
@@ -200,12 +192,6 @@
         <definition>virtual void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -213,12 +199,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="133" bodyend="136"/>
       </memberdef>
       </sectiondef>
@@ -229,12 +209,6 @@
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="178" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -242,12 +216,6 @@
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="184" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -255,12 +223,6 @@
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="189" bodyend="192"/>
       </memberdef>
       </sectiondef>
@@ -271,12 +233,6 @@
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="143" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -284,12 +240,6 @@
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -297,12 +247,6 @@
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="153" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -310,12 +254,6 @@
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="158" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a575cfa031ce051c0f292518d6b0194e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -323,12 +261,6 @@
         <definition>Real rmsError</definition>
         <argsstring>() const </argsstring>
         <name>rmsError</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="163" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -336,12 +268,6 @@
         <definition>Real maxError</definition>
         <argsstring>() const </argsstring>
         <name>maxError</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="168" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad1df8a2c9fb6a94b00ab1e6670be4ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -349,12 +275,6 @@
         <definition>EndCriteria::Type endCriteria</definition>
         <argsstring>() const </argsstring>
         <name>endCriteria</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="173" bodyend="176"/>
       </memberdef>
       </sectiondef>
@@ -368,12 +288,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1f86e1622e6c213484d1425c30ebb6ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -385,19 +299,9 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="138" bodyend="141"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="37" bodyend="131"/>
   </compounddef>
 </doxygen>

@@ -14,12 +14,6 @@
         <definition>friend class FittedBondDiscountCurve</definition>
         <argsstring></argsstring>
         <name>FittedBondDiscountCurve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="198" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -29,12 +23,6 @@
         <definition>Array weights_</definition>
         <argsstring></argsstring>
         <name>weights_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="242" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aade928ef652be0e192ab8f40d6e2cde5" prot="private" static="no" mutable="no">
@@ -42,12 +30,6 @@
         <definition>Integer numberOfIterations_</definition>
         <argsstring></argsstring>
         <name>numberOfIterations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="245" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ac0b68dc9105f4519540ab2a5b1fbb7e3" prot="private" static="no" mutable="no">
@@ -55,12 +37,6 @@
         <definition>Real costValue_</definition>
         <argsstring></argsstring>
         <name>costValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="247" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="247" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -70,12 +46,6 @@
         <definition>virtual ~FittingMethod</definition>
         <argsstring>()</argsstring>
         <name>~FittingMethod</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="202" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -90,10 +60,6 @@
         <reimplementedby refid="class_quant_lib_1_1_simple_polynomial_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
         <briefdescription>
 <para>total number of coefficients to fit/solve for </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a6d8cb9a904d7c3d52208120af8369e07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -103,10 +69,6 @@
         <name>solution</name>
         <briefdescription>
 <para>output array of results of optimization problem </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="206" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a5c1949bd3782a0492d484ce714eeee0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -116,10 +78,6 @@
         <name>numberOfIterations</name>
         <briefdescription>
 <para>final number of iterations used in the optimization problem </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="208" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="283" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a18ca97750fc43204cacfab5c3b0f8a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -129,10 +87,6 @@
         <name>minimumCostValue</name>
         <briefdescription>
 <para>final value of cost function after optimization </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="210" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="288" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -147,10 +101,6 @@
         <reimplementedby refid="class_quant_lib_1_1_simple_polynomial_fitting_1ae3bc14b05ae58606398649bfd2f6af41">clone</reimplementedby>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="212"/>
       </memberdef>
       </sectiondef>
@@ -160,12 +110,6 @@
         <definition>void calculate</definition>
         <argsstring>()</argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="240"/>
       </memberdef>
       </sectiondef>

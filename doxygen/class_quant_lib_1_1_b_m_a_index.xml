@@ -12,12 +12,8 @@
         <argsstring>() const </argsstring>
         <name>name</name>
         <reimplements refid="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>BMA is fixed weekly on Wednesdays. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -32,10 +28,6 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="49"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +38,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; forwardingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>forwardingTermStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="53"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +53,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1afc12c1eac0967ca3d9cfcb0cf282109b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -88,12 +68,8 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>end</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method returns a schedule of fixing dates between start and end. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="62"/>
       </memberdef>
       </sectiondef>
@@ -108,12 +84,6 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp" line="43"/>
       </memberdef>
       </sectiondef>

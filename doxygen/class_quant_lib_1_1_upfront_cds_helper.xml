@@ -10,12 +10,6 @@
         <definition>Natural upfrontSettlementDays_</definition>
         <argsstring></argsstring>
         <name>upfrontSettlementDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1a803c3db64837bdd4d63de86f64a248ac" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Date upfrontDate_</definition>
         <argsstring></argsstring>
         <name>upfrontDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1aebc84697d9b3aee7df3fe493a9f0989a" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Rate runningSpread_</definition>
         <argsstring></argsstring>
         <name>runningSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="176" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -110,13 +92,9 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>the upfront must be quoted in fractional units. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="154"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5e1aa11b8fec503c3e4fa26c5b2117a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -183,13 +161,9 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>the upfront must be quoted in fractional units. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -198,12 +172,6 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -212,12 +180,6 @@
         <argsstring>()</argsstring>
         <name>initializeDates</name>
         <reimplements refid="class_quant_lib_1_1_cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
       </memberdef>
       </sectiondef>
@@ -228,19 +190,11 @@
         <argsstring>()</argsstring>
         <name>resetEngine</name>
         <reimplements refid="class_quant_lib_1_1_cds_helper_1ab3774009db0f4540cff6c9a7e50b73c2">resetEngine</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="177"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Upfront-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="138" bodyend="178"/>
   </compounddef>
 </doxygen>

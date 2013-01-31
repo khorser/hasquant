@@ -12,15 +12,7 @@
           <name>Tadawul</name>
           <briefdescription>
 <para>Tadawul financial market. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" bodystart="59" bodyend="60"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_saudi_arabia_1abe41cfffd960e29a5d8b07be00aeda42a60d5521edb0a769f62727b9b12645382" kindref="member">Tadawul</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/saudiarabia.hpp" line="61"/>
       </memberdef>
       </sectiondef>

@@ -9,12 +9,6 @@
         <definition>Matrix target_</definition>
         <argsstring></argsstring>
         <name>target_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_frobenius_cost_function_1a052311f11f978b897a7d12958ae84b6a" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::function&lt;Disposable&lt;Matrix&gt;const Array&amp;, Size, Size)&gt; f_</definition>
         <argsstring></argsstring>
         <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_frobenius_cost_function_1a0ae3c43efd6fef9f1e16ae1492c4b6ee" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Size matrixSize_</definition>
         <argsstring></argsstring>
         <name>matrixSize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_frobenius_cost_function_1ae8d235aab390eef61896897045f5d2c2" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Size rank_</definition>
         <argsstring></argsstring>
         <name>rank_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -79,12 +55,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>rank</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="96" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_frobenius_cost_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -96,12 +66,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_frobenius_cost_function_1a24bca93c2bbe35871e279fd8a935143d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -113,19 +77,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="105"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="94" bodyend="111"/>
   </compounddef>
 </doxygen>

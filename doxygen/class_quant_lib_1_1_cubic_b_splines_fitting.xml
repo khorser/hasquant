@@ -10,12 +10,6 @@
         <definition>BSpline splines_</definition>
         <argsstring></argsstring>
         <name>splines_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Size size_</definition>
         <argsstring></argsstring>
         <name>size_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a357822f17eb0bd8c48f3e02fa0246093" prot="private" static="no" mutable="no">
@@ -38,10 +26,6 @@
         <name>N_</name>
         <briefdescription>
 <para>N_th basis function coefficient to solve for when d(0)=1. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -60,12 +44,6 @@
           <declname>constrainAtZero</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a7cf67a421608459910a700bac59ae3ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -83,10 +61,6 @@
         </param>
         <briefdescription>
 <para>cubic B-spline basis functions </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -97,10 +71,6 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="126"/>
       </memberdef>
       </sectiondef>
@@ -113,10 +83,6 @@
         <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>total number of coefficients to fit/solve for </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -137,8 +103,6 @@
 <para>derived classes must set this </para>        </briefdescription>
         <detaileddescription>
 <para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="129"/>
       </memberdef>
       </sectiondef>
@@ -147,7 +111,6 @@
     <detaileddescription>
 <para>Fits a discount function to a set of cubic B-splines <formula id="402">$ N_{i,3}(t) $</formula>, i.e., <formula id="403">\[ d(t) = \sum_{i=0}^{n} c_i * N_{i,3}(t) \]</formula> <verbatim>  See: McCulloch, J. 1971, &quot;Measuring the Term Structure of
   Interest Rates.&quot; Journal of Business, 44: 19-31
-
   McCulloch, J. 1975, &quot;The tax adjusted yield curve.&quot;
   Journal of Finance, XXX811-30
 </verbatim></para><para><xrefsect id="caveats_1_caveats000140"><xreftitle>Warning</xreftitle><xrefdescription><para>"The results are extremely sensitive to the number and location of the knot points, and there is no optimal way of selecting them.&quot; James, J. and

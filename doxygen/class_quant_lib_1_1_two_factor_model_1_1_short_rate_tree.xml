@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics_</definition>
         <argsstring></argsstring>
         <name>dynamics_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -39,10 +33,6 @@
         </param>
         <briefdescription>
 <para>Plain tree build-up from short-rate dynamics. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1a02737f54768601c8214adcff0fe9145f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -58,19 +48,11 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="116" bodyend="126"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Recombining two-dimensional tree discretizing the state variable. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="108" bodyend="129"/>
   </compounddef>
 </doxygen>

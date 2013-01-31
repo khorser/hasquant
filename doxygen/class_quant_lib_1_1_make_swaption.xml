@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;SwapIndex&gt; swapIndex_</definition>
         <argsstring></argsstring>
         <name>swapIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1aa4b7e0c2a623baa425922d58a6a187ea" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Settlement::Type delivery_</definition>
         <argsstring></argsstring>
         <name>delivery_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a414a2abe2e0b9f234b39b86b952f1060" prot="private" static="no" mutable="yes">
@@ -35,12 +23,6 @@
         <definition>boost::shared_ptr&lt;VanillaSwap&gt; underlyingSwap_</definition>
         <argsstring></argsstring>
         <name>underlyingSwap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a50109c00d2ee7a170e1059d12ff799f2" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Period optionTenor_</definition>
         <argsstring></argsstring>
         <name>optionTenor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a0463f9db44f6600d2bd49fa85c52303a" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>BusinessDayConvention optionConvention_</definition>
         <argsstring></argsstring>
         <name>optionConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="yes">
@@ -74,12 +44,6 @@
         <definition>Date fixingDate_</definition>
         <argsstring></argsstring>
         <name>fixingDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a82043c5ad79ac1b7b969001c0fac6b01" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>Date exerciseDate_</definition>
         <argsstring></argsstring>
         <name>exerciseDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a3dba475b3e3956c0cc7b1a2934a8941e" prot="private" static="no" mutable="yes">
@@ -100,12 +58,6 @@
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise_</definition>
         <argsstring></argsstring>
         <name>exercise_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>Rate strike_</definition>
         <argsstring></argsstring>
         <name>strike_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_swaption_1aec8a3d48bdab47e807560f973bfa1569" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>boost::shared_ptr&lt;PricingEngine&gt; engine_</definition>
         <argsstring></argsstring>
         <name>engine_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -154,12 +94,6 @@
           <declname>strike</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_swaption_1a7eb9fcdd8c15aaa0b285f1aa1cf2faaa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -167,12 +101,6 @@
         <definition>operator Swaption</definition>
         <argsstring>() const </argsstring>
         <name>operator Swaption</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_swaption_1a1b0428af8b0787e9bedf904415375a56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -180,12 +108,6 @@
         <definition>operator boost::shared_ptr&lt; Swaption &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; Swaption &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_swaption_1a38cdc0b04f7f5fc09a8f723bae7a1164" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -197,12 +119,6 @@
           <type>Settlement::Type</type>
           <declname>delivery</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_swaption_1a6641d02e1efeb02157375d02e31b63be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -214,12 +130,6 @@
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
           <declname>bdc</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_swaption_1a3c044acb20afbac4d2bfe1be7b2a1779" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -230,12 +140,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_swaption_1a2206dd43edbcfc23780a85d933c5cac6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -247,12 +151,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
           <declname>engine</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="58"/>
       </memberdef>
       </sectiondef>

@@ -16,12 +16,6 @@
         <definition>typedef G::argument_type argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1composed__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
@@ -29,12 +23,6 @@
         <definition>typedef F::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
         <definition>F f_</definition>
         <argsstring></argsstring>
         <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1composed__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" static="no" mutable="no">
@@ -57,12 +39,6 @@
         <definition>G g_</definition>
         <argsstring></argsstring>
         <name>g_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -80,12 +56,6 @@
           <type>const G &amp;</type>
           <declname>g</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1composed__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -97,19 +67,9 @@
           <type>const argument_type &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="113" bodyend="124"/>
   </compounddef>
 </doxygen>

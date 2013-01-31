@@ -9,12 +9,6 @@
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_day_counter_1_1_impl_1a3b9b190e8748f2ad7cf3e9591ad52a0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -30,12 +24,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_day_counter_1_1_impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,19 +45,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="42" bodyend="47"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="35" bodyend="48"/>
   </compounddef>
 </doxygen>

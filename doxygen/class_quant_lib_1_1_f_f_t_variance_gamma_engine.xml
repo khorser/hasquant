@@ -10,12 +10,6 @@
         <definition>DiscountFactor dividendDiscount_</definition>
         <argsstring></argsstring>
         <name>dividendDiscount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1aa638469d31148178272450a0a3aa49dc" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>DiscountFactor riskFreeDiscount_</definition>
         <argsstring></argsstring>
         <name>riskFreeDiscount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a3ae7cc9fb0a97b0ab1c985edce00ffc0" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Time t_</definition>
         <argsstring></argsstring>
         <name>t_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Real sigma_</definition>
         <argsstring></argsstring>
         <name>sigma_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1aa98338c783e2410f2e1fa6fce5f363e9" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Real nu_</definition>
         <argsstring></argsstring>
         <name>nu_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>Real theta_</definition>
         <argsstring></argsstring>
         <name>theta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -99,12 +63,6 @@
           <declname>logStrikeSpacing</declname>
           <defval>0.001</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a0428dab69dd3bc7d09cfa5127bf039ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -113,12 +71,6 @@
         <argsstring>() const </argsstring>
         <name>clone</name>
         <reimplements refid="class_quant_lib_1_1_f_f_t_engine_1a957725ec1d11493d09636c2a11701d87">clone</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvariancegammaengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>

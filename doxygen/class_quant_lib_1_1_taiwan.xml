@@ -12,15 +12,7 @@
           <name>TSEC</name>
           <briefdescription>
 <para><ref refid="class_quant_lib_1_1_taiwan" kindref="compound">Taiwan</ref> stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/taiwan.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/taiwan.hpp" bodystart="64" bodyend="65"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_taiwan_1abe41cfffd960e29a5d8b07be00aeda42ab8e0eb69f1ae75207887641754e1a6cf" kindref="member">TSEC</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/taiwan.hpp" line="66"/>
       </memberdef>
       </sectiondef>

@@ -13,12 +13,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt; &amp;</type>
           <declname>corrModel</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="33" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -26,12 +20,6 @@
         <definition>Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="39" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -48,12 +36,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +52,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1ac4dc4daa2ec1a0b126b8b3598d7b237f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -100,12 +76,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -113,19 +83,9 @@
         <definition>bool isTimeIndependent</definition>
         <argsstring>() const </argsstring>
         <name>isTimeIndependent</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="31" bodyend="63"/>
   </compounddef>
 </doxygen>

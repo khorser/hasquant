@@ -3,10 +3,6 @@
   <compounddef id="class_quant_lib_1_1_c_p_i_swap_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::CPISwap::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CPISwap::arguments, CPISwap::results &gt;</basecompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="186" bodyend="187"/>
   </compounddef>
 </doxygen>

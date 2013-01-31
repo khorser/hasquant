@@ -8,12 +8,6 @@
         <definition>Date d</definition>
         <argsstring></argsstring>
         <name>d</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="207" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -27,19 +21,9 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="206" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="206" bodyend="206"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="205" bodyend="208"/>
   </compounddef>
 </doxygen>

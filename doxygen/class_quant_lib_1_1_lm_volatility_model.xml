@@ -20,12 +20,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nArguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1a05941543805ec3ef0b4dea387671af16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -33,12 +27,6 @@
         <definition>virtual ~LmVolatilityModel</definition>
         <argsstring>()</argsstring>
         <name>~LmVolatilityModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -46,12 +34,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -59,12 +41,6 @@
         <definition>std::vector&lt;Parameter&gt;&amp; params</definition>
         <argsstring>()</argsstring>
         <name>params</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -76,12 +52,6 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1abc5c862454998819a6b89ab41895528d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -101,12 +71,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1aae8073ece95900dc7ce2738fb4eca1da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -129,12 +93,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1acc1cf9ab061974e46c30a61b4e8443af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -162,12 +120,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="48"/>
       </memberdef>
       </sectiondef>
@@ -179,19 +131,11 @@
         <name>generateArguments</name>
         <reimplementedby refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae">generateArguments</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae">generateArguments</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>caplet volatility model </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" bodystart="33" bodyend="56"/>
   </compounddef>
 </doxygen>

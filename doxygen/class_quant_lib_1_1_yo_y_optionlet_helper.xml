@@ -54,12 +54,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionlethelpers.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_helper_1a464b4c5152e08c1ba4be3b8c3822aef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -75,8 +69,6 @@
 <para>sets the term structure to be used for pricing </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000108"><xreftitle>Warning</xreftitle><xrefdescription><para>Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to <bold>this</bold>, i.e., the term structure itself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionlethelpers.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -85,19 +77,11 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionlethelpers.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Year-on-year inflation-volatility bootstrap helper. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionlethelpers.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionlethelpers.hpp" bodystart="35" bodyend="66"/>
   </compounddef>
 </doxygen>

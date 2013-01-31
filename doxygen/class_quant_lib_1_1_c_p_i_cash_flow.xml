@@ -49,12 +49,6 @@
           <declname>frequency</declname>
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaad7764a2ea2518891555bd395faffb4da" kindref="member">QuantLib::NoFrequency</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="127" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -66,8 +60,6 @@
 <para>value used on base date </para>        </briefdescription>
         <detaileddescription>
 <para>This does not have to agree with index on that date. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -78,10 +70,6 @@
         <reimplements refid="class_quant_lib_1_1_indexed_cash_flow_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplements>
         <briefdescription>
 <para>you may not have a valid date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="152"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a6fbb6ffa487bc0df2258f120de8ad1ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -91,10 +79,6 @@
         <name>interpolation</name>
         <briefdescription>
 <para>do you want linear/constant/as-index interpolation of future data? </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="155" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -102,12 +86,6 @@
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="158" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -118,10 +96,6 @@
         <reimplements refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
         <briefdescription>
 <para>redefined to use <ref refid="class_quant_lib_1_1_c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" kindref="member">baseFixing()</ref> and interpolation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="161"/>
       </memberdef>
       </sectiondef>

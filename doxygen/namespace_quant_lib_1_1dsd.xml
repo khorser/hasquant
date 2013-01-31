@@ -39,15 +39,9 @@
 <para>inner_product implementation using Duff&apos;s device </para>        </briefdescription>
         <detaileddescription>
 <para>See <ulink url="http://www.lysator.liu.se/c/duffs-device.html">http://www.lysator.liu.se/c/duffs-device.html</ulink> and <ulink url="http://en.wikipedia.org/wiki/Duff&apos;s_device">http://en.wikipedia.org/wiki/Duff&apos;s_device</ulink></para><para><xrefsect id="todo_1_todo000048"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>investigate the possible advantages of using boost implementation, see: &lt;boost/numeric/ublas/detail/duff.hpp&gt; &lt;boost/numeric/ublas/functional.hpp&gt; &lt;boostnumeric/ublas/detail/matrix_assign.hpp&gt; &lt;boost/numeric/ublas/detail/vector_assign.hpp&gt; </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/duffsdeviceinnerproduct.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/duffsdeviceinnerproduct.hpp" bodystart="43" bodyend="85"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/duffsdeviceinnerproduct.hpp" line="29"/>
   </compounddef>
 </doxygen>

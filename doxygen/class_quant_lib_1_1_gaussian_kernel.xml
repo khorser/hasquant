@@ -10,12 +10,6 @@
         <definition>NormalDistribution nd_</definition>
         <argsstring></argsstring>
         <name>nd_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_kernel_1ae08ec8d619e9e0ae0ff9f72551859cb9" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>CumulativeNormalDistribution cnd_</definition>
         <argsstring></argsstring>
         <name>cnd_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_kernel_1abea5e47f9dd97fc8da41bbe727d05955" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real normFact_</definition>
         <argsstring></argsstring>
         <name>normFact_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -59,12 +41,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>sigma</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="46" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -77,12 +53,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -94,12 +64,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -111,19 +75,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gaussian kernel function. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="44" bodyend="68"/>
   </compounddef>
 </doxygen>

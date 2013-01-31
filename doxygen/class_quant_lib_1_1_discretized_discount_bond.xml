@@ -10,12 +10,6 @@
         <definition>DiscretizedDiscountBond</definition>
         <argsstring>()</argsstring>
         <name>DiscretizedDiscountBond</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="145" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_discount_bond_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -28,12 +22,8 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>size</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method should initialize the asset values to an <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_discount_bond_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -42,20 +32,14 @@
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
         <reimplements refid="class_quant_lib_1_1_discretized_asset_1ace8de2f1297ce9bfbfb64cdf13f98ddc">mandatoryTimes</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method returns the times at which the numerical method should stop while rolling back the asset. Typical examples include payment times, exercise times and such.</para><para><simplesect kind="note"><para>The returned values are not guaranteed to be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="149" bodyend="151"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Useful discretized discount bond asset. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="143" bodyend="152"/>
   </compounddef>
 </doxygen>

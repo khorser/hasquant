@@ -10,12 +10,6 @@
         <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_forwards_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_forwards_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_forwards_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_forwards_1a5ba8c0749807b349f90cbc0465907c3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -74,12 +50,6 @@
           <type>std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;</type>
           <declname>cashFlowsGenerated</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_forwards_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -87,12 +57,6 @@
         <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="44"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +66,6 @@
         <definition>std::vector&lt;Real&gt; accruals_</definition>
         <argsstring></argsstring>
         <name>accruals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_forwards_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
@@ -115,12 +73,6 @@
         <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
         <argsstring></argsstring>
         <name>paymentTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_forwards_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
@@ -128,12 +80,6 @@
         <definition>std::vector&lt;Rate&gt; strikes_</definition>
         <argsstring></argsstring>
         <name>strikes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_forwards_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -141,12 +87,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -172,19 +112,9 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="33"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepforwards.hpp" bodystart="28" bodyend="52"/>
   </compounddef>
 </doxygen>

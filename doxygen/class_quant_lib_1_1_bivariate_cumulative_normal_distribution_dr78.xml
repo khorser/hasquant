@@ -9,12 +9,6 @@
         <definition>Real rho_</definition>
         <argsstring></argsstring>
         <name>rho_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1af8261a46a6df92c0375dbe36b96dbd5d" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real rho2_</definition>
         <argsstring></argsstring>
         <name>rho2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +25,6 @@
         <definition>const Real x_[]</definition>
         <argsstring>[]</argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1aea759cbccab2a3050f84a2c19894b3de" prot="private" static="yes" mutable="no">
@@ -50,12 +32,6 @@
         <definition>const Real y_[]</definition>
         <argsstring>[]</argsstring>
         <name>y_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -69,12 +45,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1a5cd84d61c9a61614c49dacf063bca822" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -90,12 +60,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="63"/>
       </memberdef>
       </sectiondef>

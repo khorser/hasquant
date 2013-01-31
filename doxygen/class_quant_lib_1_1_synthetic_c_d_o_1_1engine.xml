@@ -9,8 +9,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> base engine. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="40" bodyend="78"/>
   </compounddef>
 </doxygen>

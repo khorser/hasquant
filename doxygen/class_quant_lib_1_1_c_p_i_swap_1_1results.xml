@@ -10,12 +10,6 @@
         <definition>Rate fairRate</definition>
         <argsstring></argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Spread fairSpread</definition>
         <argsstring></argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -38,19 +26,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="183"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from swap calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="179" bodyend="184"/>
   </compounddef>
 </doxygen>

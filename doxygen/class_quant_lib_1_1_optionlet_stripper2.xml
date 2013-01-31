@@ -13,12 +13,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="56"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +24,6 @@
         <definition>const boost::shared_ptr&lt;OptionletStripper1&gt; stripper1_</definition>
         <argsstring></argsstring>
         <name>stripper1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1aedd4a7348279bc413a06d57a0180bfe0" prot="private" static="no" mutable="no">
@@ -41,12 +31,6 @@
         <definition>const Handle&lt;CapFloorTermVolCurve&gt; atmCapFloorTermVolCurve_</definition>
         <argsstring></argsstring>
         <name>atmCapFloorTermVolCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
@@ -54,12 +38,6 @@
         <definition>DayCounter dc_</definition>
         <argsstring></argsstring>
         <name>dc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1af2d8270303af86ea4f1ccc1e1c694a69" prot="private" static="no" mutable="no">
@@ -67,12 +45,6 @@
         <definition>Size nOptionExpiries_</definition>
         <argsstring></argsstring>
         <name>nOptionExpiries_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a527694365f9018a06acf0e5e01a44ccf" prot="private" static="no" mutable="yes">
@@ -80,12 +52,6 @@
         <definition>std::vector&lt;Rate&gt; atmCapFloorStrikes_</definition>
         <argsstring></argsstring>
         <name>atmCapFloorStrikes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a52a660e9d47b1beab42433e4aef95f37" prot="private" static="no" mutable="yes">
@@ -93,12 +59,6 @@
         <definition>std::vector&lt;Real&gt; atmCapFloorPrices_</definition>
         <argsstring></argsstring>
         <name>atmCapFloorPrices_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a18e4df01749814688c6ff8b7308218ef" prot="private" static="no" mutable="yes">
@@ -106,12 +66,6 @@
         <definition>std::vector&lt;Volatility&gt; spreadsVolImplied_</definition>
         <argsstring></argsstring>
         <name>spreadsVolImplied_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a49c3ac57f654be306cf8e88a4fc75365" prot="private" static="no" mutable="yes">
@@ -119,12 +73,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;CapFloor&gt; &gt; caps_</definition>
         <argsstring></argsstring>
         <name>caps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1ad1fbba98763c2a0de29a5700ad331942" prot="private" static="no" mutable="no">
@@ -132,12 +80,6 @@
         <definition>Size maxEvaluations_</definition>
         <argsstring></argsstring>
         <name>maxEvaluations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
@@ -145,12 +87,6 @@
         <definition>Real accuracy_</definition>
         <argsstring></argsstring>
         <name>accuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -168,12 +104,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_cap_floor_term_vol_curve" kindref="compound">CapFloorTermVolCurve</ref> &gt; &amp;</type>
           <declname>atmCapFloorTermVolCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1a001790f551d32100e8098a76d12e5cd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -181,12 +111,6 @@
         <definition>std::vector&lt;Rate&gt; atmCapFloorStrikes</definition>
         <argsstring>() const </argsstring>
         <name>atmCapFloorStrikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1aaebdf5a0002fce7fd614b57066562684" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -194,12 +118,6 @@
         <definition>std::vector&lt;Real&gt; atmCapFloorPrices</definition>
         <argsstring>() const </argsstring>
         <name>atmCapFloorPrices</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1ad6befe85f9d38ab74922bc50f8a9370c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -207,12 +125,6 @@
         <definition>std::vector&lt;Volatility&gt; spreadsVol</definition>
         <argsstring>() const </argsstring>
         <name>spreadsVol</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -222,17 +134,9 @@
         <definition>std::vector&lt;Volatility&gt; spreadsVolImplied</definition>
         <argsstring>() const </argsstring>
         <name>spreadsVolImplied</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="59"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Helper class to extend an <ref refid="class_quant_lib_1_1_optionlet_stripper1" kindref="compound">OptionletStripper1</ref> object stripping additional optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) At-The-Money term volatilities of a <ref refid="class_quant_lib_1_1_cap_floor_term_vol_curve" kindref="compound">CapFloorTermVolCurve</ref>. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="42" bodyend="83"/>

@@ -9,12 +9,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>const int KK</definition>
         <argsstring></argsstring>
         <name>KK</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1a3fa29894b3e9df3203709263624c2ae5" prot="private" static="yes" mutable="no">
@@ -37,12 +25,6 @@
         <definition>const int LL</definition>
         <argsstring></argsstring>
         <name>LL</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1aa9783a3056ae8a4f5bca1220444787b8" prot="private" static="yes" mutable="no">
@@ -50,12 +32,6 @@
         <definition>const int TT</definition>
         <argsstring></argsstring>
         <name>TT</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1a8a8e6d3c89612379da2e03f5c8c326b6" prot="private" static="yes" mutable="no">
@@ -63,12 +39,6 @@
         <definition>const int QUALITY</definition>
         <argsstring></argsstring>
         <name>QUALITY</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +48,6 @@
         <definition>std::vector&lt;double&gt; ranf_arr_buf</definition>
         <argsstring></argsstring>
         <name>ranf_arr_buf</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1aa6017a161f4d9540bb75013ab4c58099" prot="private" static="no" mutable="yes">
@@ -91,12 +55,6 @@
         <definition>size_t ranf_arr_ptr</definition>
         <argsstring></argsstring>
         <name>ranf_arr_ptr</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1ad91754e0cba3b8728c8d47a87e9d747f" prot="private" static="no" mutable="yes">
@@ -104,12 +62,6 @@
         <definition>size_t ranf_arr_sentinel</definition>
         <argsstring></argsstring>
         <name>ranf_arr_sentinel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1ad94d865ffdb9379861c87971c108c4a3" prot="private" static="no" mutable="yes">
@@ -117,12 +69,6 @@
         <definition>std::vector&lt;double&gt; ran_u</definition>
         <argsstring></argsstring>
         <name>ran_u</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -137,12 +83,8 @@
           <declname>seed</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a54d52bd9fcbf209b55759eaee7c151bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -150,12 +92,8 @@
         <definition>KnuthUniformRng::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0) </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="68" bodyend="73"/>
       </memberdef>
       </sectiondef>
@@ -173,12 +111,6 @@
           <type>double</type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a86236eec6550f4ededb316702aeb4737" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -190,12 +122,6 @@
           <type>int</type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a4f0a28eea782bdf9b9c9cc5d66845c0d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -207,12 +133,6 @@
           <type>long</type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1abe6fa9d5f6533fe227a20bf89d8beb8c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -228,12 +148,6 @@
           <type>int</type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a0a78eb5869e3410a1be126acd1c95384" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -241,12 +155,6 @@
         <definition>double ranf_arr_cycle</definition>
         <argsstring>() const </argsstring>
         <name>ranf_arr_cycle</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="62"/>
       </memberdef>
       </sectiondef>

@@ -11,12 +11,6 @@
         <definition>virtual ~results</definition>
         <argsstring>()</argsstring>
         <name>~results</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1_1results_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -24,19 +18,9 @@
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="54"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="51" bodyend="55"/>
   </compounddef>
 </doxygen>

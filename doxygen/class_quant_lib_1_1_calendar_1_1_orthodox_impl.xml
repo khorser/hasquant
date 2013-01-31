@@ -16,10 +16,6 @@
         </param>
         <briefdescription>
 <para>expressed relative to first day of year </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="167"/>
       </memberdef>
       </sectiondef>

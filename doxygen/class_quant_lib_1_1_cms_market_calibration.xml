@@ -7,31 +7,13 @@
         <name>CalibrationType</name>
         <enumvalue id="class_quant_lib_1_1_cms_market_calibration_1a18340f2f2342933b54b1dc8e6c0ed797abdc36fc556811ac69a569adde2fc3146" prot="public">
           <name>OnSpread</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cms_market_calibration_1a18340f2f2342933b54b1dc8e6c0ed797af2f60aea24cffd4a842c4ea0fa3a616c" prot="public">
           <name>OnPrice</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_cms_market_calibration_1a18340f2f2342933b54b1dc8e6c0ed797abc31eaa8d05dce7840cee22b17010531" prot="public">
           <name>OnForwardCmsPrice</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
@@ -41,12 +23,6 @@
         <definition>Handle&lt;SwaptionVolatilityStructure&gt; volCube_</definition>
         <argsstring></argsstring>
         <name>volCube_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1a5e7ea92125f7fda2ca96edc302e76400" prot="public" static="no" mutable="no">
@@ -54,12 +30,6 @@
         <definition>boost::shared_ptr&lt;CmsMarket&gt; cmsMarket_</definition>
         <argsstring></argsstring>
         <name>cmsMarket_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1af8323012b2f97622fa66f3d3bed6c888" prot="public" static="no" mutable="no">
@@ -67,12 +37,6 @@
         <definition>Matrix weights_</definition>
         <argsstring></argsstring>
         <name>weights_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1a3bb35fecfed289883f1e3d802bf288d5" prot="public" static="no" mutable="no">
@@ -80,12 +44,6 @@
         <definition>CalibrationType calibrationType_</definition>
         <argsstring></argsstring>
         <name>calibrationType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1a101e0a9a7ba9aa267ad96710aac90f1e" prot="public" static="no" mutable="no">
@@ -93,12 +51,6 @@
         <definition>Matrix sparseSabrParameters_</definition>
         <argsstring></argsstring>
         <name>sparseSabrParameters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1a34c0622a6f08c2652bb57d8acbe31ef7" prot="public" static="no" mutable="no">
@@ -106,12 +58,6 @@
         <definition>Matrix denseSabrParameters_</definition>
         <argsstring></argsstring>
         <name>denseSabrParameters_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1a75a0b2d8b83bf0f5e5a99cc4f374620f" prot="public" static="no" mutable="no">
@@ -119,12 +65,6 @@
         <definition>Matrix browseCmsMarket_</definition>
         <argsstring></argsstring>
         <name>browseCmsMarket_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -134,12 +74,6 @@
         <definition>Real error_</definition>
         <argsstring></argsstring>
         <name>error_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_market_calibration_1aacca274817f68a940808a862ee99dd7f" prot="private" static="no" mutable="no">
@@ -147,12 +81,6 @@
         <definition>EndCriteria::Type endCriteria_</definition>
         <argsstring></argsstring>
         <name>endCriteria_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -178,12 +106,6 @@
           <type>CalibrationType</type>
           <declname>calibrationType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_calibration_1a961a3a68ba647656143fec380e36a300" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -207,12 +129,6 @@
           <type>bool</type>
           <declname>isMeanReversionFixed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_calibration_1ad1a8bc3665894e92bebfbf54ecbb7930" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -220,12 +136,6 @@
         <definition>Real error</definition>
         <argsstring>()</argsstring>
         <name>error</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cms_market_calibration_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -233,19 +143,9 @@
         <definition>EndCriteria::Type endCriteria</definition>
         <argsstring>()</argsstring>
         <name>endCriteria</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/cmsmarketcalibration.hpp" bodystart="38" bodyend="64"/>
   </compounddef>
 </doxygen>

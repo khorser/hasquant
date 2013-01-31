@@ -18,12 +18,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a3ae2d70f89b2d3c6a9d16cfa91c4cc70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -34,12 +28,6 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="43"/>
       </memberdef>
       </sectiondef>
@@ -50,12 +38,6 @@
         <definition>Real absoluteAccuracy</definition>
         <argsstring>() const </argsstring>
         <name>absoluteAccuracy</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a842b062d85cd314bb96925ed3b67afac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -63,12 +45,6 @@
         <definition>Size maxEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>maxEvaluations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="49"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +54,6 @@
         <definition>Real absoluteAccuracy_</definition>
         <argsstring></argsstring>
         <name>absoluteAccuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1a52e105735af14c9d511476dc6a74b536" prot="private" static="no" mutable="yes">
@@ -91,12 +61,6 @@
         <definition>Real absoluteError_</definition>
         <argsstring></argsstring>
         <name>absoluteError_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1ad1fbba98763c2a0de29a5700ad331942" prot="private" static="no" mutable="no">
@@ -104,12 +68,6 @@
         <definition>Size maxEvaluations_</definition>
         <argsstring></argsstring>
         <name>maxEvaluations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1ac192ece2bb0652f4e8e1627cd4343745" prot="private" static="no" mutable="yes">
@@ -117,12 +75,6 @@
         <definition>Size evaluations_</definition>
         <argsstring></argsstring>
         <name>evaluations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -140,12 +92,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>maxEvaluations</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1ac13ff1f4b36510ac4bcd076d4c1773ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -153,12 +99,6 @@
         <definition>virtual ~Integrator</definition>
         <argsstring>()</argsstring>
         <name>~Integrator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a60134ce215fe001ccfd67332646dd805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -178,12 +118,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1ab118832eb331364a73b4bb0a6baa4629" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -191,12 +125,6 @@
         <definition>Real absoluteError</definition>
         <argsstring>() const </argsstring>
         <name>absoluteError</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -204,12 +132,6 @@
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfEvaluations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1acc129571df52ec7737c23e281c830106" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -217,19 +139,9 @@
         <definition>virtual bool integrationSuccess</definition>
         <argsstring>() const </argsstring>
         <name>integrationSuccess</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="56"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="30" bodyend="70"/>
   </compounddef>
 </doxygen>

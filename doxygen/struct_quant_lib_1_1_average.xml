@@ -8,31 +8,15 @@
         <name>Type</name>
         <enumvalue id="struct_quant_lib_1_1_average_1a1d1cfd8ffb84e947f82999c682b666a7a45e14e29137d6b26fe4ac37d2cf3158c" prot="public">
           <name>Arithmetic</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_average_1a1d1cfd8ffb84e947f82999c682b666a7a46d8d47701b60203d023c1c14c87e3a2" prot="public">
           <name>Geometric</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/averagetype.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/averagetype.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Placeholder for enumerated averaging types. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/averagetype.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/averagetype.hpp" bodystart="34" bodyend="36"/>
   </compounddef>
 </doxygen>

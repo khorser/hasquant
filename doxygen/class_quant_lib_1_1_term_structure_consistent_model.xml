@@ -15,12 +15,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
         <argsstring></argsstring>
         <name>termStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -34,12 +28,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -47,12 +35,6 @@
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; termStructure</definition>
         <argsstring>() const </argsstring>
         <name>termStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       </sectiondef>

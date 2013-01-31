@@ -15,12 +15,6 @@
         <argsstring>() const </argsstring>
         <name>evolution</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1aaf801d7941a97da6022733449a2a0e24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -29,12 +23,6 @@
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1a56865e26489f9b92ffd7aa1adf6cbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -43,12 +31,6 @@
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1ae76494005108a03d01db60b6bb685116">possibleCashFlowTimes</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -59,10 +41,6 @@
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
         <briefdescription>
 <para>during simulation put product at start of path </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="44"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +59,6 @@
           <declname>multiplier</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1adccee83ceafb42605c0b5a54decba11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -102,12 +74,6 @@
           <declname>multiplier</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1a32d626626eee0bc4ade146973f6abb1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,12 +81,6 @@
         <definition>void finalize</definition>
         <argsstring>()</argsstring>
         <name>finalize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -128,12 +88,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1a4d3832e41ef37ae2b78220d27b32d756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -145,12 +99,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1a04fc1fdac6123f79e4cfdc37ac11a05d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -162,12 +110,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1ada5f3aaad6f0c235b22d8835ea01f71f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -179,12 +121,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="56"/>
       </memberdef>
       </sectiondef>
@@ -194,12 +130,6 @@
         <definition>typedef std::vector&lt;SubProduct&gt;::iterator iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_market_model_composite_1ad1bf7b26d29f9abf4bfa131b2a93c575" prot="protected" static="no">
@@ -207,12 +137,6 @@
         <definition>typedef std::vector&lt;SubProduct&gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -222,12 +146,6 @@
         <definition>MarketModelComposite</definition>
         <argsstring>()</argsstring>
         <name>MarketModelComposite</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="38"/>
       </memberdef>
       </sectiondef>

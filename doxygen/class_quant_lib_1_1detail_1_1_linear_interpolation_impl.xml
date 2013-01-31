@@ -17,12 +17,6 @@
         <definition>std::vector&lt;Real&gt; primitiveConst_</definition>
         <argsstring></argsstring>
         <name>primitiveConst_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a41bc28f21a1e438c67c0c0f823c59f17" prot="private" static="no" mutable="no">
@@ -30,12 +24,6 @@
         <definition>std::vector&lt;Real&gt; s_</definition>
         <argsstring></argsstring>
         <name>s_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -57,12 +45,6 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +52,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="43" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -87,12 +63,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -104,12 +74,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="56" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -121,12 +85,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -137,19 +95,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="36" bodyend="71"/>
   </compounddef>
 </doxygen>

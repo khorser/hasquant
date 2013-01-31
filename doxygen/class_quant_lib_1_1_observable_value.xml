@@ -21,12 +21,6 @@
           <type>const T &amp;</type>
           <defname>t</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="78" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_value_1a8df11cf784dbdc9fe0910d9fdc35c754" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -38,12 +32,6 @@
           <type>const <ref refid="class_quant_lib_1_1_observable_value" kindref="compound">ObservableValue</ref>&lt; T &gt; &amp;</type>
           <defname>t</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="86" bodyend="90"/>
       </memberdef>
       </sectiondef>
@@ -53,12 +41,6 @@
         <definition>T value_</definition>
         <argsstring></argsstring>
         <name>value_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_observable_value_1a05bc7a91ca8a88664c49a458898986bf" prot="private" static="no" mutable="no">
@@ -66,12 +48,6 @@
         <definition>boost::shared_ptr&lt;Observable&gt; observable_</definition>
         <argsstring></argsstring>
         <name>observable_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +57,6 @@
         <definition>ObservableValue</definition>
         <argsstring>()</argsstring>
         <name>ObservableValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="66" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_value_1aaa3f054c252719bddecc285e933ff8e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -98,12 +68,6 @@
           <type>const T &amp;</type>
           <defname>t</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="70" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_value_1a42ab810bc2f7420b063ac50e8236728a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,12 +79,6 @@
           <type>const <ref refid="class_quant_lib_1_1_observable_value" kindref="compound">ObservableValue</ref>&lt; T &gt; &amp;</type>
           <defname>t</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="74" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_value_1ae5857c1c44e69902576181d342c6b0cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -130,10 +88,6 @@
         <name>operator T</name>
         <briefdescription>
 <para>implicit conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_value_1ac0b3ed61a44036fb7b305892a1546385" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -141,12 +95,6 @@
         <definition>operator boost::shared_ptr&lt; Observable &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; Observable &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_value_1a20f4a96fd8932e0b4d89c65f95991bc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -156,10 +104,6 @@
         <name>value</name>
         <briefdescription>
 <para>explicit inspector </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       </sectiondef>

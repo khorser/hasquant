@@ -13,12 +13,6 @@
         <definition>boost::shared_ptr&lt;Basket&gt; basket_</definition>
         <argsstring></argsstring>
         <name>basket_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a9c93f5707fa78510a2dcc2948d832504" prot="private" static="no" mutable="no">
@@ -26,12 +20,6 @@
         <definition>Protection::Side side_</definition>
         <argsstring></argsstring>
         <name>side_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a070ed82c6cab5f05e2874979f4193388" prot="private" static="no" mutable="no">
@@ -39,12 +27,6 @@
         <definition>Schedule schedule_</definition>
         <argsstring></argsstring>
         <name>schedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1ac3c9632f46c7c3452256d4f95d9137fe" prot="private" static="no" mutable="no">
@@ -52,12 +34,6 @@
         <definition>Rate upfrontRate_</definition>
         <argsstring></argsstring>
         <name>upfrontRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a1d4a7718a046a2e82cc5560749566b14" prot="private" static="no" mutable="no">
@@ -65,12 +41,6 @@
         <definition>Rate runningRate_</definition>
         <argsstring></argsstring>
         <name>runningRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -78,12 +48,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1ab0c2ba6da16ec8c201da972e61b08334" prot="private" static="no" mutable="no">
@@ -91,12 +55,6 @@
         <definition>BusinessDayConvention paymentConvention_</definition>
         <argsstring></argsstring>
         <name>paymentConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1afede98ee249f0d9a977891edf19a1708" prot="private" static="no" mutable="no">
@@ -104,12 +62,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; yieldTS_</definition>
         <argsstring></argsstring>
         <name>yieldTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a4ef18b7aac482387c839f0fee6be66be" prot="private" static="no" mutable="yes">
@@ -117,12 +69,6 @@
         <definition>Rate fairPremium_</definition>
         <argsstring></argsstring>
         <name>fairPremium_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a1b4fbe73c80137f86fd526d6b2286f16" prot="private" static="no" mutable="yes">
@@ -130,12 +76,6 @@
         <definition>Real premiumValue_</definition>
         <argsstring></argsstring>
         <name>premiumValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a03f4f30065c12374c8e8e9944e7e86aa" prot="private" static="no" mutable="yes">
@@ -143,12 +83,6 @@
         <definition>Real protectionValue_</definition>
         <argsstring></argsstring>
         <name>protectionValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a01719e6ef6bcd518aed84da413307faf" prot="private" static="no" mutable="yes">
@@ -156,12 +90,6 @@
         <definition>Real upfrontPremiumValue_</definition>
         <argsstring></argsstring>
         <name>upfrontPremiumValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1a06c05f7e4de70c95a3304dd89f788178" prot="private" static="no" mutable="yes">
@@ -169,12 +97,6 @@
         <definition>Real remainingNotional_</definition>
         <argsstring></argsstring>
         <name>remainingNotional_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1aee05ca66c183ecc4185202fb28657117" prot="private" static="no" mutable="yes">
@@ -182,12 +104,6 @@
         <definition>Size error_</definition>
         <argsstring></argsstring>
         <name>error_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1aef5ddcd581a6dbe60800e0641d82245d" prot="private" static="no" mutable="yes">
@@ -195,12 +111,6 @@
         <definition>std::vector&lt;Real&gt; expectedTrancheLoss_</definition>
         <argsstring></argsstring>
         <name>expectedTrancheLoss_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -242,12 +152,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1aea4975364ce04215976c4cecddba7261" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -255,12 +159,6 @@
         <definition>boost::shared_ptr&lt;Basket&gt; basket</definition>
         <argsstring>() const </argsstring>
         <name>basket</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -271,10 +169,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -282,12 +176,6 @@
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a9f9a340d55784f63ccfff9cf1979bd54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -295,12 +183,6 @@
         <definition>Rate fairUpfrontPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairUpfrontPremium</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a8729d80e43b77566cbdf0cfe0b9b93dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -308,12 +190,6 @@
         <definition>Rate premiumValue</definition>
         <argsstring>() const </argsstring>
         <name>premiumValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1abb77e8f956fe2e7458681bef8f73f9d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -321,12 +197,6 @@
         <definition>Rate protectionValue</definition>
         <argsstring>() const </argsstring>
         <name>protectionValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a2f0a1cec9683f9dee08ad2ea12eda7aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -334,12 +204,6 @@
         <definition>Real premiumLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>premiumLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a28658c93a5819086e55488a2a2e0e463" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -347,12 +211,6 @@
         <definition>Real protectionLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>protectionLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1afb6649efb47dd3d59ef63002f3d27002" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -360,12 +218,8 @@
         <definition>Real remainingNotional</definition>
         <argsstring>() const </argsstring>
         <name>remainingNotional</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Total outstanding tranche notional, not wiped out </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1a73193d76dd420560c91dbefc6874dd93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -373,12 +227,8 @@
         <definition>std::vector&lt;Real&gt; expectedTrancheLoss</definition>
         <argsstring>() const </argsstring>
         <name>expectedTrancheLoss</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Expected tranche loss for all payment dates </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1afca3e3cf414a77cea53374f408cf8e0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -386,12 +236,6 @@
         <definition>Size error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -403,12 +247,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -421,12 +261,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="135"/>
       </memberdef>
       </sectiondef>
@@ -437,12 +273,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="138"/>
       </memberdef>
       </sectiondef>

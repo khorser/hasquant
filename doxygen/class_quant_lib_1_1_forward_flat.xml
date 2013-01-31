@@ -10,12 +10,6 @@
         <argsstring></argsstring>
         <name>global</name>
         <initializer>= false</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_forward_flat_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
@@ -24,12 +18,6 @@
         <argsstring></argsstring>
         <name>requiredPoints</name>
         <initializer>= 2</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -59,19 +47,11 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="92" bodyend="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Forward-flat interpolation factory and traits. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="89" bodyend="98"/>
   </compounddef>
 </doxygen>

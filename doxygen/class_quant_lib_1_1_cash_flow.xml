@@ -21,13 +21,9 @@
         <reimplementedby refid="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -50,8 +46,6 @@
 <para>returns true if an event has already occurred before a date </para>        </briefdescription>
         <detaileddescription>
 <para>overloads <ref refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> in order to take QL_TODAYS_PAYMENTS in account </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -76,8 +70,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="60"/>
       </memberdef>
       </sectiondef>
@@ -112,12 +104,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="64"/>
       </memberdef>
       </sectiondef>
@@ -127,12 +113,6 @@
         <definition>virtual ~CashFlow</definition>
         <argsstring>()</argsstring>
         <name>~CashFlow</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       </sectiondef>

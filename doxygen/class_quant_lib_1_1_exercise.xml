@@ -10,31 +10,13 @@
         <name>Type</name>
         <enumvalue id="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a6443a7d3e2731d6476a84492e0bf66cc" prot="public">
           <name>American</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7acb4ca18a2ea7ea68f2c1e2a7c4e8181a" prot="public">
           <name>Bermudan</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public">
           <name>European</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="37" bodyend="39"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +30,6 @@
           <type>Type</type>
           <declname>type</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a319eac5256bf348c4cbfcddbec689b09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -61,12 +37,6 @@
         <definition>virtual ~Exercise</definition>
         <argsstring>()</argsstring>
         <name>~Exercise</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -74,12 +44,6 @@
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a688725346fb170983161428872458ff5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -91,12 +55,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>index</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a6a149d4beeac42703f37f63defbff974" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -106,10 +64,6 @@
         <name>dates</name>
         <briefdescription>
 <para>Returns all exercise dates. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -117,19 +71,11 @@
         <definition>Date lastDate</definition>
         <argsstring>() const </argsstring>
         <name>lastDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base exercise class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="35" bodyend="52"/>
   </compounddef>
 </doxygen>

@@ -8,12 +8,6 @@
         <definition>Real value</definition>
         <argsstring></argsstring>
         <name>value</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -27,19 +21,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="55" bodyend="58"/>
   </compounddef>
 </doxygen>

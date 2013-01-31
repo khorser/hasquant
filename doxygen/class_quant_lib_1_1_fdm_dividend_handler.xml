@@ -9,12 +9,6 @@
         <definition>Array x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dividend_handler_1a75c16fcd88d78a795aee52f84f65ad38" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Time&gt; dividendTimes_</definition>
         <argsstring></argsstring>
         <name>dividendTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dividend_handler_1a2d1416fab0743038578c305aab4b1fe0" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Date&gt; dividendDates_</definition>
         <argsstring></argsstring>
         <name>dividendDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dividend_handler_1aa20b7f78e19666c51a3c5a3ab2d56536" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>std::vector&lt;Real&gt; dividends_</definition>
         <argsstring></argsstring>
         <name>dividends_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dividend_handler_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dividend_handler_1a4811dfbbc9dfb36b4560d2f6826d6d23" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>const Size equityDirection_</definition>
         <argsstring></argsstring>
         <name>equityDirection_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -109,12 +73,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>equityDirection</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -130,12 +88,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a0a837f2115f72e3be03837a7a5b7c8b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -143,12 +95,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; dividendTimes</definition>
         <argsstring>() const </argsstring>
         <name>dividendTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a437e8f80fe90518c362999111be8ed63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -156,12 +102,6 @@
         <definition>const std::vector&lt;Date&gt;&amp; dividendDates</definition>
         <argsstring>() const </argsstring>
         <name>dividendDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a3baca721afe17fd9e82bff459bfde07f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -169,19 +109,9 @@
         <definition>const std::vector&lt;Real&gt;&amp; dividends</definition>
         <argsstring>() const </argsstring>
         <name>dividends</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="49"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="37" bodyend="59"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; dividendYield_</definition>
         <argsstring></argsstring>
         <name>dividendYield_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1ad78debd4aecc695a825e6cb42052bb35" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>boost::shared_ptr&lt;VanillaOption&gt; option_</definition>
         <argsstring></argsstring>
         <name>option_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1a7540e1a0fc1bccaccbba558c270d33f0" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Date exerciseDate_</definition>
         <argsstring></argsstring>
         <name>exerciseDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1afbe18e91c190f3a06b1fb66e429cadb6" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Time tau_</definition>
         <argsstring></argsstring>
         <name>tau_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1a8bf3af3edadccaf1a6ac78b0d0ab7211" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const Real s0_</definition>
         <argsstring></argsstring>
         <name>s0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1a9c7c739cc17577c5718c8a2421f3a036" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>const Real strikePrice_</definition>
         <argsstring></argsstring>
         <name>strikePrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -123,12 +87,6 @@
           <declname>errorType</declname>
           <defval>CalibrationHelper::RelativePriceError</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a9cee8013f93ddeb3dcdd7e8e41efe78d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -140,12 +98,6 @@
         <param>
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a7e150860902ed14d27ceee6baaed0942" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -156,10 +108,6 @@
         <reimplements refid="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a30466de83789323a5c4b09b48f069500" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -174,10 +122,6 @@
         </param>
         <briefdescription>
 <para>Black price given a volatility. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a031873b070bc7219052b0fcc0cf0a5c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -185,19 +129,11 @@
         <definition>Time maturity</definition>
         <argsstring>() const </argsstring>
         <name>maturity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>calibration helper for Heston model </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="33" bodyend="57"/>
   </compounddef>
 </doxygen>

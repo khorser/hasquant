@@ -10,12 +10,6 @@
         <definition>LTLCurrency</definition>
         <argsstring>()</argsstring>
         <name>LTLCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="240" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="240" bodyend="247"/>
       </memberdef>
       </sectiondef>

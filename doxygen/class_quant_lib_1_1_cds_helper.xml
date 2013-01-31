@@ -62,12 +62,6 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1ac70664feda1ab9d9cf8af821a8e521fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -125,12 +119,6 @@
           <declname>paysAtDefaultTime</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -141,17 +129,9 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="80"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Base default-probability bootstrap helper <parameterlist kind="param"><parameteritem>
 <parameternamelist>

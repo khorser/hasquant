@@ -9,12 +9,6 @@
         <definition>static const std::set&lt;Date&gt;&amp; knownDates</definition>
         <argsstring>()</argsstring>
         <name>knownDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a896b03c3d50a86420e8a4d99183b01f2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -26,12 +20,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a3fb232faf0f34197ee2fa7c8dced0a81" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -43,12 +31,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a9ce0f6340602ee9fc2f87db0369bd950" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -66,10 +48,6 @@
         </param>
         <briefdescription>
 <para>maintenance period start date in the given month/year </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a723827e2a30022eb84b073335de1eebe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -86,12 +64,8 @@
           <declname>referenceDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> date for the given <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code (e.g. March xxth, 2013 for MAR10).</para><para><xrefsect id="caveats_1_caveats000148"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input string is not an <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a46fa6730251ce58e9881cd0ba426eeba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -103,12 +77,8 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>ecbDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code for the given date (e.g. MAR10 for March xxth, 2010).</para><para><xrefsect id="caveats_1_caveats000149"><xreftitle>Warning</xreftitle><xrefdescription><para>It raises an exception if the input date is not an <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> date </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a625191a43ec4dd12278fe5e35475d5a7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -123,10 +93,6 @@
         </param>
         <briefdescription>
 <para>next maintenance period start date following the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1af23b14f39742593ecceefaf2a34f4a80" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -145,10 +111,6 @@
         </param>
         <briefdescription>
 <para>next maintenance period start date following the given <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" bodystart="65" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a66b5865e5bceb55c8a7975fdc8134272" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -163,10 +125,6 @@
         </param>
         <briefdescription>
 <para>next maintenance period start dates following the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1ac87a8fee5c153c124df60e26f8cfe84d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -185,10 +143,6 @@
         </param>
         <briefdescription>
 <para>next maintenance period start dates following the given code </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1aca410cfcdf9b3ff3ea113509d168ca69" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -200,12 +154,8 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns whether or not the given date is a maintenance period start date </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" bodystart="81" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a9fa5fcc17cb504aa3fb5cb54c58d2479" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -219,10 +169,6 @@
         </param>
         <briefdescription>
 <para>returns whether or not the given string is an <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a46b27b0fd32c51e20c2ad1f824b2e54d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -237,10 +183,6 @@
         </param>
         <briefdescription>
 <para>next <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code following the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1_e_c_b_1a4ee5fce11ae0c8f7b1b676b1dcc732b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -254,17 +196,11 @@
         </param>
         <briefdescription>
 <para>next <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref> code following the given code </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="95"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>European Central Bank reserve maintenance dates. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/ecb.hpp" bodystart="34" bodyend="97"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>Quantity</definition>
         <argsstring>()</argsstring>
         <name>Quantity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="125" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1ab629670c2ba4783926ca4bf75777fbb9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -35,12 +29,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>amount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="128" bodyend="132"/>
       </memberdef>
       </sectiondef>
@@ -51,12 +39,6 @@
         <definition>const CommodityType &amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a04ebdb0779a676fed38122c80f7190e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -64,12 +46,6 @@
         <definition>const UnitOfMeasure &amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -77,12 +53,6 @@
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="142" bodyend="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a8b301bfc296be76a82744b152620b9c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -90,12 +60,6 @@
         <definition>Quantity rounded</definition>
         <argsstring>() const </argsstring>
         <name>rounded</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="146" bodyend="150"/>
       </memberdef>
       </sectiondef>
@@ -107,12 +71,6 @@
         <definition>Quantity operator+</definition>
         <argsstring>() const </argsstring>
         <name>operator+</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="152" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a78bc29d2a181c79cb78e53dc8c5f49c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -120,12 +78,6 @@
         <definition>Quantity operator-</definition>
         <argsstring>() const </argsstring>
         <name>operator-</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1af40ce3b43a237773e2cf6a663c8ac7bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -136,12 +88,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1aaf18bd78c2946f12532b9931bb991663" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -152,12 +98,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1ac6ab8a2eb848a6b503bc4b5af339b3a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -169,12 +109,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>x</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="160" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1ae351bfed0880b199af50880ff4e5f0b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -186,12 +120,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>x</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="165" bodyend="168"/>
       </memberdef>
       </sectiondef>
@@ -202,31 +130,19 @@
         <name>ConversionType</name>
         <enumvalue id="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107a72ed6bc56b64c8b02948e4208525cca7" prot="public">
           <name>NoConversion</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>do not perform conversions </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107a0724fc0338cd74c96a344432e10e4539" prot="public">
           <name>BaseUnitOfMeasureConversion</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>convert both operands to the base unitOfMeasure before converting </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107ad49f32edf8f7bca53bf83458dd499f39" prot="public">
           <name>AutomatedConversion</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>return the result in the unitOfMeasure of the first operand </para>          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="68" bodyend="76"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1adf033835af8d96a070082ca9ee78ce30" prot="public" static="yes" mutable="no">
@@ -234,12 +150,6 @@
         <definition>ConversionType conversionType</definition>
         <argsstring></argsstring>
         <name>conversionType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1a1ec31e9903d7163170721986906bd492" prot="public" static="yes" mutable="no">
@@ -247,12 +157,6 @@
         <definition>UnitOfMeasure baseUnitOfMeasure</definition>
         <argsstring></argsstring>
         <name>baseUnitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -264,12 +168,6 @@
         <definition>CommodityType commodityType_</definition>
         <argsstring></argsstring>
         <name>commodityType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" static="no" mutable="no">
@@ -277,12 +175,6 @@
         <definition>UnitOfMeasure unitOfMeasure_</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" static="no" mutable="no">
@@ -290,12 +182,6 @@
         <definition>Real amount_</definition>
         <argsstring></argsstring>
         <name>amount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -311,12 +197,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="81"/>
       </memberdef>
       </sectiondef>
@@ -332,12 +212,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="171" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1ad78fa7a2b2c87df291ea92b30b4ab21e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -351,12 +225,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="177" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a9d5ba8f98f7b4996e5e9ed2e57ac24cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -370,12 +238,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="183" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1aad1cad04d3e9719f8335cbb8af7c9d45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -389,12 +251,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="189" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a3509a450371b66d3cb796cc446679724" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -408,12 +264,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="193" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a3491221669a3f36e3c5ea9f18fdeeef9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -427,12 +277,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1abc87975ae73b653638f53313f0f126c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -446,12 +290,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1ab5319972dff38489989679a5a68fe451" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -465,12 +303,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="199" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a39659ebc093023e8f81571b7ccc7c712" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -484,12 +316,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1aee765537c0de009828db8d5c1302cd54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -503,12 +329,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a00c4d93468e4de8b1c0ce0d808e0c7b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -522,12 +342,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="203" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1a5cfb1d15f4c1a39611a6ceada7e76dac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -541,12 +355,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="207" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1ab3eb319be4ad31a69bbedb9741f25b5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -565,12 +373,6 @@
           <declname>n</declname>
           <defval>42</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1aa203374ee10b1dd92948e400472cd1e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -589,19 +391,11 @@
           <declname>n</declname>
           <defval>42</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="120"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Amount of a commodity. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="33" bodyend="86"/>
   </compounddef>
 </doxygen>

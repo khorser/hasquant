@@ -10,12 +10,6 @@
         <definition>IEPCurrency</definition>
         <argsstring>()</argsstring>
         <name>IEPCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="613" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="613" bodyend="621"/>
       </memberdef>
       </sectiondef>

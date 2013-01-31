@@ -10,12 +10,6 @@
         <definition>Rate yield</definition>
         <argsstring>() const </argsstring>
         <name>yield</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="213" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ab4a5cac9afc19887bed6329cafc90e19" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Time duration</definition>
         <argsstring>() const </argsstring>
         <name>duration</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="219" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a5bfc61fdef3469fc0bf6a9ebf1023c81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>const std::vector&lt; Rate &gt; &amp; yields</definition>
         <argsstring>() const </argsstring>
         <name>yields</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="224" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a6009cb9f30e2f11874bde2076882a299" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; durations</definition>
         <argsstring>() const </argsstring>
         <name>durations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="229" bodyend="232"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a0e8d00b76f5279595958604f6e234bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -62,12 +38,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; swapLengths</definition>
         <argsstring>() const </argsstring>
         <name>swapLengths</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="234" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a458631a03abfb7cfb4db7b3515fe936f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -75,12 +45,6 @@
         <definition>const std::vector&lt; Rate &gt; &amp; swapRates</definition>
         <argsstring>() const </argsstring>
         <name>swapRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="238" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a7301abf71719eb535c263ebddbe45330" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -88,12 +52,6 @@
         <definition>const std::vector&lt; Rate &gt; &amp; swapYields</definition>
         <argsstring>() const </argsstring>
         <name>swapYields</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="243" bodyend="246"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ae66570c40b723bbe176ad168264ae164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -101,12 +59,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; swapDurations</definition>
         <argsstring>() const </argsstring>
         <name>swapDurations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="248" bodyend="251"/>
       </memberdef>
       </sectiondef>
@@ -117,12 +69,6 @@
         <definition>boost::shared_ptr&lt; VanillaSwap &gt; equivalentSwap</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="254" bodyend="257"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a02df826c493ded7bf2d9ce1a57f82020" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -130,12 +76,6 @@
         <definition>Rate equivalentSwapRate</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="259" bodyend="262"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ae351041a661a801d1281d583675aac68" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -143,12 +83,6 @@
         <definition>Rate equivalentSwapYield</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapYield</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="264" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1add2cfbe99dbad4cfa9169bdd212fdb65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -156,12 +90,6 @@
         <definition>Time equivalentSwapDuration</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapDuration</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="269" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a01eb0994b1a8b28fa6e4c449fc6d435d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -169,12 +97,6 @@
         <definition>Time equivalentSwapLength</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapLength</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="274" bodyend="277"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a28d9bd579325de64cc255385f24302ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -182,12 +104,6 @@
         <definition>Spread equivalentSwapSpread</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="279" bodyend="281"/>
       </memberdef>
       </sectiondef>
@@ -198,12 +114,6 @@
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="150"/>
       </memberdef>
       </sectiondef>
@@ -213,12 +123,6 @@
         <definition>boost::shared_ptr&lt;RendistatoBasket&gt; basket_</definition>
         <argsstring></argsstring>
         <name>basket_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1ac12d38d71cb2d0381361ffc5b62a7c6b" prot="private" static="no" mutable="no">
@@ -226,12 +130,6 @@
         <definition>boost::shared_ptr&lt;Euribor&gt; euriborIndex_</definition>
         <argsstring></argsstring>
         <name>euriborIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
@@ -239,12 +137,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
         <argsstring></argsstring>
         <name>discountCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a983cf39fbc0d856140fe0744f8b73dcd" prot="private" static="no" mutable="yes">
@@ -252,12 +144,6 @@
         <definition>std::vector&lt;Rate&gt; yields_</definition>
         <argsstring></argsstring>
         <name>yields_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a814ca8b2f859e2855e3a746c704622a3" prot="private" static="no" mutable="yes">
@@ -265,12 +151,6 @@
         <definition>std::vector&lt;Time&gt; durations_</definition>
         <argsstring></argsstring>
         <name>durations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a9fa6fb2ad377b4ce12824679a6466417" prot="private" static="no" mutable="yes">
@@ -278,12 +158,6 @@
         <definition>Time duration_</definition>
         <argsstring></argsstring>
         <name>duration_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a0b9a532701925e5f62eddde0bdb03b23" prot="private" static="no" mutable="yes">
@@ -291,12 +165,6 @@
         <definition>Size equivalentSwapIndex_</definition>
         <argsstring></argsstring>
         <name>equivalentSwapIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1ab7ae428b97ee0f7761db04bf08d8f77e" prot="private" static="no" mutable="no">
@@ -304,12 +172,6 @@
         <definition>Size nSwaps_</definition>
         <argsstring></argsstring>
         <name>nSwaps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a1002508acc6a1300eeb1dec428cf49bf" prot="private" static="no" mutable="yes">
@@ -317,12 +179,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;VanillaSwap&gt; &gt; swaps_</definition>
         <argsstring></argsstring>
         <name>swaps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a98378bcb07182cb1bdb3128069c4ffe9" prot="private" static="no" mutable="no">
@@ -330,12 +186,6 @@
         <definition>std::vector&lt;Time&gt; swapLenghts_</definition>
         <argsstring></argsstring>
         <name>swapLenghts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a3913ffaaa99cdd540f922a1dbcb3456e" prot="private" static="no" mutable="yes">
@@ -343,12 +193,6 @@
         <definition>std::vector&lt;Time&gt; swapBondDurations_</definition>
         <argsstring></argsstring>
         <name>swapBondDurations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1a671dee3d867d7a638a533db62a9b91d1" prot="private" static="no" mutable="yes">
@@ -356,12 +200,6 @@
         <definition>std::vector&lt;Rate&gt; swapBondYields_</definition>
         <argsstring></argsstring>
         <name>swapBondYields_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_calculator_1aa0360c2dc548b707066f0430fb365cce" prot="private" static="no" mutable="yes">
@@ -369,12 +207,6 @@
         <definition>std::vector&lt;Rate&gt; swapRates_</definition>
         <argsstring></argsstring>
         <name>swapRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -396,19 +228,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="124"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="120" bodyend="167"/>
   </compounddef>
 </doxygen>

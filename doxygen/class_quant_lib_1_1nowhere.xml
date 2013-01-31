@@ -9,19 +9,9 @@
         <definition>nowhere</definition>
         <argsstring>()</argsstring>
         <name>nowhere</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="75" bodyend="78"/>
   </compounddef>
 </doxygen>

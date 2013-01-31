@@ -29,8 +29,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000107"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a44918f70ab345cad67a287d46641f20f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -54,10 +52,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ab72309c6d49bd4b6dc5b9ed09b67c7b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -79,10 +73,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="75"/>
       </memberdef>
       </sectiondef>
@@ -115,10 +105,6 @@
         <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a56d243294c1b34335d067270796f5668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -132,10 +118,6 @@
         </param>
         <briefdescription>
 <para>date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="140" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -195,10 +177,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplementedby>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -214,10 +192,6 @@
         <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -238,10 +212,6 @@
         <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -262,10 +232,6 @@
         <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -283,10 +249,6 @@
         <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="134" bodyend="138"/>
       </memberdef>
       </sectiondef>
@@ -308,12 +270,6 @@
         <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_default_probability_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_yield_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="97"/>
       </memberdef>
       </sectiondef>
@@ -323,12 +279,6 @@
         <definition>Date referenceDate_</definition>
         <argsstring></argsstring>
         <name>referenceDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_1a8cb58608de54286272715a08a7492a7e" prot="private" static="no" mutable="no">
@@ -336,12 +286,6 @@
         <definition>Natural settlementDays_</definition>
         <argsstring></argsstring>
         <name>settlementDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -349,12 +293,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -364,19 +302,11 @@
         <definition>virtual ~TermStructure</definition>
         <argsstring>()</argsstring>
         <name>~TermStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Basic term-structure functionality. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="37" bodyend="118"/>
   </compounddef>
 </doxygen>

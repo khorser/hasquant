@@ -19,19 +19,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" bodystart="58" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base class for the one day deposit BBA CHF LIBOR indexes </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/chflibor.hpp" bodystart="56" bodyend="65"/>
   </compounddef>
 </doxygen>

@@ -26,12 +26,6 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_cap_floor_engine_1acccfb13ec8b6b235820cfe3325bdbb50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -52,12 +46,6 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="50"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +55,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
         <argsstring></argsstring>
         <name>termStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -83,19 +65,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for cap/floors. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" bodystart="34" bodyend="55"/>
   </compounddef>
 </doxygen>

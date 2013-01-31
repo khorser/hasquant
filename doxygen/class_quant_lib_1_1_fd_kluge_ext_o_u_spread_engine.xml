@@ -9,12 +9,6 @@
         <definition>typedef FdmExtOUJumpModelInnerValue::Shape GasShape</definition>
         <argsstring></argsstring>
         <name>GasShape</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1abd7f1e43fd8c63b32e557bddad656692" prot="public" static="no">
@@ -22,12 +16,6 @@
         <definition>typedef FdmExtOUJumpModelInnerValue::Shape PowerShape</definition>
         <argsstring></argsstring>
         <name>PowerShape</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +25,6 @@
         <definition>const boost::shared_ptr&lt;KlugeExtOUProcess&gt; klugeOUProcess_</definition>
         <argsstring></argsstring>
         <name>klugeOUProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
         <argsstring></argsstring>
         <name>rTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
@@ -63,12 +39,6 @@
         <definition>const Size tGrid_</definition>
         <argsstring></argsstring>
         <name>tGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
@@ -76,12 +46,6 @@
         <definition>const Size xGrid_</definition>
         <argsstring></argsstring>
         <name>xGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" static="no" mutable="no">
@@ -89,12 +53,6 @@
         <definition>const Size yGrid_</definition>
         <argsstring></argsstring>
         <name>yGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1a584dd84d74cc5ac2acfdc17385b41b8c" prot="private" static="no" mutable="no">
@@ -102,12 +60,6 @@
         <definition>const Size uGrid_</definition>
         <argsstring></argsstring>
         <name>uGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1a879fd7c99a4a6936fcd3268e6819ab20" prot="private" static="no" mutable="no">
@@ -115,12 +67,6 @@
         <definition>const boost::shared_ptr&lt;GasShape&gt; gasShape_</definition>
         <argsstring></argsstring>
         <name>gasShape_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1af92d4b8bbcc3eabec51b81043bf1405e" prot="private" static="no" mutable="no">
@@ -128,12 +74,6 @@
         <definition>const boost::shared_ptr&lt;PowerShape&gt; powerShape_</definition>
         <argsstring></argsstring>
         <name>powerShape_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -141,12 +81,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -199,12 +133,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_kluge_ext_o_u_spread_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -212,19 +140,9 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="58"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdklugeextouspreadengine.hpp" bodystart="41" bodyend="67"/>
   </compounddef>
 </doxygen>

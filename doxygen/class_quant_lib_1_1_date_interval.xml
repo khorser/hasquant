@@ -10,12 +10,6 @@
         <definition>Date startDate_</definition>
         <argsstring></argsstring>
         <name>startDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_date_interval_1ac13c69cfd95ff3957d5def2d7dd36f90" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Date endDate_</definition>
         <argsstring></argsstring>
         <name>endDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date_interval" kindref="compound">DateInterval</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="35"/>
       </memberdef>
       </sectiondef>
@@ -59,12 +41,6 @@
         <definition>DateInterval</definition>
         <argsstring>()</argsstring>
         <name>DateInterval</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1aa5cd194487771e9d789b71ffa1f36f70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -80,12 +56,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="42" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1a31cb634ae3717b7740c373fd6c34f1d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -93,12 +63,6 @@
         <definition>const Date&amp; startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1a6cb26aaac364e1cb4f93e17c25aa95aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -106,12 +70,6 @@
         <definition>const Date&amp; endDate</definition>
         <argsstring>() const </argsstring>
         <name>endDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1ae0695714fad43ad67b8a1f79a96dcb15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -133,12 +91,6 @@
           <declname>includeLast</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="50" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1abdfb3e737873bfe0574dba6d10c267f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -150,12 +102,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date_interval" kindref="compound">DateInterval</ref> &amp;</type>
           <declname>di</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="64" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1a718bd373cb3114db3887a2f5d3a0c6a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -167,12 +113,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date_interval" kindref="compound">DateInterval</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1a1a914561187c93257ba716185dfe633b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -184,19 +124,11 @@
           <type>const <ref refid="class_quant_lib_1_1_date_interval" kindref="compound">DateInterval</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> interval described by a number of a given time unit. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="34" bodyend="79"/>
   </compounddef>
 </doxygen>

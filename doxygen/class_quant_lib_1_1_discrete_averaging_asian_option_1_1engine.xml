@@ -9,8 +9,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp</includes>
     <briefdescription>
 <para>Discrete-averaging Asian engine base class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp" bodystart="99" bodyend="101"/>
   </compounddef>
 </doxygen>

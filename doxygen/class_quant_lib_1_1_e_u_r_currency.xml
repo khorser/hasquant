@@ -10,12 +10,6 @@
         <definition>EURCurrency</definition>
         <argsstring>()</argsstring>
         <name>EURCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="168" bodyend="175"/>
       </memberdef>
       </sectiondef>

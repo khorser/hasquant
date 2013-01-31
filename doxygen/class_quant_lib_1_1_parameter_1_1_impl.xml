@@ -16,12 +16,6 @@
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parameter_1_1_impl_1a999cdde07a48215158d3f676d7544a52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -37,19 +31,11 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for model parameter implementation. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="40" bodyend="44"/>
   </compounddef>
 </doxygen>

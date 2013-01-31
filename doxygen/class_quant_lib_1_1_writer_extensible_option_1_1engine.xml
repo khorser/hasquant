@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp</includes>
     <briefdescription>
 <para>Base engine. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="70" bodyend="72"/>
   </compounddef>
 </doxygen>

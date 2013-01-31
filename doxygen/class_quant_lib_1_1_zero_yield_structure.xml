@@ -32,12 +32,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zeroyieldstructure.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1af287d6e530508b687989352cbe0ce16f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -69,12 +63,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zeroyieldstructure.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1a5e457f34ac19db74df6a4d1a573f26e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -105,12 +93,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zeroyieldstructure.hpp" line="66"/>
       </memberdef>
       </sectiondef>
@@ -132,10 +114,6 @@
         </param>
         <briefdescription>
 <para>zero-yield calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zeroyieldstructure.hpp" line="78"/>
       </memberdef>
       </sectiondef>
@@ -151,12 +129,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <defname>t</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the discount factor for the given date calculating it from the zero yield. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zeroyieldstructure.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zeroyieldstructure.hpp" bodystart="92" bodyend="98"/>
       </memberdef>
       </sectiondef>

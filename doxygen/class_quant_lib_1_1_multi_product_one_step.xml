@@ -16,12 +16,6 @@
         <argsstring>() const </argsstring>
         <name>evolution</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_product_one_step_1aaf801d7941a97da6022733449a2a0e24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -30,12 +24,6 @@
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
         <reimplements refid="class_quant_lib_1_1_market_model_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="40"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +37,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>rateTimes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multiproductonestep.hpp" line="36"/>
       </memberdef>
       </sectiondef>

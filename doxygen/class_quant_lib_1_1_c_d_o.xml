@@ -10,12 +10,6 @@
         <definition>Real attachment_</definition>
         <argsstring></argsstring>
         <name>attachment_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1ad9f695b8255c19b34edd7b3f968f1494" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real detachment_</definition>
         <argsstring></argsstring>
         <name>detachment_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1af93f6645f3e6a081deb804ed7c13b5e7" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>std::vector&lt;Real&gt; nominals_</definition>
         <argsstring></argsstring>
         <name>nominals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1af948d2f3dea03e83cbeedb185663e989" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>std::vector&lt;Handle&lt;DefaultProbabilityTermStructure&gt; &gt; basket_</definition>
         <argsstring></argsstring>
         <name>basket_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a7a9b7801c4fe86a2235450249920cb26" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Handle&lt;OneFactorCopula&gt; copula_</definition>
         <argsstring></argsstring>
         <name>copula_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a75a453f5c15b0328ae5e2f66ebb76053" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>bool protectionSeller_</definition>
         <argsstring></argsstring>
         <name>protectionSeller_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="159" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1ad2510ccaca31c61c6927dcc3a89a272e" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>Schedule premiumSchedule_</definition>
         <argsstring></argsstring>
         <name>premiumSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a8f051f3bb1486007dbfd306cdbaa21d8" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>Rate premiumRate_</definition>
         <argsstring></argsstring>
         <name>premiumRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1ab8b3f12a5396ee556d268cdecb42d93a" prot="private" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>Rate recoveryRate_</definition>
         <argsstring></argsstring>
         <name>recoveryRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="164" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a45751ec829f746f7ad6747b4b0fa9d81" prot="private" static="no" mutable="no">
@@ -140,12 +80,6 @@
         <definition>Rate upfrontPremiumRate_</definition>
         <argsstring></argsstring>
         <name>upfrontPremiumRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1afede98ee249f0d9a977891edf19a1708" prot="private" static="no" mutable="no">
@@ -153,12 +87,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; yieldTS_</definition>
         <argsstring></argsstring>
         <name>yieldTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" static="no" mutable="no">
@@ -166,12 +94,6 @@
         <definition>Size nBuckets_</definition>
         <argsstring></argsstring>
         <name>nBuckets_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1af36628b26dba0928271de3b999f17b1d" prot="private" static="no" mutable="no">
@@ -179,12 +101,6 @@
         <definition>Period integrationStep_</definition>
         <argsstring></argsstring>
         <name>integrationStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1ad8c7888bba00645cf7e7fb484207e542" prot="private" static="no" mutable="no">
@@ -192,12 +108,6 @@
         <definition>std::vector&lt;Real&gt; lgds_</definition>
         <argsstring></argsstring>
         <name>lgds_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -205,12 +115,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a348934e50f6a68b0b7d82472976bd4d9" prot="private" static="no" mutable="no">
@@ -218,12 +122,6 @@
         <definition>Real lgd_</definition>
         <argsstring></argsstring>
         <name>lgd_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1abaa9fa4e15bfef5dff0636efb04b948f" prot="private" static="no" mutable="no">
@@ -231,12 +129,6 @@
         <definition>Real xMax_</definition>
         <argsstring></argsstring>
         <name>xMax_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a40f1875e76a0018adeb7d900d0afe1a0" prot="private" static="no" mutable="no">
@@ -244,12 +136,6 @@
         <definition>Real xMin_</definition>
         <argsstring></argsstring>
         <name>xMin_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1aee05ca66c183ecc4185202fb28657117" prot="private" static="no" mutable="yes">
@@ -257,12 +143,6 @@
         <definition>Size error_</definition>
         <argsstring></argsstring>
         <name>error_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a4ef18b7aac482387c839f0fee6be66be" prot="private" static="no" mutable="yes">
@@ -270,12 +150,6 @@
         <definition>Rate fairPremium_</definition>
         <argsstring></argsstring>
         <name>fairPremium_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a1b4fbe73c80137f86fd526d6b2286f16" prot="private" static="no" mutable="yes">
@@ -283,12 +157,6 @@
         <definition>Real premiumValue_</definition>
         <argsstring></argsstring>
         <name>premiumValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a03f4f30065c12374c8e8e9944e7e86aa" prot="private" static="no" mutable="yes">
@@ -296,12 +164,6 @@
         <definition>Real protectionValue_</definition>
         <argsstring></argsstring>
         <name>protectionValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a01719e6ef6bcd518aed84da413307faf" prot="private" static="no" mutable="yes">
@@ -309,12 +171,6 @@
         <definition>Real upfrontPremiumValue_</definition>
         <argsstring></argsstring>
         <name>upfrontPremiumValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -381,8 +237,6 @@
           <declname>integrationStep</declname>
           <defval><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref>(10, Years)</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -484,8 +338,6 @@
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a29092d9d6550ef55d3acdaadc5672b49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -493,12 +345,6 @@
         <definition>Real nominal</definition>
         <argsstring>()</argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="136" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1ab1e1ba3b401ff50b64f835425a53259f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -506,12 +352,6 @@
         <definition>Real lgd</definition>
         <argsstring>()</argsstring>
         <name>lgd</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="137" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a9f640384e88e9a3f579443135bc90d84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -519,12 +359,6 @@
         <definition>Real attachment</definition>
         <argsstring>()</argsstring>
         <name>attachment</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="138" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a4700a808d9f4ab060d54fbe7ffc15f6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -532,12 +366,6 @@
         <definition>Real detachment</definition>
         <argsstring>()</argsstring>
         <name>detachment</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="139" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a90837b8aa099984148ccd2c6f2f483bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -545,12 +373,6 @@
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring>()</argsstring>
         <name>nominals</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="140" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a9a4c32403766cd16ca4e3a5479f075bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -558,12 +380,6 @@
         <definition>Size size</definition>
         <argsstring>()</argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" bodystart="141" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -574,10 +390,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -585,12 +397,6 @@
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a8729d80e43b77566cbdf0cfe0b9b93dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -598,12 +404,6 @@
         <definition>Rate premiumValue</definition>
         <argsstring>() const </argsstring>
         <name>premiumValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1abb77e8f956fe2e7458681bef8f73f9d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -611,12 +411,6 @@
         <definition>Rate protectionValue</definition>
         <argsstring>() const </argsstring>
         <name>protectionValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1afca3e3cf414a77cea53374f408cf8e0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -624,12 +418,6 @@
         <definition>Size error</definition>
         <argsstring>() const </argsstring>
         <name>error</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="147"/>
       </memberdef>
       </sectiondef>
@@ -640,12 +428,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="150"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -654,12 +438,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="151"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_d_o_1a298e20057322d0012d690e9c5ed0d5c2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -671,12 +451,6 @@
           <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp" line="152"/>
       </memberdef>
       </sectiondef>
@@ -684,7 +458,6 @@
 <para>collateralized debt obligation </para>    </briefdescription>
     <detaileddescription>
 <para>The instrument prices a mezzanine <ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> tranche with loss given default between attachment point <formula id="66">$ D_1$</formula> and detachment point <formula id="67">$ D_2 &gt; D_1 $</formula>.</para><para>For purchased protection, the instrument value is given by the difference of the protection value <formula id="68">$ V_1 $</formula> and premium value <formula id="69">$ V_2 $</formula>,</para><para><formula id="70">\[ V = V_1 - V_2. \]</formula> <verbatim>  The protection leg is priced as follows:
-
   - Build the probability distribution for volume of defaults
 </verbatim> <formula id="46">$ L $</formula> (before recovery) or Loss Given Default <formula id="71">$ LGD = (1-r)\,L $</formula> at times/dates <formula id="72">$ t_i, i=1, ..., N$</formula> (premium schedule times with intermediate steps)<itemizedlist>
 <listitem><para>Determine the expected value <formula id="73">$ E_i = E_{t_i}\,\left[Pay(LGD)\right] $</formula> of the protection payoff <formula id="74">$ Pay(LGD) $</formula> at each time <formula id="75">$ t_i$</formula> where <formula id="76">\[ Pay(L) = min (D_1, LGD) - min (D_2, LGD) = \left\{ \begin{array}{lcl} \displaystyle 0 &amp;;&amp; LGD &lt; D_1 \\ \displaystyle LGD - D_1 &amp;;&amp; D_1 \leq LGD \leq D_2 \\ \displaystyle D_2 - D_1 &amp;;&amp; LGD &gt; D_2 \end{array} \right. \]</formula></para></listitem><listitem><para>The protection value is then calculated as <formula id="77">\[ V_1 \:=\: \sum_{i=1}^N (E_i - E_{i-1}) \cdot d_i \]</formula> where <formula id="78">$ d_i$</formula> is the discount factor at time/date <formula id="57">$ t_i $</formula></para></listitem></itemizedlist>
@@ -692,12 +465,10 @@
   the day count fraction between date/time \form#84 and
 </verbatim> <formula id="85">$ t_i.$</formula> <verbatim>  The construction of the portfolio loss distribution \form#80@_fakenl is based on the probability bucketing algorithm described
   in
-
   &lt;strong&gt;
   John Hull and Alan White, &quot;Valuation of a CDO and nth to default CDS
   without Monte Carlo simulation&quot;, Journal of Derivatives 12, 2, 2004
   &lt;/strong&gt;
-
   The pricing algorithm allows for varying notional amounts and
   default termstructures of the underlyings.
 </verbatim></para><para><xrefsect id="todo_1_todo000006"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Investigate and fix cases <formula id="86">$ E_{i+1} &lt; E_i. $</formula> </para></xrefdescription></xrefsect></para>    </detaileddescription>

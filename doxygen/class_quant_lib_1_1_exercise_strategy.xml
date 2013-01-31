@@ -18,12 +18,6 @@
         <definition>virtual ~ExerciseStrategy</definition>
         <argsstring>()</argsstring>
         <name>~ExerciseStrategy</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1af117f62bb721ee93fb0da745f4018258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -31,12 +25,6 @@
         <definition>virtual std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>exerciseTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1aac73cc2b0828ec5d0db4a0ced4ca2066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -44,12 +32,6 @@
         <definition>virtual std::vector&lt;Time&gt; relevantTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>relevantTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -57,12 +39,6 @@
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a75ca33d032c1f93ad3448fb15167a9d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -74,12 +50,6 @@
           <type>const State &amp;</type>
           <declname>currentState</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a0790cb4dda543bdf138f7b4d99e0d056" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -91,12 +61,6 @@
           <type>const State &amp;</type>
           <declname>currentState</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a06832a3ff993830ac38bdb9932a65b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -104,19 +68,9 @@
         <definition>virtual std::auto_ptr&lt;ExerciseStrategy&lt;State&gt; &gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/exercisestrategy.hpp" bodystart="31" bodyend="40"/>
   </compounddef>
 </doxygen>

@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp</includes>
     <briefdescription>
 <para>base class for swaption engines </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="113" bodyend="114"/>
   </compounddef>
 </doxygen>

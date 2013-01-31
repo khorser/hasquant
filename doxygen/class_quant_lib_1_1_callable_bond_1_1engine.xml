@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
     <briefdescription>
 <para>base class for callable fixed rate bond engine </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="138" bodyend="140"/>
   </compounddef>
 </doxygen>

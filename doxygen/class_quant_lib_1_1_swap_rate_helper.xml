@@ -12,12 +12,6 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="250"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -28,12 +22,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="251"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="255" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="320" bodyend="322"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_helper_1a62105f0ff1a8282281c052209b2014a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +39,6 @@
         <definition>boost::shared_ptr&lt; VanillaSwap &gt; swap</definition>
         <argsstring>() const </argsstring>
         <name>swap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="256" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="324" bodyend="326"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_helper_1a0d070b30d31e7aa87e1f4d67f4ee289d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +46,6 @@
         <definition>const Period &amp; forwardStart</definition>
         <argsstring>() const </argsstring>
         <name>forwardStart</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="257" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="328" bodyend="330"/>
       </memberdef>
       </sectiondef>
@@ -90,12 +60,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="261"/>
       </memberdef>
       </sectiondef>
@@ -128,12 +92,6 @@
           <declname>discountingCurve</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="212"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_helper_1a866fca6234fcf53fe0b5ac1e2f2e5f7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -184,12 +142,6 @@
           <declname>discountingCurve</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="226"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_helper_1a97695c4f5495bd1d1651316d21bf9bab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -240,12 +192,6 @@
           <declname>discountingCurve</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="240"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_helper_1aba69967c093ee1a1322cf417b58e12d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -276,12 +222,6 @@
           <declname>discountingCurve</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="247"/>
       </memberdef>
       </sectiondef>

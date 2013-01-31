@@ -10,12 +10,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
         <argsstring></argsstring>
         <name>discountCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_cap_floor_engine_1a99ae0b038644df79fe522fda46c399be" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Handle&lt;OptionletVolatilityStructure&gt; vol_</definition>
         <argsstring></argsstring>
         <name>vol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -51,12 +39,6 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cap_floor_engine_1a3d141185f47f5cd041f858f3b9df886f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -77,12 +59,6 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cap_floor_engine_1a54ce240d1511f464fbef419c07a07f85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -98,12 +74,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -112,12 +82,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cap_floor_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -125,12 +89,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>
         <argsstring>()</argsstring>
         <name>termStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_cap_floor_engine_1a698565c572484702e3de037f903e329f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -138,19 +96,11 @@
         <definition>Handle&lt;OptionletVolatilityStructure&gt; volatility</definition>
         <argsstring>()</argsstring>
         <name>volatility</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-formula cap/floor engine. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="38" bodyend="54"/>
   </compounddef>
 </doxygen>

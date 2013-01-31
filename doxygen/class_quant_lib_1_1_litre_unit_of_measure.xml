@@ -9,19 +9,9 @@
         <definition>LitreUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>LitreUnitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="71" bodyend="76"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="69" bodyend="77"/>
   </compounddef>
 </doxygen>

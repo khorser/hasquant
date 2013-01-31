@@ -10,12 +10,6 @@
         <definition>virtual std::vector&lt;Size&gt; suggestedNumeraires</definition>
         <argsstring>() const </argsstring>
         <name>suggestedNumeraires</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aaf1f37e1319c6476e12d03c295b74260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -23,12 +17,6 @@
         <definition>virtual const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const </argsstring>
         <name>evolution</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -36,12 +24,6 @@
         <definition>virtual std::vector&lt;Time&gt; possibleCashFlowTimes</definition>
         <argsstring>() const </argsstring>
         <name>possibleCashFlowTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -49,12 +31,6 @@
         <definition>virtual Size numberOfProducts</definition>
         <argsstring>() const </argsstring>
         <name>numberOfProducts</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ae9340ad78cd16947af851ac186443907" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -62,12 +38,6 @@
         <definition>virtual Size maxNumberOfCashFlowsPerProductPerStep</definition>
         <argsstring>() const </argsstring>
         <name>maxNumberOfCashFlowsPerProductPerStep</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -75,12 +45,6 @@
         <definition>virtual void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ab323de6c99257ba28ce5fc12da07241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -100,12 +64,6 @@
           <type>std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt; &amp;</type>
           <declname>cashFlowsGenerated</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -113,12 +71,6 @@
         <definition>virtual std::auto_ptr&lt;MarketModelPathwiseMultiProduct&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -126,12 +78,6 @@
         <definition>virtual bool alreadyDeflated</definition>
         <argsstring>() const </argsstring>
         <name>alreadyDeflated</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="63"/>
       </memberdef>
       </sectiondef>
@@ -141,12 +87,6 @@
         <definition>Clone&lt;MarketModelPathwiseMultiProduct&gt; underlying_</definition>
         <argsstring></argsstring>
         <name>underlying_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a9c7a2fa59413902815c3c1d5c36c525e" prot="private" static="no" mutable="no">
@@ -154,12 +94,6 @@
         <definition>Clone&lt;ExerciseStrategy&lt;CurveState&gt; &gt; strategy_</definition>
         <argsstring></argsstring>
         <name>strategy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a199086827a6af9d9e7a8b7c9fcdf3444" prot="private" static="no" mutable="no">
@@ -167,12 +101,6 @@
         <definition>Clone&lt;MarketModelPathwiseMultiProduct&gt; rebate_</definition>
         <argsstring></argsstring>
         <name>rebate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
@@ -180,12 +108,6 @@
         <definition>EvolutionDescription evolution_</definition>
         <argsstring></argsstring>
         <name>evolution_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1add55b4cce0f3bb07188d993170ddf40b" prot="private" static="no" mutable="no">
@@ -193,12 +115,6 @@
         <definition>std::vector&lt;std::valarray&lt;bool&gt; &gt; isPresent_</definition>
         <argsstring></argsstring>
         <name>isPresent_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aaee45eba86c65b24bb5ead13eba4c60a" prot="private" static="no" mutable="no">
@@ -206,12 +122,6 @@
         <definition>std::vector&lt;Time&gt; cashFlowTimes_</definition>
         <argsstring></argsstring>
         <name>cashFlowTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a9534a66915c2da892c83fa1f35310bcb" prot="private" static="no" mutable="no">
@@ -219,12 +129,6 @@
         <definition>Size rebateOffset_</definition>
         <argsstring></argsstring>
         <name>rebateOffset_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1af1c3baa268facc51f6e68710935be697" prot="private" static="no" mutable="no">
@@ -232,12 +136,6 @@
         <definition>bool wasCalled_</definition>
         <argsstring></argsstring>
         <name>wasCalled_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ab10d12326048ed135c7678610c61f958" prot="private" static="no" mutable="no">
@@ -245,12 +143,6 @@
         <definition>std::vector&lt;Size&gt; dummyCashFlowsThisStep_</definition>
         <argsstring></argsstring>
         <name>dummyCashFlowsThisStep_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a248628469aa309c9e381fa3d34c859b3" prot="private" static="no" mutable="no">
@@ -258,12 +150,6 @@
         <definition>std::vector&lt;std::vector&lt;CashFlow&gt; &gt; dummyCashFlowsGenerated_</definition>
         <argsstring></argsstring>
         <name>dummyCashFlowsGenerated_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
@@ -271,12 +157,6 @@
         <definition>Size currentIndex_</definition>
         <argsstring></argsstring>
         <name>currentIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a99d26818d259d9ee854fcad12f73954f" prot="private" static="no" mutable="no">
@@ -284,12 +164,6 @@
         <definition>bool callable_</definition>
         <argsstring></argsstring>
         <name>callable_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -311,12 +185,6 @@
           <declname>rebate</declname>
           <defval><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; <ref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a3bf43ddbe280319685fbb0c3f68aeb59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -324,12 +192,6 @@
         <definition>const MarketModelPathwiseMultiProduct&amp; underlying</definition>
         <argsstring>() const </argsstring>
         <name>underlying</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a293571fb981de08448b05feaa32a24a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -337,12 +199,6 @@
         <definition>const ExerciseStrategy&lt;CurveState&gt;&amp; strategy</definition>
         <argsstring>() const </argsstring>
         <name>strategy</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ae4d5b4a4178ccc3570e0beca85fc8e92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -350,12 +206,6 @@
         <definition>const MarketModelPathwiseMultiProduct&amp; rebate</definition>
         <argsstring>() const </argsstring>
         <name>rebate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a01055a9405d293d293c4033f5b4575a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -363,12 +213,6 @@
         <definition>void enableCallability</definition>
         <argsstring>()</argsstring>
         <name>enableCallability</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a99584e3c15eae7090453e51464031b95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -376,19 +220,9 @@
         <definition>void disableCallability</definition>
         <argsstring>()</argsstring>
         <name>disableCallability</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="69"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="40" bodyend="85"/>
   </compounddef>
 </doxygen>

@@ -12,29 +12,17 @@
           <name>BEJ</name>
           <briefdescription>
 <para>Jakarta stock exchange (merged into IDX) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_indonesia_1abe41cfffd960e29a5d8b07be00aeda42abc9a578be019fe3ffa489578a97f9a75" prot="public">
           <name>JSX</name>
           <briefdescription>
 <para>Jakarta stock exchange (merged into IDX) </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_indonesia_1abe41cfffd960e29a5d8b07be00aeda42a66be860650da4b438a498218e252c6e3" prot="public">
           <name>IDX</name>
           <briefdescription>
 <para><ref refid="class_quant_lib_1_1_indonesia" kindref="compound">Indonesia</ref> stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" bodystart="70" bodyend="73"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +37,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_indonesia_1abe41cfffd960e29a5d8b07be00aeda42a66be860650da4b438a498218e252c6e3" kindref="member">IDX</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/indonesia.hpp" line="74"/>
       </memberdef>
       </sectiondef>

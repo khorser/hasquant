@@ -14,12 +14,6 @@
         <definition>const T eps_</definition>
         <argsstring></argsstring>
         <name>eps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -33,12 +27,6 @@
           <type>const T &amp;</type>
           <declname>eps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1equal__within_1ab4d9bad9ac6c628cadf62cbea4eec9e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -54,19 +42,9 @@
           <type>const T</type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="81" bodyend="89"/>
   </compounddef>
 </doxygen>

@@ -10,10 +10,6 @@
         <name>pseudoRoot_</name>
         <briefdescription>
 <para>this data does not change after construction </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a6e0aebb30b163f9873c2dd0eadd78708" prot="private" static="no" mutable="no">
@@ -21,12 +17,6 @@
         <definition>Size aliveIndex_</definition>
         <argsstring></argsstring>
         <name>aliveIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a7faf504f2e153c71fac455aca1fab4aa" prot="private" static="no" mutable="no">
@@ -34,12 +24,6 @@
         <definition>std::vector&lt;Time&gt; taus_</definition>
         <argsstring></argsstring>
         <name>taus_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a818fcc70c9c59451b45284fceab7a0ca" prot="private" static="no" mutable="no">
@@ -47,12 +31,6 @@
         <definition>std::vector&lt;Matrix&gt; pseudoBumps_</definition>
         <argsstring></argsstring>
         <name>pseudoBumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a247c5d7048480396e3b561b6fb8193e9" prot="private" static="no" mutable="no">
@@ -60,12 +38,6 @@
         <definition>std::vector&lt;Spread&gt; displacements_</definition>
         <argsstring></argsstring>
         <name>displacements_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a67921ca7df824b046fc691bc45270d4a" prot="private" static="no" mutable="no">
@@ -73,12 +45,6 @@
         <definition>Size numberBumps_</definition>
         <argsstring></argsstring>
         <name>numberBumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" static="no" mutable="no">
@@ -86,12 +52,6 @@
         <definition>Size factors_</definition>
         <argsstring></argsstring>
         <name>factors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a886cf3fa59ad609edf356cd300ab5a8c" prot="private" static="no" mutable="no">
@@ -101,10 +61,6 @@
         <name>allDerivatives_</name>
         <briefdescription>
 <para>workspace variables </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1aafd988ebee2e08e62013a163680ffa56" prot="private" static="no" mutable="no">
@@ -112,12 +68,6 @@
         <definition>Matrix e_</definition>
         <argsstring></argsstring>
         <name>e_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1af070858fdff18de0ca6ca748e1f3959b" prot="private" static="no" mutable="no">
@@ -125,12 +75,6 @@
         <definition>std::vector&lt;Real&gt; ratios_</definition>
         <argsstring></argsstring>
         <name>ratios_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -164,12 +108,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
           <declname>displacements</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_1aaa4d2804830043113c5009392f8f0ce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -197,19 +135,9 @@
           <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>B</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="94"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="80" bodyend="114"/>
   </compounddef>
 </doxygen>

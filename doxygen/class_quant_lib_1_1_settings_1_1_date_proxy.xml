@@ -9,12 +9,6 @@
         <definition>DateProxy</definition>
         <argsstring>()</argsstring>
         <name>DateProxy</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_settings_1_1_date_proxy_1aaf78ee52156a673b7976b07f9160ea0c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -26,12 +20,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <defname>d</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_settings_1_1_date_proxy_1a9e7661101c3450e1fcb6ef7fecfc8644" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -39,19 +27,9 @@
         <definition>operator Date</definition>
         <argsstring>() const </argsstring>
         <name>operator Date</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="141" bodyend="146"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="41" bodyend="46"/>
   </compounddef>
 </doxygen>

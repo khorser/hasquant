@@ -13,25 +13,11 @@
         <enumvalue id="class_quant_lib_1_1_year_on_year_inflation_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_year_on_year_inflation_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>
@@ -41,12 +27,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -54,12 +34,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a7cac1393ff1d3224ff1cac0cb392cecf" prot="private" static="no" mutable="no">
@@ -67,12 +41,6 @@
         <definition>Schedule fixedSchedule_</definition>
         <argsstring></argsstring>
         <name>fixedSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" static="no" mutable="no">
@@ -80,12 +48,6 @@
         <definition>Rate fixedRate_</definition>
         <argsstring></argsstring>
         <name>fixedRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a417ce99525ff934e161e933d540c0409" prot="private" static="no" mutable="no">
@@ -93,12 +55,6 @@
         <definition>DayCounter fixedDayCount_</definition>
         <argsstring></argsstring>
         <name>fixedDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a9d0fda807c70cd5839ba84fdd02966f6" prot="private" static="no" mutable="no">
@@ -106,12 +62,6 @@
         <definition>Schedule yoySchedule_</definition>
         <argsstring></argsstring>
         <name>yoySchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a68827cbb94494fda6f8b40bf2ba744ec" prot="private" static="no" mutable="no">
@@ -119,12 +69,6 @@
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; yoyIndex_</definition>
         <argsstring></argsstring>
         <name>yoyIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a2f0b22e1c17db6dd8f558f4dfc8dfff6" prot="private" static="no" mutable="no">
@@ -132,12 +76,6 @@
         <definition>Period observationLag_</definition>
         <argsstring></argsstring>
         <name>observationLag_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
@@ -145,12 +83,6 @@
         <definition>Spread spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a5159b44805c056f845ab340c2fe4a25f" prot="private" static="no" mutable="no">
@@ -158,12 +90,6 @@
         <definition>DayCounter yoyDayCount_</definition>
         <argsstring></argsstring>
         <name>yoyDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a3b1e6756aa408474fd0342eb87ace307" prot="private" static="no" mutable="no">
@@ -171,12 +97,6 @@
         <definition>Calendar paymentCalendar_</definition>
         <argsstring></argsstring>
         <name>paymentCalendar_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1ab0c2ba6da16ec8c201da972e61b08334" prot="private" static="no" mutable="no">
@@ -184,12 +104,6 @@
         <definition>BusinessDayConvention paymentConvention_</definition>
         <argsstring></argsstring>
         <name>paymentConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1abe098d2fe72aba947e592db7309a60fd" prot="private" static="no" mutable="yes">
@@ -197,12 +111,6 @@
         <definition>Rate fairRate_</definition>
         <argsstring></argsstring>
         <name>fairRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a492c911c409c868717797a52dda59333" prot="private" static="no" mutable="yes">
@@ -210,12 +118,6 @@
         <definition>Spread fairSpread_</definition>
         <argsstring></argsstring>
         <name>fairSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -274,12 +176,6 @@
           <declname>paymentConvention</declname>
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a013e092c359f6031cc0563fd413ce707" kindref="member">ModifiedFollowing</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1acae4e2138e8dbe8c12a605ea79086d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -287,12 +183,6 @@
         <definition>virtual Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a5d5b9c2299952391c66f5b080295e747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -300,12 +190,6 @@
         <definition>virtual Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1aa16d7fc11560d22af5ac2e91a42874bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -313,12 +197,6 @@
         <definition>virtual Real yoyLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>yoyLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a8519db12d1035aea8bc0b73b531fa1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -326,12 +204,6 @@
         <definition>virtual Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a3d5341192d85932ea5a0e98b5734ed89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -339,12 +211,6 @@
         <definition>YearOnYearInflationSwap::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -352,12 +218,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="162" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -365,12 +225,6 @@
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="166" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -378,12 +232,6 @@
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="170" bodyend="172"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -391,12 +239,6 @@
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="174" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a0410814ddfd66c4dad22bfb74c415cff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -404,12 +246,6 @@
         <definition>const Schedule &amp; yoySchedule</definition>
         <argsstring>() const </argsstring>
         <name>yoySchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="178" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a0e648f3db8b742d5fb33210b8b97e307" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -417,12 +253,6 @@
         <definition>const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp; yoyInflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>yoyInflationIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="182" bodyend="184"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1abafd7188fd2256052647de8003c83484" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -430,12 +260,6 @@
         <definition>virtual Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -443,12 +267,6 @@
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="186" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a8089cbbb11ee0f007855745703c28f81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -456,12 +274,6 @@
         <definition>const DayCounter &amp; yoyDayCount</definition>
         <argsstring>() const </argsstring>
         <name>yoyDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="190" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a1de93eab2dca02a8ca2fa9afb3f37628" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -469,12 +281,6 @@
         <definition>virtual Calendar paymentCalendar</definition>
         <argsstring>() const </argsstring>
         <name>paymentCalendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a25fc6ab972c95c862ead0bbf851ea311" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -482,12 +288,6 @@
         <definition>BusinessDayConvention paymentConvention</definition>
         <argsstring>() const </argsstring>
         <name>paymentConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="194" bodyend="196"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1ab54f53e0705d63a28ffcec9dc1b2e15b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -495,12 +295,6 @@
         <definition>const Leg &amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="198" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a27193895de9cb245ec1e2176bbea4ef2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -508,12 +302,6 @@
         <definition>const Leg &amp; yoyLeg</definition>
         <argsstring>() const </argsstring>
         <name>yoyLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -525,12 +313,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -543,12 +327,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1a4bf0b7d271fdda8a7508d1f5a6f27a0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -556,12 +336,6 @@
         <definition>virtual ~YearOnYearInflationSwap</definition>
         <argsstring>()</argsstring>
         <name>~YearOnYearInflationSwap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="101" bodyend="101"/>
       </memberdef>
       </sectiondef>
@@ -572,12 +346,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="104"/>
       </memberdef>
       </sectiondef>

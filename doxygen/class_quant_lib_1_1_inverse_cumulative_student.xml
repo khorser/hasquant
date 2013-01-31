@@ -10,12 +10,6 @@
         <definition>StudentDistribution d_</definition>
         <argsstring></argsstring>
         <name>d_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1a73c57033dc1cf3e6bfc24785b43e0733" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>CumulativeStudentDistribution f_</definition>
         <argsstring></argsstring>
         <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real accuracy_</definition>
         <argsstring></argsstring>
         <name>accuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1af75d2bb304cdff446e507879467b2582" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Size maxIterations_</definition>
         <argsstring></argsstring>
         <name>maxIterations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +54,6 @@
           <declname>maxIterations</declname>
           <defval>50</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="83" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_student_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -95,12 +65,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="88"/>
       </memberdef>
       </sectiondef>

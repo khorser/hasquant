@@ -19,12 +19,6 @@
           <type>const <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &amp;</type>
           <declname>curve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="87"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="protected" static="no" mutable="no">
@@ -32,12 +26,6 @@
         <definition>std::string name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a792de4e88e29e3df5d753c1590d47d8c" prot="protected" static="no" mutable="no">
@@ -45,12 +33,6 @@
         <definition>CommodityType commodityType_</definition>
         <argsstring></argsstring>
         <name>commodityType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="protected" static="no" mutable="no">
@@ -58,12 +40,6 @@
         <definition>UnitOfMeasure unitOfMeasure_</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a9b8209f252ea1344d7fa6de58bc1102a" prot="protected" static="no" mutable="no">
@@ -71,12 +47,6 @@
         <definition>Currency currency_</definition>
         <argsstring></argsstring>
         <name>currency_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" static="no" mutable="yes">
@@ -84,12 +54,6 @@
         <definition>std::vector&lt;Date&gt; dates_</definition>
         <argsstring></argsstring>
         <name>dates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="protected" static="no" mutable="yes">
@@ -97,12 +61,6 @@
         <definition>std::vector&lt;Time&gt; times_</definition>
         <argsstring></argsstring>
         <name>times_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1af9c626db41e269447653dcc7cc126d35" prot="protected" static="no" mutable="yes">
@@ -110,12 +68,6 @@
         <definition>std::vector&lt;Real&gt; data_</definition>
         <argsstring></argsstring>
         <name>data_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="protected" static="no" mutable="yes">
@@ -123,12 +75,6 @@
         <definition>Interpolation interpolation_</definition>
         <argsstring></argsstring>
         <name>interpolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a79b0a8135f77fb012eb795d1c52cca5e" prot="protected" static="no" mutable="no">
@@ -136,12 +82,6 @@
         <definition>ForwardFlat interpolator_</definition>
         <argsstring></argsstring>
         <name>interpolator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1ab78d07f1db0c1382060b89e0c553af67" prot="protected" static="no" mutable="no">
@@ -149,12 +89,6 @@
         <definition>boost::shared_ptr&lt;CommodityCurve&gt; basisOfCurve_</definition>
         <argsstring></argsstring>
         <name>basisOfCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a1c628be27a380ddef7f07934b8a641cf" prot="protected" static="no" mutable="no">
@@ -162,12 +96,6 @@
         <definition>Real basisOfCurveUomConversionFactor_</definition>
         <argsstring></argsstring>
         <name>basisOfCurveUomConversionFactor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -175,12 +103,6 @@
         <definition>const std::string &amp; name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="113" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -188,12 +110,6 @@
         <definition>const CommodityType&amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -201,12 +117,6 @@
         <definition>const UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -214,12 +124,6 @@
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -230,10 +134,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -241,12 +141,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -254,12 +148,6 @@
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a4a433ec559cce7fdc4b775b14b17833e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -267,12 +155,6 @@
         <definition>const std::vector&lt; Real &gt; &amp; prices</definition>
         <argsstring>() const </argsstring>
         <name>prices</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -280,12 +162,6 @@
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="142" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -293,12 +169,6 @@
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa730ecf40446986507c93f1d7ea617b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -310,12 +180,6 @@
           <type>std::map&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>prices</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a55e55771ede1b54148b659ba9d643ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -327,12 +191,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
           <declname>basisOfCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a72f0cd7b8225db8500bbae340ccb70ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -352,12 +210,6 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>nearbyOffset</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="155" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa4feb09f9e5e39059703bef454a07503" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -369,12 +221,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="149" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a681da17460971fc2c1acd636a7abeec0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -394,12 +240,6 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>nearbyOffset</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="174" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a8d290de5782941db2494530df6897c63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -407,12 +247,6 @@
         <definition>const boost::shared_ptr&lt; CommodityCurve &gt; &amp; basisOfCurve</definition>
         <argsstring>() const </argsstring>
         <name>basisOfCurve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a7e503a2d78c89272768d5dd782f1493b" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -424,12 +258,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="193" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa7ee95a45f01c5aeb3e86470bac77dd8" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -441,12 +269,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       </sectiondef>
@@ -456,12 +278,6 @@
         <definition>friend class CommodityIndex</definition>
         <argsstring></argsstring>
         <name>CommodityIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -504,12 +320,6 @@
           <declname>dayCounter</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a02bdeb6c573f2f1bd3dec076e61459e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -542,19 +352,11 @@
           <declname>dayCounter</declname>
           <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_commodity" kindref="compound">Commodity</ref> term structure. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycurve.hpp" bodystart="37" bodyend="104"/>
   </compounddef>
 </doxygen>

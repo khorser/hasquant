@@ -10,12 +10,6 @@
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1aa3f1474389737c0b802f27e03656abb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +31,6 @@
         <definition>const Date &amp; exerciseDate</definition>
         <argsstring>() const </argsstring>
         <name>exerciseDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -62,12 +38,6 @@
         <definition>Time exerciseTime</definition>
         <argsstring>() const </argsstring>
         <name>exerciseTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1a1725ea0bf0762b6642c802532d8c546f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -75,12 +45,6 @@
         <definition>const DayCounter &amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       </sectiondef>
@@ -91,12 +55,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
@@ -106,12 +64,6 @@
         <definition>const boost::shared_ptr&lt;SmileSection&gt; underlyingSection_</definition>
         <argsstring></argsstring>
         <name>underlyingSection_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_spreaded_smile_section_1a0f282e91dbd00752acbc31e5d6a94174" prot="private" static="no" mutable="no">
@@ -119,12 +71,6 @@
         <definition>const Handle&lt;Quote&gt; spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -141,19 +87,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="37"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="34" bodyend="56"/>
   </compounddef>
 </doxygen>

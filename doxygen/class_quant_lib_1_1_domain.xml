@@ -21,12 +21,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -42,12 +36,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -55,19 +43,11 @@
         <definition>virtual ~Domain</definition>
         <argsstring>()</argsstring>
         <name>~Domain</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>domain abstract lcass </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="34" bodyend="39"/>
   </compounddef>
 </doxygen>

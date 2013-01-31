@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;T&gt; h_</definition>
         <argsstring></argsstring>
         <name>h_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_handle_1_1_link_1a802efedab6181f4b387dbff71b208e68" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>bool isObserver_</definition>
         <argsstring></argsstring>
         <name>isObserver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
           <type>bool</type>
           <declname>registerAsObserver</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="130" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1_1_link_1aff7f827772441dfd70a6dd9562fc5ca3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -67,12 +49,6 @@
           <type>bool</type>
           <declname>registerAsObserver</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="137" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1_1_link_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -80,12 +56,6 @@
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1_1_link_1af6d3592fe892a679b905efa2faec134a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -93,12 +63,6 @@
         <definition>const boost::shared_ptr&lt;T&gt;&amp; currentLink</definition>
         <argsstring>() const </argsstring>
         <name>currentLink</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_handle_1_1_link_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -106,19 +70,9 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="43" bodyend="55"/>
   </compounddef>
 </doxygen>

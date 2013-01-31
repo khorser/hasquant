@@ -10,12 +10,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1adfb02c99d8f389febbe441aa1338e14b" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Date maxDate_</definition>
         <argsstring></argsstring>
         <name>maxDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a7ae0c2e859b037de7aae2614e224eaaa" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; volatilities_</definition>
         <argsstring></argsstring>
         <name>volatilities_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>std::vector&lt;Time&gt; times_</definition>
         <argsstring></argsstring>
         <name>times_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a5e6a6ce748d7b860ae24fc1f1e331e00" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>std::vector&lt;Real&gt; variances_</definition>
         <argsstring></argsstring>
         <name>variances_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1ab8440b9bc4e266817688cfbc43fee041" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>Interpolation varianceCurve_</definition>
         <argsstring></argsstring>
         <name>varianceCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a8ca39226be422a0af03d79208d2f79da" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>bool forceMonotoneVariance_</definition>
         <argsstring></argsstring>
         <name>forceMonotoneVariance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -124,12 +82,6 @@
           <declname>forceMonotoneVariance</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -140,10 +92,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -154,10 +102,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -168,10 +112,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -182,10 +122,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1a9ef2833161e7150c5b0fbfbfc91b6791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -203,12 +139,6 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="53" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -221,12 +151,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="86" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -235,12 +159,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="61"/>
       </memberdef>
       </sectiondef>
@@ -261,10 +179,6 @@
         </param>
         <briefdescription>
 <para>Black variance calculation. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1afeca83ef1eb59a51bc02e8f88d96a330" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -272,12 +186,6 @@
         <definition>void setVariances</definition>
         <argsstring>()</argsstring>
         <name>setVariances</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="64"/>
       </memberdef>
       </sectiondef>

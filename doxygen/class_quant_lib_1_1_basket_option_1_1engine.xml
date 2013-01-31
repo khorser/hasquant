@@ -11,8 +11,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp</includes>
     <briefdescription>
 <para>Basket-option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="111" bodyend="113"/>
   </compounddef>
 </doxygen>

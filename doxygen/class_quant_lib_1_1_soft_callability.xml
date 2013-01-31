@@ -10,12 +10,6 @@
         <definition>Real trigger_</definition>
         <argsstring></argsstring>
         <name>trigger_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +31,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>trigger</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_soft_callability_1ab4fe9e3ae5fd6b333729ad55292e74b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -50,19 +38,11 @@
         <definition>Real trigger</definition>
         <argsstring>() const </argsstring>
         <name>trigger</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>callability leaving to the holder the possibility to convert </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="42" bodyend="51"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a295cb716891a8d7a7568773c4946e459" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>CumulativeNormalDistribution f_</definition>
         <argsstring></argsstring>
         <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +30,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -56,12 +38,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="47"/>
       </memberdef>
       </sectiondef>
@@ -71,12 +47,6 @@
         <definition>Real underlying</definition>
         <argsstring>() const </argsstring>
         <name>underlying</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a384e61b69dd2e190b4041246b725e00c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -84,12 +54,6 @@
         <definition>Time residualTime</definition>
         <argsstring>() const </argsstring>
         <name>residualTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1ae7cf26d190e83b99249233b1264cd0b1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -97,12 +61,6 @@
         <definition>Volatility volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a9719895601366465667b3ca8972121a4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -110,12 +68,6 @@
         <definition>Real minmax</definition>
         <argsstring>() const </argsstring>
         <name>minmax</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a5027d9b072a2b0a2d0b95290ae60e60a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -123,12 +75,6 @@
         <definition>Real stdDeviation</definition>
         <argsstring>() const </argsstring>
         <name>stdDeviation</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1aec4742c5ccf23463c537d0e7d6990607" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -136,12 +82,6 @@
         <definition>Rate riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a4d3c06d01e8a68c61fc773da70ab5815" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -149,12 +89,6 @@
         <definition>DiscountFactor riskFreeDiscount</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeDiscount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a49bcd44bdf5a8c6aa4ca42e3c75e2fb1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -162,12 +96,6 @@
         <definition>Rate dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1aaa7e52ca4b7b09b017d2028c9f61e3ad" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -175,12 +103,6 @@
         <definition>DiscountFactor dividendDiscount</definition>
         <argsstring>() const </argsstring>
         <name>dividendDiscount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a18e77dcdd3d1509952eb0472ade77d92" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -192,12 +114,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>eta</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="61"/>
       </memberdef>
       </sectiondef>

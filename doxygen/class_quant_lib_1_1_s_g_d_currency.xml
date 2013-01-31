@@ -10,12 +10,6 @@
         <definition>SGDCurrency</definition>
         <argsstring>()</argsstring>
         <name>SGDCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" line="276" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/asia.hpp" bodystart="276" bodyend="283"/>
       </memberdef>
       </sectiondef>

@@ -11,10 +11,6 @@
         <name>results_</name>
         <briefdescription>
 <para>solution vector </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1ac747f0da8a61fa1e328dd4c421865a36" prot="private" static="no" mutable="no">
@@ -22,12 +18,6 @@
         <definition>Array initialValue_</definition>
         <argsstring></argsstring>
         <name>initialValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1ab7e394cf29f0ce8ce9a34dffc589daf1" prot="private" static="no" mutable="no">
@@ -37,10 +27,6 @@
         <name>resnorm_</name>
         <briefdescription>
 <para>least square residual norm </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1aa1509c14aea8e45ff53ca437c277b89c" prot="private" static="no" mutable="no">
@@ -50,10 +36,6 @@
         <name>exitFlag_</name>
         <briefdescription>
 <para>Exit flag of the optimization process. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
@@ -63,10 +45,6 @@
         <name>accuracy_</name>
         <briefdescription>
 <para>required accuracy of the solver </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1aa75da90acf197524b0d5da039122b307" prot="private" static="no" mutable="no">
@@ -74,12 +52,6 @@
         <definition>Real bestAccuracy_</definition>
         <argsstring></argsstring>
         <name>bestAccuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1af75d2bb304cdff446e507879467b2582" prot="private" static="no" mutable="no">
@@ -89,10 +61,6 @@
         <name>maxIterations_</name>
         <briefdescription>
 <para>maximum and real number of iterations </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1ab67382d2ade5860e7ed16f918afb94d7" prot="private" static="no" mutable="no">
@@ -100,12 +68,6 @@
         <definition>Size nbIterations_</definition>
         <argsstring></argsstring>
         <name>nbIterations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1ae64b6d370f6529a52f1cccbba3105c87" prot="private" static="no" mutable="no">
@@ -115,10 +77,6 @@
         <name>om_</name>
         <briefdescription>
 <para>Optimization method. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="144" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_non_linear_least_square_1a1f640735304ec7f4925e6140901d5462" prot="private" static="no" mutable="no">
@@ -126,12 +84,6 @@
         <definition>Constraint&amp; c_</definition>
         <argsstring></argsstring>
         <name>c_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="146" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -157,10 +109,6 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a55fdd63d7f7096f711f7b26bc52b543e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -186,10 +134,6 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a20fd9ab60a7cce2d6c0acad31c0038ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -199,10 +143,6 @@
         <name>~NonLinearLeastSquare</name>
         <briefdescription>
 <para>Destructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a067968a223168798fa3f64b6051f4354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -216,10 +156,6 @@
         </param>
         <briefdescription>
 <para>Solve least square problem using numerix solver. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a3332be4ffb31e7777ad8797ddaf803a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -231,12 +167,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>initialValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a1cbd190434a8924319877d9a566a7362" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -246,10 +176,6 @@
         <name>results</name>
         <briefdescription>
 <para>return the results </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="119" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a3f311cedd53bc1947d0cbf7846bf2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -259,10 +185,6 @@
         <name>residualNorm</name>
         <briefdescription>
 <para>return the least square residual norm </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="122" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a424fb70e9f6bd717d1ebaeef27266237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -272,10 +194,6 @@
         <name>lastValue</name>
         <briefdescription>
 <para>return last function value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="125" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1ac91e0c85dd8c6275c6fb8da8de811dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -285,10 +203,6 @@
         <name>exitFlag</name>
         <briefdescription>
 <para>return exit flag </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="128" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a39cd20d97f356086d2c033b0bad60caf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -298,10 +212,6 @@
         <name>iterationsNumber</name>
         <briefdescription>
 <para>return the performed number of iterations </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="131" bodyend="131"/>
       </memberdef>
       </sectiondef>

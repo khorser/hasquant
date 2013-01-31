@@ -7,59 +7,25 @@
         <name>PolynomType</name>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a7c01f7381672fb21e07a117905330c1c" prot="public">
           <name>Monomial</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a015a2716731f6a19d56100b6a646fb96" prot="public">
           <name>Laguerre</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a5555a8115594e3b505c06e54cd2fc54c" prot="public">
           <name>Hermite</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a7d1f37bf9f42ce07c38cab40b84c9585" prot="public">
           <name>Hyperbolic</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a6ace8ece96add1b9b17fd5b0103c9d71" prot="public">
           <name>Legendre</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976aa533459c08077e92f289693540d77e6a" prot="public">
           <name>Chebyshev</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a3ce92b4b6d937a9894e671024c848e80" prot="public">
           <name>Chebyshev2nd</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
       </sectiondef>
@@ -77,12 +43,6 @@
           <type>PolynomType</type>
           <declname>polyType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lsm_basis_system_1ac02a57fb6a6848fa94d470723b442943" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -102,19 +62,9 @@
           <type>PolynomType</type>
           <declname>polyType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" bodystart="37" bodyend="47"/>
   </compounddef>
 </doxygen>

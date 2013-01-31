@@ -9,8 +9,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp</includes>
     <briefdescription>
 <para>Barrier-option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" bodystart="80" bodyend="85"/>
   </compounddef>
 </doxygen>

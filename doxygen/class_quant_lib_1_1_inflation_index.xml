@@ -19,8 +19,6 @@
 <para>Returns the name of the index. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="212" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1abd47d61ed23fb73440b0c02534236330" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -29,12 +27,8 @@
         <argsstring>() const </argsstring>
         <name>fixingCalendar</name>
         <reimplements refid="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a">fixingCalendar</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Inflation indices do not have fixing calendars. An inflation index value is valid for every day (including weekends) of a calendar period. I.e. it uses the <ref refid="class_quant_lib_1_1_null_calendar" kindref="compound">NullCalendar</ref> as its fixing calendar. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -49,10 +43,6 @@
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1ab2e953a50a4d61d840d72c13c4789ea6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -72,12 +62,8 @@
           <declname>forecastTodaysFixing</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Forecasting index values requires an inflation term structure. The inflation term structure (ITS) defines the usual lag (not the index). I.e. an ITS is always relatve to a base date that is earlier than its asof date. This must be so because indices are available only with a lag. However, the index availability lag only sets a minimum lag for the ITS. An ITS may be relative to an earlier date, e.g. an index may have a 2-month delay in publication but the inflation swaps may take as their base the index 3 months before. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1aa8992ffa6a24397eda41c2a7ac458c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -99,12 +85,8 @@
           <declname>forceOverwrite</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>this method creates all the &quot;fixings&quot; for the relevant period of the index. E.g. for monthly indices it will put the same value in every calendar day in the month. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="90"/>
       </memberdef>
       </sectiondef>
@@ -116,12 +98,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="216" bodyend="218"/>
       </memberdef>
       </sectiondef>
@@ -132,12 +108,6 @@
         <definition>std::string familyName</definition>
         <argsstring>() const </argsstring>
         <name>familyName</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1a304741bfa4f39cb526cb58694ba21b72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -145,12 +115,6 @@
         <definition>Region region</definition>
         <argsstring>() const </argsstring>
         <name>region</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1a55fadd1d6444ec9683aef9abcf28f0c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -158,12 +122,6 @@
         <definition>bool revised</definition>
         <argsstring>() const </argsstring>
         <name>revised</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="228" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1a40c4f14701638cfb8f7ce2ce9cbeabf3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -171,12 +129,8 @@
         <definition>bool interpolated</definition>
         <argsstring>() const </argsstring>
         <name>interpolated</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Forecasting index values using an inflation term structure uses the interpolation of the inflation term structure unless interpolation is set to false. In this case the extrapolated values are constant within each period taking the mid-period extrapolated value. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="232" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -184,12 +138,6 @@
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="236" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1a1a96e907a4fa3ef48090f8febb6ef80e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -197,12 +145,8 @@
         <definition>Period availabilityLag</definition>
         <argsstring>() const </argsstring>
         <name>availabilityLag</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The availability lag describes when the index is <emphasis>available</emphasis>, not how it is used. Specifically the fixing for, say, January, may only be available in April but the index will always return the index value applicable for January as its January fixing (independent of the lag in availability). </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="240" bodyend="242"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inflation_index_1af41171847c0cf98154d62bb7f71f3070" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -210,12 +154,6 @@
         <definition>Currency currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="244" bodyend="246"/>
       </memberdef>
       </sectiondef>
@@ -225,12 +163,6 @@
         <definition>std::string name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -268,19 +200,13 @@
           <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>An inflation index may return interpolated values. These are linearly interpolated values with act/act convention within a period. Note that stored &quot;fixings&quot; are always flat (constant) within a period and interpolated as needed. This is because interpolation adds an addional availability lag (because you always need the next period to give the previous period&apos;s value) and enables storage of the most recent uninterpolated value. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for inflation-rate indexes,. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="39" bodyend="133"/>
   </compounddef>
 </doxygen>

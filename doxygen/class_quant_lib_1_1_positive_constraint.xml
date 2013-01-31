@@ -11,19 +11,11 @@
         <definition>PositiveConstraint</definition>
         <argsstring>()</argsstring>
         <name>PositiveConstraint</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="81" bodyend="83"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constraint imposing positivity to all arguments </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="68" bodyend="84"/>
   </compounddef>
 </doxygen>

@@ -15,10 +15,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/impliedstddevquote.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_std_dev_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -29,10 +25,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/impliedstddevquote.hpp" line="48"/>
       </memberdef>
       </sectiondef>
@@ -72,19 +64,11 @@
           <declname>maxIter</declname>
           <defval>100</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/impliedstddevquote.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>quote for the implied standard deviation of an underlying </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/impliedstddevquote.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/impliedstddevquote.hpp" bodystart="35" bodyend="59"/>
   </compounddef>
 </doxygen>

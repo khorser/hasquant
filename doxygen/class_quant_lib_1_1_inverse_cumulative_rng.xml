@@ -21,12 +21,6 @@
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_inverse_cumulative_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
@@ -34,12 +28,6 @@
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
         <name>urng_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +37,6 @@
         <definition>RNG uniformGenerator_</definition>
         <argsstring></argsstring>
         <name>uniformGenerator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_rng_1a1684a2d3d4771a19b38a400bf87c2b69" prot="private" static="no" mutable="no">
@@ -62,12 +44,6 @@
         <definition>IC ICND_</definition>
         <argsstring></argsstring>
         <name>ICND_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +57,6 @@
           <type>const RNG &amp;</type>
           <declname>uniformGenerator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="67" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_rng_1a9a9a593ede5bb876841ba3bd87f5b8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -96,10 +66,6 @@
         <name>next</name>
         <briefdescription>
 <para>returns a sample from a Gaussian distribution </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       </sectiondef>

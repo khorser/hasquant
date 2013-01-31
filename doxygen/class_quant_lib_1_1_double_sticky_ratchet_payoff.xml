@@ -24,12 +24,8 @@
         <reimplementedby refid="class_quant_lib_1_1_ratchet_min_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_sticky_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_sticky_min_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a2880a6dfa22d5df6db76c086ae7721bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -42,12 +38,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>forward</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -56,12 +46,6 @@
         <argsstring>() const </argsstring>
         <name>description</name>
         <reimplements refid="class_quant_lib_1_1_payoff_1a77d7003fa5d2e29669371413d5662141">description</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -73,12 +57,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="53"/>
       </memberdef>
       </sectiondef>
@@ -132,19 +110,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>accrualFactor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="38" bodyend="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Intermediate class for single/double sticky/ratchet payoffs. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="36" bodyend="60"/>
   </compounddef>
 </doxygen>

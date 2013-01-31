@@ -8,12 +8,6 @@
         <definition>std::string name</definition>
         <argsstring></argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>std::string code</definition>
         <argsstring></argsstring>
         <name>code</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a65e8398eacd4ac202862763b4874c3b7" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>Integer numeric</definition>
         <argsstring></argsstring>
         <name>numeric</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a53d0a1e0ab09c43aece255c56ecd509d" prot="public" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>std::string symbol</definition>
         <argsstring></argsstring>
         <name>symbol</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a33079406f7244af1f272d8378f1e8f0b" prot="public" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>std::string fractionSymbol</definition>
         <argsstring></argsstring>
         <name>fractionSymbol</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a09a1ae4e1cdce4027d2694a726dd116b" prot="public" static="no" mutable="no">
@@ -73,12 +43,6 @@
         <definition>Integer fractionsPerUnit</definition>
         <argsstring></argsstring>
         <name>fractionsPerUnit</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" static="no" mutable="no">
@@ -86,12 +50,6 @@
         <definition>Rounding rounding</definition>
         <argsstring></argsstring>
         <name>rounding</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1afa009cdefa581b4eb76555c7b28d20ef" prot="public" static="no" mutable="no">
@@ -99,12 +57,6 @@
         <definition>Currency triangulated</definition>
         <argsstring></argsstring>
         <name>triangulated</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a6620293bd13d77e2a561fb979e864089" prot="public" static="no" mutable="no">
@@ -112,12 +64,6 @@
         <definition>std::string formatString</definition>
         <argsstring></argsstring>
         <name>formatString</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -164,19 +110,9 @@
           <declname>triangulationCurrency</declname>
           <defval><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="95"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="78" bodyend="96"/>
   </compounddef>
 </doxygen>

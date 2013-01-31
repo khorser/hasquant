@@ -40,12 +40,6 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_amortizing_fixed_rate_bond_1af7c45a781dab9f3b2490a2908c268445" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -95,12 +89,8 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Automatically generates a set of equal coupons, with an amortizing bond. The coupons are equal and the accrual daycount is only used for quoting/settlement purposes - not for calculating the coupons. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_amortizing_fixed_rate_bond_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -108,12 +98,6 @@
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_amortizing_fixed_rate_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -121,19 +105,11 @@
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>amortizing fixed-rate bond </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/amortizingbonds/amortizingfixedratebond.hpp" bodystart="35" bodyend="66"/>
   </compounddef>
 </doxygen>

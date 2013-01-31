@@ -10,12 +10,6 @@
         <definition>const Real alpha_</definition>
         <argsstring></argsstring>
         <name>alpha_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gauss_lobatto_integral_1a208eaa0a2d6a36ccb65c022c3485363b" prot="protected" static="yes" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Real beta_</definition>
         <argsstring></argsstring>
         <name>beta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gauss_lobatto_integral_1a98b2b596e0d186346a067d8411833cfe" prot="protected" static="yes" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Real x1_</definition>
         <argsstring></argsstring>
         <name>x1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gauss_lobatto_integral_1a70d791405e28cf163895351eba87a26d" prot="protected" static="yes" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Real x2_</definition>
         <argsstring></argsstring>
         <name>x2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gauss_lobatto_integral_1a2841be2337b04a9d0be7deaa6df9add2" prot="protected" static="yes" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const Real x3_</definition>
         <argsstring></argsstring>
         <name>x3_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -95,12 +65,6 @@
           <declname>useConvergenceEstimate</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gausslobattointegral.hpp" line="56"/>
       </memberdef>
       </sectiondef>

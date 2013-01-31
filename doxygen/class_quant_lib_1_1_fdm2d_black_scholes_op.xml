@@ -9,12 +9,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a9b28f546051f3d0cc2b8b0bc7683baf3" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; p1_</definition>
         <argsstring></argsstring>
         <name>p1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1acd777b137a676cdead0f190f166563a9" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; p2_</definition>
         <argsstring></argsstring>
         <name>p2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a594a16cdbe318a994f1c9b6d88b55253" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const boost::shared_ptr&lt;LocalVolTermStructure&gt; localVol1_</definition>
         <argsstring></argsstring>
         <name>localVol1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1aa396a78c0887e2b16ffdfd7f9894b01e" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const boost::shared_ptr&lt;LocalVolTermStructure&gt; localVol2_</definition>
         <argsstring></argsstring>
         <name>localVol2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a48c41cf150b557ea5789f02c1be4b52f" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>const Array x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1aac549920a368071ddd7bd5d8b588f0f5" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>const Array y_</definition>
         <argsstring></argsstring>
         <name>y_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a082da7a21a9f95d644ba1a6d2aaac6e1" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>Real currentForwardRate_</definition>
         <argsstring></argsstring>
         <name>currentForwardRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1ae0c118c0266889abef10afbca173e010" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>FdmBlackScholesOp opX_</definition>
         <argsstring></argsstring>
         <name>opX_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a4a868d7bd09f32128abbc8a4900bed80" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>FdmBlackScholesOp opY_</definition>
         <argsstring></argsstring>
         <name>opY_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a7fdbb963391e7e8c22a5a108ff4f3d3e" prot="private" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>NinePointLinearOp corrMapT_</definition>
         <argsstring></argsstring>
         <name>corrMapT_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a30d753555ad0d4955ad983641c9c5ba9" prot="private" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>const NinePointLinearOp corrMapTemplate_</definition>
         <argsstring></argsstring>
         <name>corrMapTemplate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1aff1b9e5e66f10d47518609e153448d55" prot="private" static="no" mutable="no">
@@ -165,12 +93,6 @@
         <definition>const Real illegalLocalVolOverwrite_</definition>
         <argsstring></argsstring>
         <name>illegalLocalVolOverwrite_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -210,12 +132,6 @@
           <declname>illegalLocalVolOverwrite</declname>
           <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -223,12 +139,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -244,12 +154,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a50e6097c7048d1a9654d51dc51b3349c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -261,12 +165,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a4c425fe3e26aa2d16ea4b9b049b1f79e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -278,12 +176,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a808fa8865c8bf64962daac96bad1d399" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -299,12 +191,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a5d81fcc674c3696aa21df1668b151efb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -324,12 +210,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -345,19 +225,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>s</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="56"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdm2dblackscholesop.hpp" bodystart="36" bodyend="69"/>
   </compounddef>
 </doxygen>

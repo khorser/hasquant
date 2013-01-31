@@ -15,12 +15,6 @@
         <definition>Integer precision_</definition>
         <argsstring></argsstring>
         <name>precision_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rounding_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
@@ -28,12 +22,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_rounding_1a7f21d021140e2448288b2bfd5691cd5e" prot="private" static="no" mutable="no">
@@ -41,12 +29,6 @@
         <definition>Integer digit_</definition>
         <argsstring></argsstring>
         <name>digit_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a242cddb670f123b7cf2ec6b244514c8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -54,12 +36,6 @@
         <definition>Integer precision</definition>
         <argsstring>() const </argsstring>
         <name>precision</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -67,12 +43,6 @@
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1abdd70a56bfd67e3da02c16706ea1898d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -80,12 +50,6 @@
         <definition>Integer roundingDigit</definition>
         <argsstring>() const </argsstring>
         <name>roundingDigit</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       </sectiondef>
@@ -94,43 +58,31 @@
         <name>Type</name>
         <enumvalue id="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7ac9d3e887722f2bc482bcca9d41c512af" prot="public">
           <name>None</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>do not round: return the number unmodified </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a57a7edcbc04d6175683383cad5c3e0a2" prot="public">
           <name>Up</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>the first decimal place past the precision will be rounded up. This differs from the OMG rule which rounds up only if the decimal to be rounded is greater than or equal to the rounding digit </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7abcf8c79e9a5f5f9d606fb35645a0fb27" prot="public">
           <name>Down</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>all decimal places past the precision will be truncated </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a32c94a47509871edf49d5c3936689d30" prot="public">
           <name>Closest</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>the first decimal place past the precision will be rounded up if greater than or equal to the rounding digit; this corresponds to the OMG round-up rule. When the rounding digit is 5, the result will be the one closest to the original number, hence the name. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a94e95e4b8360855608dfad0b1f43a301" prot="public">
           <name>Floor</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>positive numbers will be rounded up and negative numbers will be rounded down using the OMG round up and round down rules </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a0d419a70fa5708b3735db741f20316c9" prot="public">
           <name>Ceiling</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>positive numbers will be rounded down and negative numbers will be rounded up using the OMG round up and round down rules </para>          </detaileddescription>
         </enumvalue>
@@ -138,8 +90,6 @@
 <para>rounding methods </para>        </briefdescription>
         <detaileddescription>
 <para>The rounding methods follow the OMG specification available at <ulink url="ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf">ftp://ftp.omg.org/pub/docs/formal/00-06-29.pdf</ulink></para><para><xrefsect id="caveats_1_caveats000074"><xreftitle>Warning</xreftitle><xrefdescription><para>the names of the <ref refid="class_quant_lib_1_1_floor" kindref="compound">Floor</ref> and Ceiling methods might be misleading. Check the provided reference. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="44" bodyend="65"/>
       </memberdef>
       </sectiondef>
@@ -153,8 +103,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para>Instances built through this constructor don&apos;t perform any rounding. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="70" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a2a79742b3f2854a95befbd58cf917341" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -176,12 +124,6 @@
           <declname>digit</declname>
           <defval>5</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_rounding_1a9835436c4cf8e92f0f7d8a3ed4643983" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -195,10 +137,6 @@
         </param>
         <briefdescription>
 <para>perform rounding </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="77"/>
       </memberdef>
       </sectiondef>

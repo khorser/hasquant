@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       </sectiondef>
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -59,10 +47,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       </sectiondef>
@@ -83,12 +67,6 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="67" bodyend="72"/>
       </memberdef>
       </sectiondef>
@@ -104,12 +82,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="103" bodyend="110"/>
       </memberdef>
       </sectiondef>
@@ -119,12 +91,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1adfb02c99d8f389febbe441aa1338e14b" prot="private" static="no" mutable="no">
@@ -132,12 +98,6 @@
         <definition>Date maxDate_</definition>
         <argsstring></argsstring>
         <name>maxDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
@@ -145,12 +105,6 @@
         <definition>std::vector&lt;Time&gt; times_</definition>
         <argsstring></argsstring>
         <name>times_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1a5e6a6ce748d7b860ae24fc1f1e331e00" prot="private" static="no" mutable="no">
@@ -158,12 +112,6 @@
         <definition>std::vector&lt;Real&gt; variances_</definition>
         <argsstring></argsstring>
         <name>variances_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1ab8440b9bc4e266817688cfbc43fee041" prot="private" static="no" mutable="no">
@@ -171,12 +119,6 @@
         <definition>Interpolation varianceCurve_</definition>
         <argsstring></argsstring>
         <name>varianceCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -207,12 +149,6 @@
           <declname>forceMonotoneVariance</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="53"/>
       </memberdef>
       </sectiondef>

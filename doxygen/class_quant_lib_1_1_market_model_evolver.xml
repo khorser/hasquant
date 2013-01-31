@@ -19,12 +19,6 @@
         <definition>virtual ~MarketModelEvolver</definition>
         <argsstring>()</argsstring>
         <name>~MarketModelEvolver</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1adb4ceea26c9274fc282a70be25a6b619" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -42,12 +36,6 @@
         <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ad1c69e6aa71f890350ca8abcb15b0763" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -65,12 +53,6 @@
         <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1a6aee9def9c9ccdc14907fb93fb96631c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -88,12 +70,6 @@
         <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ac01af761e87531c158e375b36520bdcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -111,12 +87,6 @@
         <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ac7e44f09b21966a9dab1e65674346ecd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -134,12 +104,6 @@
         <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ad5880f2c1b2a8457b76064ffe83e2590" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -160,12 +124,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="44"/>
       </memberdef>
       </sectiondef>

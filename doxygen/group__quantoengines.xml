@@ -4,9 +4,5 @@
     <compoundname>quantoengines</compoundname>
     <title>Quanto option engines</title>
     <innerclass refid="class_quant_lib_1_1_quanto_engine" prot="public">QuantLib::QuantoEngine</innerclass>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
   </compounddef>
 </doxygen>

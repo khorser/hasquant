@@ -18,12 +18,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="47" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -35,12 +29,6 @@
           <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="50" bodyend="60"/>
       </memberdef>
       </sectiondef>

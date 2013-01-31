@@ -30,12 +30,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmextlinexpvolmodel.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -53,12 +47,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmextlinexpvolmodel.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model_1a39d7d490201f2ef18de08691f8dd398a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -80,12 +68,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmextlinexpvolmodel.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -111,12 +93,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmextlinexpvolmodel.hpp" line="58"/>
       </memberdef>
       </sectiondef>
@@ -124,7 +100,6 @@
 <para>extended linear exponential volatility model </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes an extended linear-exponential volatility model</para><para><formula id="162">\[ \sigma_i(t)=k_i*((a*(T_{i}-t)+d)*e^{-b(T_{i}-t)}+c) \]</formula> <verbatim>  References:
-
   Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003,
   Different Covariance Parameterizations of Libor Market Model and Joint
   Caps/Swaptions Calibration,

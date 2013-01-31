@@ -26,12 +26,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000024"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1adddc35bc937ffb39283d27dac309e919" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -53,8 +49,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000025"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1ac71f86181f4acbeb5513896b5d2bdf16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -83,10 +77,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1a8bbdc64d3440bb12c2514155cc9b80d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -113,10 +103,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="74"/>
       </memberdef>
       </sectiondef>
@@ -142,10 +128,6 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1a9979dee8d8445bcab0c152467d6031af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -168,10 +150,6 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1ab79b3c7117aed3a54934a3a7dbef3a2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -194,10 +172,6 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) variance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_equity_f_x_vol_surface_1a31c485c60a1fa59b1172e31a34ea570a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -220,10 +194,6 @@
         </param>
         <briefdescription>
 <para>forward (at-the-money) variance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="93"/>
       </memberdef>
       </sectiondef>
@@ -238,12 +208,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/equityfxvolsurface.hpp" line="97"/>
       </memberdef>
       </sectiondef>

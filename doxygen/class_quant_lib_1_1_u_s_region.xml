@@ -10,19 +10,11 @@
         <definition>USRegion</definition>
         <argsstring>()</argsstring>
         <name>USRegion</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>USA as geographical/economic region. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="87" bodyend="90"/>
   </compounddef>
 </doxygen>

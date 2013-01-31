@@ -15,19 +15,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eonia.hpp" line="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Eonia (Euro Overnight <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> <ref refid="struct_quant_lib_1_1_average" kindref="compound">Average</ref>) rate fixed by the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref>. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eonia.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eonia.hpp" bodystart="32" bodyend="36"/>
   </compounddef>
 </doxygen>

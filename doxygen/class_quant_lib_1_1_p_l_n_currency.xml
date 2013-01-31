@@ -10,12 +10,6 @@
         <definition>PLNCurrency</definition>
         <argsstring>()</argsstring>
         <name>PLNCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="312" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="312" bodyend="319"/>
       </memberdef>
       </sectiondef>

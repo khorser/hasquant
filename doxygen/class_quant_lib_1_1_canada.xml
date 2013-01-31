@@ -13,22 +13,12 @@
           <name>Settlement</name>
           <briefdescription>
 <para>generic settlement calendar </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_canada_1abe41cfffd960e29a5d8b07be00aeda42a086d8d41b3488c605c7c12a36e6fbf03" prot="public">
           <name>TSX</name>
           <briefdescription>
 <para>Toronto stock exchange calendar. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +33,6 @@
           <declname>market</declname>
           <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/canada.hpp" line="88"/>
       </memberdef>
       </sectiondef>

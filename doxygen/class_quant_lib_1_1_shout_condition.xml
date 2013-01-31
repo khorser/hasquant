@@ -10,12 +10,6 @@
         <definition>Time resTime_</definition>
         <argsstring></argsstring>
         <name>resTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_shout_condition_1abb3d0cb77e91fb8041a940f98569dbc0" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Rate rate_</definition>
         <argsstring></argsstring>
         <name>rate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_shout_condition_1a642233aebfbc96026aae4121a3615ea2" prot="private" static="no" mutable="yes">
@@ -36,12 +24,6 @@
         <definition>DiscountFactor disc_</definition>
         <argsstring></argsstring>
         <name>disc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +49,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>rate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="61" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1af44ff54137a0ed35a85c8118cf85be80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +68,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>rate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -113,12 +83,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
       </sectiondef>
@@ -136,12 +100,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>intrinsic</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="52" bodyend="55"/>
       </memberdef>
       </sectiondef>

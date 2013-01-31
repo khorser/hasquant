@@ -41,17 +41,11 @@
         </param>
         <briefdescription>
 <para>quote constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="319" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="311" bodyend="322"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Specialization for Gaussian copula, the integration still remains. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="308" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="307" bodyend="323"/>
   </compounddef>
 </doxygen>

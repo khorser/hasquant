@@ -20,12 +20,6 @@
           <declname>restType</declname>
           <defval>Restructuring::XR</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a3b51189306de6ec7a30ecc9f9f1ffab6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -33,12 +27,6 @@
         <definition>virtual ~DefaultType</definition>
         <argsstring>()</argsstring>
         <name>~DefaultType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="112" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a6e59734a532944690c303a9b7b6b2fd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -46,12 +34,6 @@
         <definition>AtomicDefault::Type defaultType</definition>
         <argsstring>() const </argsstring>
         <name>defaultType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a8d8e1b252213625a77083d4f6acd6568" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -59,12 +41,6 @@
         <definition>Restructuring::Type restructuringType</definition>
         <argsstring>() const </argsstring>
         <name>restructuringType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -72,12 +48,6 @@
         <definition>bool isRestructuring</definition>
         <argsstring>() const </argsstring>
         <name>isRestructuring</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a00315e9f530aba6ec5817be3fc7c8757" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -89,12 +59,8 @@
           <type>AtomicDefault::Type</type>
           <declname>defType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns true if one or a set of event types is within this one and as such will be recognised as a trigger. Not the same as equality.</para><para>Notice that these methods do not include any event logical hierarchy. The match is in a strict sense. If event B is contained in (implied by) event A this would not send a match. This policies should be implemented at the CreditEvent class, which is polymorphic. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a8db01c54abbd2be18b72af0e2856ae12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -106,12 +72,6 @@
           <type>Restructuring::Type</type>
           <declname>resType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="138" bodyend="141"/>
       </memberdef>
       </sectiondef>

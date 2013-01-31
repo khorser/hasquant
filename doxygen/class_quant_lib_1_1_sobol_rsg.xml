@@ -8,80 +8,34 @@
         <name>DirectionIntegers</name>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90daebf9ffe9d10430ea38c1cda6f0880935" prot="public">
           <name>Unit</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da4ae3ff929e6a1cef9e6c14dda463e16b" prot="public">
           <name>Jaeckel</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da65b68fd9131dd5c982bf5e82cf797b00" prot="public">
           <name>SobolLevitan</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da165aeba9131f3f1bf8cad1b362b6e80d" prot="public">
           <name>SobolLevitanLemieux</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da69cc9afeae0b27bcb3e9defca2fe296a" prot="public">
           <name>JoeKuoD5</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da7cd1a4c30bcf626f95b6f238172e8e31" prot="public">
           <name>JoeKuoD6</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da9c0517ee8394ad2447ebe27f96e82149" prot="public">
           <name>JoeKuoD7</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da7b23fc01566ad446d88df0d8c7995ccf" prot="public">
           <name>Kuo</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da3c3d8ce5123f5b45fabac7cdd60acc1c" prot="public">
           <name>Kuo2</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90dadc2684495f4c8a276a265b8e002cb470" prot="public">
           <name>Kuo3</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="109" bodyend="112"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_sobol_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
@@ -89,12 +43,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -104,12 +52,6 @@
         <definition>const int bits_</definition>
         <argsstring></argsstring>
         <name>bits_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1a4c3e1fa530cf971227e1ef07d3be06e9" prot="private" static="yes" mutable="no">
@@ -117,12 +59,6 @@
         <definition>const double normalizationFactor_</definition>
         <argsstring></argsstring>
         <name>normalizationFactor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -132,12 +68,6 @@
         <definition>Size dimensionality_</definition>
         <argsstring></argsstring>
         <name>dimensionality_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1ab783e3c845d54c712226757076a4cccb" prot="private" static="no" mutable="yes">
@@ -145,12 +75,6 @@
         <definition>unsigned long sequenceCounter_</definition>
         <argsstring></argsstring>
         <name>sequenceCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1a30ed145520654b162ae4cad78aaa58cb" prot="private" static="no" mutable="yes">
@@ -158,12 +82,6 @@
         <definition>bool firstDraw_</definition>
         <argsstring></argsstring>
         <name>firstDraw_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="yes">
@@ -171,12 +89,6 @@
         <definition>sample_type sequence_</definition>
         <argsstring></argsstring>
         <name>sequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1a228f3ec68a8a4f5acd1b198f97af836b" prot="private" static="no" mutable="yes">
@@ -184,12 +96,6 @@
         <definition>std::vector&lt;unsigned long&gt; integerSequence_</definition>
         <argsstring></argsstring>
         <name>integerSequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1aa2ccc5125225436ecd2e50ae12f2c427" prot="private" static="no" mutable="no">
@@ -197,12 +103,6 @@
         <definition>std::vector&lt;std::vector&lt;unsigned long&gt; &gt; directionIntegers_</definition>
         <argsstring></argsstring>
         <name>directionIntegers_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -226,13 +126,9 @@
           <declname>directionIntegers</declname>
           <defval>Jaeckel</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>dimensionality must be &lt;= PPMT_MAX_DIM </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_rsg_1aaa2d30eb47ba0545410f2a87ebbacf1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -244,12 +140,8 @@
           <type>unsigned long</type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>skip to the n-th sample in the low-discrepancy sequence </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_rsg_1a12298c913deb1e1134ac23f669b1b294" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -257,12 +149,6 @@
         <definition>const std::vector&lt;unsigned long&gt;&amp; nextInt32Sequence</definition>
         <argsstring>() const </argsstring>
         <name>nextInt32Sequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="119"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_rsg_1a24eb8d9ace7d89bd65c3767bdc1edf57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -270,12 +156,6 @@
         <definition>const SobolRsg::sample_type&amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="120" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -283,12 +163,6 @@
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="127" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -296,12 +170,6 @@
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="128" bodyend="128"/>
       </memberdef>
       </sectiondef>

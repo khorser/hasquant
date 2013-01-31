@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -42,10 +34,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -56,10 +44,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -70,10 +54,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -84,10 +64,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="87" bodyend="89"/>
       </memberdef>
       </sectiondef>
@@ -104,10 +80,6 @@
         </param>
         <briefdescription>
 <para>instantaneous forward-rate calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a7b3637b3975a6b4b75b71f31793d4687" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -119,12 +91,8 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the zero yield rate for the given date calculating it from the instantaneous forward rate <formula id="302">$ f(t) $</formula> as <formula id="394">\[ z(t) = \int_0^t f(\tau) d\tau \]</formula></para><para><xrefsect id="caveats_1_caveats000138"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses an highly inefficient and possibly wildly inaccurate numerical integration. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="108" bodyend="111"/>
       </memberdef>
       </sectiondef>
@@ -134,12 +102,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; originalCurve_</definition>
         <argsstring></argsstring>
         <name>originalCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a5caa3200880208842845075caebdb6e1" prot="private" static="no" mutable="no">
@@ -147,12 +109,6 @@
         <definition>Handle&lt;Quote&gt; spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -170,12 +126,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="71" bodyend="77"/>
       </memberdef>
       </sectiondef>

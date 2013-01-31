@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;BasketPayoff&gt; payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_european_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>DiscountFactor discount_</definition>
         <argsstring></argsstring>
         <name>discount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_european_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -62,19 +44,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="133"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="129" bodyend="137"/>
   </compounddef>
 </doxygen>

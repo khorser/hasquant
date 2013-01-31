@@ -28,8 +28,6 @@
     <innerclass refid="class_quant_lib_1_1_tree_lattice2_d" prot="public">QuantLib::TreeLattice2D</innerclass>
     <innerclass refid="class_quant_lib_1_1_tree" prot="public">QuantLib::Tree</innerclass>
     <innerclass refid="class_quant_lib_1_1_trinomial_tree" prot="public">QuantLib::TrinomialTree</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>The framework (corresponding to the ql/Lattices directory) contains basic building blocks for pricing instruments using lattice methods (trees). A lattice, i.e. an instance of the abstract class <ref refid="class_quant_lib_1_1_lattice" kindref="compound">QuantLib::Lattice</ref>, relies on one or several trees (each one approximating a diffusion process) to price an instance of the DiscretizedAsset class. Trees are instances of classes derived from <ref refid="class_quant_lib_1_1_tree" kindref="compound">QuantLib::Tree</ref>, classes which define the branching between nodes and transition probabilities.</para><sect1 id="group__lattices_1binomial">
 <title>Binomial trees</title>

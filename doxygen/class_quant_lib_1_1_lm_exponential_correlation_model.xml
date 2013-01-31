@@ -10,12 +10,6 @@
         <definition>Matrix corrMatrix_</definition>
         <argsstring></argsstring>
         <name>corrMatrix_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_lm_exponential_correlation_model_1a33c70222af833ca31bbd2014bc01ab9d" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Matrix pseudoSqrt_</definition>
         <argsstring></argsstring>
         <name>pseudoSqrt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_exponential_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -69,12 +51,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_exponential_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -92,12 +68,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_exponential_correlation_model_1ac682238d13ec98c83b2465623b328d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -122,12 +92,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lm_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -136,12 +100,6 @@
         <argsstring>() const </argsstring>
         <name>isTimeIndependent</name>
         <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1ac0c142358bb6b07bc7dabb4489de7f84">isTimeIndependent</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="54"/>
       </memberdef>
       </sectiondef>
@@ -149,7 +107,6 @@
 <para>exponential correlation model </para>    </briefdescription>
     <detaileddescription>
 <para>This class describes a exponential correlation model</para><para><formula id="161">\[ \rho_{i,j}=e^{(-\beta \|i-j\|)} \]</formula> <verbatim>  References:
-
   Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003,
   Different Covariance Parameterizations of Libor Market Model and Joint
   Caps/Swaptions Calibration,

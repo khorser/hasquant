@@ -28,12 +28,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000020"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1ae6f7aa60ece6266f81c578c61e900c9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -55,8 +51,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000021"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1ac4c042801bd99136f21685ae1e23dca7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -85,10 +79,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1a3eee3278ff50e14cd7d0974a4bbc034c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,10 +105,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="72"/>
       </memberdef>
       </sectiondef>
@@ -140,10 +126,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1a1b04f877216db68be0905c586074c70d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -162,10 +144,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1af6f663b5e030187f2f72e1cc8b51386f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -184,10 +162,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1af6574446d68d15970f3365291532afc1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -206,10 +180,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money variance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1a534bc78916bb2787dfa8ee256a863189" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -228,10 +198,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money variance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1a06268996a49c215e3f79b8d935c0ca10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -250,10 +216,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money variance </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="94"/>
       </memberdef>
       </sectiondef>
@@ -272,12 +234,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="98"/>
       </memberdef>
       </sectiondef>
@@ -297,10 +253,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money variance calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_atm_vol_curve_1a3e805d2195b83e2011386f39514d6100" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -316,10 +268,6 @@
         </param>
         <briefdescription>
 <para>spot at-the-money volatility calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="112"/>
       </memberdef>
       </sectiondef>
@@ -329,12 +277,6 @@
         <definition>virtual ~BlackAtmVolCurve</definition>
         <argsstring>()</argsstring>
         <name>~BlackAtmVolCurve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       </sectiondef>

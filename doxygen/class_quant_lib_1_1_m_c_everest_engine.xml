@@ -20,12 +20,6 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_everest_engine_1a6a9d35263b41b36b002797dde605d942" prot="public" static="no">
@@ -33,12 +27,6 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_everest_engine_1a931267be1997474da010eacc9e911b29" prot="public" static="no">
@@ -46,12 +34,6 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -61,12 +43,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcessArray&gt; processes_</definition>
         <argsstring></argsstring>
         <name>processes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="private" static="no" mutable="no">
@@ -74,12 +50,6 @@
         <definition>Size timeSteps_</definition>
         <argsstring></argsstring>
         <name>timeSteps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1a9c25c7000e01433677e04eae138ff831" prot="private" static="no" mutable="no">
@@ -87,12 +57,6 @@
         <definition>Size timeStepsPerYear_</definition>
         <argsstring></argsstring>
         <name>timeStepsPerYear_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1a937ea3e2dae694ac2df5226b1b349b22" prot="private" static="no" mutable="no">
@@ -100,12 +64,6 @@
         <definition>Size requiredSamples_</definition>
         <argsstring></argsstring>
         <name>requiredSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -113,12 +71,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1aa336fe20be7a7fe0b17df1565bbc2f1a" prot="private" static="no" mutable="no">
@@ -126,12 +78,6 @@
         <definition>Real requiredTolerance_</definition>
         <argsstring></argsstring>
         <name>requiredTolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
@@ -139,12 +85,6 @@
         <definition>bool brownianBridge_</definition>
         <argsstring></argsstring>
         <name>brownianBridge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_m_c_everest_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -152,12 +92,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -203,12 +137,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="140" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_everest_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -216,12 +144,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="54" bodyend="69"/>
       </memberdef>
       </sectiondef>
@@ -231,12 +153,6 @@
         <definition>DiscountFactor endDiscount</definition>
         <argsstring>() const </argsstring>
         <name>endDiscount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="186" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_everest_engine_1aac0bc663d50bdc0fd6771bb1ad2481e5" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -244,12 +160,6 @@
         <definition>TimeGrid timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="172" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_everest_engine_1a7751aec86337c68f4b4ee807247f5648" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -257,12 +167,6 @@
         <definition>boost::shared_ptr&lt;path_generator_type&gt; pathGenerator</definition>
         <argsstring>() const </argsstring>
         <name>pathGenerator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="74" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_everest_engine_1ac7c7af238d093284485bc11a05518e2c" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -270,19 +174,9 @@
         <definition>boost::shared_ptr&lt; typename MCEverestEngine&lt; RNG, S &gt;::path_pricer_type &gt; pathPricer</definition>
         <argsstring>() const </argsstring>
         <name>pathPricer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="198" bodyend="205"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="36" bodyend="96"/>
   </compounddef>
 </doxygen>

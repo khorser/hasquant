@@ -13,10 +13,6 @@
         <name>Matrix</name>
         <briefdescription>
 <para>creates a null matrix </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="184" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a701a8e8f62aed6b7496b48e1f57db824" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -34,10 +30,6 @@
         </param>
         <briefdescription>
 <para>creates a matrix with the given dimensions </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="187" bodyend="189"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a87bcdd5b5f33ccbcde36aa1d237af97c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -59,10 +51,6 @@
         </param>
         <briefdescription>
 <para>creates the matrix and fills it with <computeroutput>value</computeroutput> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="191" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1adb458d0a51fee7c80c34482e88b84de7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -74,12 +62,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="197" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a18559c34691fddf02fe9024ce196cb09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -91,12 +73,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="206" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abe73cd0177a33a456bb5ab08b1855344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -108,12 +84,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="211" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a81096f71e82f047e98c5117c5868f70d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -125,12 +95,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="218" bodyend="221"/>
       </memberdef>
       </sectiondef>
@@ -145,13 +109,9 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>m</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>all matrices involved in an algebraic expression must have the same size. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="230" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a5fe157d2a6b00251b2b7d4a0cbc059c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -163,12 +123,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>m</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="241" bodyend="250"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aea9e9cac1393ed48c61c9658e3572c34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -180,12 +134,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>x</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="252" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1560f8a2756a34d48eadac60ecb72c9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -197,12 +145,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <defname>x</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="258" bodyend="262"/>
       </memberdef>
       </sectiondef>
@@ -213,12 +155,6 @@
         <definition>Matrix::const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="264" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a5cd4a3c124542ff7e6a327775fe733cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -226,12 +162,6 @@
         <definition>Matrix::iterator begin</definition>
         <argsstring>()</argsstring>
         <name>begin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="268" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae046cf0c7c1f2e44864a67fcbd3bc37b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -239,12 +169,6 @@
         <definition>Matrix::const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="272" bodyend="274"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a38d30f37dbda21e5685bd4c8f8a04b54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -252,12 +176,6 @@
         <definition>Matrix::iterator end</definition>
         <argsstring>()</argsstring>
         <name>end</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="276" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aba90030a737647500e21d8b5553f9fea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -265,12 +183,6 @@
         <definition>Matrix::const_reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="280" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a6373cc711367ba1881bfe5d3f13ea40f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -278,12 +190,6 @@
         <definition>Matrix::reverse_iterator rbegin</definition>
         <argsstring>()</argsstring>
         <name>rbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="284" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae2b01d5be2b6bd64f82064a48e644ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -291,12 +197,6 @@
         <definition>Matrix::const_reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
         <name>rend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="288" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ac0615a909a24d4e71460cabbf59794a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -304,12 +204,6 @@
         <definition>Matrix::reverse_iterator rend</definition>
         <argsstring>()</argsstring>
         <name>rend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa983037191bfd12b2fbf1f7bacc7c488" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -321,12 +215,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="297" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a0ba8451fef9b8e764408a0806b159235" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -338,12 +226,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="306" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aab050a4b0aa85b042da6533525f13977" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -355,12 +237,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="315" bodyend="322"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a619c3165548ec37e1dc529f248b49415" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -372,12 +248,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="324" bodyend="331"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a8fa8f65e77ba784a6efd2c8fcb8030ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -389,12 +259,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="334" bodyend="336"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1acd9c3b4faa2fa1c7fe0a39eeb12e890a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -406,12 +270,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="338" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a48ff0f83b990ddecbcfb8a0c5eeb3298" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -423,12 +281,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="343" bodyend="345"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ab2f057a3df14d6e9501f9d03fd758d49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -440,12 +292,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="347" bodyend="349"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a41b20334fc2e815f64904cc1bc4c07a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -457,12 +303,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="352" bodyend="359"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a12daadbc027a549e80230721ee4a4cfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -474,12 +314,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="361" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa5ff87b128d1d74c67aea30ebdb9ed73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -491,12 +325,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="371" bodyend="378"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a4797c1371f55c7aacbe45229a57b294e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -508,12 +336,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="380" bodyend="387"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a4156c8f23ac3d030c26e62c54e143080" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -525,12 +347,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="390" bodyend="392"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abe56132398da3b7df80e868e46606115" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -542,12 +358,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="395" bodyend="397"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a0f0b0c3c30d95d465cb540a9d24bb018" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -559,12 +369,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="400" bodyend="402"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a9c049aca593b7236c024f4ddd9edabbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -576,12 +380,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="405" bodyend="407"/>
       </memberdef>
       </sectiondef>
@@ -596,12 +394,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <defname>i</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="410" bodyend="412"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1986bf419e53969eeee3f95b02c708cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -613,12 +405,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <defname>i</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="415" bodyend="418"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa81ad20c93d236084fa25efd9ca92337" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -630,12 +416,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <defname>i</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="420" bodyend="422"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1acab29082cda83fa27661e845fea8af2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -647,12 +427,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <defname>i</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="424" bodyend="427"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1dc876da4de07ce3f446f0315e72a2c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -663,12 +437,6 @@
         <param>
           <type>void</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="429" bodyend="435"/>
       </memberdef>
       </sectiondef>
@@ -679,12 +447,6 @@
         <definition>Size rows</definition>
         <argsstring>() const </argsstring>
         <name>rows</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="437" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -692,12 +454,6 @@
         <definition>Size columns</definition>
         <argsstring>() const </argsstring>
         <name>columns</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="441" bodyend="443"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -705,12 +461,6 @@
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="445" bodyend="447"/>
       </memberdef>
       </sectiondef>
@@ -725,12 +475,6 @@
           <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>from</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="223" bodyend="228"/>
       </memberdef>
       </sectiondef>
@@ -740,12 +484,6 @@
         <definition>typedef Real* iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a0282fb9d40dbac6ced245bd67c194257" prot="public" static="no">
@@ -753,12 +491,6 @@
         <definition>typedef const Real* const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1af460725d447791acfd9f7b85856c0b91" prot="public" static="no">
@@ -766,12 +498,6 @@
         <definition>typedef boost::reverse_iterator&lt;iterator&gt; reverse_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a1902a26c330085fea93accc4cc10d5fe" prot="public" static="no">
@@ -779,12 +505,6 @@
         <definition>typedef boost::reverse_iterator&lt;const_iterator&gt; const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a9b1ce1ec83276b70eae647b0b2b28910" prot="public" static="no">
@@ -792,12 +512,6 @@
         <definition>typedef Real* row_iterator</definition>
         <argsstring></argsstring>
         <name>row_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1affee08e33e5d41deaff785910ac653ca" prot="public" static="no">
@@ -805,12 +519,6 @@
         <definition>typedef const Real* const_row_iterator</definition>
         <argsstring></argsstring>
         <name>const_row_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ad46c9d05f90a19ddab72f0bbc4260023" prot="public" static="no">
@@ -818,12 +526,6 @@
         <definition>typedef boost::reverse_iterator&lt;row_iterator&gt; reverse_row_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_row_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ae1c1bc28c3d8abe06f7749edf787502a" prot="public" static="no">
@@ -831,12 +533,6 @@
         <definition>typedef boost::reverse_iterator&lt;const_row_iterator&gt; const_reverse_row_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_row_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ac3d8a5c7f0147d2d76feb480361d7d5a" prot="public" static="no">
@@ -844,12 +540,6 @@
         <definition>typedef step_iterator&lt;iterator&gt; column_iterator</definition>
         <argsstring></argsstring>
         <name>column_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ac6d572f54173d49c75740a22c9c36609" prot="public" static="no">
@@ -857,12 +547,6 @@
         <definition>typedef step_iterator&lt;const_iterator&gt; const_column_iterator</definition>
         <argsstring></argsstring>
         <name>const_column_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a0172813d0237da300d91ed8930f20a61" prot="public" static="no">
@@ -870,12 +554,6 @@
         <definition>typedef boost::reverse_iterator&lt;column_iterator&gt; reverse_column_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_column_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a51b452fec445b4d94800582fd8c9e463" prot="public" static="no">
@@ -883,12 +561,6 @@
         <definition>typedef boost::reverse_iterator&lt;const_column_iterator&gt; const_reverse_column_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_column_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -898,12 +570,6 @@
         <definition>boost::scoped_array&lt;Real&gt; data_</definition>
         <argsstring></argsstring>
         <name>data_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_matrix_1a4fd1cc209b7acb6150b1f7dc06d3945c" prot="private" static="no" mutable="no">
@@ -911,12 +577,6 @@
         <definition>Size rows_</definition>
         <argsstring></argsstring>
         <name>rows_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_matrix_1a12229307c99d2cbced5ff04c4cd5c2be" prot="private" static="no" mutable="no">
@@ -924,12 +584,6 @@
         <definition>Size columns_</definition>
         <argsstring></argsstring>
         <name>columns_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -945,12 +599,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="449" bodyend="461"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa43bca990eddf9cbce12bb42bb64ccff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -964,12 +612,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="463" bodyend="475"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abfffb965f4d5f87d60b29d3ea5703e76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -983,12 +625,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="477" bodyend="482"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a9e5ccc219fb3a796f3a130fb0c40e0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1002,12 +638,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="484" bodyend="489"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a87bdcd1ea436e955114c491d050f272a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1021,12 +651,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="491" bodyend="496"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ace5ee0209b868ae8a10202bfaf71785c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1040,12 +664,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="498" bodyend="509"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aaed7ab749d31914e1dd899b48567dc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1059,12 +677,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="511" bodyend="521"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a0f7e6b8d26865ac5d8460da8985eea23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1078,12 +690,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="523" bodyend="537"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a2dda6bd778bb64e7732fe6a6bbf8675d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1094,12 +700,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="539" bodyend="547"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aabd56590af05a9196bc52b253ef9b81d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1115,12 +715,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>v2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="549" bodyend="552"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a2b2997ae613816d97a805c5815a282b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1152,12 +746,6 @@
           <type>Iterator2</type>
           <declname>v2end</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="555" bodyend="573"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a9df8756a7a5832acb371e2a6aaa9a89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1171,12 +759,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="575" bodyend="577"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1af0d6a8b04f5a8094992e498ca5a71142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1190,12 +772,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" bodystart="579" bodyend="588"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aeff3737ade047fc73a0a756ffab60c9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1207,12 +783,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1afd66b122c895badf4e5d31d7e250b100" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1224,12 +794,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrix.hpp" line="180"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae99bf007dfbac44521a082ca343c4160" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1246,12 +810,6 @@
           <declname>flexible</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/choleskydecomposition.hpp" line="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abbbd1fbdec84c274b421380416f9716a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1273,8 +831,6 @@
 <xrefsect id="caveats_1_caveats000069"><xreftitle>Warning</xreftitle><xrefdescription><para>Higham algorithm only works for correlation matrices.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000046"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
 <listitem><para>the correctness of the results is tested by reproducing known good data.</para></listitem><listitem><para>the correctness of the results is tested by checking returned values against numerical calculations. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/pseudosqrt.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_matrix_1af4208d81b345ebe9f2defb4f839ede1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -1301,8 +857,6 @@
         <detaileddescription>
 <para>The result matrix has rank&lt;=maxRank. If maxRank&gt;=size, then the specified percentage of eigenvalues out of the eigenvalues&apos; sum is retained.</para><para>If the input matrix is not positive semi definite, it can return an approximation of the pseudo square root using a (user selected) salvaging algorithm.</para><para><simplesect kind="pre"><para>the given matrix must be symmetric. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/pseudosqrt.hpp" line="84"/>
       </memberdef>
       </sectiondef>

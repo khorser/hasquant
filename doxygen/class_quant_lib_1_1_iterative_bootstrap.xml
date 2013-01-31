@@ -14,12 +14,6 @@
         <definition>typedef Curve::traits_type Traits</definition>
         <argsstring></argsstring>
         <name>Traits</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_iterative_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" static="no">
@@ -27,12 +21,6 @@
         <definition>typedef Curve::interpolator_type Interpolator</definition>
         <argsstring></argsstring>
         <name>Interpolator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -42,12 +30,6 @@
         <definition>Curve* ts_</definition>
         <argsstring></argsstring>
         <name>ts_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
@@ -55,12 +37,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1a9d782cce9bd2c14c761521049aa97cf2" prot="private" static="no" mutable="no">
@@ -68,12 +44,6 @@
         <definition>Brent firstSolver_</definition>
         <argsstring></argsstring>
         <name>firstSolver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1afd10421579a712b806598275d5e7f7c8" prot="private" static="no" mutable="no">
@@ -81,12 +51,6 @@
         <definition>FiniteDifferenceNewtonSafe solver_</definition>
         <argsstring></argsstring>
         <name>solver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1aef7436a220692b5b863db4e9d8b870a3" prot="private" static="no" mutable="yes">
@@ -94,12 +58,6 @@
         <definition>bool initialized_</definition>
         <argsstring></argsstring>
         <name>initialized_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1ae7e37a0cd72e79fc76ff937158c608b6" prot="private" static="no" mutable="yes">
@@ -107,12 +65,6 @@
         <definition>bool validCurve_</definition>
         <argsstring></argsstring>
         <name>validCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1a2d56fb03f1b7e96e4004362bfce39741" prot="private" static="no" mutable="yes">
@@ -120,12 +72,6 @@
         <definition>Size firstAliveHelper_</definition>
         <argsstring></argsstring>
         <name>firstAliveHelper_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" static="no" mutable="yes">
@@ -133,12 +79,6 @@
         <definition>Size alive_</definition>
         <argsstring></argsstring>
         <name>alive_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1a08ce8d50ccd86dad95bd2145e00556e2" prot="private" static="no" mutable="yes">
@@ -146,12 +86,6 @@
         <definition>std::vector&lt;Real&gt; previousData_</definition>
         <argsstring></argsstring>
         <name>previousData_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_iterative_bootstrap_1a37c009395d7dbdebd9298cbcf398b1ff" prot="private" static="no" mutable="yes">
@@ -159,12 +93,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;BootstrapError&lt;Curve&gt; &gt; &gt; errors_</definition>
         <argsstring></argsstring>
         <name>errors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -174,12 +102,6 @@
         <definition>IterativeBootstrap</definition>
         <argsstring>()</argsstring>
         <name>IterativeBootstrap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="63" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -191,12 +113,6 @@
           <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
           <declname>ts</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="67" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -204,12 +120,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="131" bodyend="232"/>
       </memberdef>
       </sectiondef>
@@ -219,19 +129,11 @@
         <definition>void initialize</definition>
         <argsstring>() const </argsstring>
         <name>initialize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="79" bodyend="128"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Universal piecewise-term-structure boostrapper. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="40" bodyend="57"/>
   </compounddef>
 </doxygen>

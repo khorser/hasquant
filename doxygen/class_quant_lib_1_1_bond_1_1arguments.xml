@@ -10,12 +10,6 @@
         <definition>Date settlementDate</definition>
         <argsstring></argsstring>
         <name>settlementDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="273" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="273" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a89cfb42d35b2f88416faf2c2b0737b29" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Leg cashflows</definition>
         <argsstring></argsstring>
         <name>cashflows</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="274" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Calendar calendar</definition>
         <argsstring></argsstring>
         <name>calendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="275" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="275" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -51,19 +33,9 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="276"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="271" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="271" bodyend="277"/>
   </compounddef>
 </doxygen>

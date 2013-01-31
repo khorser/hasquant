@@ -10,12 +10,6 @@
         <definition>SEKCurrency</definition>
         <argsstring>()</argsstring>
         <name>SEKCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="369" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="369" bodyend="376"/>
       </memberdef>
       </sectiondef>

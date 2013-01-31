@@ -15,12 +15,6 @@
         <definition>virtual ~CostFunction</definition>
         <argsstring>()</argsstring>
         <name>~CostFunction</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a132cbe03016a6e22c2ad3eaef6baf6a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -36,10 +30,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function value in x </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a81d6a6e85cd18eea72bb0b7d6c6fd8ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -55,10 +45,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function values in x </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -77,10 +63,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute grad_f, the first derivative of </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="42" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -99,10 +81,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute grad_f, the first derivative of </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="57" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -112,17 +90,11 @@
         <name>finiteDifferenceEpsilon</name>
         <briefdescription>
 <para>Default epsilon for finite difference method : </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Cost function abstract class for optimization problem. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="32" bodyend="65"/>
   </compounddef>
 </doxygen>

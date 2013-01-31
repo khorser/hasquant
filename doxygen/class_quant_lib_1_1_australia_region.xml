@@ -10,19 +10,11 @@
         <definition>AustraliaRegion</definition>
         <argsstring>()</argsstring>
         <name>AustraliaRegion</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_australia" kindref="compound">Australia</ref> as geographical/economic region. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="63" bodyend="66"/>
   </compounddef>
 </doxygen>

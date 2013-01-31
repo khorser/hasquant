@@ -15,19 +15,11 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" bodystart="159" bodyend="161"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>8-months EUR Libor index </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" bodystart="157" bodyend="162"/>
   </compounddef>
 </doxygen>

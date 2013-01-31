@@ -22,10 +22,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -44,10 +40,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a81842299056bb82662dce099fca6bcba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -68,12 +60,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the expectation <formula id="362">$ E(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="98" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -94,12 +82,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the standard deviation <formula id="363">$ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
       </sectiondef>
@@ -109,12 +93,6 @@
         <definition>Real x0_</definition>
         <argsstring></argsstring>
         <name>x0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a0e414136017e35bfe55ed92d7e7661e0" prot="private" static="no" mutable="no">
@@ -122,12 +100,6 @@
         <definition>Real speed_</definition>
         <argsstring></argsstring>
         <name>speed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aa8ae25f45fba2b614971adf594da0ab0" prot="private" static="no" mutable="no">
@@ -135,12 +107,6 @@
         <definition>Real level_</definition>
         <argsstring></argsstring>
         <name>level_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1affafcc6e56e72b677c7afa126e18a595" prot="private" static="no" mutable="no">
@@ -148,12 +114,6 @@
         <definition>Volatility volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -181,12 +141,6 @@
           <declname>level</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -197,10 +151,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aab3a2b9fbc4df8e42dcf97c953347719" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -208,12 +158,6 @@
         <definition>Real speed</definition>
         <argsstring>() const </argsstring>
         <name>speed</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a9421e902ef410ac829bb244e14b4f81b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -221,12 +165,6 @@
         <definition>Real volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a8fe47ac970c2acb1327f005d3c0a189a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -234,12 +172,6 @@
         <definition>Real level</definition>
         <argsstring>() const </argsstring>
         <name>level</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aec618e405b3e8c104f58b6616d3d482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -260,12 +192,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the variance <formula id="364">$ V(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="66"/>
       </memberdef>
       </sectiondef>

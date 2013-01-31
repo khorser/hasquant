@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="161" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -45,19 +33,9 @@
           <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="338" bodyend="346"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="154" bodyend="162"/>
   </compounddef>
 </doxygen>

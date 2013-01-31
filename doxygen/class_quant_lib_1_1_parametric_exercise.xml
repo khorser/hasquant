@@ -9,12 +9,6 @@
         <definition>virtual ~ParametricExercise</definition>
         <argsstring>()</argsstring>
         <name>~ParametricExercise</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_1aa0653eaa27e5de4fb5764485f7e8c70c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -22,12 +16,6 @@
         <definition>virtual std::vector&lt;Size&gt; numberOfVariables</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfVariables</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="33"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_1a481aea0570868bc7dd5eccf38018e355" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -35,12 +23,6 @@
         <definition>virtual std::vector&lt;Size&gt; numberOfParameters</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfParameters</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="34"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_1a822efedf4d7068cc5459d7b42d0cfd35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -60,12 +42,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>variables</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_1a0288ca0fc3c64d5e58ef425b5597eec8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -81,19 +57,9 @@
           <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>parameters</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" bodystart="29" bodyend="40"/>
   </compounddef>
 </doxygen>

@@ -19,19 +19,11 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp" bodystart="36" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Spread option on two assets. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/spreadoption.hpp" bodystart="33" bodyend="39"/>
   </compounddef>
 </doxygen>

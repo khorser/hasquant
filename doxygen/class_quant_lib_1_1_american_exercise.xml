@@ -23,12 +23,6 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_american_exercise_1a569291b600f9d4a48f9c0978fe01d76f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -45,12 +39,6 @@
           <declname>payoffAtExpiry</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="80"/>
       </memberdef>
       </sectiondef>

@@ -14,12 +14,6 @@
         <definition>Real diffusion_</definition>
         <argsstring></argsstring>
         <name>diffusion_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pde_constant_coeff_1a74208959fbe163d62595544e4ecc35d7" prot="private" static="no" mutable="no">
@@ -27,12 +21,6 @@
         <definition>Real drift_</definition>
         <argsstring></argsstring>
         <name>drift_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_pde_constant_coeff_1aea69a040116fac17d85f412ad3bade51" prot="private" static="no" mutable="no">
@@ -40,12 +28,6 @@
         <definition>Real discount_</definition>
         <argsstring></argsstring>
         <name>discount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +49,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="58" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pde_constant_coeff_1a979954f5b4ca36f20a9f41967d0b44b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -86,12 +62,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pde_constant_coeff_1a4f72f8cbba294d0c157961fed6ada588" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -105,12 +75,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pde_constant_coeff_1a5847d1f8241bf2bdb33807ee6cf3b48c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -124,19 +88,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="71" bodyend="73"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="56" bodyend="78"/>
   </compounddef>
 </doxygen>

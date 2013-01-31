@@ -10,12 +10,6 @@
         <definition>Size assetNumber</definition>
         <argsstring>() const </argsstring>
         <name>assetNumber</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_path_1a4e8b292569a9184ecdffc719a39d67d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size pathSize</definition>
         <argsstring>() const </argsstring>
         <name>pathSize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +31,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>j</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_path_1a8d08b1b4eca7df4b5194d05dda62d69a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +42,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>j</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_path_1a794e83596e13fc0cff8a60d4f96a9792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -77,12 +53,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>j</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_path_1a1072d695def4d818ee48244b5e87a7b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -94,12 +64,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>j</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       </sectiondef>
@@ -109,12 +73,6 @@
         <definition>std::vector&lt;Path&gt; multiPath_</definition>
         <argsstring></argsstring>
         <name>multiPath_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -124,12 +82,6 @@
         <definition>MultiPath</definition>
         <argsstring>()</argsstring>
         <name>MultiPath</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_path_1ad6de2a992badf085d6250b9d6ebed0be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -145,12 +97,6 @@
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="63" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_path_1a5e2ee5e880e28937902a8b9493a1cfcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -162,12 +108,6 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &gt; &amp;</type>
           <declname>multiPath</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="68" bodyend="69"/>
       </memberdef>
       </sectiondef>

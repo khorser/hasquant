@@ -8,62 +8,26 @@
         <name>EigenVectorCalculation</name>
         <enumvalue id="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549adaff11501f171c0d1c4fb6554536beea86" prot="public">
           <name>WithEigenVector</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549ada43a59946b2803d94976db2b93900d9ce" prot="public">
           <name>WithoutEigenVector</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549adaa7a3aeedaa7d2f92678e6648ca0638bc" prot="public">
           <name>OnlyFirstRowEigenVector</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="enum" id="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8" prot="public" static="no">
         <name>ShiftStrategy</name>
         <enumvalue id="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8aa2e5600b6f6ab205afa31836b054eb0c" prot="public">
           <name>NoShift</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8a4f7a88f5385af3f8ccff35b8f5dbf7f5" prot="public">
           <name>Overrelaxation</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8ac55ee6f1c45713fc2fac98d55a855510" prot="public">
           <name>CloseEigenValue</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="50" bodyend="52"/>
       </memberdef>
       </sectiondef>
@@ -73,12 +37,6 @@
         <definition>Size iter_</definition>
         <argsstring></argsstring>
         <name>iter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tqr_eigen_decomposition_1a33612b94911b81d25624e2e23dc0ed75" prot="private" static="no" mutable="no">
@@ -86,12 +44,6 @@
         <definition>Array d_</definition>
         <argsstring></argsstring>
         <name>d_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_tqr_eigen_decomposition_1a1f5d1bd856c8fc4430d3008d84527016" prot="private" static="no" mutable="no">
@@ -99,12 +51,6 @@
         <definition>Matrix ev_</definition>
         <argsstring></argsstring>
         <name>ev_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -132,12 +78,6 @@
           <declname>strategy</declname>
           <defval>CloseEigenValue</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tqr_eigen_decomposition_1aeb9833fe31a4739b5075f2a4cbd5dddd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -145,12 +85,6 @@
         <definition>const Array&amp; eigenvalues</definition>
         <argsstring>() const </argsstring>
         <name>eigenvalues</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tqr_eigen_decomposition_1a41aa0134fde9e36a14c3a0938903e4b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -158,12 +92,6 @@
         <definition>const Matrix&amp; eigenvectors</definition>
         <argsstring>() const </argsstring>
         <name>eigenvectors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tqr_eigen_decomposition_1a62e40545c017ca57d94675198005e7ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -171,12 +99,6 @@
         <definition>Size iterations</definition>
         <argsstring>() const </argsstring>
         <name>iterations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       </sectiondef>
@@ -194,12 +116,6 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>e</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="65"/>
       </memberdef>
       </sectiondef>
@@ -208,7 +124,6 @@
     <detaileddescription>
 <para>References: <verbatim>   Wilkinson, J.H. and Reinsch, C. 1971, Linear Algebra, vol. II of
    Handbook for Automatic Computation (New York: Springer-Verlag)
-
    &quot;Numerical Recipes in C&quot;, 2nd edition,
    Press, Teukolsky, Vetterling, Flannery,
 </verbatim></para><para><xrefsect id="test_1_test000051"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the result is tested by checking it against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>

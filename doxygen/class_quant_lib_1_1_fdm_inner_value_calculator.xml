@@ -14,12 +14,6 @@
         <definition>virtual ~FdmInnerValueCalculator</definition>
         <argsstring>()</argsstring>
         <name>~FdmInnerValueCalculator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1abf190c44cd8a17439c5121804d753e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -35,12 +29,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1a974ef05390467116171bc6cf8891d72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -56,19 +44,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="45"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="40" bodyend="46"/>
   </compounddef>
 </doxygen>

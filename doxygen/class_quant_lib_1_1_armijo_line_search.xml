@@ -10,12 +10,6 @@
         <definition>Real alpha_</definition>
         <argsstring></argsstring>
         <name>alpha_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_armijo_line_search_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real beta_</definition>
         <argsstring></argsstring>
         <name>beta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,10 +43,6 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -84,10 +68,6 @@
         </param>
         <briefdescription>
 <para>Perform line search. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="60"/>
       </memberdef>
       </sectiondef>

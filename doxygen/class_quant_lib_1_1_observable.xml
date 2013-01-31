@@ -34,12 +34,6 @@
         <definition>typedef std::set&lt;Observer*&gt;::iterator iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +43,6 @@
         <definition>friend class Observer</definition>
         <argsstring></argsstring>
         <name>Observer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +52,6 @@
         <definition>std::set&lt;Observer*&gt; observers_</definition>
         <argsstring></argsstring>
         <name>observers_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -79,12 +61,6 @@
         <definition>Observable</definition>
         <argsstring>()</argsstring>
         <name>Observable</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -95,12 +71,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_observable" kindref="compound">Observable</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -112,12 +82,8 @@
           <type>const <ref refid="class_quant_lib_1_1_observable" kindref="compound">Observable</ref> &amp;</type>
           <defname>o</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000087"><xreftitle>Warning</xreftitle><xrefdescription><para>notification is sent before the copy constructor has a chance of actually change the data members. Therefore, observers whose update() method tries to use their observables will not see the updated values. It is suggested that the update() method just raise a flag in order to trigger a later recalculation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="102" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -125,12 +91,6 @@
         <definition>virtual ~Observable</definition>
         <argsstring>()</argsstring>
         <name>~Observable</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -138,12 +98,8 @@
         <definition>void notifyObservers</definition>
         <argsstring>()</argsstring>
         <name>notifyObservers</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method should be called at the end of non-const methods or when the programmer desires to notify any changes. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="119" bodyend="141"/>
       </memberdef>
       </sectiondef>
@@ -157,12 +113,6 @@
           <type><ref refid="class_quant_lib_1_1_observer" kindref="compound">Observer</ref> *</type>
           <defname>o</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_observable_1aff288242fe6e2fe79c1ac6cba3ee3b6c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -174,19 +124,11 @@
           <type><ref refid="class_quant_lib_1_1_observer" kindref="compound">Observer</ref> *</type>
           <defname>o</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Object that notifies its changes to a set of observers. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp" bodystart="42" bodyend="59"/>
   </compounddef>
 </doxygen>

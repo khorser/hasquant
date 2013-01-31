@@ -27,8 +27,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000008"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ae868712f11d4812df6a63fbee0cf03a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -57,10 +55,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1abb14b39203712e76842a8a3374ddd8b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -87,10 +81,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="61"/>
       </memberdef>
       </sectiondef>
@@ -120,10 +110,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option time and bondLength </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="167" bodyend="174"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a80d950672dba969999a87297f450a2f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -150,10 +136,6 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option time and bondLength </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="177" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a561306c8ac57997e1264bea10238ca8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -180,10 +162,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option date and bond tenor </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="188" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1adcc6e29855e39cb9903d7f1cb822b905" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -210,10 +188,6 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option date and bond tenor </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="197" bodyend="206"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ad59951a0af3ebeee35e4e3e37c604c07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -229,12 +203,6 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="87" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a245951532beda8da082fc0e392d36f5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -261,10 +229,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option tenor and bond tenor </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="208" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a2f961a34723dffde5e087af32b59705e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -291,10 +255,6 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option tenor and bond tenor </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="217" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a29ec6129fd58bbcf18ee1eca2a776d53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -310,12 +270,6 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="231" bodyend="236"/>
       </memberdef>
       </sectiondef>
@@ -329,10 +283,6 @@
         <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1a222e287d5aaa40149f1f067f1beceadb">maxBondTenor</reimplementedby>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a5a56f9ec1c7f3fdf00e72197fa64bf82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -343,10 +293,6 @@
         <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1aeddd916230722ca9ad5f39884802d280">maxBondLength</reimplementedby>
         <briefdescription>
 <para>the largest bondLength for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -357,10 +303,6 @@
         <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -371,10 +313,6 @@
         <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="117"/>
       </memberdef>
       </sectiondef>
@@ -384,12 +322,6 @@
         <definition>BusinessDayConvention bdc_</definition>
         <argsstring></argsstring>
         <name>bdc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="149" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -399,12 +331,6 @@
         <definition>virtual ~CallableBondVolatilityStructure</definition>
         <argsstring>()</argsstring>
         <name>~CallableBondVolatilityStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a74e9986d7c3c9fd0a83591f674bd7ba3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -422,10 +348,6 @@
         </param>
         <briefdescription>
 <para>implements the conversion between dates and times </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="122"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -435,10 +357,6 @@
         <name>businessDayConvention</name>
         <briefdescription>
 <para>the business day convention used for option date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ae7ec439ac8ca08eb9650f5f8d2af2d2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -452,10 +370,6 @@
         </param>
         <briefdescription>
 <para>implements the conversion between optionTenors and optionDates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="160" bodyend="165"/>
       </memberdef>
       </sectiondef>

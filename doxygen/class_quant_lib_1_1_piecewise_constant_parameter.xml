@@ -20,12 +20,6 @@
           <declname>constraint</declname>
           <defval><ref refid="class_quant_lib_1_1_no_constraint" kindref="compound">NoConstraint</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="142" bodyend="149"/>
       </memberdef>
       </sectiondef>

@@ -19,19 +19,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/euhicp.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/euhicp.hpp" bodystart="104" bodyend="115"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Fake year-on-year EU HICP (i.e. a ratio of EU HICP) </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/euhicp.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/euhicp.hpp" bodystart="102" bodyend="116"/>
   </compounddef>
 </doxygen>

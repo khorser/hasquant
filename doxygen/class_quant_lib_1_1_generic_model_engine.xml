@@ -32,12 +32,6 @@
           <declname>model</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; ModelType &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/genericmodelengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/genericmodelengine.hpp" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,12 +43,6 @@
           <type>const boost::shared_ptr&lt; ModelType &gt; &amp;</type>
           <declname>model</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/genericmodelengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/genericmodelengine.hpp" bodystart="45" bodyend="48"/>
       </memberdef>
       </sectiondef>

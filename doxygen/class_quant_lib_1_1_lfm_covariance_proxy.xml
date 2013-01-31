@@ -10,12 +10,6 @@
         <definition>friend class Var_Helper</definition>
         <argsstring></argsstring>
         <name>Var_Helper</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -33,12 +27,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt; &amp;</type>
           <declname>corrModel</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_proxy_1a1f7f38dadbb7a8042d1d2c06b7f0b157" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -46,12 +34,6 @@
         <definition>boost::shared_ptr&lt;LmVolatilityModel&gt; volatilityModel</definition>
         <argsstring>() const </argsstring>
         <name>volatilityModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_proxy_1a343bf1ee77c83db6c572146fd728666d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -59,12 +41,6 @@
         <definition>boost::shared_ptr&lt;LmCorrelationModel&gt; correlationModel</definition>
         <argsstring>() const </argsstring>
         <name>correlationModel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_proxy_1a98f01d842b650489da3c57e779f73c93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -82,12 +58,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_proxy_1a0278d24739a9bfc281246d6172530b49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -105,12 +75,6 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_proxy_1aca9d976b9bf880a4f66011cc3b359688" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -135,19 +99,11 @@
           <declname>x</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>proxy for a libor forward model covariance parameterization </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarproxy.hpp" bodystart="35" bodyend="58"/>
   </compounddef>
 </doxygen>

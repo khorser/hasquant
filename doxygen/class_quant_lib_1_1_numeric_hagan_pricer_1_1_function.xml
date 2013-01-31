@@ -10,12 +10,6 @@
         <definition>virtual ~Function</definition>
         <argsstring>()</argsstring>
         <name>~Function</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="265" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="265" bodyend="265"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -27,19 +21,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="266"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="263" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="263" bodyend="267"/>
   </compounddef>
 </doxygen>

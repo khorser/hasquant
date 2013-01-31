@@ -16,8 +16,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp</includes>
     <briefdescription>
 <para>Dividend-vanilla-option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="72" bodyend="74"/>
   </compounddef>
 </doxygen>

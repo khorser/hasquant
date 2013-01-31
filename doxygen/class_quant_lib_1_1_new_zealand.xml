@@ -11,12 +11,6 @@
         <definition>NewZealand</definition>
         <argsstring>()</argsstring>
         <name>NewZealand</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/newzealand.hpp" line="64"/>
       </memberdef>
       </sectiondef>

@@ -19,19 +19,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/uscpi.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/uscpi.hpp" bodystart="70" bodyend="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Fake year-on-year US CPI (i.e. a ratio of US CPI) </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/uscpi.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/uscpi.hpp" bodystart="68" bodyend="82"/>
   </compounddef>
 </doxygen>

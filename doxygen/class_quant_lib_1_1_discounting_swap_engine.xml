@@ -9,12 +9,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
         <argsstring></argsstring>
         <name>discountCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1a4c03bc11ff086bfab1c39eb1409e968a" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>boost::optional&lt;bool&gt; includeSettlementDateFlows_</definition>
         <argsstring></argsstring>
         <name>includeSettlementDateFlows_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1af212738530e45abd96efb0941375436e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Date settlementDate_</definition>
         <argsstring></argsstring>
         <name>settlementDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1a9554983a95caac37e8a83513ceb54bf9" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>Date npvDate_</definition>
         <argsstring></argsstring>
         <name>npvDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -83,12 +59,6 @@
           <declname>npvDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discounting_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -96,12 +66,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discounting_swap_engine_1a80fd74539bdffcb8be719e5b8929feb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -109,19 +73,9 @@
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve</definition>
         <argsstring>() const </argsstring>
         <name>discountCurve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="43" bodyend="45"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="34" bodyend="50"/>
   </compounddef>
 </doxygen>

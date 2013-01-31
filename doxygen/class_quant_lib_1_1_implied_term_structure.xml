@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -42,10 +34,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -56,10 +44,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_term_structure_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -73,10 +57,6 @@
         </param>
         <briefdescription>
 <para>discount factor calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="90" bodyend="102"/>
       </memberdef>
       </sectiondef>
@@ -86,12 +66,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; originalCurve_</definition>
         <argsstring></argsstring>
         <name>originalCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -109,12 +83,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="67" bodyend="72"/>
       </memberdef>
       </sectiondef>

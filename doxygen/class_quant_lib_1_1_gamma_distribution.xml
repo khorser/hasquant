@@ -9,12 +9,6 @@
         <definition>Real a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>a</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="36" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gamma_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -45,19 +33,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="39"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="33" bodyend="42"/>
   </compounddef>
 </doxygen>

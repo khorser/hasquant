@@ -10,12 +10,6 @@
         <definition>ATSCurrency</definition>
         <argsstring>()</argsstring>
         <name>ATSCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="466" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="466" bodyend="474"/>
       </memberdef>
       </sectiondef>

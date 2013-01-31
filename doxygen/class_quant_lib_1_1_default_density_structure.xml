@@ -28,12 +28,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_density_structure_1abe07ca542ab37a1281091e5d16b6c8f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -65,12 +59,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_density_structure_1a31a3d32ba91cad674c0fe45f04af31dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -101,12 +89,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="65"/>
       </memberdef>
       </sectiondef>
@@ -126,8 +108,6 @@
 <para>survival probability calculation </para>        </briefdescription>
         <detaileddescription>
 <para>implemented in terms of the default density <formula id="367">$ p(t) $</formula> as <formula id="368">\[ S(t) = 1 - \int_0^t p(\tau) d\tau. \]</formula></para><para><xrefsect id="caveats_1_caveats000109"><xreftitle>Warning</xreftitle><xrefdescription><para>This default implementation uses numerical integration, which might be inefficient and inaccurate. Derived classes should override it if a more efficient implementation is available. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp" line="81"/>
       </memberdef>
       </sectiondef>

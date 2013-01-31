@@ -10,12 +10,6 @@
         <definition>Real minmax</definition>
         <argsstring></argsstring>
         <name>minmax</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,19 +19,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for continuous fixed lookback option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="74" bodyend="79"/>
   </compounddef>
 </doxygen>

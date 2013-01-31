@@ -14,12 +14,6 @@
         <definition>const Size i_</definition>
         <argsstring></argsstring>
         <name>i_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -33,12 +27,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fct_1a4dc2723ee1b3a4d080cae7096730f92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -50,19 +38,9 @@
           <type>const Container &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="37" bodyend="47"/>
   </compounddef>
 </doxygen>

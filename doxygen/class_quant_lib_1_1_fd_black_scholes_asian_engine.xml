@@ -9,12 +9,6 @@
         <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Size tGrid_</definition>
         <argsstring></argsstring>
         <name>tGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Size xGrid_</definition>
         <argsstring></argsstring>
         <name>xGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1a550283992dcfeeacebd018b3f25e638e" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const Size aGrid_</definition>
         <argsstring></argsstring>
         <name>aGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -99,12 +69,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Douglas()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -112,19 +76,9 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="50"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="40" bodyend="56"/>
   </compounddef>
 </doxygen>

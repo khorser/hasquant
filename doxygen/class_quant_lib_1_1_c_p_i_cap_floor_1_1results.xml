@@ -9,19 +9,9 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="137"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="135" bodyend="138"/>
   </compounddef>
 </doxygen>

@@ -8,31 +8,15 @@
         <name>Side</name>
         <enumvalue id="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00a9d8adb3a58f9266f34281a3afd6abcb6" prot="public">
           <name>Buyer</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00af07cc4a205761c4aeb2d8011744712f4" prot="public">
           <name>Seller</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/default.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/default.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>information on a default-protection contract </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/default.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/default.hpp" bodystart="32" bodyend="34"/>
   </compounddef>
 </doxygen>

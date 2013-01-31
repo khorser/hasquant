@@ -23,12 +23,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>oldGradient</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="49"/>
       </memberdef>
       </sectiondef>
@@ -40,10 +34,6 @@
         <name>inverseHessian_</name>
         <briefdescription>
 <para>inverse of hessian matrix </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -58,12 +48,6 @@
           <declname>lineSearch</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       </sectiondef>
@@ -71,7 +55,6 @@
 <para>Broyden-Fletcher-Goldfarb-Shanno algorithm. </para>    </briefdescription>
     <detaileddescription>
 <para>See <ulink url="http://en.wikipedia.org/wiki/BFGS_method">http://en.wikipedia.org/wiki/BFGS_method</ulink>. <verbatim>   Adapted from Numerical Recipes in C, 2nd edition.
-
    User has to provide line-search method and optimization end criteria.</verbatim> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="39" bodyend="53"/>
   </compounddef>

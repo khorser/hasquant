@@ -12,12 +12,6 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="84"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
         <definition>Real convexityAdjustment</definition>
         <argsstring>() const </argsstring>
         <name>convexityAdjustment</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="88"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +36,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="92"/>
       </memberdef>
       </sectiondef>
@@ -63,12 +45,6 @@
         <definition>Time yearFraction_</definition>
         <argsstring></argsstring>
         <name>yearFraction_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_futures_rate_helper_1a2db327ac7c42c255e47ec86b3c4da706" prot="private" static="no" mutable="no">
@@ -76,12 +52,6 @@
         <definition>Handle&lt;Quote&gt; convAdj_</definition>
         <argsstring></argsstring>
         <name>convAdj_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -124,12 +94,6 @@
           <declname>convexityAdjustment</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a2781d775af2d85d4bf3a18edfad17b7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -170,12 +134,6 @@
           <declname>convexityAdjustment</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a6a92c1c42e0caf366a6a28e06feacbc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -204,12 +162,6 @@
           <declname>convexityAdjustment</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a3c5531480661d184d5be5601856b496f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -238,12 +190,6 @@
           <declname>convexityAdjustment</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a3ab1e5812cb4e4073ba5496e3e9a8217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -268,12 +214,6 @@
           <declname>convexityAdjustment</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a22f486b9caa33944136b676a520072ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -298,19 +238,11 @@
           <declname>convexityAdjustment</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="81"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Rate helper for bootstrapping over <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> futures prices. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="46" bodyend="97"/>
   </compounddef>
 </doxygen>

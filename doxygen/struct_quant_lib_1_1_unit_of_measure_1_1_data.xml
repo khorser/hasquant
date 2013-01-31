@@ -8,12 +8,6 @@
         <definition>std::string name</definition>
         <argsstring></argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>std::string code</definition>
         <argsstring></argsstring>
         <name>code</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a0bc6f200ea331dd773c9e5357933e401" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>UnitOfMeasure::Type unitType</definition>
         <argsstring></argsstring>
         <name>unitType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a66c3f31b4ac25bc2c3b0d9843aa515ed" prot="public" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>UnitOfMeasure triangulationUnitOfMeasure</definition>
         <argsstring></argsstring>
         <name>triangulationUnitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_unit_of_measure_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>Rounding rounding</definition>
         <argsstring></argsstring>
         <name>rounding</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -97,19 +67,9 @@
           <declname>rounding</declname>
           <defval><ref refid="class_quant_lib_1_1_rounding" kindref="compound">Rounding</ref>(0)</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="86"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="76" bodyend="87"/>
   </compounddef>
 </doxygen>

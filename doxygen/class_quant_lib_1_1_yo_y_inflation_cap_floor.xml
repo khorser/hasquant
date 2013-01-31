@@ -19,10 +19,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -34,12 +30,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="70"/>
       </memberdef>
       </sectiondef>
@@ -50,12 +42,6 @@
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a7d67016c4c1751cd680e0e5ad6a3c276" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -63,12 +49,6 @@
         <definition>const std::vector&lt;Rate&gt;&amp; capRates</definition>
         <argsstring>() const </argsstring>
         <name>capRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a45cc04b41d9b6bcd32ed1cdb654a24e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -76,12 +56,6 @@
         <definition>const std::vector&lt;Rate&gt;&amp; floorRates</definition>
         <argsstring>() const </argsstring>
         <name>floorRates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a49031eee121d15042389f80426f7fa9d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -89,12 +63,6 @@
         <definition>const Leg&amp; yoyLeg</definition>
         <argsstring>() const </argsstring>
         <name>yoyLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -102,12 +70,6 @@
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -115,12 +77,6 @@
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1af302a474b752b49a164197fa6734fdb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -128,12 +84,6 @@
         <definition>boost::shared_ptr&lt;YoYInflationCoupon&gt; lastYoYInflationCoupon</definition>
         <argsstring>() const </argsstring>
         <name>lastYoYInflationCoupon</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a7439097a62f15a167a271a6e828d2d77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -147,10 +97,6 @@
         </param>
         <briefdescription>
 <para>Returns the n-th optionlet as a cap/floor with only one cash flow. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="83"/>
       </memberdef>
       </sectiondef>
@@ -159,31 +105,13 @@
         <name>Type</name>
         <enumvalue id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7af9bc10921debb0c226068d339f55d223" prot="public">
           <name>Cap</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7a94e95e4b8360855608dfad0b1f43a301" prot="public">
           <name>Floor</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7a4782631f7ffdc8dea0453ccb0d9fc636" prot="public">
           <name>Collar</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
@@ -193,12 +121,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1afa6ee3a42c562628f1a8deda9f1bdb6d" prot="private" static="no" mutable="no">
@@ -206,12 +128,6 @@
         <definition>Leg yoyLeg_</definition>
         <argsstring></argsstring>
         <name>yoyLeg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1ad8ad7d620cce7df50e26ce8394321fd4" prot="private" static="no" mutable="no">
@@ -219,12 +135,6 @@
         <definition>std::vector&lt;Rate&gt; capRates_</definition>
         <argsstring></argsstring>
         <name>capRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1adc11f67c784aa9174ad5d6f850f59549" prot="private" static="no" mutable="no">
@@ -232,12 +142,6 @@
         <definition>std::vector&lt;Rate&gt; floorRates_</definition>
         <argsstring></argsstring>
         <name>floorRates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -263,12 +167,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>floorRates</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a162488ed23fd0d206db5e970e5c8da1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -288,12 +186,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>strikes</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a1823e1334cc568d64f1bc792b723881e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -305,12 +197,6 @@
           <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
           <declname>discountCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1aa8e8a9d134f996ccfed0e665e2cd6b18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -352,10 +238,6 @@
         </param>
         <briefdescription>
 <para>implied term volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="163" bodyend="172"/>
       </memberdef>
       </sectiondef>

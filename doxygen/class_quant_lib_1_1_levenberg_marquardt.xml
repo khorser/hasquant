@@ -10,12 +10,6 @@
         <definition>Problem* currentProblem_</definition>
         <argsstring></argsstring>
         <name>currentProblem_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a31d6f8638e0f667353d0860bea7ce526" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Array initCostValues_</definition>
         <argsstring></argsstring>
         <name>initCostValues_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1af205b6bc8a0c53ef01842bb58c9d9b29" prot="private" static="no" mutable="yes">
@@ -36,12 +24,6 @@
         <definition>Integer info_</definition>
         <argsstring></argsstring>
         <name>info_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a107162d90a80a615e65d51c741a27773" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Real epsfcn_</definition>
         <argsstring></argsstring>
         <name>epsfcn_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a974e29f035d694be1d2413256a1cc3f7" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const Real xtol_</definition>
         <argsstring></argsstring>
         <name>xtol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a5d738aeea7498205f87574a32a152f93" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>const Real gtol_</definition>
         <argsstring></argsstring>
         <name>gtol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -105,12 +69,6 @@
           <declname>gtol</declname>
           <defval>1.0e-8</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -129,10 +87,6 @@
         </param>
         <briefdescription>
 <para>minimize the optimization problem P </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -140,12 +94,6 @@
         <definition>virtual Integer getInfo</definition>
         <argsstring>() const </argsstring>
         <name>getInfo</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -173,12 +121,6 @@
           <type>int *</type>
           <declname>iflag</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="50"/>
       </memberdef>
       </sectiondef>

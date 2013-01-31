@@ -9,12 +9,6 @@
         <definition>std::vector&lt;Time&gt; times_</definition>
         <argsstring></argsstring>
         <name>times_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ab7762b4e5b79275c37fa24b9f8be1579" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>std::vector&lt;Real&gt; values_</definition>
         <argsstring></argsstring>
         <name>values_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
         <argsstring></argsstring>
         <name>termStructure_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -54,12 +36,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="157" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1a152ddc5903a4188646cc4131c4665b5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -75,12 +51,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="160" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1add642d92bb037c50adc668ef8b0561b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +62,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="164" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -105,12 +69,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="167" bodyend="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ae8b7f7095eb4359d77e946884117e3c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -125,12 +83,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="171" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -138,19 +90,9 @@
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; termStructure</definition>
         <argsstring>() const </argsstring>
         <name>termStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="178" bodyend="180"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="155" bodyend="185"/>
   </compounddef>
 </doxygen>

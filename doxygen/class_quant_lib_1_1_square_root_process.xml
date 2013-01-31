@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_square_root_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -36,10 +32,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_square_root_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -58,10 +50,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -71,12 +59,6 @@
         <definition>Real x0_</definition>
         <argsstring></argsstring>
         <name>x0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_square_root_process_1a4f1ca7ffabd93bf9fffb9b368222a961" prot="private" static="no" mutable="no">
@@ -84,12 +66,6 @@
         <definition>Real mean_</definition>
         <argsstring></argsstring>
         <name>mean_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_square_root_process_1a0e414136017e35bfe55ed92d7e7661e0" prot="private" static="no" mutable="no">
@@ -97,12 +73,6 @@
         <definition>Real speed_</definition>
         <argsstring></argsstring>
         <name>speed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_square_root_process_1affafcc6e56e72b677c7afa126e18a595" prot="private" static="no" mutable="no">
@@ -110,12 +80,6 @@
         <definition>Volatility volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -147,12 +111,6 @@
           <declname>d</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/squarerootprocess.hpp" line="47"/>
       </memberdef>
       </sectiondef>

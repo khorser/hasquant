@@ -10,19 +10,11 @@
         <definition>GaussChebyshev2ndPolynomial</definition>
         <argsstring>()</argsstring>
         <name>GaussChebyshev2ndPolynomial</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="120"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gauss-Chebyshev polynomial (second kind) </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="118" bodyend="121"/>
   </compounddef>
 </doxygen>

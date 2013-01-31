@@ -3,10 +3,6 @@
   <compounddef id="class_quant_lib_1_1_multi_asset_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::MultiAssetOption::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; MultiAssetOption::arguments, MultiAssetOption::results &gt;</basecompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="73" bodyend="75"/>
   </compounddef>
 </doxygen>

@@ -23,12 +23,6 @@
         <definition>Size xSize_</definition>
         <argsstring></argsstring>
         <name>xSize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a4b4ced0c6342f8c5e8d8788b1e4d3417" prot="private" static="no" mutable="no">
@@ -36,12 +30,6 @@
         <definition>Size ySize_</definition>
         <argsstring></argsstring>
         <name>ySize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a83d052b3414bf62f171fd13b3a2fc59e" prot="private" static="no" mutable="no">
@@ -49,12 +37,6 @@
         <definition>Size xySize_</definition>
         <argsstring></argsstring>
         <name>xySize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a6b360ff3017906c3686006a58af128c1" prot="private" static="no" mutable="no">
@@ -62,12 +44,6 @@
         <definition>Real invPrec_</definition>
         <argsstring></argsstring>
         <name>invPrec_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="184" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a8b5249c14a623337f3c7104fc9ef89e7" prot="private" static="no" mutable="no">
@@ -75,12 +51,6 @@
         <definition>Array alphaVec_</definition>
         <argsstring></argsstring>
         <name>alphaVec_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a9af7fd18460560f94c0f6bd89c3a7f24" prot="private" static="no" mutable="no">
@@ -88,12 +58,6 @@
         <definition>Array yVec_</definition>
         <argsstring></argsstring>
         <name>yVec_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a040a6cd3a5b4b1d8d6075b6c71332b2f" prot="private" static="no" mutable="no">
@@ -101,12 +65,6 @@
         <definition>Matrix M_</definition>
         <argsstring></argsstring>
         <name>M_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a6f9fab5df8af098dd6ec62783b27d802" prot="private" static="no" mutable="no">
@@ -114,12 +72,6 @@
         <definition>Kernel kernel_</definition>
         <argsstring></argsstring>
         <name>kernel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="187" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -153,12 +105,6 @@
           <type>const Kernel &amp;</type>
           <declname>kernel</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="59" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1afe1d8348c24e6589bc7c0b3f689316a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -166,12 +112,6 @@
         <definition>void calculate</definition>
         <argsstring>()</argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1af977ba96cd300ce24c910321351b1937" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -187,12 +127,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="81" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a4bdccdeb07247c594e613ff3e0bbe1e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -204,12 +138,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>invPrec</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
       </sectiondef>
@@ -227,12 +155,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>Y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a47c8942343ae94bea299e37b6c7c09a7" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -244,12 +166,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>X</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="116" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1a5237d80c16e36456e03f7b053cab7184" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -261,12 +177,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>X</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="120" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl_1ab7c44ec28e09728ab5bac4fe13becfbc" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -274,19 +184,9 @@
         <definition>void updateAlphaVec</definition>
         <argsstring>()</argsstring>
         <name>updateAlphaVec</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="136" bodyend="179"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp" bodystart="55" bodyend="188"/>
   </compounddef>
 </doxygen>

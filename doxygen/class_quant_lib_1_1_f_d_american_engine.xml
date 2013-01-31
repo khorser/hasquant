@@ -18,12 +18,6 @@
         <definition>typedef FDEngineAdapter&lt;FDAmericanCondition&lt; FDStepConditionEngine&lt;Scheme&gt; &gt;, OneAssetOption::engine&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -52,12 +46,6 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdamericanengine.hpp" bodystart="53" bodyend="57"/>
       </memberdef>
       </sectiondef>

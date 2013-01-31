@@ -10,19 +10,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from multi-asset option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="72" bodyend="77"/>
   </compounddef>
 </doxygen>

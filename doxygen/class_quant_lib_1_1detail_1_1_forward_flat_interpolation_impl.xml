@@ -17,12 +17,6 @@
         <definition>std::vector&lt;Real&gt; primitive_</definition>
         <argsstring></argsstring>
         <name>primitive_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
@@ -30,12 +24,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -57,12 +45,6 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -70,12 +52,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="42" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -87,12 +63,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="49" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -104,12 +74,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="56" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl_1a40d5931c8135350130ddb69962b5c760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -120,12 +84,6 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -136,19 +94,9 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="35" bodyend="70"/>
   </compounddef>
 </doxygen>

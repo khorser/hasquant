@@ -13,10 +13,6 @@
         <name>fixingDates</name>
         <briefdescription>
 <para>fixing dates for the rates to be compounded </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1ac6474d91c55944f4922255494b9561e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -26,10 +22,6 @@
         <name>dt</name>
         <briefdescription>
 <para>accrual (compounding) periods </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a077b9a68b3d014b3e2f83fb64e1932ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -39,10 +31,6 @@
         <name>indexFixings</name>
         <briefdescription>
 <para>fixings to be compounded </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a400cf30b238cb25c1338c90cac6fd9b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -52,10 +40,6 @@
         <name>valueDates</name>
         <briefdescription>
 <para>value dates for the rates to be compounded </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       </sectiondef>
@@ -69,10 +53,6 @@
         <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff">fixingDate</reimplements>
         <briefdescription>
 <para>the date when the coupon is fully determined </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       </sectiondef>
@@ -87,12 +67,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="67"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +76,6 @@
         <definition>std::vector&lt;Date&gt; valueDates_</definition>
         <argsstring></argsstring>
         <name>valueDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_coupon_1a385ec624b35f431becf19c48a3698e07" prot="private" static="no" mutable="no">
@@ -115,12 +83,6 @@
         <definition>std::vector&lt;Date&gt; fixingDates_</definition>
         <argsstring></argsstring>
         <name>fixingDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_coupon_1a70b037964ba05f503e9ec78fbdbc129a" prot="private" static="no" mutable="yes">
@@ -128,12 +90,6 @@
         <definition>std::vector&lt;Rate&gt; fixings_</definition>
         <argsstring></argsstring>
         <name>fixings_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_coupon_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
@@ -141,12 +97,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_coupon_1a2d4469cea4b7a580aa23f08c62603745" prot="private" static="no" mutable="no">
@@ -154,12 +104,6 @@
         <definition>std::vector&lt;Time&gt; dt_</definition>
         <argsstring></argsstring>
         <name>dt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -214,12 +158,6 @@
           <declname>dayCounter</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/overnightindexedcoupon.hpp" line="48"/>
       </memberdef>
       </sectiondef>

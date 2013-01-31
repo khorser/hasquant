@@ -22,12 +22,6 @@
           <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
           <declname>mesher</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="38"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1a99b4edba8b4c52aa218fe3d51ca7484f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -39,12 +33,6 @@
           <type>const NinePointLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1a533599a1f66a4beab066a9f36d877d05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -56,12 +44,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; NinePointLinearOp &gt; &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1ac052bb42cb5e9a27207f69fd73f003d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -73,12 +55,6 @@
           <type>const NinePointLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1abc54f9d2b09d9e447926fb9b6f61631e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -90,12 +66,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; NinePointLinearOp &gt; &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -107,12 +77,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1a37a7e183eb3ebbbc43eba75494d28348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -124,12 +88,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>u</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nine_point_linear_op_1a13535e58dfb4cde185d76d32ab671e94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -141,19 +99,9 @@
           <type>NinePointLinearOp &amp;</type>
           <declname>m</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="47"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/ninepointlinearop.hpp" bodystart="35" bodyend="61"/>
   </compounddef>
 </doxygen>

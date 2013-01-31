@@ -9,12 +9,6 @@
         <definition>const Handle&lt;GeneralizedBlackScholesProcess&gt; p1_</definition>
         <argsstring></argsstring>
         <name>p1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a03e68e8489fb34edce2231b575299ce3" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Handle&lt;GeneralizedBlackScholesProcess&gt; p2_</definition>
         <argsstring></argsstring>
         <name>p2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a7e99e192b1f8083fb9698974031ade6a" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Real correlation_</definition>
         <argsstring></argsstring>
         <name>correlation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const FdmSolverDesc solverDesc_</definition>
         <argsstring></argsstring>
         <name>solverDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
@@ -74,12 +44,6 @@
         <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
         <argsstring></argsstring>
         <name>solver_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -110,12 +74,6 @@
           <declname>schemeDesc</declname>
           <defval>FdmSchemeDesc::Hundsdorfer()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a54a3d3adf137f4c0b938cea30a8c2022" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -131,12 +89,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a7ce5036c20066e383d5b68d770a3b847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -152,12 +104,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a99be84b965124dcc17d0cd76ea3eb1f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -173,12 +119,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1ae0248ca4f96e3b5ed6e8549b3cf61c3e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -194,12 +134,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1aee806b1df681e74ca40ecb1f600f7c4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -215,12 +149,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2d_black_scholes_solver_1a08fa6ab510f052260df20590bf837a8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -236,19 +164,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dblackscholessolver.hpp" bodystart="36" bodyend="64"/>
   </compounddef>
 </doxygen>

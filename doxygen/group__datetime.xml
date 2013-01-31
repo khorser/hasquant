@@ -18,36 +18,26 @@
         <name>BusinessDayConvention</name>
         <enumvalue id="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" prot="public">
           <name>Following</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Choose the first business day after the given holiday. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a013e092c359f6031cc0563fd413ce707" prot="public">
           <name>ModifiedFollowing</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Choose the first business day after the given holiday unless it belongs to a different month, in which case choose the first business day before the holiday. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ad5fb7521157d4d4a91012209d6c75847" prot="public">
           <name>Preceding</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Choose the first business day before the given holiday. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaff46c5ae9385d20709bedade86edd368aab4d046fac23bf67214cb5f3cf8387ee" prot="public">
           <name>ModifiedPreceding</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Choose the first business day before the given holiday unless it belongs to a different month, in which case choose the first business day after the holiday. </para>          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaff46c5ae9385d20709bedade86edd368a5fb8b90b7fdf1a3a228fbbc083e64547" prot="public">
           <name>Unadjusted</name>
-          <briefdescription>
-          </briefdescription>
           <detaileddescription>
 <para>Do not adjust. </para>          </detaileddescription>
         </enumvalue>
@@ -55,8 +45,6 @@
 <para>Business Day conventions. </para>        </briefdescription>
         <detaileddescription>
 <para>These conventions specify the algorithm used to adjust a date in case it is not a valid business day. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/businessdayconvention.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/businessdayconvention.hpp" bodystart="40" bodyend="58"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1gae34b763987dcf60c6c619d327b8c9dbb" prot="public" static="no">
@@ -64,193 +52,97 @@
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba281d1802d56d988c72678e156b6ddf86" prot="public">
           <name>January</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba6955cfa22656682967e5e750b9ccd3f7" prot="public">
           <name>February</name>
           <initializer>= 2</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba6514826513b9cfb1bf828001f1a8f246" prot="public">
           <name>March</name>
           <initializer>= 3</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba7e3e0601c1013d30d66192a042b65ffb" prot="public">
           <name>April</name>
           <initializer>= 4</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba56032654a15262d69e8be7d42a7ab381" prot="public">
           <name>May</name>
           <initializer>= 5</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbbaa00f035b8f40661118c16e2af3e61176" prot="public">
           <name>June</name>
           <initializer>= 6</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba4d7f4874d317b02a2f96fc0da6310d0f" prot="public">
           <name>July</name>
           <initializer>= 7</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba1c412406c5a889dd051e12d67f407d85" prot="public">
           <name>August</name>
           <initializer>= 8</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbbaf5dc1d3f398ac54dfac9985fb9fbe47d" prot="public">
           <name>September</name>
           <initializer>= 9</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba8e8c7d515e22b7c7d882ae4c97584c14" prot="public">
           <name>October</name>
           <initializer>= 10</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba8e47b1d81b37f8244bbc0420573104c1" prot="public">
           <name>November</name>
           <initializer>= 11</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba052079db4e9ba50ce30643ff650486a2" prot="public">
           <name>December</name>
           <initializer>= 12</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba23843ac6d5d7fd949c87235067b0cf8d" prot="public">
           <name>Jan</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba440438569d2f7021e13c06436bac455e" prot="public">
           <name>Feb</name>
           <initializer>= 2</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba2c937adab19ffaa90d92d907272681fc" prot="public">
           <name>Mar</name>
           <initializer>= 3</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba901d3b86defe97d76aa17f7959f45a4b" prot="public">
           <name>Apr</name>
           <initializer>= 4</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba470a2bb850730d2f9f812d0cf05db069" prot="public">
           <name>Jun</name>
           <initializer>= 6</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba02dced4e5287dd4f89c944787c8fd209" prot="public">
           <name>Jul</name>
           <initializer>= 7</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba35b744bc15334aee236729b16b3763fb" prot="public">
           <name>Aug</name>
           <initializer>= 8</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbbae922a67b67c79fe59b1de79ba1ef3ec3" prot="public">
           <name>Sep</name>
           <initializer>= 9</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba3fa258f3bb2deccc3595e22fd129e1d9" prot="public">
           <name>Oct</name>
           <initializer>= 10</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba30c4611a7b0d26864d14fba180d1aa1f" prot="public">
           <name>Nov</name>
           <initializer>= 11</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggae34b763987dcf60c6c619d327b8c9dbba516ce3cb332b423a1b9707352fe5cd17" prot="public">
           <name>Dec</name>
           <initializer>= 12</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>Month names. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="45" bodyend="68"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" prot="public" static="no">
@@ -260,149 +152,99 @@
           <initializer>= -1</initializer>
           <briefdescription>
 <para>null frequency </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa96be73c339468e5d0d9aed7ccc384bcc" prot="public">
           <name>Once</name>
           <initializer>= 0</initializer>
           <briefdescription>
 <para>only once, e.g., a zero-coupon </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" prot="public">
           <name>Annual</name>
           <initializer>= 1</initializer>
           <briefdescription>
 <para>once a year </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaad1a5868a1c314bb7f6ab68e2fa182b2d" prot="public">
           <name>Semiannual</name>
           <initializer>= 2</initializer>
           <briefdescription>
 <para>twice a year </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaacb332c66d96dd68b145f78c14a704f5c" prot="public">
           <name>EveryFourthMonth</name>
           <initializer>= 3</initializer>
           <briefdescription>
 <para>every fourth month </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaab4fce358383d1822f7596659e00b07f7" prot="public">
           <name>Quarterly</name>
           <initializer>= 4</initializer>
           <briefdescription>
 <para>every third month </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa91a5f14e7e96afbf6429a2549d6896e8" prot="public">
           <name>Bimonthly</name>
           <initializer>= 6</initializer>
           <briefdescription>
 <para>every second month </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa075d775ff1bb75474c994bd94e9629f4" prot="public">
           <name>Monthly</name>
           <initializer>= 12</initializer>
           <briefdescription>
 <para>once a month </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa314730e6ae42badf810bc4ab9f3f376b" prot="public">
           <name>EveryFourthWeek</name>
           <initializer>= 13</initializer>
           <briefdescription>
 <para>every fourth week </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa1b3b68c6c6974a8e343ea8d8b66c107f" prot="public">
           <name>Biweekly</name>
           <initializer>= 26</initializer>
           <briefdescription>
 <para>every second week </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa39017ed07c435bd4b739cda6bf3e5a35" prot="public">
           <name>Weekly</name>
           <initializer>= 52</initializer>
           <briefdescription>
 <para>once a week </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa6b15f8b55b10fefe6300b2f3bf60ad78" prot="public">
           <name>Daily</name>
           <initializer>= 365</initializer>
           <briefdescription>
 <para>once a day </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa3a3a2404bef8994b2dd567620f839ed7" prot="public">
           <name>OtherFrequency</name>
           <initializer>= 999</initializer>
           <briefdescription>
 <para>some other unknown frequency </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>Frequency of events. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/frequency.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/frequency.hpp" bodystart="37" bodyend="50"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" prot="public" static="no">
         <name>TimeUnit</name>
         <enumvalue id="group__datetime_1ggadd9fe45e09605eee3e4a39c8a5c4476dacf3635c7cd314f8102d734f94d0791c0" prot="public">
           <name>Days</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggadd9fe45e09605eee3e4a39c8a5c4476da36e432443c4cd0728911d2392c73daca" prot="public">
           <name>Weeks</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggadd9fe45e09605eee3e4a39c8a5c4476da0e4551da8e98ec0440937d5281013b54" prot="public">
           <name>Months</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggadd9fe45e09605eee3e4a39c8a5c4476da2dd3e252f82116d71a54132e95aaa56d" prot="public">
           <name>Years</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>Units used to describe time periods. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/timeunit.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/timeunit.hpp" bodystart="37" bodyend="41"/>
       </memberdef>
       <memberdef kind="enum" id="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" prot="public" static="no">
@@ -410,121 +252,61 @@
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa50f766951431e13654ab869ef85e162c" prot="public">
           <name>Sunday</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa455141191c205fb8f46e2e9da6b0dd47" prot="public">
           <name>Monday</name>
           <initializer>= 2</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa596327c453efea63ea26096bf041f630" prot="public">
           <name>Tuesday</name>
           <initializer>= 3</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa0ae230de6136f0671e2f13a0332a620c" prot="public">
           <name>Wednesday</name>
           <initializer>= 4</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa8d9721cec5bcce006e98e794d3ff4912" prot="public">
           <name>Thursday</name>
           <initializer>= 5</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aaadb8f1f9f2221414dcd35c6e5f8e7d81" prot="public">
           <name>Friday</name>
           <initializer>= 6</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa5a996d296d81b9b8bd3b9201afa4c547" prot="public">
           <name>Saturday</name>
           <initializer>= 7</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa82964cc0e52ddb65da4f795e2b13450a" prot="public">
           <name>Sun</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa2994e0545f034fb3fd5b53b204e33eab" prot="public">
           <name>Mon</name>
           <initializer>= 2</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aabe0db11efe29841bb697109f5ab9059f" prot="public">
           <name>Tue</name>
           <initializer>= 3</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aaae45274a8fd1b199e8acc1289ec16fc8" prot="public">
           <name>Wed</name>
           <initializer>= 4</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aad13ae165fa735bda381d73ad40b4311c" prot="public">
           <name>Thu</name>
           <initializer>= 5</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aaef7517c417649614edf31ccc59c28578" prot="public">
           <name>Fri</name>
           <initializer>= 6</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="group__datetime_1ggaec3d5ec6653b2c392d449500b8f5cb3aa9894b2d5a32ef29e5db1b59ec3e63e12" prot="public">
           <name>Sat</name>
           <initializer>= 7</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Day&apos;s serial number MOD 7; WEEKDAY Excel function is the same except for Sunday = 7. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" bodystart="41" bodyend="55"/>
       </memberdef>
       </sectiondef>
@@ -536,10 +318,6 @@
         <name>Day</name>
         <briefdescription>
 <para>Day number. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" prot="public" static="no">
@@ -549,15 +327,9 @@
         <name>Year</name>
         <briefdescription>
 <para>Year number. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>The concrete class <computeroutput><ref refid="class_quant_lib_1_1_date" kindref="compound">QuantLib::Date</ref></computeroutput> implements the concept of date. Its functionalities include:</para><para><itemizedlist>
 <listitem><para>providing basic information such as weekday, day of the month, day of the year, month, and year;</para></listitem></itemizedlist>

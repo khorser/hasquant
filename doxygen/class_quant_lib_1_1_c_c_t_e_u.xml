@@ -21,8 +21,6 @@
 <para>accrued amount at a given date </para>        </briefdescription>
         <detaileddescription>
 <para>The default bond settlement is used if no date is given. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="193" bodyend="196"/>
       </memberdef>
       </sectiondef>
@@ -55,17 +53,9 @@
           <declname>issueDate</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="49"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Italian <ref refid="class_quant_lib_1_1_c_c_t_e_u" kindref="compound">CCTEU</ref> (Certificato di credito del tesoro) <ref refid="class_quant_lib_1_1_euribor6_m" kindref="compound">Euribor6M</ref> indexed floating rate bond </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="42" bodyend="56"/>

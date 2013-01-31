@@ -13,12 +13,6 @@
         <definition>typedef std::map&lt;Seniority, Real&gt; rate_map</definition>
         <argsstring></argsstring>
         <name>rate_map</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -54,12 +48,8 @@
           <declname>recoveryRates</declname>
           <defval>rate_map()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Credit event with optional settlement information. Represents a credit event that has taken place. Realized events are of an atomic type. If the settlement information is given seniorities present are the seniorities/bonds affected by the event. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1ac4affece3915597c9325f07e8f292be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -93,12 +83,8 @@
           <declname>recoveryRate</declname>
           <defval>0.4</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Use NoSeniority to settle to all seniorities with that recovery. In that case the event is assumed to have affected all seniorities. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -109,10 +95,6 @@
         <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
         <briefdescription>
 <para>returns the date at which the event occurs </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -120,12 +102,6 @@
         <definition>bool isRestructuring</definition>
         <argsstring>() const </argsstring>
         <name>isRestructuring</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="114" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a3c0ebe326f24d183b76e69b2db54f04f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -133,12 +109,6 @@
         <definition>bool isDefault</definition>
         <argsstring>() const </argsstring>
         <name>isDefault</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a6396845b5459f6de8ef0296651a62294" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -146,12 +116,6 @@
         <definition>bool hasSettled</definition>
         <argsstring>() const </argsstring>
         <name>hasSettled</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="116" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a49d7fb04fe9b96881799ff9cb0958691" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -159,12 +123,6 @@
         <definition>const DefaultSettlement&amp; settlement</definition>
         <argsstring>() const </argsstring>
         <name>settlement</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a2c28bc2ecab4fcb305aecac24e805fcb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -172,12 +130,6 @@
         <definition>const DefaultType&amp; defaultType</definition>
         <argsstring>() const </argsstring>
         <name>defaultType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -187,10 +139,6 @@
         <name>currency</name>
         <briefdescription>
 <para>returns the currency of the bond this event refers to. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a147fb3038f22fa7a4712735336e744e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -200,10 +148,6 @@
         <name>eventSeniority</name>
         <briefdescription>
 <para>returns the seniority of the bond that triggered the event. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a3e74393b4a53bec2a028d1c24600951c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -215,12 +159,8 @@
           <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
           <declname>seniority</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns a value if the event lead to a settlement for the requested seniority. Specializations on the default atomics and recoveries could change the default policy. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="137" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a74080ac3a33888b3ba71cf8c96332d4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -232,12 +172,8 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &gt; &amp;</type>
           <declname>contractEvType</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>matches the event if this event would trigger a contract related to the requested event type. Notice the contractual event types are not neccesarily atomic. Notice it does not check seniority or currency only event type. typically used from Issuer </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="150" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1aeca84afdcb5d299984f01c26e3fa5204" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -249,12 +185,8 @@
           <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>contractKey</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns true if this event would trigger a contract with the arguments characteristics. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="163"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -266,12 +198,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="165"/>
       </memberdef>
       </sectiondef>

@@ -29,20 +29,12 @@
           <type>const I2 &amp;</type>
           <declname>yBegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="164" bodyend="170"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="160" bodyend="171"/>
   </compounddef>
 </doxygen>

@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>swap(let) rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -27,10 +23,6 @@
         <name>cap</name>
         <briefdescription>
 <para>cap </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -40,10 +32,6 @@
         <name>floor</name>
         <briefdescription>
 <para>floor </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -53,10 +41,6 @@
         <name>effectiveCap</name>
         <briefdescription>
 <para>effective cap of fixing </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -66,10 +50,6 @@
         <name>effectiveFloor</name>
         <briefdescription>
 <para>effective floor of fixing </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="107"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +61,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="112"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +76,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="117"/>
       </memberdef>
       </sectiondef>
@@ -131,12 +99,6 @@
           <declname>floor</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1ac190319df6222fba5c7088e610ba817a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -206,12 +168,6 @@
           <declname>refPeriodEnd</declname>
           <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="75" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -219,12 +175,6 @@
         <definition>bool isCapped</definition>
         <argsstring>() const </argsstring>
         <name>isCapped</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a2a2a88688014a4840818ae383d1c282c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -232,12 +182,6 @@
         <definition>bool isFloored</definition>
         <argsstring>() const </argsstring>
         <name>isFloored</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1af2b4cec8f0cac8b96a39273aeec915cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -248,12 +192,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer" kindref="compound">YoYInflationCouponPricer</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/capflooredinflationcoupon.hpp" line="123"/>
       </memberdef>
       </sectiondef>
@@ -264,12 +202,10 @@
   time, \form#46 is the inflation rate, \form#47 is its
   gearing, \form#48 is the spread, and \form#49 and \form#50
   the strikes.
-
   The payoff of a floored inflation-rate coupon is:
 </verbatim></para><para><formula id="43">\[ P = N \times T \times \max(a L + b, F). \]</formula> <verbatim>  The payoff of a collared inflation-rate coupon is:
 </verbatim></para><para><formula id="44">\[ P = N \times T \times \min(\max(a L + b, F), C). \]</formula> <verbatim>  If paysWithin = false then the inverse is returned
   (this provides for instrument cap and caplet prices).
-
   They can be decomposed in the following manner.  Decomposition
   of a capped floating rate coupon when paysWithin = true:
 </verbatim> <formula id="51">\[ R = \min(a L + b, C) = (a L + b) + \min(C - b - \xi |a| L, 0) \]</formula> where <formula id="52">$ \xi = sgn(a) $</formula>. Then: <formula id="53">\[ R = (a L + b) + |a| \min(\frac{C - b}{|a|} - \xi L, 0) \]</formula> </para>    </detaileddescription>

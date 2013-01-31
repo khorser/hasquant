@@ -41,12 +41,6 @@
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>maxVol</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/impliedvolatility.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_implied_volatility_helper_1a03965c0a2cb10a60abd316127ee76c9c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -60,12 +54,8 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_simple_quote" kindref="compound">SimpleQuote</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The returned process is equal to the passed one, except for the volatility which is flat and whose value is driven by the passed quote. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/impliedvolatility.hpp" line="61"/>
       </memberdef>
       </sectiondef>

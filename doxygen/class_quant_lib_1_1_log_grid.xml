@@ -13,12 +13,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>grid</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="87" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_grid_1aacc02bc50b7bda60a40ea2dd42b9e6d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -26,12 +20,6 @@
         <definition>const Array&amp; logGridArray</definition>
         <argsstring>() const </argsstring>
         <name>logGridArray</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_log_grid_1a71def449146236ffea420f78fef4f1af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -43,19 +31,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="90" bodyend="90"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="85" bodyend="91"/>
   </compounddef>
 </doxygen>

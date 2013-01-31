@@ -16,12 +16,6 @@
         <definition>X first</definition>
         <argsstring></argsstring>
         <name>first</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_data_1a2bcf66e10478bfdf9fb2514fe62d06c3" prot="public" static="no" mutable="no">
@@ -29,12 +23,6 @@
         <definition>Y second</definition>
         <argsstring></argsstring>
         <name>second</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,12 +32,6 @@
         <definition>Data</definition>
         <argsstring>()</argsstring>
         <name>Data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="88" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1ad82d1c69dd7b887e9a5c19f1b588ab8e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -61,12 +43,6 @@
           <type>const SplineGrid::const_iterator &amp;</type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="90" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1ab6e5e8c6d57239626e7e7dcb76ff6d24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -78,12 +54,6 @@
           <type>const SplineGrid &amp;</type>
           <declname>v</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="92" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_1a89a9da8303a5494a74379ef08936c620" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -95,19 +65,9 @@
           <type>Data&lt; X, Y &gt; &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="94" bodyend="97"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="87" bodyend="100"/>
   </compounddef>
 </doxygen>

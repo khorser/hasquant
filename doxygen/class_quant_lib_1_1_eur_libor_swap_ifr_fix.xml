@@ -19,12 +19,6 @@
           <declname>h</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/eurliborswap.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_eur_libor_swap_ifr_fix_1a7f8385cbf315006ff566a71c95b1c2c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -44,12 +38,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/swap/eurliborswap.hpp" line="86"/>
       </memberdef>
       </sectiondef>

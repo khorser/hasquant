@@ -17,10 +17,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -32,12 +28,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="55"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +40,6 @@
         <definition>const boost::shared_ptr&lt;CreditDefaultSwap&gt;&amp; underlyingSwap</definition>
         <argsstring>() const </argsstring>
         <name>underlyingSwap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +50,6 @@
         <definition>Rate atmRate</definition>
         <argsstring>() const </argsstring>
         <name>atmRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1ab5554b5e7c7e5608a4a952efbee8deff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -77,12 +57,6 @@
         <definition>Real riskyAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>riskyAnnuity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1a5cabbc4f244ab101262fabc120ed06c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -125,12 +99,6 @@
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="75"/>
       </memberdef>
       </sectiondef>
@@ -140,12 +108,6 @@
         <definition>boost::shared_ptr&lt;CreditDefaultSwap&gt; swap_</definition>
         <argsstring></argsstring>
         <name>swap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cds_option_1a060ede8594d8f0d3d76ec093558e1ce8" prot="private" static="no" mutable="no">
@@ -153,12 +115,6 @@
         <definition>bool knocksOut_</definition>
         <argsstring></argsstring>
         <name>knocksOut_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cds_option_1a9f889543109a071307e44752fa0a91bf" prot="private" static="no" mutable="yes">
@@ -166,12 +122,6 @@
         <definition>Real riskyAnnuity_</definition>
         <argsstring></argsstring>
         <name>riskyAnnuity_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -194,12 +144,6 @@
           <declname>knocksOut</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="50"/>
       </memberdef>
       </sectiondef>
@@ -210,12 +154,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -228,12 +168,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="84"/>
       </memberdef>
       </sectiondef>

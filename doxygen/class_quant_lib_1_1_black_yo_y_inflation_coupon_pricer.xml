@@ -15,12 +15,6 @@
           <declname>capletVol</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="131" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_yo_y_inflation_coupon_pricer_1a98d6b462444f8009d141ac4a102b9941" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -28,19 +22,11 @@
         <definition>virtual ~BlackYoYInflationCouponPricer</definition>
         <argsstring>()</argsstring>
         <name>~BlackYoYInflationCouponPricer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="135" bodyend="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black-formula pricer for capped/floored yoy inflation coupons. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="129" bodyend="140"/>
   </compounddef>
 </doxygen>

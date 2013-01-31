@@ -16,10 +16,6 @@
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a4c9195cf76ac701b3e3e667d568dec6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -29,10 +25,6 @@
         <name>~LeastSquareFunction</name>
         <briefdescription>
 <para>Destructor. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1aa96b19df61cc4e727372ce7f9abb60c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -47,10 +39,6 @@
         </param>
         <briefdescription>
 <para>compute value of the least square function </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1aefd0ff60f2c43e34293b14ff785035d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -65,10 +53,6 @@
         </param>
         <briefdescription>
 <para>method to overload to compute the cost function values in x </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a5606a9f56d4bf8a1b09386234ac220a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -87,10 +71,6 @@
         </param>
         <briefdescription>
 <para>compute vector of derivatives of the least square function </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a35a37dbf4155454c382e433e5183ba2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -109,10 +89,6 @@
         </param>
         <briefdescription>
 <para>compute value and gradient of the least square function </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="74"/>
       </memberdef>
       </sectiondef>

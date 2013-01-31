@@ -10,12 +10,6 @@
         <definition>USDCurrency</definition>
         <argsstring>()</argsstring>
         <name>USDCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="228" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="228" bodyend="235"/>
       </memberdef>
       </sectiondef>

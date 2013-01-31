@@ -9,12 +9,6 @@
         <definition>const FdmSolverDesc solverDesc_</definition>
         <argsstring></argsstring>
         <name>solverDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a3dbee12d35ac857fce84d2e13990b09b" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const boost::shared_ptr&lt;FdmLinearOpComposite&gt; op_</definition>
         <argsstring></argsstring>
         <name>op_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a06afd27dcb2e2053592df2c535af8327" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const boost::shared_ptr&lt;FdmSnapshotCondition&gt; thetaCondition_</definition>
         <argsstring></argsstring>
         <name>thetaCondition_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1ae1eee6b55c9dc464e35c5225991bc128" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const boost::shared_ptr&lt;FdmStepConditionComposite&gt; conditions_</definition>
         <argsstring></argsstring>
         <name>conditions_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>std::vector&lt;Real&gt; x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a71a6c36122b9ef005c4c52bda3890e24" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>std::vector&lt;Real&gt; y_</definition>
         <argsstring></argsstring>
         <name>y_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a585c5a1819f797bf907fe72e4bf14127" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>std::vector&lt;Real&gt; z_</definition>
         <argsstring></argsstring>
         <name>z_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a1a5680106af428c3896552f9911bddd6" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>std::vector&lt;Real&gt; initialValues_</definition>
         <argsstring></argsstring>
         <name>initialValues_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a3101c3e50272f7f95c80e21bff94043a" prot="private" static="no" mutable="yes">
@@ -126,12 +72,6 @@
         <definition>std::vector&lt;Matrix&gt; resultValues_</definition>
         <argsstring></argsstring>
         <name>resultValues_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1abf34330deb3dd04afa3e9aae06995f53" prot="private" static="no" mutable="yes">
@@ -139,12 +79,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;BicubicSpline&gt; &gt; interpolation_</definition>
         <argsstring></argsstring>
         <name>interpolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -166,12 +100,6 @@
           <type>const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;</type>
           <declname>op</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -179,12 +107,6 @@
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a41bbadb8d3e97a883e1b7a70f27e4838" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -204,12 +126,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>z</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a97b5f5aa53e4698ceae478523bbf9359" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -229,19 +145,9 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>z</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="37" bodyend="59"/>
   </compounddef>
 </doxygen>

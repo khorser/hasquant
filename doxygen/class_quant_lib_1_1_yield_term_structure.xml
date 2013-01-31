@@ -33,12 +33,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1a7cf35eb5b2d851caa8db325f30f15b87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -70,12 +64,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1af8440328d3515b0cfc710bc49405c8f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -106,12 +94,6 @@
           <declname>jumpDates</declname>
           <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="63"/>
       </memberdef>
       </sectiondef>
@@ -132,12 +114,6 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="185" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1aa69e0b193a072e2c3a5d2d65cda69e08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -154,12 +130,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The same day-counting rule used by the term structure should be used for calculating the passed time t. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="79"/>
       </memberdef>
       </sectiondef>
@@ -193,12 +165,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The resulting interest rate has the required daycounting rule. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1a082588804109bda287be685bf25951ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -224,12 +192,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed time t. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="105"/>
       </memberdef>
       </sectiondef>
@@ -267,12 +231,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The resulting interest rate has the required day-counting rule. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1a7bb62afcfd21cdc31aa6f38a01f1f6be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -306,12 +266,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The resulting interest rate has the required day-counting rule. <xrefsect id="caveats_1_caveats000142"><xreftitle>Warning</xreftitle><xrefdescription><para>dates are not adjusted for holidays </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="191" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1a8b99c32181c270e69d3c5b985f4a95aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -341,12 +297,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The resulting interest rate has the same day-counting rule used by the term structure. The same rule should be used for calculating the passed times t1 and t2. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="146"/>
       </memberdef>
       </sectiondef>
@@ -357,12 +309,6 @@
         <definition>const std::vector&lt; Date &gt; &amp; jumpDates</definition>
         <argsstring>() const </argsstring>
         <name>jumpDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="200" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yield_term_structure_1a1abac1502627ed10d3a628b2b5e3f8e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -370,12 +316,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; jumpTimes</definition>
         <argsstring>() const </argsstring>
         <name>jumpTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="204" bodyend="206"/>
       </memberdef>
       </sectiondef>
@@ -387,12 +327,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="208" bodyend="212"/>
       </memberdef>
       </sectiondef>
@@ -415,10 +349,6 @@
         </param>
         <briefdescription>
 <para>discount factor calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="169"/>
       </memberdef>
       </sectiondef>
@@ -428,12 +358,6 @@
         <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; jumps_</definition>
         <argsstring></argsstring>
         <name>jumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yield_term_structure_1a377c3196ba84049502e83cf5fd576b8a" prot="private" static="no" mutable="no">
@@ -441,12 +365,6 @@
         <definition>std::vector&lt;Date&gt; jumpDates_</definition>
         <argsstring></argsstring>
         <name>jumpDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yield_term_structure_1a5397e08246d45ca8c71c9f27c8cc59c7" prot="private" static="no" mutable="no">
@@ -454,12 +372,6 @@
         <definition>std::vector&lt;Time&gt; jumpTimes_</definition>
         <argsstring></argsstring>
         <name>jumpTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yield_term_structure_1abbe4a622662791f8eed5aefb709b4b7e" prot="private" static="no" mutable="no">
@@ -467,12 +379,6 @@
         <definition>Size nJumps_</definition>
         <argsstring></argsstring>
         <name>nJumps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_yield_term_structure_1abfaa2bb3ceda5570df43b2989d23c966" prot="private" static="no" mutable="no">
@@ -480,12 +386,6 @@
         <definition>Date latestReference_</definition>
         <argsstring></argsstring>
         <name>latestReference_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -495,12 +395,6 @@
         <definition>void setJumps</definition>
         <argsstring>()</argsstring>
         <name>setJumps</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp" line="173"/>
       </memberdef>
       </sectiondef>

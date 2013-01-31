@@ -10,12 +10,6 @@
         <definition>Position::Type position</definition>
         <argsstring></argsstring>
         <name>position</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1arguments_1a882480a23151c878062d7d03add8c8d8" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real strike</definition>
         <argsstring></argsstring>
         <name>strike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real notional</definition>
         <argsstring></argsstring>
         <name>notional</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1arguments_1ad5d32c50036fcd18c7ac2e251914c0d4" prot="public" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Date maturityDate</definition>
         <argsstring></argsstring>
         <name>maturityDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -77,12 +47,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -90,19 +54,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="84"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for forward fair-variance calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="81" bodyend="90"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>FIMCurrency</definition>
         <argsstring>()</argsstring>
         <name>FIMCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="550" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="550" bodyend="558"/>
       </memberdef>
       </sectiondef>

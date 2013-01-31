@@ -19,12 +19,6 @@
         <definition>boost::shared_ptr&lt;HybridHestonHullWhiteProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" static="no" mutable="no">
@@ -32,12 +26,6 @@
         <definition>Size steps_</definition>
         <argsstring></argsstring>
         <name>steps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" static="no" mutable="no">
@@ -45,12 +33,6 @@
         <definition>Size stepsPerYear_</definition>
         <argsstring></argsstring>
         <name>stepsPerYear_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -58,12 +40,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -71,12 +47,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
@@ -84,12 +54,6 @@
         <definition>bool antithetic_</definition>
         <argsstring></argsstring>
         <name>antithetic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a1c27fd78e44f207125a15990d39ad4f5" prot="private" static="no" mutable="no">
@@ -97,12 +61,6 @@
         <definition>bool controlVariate_</definition>
         <argsstring></argsstring>
         <name>controlVariate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -110,12 +68,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -123,12 +75,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -142,12 +88,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
           <defname>process</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="225" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a73adeae8fc820d99ccdf67fcf463bffe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -159,12 +99,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="235" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a6027f962b77842ceff40a9c06c164d75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -176,12 +110,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="242" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a8c653a4c0143b578e294e7ecbbdd7de6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -194,12 +122,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="249" bodyend="252"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a4769d677c242c022ba8302584b1a8b46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -212,12 +134,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="256" bodyend="259"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1abb4ddbcede4c8adc1db5ea2a02d18605" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -229,12 +145,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="263" bodyend="268"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a409b1002648ccd6ce1b910a90fc838c2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -246,12 +156,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="272" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a5d289f0d1bf971b0277d7ba9ecc335b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -263,12 +167,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="284" bodyend="287"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a636c0a9acee5011e8197f121035190c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -280,12 +178,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="291" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_heston_hull_white_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -293,19 +185,11 @@
         <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="299" bodyend="314"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo Heston/Hull-White engine factory. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="71" bodyend="92"/>
   </compounddef>
 </doxygen>

@@ -9,19 +9,11 @@
         <definition>virtual ~AcyclicVisitor</definition>
         <argsstring>()</argsstring>
         <name>~AcyclicVisitor</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>degenerate base class for the Acyclic Visitor pattern </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="33" bodyend="36"/>
   </compounddef>
 </doxygen>

@@ -16,19 +16,9 @@
           <type>const Distribution &amp;</type>
           <declname>d2</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="128"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="125" bodyend="129"/>
   </compounddef>
 </doxygen>

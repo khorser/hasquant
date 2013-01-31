@@ -3,10 +3,6 @@
   <compounddef id="class_quant_lib_1_1_zero_coupon_inflation_swap_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::ZeroCouponInflationSwap::engine</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ZeroCouponInflationSwap::arguments, ZeroCouponInflationSwap::results &gt;</basecompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/zerocouponinflationswap.hpp" bodystart="151" bodyend="153"/>
   </compounddef>
 </doxygen>

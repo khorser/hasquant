@@ -19,12 +19,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcessArray&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
@@ -32,12 +26,6 @@
         <definition>bool brownianBridge_</definition>
         <argsstring></argsstring>
         <name>brownianBridge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
@@ -45,12 +33,6 @@
         <definition>bool antithetic_</definition>
         <argsstring></argsstring>
         <name>antithetic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" static="no" mutable="no">
@@ -58,12 +40,6 @@
         <definition>Size steps_</definition>
         <argsstring></argsstring>
         <name>steps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" static="no" mutable="no">
@@ -71,12 +47,6 @@
         <definition>Size stepsPerYear_</definition>
         <argsstring></argsstring>
         <name>stepsPerYear_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -84,12 +54,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -97,12 +61,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -110,12 +68,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -123,12 +75,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -142,12 +88,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt; &amp;</type>
           <defname>process</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="212" bodyend="217"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1adb5c5ce367c73525ca6ed46797035ed4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -159,12 +99,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="221" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a2f91321146e9de373888ccf7d6b186d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -176,12 +110,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>steps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="228" bodyend="231"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a9bc5412030167431e5bd8c8a884b1e36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -194,12 +122,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="235" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a679bd706e2fada91d3f8595fd770be60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -212,12 +134,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="242" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a25c281432ddd7058fab73604338e5fc0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -229,12 +145,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="249" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a18301d16731f2c47004e156ff33c2b92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -246,12 +156,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="258" bodyend="266"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1abba8bd16f3074bcc80f4d86ca158c882" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -263,12 +167,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="270" bodyend="273"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a1f31396ee8b349c2f95046d3114555b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -280,12 +178,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="277" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_european_basket_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -293,19 +185,11 @@
         <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="285" bodyend="299"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo basket-option engine factory. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="105" bodyend="126"/>
   </compounddef>
 </doxygen>

@@ -11,12 +11,6 @@
         <definition>Hungary</definition>
         <argsstring>()</argsstring>
         <name>Hungary</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hungary.hpp" line="58"/>
       </memberdef>
       </sectiondef>

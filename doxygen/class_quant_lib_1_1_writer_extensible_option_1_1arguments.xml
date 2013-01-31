@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff2</definition>
         <argsstring></argsstring>
         <name>payoff2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_writer_extensible_option_1_1arguments_1a35a9a6c885b78c1f68bb55b96f176f06" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise2</definition>
         <argsstring></argsstring>
         <name>exercise2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -38,19 +26,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Additional arguments for writer-extensible option. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="61" bodyend="67"/>
   </compounddef>
 </doxygen>

@@ -22,10 +22,6 @@
         </param>
         <briefdescription>
 <para>Implied discount curve. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -48,12 +44,6 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
           <declname>factors</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -83,12 +73,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="55"/>
       </memberdef>
       </sectiondef>

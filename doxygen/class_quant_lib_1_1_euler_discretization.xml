@@ -27,12 +27,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns an approximation of the drift defined as <formula id="338">$ \mu(t_0, \mathbf{x}_0) \Delta t $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -56,12 +52,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns an approximation of the drift defined as <formula id="339">$ \mu(t_0, x_0) \Delta t $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -85,12 +77,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns an approximation of the diffusion defined as <formula id="340">$ \sigma(t_0, \mathbf{x}_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -114,12 +102,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns an approximation of the diffusion defined as <formula id="341">$ \sigma(t_0, x_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -143,12 +127,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns an approximation of the covariance defined as <formula id="342">$ \sigma(t_0, \mathbf{x}_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -172,19 +152,13 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns an approximation of the variance defined as <formula id="343">$ \sigma(t_0, x_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Euler discretization for stochastic processes. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" bodystart="33" bodyend="70"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>Integer n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -29,12 +23,6 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_student_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -46,12 +34,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="70"/>
       </memberdef>
       </sectiondef>

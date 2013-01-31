@@ -20,12 +20,6 @@
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -33,12 +27,6 @@
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -56,10 +44,6 @@
         </param>
         <briefdescription>
 <para>to be overloaded by more complex day counters </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1ae8632ad4f1823e4db1f0a933bc2814cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -83,19 +67,11 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>abstract base class for day counter implementations </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="46" bodyend="59"/>
   </compounddef>
 </doxygen>

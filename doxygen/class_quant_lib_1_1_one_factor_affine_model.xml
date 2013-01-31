@@ -17,12 +17,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nArguments</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="125" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_affine_model_1a6e6da6d0ea51cae74b4ec8903bf09f18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -43,12 +37,6 @@
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
           <declname>factors</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="128" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_affine_model_1aa260e038c388bc1476369ebfcd750ca2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -68,12 +56,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>rate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_affine_model_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -88,10 +70,6 @@
         </param>
         <briefdescription>
 <para>Implied discount curve. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="138"/>
       </memberdef>
       </sectiondef>

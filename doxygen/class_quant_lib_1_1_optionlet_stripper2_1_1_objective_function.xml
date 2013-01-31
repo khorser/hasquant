@@ -8,12 +8,6 @@
         <definition>boost::shared_ptr&lt;SimpleQuote&gt; spreadQuote_</definition>
         <argsstring></argsstring>
         <name>spreadQuote_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1a0835bac62ccb8f5b035a9c07fd9f9aef" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>boost::shared_ptr&lt;CapFloor&gt; cap_</definition>
         <argsstring></argsstring>
         <name>cap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1ae65be73f5312f6a5ac410f2e7a1ddf4d" prot="private" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>Real targetValue_</definition>
         <argsstring></argsstring>
         <name>targetValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -59,12 +41,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>targetValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1a58b839144725bd9495ac0477a6aa8511" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -76,19 +52,9 @@
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>spreadVol</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="66"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="61" bodyend="71"/>
   </compounddef>
 </doxygen>

@@ -23,12 +23,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xAcc</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/ridder.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/ridder.hpp" bodystart="38" bodyend="99"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +40,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>b</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/ridder.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solvers1d/ridder.hpp" bodystart="101" bodyend="103"/>
       </memberdef>
       </sectiondef>

@@ -12,12 +12,6 @@
         <definition>boost::shared_ptr&lt;Bond&gt; bond_</definition>
         <argsstring></argsstring>
         <name>bond_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a7fcaee097ffa6f5c4c69c87fd94581ae" prot="private" static="no" mutable="no">
@@ -25,12 +19,6 @@
         <definition>Real bondCleanPrice_</definition>
         <argsstring></argsstring>
         <name>bondCleanPrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1ac567f42e3c257401c47f8a0dd3980e2f" prot="private" static="no" mutable="no">
@@ -38,12 +26,6 @@
         <definition>Real nonParRepayment_</definition>
         <argsstring></argsstring>
         <name>nonParRepayment_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
@@ -51,12 +33,6 @@
         <definition>Spread spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a910815019f47c9236f4112d43d67371b" prot="private" static="no" mutable="no">
@@ -64,12 +40,6 @@
         <definition>bool parSwap_</definition>
         <argsstring></argsstring>
         <name>parSwap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a803c3db64837bdd4d63de86f64a248ac" prot="private" static="no" mutable="no">
@@ -77,12 +47,6 @@
         <definition>Date upfrontDate_</definition>
         <argsstring></argsstring>
         <name>upfrontDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a492c911c409c868717797a52dda59333" prot="private" static="no" mutable="yes">
@@ -90,12 +54,6 @@
         <definition>Spread fairSpread_</definition>
         <argsstring></argsstring>
         <name>fairSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a7573025e3c4912c05a1e589e7773ccd4" prot="private" static="no" mutable="yes">
@@ -103,12 +61,6 @@
         <definition>Real fairCleanPrice_</definition>
         <argsstring></argsstring>
         <name>fairCleanPrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a20e610dcd481ae9b0434c6ceff29b86f" prot="private" static="no" mutable="yes">
@@ -116,12 +68,6 @@
         <definition>Real fairNonParRepayment_</definition>
         <argsstring></argsstring>
         <name>fairNonParRepayment_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -166,12 +112,6 @@
           <declname>parAssetSwap</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a6b65af646651014e605b4ba0c7b4f35d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -223,12 +163,6 @@
           <declname>payBondCoupon</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -236,12 +170,6 @@
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a6428d70950807f5c37f18a52fa79d756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -249,12 +177,6 @@
         <definition>Real floatingLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a3490947f87ceb8a495841d24e03b440e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -262,12 +184,6 @@
         <definition>Real floatingLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1aefe5a490e12fa6ddf266f1e16cbc8ad7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -275,12 +191,6 @@
         <definition>Real fairCleanPrice</definition>
         <argsstring>() const </argsstring>
         <name>fairCleanPrice</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a49ccac4332a4c5e7faee1f2a0f7fb5c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -288,12 +198,6 @@
         <definition>Real fairNonParRepayment</definition>
         <argsstring>() const </argsstring>
         <name>fairNonParRepayment</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a50e8937c3bff2b1f242b0da70e9e5d13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -301,12 +205,6 @@
         <definition>bool parSwap</definition>
         <argsstring>() const </argsstring>
         <name>parSwap</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -314,12 +212,6 @@
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1aab241a7a0ea7c566883009fe26b009a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -327,12 +219,6 @@
         <definition>Real cleanPrice</definition>
         <argsstring>() const </argsstring>
         <name>cleanPrice</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1ab1ec3851ca926a8a4c5fbc9303ffbbc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -340,12 +226,6 @@
         <definition>Real nonParRepayment</definition>
         <argsstring>() const </argsstring>
         <name>nonParRepayment</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a75b223367085dcbd9f0febd1c1ea512b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -353,12 +233,6 @@
         <definition>const boost::shared_ptr&lt;Bond&gt;&amp; bond</definition>
         <argsstring>() const </argsstring>
         <name>bond</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1aeac79b9e3c93b6b95c91c002073ff025" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -366,12 +240,6 @@
         <definition>bool payBondCoupon</definition>
         <argsstring>() const </argsstring>
         <name>payBondCoupon</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="87" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a29ef1828744bbb15999052b71c8c5454" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -379,12 +247,6 @@
         <definition>const Leg&amp; bondLeg</definition>
         <argsstring>() const </argsstring>
         <name>bondLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1ab770ccb862fe2799b9f9aeff11c9aeb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -392,12 +254,6 @@
         <definition>const Leg&amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -409,12 +265,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -427,12 +279,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="92"/>
       </memberdef>
       </sectiondef>
@@ -443,12 +291,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="94"/>
       </memberdef>
       </sectiondef>

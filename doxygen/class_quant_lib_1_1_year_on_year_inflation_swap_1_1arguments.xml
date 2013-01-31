@@ -10,12 +10,6 @@
         <definition>Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1ac087ed31c7c86f346a554482c05e01bd" prot="public" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>std::vector&lt;Date&gt; fixedResetDates</definition>
         <argsstring></argsstring>
         <name>fixedResetDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a9ae1b87c848fe690cc0fb8aae7a1ad53" prot="public" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>std::vector&lt;Date&gt; fixedPayDates</definition>
         <argsstring></argsstring>
         <name>fixedPayDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1aa720ab00fdbe509fd7bc7b2bf98635bf" prot="public" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>std::vector&lt;Time&gt; yoyAccrualTimes</definition>
         <argsstring></argsstring>
         <name>yoyAccrualTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a9a0682525eee8ae61ac4a975e7ec188e" prot="public" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>std::vector&lt;Date&gt; yoyResetDates</definition>
         <argsstring></argsstring>
         <name>yoyResetDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a84adae0121dbfd026e730072752bd368" prot="public" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>std::vector&lt;Date&gt; yoyFixingDates</definition>
         <argsstring></argsstring>
         <name>yoyFixingDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a2aeb5824c9beecb215605587d94044b4" prot="public" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>std::vector&lt;Date&gt; yoyPayDates</definition>
         <argsstring></argsstring>
         <name>yoyPayDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1af3b796aad3df6d60ab2749eb66836af6" prot="public" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>std::vector&lt;Real&gt; fixedCoupons</definition>
         <argsstring></argsstring>
         <name>fixedCoupons</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a7abc424ea452b5a39029dda381603ea0" prot="public" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>std::vector&lt;Spread&gt; yoySpreads</definition>
         <argsstring></argsstring>
         <name>yoySpreads</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1af15d50d5168187134489254a7d4f9ca8" prot="public" static="no" mutable="no">
@@ -140,12 +80,6 @@
         <definition>std::vector&lt;Real&gt; yoyCoupons</definition>
         <argsstring></argsstring>
         <name>yoyCoupons</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -155,12 +89,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="126" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -168,19 +96,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="141"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for YoY swap calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/yearonyearinflationswap.hpp" bodystart="124" bodyend="142"/>
   </compounddef>
 </doxygen>

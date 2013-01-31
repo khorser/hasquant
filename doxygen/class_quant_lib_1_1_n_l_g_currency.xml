@@ -10,12 +10,6 @@
         <definition>NLGCurrency</definition>
         <argsstring>()</argsstring>
         <name>NLGCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="676" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="676" bodyend="684"/>
       </memberdef>
       </sectiondef>

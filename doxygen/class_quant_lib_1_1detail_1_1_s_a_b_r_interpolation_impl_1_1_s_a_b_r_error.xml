@@ -9,12 +9,6 @@
         <definition>SABRInterpolationImpl* sabr_</definition>
         <argsstring></argsstring>
         <name>sabr_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="327" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="327" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
           <type>SABRInterpolationImpl *</type>
           <declname>sabr</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="306" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="305" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -45,12 +33,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="308" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="308" bodyend="315"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a24bca93c2bbe35871e279fd8a935143d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -62,19 +44,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="317" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="317" bodyend="324"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="303" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="303" bodyend="328"/>
   </compounddef>
 </doxygen>

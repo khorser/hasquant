@@ -14,12 +14,6 @@
         <definition>Null</definition>
         <argsstring>()</argsstring>
         <name>Null</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_null_1ae5857c1c44e69902576181d342c6b0cd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,19 +21,11 @@
         <definition>operator T</definition>
         <argsstring>() const </argsstring>
         <name>operator T</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>template class providing a null value for a given type. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="36" bodyend="-1"/>
   </compounddef>
 </doxygen>

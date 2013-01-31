@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       </sectiondef>
@@ -31,10 +27,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_optionlet_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
@@ -58,12 +46,6 @@
         <definition>Handle&lt;Quote&gt; volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -95,10 +77,6 @@
         </param>
         <briefdescription>
 <para>floating reference date, floating market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_optionlet_volatility_1a798d865b41ca9ac9b3613892d87e16bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -128,10 +106,6 @@
         </param>
         <briefdescription>
 <para>fixed reference date, floating market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_optionlet_volatility_1a2753d14197244e992a79569d04f90927" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -161,10 +135,6 @@
         </param>
         <briefdescription>
 <para>floating reference date, fixed market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_constant_optionlet_volatility_1a6ccddfb23110eb2edc5771aeee8b5b0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -194,17 +164,11 @@
         </param>
         <briefdescription>
 <para>fixed reference date, fixed market data </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="60"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Constant caplet volatility, no time-strike dependence. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/constantoptionletvol.hpp" bodystart="35" bodyend="77"/>
   </compounddef>
 </doxygen>

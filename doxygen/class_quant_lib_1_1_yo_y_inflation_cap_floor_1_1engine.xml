@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp</includes>
     <briefdescription>
 <para>base class for cap/floor engines </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="155" bodyend="157"/>
   </compounddef>
 </doxygen>

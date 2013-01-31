@@ -16,17 +16,7 @@
         <enumvalue id="struct_quant_lib_1_1_generic_low_discrepancy_1a99fb83031ce9923c84392b4e92f956b5a4cf0a75076c0e93010640ad9b584b0ce" prot="public">
           <name>allowsErrorEstimate</name>
           <initializer>= 0</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="87" bodyend="87"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_generic_low_discrepancy_1aa6f14f6a2e2d5a6b067bcd8c58eda787" prot="public" static="no">
@@ -34,12 +24,6 @@
         <definition>typedef URSG ursg_type</definition>
         <argsstring></argsstring>
         <name>ursg_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="struct_quant_lib_1_1_generic_low_discrepancy_1a171ed387822763dc8c95e3f638cc8de0" prot="public" static="no">
@@ -47,12 +31,6 @@
         <definition>typedef InverseCumulativeRsg&lt;ursg_type,IC&gt; rsg_type</definition>
         <argsstring></argsstring>
         <name>rsg_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -62,12 +40,6 @@
         <definition>boost::shared_ptr&lt; IC &gt; icInstance</definition>
         <argsstring></argsstring>
         <name>icInstance</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -85,19 +57,9 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="89" bodyend="93"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="82" bodyend="96"/>
   </compounddef>
 </doxygen>

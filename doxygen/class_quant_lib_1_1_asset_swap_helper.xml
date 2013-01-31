@@ -9,12 +9,6 @@
         <definition>Period tenor_</definition>
         <argsstring></argsstring>
         <name>tenor_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a8cb58608de54286272715a08a7492a7e" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Natural settlementDays_</definition>
         <argsstring></argsstring>
         <name>settlementDays_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Calendar calendar_</definition>
         <argsstring></argsstring>
         <name>calendar_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a1317e1bce37ec4fcc241069d1405e87a" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>BusinessDayConvention fixedConvention_</definition>
         <argsstring></argsstring>
         <name>fixedConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1ad2bab65a51b36b242d8f1eca37f29288" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>Period fixedPeriod_</definition>
         <argsstring></argsstring>
         <name>fixedPeriod_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a417ce99525ff934e161e933d540c0409" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>DayCounter fixedDayCount_</definition>
         <argsstring></argsstring>
         <name>fixedDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1ae60a07c9bc2ad615a4e024154188c328" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>BusinessDayConvention floatConvention_</definition>
         <argsstring></argsstring>
         <name>floatConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a05c24c44b71e2f774c63c214e4803018" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>Period floatPeriod_</definition>
         <argsstring></argsstring>
         <name>floatPeriod_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a52317f2d9d20fcdf6da1753974274a67" prot="private" static="no" mutable="no">
@@ -113,12 +65,6 @@
         <definition>DayCounter floatDayCount_</definition>
         <argsstring></argsstring>
         <name>floatDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
@@ -126,12 +72,6 @@
         <definition>Real recoveryRate_</definition>
         <argsstring></argsstring>
         <name>recoveryRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a3d2fad300b5d5ea0e346c325f7a48a57" prot="private" static="no" mutable="no">
@@ -139,12 +79,6 @@
         <definition>RelinkableHandle&lt;YieldTermStructure&gt; yieldTS_</definition>
         <argsstring></argsstring>
         <name>yieldTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1ac87492227a6f6469bcab91963eab9db7" prot="private" static="no" mutable="no">
@@ -152,12 +86,6 @@
         <definition>Period integrationStepSize_</definition>
         <argsstring></argsstring>
         <name>integrationStepSize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1aab7be0a2ef3486101fe70ac7ba229d17" prot="private" static="no" mutable="no">
@@ -165,12 +93,6 @@
         <definition>Date evaluationDate_</definition>
         <argsstring></argsstring>
         <name>evaluationDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a10eb26663e86e8ab1d9683296b33dbbc" prot="private" static="no" mutable="no">
@@ -178,12 +100,6 @@
         <definition>boost::shared_ptr&lt;RiskyAssetSwap&gt; asw_</definition>
         <argsstring></argsstring>
         <name>asw_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a2fe509ef8ab9a9696c015a6fa1e3c261" prot="private" static="no" mutable="no">
@@ -191,12 +107,6 @@
         <definition>RelinkableHandle&lt;DefaultProbabilityTermStructure&gt; probability_</definition>
         <argsstring></argsstring>
         <name>probability_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -259,12 +169,6 @@
           <declname>integrationStepSize</declname>
           <defval><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -272,12 +176,6 @@
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -288,12 +186,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="105"/>
       </memberdef>
       </sectiondef>
@@ -303,12 +195,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a5b508edbd7d439284c55178fd681adb0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -316,19 +202,9 @@
         <definition>void initializeDates</definition>
         <argsstring>()</argsstring>
         <name>initializeDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="109"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="89" bodyend="127"/>
   </compounddef>
 </doxygen>

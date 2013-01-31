@@ -9,12 +9,6 @@
         <definition>friend class QuantLib::Singleton&lt; Tracing &gt;</definition>
         <argsstring></argsstring>
         <name>QuantLib::Singleton&lt; Tracing &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>std::ostream* out_</definition>
         <argsstring></argsstring>
         <name>out_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_tracing_1ab6dfcb3e6c79f4def1295fea7f0de8c0" prot="private" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>bool enabled_</definition>
         <argsstring></argsstring>
         <name>enabled_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_tracing_1a5c026231da11874bd824a06d0a516708" prot="private" static="no" mutable="no">
@@ -50,12 +32,6 @@
         <definition>Integer depth_</definition>
         <argsstring></argsstring>
         <name>depth_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -65,12 +41,6 @@
         <definition>Tracing</definition>
         <argsstring>()</argsstring>
         <name>Tracing</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="68"/>
       </memberdef>
       </sectiondef>
@@ -80,12 +50,6 @@
         <definition>void enable</definition>
         <argsstring>()</argsstring>
         <name>enable</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="70" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a8cfbbe53c1cf6e3054736daea3044c0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -93,12 +57,6 @@
         <definition>void disable</definition>
         <argsstring>()</argsstring>
         <name>disable</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1ad590312feef889aa6887f072b334162c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -110,12 +68,6 @@
           <type>std::ostream &amp;</type>
           <declname>stream</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a1d79980f25d38aba3d6777d0afe544f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -123,12 +75,6 @@
         <definition>bool enabled</definition>
         <argsstring>() const </argsstring>
         <name>enabled</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1aa38e56e146bc20466a2b5969217cbb73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -136,12 +82,6 @@
         <definition>std::ostream&amp; stream</definition>
         <argsstring>()</argsstring>
         <name>stream</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a0d2912955de777acfcd951216a40f795" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -149,12 +89,6 @@
         <definition>Integer depth</definition>
         <argsstring>() const </argsstring>
         <name>depth</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a6663cf1e20c2f8162d29d31c8f6324e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -162,12 +96,6 @@
         <definition>void down</definition>
         <argsstring>()</argsstring>
         <name>down</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a0a1d932d49dd1079cfd0964b11adc7a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -175,19 +103,9 @@
         <definition>void up</definition>
         <argsstring>()</argsstring>
         <name>up</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="65" bodyend="88"/>
   </compounddef>
 </doxygen>

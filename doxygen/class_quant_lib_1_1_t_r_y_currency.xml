@@ -10,12 +10,6 @@
         <definition>TRYCurrency</definition>
         <argsstring>()</argsstring>
         <name>TRYCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="443" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="443" bodyend="450"/>
       </memberdef>
       </sectiondef>

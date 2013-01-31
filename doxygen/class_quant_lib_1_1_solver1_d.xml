@@ -39,12 +39,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>step</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method returns the zero of the function <formula id="37">$ f $</formula>, determined with the given accuracy <formula id="203">$ \epsilon $</formula>; depending on the particular solver, this might mean that the returned <formula id="134">$ x $</formula> is such that <formula id="239">$ |f(x)| &lt; \epsilon $</formula>, or that <formula id="240">$ |x-\xi| &lt; \epsilon $</formula> where <formula id="241">$ \xi $</formula> is the real zero.</para><para>This method contains a bracketing routine to which an initial guess must be supplied as well as a step used to scan the range of the possible bracketing values. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="85" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1aab70cb324f07b6f8922d2bf0f3838cc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -77,12 +73,8 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>xMax</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method returns the zero of the function <formula id="37">$ f $</formula>, determined with the given accuracy <formula id="203">$ \epsilon $</formula>; depending on the particular solver, this might mean that the returned <formula id="134">$ x $</formula> is such that <formula id="239">$ |f(x)| &lt; \epsilon $</formula>, or that <formula id="240">$ |x-\xi| &lt; \epsilon $</formula> where <formula id="241">$ \xi $</formula> is the real zero.</para><para>An initial guess must be supplied, as well as two values <formula id="242">$ x_\mathrm{min} $</formula> and <formula id="243">$ x_\mathrm{max} $</formula> which must bracket the zero (i.e., either <formula id="244">$ f(x_\mathrm{min}) \leq 0 \leq f(x_\mathrm{max}) $</formula>, or <formula id="245">$ f(x_\mathrm{max}) \leq 0 \leq f(x_\mathrm{min}) $</formula> must be true). </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="164" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a5cd4ab37661635dfaf1b58f547f4223f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -94,12 +86,8 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>evaluations</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method sets the maximum number of function evaluations for the bracketing routine. An error is thrown if a bracket is not found after this number of evaluations. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="219" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="239" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a6a9af21bb68e575c5616e2902a4788af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -113,10 +101,6 @@
         </param>
         <briefdescription>
 <para>sets the lower bound for the function domain </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="221" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="244" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a96c5f418c69b6d88109d2ad8097694f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -130,10 +114,6 @@
         </param>
         <briefdescription>
 <para>sets the upper bound for the function domain </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="223" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="250" bodyend="253"/>
       </memberdef>
       </sectiondef>
@@ -143,12 +123,6 @@
         <definition>Real lowerBound_</definition>
         <argsstring></argsstring>
         <name>lowerBound_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1abcbfe0842c7e864aaa71532acac7b585" prot="private" static="no" mutable="no">
@@ -156,12 +130,6 @@
         <definition>Real upperBound_</definition>
         <argsstring></argsstring>
         <name>upperBound_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1a217f89b53faa6499a9f2c66d3cdf1841" prot="private" static="no" mutable="no">
@@ -169,12 +137,6 @@
         <definition>bool lowerBoundEnforced_</definition>
         <argsstring></argsstring>
         <name>lowerBoundEnforced_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="232" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1a49c9d474bd044afedd1c54f27017a707" prot="private" static="no" mutable="no">
@@ -182,12 +144,6 @@
         <definition>bool upperBoundEnforced_</definition>
         <argsstring></argsstring>
         <name>upperBoundEnforced_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="232" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -197,12 +153,6 @@
         <definition>Solver1D</definition>
         <argsstring>()</argsstring>
         <name>Solver1D</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       </sectiondef>
@@ -216,12 +166,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="230" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="256" bodyend="262"/>
       </memberdef>
       </sectiondef>

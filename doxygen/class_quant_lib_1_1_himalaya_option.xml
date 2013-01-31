@@ -13,12 +13,6 @@
         <definition>std::vector&lt;Date&gt; fixingDates_</definition>
         <argsstring></argsstring>
         <name>fixingDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_himalaya_option_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" static="no" mutable="no">
@@ -26,12 +20,6 @@
         <definition>Real strike_</definition>
         <argsstring></argsstring>
         <name>strike_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_himalaya_option_1a3807d6547d20b590e55af787a54c960f" prot="private" static="no" mutable="yes">
@@ -39,12 +27,6 @@
         <definition>Rate yield_</definition>
         <argsstring></argsstring>
         <name>yield_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -62,12 +44,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>strike</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_himalaya_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -79,12 +55,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="52"/>
       </memberdef>
       </sectiondef>

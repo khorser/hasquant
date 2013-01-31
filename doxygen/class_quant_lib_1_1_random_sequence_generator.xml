@@ -16,12 +16,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -31,12 +25,6 @@
         <definition>Size dimensionality_</definition>
         <argsstring></argsstring>
         <name>dimensionality_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1a71b7f656dfe0cefb9d41f6e8e8f502c8" prot="private" static="no" mutable="no">
@@ -44,12 +32,6 @@
         <definition>RNG rng_</definition>
         <argsstring></argsstring>
         <name>rng_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="yes">
@@ -57,12 +39,6 @@
         <definition>sample_type sequence_</definition>
         <argsstring></argsstring>
         <name>sequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1ad426b393eed1e246bc404a540c0ad4f8" prot="private" static="no" mutable="yes">
@@ -70,12 +46,6 @@
         <definition>std::vector&lt;BigNatural&gt; int32Sequence_</definition>
         <argsstring></argsstring>
         <name>int32Sequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +63,6 @@
           <type>const RNG &amp;</type>
           <declname>rng</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="53" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_random_sequence_generator_1afa011e1cb13276720be0bd1999c3c48c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -115,12 +79,6 @@
           <declname>seed</declname>
           <defval>0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="62" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_random_sequence_generator_1a15b541124ea01ca45ea29f675c261246" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -128,12 +86,6 @@
         <definition>const sample_type&amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="68" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_random_sequence_generator_1af9063e25330911ad101c3d075e6db0dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -141,12 +93,6 @@
         <definition>std::vector&lt;BigNatural&gt; nextInt32Sequence</definition>
         <argsstring>() const </argsstring>
         <name>nextInt32Sequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="77" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_random_sequence_generator_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -154,12 +100,6 @@
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_random_sequence_generator_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -167,12 +107,6 @@
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       </sectiondef>

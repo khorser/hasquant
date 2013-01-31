@@ -18,19 +18,9 @@
           <type>const T &amp;</type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="63" bodyend="66"/>
   </compounddef>
 </doxygen>

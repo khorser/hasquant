@@ -11,12 +11,6 @@
         <definition>virtual Rate swapletRate</definition>
         <argsstring>() const </argsstring>
         <name>swapletRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -28,12 +22,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="101"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -45,12 +33,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -62,12 +44,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -79,12 +55,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1a886033c6497a874cf75f449632553464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -96,19 +66,9 @@
           <type>const <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
           <declname>coupon</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="105"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="98" bodyend="125"/>
   </compounddef>
 </doxygen>

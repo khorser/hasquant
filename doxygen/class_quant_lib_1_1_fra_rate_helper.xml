@@ -12,12 +12,6 @@
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -28,12 +22,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="188"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +36,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="192"/>
       </memberdef>
       </sectiondef>
@@ -63,12 +45,6 @@
         <definition>Date fixingDate_</definition>
         <argsstring></argsstring>
         <name>fixingDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a5fd288c2fefa3e5808e1f424a609aa40" prot="private" static="no" mutable="no">
@@ -76,12 +52,6 @@
         <definition>Period periodToStart_</definition>
         <argsstring></argsstring>
         <name>periodToStart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
@@ -89,12 +59,6 @@
         <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
         <argsstring></argsstring>
         <name>iborIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="198" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="private" static="no" mutable="no">
@@ -102,12 +66,6 @@
         <definition>RelinkableHandle&lt;YieldTermStructure&gt; termStructureHandle_</definition>
         <argsstring></argsstring>
         <name>termStructureHandle_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="199" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -149,12 +107,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1ad2b64ff011f3d383cd8cf31432668b8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -194,12 +146,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1ab83b7e2e5e04baf2cad4e588655e6534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -219,12 +165,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1abc21370f70fd544ed50a948eeca5b699" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -244,12 +184,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="162"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1aabd53b96a42356220361b2d3d140e9c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -289,12 +223,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="170"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1ab18f9167e128b8833826c057478219cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -334,12 +262,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="178"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1a7effed1c9e6057620d81953f5ea6aeac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -359,12 +281,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="181"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1aaa19fc58190e432b99bb3274e47d1af1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -384,12 +300,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="184"/>
       </memberdef>
       </sectiondef>
@@ -400,19 +310,11 @@
         <argsstring>()</argsstring>
         <name>initializeDates</name>
         <reimplements refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aac525f92a4e969388fe7563e8c2a2251">initializeDates</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="195"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Rate helper for bootstrapping over FRA rates. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="139" bodyend="200"/>
   </compounddef>
 </doxygen>

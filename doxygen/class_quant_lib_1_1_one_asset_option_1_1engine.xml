@@ -8,10 +8,6 @@
     <derivedcompoundref refid="class_quant_lib_1_1_analytic_digital_american_engine" prot="public" virt="non-virtual">AnalyticDigitalAmericanEngine</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_binomial_vanilla_engine" prot="public" virt="non-virtual">BinomialVanillaEngine&lt; T &gt;</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_f_d_european_engine" prot="public" virt="non-virtual">FDEuropeanEngine&lt; Scheme &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="79" bodyend="81"/>
   </compounddef>
 </doxygen>

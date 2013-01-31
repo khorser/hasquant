@@ -27,12 +27,6 @@
           <declname>registerAsObserver</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_relinkable_handle_1ace1a1bb5985ffa54f6e77fc4b264d4c1" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
@@ -49,12 +43,6 @@
           <declname>registerAsObserver</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="186" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_relinkable_handle_1a7eec88ccb240dcc59ac81e7347c335bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -71,12 +59,6 @@
           <declname>registerAsObserver</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="191" bodyend="194"/>
       </memberdef>
       </sectiondef>

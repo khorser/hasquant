@@ -11,12 +11,6 @@
         <definition>WeekendsOnly</definition>
         <argsstring>()</argsstring>
         <name>WeekendsOnly</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/weekendsonly.hpp" line="46"/>
       </memberdef>
       </sectiondef>

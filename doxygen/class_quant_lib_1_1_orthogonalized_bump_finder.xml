@@ -9,12 +9,6 @@
         <definition>VolatilityBumpInstrumentJacobian derivativesProducer_</definition>
         <argsstring></argsstring>
         <name>derivativesProducer_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_orthogonalized_bump_finder_1a572740fb94c027d74945aa778699c0bf" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real multiplierCutOff_</definition>
         <argsstring></argsstring>
         <name>multiplierCutOff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_orthogonalized_bump_finder_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="105" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -70,12 +52,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_orthogonalized_bump_finder_1ae48b40df0717c7224c09a1f8e3db83a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -87,17 +63,9 @@
           <type>std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &gt; &amp;</type>
           <declname>theBumps</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="98"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Pass in a market model, a list of instruments, and possible bumps.</para><para>Get out pseudo-root bumps that shift each implied vol by one percent, and leave the other instruments fixed.</para><para>If the contribution of an instrument is too correlated with other instruments used, discard it. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="89" bodyend="108"/>

@@ -8,12 +8,6 @@
         <definition>std::vector&lt;Time&gt; optionTimes_</definition>
         <argsstring></argsstring>
         <name>optionTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a4901b47448f53baf1cba3704594d31eb" prot="private" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>std::vector&lt;Time&gt; swapLengths_</definition>
         <argsstring></argsstring>
         <name>swapLengths_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a0319ec980b7cb2681d52e037d3a53b42" prot="private" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>std::vector&lt;Date&gt; optionDates_</definition>
         <argsstring></argsstring>
         <name>optionDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a2f900b306a7b4dcb1b0dc50a6cf89c5e" prot="private" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>std::vector&lt;Period&gt; swapTenors_</definition>
         <argsstring></argsstring>
         <name>swapTenors_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a546c8fcae184605f6d18da6ba73d58f5" prot="private" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>Size nLayers_</definition>
         <argsstring></argsstring>
         <name>nLayers_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a1e63d15f139fc82ea12b0540028f3964" prot="private" static="no" mutable="no">
@@ -73,12 +43,6 @@
         <definition>std::vector&lt;Matrix&gt; points_</definition>
         <argsstring></argsstring>
         <name>points_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1af6ab8c73eb8bdd4f65ab5bc7a83e0f4f" prot="private" static="no" mutable="yes">
@@ -86,12 +50,6 @@
         <definition>std::vector&lt;Disposable&lt;Matrix&gt; &gt; transposedPoints_</definition>
         <argsstring></argsstring>
         <name>transposedPoints_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1ad1f824c9e8d3080be0bd4813d9db421b" prot="private" static="no" mutable="no">
@@ -99,12 +57,6 @@
         <definition>bool extrapolation_</definition>
         <argsstring></argsstring>
         <name>extrapolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a5098af519b100517999188651e0db7d2" prot="private" static="no" mutable="yes">
@@ -112,12 +64,6 @@
         <definition>std::vector&lt; boost::shared_ptr&lt;Interpolation2D&gt; &gt; interpolators_</definition>
         <argsstring></argsstring>
         <name>interpolators_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -127,12 +73,6 @@
         <definition>Cube</definition>
         <argsstring>()</argsstring>
         <name>Cube</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a56f11ab139b6aaec03eef124506b385f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -165,12 +105,6 @@
           <declname>extrapolation</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a978515afd4ba5ff025f47d83737362c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -182,12 +116,6 @@
           <type>const Cube &amp;</type>
           <declname>o</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1adf95da11d265098a2bed104f0a6eb7ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -198,12 +126,6 @@
         <param>
           <type>const Cube &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1aa27ee5d926922a47ddf603ed91997a28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -211,12 +133,6 @@
         <definition>virtual ~Cube</definition>
         <argsstring>()</argsstring>
         <name>~Cube</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a77ceea7733922a5aa7efe9042f6ea0c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -240,12 +156,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a537c6e49a4c015038b59f5fdc730e1e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -257,12 +167,6 @@
           <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a29192b59e9341cafc39ca8f518d78e3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -290,12 +194,6 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>point</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a6987584b867f6c78981a818a6f88bf10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -311,12 +209,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a1e1ff7fef7a0d36d530009c7658f7ff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -340,12 +232,6 @@
           <type>bool</type>
           <declname>expandSwapLengths</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a2b2cd0d482d7b5433104839b52ad9668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -353,12 +239,6 @@
         <definition>const std::vector&lt;Date&gt;&amp; optionDates</definition>
         <argsstring>() const </argsstring>
         <name>optionDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1adf1466388fd71f68aefe316d9e01f51f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -366,12 +246,6 @@
         <definition>const std::vector&lt;Period&gt;&amp; swapTenors</definition>
         <argsstring>() const </argsstring>
         <name>swapTenors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a64607520dc485a5e2d0d22968393c9d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -379,12 +253,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a7e58166e4cd0ffb27d6e5e3edc09fad5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -392,12 +260,6 @@
         <definition>const std::vector&lt;Time&gt;&amp; swapLengths</definition>
         <argsstring>() const </argsstring>
         <name>swapLengths</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a061647a8c1a70e7876206f6de08fb44f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -405,12 +267,6 @@
         <definition>const std::vector&lt;Matrix&gt;&amp; points</definition>
         <argsstring>() const </argsstring>
         <name>points</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1ae3e28ddfdfa35dd3a4f46e23260d0640" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -426,12 +282,6 @@
           <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>swapLengths</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a17260005148c0ed4ac57d2ecf6b55de6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -439,12 +289,6 @@
         <definition>void updateInterpolators</definition>
         <argsstring>() const </argsstring>
         <name>updateInterpolators</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a75afedb1d8ac13a96c01da419ce7215d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -452,19 +296,9 @@
         <definition>Matrix browse</definition>
         <argsstring>() const </argsstring>
         <name>browse</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="77"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="37" bodyend="87"/>
   </compounddef>
 </doxygen>

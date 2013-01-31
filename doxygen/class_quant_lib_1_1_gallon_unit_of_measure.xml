@@ -9,19 +9,9 @@
         <definition>GallonUnitOfMeasure</definition>
         <argsstring>()</argsstring>
         <name>GallonUnitOfMeasure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="61" bodyend="66"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="59" bodyend="67"/>
   </compounddef>
 </doxygen>

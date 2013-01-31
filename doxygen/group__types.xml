@@ -11,10 +11,6 @@
         <name>Probability</name>
         <briefdescription>
 <para>probability </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1gab9c87440c314438e51a899a03d2442d0" prot="public" static="no">
@@ -24,10 +20,6 @@
         <name>Integer</name>
         <briefdescription>
 <para>integer number </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" prot="public" static="no">
@@ -37,10 +29,6 @@
         <name>BigInteger</name>
         <briefdescription>
 <para>large integer number </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" prot="public" static="no">
@@ -50,10 +38,6 @@
         <name>Natural</name>
         <briefdescription>
 <para>positive integer </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" prot="public" static="no">
@@ -63,10 +47,6 @@
         <name>Real</name>
         <briefdescription>
 <para>real number </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" prot="public" static="no">
@@ -76,10 +56,6 @@
         <name>Decimal</name>
         <briefdescription>
 <para>decimal number </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" prot="public" static="no">
@@ -89,10 +65,6 @@
         <name>Size</name>
         <briefdescription>
 <para>size of a container </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" prot="public" static="no">
@@ -102,10 +74,6 @@
         <name>Time</name>
         <briefdescription>
 <para>continuous quantity with 1-year units </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" prot="public" static="no">
@@ -115,10 +83,6 @@
         <name>DiscountFactor</name>
         <briefdescription>
 <para>discount factor between dates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1gaede435af51236692b1107d7639581d39" prot="public" static="no">
@@ -128,10 +92,6 @@
         <name>Rate</name>
         <briefdescription>
 <para>interest rates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1gae7427f4743503002b0c6eeeefae91a3d" prot="public" static="no">
@@ -141,10 +101,6 @@
         <name>Spread</name>
         <briefdescription>
 <para>spreads on interest rates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" prot="public" static="no">
@@ -154,15 +110,9 @@
         <name>Volatility</name>
         <briefdescription>
 <para>volatility </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/types.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/types.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>A number of numeric types are defined in order to add clarity to function and method declarations. </para>    </detaileddescription>
   </compounddef>

@@ -13,12 +13,6 @@
         <definition>T n</definition>
         <argsstring></argsstring>
         <name>n</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -32,19 +26,9 @@
           <type>T</type>
           <declname>n</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="47" bodyend="50"/>
   </compounddef>
 </doxygen>

@@ -21,12 +21,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" line="47"/>
       </memberdef>
       </sectiondef>
@@ -36,7 +30,6 @@
 <para>see definition: <verbatim>   Weisstein, Eric W. &quot;Bernstein Polynomial.&quot; From MathWorld--A
    Wolfram Web Resource.
    &lt;http://mathworld.wolfram.com/BernsteinPolynomial.html&gt;
-
    The Bernstein polynomials \form#168 are defined as
 </verbatim></para><para><formula id="169">\[ B_{i,n}(x) \equiv \left( \begin{array}{c} n \\ i \end{array} \right) x^i (1-x)^{n-i} \]</formula> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" bodystart="45" bodyend="48"/>

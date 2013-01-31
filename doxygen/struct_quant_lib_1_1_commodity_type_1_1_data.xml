@@ -8,12 +8,6 @@
         <definition>std::string name</definition>
         <argsstring></argsstring>
         <name>name</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_commodity_type_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>std::string code</definition>
         <argsstring></argsstring>
         <name>code</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -44,19 +32,9 @@
           <type>const std::string &amp;</type>
           <declname>code</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="64" bodyend="70"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Size tGrid_</definition>
         <argsstring></argsstring>
         <name>tGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Size xGrid_</definition>
         <argsstring></argsstring>
         <name>xGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Size dampingSteps_</definition>
         <argsstring></argsstring>
         <name>dampingSteps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1a18d4d9334fdfbd5b9f515cb382a278b8" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>const bool localVol_</definition>
         <argsstring></argsstring>
         <name>localVol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1aff1b9e5e66f10d47518609e153448d55" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>const Real illegalLocalVolOverwrite_</definition>
         <argsstring></argsstring>
         <name>illegalLocalVolOverwrite_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -137,12 +95,6 @@
           <declname>illegalLocalVolOverwrite</declname>
           <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -151,19 +103,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Finite-Differences Black Scholes barrier option rebate helper engine. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdblackscholesrebateengine.hpp" bodystart="40" bodyend="60"/>
   </compounddef>
 </doxygen>

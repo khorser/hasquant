@@ -7,66 +7,28 @@
         <name>Algorithm</name>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a5da36873a6ca5bd48a5d09a66494d99b" prot="private">
           <name>GaussLobatto</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a8eed21c1e5da408d6fb043dd2f31b10e" prot="private">
           <name>GaussKronrod</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691ae42eebe972693176d980b955e85214ab" prot="private">
           <name>Simpson</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691ac0111755f85d9000e5a35ba1000f340b" prot="private">
           <name>Trapezoid</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a2bfb4513d11d22b84e8dbb254cc72564" prot="private">
           <name>GaussLaguerre</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a54070b770d5bfb6cde1604954318e00e" prot="private">
           <name>GaussLegendre</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691ad850b21b5803615e4f110512b394c112" prot="private">
           <name>GaussChebyshev</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a625aa1a8618c8379a01b09e1713d1ed2" prot="private">
           <name>GaussChebyshev2nd</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       </sectiondef>
@@ -76,12 +38,6 @@
         <definition>const Algorithm intAlgo_</definition>
         <argsstring></argsstring>
         <name>intAlgo_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a3b051fcbaa0bd0cc5c370e29cc513f58" prot="private" static="no" mutable="no">
@@ -89,12 +45,6 @@
         <definition>const boost::shared_ptr&lt;Integrator&gt; integrator_</definition>
         <argsstring></argsstring>
         <name>integrator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a25be06facfd5755b06f1d6b57181092f" prot="private" static="no" mutable="no">
@@ -102,12 +52,6 @@
         <definition>const boost::shared_ptr&lt;GaussianQuadrature&gt; gaussianQuadrature_</definition>
         <argsstring></argsstring>
         <name>gaussianQuadrature_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="183" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -122,12 +66,6 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a919cd5dc105817482d7e1387fdad2141" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -140,12 +78,6 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a101de8fae8cfeb555ac950cf58569553" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -158,12 +90,6 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="145"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1aaff420c28eb1f4aa629a9f7b7dbe1824" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -176,12 +102,6 @@
           <declname>integrationOrder</declname>
           <defval>128</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="146"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a437471a9fb4fe0644171f446f4b8425a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -202,12 +122,6 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="153"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1adb1a188996aeebde340aecfb357325c2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -224,12 +138,6 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="157"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1affb9eb15dbc197869ed0f78992f2ea3c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -246,12 +154,6 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a49bd039894f93b72f3fb859d4f5d39e8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -268,12 +170,6 @@
           <declname>maxEvaluations</declname>
           <defval>1000</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="161"/>
       </memberdef>
       </sectiondef>
@@ -291,12 +187,6 @@
           <type>const boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>f</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="164"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -304,12 +194,6 @@
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
         <name>numberOfEvaluations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="166"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a0bda9f5019b52fab1eb72adaa590322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -317,12 +201,6 @@
         <definition>bool isAdaptiveIntegration</definition>
         <argsstring>() const </argsstring>
         <name>isAdaptiveIntegration</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="167"/>
       </memberdef>
       </sectiondef>
@@ -340,12 +218,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_gaussian_quadrature" kindref="compound">GaussianQuadrature</ref> &gt; &amp;</type>
           <declname>quadrature</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="176"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5181dd67fd880f9a0156e8c07ddd6873" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -361,19 +233,9 @@
           <type>const boost::shared_ptr&lt; Integrator &gt; &amp;</type>
           <declname>integrator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="179"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="140" bodyend="184"/>
   </compounddef>
 </doxygen>

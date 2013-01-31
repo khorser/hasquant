@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       </sectiondef>
@@ -41,12 +33,6 @@
         <definition>BlackVarianceCurve blackCurve_</definition>
         <argsstring></argsstring>
         <name>blackCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -72,12 +58,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="57" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -88,10 +68,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -102,15 +78,9 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>use the <ref refid="class_quant_lib_1_1_stripped_optionlet_adapter" kindref="compound">StrippedOptionletAdapter</ref> of a <ref refid="class_quant_lib_1_1_stripped_optionlet" kindref="compound">StrippedOptionlet</ref> instance </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="36" bodyend="55"/>

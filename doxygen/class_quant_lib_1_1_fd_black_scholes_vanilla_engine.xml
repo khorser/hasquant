@@ -9,12 +9,6 @@
         <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const Size tGrid_</definition>
         <argsstring></argsstring>
         <name>tGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const Size xGrid_</definition>
         <argsstring></argsstring>
         <name>xGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const Size dampingSteps_</definition>
         <argsstring></argsstring>
         <name>dampingSteps_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a18d4d9334fdfbd5b9f515cb382a278b8" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>const bool localVol_</definition>
         <argsstring></argsstring>
         <name>localVol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1aff1b9e5e66f10d47518609e153448d55" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>const Real illegalLocalVolOverwrite_</definition>
         <argsstring></argsstring>
         <name>illegalLocalVolOverwrite_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -135,12 +93,6 @@
           <declname>illegalLocalVolOverwrite</declname>
           <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -148,19 +100,9 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="57"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="45" bodyend="65"/>
   </compounddef>
 </doxygen>

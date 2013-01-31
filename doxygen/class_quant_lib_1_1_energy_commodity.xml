@@ -14,163 +14,69 @@
         <name>DeliverySchedule</name>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aaaeefcc3671b16fd4226e51cfe73a8da7" prot="public">
           <name>Constant</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aafaa0e0e40662bc85cee2e839768efcce" prot="public">
           <name>Window</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aae50a9e16d6f2eaad8190b43377796a99" prot="public">
           <name>Hourly</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa6b15f8b55b10fefe6300b2f3bf60ad78" prot="public">
           <name>Daily</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa39017ed07c435bd4b739cda6bf3e5a35" prot="public">
           <name>Weekly</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa075d775ff1bb75474c994bd94e9629f4" prot="public">
           <name>Monthly</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aab4fce358383d1822f7596659e00b07f7" prot="public">
           <name>Quarterly</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa07475026c2b3e0057ff0c6ab3b076793" prot="public">
           <name>Yearly</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="69" bodyend="76"/>
       </memberdef>
       <memberdef kind="enum" id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9f" prot="public" static="no">
         <name>QuantityPeriodicity</name>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa4b416446a4e9361cbd46fb295db6ce2e" prot="public">
           <name>Absolute</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa40303340a4b58d2978d687c035829227" prot="public">
           <name>PerHour</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9faccb3efba137e4dd3074b8032720085aa" prot="public">
           <name>PerDay</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fae004baf1b7d5f0c118056898d0aaeee8" prot="public">
           <name>PerWeek</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa836ce08aeb278e8f1464a0331f5bf193" prot="public">
           <name>PerMonth</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa510c229234d5277ff1d410ae72c4a291" prot="public">
           <name>PerQuarter</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9facfd69d04d084cdb2b06b3bb0af946a48" prot="public">
           <name>PerYear</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="77" bodyend="83"/>
       </memberdef>
       <memberdef kind="enum" id="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1" prot="public" static="no">
         <name>PaymentSchedule</name>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1af9d0fbcad271b5d1ff1d4e1f9cdda495" prot="public">
           <name>WindowSettlement</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1aa3a4677fdf428bab1dc18ea66bddf81f" prot="public">
           <name>MonthlySettlement</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1aec07ce9169198d56bc4d5a9244c39866" prot="public">
           <name>QuarterlySettlement</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1a8cf63fd2364f3ccd61974865d5c5358d" prot="public">
           <name>YearlySettlement</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="84" bodyend="87"/>
       </memberdef>
       </sectiondef>
@@ -188,12 +94,6 @@
           <type>const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;</type>
           <declname>secondaryCosts</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1a27b04a25745e81c4a2717c927bff3b78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -202,12 +102,6 @@
         <argsstring>() const =0</argsstring>
         <name>quantity</name>
         <reimplementedby refid="class_quant_lib_1_1_energy_future_1a83ca7dd25d2c6f6fef9e0af158976dda">quantity</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -215,12 +109,6 @@
         <definition>const CommodityType&amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -232,12 +120,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -250,12 +134,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="97"/>
       </memberdef>
       </sectiondef>
@@ -277,12 +157,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>evaluationDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1a28c24b5995011e2e9ee35518629d910f" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -302,19 +176,11 @@
           <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>toUnitOfMeasure</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Energy commodity class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="63" bodyend="115"/>
   </compounddef>
 </doxygen>

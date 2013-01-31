@@ -33,12 +33,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000132"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -55,12 +51,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000133"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -87,10 +79,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a82bd61e80d4c1bf9e22b55917fe18cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -117,10 +105,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="67"/>
       </memberdef>
       </sectiondef>
@@ -130,12 +114,6 @@
         <definition>BusinessDayConvention bdc_</definition>
         <argsstring></argsstring>
         <name>bdc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -147,10 +125,6 @@
         <name>businessDayConvention</name>
         <briefdescription>
 <para>the business day convention used in tenor to date conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="88" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1af59f60f1e0a7875cd8c4e97c3e50f8fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -164,10 +138,6 @@
         </param>
         <briefdescription>
 <para>period/date conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="93" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -204,10 +174,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -244,10 +210,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="76"/>
       </memberdef>
       </sectiondef>

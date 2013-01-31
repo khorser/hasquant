@@ -10,12 +10,6 @@
         <definition>Real rho_</definition>
         <argsstring></argsstring>
         <name>rho_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_copula_1ab64c3f92d74e0d72052ac557db4a6e3d" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>BivariateCumulativeNormalDistributionWe04DP bivariate_normal_cdf_</definition>
         <argsstring></argsstring>
         <name>bivariate_normal_cdf_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_copula_1a51e59cc7566c2879ab0a6df1900cba8d" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>InverseCumulativeNormal invCumNormal_</definition>
         <argsstring></argsstring>
         <name>invCumNormal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +37,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rho</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="35"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -76,19 +52,11 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Gaussian copula. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="33" bodyend="41"/>
   </compounddef>
 </doxygen>

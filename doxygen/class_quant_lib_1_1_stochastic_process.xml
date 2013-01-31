@@ -36,10 +36,6 @@
         <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -53,10 +49,6 @@
         <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -76,10 +68,6 @@
         <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a52995c5d650b640095ade365420c42bc">initialValues</reimplementedby>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -108,10 +96,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a8562aad455e247b42d47aab2b18f205a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -139,10 +123,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a90f2fadbc2346fb7f6c94611215a068b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -166,12 +146,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the expectation <formula id="353">$ E(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1af60142c7a240fe9fa7a9458740815b9c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -195,12 +171,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the standard deviation <formula id="355">$ S(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a8ddfc241f0a0f0e37d2245bf2cde4354" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -225,12 +197,8 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the covariance <formula id="356">$ V(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1add82def76a374049a66ae8cb3cfa0e97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -263,12 +231,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a07090b508d659de1879284548f3ea344" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -290,12 +254,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dx</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="130"/>
       </memberdef>
       </sectiondef>
@@ -315,13 +275,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="142"/>
       </memberdef>
       </sectiondef>
@@ -333,12 +289,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="147"/>
       </memberdef>
       </sectiondef>
@@ -348,12 +298,6 @@
         <definition>virtual ~StochasticProcess</definition>
         <argsstring>()</argsstring>
         <name>~StochasticProcess</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       </sectiondef>

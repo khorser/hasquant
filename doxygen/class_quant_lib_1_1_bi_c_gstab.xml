@@ -8,12 +8,6 @@
         <definition>typedef boost::function1&lt;Disposable&lt;Array&gt; , const Array&amp; &gt; MatrixMult</definition>
         <argsstring></argsstring>
         <name>MatrixMult</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -40,12 +34,6 @@
           <declname>preConditioner</declname>
           <defval>MatrixMult()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bi_c_gstab_1ace2eda60857bf017f640c9a12a8cb24c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -62,19 +50,9 @@
           <declname>x0</declname>
           <defval><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="39" bodyend="54"/>
   </compounddef>
 </doxygen>

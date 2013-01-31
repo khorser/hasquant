@@ -13,12 +13,6 @@
         <definition>Parameter&amp; theta_</definition>
         <argsstring></argsstring>
         <name>theta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1ae7c264dac91e99f4d78deaebc25c5ce0" prot="private" static="no" mutable="no">
@@ -26,12 +20,6 @@
         <definition>Parameter&amp; k_</definition>
         <argsstring></argsstring>
         <name>k_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="private" static="no" mutable="no">
@@ -39,12 +27,6 @@
         <definition>Parameter&amp; sigma_</definition>
         <argsstring></argsstring>
         <name>sigma_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1ac0c8eb89b2ee6a6ace5e9e5464f26f25" prot="private" static="no" mutable="no">
@@ -52,12 +34,6 @@
         <definition>Parameter&amp; r0_</definition>
         <argsstring></argsstring>
         <name>r0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -87,12 +63,6 @@
           <declname>sigma</declname>
           <defval>0.1</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -118,12 +88,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>bondMaturity</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -135,10 +99,6 @@
         <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be">dynamics</reimplementedby>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -154,10 +114,6 @@
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="57"/>
       </memberdef>
       </sectiondef>

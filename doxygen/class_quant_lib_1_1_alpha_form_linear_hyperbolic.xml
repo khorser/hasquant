@@ -9,12 +9,6 @@
         <definition>std::vector&lt;Time&gt; times_</definition>
         <argsstring></argsstring>
         <name>times_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Real alpha_</definition>
         <argsstring></argsstring>
         <name>alpha_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
           <declname>alpha</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a32831166651608bf6aa488a459b89a28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -59,12 +41,6 @@
         <definition>virtual ~AlphaFormLinearHyperbolic</definition>
         <argsstring>()</argsstring>
         <name>~AlphaFormLinearHyperbolic</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a505ee7ab6797433701bc35ad7288999f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -76,12 +52,6 @@
           <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1adb629c9fa86a33bf0492d07c25176173" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -93,19 +63,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>alpha_</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="40" bodyend="50"/>
   </compounddef>
 </doxygen>

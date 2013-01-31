@@ -10,12 +10,6 @@
         <definition>virtual Real xLowerBound</definition>
         <argsstring>() const =0</argsstring>
         <name>xLowerBound</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bounded_domain_1a6cf0a3e00a76ac9a42b32838e2d4f891" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -23,12 +17,6 @@
         <definition>virtual Real xUpperBound</definition>
         <argsstring>() const =0</argsstring>
         <name>xUpperBound</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bounded_domain_1aa20edb398aaffb32c0325847f0e4069b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -36,12 +24,6 @@
         <definition>virtual Real yLowerBound</definition>
         <argsstring>() const =0</argsstring>
         <name>yLowerBound</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bounded_domain_1ad337b7812f786063477d81a593a6c416" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -49,19 +31,9 @@
         <definition>virtual Real yUpperBound</definition>
         <argsstring>() const =0</argsstring>
         <name>yUpperBound</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="56"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="51" bodyend="57"/>
   </compounddef>
 </doxygen>

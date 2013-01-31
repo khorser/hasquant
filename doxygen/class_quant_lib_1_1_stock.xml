@@ -10,12 +10,6 @@
         <definition>Handle&lt;Quote&gt; quote_</definition>
         <argsstring></argsstring>
         <name>quote_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -29,12 +23,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>quote</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_stock_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -45,17 +33,11 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Simple stock class. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" bodystart="34" bodyend="42"/>
   </compounddef>
 </doxygen>

@@ -11,12 +11,6 @@
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -24,12 +18,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a8f80a768e3cf3e15b9080476e9fcb3ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -37,12 +25,6 @@
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring>() const </argsstring>
         <name>nominals</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a865ebb01241a362567e63527db98dab2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -50,12 +32,6 @@
         <definition>Frequency paymentFrequency</definition>
         <argsstring>()</argsstring>
         <name>paymentFrequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -63,12 +39,6 @@
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a683c95096eea61b1a1ed14d32288150d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -76,12 +46,6 @@
         <definition>const DayCounter&amp; fixedDayCount</definition>
         <argsstring>()</argsstring>
         <name>fixedDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1adba9c35966b6b177d2f6d73bf6ce9cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -89,12 +53,6 @@
         <definition>const boost::shared_ptr&lt;OvernightIndex&gt;&amp; overnightIndex</definition>
         <argsstring>()</argsstring>
         <name>overnightIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1ab2974165ca4841b20224e8d276227ce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -102,12 +60,6 @@
         <definition>Spread spread</definition>
         <argsstring>()</argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a720acf11b744a6529b383940d01117a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -115,12 +67,6 @@
         <definition>const Leg&amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1adf0b47fac1d94d9b87c77881eb85fbf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -128,12 +74,6 @@
         <definition>const Leg&amp; overnightLeg</definition>
         <argsstring>() const </argsstring>
         <name>overnightLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       </sectiondef>
@@ -144,12 +84,6 @@
         <definition>Real fixedLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -157,12 +91,6 @@
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a66129d40442a389121feb6e330d54f79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -170,12 +98,6 @@
         <definition>Real fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a266e13c778bc92a9789393871659b6bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -183,12 +105,6 @@
         <definition>Real overnightLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>overnightLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a981564829c746af02c1b945c603ee618" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -196,12 +112,6 @@
         <definition>Real overnightLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>overnightLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -209,12 +119,6 @@
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="83"/>
       </memberdef>
       </sectiondef>
@@ -224,25 +128,11 @@
         <enumvalue id="class_quant_lib_1_1_overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
@@ -252,12 +142,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1af93f6645f3e6a081deb804ed7c13b5e7" prot="private" static="no" mutable="no">
@@ -265,12 +149,6 @@
         <definition>std::vector&lt;Real&gt; nominals_</definition>
         <argsstring></argsstring>
         <name>nominals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1acc825d201592eecbe5533798ba3b5760" prot="private" static="no" mutable="no">
@@ -278,12 +156,6 @@
         <definition>Frequency paymentFrequency_</definition>
         <argsstring></argsstring>
         <name>paymentFrequency_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" static="no" mutable="no">
@@ -291,12 +163,6 @@
         <definition>Rate fixedRate_</definition>
         <argsstring></argsstring>
         <name>fixedRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1a868229ed9a741bf0a5db9a71e9a4c876" prot="private" static="no" mutable="no">
@@ -304,12 +170,6 @@
         <definition>DayCounter fixedDC_</definition>
         <argsstring></argsstring>
         <name>fixedDC_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1a692e32fbdb1ea4abf8e1fd5620a699fa" prot="private" static="no" mutable="no">
@@ -317,12 +177,6 @@
         <definition>boost::shared_ptr&lt;OvernightIndex&gt; overnightIndex_</definition>
         <argsstring></argsstring>
         <name>overnightIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
@@ -330,12 +184,6 @@
         <definition>Spread spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -374,12 +222,6 @@
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a1741a0edce85689f3a0597a0fe0c7515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -416,12 +258,6 @@
           <declname>spread</declname>
           <defval>0.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="55"/>
       </memberdef>
       </sectiondef>
@@ -435,19 +271,11 @@
           <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Overnight indexed swap: fix vs compounded overnight rate. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="37" bodyend="98"/>
   </compounddef>
 </doxygen>

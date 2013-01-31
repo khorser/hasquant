@@ -41,12 +41,6 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="205"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_term_structure_1ab5ecf857c845e641b46dc00264c5ff53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -91,12 +85,6 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="215"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_term_structure_1a9c94f9a91e39ae0456e2bdbc98dfcfff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -141,12 +129,6 @@
           <declname>seasonality</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="225"/>
       </memberdef>
       </sectiondef>
@@ -181,8 +163,6 @@
         <detaileddescription>
 <para>The forceLinearInterpolation parameter is relative to the frequency of the TS.</para><para><simplesect kind="note"><para>this is not the year-on-year swap (YYIIS) rate. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="238"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_term_structure_1a07b935dbbeb9135c753694f56eb1fa36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -203,15 +183,11 @@
 <para>year-on-year inflation rate. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000115"><xreftitle>Warning</xreftitle><xrefdescription><para>Since inflation is highly linked to dates (lags, interpolation, months for seasonality, etc) this method cannot account for all effects. If you call it, You&apos;ll have to manage lag, seasonality etc. yourself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="247"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for year-on-year inflation term structures. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="195" bodyend="252"/>
   </compounddef>
 </doxygen>

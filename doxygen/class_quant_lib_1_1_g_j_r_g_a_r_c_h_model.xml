@@ -14,12 +14,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process" kindref="compound">GJRGARCHProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a63ebf28ed55c1eb20ca91ee99cc081ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,12 +21,6 @@
         <definition>Real omega</definition>
         <argsstring>() const </argsstring>
         <name>omega</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -40,12 +28,6 @@
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -53,12 +35,6 @@
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -66,12 +42,6 @@
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,12 +49,6 @@
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +56,6 @@
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1aa5cfe6ae7d714e407526d37d660f121f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -105,12 +63,6 @@
         <definition>boost::shared_ptr&lt;GJRGARCHProcess&gt; process</definition>
         <argsstring>() const </argsstring>
         <name>process</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>

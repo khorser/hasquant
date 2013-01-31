@@ -10,12 +10,6 @@
         <definition>Period gracePeriod_</definition>
         <argsstring></argsstring>
         <name>gracePeriod_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_failure_to_pay_1a98d38e581f0a90d3b96700bf0583298d" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real amountRequired_</definition>
         <argsstring></argsstring>
         <name>amountRequired_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="182" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -47,12 +35,6 @@
           <declname>amount</declname>
           <defval>1.e+6</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="170" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_failure_to_pay_1a6ebf37e5e2c58c4a200947df2e4f434f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -60,12 +42,6 @@
         <definition>Real amountRequired</definition>
         <argsstring>() const </argsstring>
         <name>amountRequired</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_failure_to_pay_1ac3c8744f8689e0dd6cc63fc1a72734cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -73,19 +49,11 @@
         <definition>const Period&amp; gracePeriod</definition>
         <argsstring>() const </argsstring>
         <name>gracePeriod</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Failure to Pay atomic event type. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="165" bodyend="183"/>
   </compounddef>
 </doxygen>

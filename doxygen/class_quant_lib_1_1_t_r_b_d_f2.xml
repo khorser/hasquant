@@ -14,12 +14,6 @@
         <definition>typedef OperatorTraits&lt;Operator&gt; traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_t_r_b_d_f2_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
@@ -27,12 +21,6 @@
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_t_r_b_d_f2_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
@@ -40,12 +28,6 @@
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_t_r_b_d_f2_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
@@ -53,12 +35,6 @@
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_t_r_b_d_f2_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
@@ -66,12 +42,6 @@
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -81,12 +51,6 @@
         <definition>Real alpha_</definition>
         <argsstring></argsstring>
         <name>alpha_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a7ec7f35b9cfc993cd78e13c84ee80f5c" prot="private" static="no" mutable="no">
@@ -94,12 +58,6 @@
         <definition>operator_type L_</definition>
         <argsstring></argsstring>
         <name>L_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a9345bcefe07d2a311bb4580cf6844223" prot="private" static="no" mutable="no">
@@ -107,12 +65,6 @@
         <definition>operator_type I_</definition>
         <argsstring></argsstring>
         <name>I_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a61f8fdd64a50891b08c05afcebd33660" prot="private" static="no" mutable="no">
@@ -120,12 +72,6 @@
         <definition>operator_type explicitTrapezoidalPart_</definition>
         <argsstring></argsstring>
         <name>explicitTrapezoidalPart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a13a5bb4d5b06708d889e9b2591c043ec" prot="private" static="no" mutable="no">
@@ -133,12 +79,6 @@
         <definition>operator_type explicitBDF2PartFull_</definition>
         <argsstring></argsstring>
         <name>explicitBDF2PartFull_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a37a4902726cb9ab25ee8d5191b8fd2fe" prot="private" static="no" mutable="no">
@@ -146,12 +86,6 @@
         <definition>operator_type explicitBDF2PartMid_</definition>
         <argsstring></argsstring>
         <name>explicitBDF2PartMid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a70be7cca17d458911d7cb37ac568fa80" prot="private" static="no" mutable="no">
@@ -159,12 +93,6 @@
         <definition>operator_type implicitPart_</definition>
         <argsstring></argsstring>
         <name>implicitPart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a6be603d8547f31e72817d2aaf219e325" prot="private" static="no" mutable="no">
@@ -172,12 +100,6 @@
         <definition>Time dt_</definition>
         <argsstring></argsstring>
         <name>dt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1abb48456777566e37b094bb898bafc1a7" prot="private" static="no" mutable="no">
@@ -185,12 +107,6 @@
         <definition>bc_set bcs_</definition>
         <argsstring></argsstring>
         <name>bcs_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_t_r_b_d_f2_1a241279f5a03a80b668ca4a821d601149" prot="private" static="no" mutable="no">
@@ -198,12 +114,6 @@
         <definition>array_type aInit_</definition>
         <argsstring></argsstring>
         <name>aInit_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="103" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -221,12 +131,6 @@
           <type>const bc_set &amp;</type>
           <declname>bcs</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="82" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_t_r_b_d_f2_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -242,12 +146,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="110" bodyend="168"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_t_r_b_d_f2_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -259,12 +157,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>dt</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/trbdf2.hpp" bodystart="88" bodyend="96"/>
       </memberdef>
       </sectiondef>

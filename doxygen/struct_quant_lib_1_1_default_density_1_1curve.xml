@@ -13,19 +13,9 @@
         <definition>typedef InterpolatedDefaultDensityCurve&lt;Interpolator&gt; type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" bodystart="196" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" bodystart="195" bodyend="197"/>
   </compounddef>
 </doxygen>

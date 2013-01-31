@@ -21,12 +21,6 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_path_basket_engine_1a6a9d35263b41b36b002797dde605d942" prot="public" static="no">
@@ -34,12 +28,6 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_path_basket_engine_1a931267be1997474da010eacc9e911b29" prot="public" static="no">
@@ -47,12 +35,6 @@
         <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -102,12 +84,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="108" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_path_basket_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -116,19 +92,11 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="61" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for path dependent basket options using. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="40" bodyend="87"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -36,12 +24,6 @@
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
         <name>atmLevel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       </sectiondef>
@@ -51,12 +33,6 @@
         <definition>Volatility vol_</definition>
         <argsstring></argsstring>
         <name>vol_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_flat_smile_section_1a6c68e01ed1c69b74a3e4e4632dae9945" prot="private" static="no" mutable="no">
@@ -64,12 +40,6 @@
         <definition>Real atmLevel_</definition>
         <argsstring></argsstring>
         <name>atmLevel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -101,12 +71,6 @@
           <declname>atmLevel</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aed359b90458a66d44a64820b1ada1c25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -131,19 +95,9 @@
           <declname>atmLevel</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="33" bodyend="55"/>
   </compounddef>
 </doxygen>

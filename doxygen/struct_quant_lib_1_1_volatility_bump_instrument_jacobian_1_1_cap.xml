@@ -8,12 +8,6 @@
         <definition>Size startIndex_</definition>
         <argsstring></argsstring>
         <name>startIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap_1a93c98cea283aa6d8bd047b968fd86970" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Size endIndex_</definition>
         <argsstring></argsstring>
         <name>endIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap_1af4df09cd4cbe06f6558dc5777c23e106" prot="public" static="no" mutable="no">
@@ -34,19 +22,9 @@
         <definition>Real strike_</definition>
         <argsstring></argsstring>
         <name>strike_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="42" bodyend="48"/>
   </compounddef>
 </doxygen>

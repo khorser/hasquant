@@ -21,12 +21,6 @@
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
           <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1aa8995c3ac583faf1f3a6865c73a85930" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -47,12 +41,6 @@
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
           <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1a098c5af8ada898daa86aea31734ffad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -76,12 +64,6 @@
           <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
           <defval><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bcaace2716211f162ba977b383f360af683e" kindref="member">JoinHolidays</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="80"/>
       </memberdef>
       </sectiondef>

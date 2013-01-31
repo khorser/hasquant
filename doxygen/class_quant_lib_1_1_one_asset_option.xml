@@ -34,10 +34,6 @@
         <reimplementedby refid="class_quant_lib_1_1_vanilla_swing_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="42"/>
       </memberdef>
       </sectiondef>
@@ -48,12 +44,6 @@
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a46dff13c5db3dc12f768cdf4d4cc5b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -61,12 +51,6 @@
         <definition>Real deltaForward</definition>
         <argsstring>() const </argsstring>
         <name>deltaForward</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a789f1dd91bf031b93eecd46b14154c75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -74,12 +58,6 @@
         <definition>Real elasticity</definition>
         <argsstring>() const </argsstring>
         <name>elasticity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -87,12 +65,6 @@
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -100,12 +72,6 @@
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a9665eeab5371536361d56dba7fa61a76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -113,12 +79,6 @@
         <definition>Real thetaPerDay</definition>
         <argsstring>() const </argsstring>
         <name>thetaPerDay</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a7b972bc3d0a5ecbecb82c91b76d6e3ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -126,12 +86,6 @@
         <definition>Real vega</definition>
         <argsstring>() const </argsstring>
         <name>vega</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -139,12 +93,6 @@
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1a3275ba91d38e97f6cec10e3ade7f5f81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -152,12 +100,6 @@
         <definition>Real dividendRho</definition>
         <argsstring>() const </argsstring>
         <name>dividendRho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1acfc72cb510f6de42cc315f39a34da0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -165,12 +107,6 @@
         <definition>Real strikeSensitivity</definition>
         <argsstring>() const </argsstring>
         <name>strikeSensitivity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1aee3252e0cf020c5878f35dae85bd1107" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -178,12 +114,6 @@
         <definition>Real itmCashProbability</definition>
         <argsstring>() const </argsstring>
         <name>itmCashProbability</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="56"/>
       </memberdef>
       </sectiondef>
@@ -199,12 +129,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_one_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -220,19 +144,13 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="58"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for options on a single asset. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="34" bodyend="65"/>
   </compounddef>
 </doxygen>

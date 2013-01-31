@@ -10,12 +10,6 @@
         <definition>const Real Y0_</definition>
         <argsstring></argsstring>
         <name>Y0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Real beta_</definition>
         <argsstring></argsstring>
         <name>beta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1abb89333a64fdf97627f73462a9e43591" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Real jumpIntensity_</definition>
         <argsstring></argsstring>
         <name>jumpIntensity_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Real eta_</definition>
         <argsstring></argsstring>
         <name>eta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1ac42eae749f0558b848f89d7cababcc08" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; ouProcess_</definition>
         <argsstring></argsstring>
         <name>ouProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af1fc88eee476d12a7fe5d010bbb5c8e2" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>const CumulativeNormalDistribution cumNormalDist_</definition>
         <argsstring></argsstring>
         <name>cumNormalDist_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -110,12 +74,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>eta</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -126,10 +84,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -140,10 +94,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -154,10 +104,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -176,10 +122,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -198,10 +140,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -226,12 +164,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a29ea335873b5a145dfa597b4f4aa102f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -239,12 +173,6 @@
         <definition>boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; getExtendedOrnsteinUhlenbeckProcess</definition>
         <argsstring>() const </argsstring>
         <name>getExtendedOrnsteinUhlenbeckProcess</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -252,12 +180,6 @@
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -265,12 +187,6 @@
         <definition>Real eta</definition>
         <argsstring>() const </argsstring>
         <name>eta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a451382fba1026b4d0b6279db11b088c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -278,17 +194,9 @@
         <definition>Real jumpIntensity</definition>
         <argsstring>() const </argsstring>
         <name>jumpIntensity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="79"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>This class describes a Ornstein Uhlenbeck model plus exp jump, an extension of the Lucia and Schwartz model <formula id="136">\[ \begin{array}{rcl} S &amp;=&amp; exp(X_t + Y_t) \\ dX_t &amp;=&amp; \alpha(\mu(t)-X_t)dt + \sigma dW_t \\ dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J)&amp;=&amp; \eta_u e^{-\eta_u J} \end{array} \]</formula></para><para>References: T. Kluge, 2008. Pricing Swing Options and other Electricity Derivatives, <ulink url="http://eprints.maths.ox.ac.uk/246/1/kluge.pdf">http://eprints.maths.ox.ac.uk/246/1/kluge.pdf</ulink></para><para>B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, <ulink url="http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf">http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf</ulink> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="59" bodyend="86"/>

@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp</includes>
     <briefdescription>
 <para>Compound-option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" bodystart="60" bodyend="62"/>
   </compounddef>
 </doxygen>

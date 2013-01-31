@@ -26,8 +26,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       </sectiondef>
@@ -41,10 +39,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -56,12 +50,6 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -72,10 +60,6 @@
         <reimplements refid="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
         <briefdescription>
 <para>day counter for accrual calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -89,10 +73,6 @@
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="69"/>
       </memberdef>
       </sectiondef>
@@ -105,10 +85,6 @@
         <name>index</name>
         <briefdescription>
 <para>floating index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -118,10 +94,6 @@
         <name>fixingDays</name>
         <briefdescription>
 <para>fixing days </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -133,10 +105,6 @@
         <reimplementedby refid="class_quant_lib_1_1_overnight_indexed_coupon_1a8672d26ae625ac44319bf3ad4ced846e">fixingDate</reimplementedby>
         <briefdescription>
 <para>fixing date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -146,10 +114,6 @@
         <name>gearing</name>
         <briefdescription>
 <para>index gearing, i.e. multiplicative coefficient for the index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -159,10 +123,6 @@
         <name>spread</name>
         <briefdescription>
 <para>spread paid over the fixing of the underlying index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -174,10 +134,6 @@
         <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41">indexFixing</reimplementedby>
         <briefdescription>
 <para>fixing of the underlying index </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -190,10 +146,6 @@
         <reimplementedby refid="class_quant_lib_1_1_digital_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplementedby>
         <briefdescription>
 <para>convexity adjustment </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -203,10 +155,6 @@
         <name>adjustedFixing</name>
         <briefdescription>
 <para>convexity-adjusted fixing </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ab847c12bc9de50d7209aae33a4fa1c13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -216,10 +164,6 @@
         <name>isInArrears</name>
         <briefdescription>
 <para>whether or not the coupon fixes in arrears </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
       </sectiondef>
@@ -231,12 +175,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       </sectiondef>
@@ -260,12 +198,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="143" bodyend="150"/>
       </memberdef>
       </sectiondef>
@@ -329,12 +261,6 @@
           <declname>isInArrears</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ade8776ea16ef3f56f7b96afae4135186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -345,12 +271,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -358,19 +278,11 @@
         <definition>boost::shared_ptr&lt; FloatingRateCouponPricer &gt; pricer</definition>
         <argsstring>() const </argsstring>
         <name>pricer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base floating-rate coupon class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="43" bodyend="116"/>
   </compounddef>
 </doxygen>

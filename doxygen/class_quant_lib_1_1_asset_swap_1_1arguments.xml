@@ -10,12 +10,6 @@
         <definition>std::vector&lt;Date&gt; fixedResetDates</definition>
         <argsstring></argsstring>
         <name>fixedResetDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1a9ae1b87c848fe690cc0fb8aae7a1ad53" prot="public" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>std::vector&lt;Date&gt; fixedPayDates</definition>
         <argsstring></argsstring>
         <name>fixedPayDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1af3b796aad3df6d60ab2749eb66836af6" prot="public" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>std::vector&lt;Real&gt; fixedCoupons</definition>
         <argsstring></argsstring>
         <name>fixedCoupons</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1af1b3c69bb089af944f809949cc9b5f34" prot="public" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>std::vector&lt;Time&gt; floatingAccrualTimes</definition>
         <argsstring></argsstring>
         <name>floatingAccrualTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1a0c1a8eb80d3c37a524935c7519d008e0" prot="public" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>std::vector&lt;Date&gt; floatingResetDates</definition>
         <argsstring></argsstring>
         <name>floatingResetDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1a732fd5612eea5324a0246b31f7119141" prot="public" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>std::vector&lt;Date&gt; floatingFixingDates</definition>
         <argsstring></argsstring>
         <name>floatingFixingDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1affddd738e0a1ca4074d4742686ce7e7c" prot="public" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>std::vector&lt;Date&gt; floatingPayDates</definition>
         <argsstring></argsstring>
         <name>floatingPayDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1arguments_1a217747684dc5dfb5f77382787c63182e" prot="public" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>std::vector&lt;Spread&gt; floatingSpreads</definition>
         <argsstring></argsstring>
         <name>floatingSpreads</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -116,12 +68,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -129,19 +75,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="118"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for asset swap calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="107" bodyend="119"/>
   </compounddef>
 </doxygen>

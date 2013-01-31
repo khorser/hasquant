@@ -13,12 +13,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="83"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
         <definition>Real startTime_</definition>
         <argsstring></argsstring>
         <name>startTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_coupon_1a0b07582d94c76dac428b440ab88c6339" prot="private" static="no" mutable="no">
@@ -41,12 +29,6 @@
         <definition>Real endTime_</definition>
         <argsstring></argsstring>
         <name>endTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_coupon_1ac5f32da6601bcf937e194dcdcf3d794e" prot="private" static="no" mutable="no">
@@ -54,12 +36,6 @@
         <definition>boost::shared_ptr&lt;Schedule&gt; observationsSchedule_</definition>
         <argsstring></argsstring>
         <name>observationsSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_coupon_1a36045fdd53fbd0603ce4860e6e95f780" prot="private" static="no" mutable="no">
@@ -67,12 +43,6 @@
         <definition>std::vector&lt;Date&gt; observationDates_</definition>
         <argsstring></argsstring>
         <name>observationDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_coupon_1a0c2145cfda3466bf375b7d1917a15bcf" prot="private" static="no" mutable="no">
@@ -80,12 +50,6 @@
         <definition>std::vector&lt;Real&gt; observationTimes_</definition>
         <argsstring></argsstring>
         <name>observationTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_coupon_1ab2d4e5d738e1d20ccf4242ceb027eca4" prot="private" static="no" mutable="no">
@@ -93,12 +57,6 @@
         <definition>Size observations_</definition>
         <argsstring></argsstring>
         <name>observations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_coupon_1afd5ae8789c15be21658f206e48b2c428" prot="private" static="no" mutable="no">
@@ -106,12 +64,6 @@
         <definition>Rate rateSpread_</definition>
         <argsstring></argsstring>
         <name>rateSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -169,12 +121,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1a62d2fe10d6779129ceb6038dd6476b7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -182,12 +128,6 @@
         <definition>Spread rateSpread</definition>
         <argsstring>() const </argsstring>
         <name>rateSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1a1ece2eac4481e2a1685705aac57766d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -195,12 +135,6 @@
         <definition>Real startTime</definition>
         <argsstring>() const </argsstring>
         <name>startTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1aed22d9abaf095bbffd906e613e827369" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -208,12 +142,6 @@
         <definition>Real endTime</definition>
         <argsstring>() const </argsstring>
         <name>endTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1a748ed5a242e0609b324b6e7c8e30f332" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -221,12 +149,6 @@
         <definition>Size observations</definition>
         <argsstring>() const </argsstring>
         <name>observations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1aab7f8a1d4a314a985fa69de5ba722967" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -234,12 +156,6 @@
         <definition>const std::vector&lt;Date&gt;&amp; observationDates</definition>
         <argsstring>() const </argsstring>
         <name>observationDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1a4d76cb4fdc8ec3a1a5842b044e5a1165" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -247,12 +163,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; observationTimes</definition>
         <argsstring>() const </argsstring>
         <name>observationTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1af30fb3b35833e1ec2afc875b7c400740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -260,12 +170,6 @@
         <definition>const boost::shared_ptr&lt;Schedule&gt; observationsSchedule</definition>
         <argsstring>() const </argsstring>
         <name>observationsSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_coupon_1aa8863d2b94859595390ec23a923f378c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -277,19 +181,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="80"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="38" bodyend="96"/>
   </compounddef>
 </doxygen>

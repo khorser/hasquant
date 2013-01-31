@@ -9,24 +9,10 @@
         <name>Discretization</name>
         <enumvalue id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a36f45ac51e3e98d35c68ca85b7573e87ac4c9650db0ca5b76d67dbcb9da438a3e" prot="public">
           <name>Euler</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a36f45ac51e3e98d35c68ca85b7573e87a17d05179615e0dd7e717c62343bbd958" prot="public">
           <name>BSMHullWhite</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
       </sectiondef>
@@ -53,12 +39,6 @@
           <declname>discretization</declname>
           <defval>BSMHullWhite</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -69,10 +49,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -83,10 +59,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -105,10 +77,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -127,10 +95,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -147,12 +111,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dx</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -177,12 +137,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a4565aca1dd76a65766425e5fb55dbcd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -198,12 +154,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a79c54f4ee4f3d279d46422f2ca93316b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -211,12 +161,6 @@
         <definition>const boost::shared_ptr&lt;HestonProcess&gt;&amp; hestonProcess</definition>
         <argsstring>() const </argsstring>
         <name>hestonProcess</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1aa575da859280ed57cfbfc7a9c284e264" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -224,12 +168,6 @@
         <definition>const boost::shared_ptr&lt;HullWhiteForwardProcess&gt;&amp; hullWhiteProcess</definition>
         <argsstring>() const </argsstring>
         <name>hullWhiteProcess</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -237,12 +175,6 @@
         <definition>Real eta</definition>
         <argsstring>() const </argsstring>
         <name>eta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a748380f774765c5190c570c0c8a8091e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -254,13 +186,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a752169e4b7a995634136561e8e5098ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -268,12 +196,6 @@
         <definition>Discretization discretization</definition>
         <argsstring>() const </argsstring>
         <name>discretization</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="69"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_hybrid_heston_hull_white_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -282,12 +204,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/hybridhestonhullwhiteprocess.hpp" line="70"/>
       </memberdef>
       </sectiondef>

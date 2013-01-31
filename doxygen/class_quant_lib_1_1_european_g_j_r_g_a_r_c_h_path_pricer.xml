@@ -9,12 +9,6 @@
         <definition>PlainVanillaPayoff payoff_</definition>
         <argsstring></argsstring>
         <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>DiscountFactor discount_</definition>
         <argsstring></argsstring>
         <name>discount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -49,12 +37,6 @@
           <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
           <declname>discount</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="217" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1ad417fc96cc2be719a7adfc60ca77d4bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -66,19 +48,9 @@
           <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>Multipath</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="226" bodyend="233"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="80" bodyend="89"/>
   </compounddef>
 </doxygen>

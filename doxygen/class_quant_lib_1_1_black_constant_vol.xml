@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
       </sectiondef>
@@ -31,10 +27,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_constant_vol_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +52,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="123" bodyend="130"/>
       </memberdef>
       </sectiondef>
@@ -79,12 +61,6 @@
         <definition>Handle&lt;Quote&gt; volatility_</definition>
         <argsstring></argsstring>
         <name>volatility_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -110,12 +86,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="79" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_constant_vol_1a5d725a0fd8ce6a8ae22aa58e7c710ce6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -139,12 +109,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="86" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_constant_vol_1aa08901216a5ae122b7c4dbb7f0f8e6f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -168,12 +132,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="95" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_black_constant_vol_1a9a7f45ffe44748a03353b5853b8b32f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -197,12 +155,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="102" bodyend="109"/>
       </memberdef>
       </sectiondef>

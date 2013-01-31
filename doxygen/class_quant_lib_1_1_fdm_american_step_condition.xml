@@ -9,12 +9,6 @@
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
         <argsstring></argsstring>
         <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_american_step_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calculator_</definition>
         <argsstring></argsstring>
         <name>calculator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +33,6 @@
           <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;</type>
           <declname>calculator</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_american_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -65,19 +47,9 @@
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" bodystart="35" bodyend="47"/>
   </compounddef>
 </doxygen>

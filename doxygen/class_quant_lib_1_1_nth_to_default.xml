@@ -10,12 +10,6 @@
         <definition>Size n_</definition>
         <argsstring></argsstring>
         <name>n_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a74206f0ab3c7f95525385a07019c306d" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>std::vector&lt;Handle&lt;DefaultProbabilityTermStructure&gt; &gt; probabilities_</definition>
         <argsstring></argsstring>
         <name>probabilities_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real recoveryRate_</definition>
         <argsstring></argsstring>
         <name>recoveryRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a7a9b7801c4fe86a2235450249920cb26" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>Handle&lt;OneFactorCopula&gt; copula_</definition>
         <argsstring></argsstring>
         <name>copula_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a9c93f5707fa78510a2dcc2948d832504" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>Protection::Side side_</definition>
         <argsstring></argsstring>
         <name>side_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1ad2510ccaca31c61c6927dcc3a89a272e" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>Schedule premiumSchedule_</definition>
         <argsstring></argsstring>
         <name>premiumSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a8f051f3bb1486007dbfd306cdbaa21d8" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>Rate premiumRate_</definition>
         <argsstring></argsstring>
         <name>premiumRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>DayCounter dayCounter_</definition>
         <argsstring></argsstring>
         <name>dayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a96f39a98e0770eae6a81a93ea6084a56" prot="private" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>bool settlePremiumAccrual_</definition>
         <argsstring></argsstring>
         <name>settlePremiumAccrual_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1afede98ee249f0d9a977891edf19a1708" prot="private" static="no" mutable="no">
@@ -140,12 +80,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; yieldTS_</definition>
         <argsstring></argsstring>
         <name>yieldTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1ac87492227a6f6469bcab91963eab9db7" prot="private" static="no" mutable="no">
@@ -153,12 +87,6 @@
         <definition>Period integrationStepSize_</definition>
         <argsstring></argsstring>
         <name>integrationStepSize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a8d19136c2677124e6f87b96097270f5d" prot="private" static="no" mutable="no">
@@ -166,12 +94,6 @@
         <definition>boost::shared_ptr&lt;Claim&gt; claim_</definition>
         <argsstring></argsstring>
         <name>claim_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a3494faa9bfd38cf757fb2565f5c8ba41" prot="private" static="no" mutable="no">
@@ -179,12 +101,6 @@
         <definition>Leg premiumLeg_</definition>
         <argsstring></argsstring>
         <name>premiumLeg_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a4ef18b7aac482387c839f0fee6be66be" prot="private" static="no" mutable="yes">
@@ -192,12 +108,6 @@
         <definition>Rate fairPremium_</definition>
         <argsstring></argsstring>
         <name>fairPremium_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -260,12 +170,6 @@
           <declname>claim</declname>
           <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -276,10 +180,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -287,12 +187,6 @@
         <definition>Rate fairPremium</definition>
         <argsstring>() const </argsstring>
         <name>fairPremium</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a31d3d825697988d20419edfd4483d8fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -300,12 +194,6 @@
         <definition>Rate premium</definition>
         <argsstring>() const </argsstring>
         <name>premium</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -313,12 +201,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -326,12 +208,6 @@
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -339,12 +215,6 @@
         <definition>Protection::Side side</definition>
         <argsstring>() const </argsstring>
         <name>side</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a392c795adb43821ad813f80cfaa88823" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -352,12 +222,6 @@
         <definition>Size rank</definition>
         <argsstring>() const </argsstring>
         <name>rank</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1abf42f0c06e4fc9d3a800e752ffdb0f1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -365,12 +229,6 @@
         <definition>Size basketSize</definition>
         <argsstring>() const </argsstring>
         <name>basketSize</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
       </sectiondef>
@@ -384,12 +242,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -398,12 +250,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -412,12 +260,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="103"/>
       </memberdef>
       </sectiondef>

@@ -15,25 +15,11 @@
         <enumvalue id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
           <name>Put</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
           <name>Call</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="38" bodyend="40"/>
       </memberdef>
       </sectiondef>
@@ -51,12 +37,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -68,12 +48,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="95" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_option_1ad20055b3037f613d7246b9b637768154" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -81,12 +57,6 @@
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring>()</argsstring>
         <name>payoff</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -94,12 +64,6 @@
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
         <argsstring>()</argsstring>
         <name>exercise</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       </sectiondef>
@@ -115,19 +79,11 @@
         <param>
           <type>Option::Type</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="104" bodyend="113"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>base option class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="35" bodyend="51"/>
   </compounddef>
 </doxygen>

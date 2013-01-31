@@ -18,12 +18,6 @@
         <reimplementedby refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_gap_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_super_share_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="54"/>
       </memberdef>
       </sectiondef>
@@ -33,19 +27,11 @@
         <definition>Option::Type optionType</definition>
         <argsstring>() const </argsstring>
         <name>optionType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Intermediate class for put/call payoffs. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="49" bodyend="59"/>
   </compounddef>
 </doxygen>

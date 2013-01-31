@@ -14,12 +14,6 @@
         <definition>VanillaSwap::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="169" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -27,12 +21,6 @@
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -40,12 +28,6 @@
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="177" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -53,12 +35,6 @@
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="181" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -66,12 +42,6 @@
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="185" bodyend="187"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1af6d95bff16cf7a3a6852034da40b0727" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -79,12 +49,6 @@
         <definition>const Schedule &amp; floatingSchedule</definition>
         <argsstring>() const </argsstring>
         <name>floatingSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="189" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a7a93aecaf1b5a5d6ed72e4ea42462fff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -92,12 +56,6 @@
         <definition>const boost::shared_ptr&lt; IborIndex &gt; &amp; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -105,12 +63,6 @@
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="197" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a434df7c78cab85094cc4981baf759418" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -118,12 +70,6 @@
         <definition>const DayCounter &amp; floatingDayCount</definition>
         <argsstring>() const </argsstring>
         <name>floatingDayCount</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="201" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a25fc6ab972c95c862ead0bbf851ea311" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -131,12 +77,6 @@
         <definition>BusinessDayConvention paymentConvention</definition>
         <argsstring>() const </argsstring>
         <name>paymentConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1ab54f53e0705d63a28ffcec9dc1b2e15b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -144,12 +84,6 @@
         <definition>const Leg &amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1abc167b6a043551df75c2cd5d3ff2e42c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -157,12 +91,6 @@
         <definition>const Leg &amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="213" bodyend="215"/>
       </memberdef>
       </sectiondef>
@@ -173,12 +101,6 @@
         <definition>Real fixedLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="105"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -186,12 +108,6 @@
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1afa34bca9b2bcc12ddaab588613043014" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -199,12 +115,6 @@
         <definition>Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a6428d70950807f5c37f18a52fa79d756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -212,12 +122,6 @@
         <definition>Real floatingLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegBPS</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a3490947f87ceb8a495841d24e03b440e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -225,12 +129,6 @@
         <definition>Real floatingLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatingLegNPV</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -238,12 +136,6 @@
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="111"/>
       </memberdef>
       </sectiondef>
@@ -253,25 +145,11 @@
         <enumvalue id="class_quant_lib_1_1_vanilla_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_vanilla_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       </sectiondef>
@@ -281,12 +159,6 @@
         <definition>Type type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -294,12 +166,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a7cac1393ff1d3224ff1cac0cb392cecf" prot="private" static="no" mutable="no">
@@ -307,12 +173,6 @@
         <definition>Schedule fixedSchedule_</definition>
         <argsstring></argsstring>
         <name>fixedSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" static="no" mutable="no">
@@ -320,12 +180,6 @@
         <definition>Rate fixedRate_</definition>
         <argsstring></argsstring>
         <name>fixedRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a417ce99525ff934e161e933d540c0409" prot="private" static="no" mutable="no">
@@ -333,12 +187,6 @@
         <definition>DayCounter fixedDayCount_</definition>
         <argsstring></argsstring>
         <name>fixedDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a36ed495d7409f5614e2ce8296e885b19" prot="private" static="no" mutable="no">
@@ -346,12 +194,6 @@
         <definition>Schedule floatingSchedule_</definition>
         <argsstring></argsstring>
         <name>floatingSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
@@ -359,12 +201,6 @@
         <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
         <argsstring></argsstring>
         <name>iborIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
@@ -372,12 +208,6 @@
         <definition>Spread spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a288c435645e72151e75ee05e61b89370" prot="private" static="no" mutable="no">
@@ -385,12 +215,6 @@
         <definition>DayCounter floatingDayCount_</definition>
         <argsstring></argsstring>
         <name>floatingDayCount_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1ab0c2ba6da16ec8c201da972e61b08334" prot="private" static="no" mutable="no">
@@ -398,12 +222,6 @@
         <definition>BusinessDayConvention paymentConvention_</definition>
         <argsstring></argsstring>
         <name>paymentConvention_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1abe098d2fe72aba947e592db7309a60fd" prot="private" static="no" mutable="yes">
@@ -411,12 +229,6 @@
         <definition>Rate fairRate_</definition>
         <argsstring></argsstring>
         <name>fairRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_swap_1a492c911c409c868717797a52dda59333" prot="private" static="no" mutable="yes">
@@ -424,12 +236,6 @@
         <definition>Spread fairSpread_</definition>
         <argsstring></argsstring>
         <name>fairSpread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="130" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -480,12 +286,6 @@
           <declname>paymentConvention</declname>
           <defval>boost::none</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -497,12 +297,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -515,12 +311,8 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="115"/>
       </memberdef>
       </sectiondef>
@@ -531,12 +323,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="117"/>
       </memberdef>
       </sectiondef>

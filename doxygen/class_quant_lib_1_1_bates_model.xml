@@ -15,12 +15,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -28,12 +22,6 @@
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -41,12 +29,6 @@
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bates_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -54,12 +36,6 @@
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>

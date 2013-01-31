@@ -19,12 +19,6 @@
         <definition>virtual ~MarketModelPathwiseMultiProduct</definition>
         <argsstring>()</argsstring>
         <name>~MarketModelPathwiseMultiProduct</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1554834bb65e58fefbf96280a405e85d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -39,12 +33,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a953ed7f6689b5a3250fd8df534de12ec">suggestedNumeraires</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated_1a953ed7f6689b5a3250fd8df534de12ec">suggestedNumeraires</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a953ed7f6689b5a3250fd8df534de12ec">suggestedNumeraires</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -59,12 +47,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aaf1f37e1319c6476e12d03c295b74260">evolution</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated_1aaf1f37e1319c6476e12d03c295b74260">evolution</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1aaf1f37e1319c6476e12d03c295b74260">evolution</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1ae76494005108a03d01db60b6bb685116" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -79,12 +61,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab2f18eae2df5bbc404eb6fa684abca49">possibleCashFlowTimes</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated_1ab2f18eae2df5bbc404eb6fa684abca49">possibleCashFlowTimes</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab2f18eae2df5bbc404eb6fa684abca49">possibleCashFlowTimes</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0a292c0068ae301d400b2e4b24e8847f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -99,12 +75,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a63d28ae6f6a49a733295508c43d86aa7">numberOfProducts</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated_1a63d28ae6f6a49a733295508c43d86aa7">numberOfProducts</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a63d28ae6f6a49a733295508c43d86aa7">numberOfProducts</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -119,12 +89,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ae9340ad78cd16947af851ac186443907">maxNumberOfCashFlowsPerProductPerStep</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated_1ae9340ad78cd16947af851ac186443907">maxNumberOfCashFlowsPerProductPerStep</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ae9340ad78cd16947af851ac186443907">maxNumberOfCashFlowsPerProductPerStep</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a164f79bb7fcc17d83d7201fd191ae054" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -139,12 +103,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1afba381efa2c145ef9a83dd84bcfc6621">alreadyDeflated</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated_1afba381efa2c145ef9a83dd84bcfc6621">alreadyDeflated</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1afba381efa2c145ef9a83dd84bcfc6621">alreadyDeflated</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -161,10 +119,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a7b0e029102ad38f4b814c6523aedb53d">reset</reimplementedby>
         <briefdescription>
 <para>during simulation put product at start of path </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1acac5d6422d1a97a1cc7830b670429ca4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -193,10 +147,6 @@
         </param>
         <briefdescription>
 <para>return value indicates whether path is finished, TRUE means done </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0c4d55a1d5639736ddbf050d163c0d37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -213,10 +163,6 @@
         <reimplementedby refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3b92a77366ebd734accc8ecaf8c13b23">clone</reimplementedby>
         <briefdescription>
 <para>returns a newly-allocated copy of itself </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="78"/>
       </memberdef>
       </sectiondef>

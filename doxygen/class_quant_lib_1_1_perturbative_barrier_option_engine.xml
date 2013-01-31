@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a24741b3153d69ec6b31f19055dd91562" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Natural order_</definition>
         <argsstring></argsstring>
         <name>order_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1abdebe1301122f71cf4fad5b22de22552" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>bool zeroGamma_</definition>
         <argsstring></argsstring>
         <name>zeroGamma_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -64,12 +46,6 @@
           <declname>zeroGamma</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -78,12 +54,6 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="44"/>
       </memberdef>
       </sectiondef>

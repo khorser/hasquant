@@ -12,19 +12,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="72" bodyend="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from single-asset option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="68" bodyend="77"/>
   </compounddef>
 </doxygen>

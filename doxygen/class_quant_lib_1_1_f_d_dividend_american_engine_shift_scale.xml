@@ -17,12 +17,6 @@
         <definition>typedef FDEngineAdapter&lt;FDAmericanCondition&lt; FDDividendEngineShiftScale&lt;Scheme&gt; &gt;, DividendVanillaOption::engine&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -51,19 +45,9 @@
           <declname>timeDependent</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="83" bodyend="87"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="75" bodyend="88"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,6 @@
         <definition>const Real beta_</definition>
         <argsstring></argsstring>
         <name>beta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_exponential_jump1d_mesher_1abb89333a64fdf97627f73462a9e43591" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Real jumpIntensity_</definition>
         <argsstring></argsstring>
         <name>jumpIntensity_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_exponential_jump1d_mesher_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Real eta_</definition>
         <argsstring></argsstring>
         <name>eta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -72,12 +54,6 @@
           <declname>eps</declname>
           <defval>1e-3</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1ab9e5c47b8969137e52b09ddced8ab89f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -89,12 +65,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1acff366d655a8362deeca6f395fecf82f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -110,12 +80,6 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1abe9536c90c8392c86dd8562d48eff07c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -127,12 +91,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1affefbc63d3a01fdae697efebcd5c56c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -148,17 +106,9 @@
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="58"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Mesher for a exponential jump process with high mean reversion rate and low jump intensity <formula id="283">\[ \begin{array}{rcl} dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J)&amp;=&amp;\frac{1}{\eta_u}e^{-\frac{1}{\eta_u}J} \end{array} \]</formula></para><para>References: B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, <ulink url="http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf">http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf</ulink> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="49" bodyend="62"/>

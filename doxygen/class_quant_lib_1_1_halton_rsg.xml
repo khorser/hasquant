@@ -9,12 +9,6 @@
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,12 +18,6 @@
         <definition>Size dimensionality_</definition>
         <argsstring></argsstring>
         <name>dimensionality_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_halton_rsg_1ab783e3c845d54c712226757076a4cccb" prot="private" static="no" mutable="yes">
@@ -37,12 +25,6 @@
         <definition>unsigned long sequenceCounter_</definition>
         <argsstring></argsstring>
         <name>sequenceCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_halton_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="yes">
@@ -50,12 +32,6 @@
         <definition>sample_type sequence_</definition>
         <argsstring></argsstring>
         <name>sequence_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_halton_rsg_1af78944c275dc32d08635d6d5dec95b5a" prot="private" static="no" mutable="no">
@@ -63,12 +39,6 @@
         <definition>std::vector&lt;unsigned long&gt; randomStart_</definition>
         <argsstring></argsstring>
         <name>randomStart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_halton_rsg_1a4ad3eaadb7e859808391a4ffb297b8ef" prot="private" static="no" mutable="no">
@@ -76,12 +46,6 @@
         <definition>std::vector&lt;Real&gt; randomShift_</definition>
         <argsstring></argsstring>
         <name>randomShift_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -110,12 +74,6 @@
           <declname>randomShift</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_halton_rsg_1a15b541124ea01ca45ea29f675c261246" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -123,12 +81,6 @@
         <definition>const sample_type&amp; nextSequence</definition>
         <argsstring>() const </argsstring>
         <name>nextSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_halton_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -136,12 +88,6 @@
         <definition>const sample_type&amp; lastSequence</definition>
         <argsstring>() const </argsstring>
         <name>lastSequence</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_halton_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -149,12 +95,6 @@
         <definition>Size dimension</definition>
         <argsstring>() const </argsstring>
         <name>dimension</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       </sectiondef>

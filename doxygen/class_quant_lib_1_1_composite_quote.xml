@@ -17,12 +17,6 @@
         <definition>Real value1</definition>
         <argsstring>() const </argsstring>
         <name>value1</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1a2398c24daa949e532f309fa4b199fda9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -30,12 +24,6 @@
         <definition>Real value2</definition>
         <argsstring>() const </argsstring>
         <name>value2</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       </sectiondef>
@@ -49,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -63,10 +47,6 @@
         <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
 <para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="84" bodyend="87"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +58,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +67,6 @@
         <definition>Handle&lt;Quote&gt; element1_</definition>
         <argsstring></argsstring>
         <name>element1_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1aceda1e20ef5d041116c46f6fee025506" prot="private" static="no" mutable="no">
@@ -106,12 +74,6 @@
         <definition>Handle&lt;Quote&gt; element2_</definition>
         <argsstring></argsstring>
         <name>element2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1a8491af6ee584103994b06d1d9cf731b8" prot="private" static="no" mutable="no">
@@ -119,12 +81,6 @@
         <definition>BinaryFunction f_</definition>
         <argsstring></argsstring>
         <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -146,12 +102,6 @@
           <type>const BinaryFunction &amp;</type>
           <declname>f</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="68" bodyend="75"/>
       </memberdef>
       </sectiondef>

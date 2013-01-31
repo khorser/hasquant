@@ -19,12 +19,6 @@
         <definition>boost::shared_ptr&lt;HullWhite&gt; model_</definition>
         <argsstring></argsstring>
         <name>model_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
@@ -32,12 +26,6 @@
         <definition>bool antithetic_</definition>
         <argsstring></argsstring>
         <name>antithetic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -45,12 +33,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
@@ -58,12 +40,6 @@
         <definition>Size maxSamples_</definition>
         <argsstring></argsstring>
         <name>maxSamples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
@@ -71,12 +47,6 @@
         <definition>Real tolerance_</definition>
         <argsstring></argsstring>
         <name>tolerance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
@@ -84,12 +54,6 @@
         <definition>bool brownianBridge_</definition>
         <argsstring></argsstring>
         <name>brownianBridge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
@@ -97,12 +61,6 @@
         <definition>BigNatural seed_</definition>
         <argsstring></argsstring>
         <name>seed_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -116,12 +74,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
           <defname>model</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="182" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a561b650f68d63b0253e9a70eb24b8629" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -134,12 +86,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="226" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a661a71d5a5d8a881eae2732b2cc9a029" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -151,12 +97,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="190" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a0ac4722dad01fe766312ab5bee4dcd27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -168,12 +108,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tolerance</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="199" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a5329106a7328ca78e2e0bdc07b5729a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -185,12 +119,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="212" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a4d3f6f24cfa93768f217524ed04cac46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -202,12 +130,6 @@
           <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
           <declname>seed</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="219" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1af8777b15f6047620b363a9c7e0772bb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -220,12 +142,6 @@
           <declname>b</declname>
           <defval>true</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="233" bodyend="236"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -233,19 +149,11 @@
         <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
         <argsstring>() const </argsstring>
         <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="240" bodyend="246"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Monte Carlo Hull-White cap-floor engine factory. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="156" bodyend="175"/>
   </compounddef>
 </doxygen>

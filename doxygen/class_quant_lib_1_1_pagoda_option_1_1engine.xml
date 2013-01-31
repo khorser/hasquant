@@ -7,8 +7,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp</includes>
     <briefdescription>
 <para>Pagoda-option engine base class </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="70" bodyend="72"/>
   </compounddef>
 </doxygen>

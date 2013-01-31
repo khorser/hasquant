@@ -13,12 +13,6 @@
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="79"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
         <definition>Real startTime_</definition>
         <argsstring></argsstring>
         <name>startTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a0b07582d94c76dac428b440ab88c6339" prot="private" static="no" mutable="no">
@@ -41,12 +29,6 @@
         <definition>Real endTime_</definition>
         <argsstring></argsstring>
         <name>endTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1afe18ac63fb52bb300558fc5b50c802ae" prot="private" static="no" mutable="no">
@@ -54,12 +36,6 @@
         <definition>const boost::shared_ptr&lt;Schedule&gt; observationsSchedule_</definition>
         <argsstring></argsstring>
         <name>observationsSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a36045fdd53fbd0603ce4860e6e95f780" prot="private" static="no" mutable="no">
@@ -67,12 +43,6 @@
         <definition>std::vector&lt;Date&gt; observationDates_</definition>
         <argsstring></argsstring>
         <name>observationDates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a0c2145cfda3466bf375b7d1917a15bcf" prot="private" static="no" mutable="no">
@@ -80,12 +50,6 @@
         <definition>std::vector&lt;Real&gt; observationTimes_</definition>
         <argsstring></argsstring>
         <name>observationTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1ae97dad63d329cfd63323a0d4e5098370" prot="private" static="no" mutable="no">
@@ -93,12 +57,6 @@
         <definition>Size observationsNo_</definition>
         <argsstring></argsstring>
         <name>observationsNo_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a1256aca2de96ee6e714ed73606c7706a" prot="private" static="no" mutable="no">
@@ -106,12 +64,6 @@
         <definition>Real lowerTrigger_</definition>
         <argsstring></argsstring>
         <name>lowerTrigger_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1afa9209e450e3138cc67932cfb4e5abdf" prot="private" static="no" mutable="no">
@@ -119,12 +71,6 @@
         <definition>Real upperTrigger_</definition>
         <argsstring></argsstring>
         <name>upperTrigger_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -190,12 +136,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>upperTrigger</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="58"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a1ece2eac4481e2a1685705aac57766d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -203,12 +143,6 @@
         <definition>Real startTime</definition>
         <argsstring>() const </argsstring>
         <name>startTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aed22d9abaf095bbffd906e613e827369" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -216,12 +150,6 @@
         <definition>Real endTime</definition>
         <argsstring>() const </argsstring>
         <name>endTime</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a37ee03719abee959b788d4a4e2564817" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -229,12 +157,6 @@
         <definition>Real lowerTrigger</definition>
         <argsstring>() const </argsstring>
         <name>lowerTrigger</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1ae00db6447b4fb51cba4f1d870d4f625d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -242,12 +164,6 @@
         <definition>Real upperTrigger</definition>
         <argsstring>() const </argsstring>
         <name>upperTrigger</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aab14e153aeace329bebb8e245602c6f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -255,12 +171,6 @@
         <definition>Size observationsNo</definition>
         <argsstring>() const </argsstring>
         <name>observationsNo</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aab7f8a1d4a314a985fa69de5ba722967" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -268,12 +178,6 @@
         <definition>const std::vector&lt;Date&gt;&amp; observationDates</definition>
         <argsstring>() const </argsstring>
         <name>observationDates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a4d76cb4fdc8ec3a1a5842b044e5a1165" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -281,12 +185,6 @@
         <definition>const std::vector&lt;Real&gt;&amp; observationTimes</definition>
         <argsstring>() const </argsstring>
         <name>observationTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1af30fb3b35833e1ec2afc875b7c400740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -294,12 +192,6 @@
         <definition>const boost::shared_ptr&lt;Schedule&gt; observationsSchedule</definition>
         <argsstring>() const </argsstring>
         <name>observationsSchedule</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="71" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aa8863d2b94859595390ec23a923f378c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -311,19 +203,9 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="76"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="40" bodyend="93"/>
   </compounddef>
 </doxygen>

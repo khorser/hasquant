@@ -30,12 +30,8 @@
           <declname>dc</declname>
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000127"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1aac8c7b91f00da54ac59aed3bdb766beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -57,8 +53,6 @@
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000128"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1abc005ed912019fd298bb68e36ba6b531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -85,10 +79,6 @@
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a1c510799e2a47a0e0db5a8e12c4bdf82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -114,10 +104,6 @@
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="70"/>
       </memberdef>
       </sectiondef>
@@ -143,10 +129,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option tenor and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="129" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ad5ab11f498f030d526aa84748e471198" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -169,10 +151,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option date and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="171" bodyend="177"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ab3657d277d77b795f571009c749ebe6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -195,10 +173,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option time and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="180" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ad2c0a3642e6d43657e8e0db4f95de79f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -221,10 +195,6 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option tenor and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="137" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a6a6fe7caa627cbd9bb41caba6bcf7ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -247,10 +217,6 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option date and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="153" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a04544d95827f5dfd73f2c69385b9a980" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -273,10 +239,6 @@
         </param>
         <briefdescription>
 <para>returns the Black variance for a given option time and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="162" bodyend="167"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a33f390e56035afa8c4a33b1005f8985e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -295,10 +257,6 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option tenor </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="145" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a5760886ba5316a82496a9723a757a057" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -317,10 +275,6 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option date </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="189" bodyend="193"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1aaf9f27b8fd87d001474aecfd92551526" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -339,10 +293,6 @@
         </param>
         <briefdescription>
 <para>returns the smile for a given option time </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="196" bodyend="200"/>
       </memberdef>
       </sectiondef>
@@ -352,12 +302,6 @@
         <definition>virtual ~OptionletVolatilityStructure</definition>
         <argsstring>()</argsstring>
         <name>~OptionletVolatilityStructure</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="72" bodyend="72"/>
       </memberdef>
       </sectiondef>

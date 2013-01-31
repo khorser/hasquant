@@ -11,12 +11,6 @@
         <definition>typedef super::iterator iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1aaae3bb8452ab2076a1678a4ea6ad87ed" prot="public" static="no">
@@ -24,12 +18,6 @@
         <definition>typedef super::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1abd49bd01c7d10f089c6b298cd6e01e2e" prot="public" static="no">
@@ -37,12 +25,6 @@
         <definition>typedef super::reverse_iterator reverse_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1aa93a1332a54c147b7520c6db316f342a" prot="public" static="no">
@@ -50,12 +32,6 @@
         <definition>typedef super::const_reverse_iterator const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1a0c4a88a3947bd9e763239f456b000e43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -69,10 +45,6 @@
         </param>
         <briefdescription>
 <para>membership </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="76" bodyend="79"/>
       </memberdef>
       </sectiondef>
@@ -87,12 +59,6 @@
           <type>const <ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref> &amp;</type>
           <declname>other</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="81" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1a662b2aff055067f7930a3499f63c32cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -104,12 +70,6 @@
           <type>const <ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref> &amp;</type>
           <declname>other</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="88" bodyend="93"/>
       </memberdef>
       </sectiondef>
@@ -126,10 +86,6 @@
         </param>
         <briefdescription>
 <para>redistribute the entries over the given dates </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="69"/>
       </memberdef>
       </sectiondef>
@@ -139,12 +95,6 @@
         <definition>typedef std::map&lt;Date,Real&gt; super</definition>
         <argsstring></argsstring>
         <name>super</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -154,12 +104,6 @@
         <definition>TimeBasket</definition>
         <argsstring>()</argsstring>
         <name>TimeBasket</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1a6b78bdcda419ebfef78a827b17032b1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -175,19 +119,11 @@
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>values</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Distribution over a number of dates. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="36" bodyend="71"/>
   </compounddef>
 </doxygen>

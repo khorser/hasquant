@@ -12,15 +12,7 @@
           <name>PSE</name>
           <briefdescription>
 <para>Prague stock exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/czechrepublic.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/czechrepublic.hpp" bodystart="60" bodyend="61"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_czech_republic_1abe41cfffd960e29a5d8b07be00aeda42a398265c4c7d38a23a4de427ef934547a" kindref="member">PSE</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/czechrepublic.hpp" line="62"/>
       </memberdef>
       </sectiondef>

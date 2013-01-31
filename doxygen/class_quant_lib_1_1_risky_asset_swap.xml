@@ -10,12 +10,6 @@
         <definition>Real fixedAnnuity_</definition>
         <argsstring></argsstring>
         <name>fixedAnnuity_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1afa1ea8e6bc0566d1062959082d22dd4a" prot="private" static="no" mutable="yes">
@@ -23,12 +17,6 @@
         <definition>Real floatAnnuity_</definition>
         <argsstring></argsstring>
         <name>floatAnnuity_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a498db66d47782d762dcd81d6bddc4b17" prot="private" static="no" mutable="yes">
@@ -36,12 +24,6 @@
         <definition>Real parCoupon_</definition>
         <argsstring></argsstring>
         <name>parCoupon_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a0b194aafabaffc079a132ee4891363c4" prot="private" static="no" mutable="yes">
@@ -49,12 +31,6 @@
         <definition>Real recoveryValue_</definition>
         <argsstring></argsstring>
         <name>recoveryValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a90441e3c9f30587eca45bd97083b1969" prot="private" static="no" mutable="yes">
@@ -62,12 +38,6 @@
         <definition>Real riskyBondPrice_</definition>
         <argsstring></argsstring>
         <name>riskyBondPrice_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a817b2e0673f54cbf822dee9eaceb0a79" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>bool fixedPayer_</definition>
         <argsstring></argsstring>
         <name>fixedPayer_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a7cac1393ff1d3224ff1cac0cb392cecf" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>Schedule fixedSchedule_</definition>
         <argsstring></argsstring>
         <name>fixedSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1ad4f33c99a2047c5198329c060045f1cf" prot="private" static="no" mutable="no">
@@ -114,12 +66,6 @@
         <definition>Schedule floatSchedule_</definition>
         <argsstring></argsstring>
         <name>floatSchedule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a2e250b86e98731d25a8fc44e74b1b17d" prot="private" static="no" mutable="no">
@@ -127,12 +73,6 @@
         <definition>DayCounter fixedDayCounter_</definition>
         <argsstring></argsstring>
         <name>fixedDayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a9462f33296a24d65b738c166ed8f0328" prot="private" static="no" mutable="no">
@@ -140,12 +80,6 @@
         <definition>DayCounter floatDayCounter_</definition>
         <argsstring></argsstring>
         <name>floatDayCounter_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a3c99a3f63389eb352ab1a9d86a314d1f" prot="private" static="no" mutable="no">
@@ -153,12 +87,6 @@
         <definition>Rate spread_</definition>
         <argsstring></argsstring>
         <name>spread_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1ab8b3f12a5396ee556d268cdecb42d93a" prot="private" static="no" mutable="no">
@@ -166,12 +94,6 @@
         <definition>Rate recoveryRate_</definition>
         <argsstring></argsstring>
         <name>recoveryRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1afede98ee249f0d9a977891edf19a1708" prot="private" static="no" mutable="no">
@@ -179,12 +101,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; yieldTS_</definition>
         <argsstring></argsstring>
         <name>yieldTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1a91bcd9366ffaa6883788c4d5cecbc265" prot="private" static="no" mutable="no">
@@ -192,12 +108,6 @@
         <definition>Handle&lt;DefaultProbabilityTermStructure&gt; defaultTS_</definition>
         <argsstring></argsstring>
         <name>defaultTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_asset_swap_1acfd01379f9f11657520d1c1db3df6e79" prot="private" static="no" mutable="yes">
@@ -205,12 +115,6 @@
         <definition>Real coupon_</definition>
         <argsstring></argsstring>
         <name>coupon_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -265,12 +169,6 @@
           <declname>coupon</declname>
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a690110bc1c3e867572c4562b820eeb54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -278,12 +176,6 @@
         <definition>Real fairSpread</definition>
         <argsstring>()</argsstring>
         <name>fairSpread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1ae209978160234ba3f315e9b2dfcc31f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -291,12 +183,6 @@
         <definition>Real floatAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>floatAnnuity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a29092d9d6550ef55d3acdaadc5672b49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -304,12 +190,6 @@
         <definition>Real nominal</definition>
         <argsstring>()</argsstring>
         <name>nominal</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a3bebb1119372969057deae025356f773" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -317,12 +197,6 @@
         <definition>Rate spread</definition>
         <argsstring>()</argsstring>
         <name>spread</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a9cd8c8a01ddb4ebe41d7ad210c77f2fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -330,12 +204,6 @@
         <definition>bool fixedPayer</definition>
         <argsstring>()</argsstring>
         <name>fixedPayer</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
@@ -346,12 +214,8 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -362,10 +226,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -374,12 +234,8 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a08717b64703dcfd7c9e930683f6d5344" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -387,12 +243,6 @@
         <definition>Real fixedAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>fixedAnnuity</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1a7ded3c5da268e289e7d4439cc5b2c4b8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -400,12 +250,6 @@
         <definition>Real parCoupon</definition>
         <argsstring>() const </argsstring>
         <name>parCoupon</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1afed7f6edd5887bfcc4c4727ecc0884ef" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -413,12 +257,6 @@
         <definition>Real recoveryValue</definition>
         <argsstring>() const </argsstring>
         <name>recoveryValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_1ae95c731f085c7259a626b8bfd39a0e06" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -426,19 +264,11 @@
         <definition>Real riskyBondPrice</definition>
         <argsstring>() const </argsstring>
         <name>riskyBondPrice</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Risky asset-swap instrument. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="36" bodyend="85"/>
   </compounddef>
 </doxygen>

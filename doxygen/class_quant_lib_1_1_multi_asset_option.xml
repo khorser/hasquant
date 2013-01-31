@@ -23,10 +23,6 @@
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="43"/>
       </memberdef>
       </sectiondef>
@@ -37,12 +33,6 @@
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
         <name>delta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -50,12 +40,6 @@
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -63,12 +47,6 @@
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1a7b972bc3d0a5ecbecb82c91b76d6e3ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -76,12 +54,6 @@
         <definition>Real vega</definition>
         <argsstring>() const </argsstring>
         <name>vega</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -89,12 +61,6 @@
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1a3275ba91d38e97f6cec10e3ade7f5f81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -102,12 +68,6 @@
         <definition>Real dividendRho</definition>
         <argsstring>() const </argsstring>
         <name>dividendRho</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="52"/>
       </memberdef>
       </sectiondef>
@@ -123,12 +83,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -140,12 +94,8 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -158,19 +108,13 @@
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Base class for options on multiple assets. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="34" bodyend="61"/>
   </compounddef>
 </doxygen>

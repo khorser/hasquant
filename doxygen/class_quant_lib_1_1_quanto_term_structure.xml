@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="101" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -42,10 +34,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -56,10 +44,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="109" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -70,10 +54,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="113" bodyend="120"/>
       </memberdef>
       </sectiondef>
@@ -83,12 +63,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; underlyingDividendTS_</definition>
         <argsstring></argsstring>
         <name>underlyingDividendTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a9f6a5e08837c62a8bb68bcf7b48dc505" prot="private" static="no" mutable="no">
@@ -96,12 +70,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; riskFreeTS_</definition>
         <argsstring></argsstring>
         <name>riskFreeTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a10f63cab7da89b3ed3e8d650c161460b" prot="private" static="no" mutable="no">
@@ -109,12 +77,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; foreignRiskFreeTS_</definition>
         <argsstring></argsstring>
         <name>foreignRiskFreeTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a4859fc0226365e45fda60b683af60232" prot="private" static="no" mutable="no">
@@ -122,12 +84,6 @@
         <definition>Handle&lt;BlackVolTermStructure&gt; underlyingBlackVolTS_</definition>
         <argsstring></argsstring>
         <name>underlyingBlackVolTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a2fc6b670ed3c4e381d7ec5f152f43460" prot="private" static="no" mutable="no">
@@ -135,12 +91,6 @@
         <definition>Handle&lt;BlackVolTermStructure&gt; exchRateBlackVolTS_</definition>
         <argsstring></argsstring>
         <name>exchRateBlackVolTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a373aa506a1a54945985509a282637f1b" prot="private" static="no" mutable="no">
@@ -148,12 +98,6 @@
         <definition>Real underlyingExchRateCorrelation_</definition>
         <argsstring></argsstring>
         <name>underlyingExchRateCorrelation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" static="no" mutable="no">
@@ -161,12 +105,6 @@
         <definition>Real strike_</definition>
         <argsstring></argsstring>
         <name>strike_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a774710f9347c72db4ca615244af0af6f" prot="private" static="no" mutable="no">
@@ -174,12 +112,6 @@
         <definition>Real exchRateATMlevel_</definition>
         <argsstring></argsstring>
         <name>exchRateATMlevel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -221,12 +153,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlyingExchRateCorrelation</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="74" bodyend="95"/>
       </memberdef>
       </sectiondef>

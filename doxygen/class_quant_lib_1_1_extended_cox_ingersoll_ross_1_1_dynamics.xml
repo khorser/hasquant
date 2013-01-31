@@ -10,12 +10,6 @@
         <definition>Parameter phi_</definition>
         <argsstring></argsstring>
         <name>phi_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -45,12 +39,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x0</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="85" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -69,10 +57,6 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -91,10 +75,6 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       </sectiondef>

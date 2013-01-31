@@ -23,12 +23,6 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" bodystart="65" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine_1af4fa509a37e6bf70bdc7c33326ed7467" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -49,19 +43,11 @@
           <declname>termStructure</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" bodystart="72" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Numerical lattice engine for callable zero coupon bonds. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp" bodystart="61" bodyend="78"/>
   </compounddef>
 </doxygen>

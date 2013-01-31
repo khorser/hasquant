@@ -15,36 +15,24 @@
           <name>Settlement</name>
           <briefdescription>
 <para>generic settlement calendar </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a3f2821f9809075eb575505bcc2525103" prot="public">
           <name>NYSE</name>
           <briefdescription>
 <para>New York stock exchange calendar. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a561f5c560b2b1a55abd84072867a8016" prot="public">
           <name>GovernmentBond</name>
           <briefdescription>
 <para>government-bond calendar </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a6a00c6db1276885bef0cc051c47e095c" prot="public">
           <name>NERC</name>
           <briefdescription>
 <para>off-peak days for NERC </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <briefdescription>
 <para>US calendars. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" bodystart="147" bodyend="151"/>
       </memberdef>
       </sectiondef>
@@ -59,12 +47,6 @@
           <declname>market</declname>
           <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="152"/>
       </memberdef>
       </sectiondef>

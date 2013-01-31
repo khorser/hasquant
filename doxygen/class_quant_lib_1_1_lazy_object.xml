@@ -60,12 +60,6 @@
         <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_default_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yield_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="102" bodyend="116"/>
       </memberdef>
       </sectiondef>
@@ -77,13 +71,9 @@
         <definition>void recalculate</definition>
         <argsstring>()</argsstring>
         <name>recalculate</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method force the recalculation of any results which would otherwise be cached. It is not declared as <computeroutput>const</computeroutput> since it needs to call the non-<computeroutput>const</computeroutput> <emphasis><bold>notifyObservers</bold></emphasis> method.</para><para><simplesect kind="note"><para>Explicit invocation of this method is <bold>not</bold> necessary if the object registered itself as observer with the structures on which such results depend. It is strongly advised to follow this policy when possible. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="118" bodyend="130"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -91,12 +81,8 @@
         <definition>void freeze</definition>
         <argsstring>()</argsstring>
         <name>freeze</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method constrains the object to return the presently cached results on successive invocations, even if arguments upon which they depend should change. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="132" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -104,12 +90,8 @@
         <definition>void unfreeze</definition>
         <argsstring>()</argsstring>
         <name>unfreeze</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method reverts the effect of the <emphasis><bold>freeze</bold></emphasis> method, thus re-enabling recalculations. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="136" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -118,12 +100,8 @@
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <reimplementedby refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method performs all needed calculations by calling the <emphasis><bold>performCalculations</bold></emphasis> method.</para><para><xrefsect id="caveats_1_caveats000085"><xreftitle>Warning</xreftitle><xrefdescription><para>Objects cache the results of the previous calculation. Such results will be returned upon later invocations of <emphasis><bold>calculate</bold></emphasis>. When the results depend on arguments which could change between invocations, the lazy object must register itself as observer of such objects for the calculations to be performed again when they change.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000086"><xreftitle>Warning</xreftitle><xrefdescription><para>Should this method be redefined in derived classes, <ref refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" kindref="member">LazyObject::calculate()</ref> should be called in the overriding method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="145" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -169,12 +147,8 @@
         <reimplementedby refid="class_quant_lib_1_1_basket_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_one_factor_student_gaussian_copula_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yield_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="91"/>
       </memberdef>
       </sectiondef>
@@ -184,12 +158,6 @@
         <definition>LazyObject</definition>
         <argsstring>()</argsstring>
         <name>LazyObject</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="99" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -197,19 +165,11 @@
         <definition>virtual ~LazyObject</definition>
         <argsstring>()</argsstring>
         <name>~LazyObject</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Framework for calculation on demand and result caching. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="33" bodyend="94"/>
   </compounddef>
 </doxygen>

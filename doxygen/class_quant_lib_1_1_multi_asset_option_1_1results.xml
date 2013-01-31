@@ -14,19 +14,11 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Results from multi-asset option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="64" bodyend="71"/>
   </compounddef>
 </doxygen>

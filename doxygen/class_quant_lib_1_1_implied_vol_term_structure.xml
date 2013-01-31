@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_vol_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
@@ -45,10 +37,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_implied_vol_term_structure_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -59,10 +47,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       </sectiondef>
@@ -78,12 +62,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="88" bodyend="95"/>
       </memberdef>
       </sectiondef>
@@ -93,12 +71,6 @@
         <definition>Handle&lt;BlackVolTermStructure&gt; originalTS_</definition>
         <argsstring></argsstring>
         <name>originalTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -116,12 +88,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/impliedvoltermstructure.hpp" bodystart="69" bodyend="74"/>
       </memberdef>
       </sectiondef>

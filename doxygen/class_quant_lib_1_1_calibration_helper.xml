@@ -13,31 +13,13 @@
         <name>CalibrationErrorType</name>
         <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf604e0665fd047d7badbdaf88ddfc61" prot="public">
           <name>RelativePriceError</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033a83494bc1850f0e4c4802e2b8d2e4aa51" prot="public">
           <name>PriceError</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf711a9a55e986cdd866fc61bd1d65b6" prot="public">
           <name>ImpliedVolError</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
       </sectiondef>
@@ -47,12 +29,6 @@
         <definition>const CalibrationErrorType calibrationErrorType_</definition>
         <argsstring></argsstring>
         <name>calibrationErrorType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -75,12 +51,6 @@
           <declname>calibrationErrorType</declname>
           <defval>RelativePriceError</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -89,12 +59,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1aa1d5a2a3e1205bdc482f59182282c426" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -104,10 +68,6 @@
         <name>marketValue</name>
         <briefdescription>
 <para>returns the actual price of the instrument (from volatility) </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -120,10 +80,6 @@
         <reimplementedby refid="class_quant_lib_1_1_cap_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4">modelValue</reimplementedby>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ac9e6e106b8ad56b7bf89a48b8a004857" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -133,10 +89,6 @@
         <name>calibrationError</name>
         <briefdescription>
 <para>returns the error resulting from the model valuation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a06c670b250bcd21e9787ebc007093545" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -151,12 +103,6 @@
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="64"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a83cd0c8293969d49634c639a632141f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -186,10 +132,6 @@
         </param>
         <briefdescription>
 <para>Black volatility implied by the model. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ae916246904fe19039c315903020642ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -206,10 +148,6 @@
         </param>
         <briefdescription>
 <para>Black price given a volatility. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a5ef2cc90f16cf902829ac616f7b5278c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -221,19 +159,11 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
           <declname>engine</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="76" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>liquid market instrument used during calibration </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="36" bodyend="89"/>
   </compounddef>
 </doxygen>

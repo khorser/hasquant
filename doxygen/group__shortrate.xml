@@ -16,8 +16,6 @@
     <innerclass refid="class_quant_lib_1_1_vasicek" prot="public">QuantLib::Vasicek</innerclass>
     <innerclass refid="class_quant_lib_1_1_two_factor_model" prot="public">QuantLib::TwoFactorModel</innerclass>
     <innerclass refid="class_quant_lib_1_1_g2" prot="public">QuantLib::G2</innerclass>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>This framework (corresponding to the ql/ShortRateModels directory) implements some single-factor and two-factor short rate models. The models implemented in this library are widely used by practitionners. For the moment, the ShortRateModels::Model class defines the short-rate dynamics with stochastic equations of the type <formula id="0">\[ dx_i = \mu(t,x_i) dt + \sigma(t,x_i) dW_t \]</formula> where <formula id="1">$ r = f(t,x) $</formula>. If the model is affine (i.e. derived from the <ref refid="class_quant_lib_1_1_affine_model" kindref="compound">QuantLib::AffineModel</ref> class), analytical formulas for discount bonds and discount bond options are given (useful for calibration).</para><sect1 id="group__shortrate_1singlefactormodels">
 <title>Single-factor models</title>

@@ -27,12 +27,6 @@
         <argsstring>() const </argsstring>
         <name>getArguments</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1acadfc179f7be93951a88d8d9785402d3">getArguments</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -41,12 +35,6 @@
         <argsstring>() const </argsstring>
         <name>getResults</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad">getResults</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -55,12 +43,6 @@
         <argsstring>()</argsstring>
         <name>reset</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -73,12 +55,6 @@
         <reimplementedby refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <reimplementedby refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       </sectiondef>

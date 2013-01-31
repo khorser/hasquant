@@ -11,12 +11,6 @@
         <definition>NullCalendar</definition>
         <argsstring>()</argsstring>
         <name>NullCalendar</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/nullcalendar.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/nullcalendar.hpp" bodystart="47" bodyend="49"/>
       </memberdef>
       </sectiondef>

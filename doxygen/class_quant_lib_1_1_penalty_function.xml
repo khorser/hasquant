@@ -14,12 +14,6 @@
         <definition>typedef Curve::traits_type Traits</definition>
         <argsstring></argsstring>
         <name>Traits</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1a29ce88ec2013c3de7a04fbee85c27624" prot="private" static="no">
@@ -27,12 +21,6 @@
         <definition>typedef Traits::helper helper</definition>
         <argsstring></argsstring>
         <name>helper</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1a1802435247f5ee780a0408e67697d286" prot="private" static="no">
@@ -40,12 +28,6 @@
         <definition>typedef std::vector&lt; boost::shared_ptr&lt;helper&gt; &gt;::const_iterator helper_iterator</definition>
         <argsstring></argsstring>
         <name>helper_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +37,6 @@
         <definition>Curve* curve_</definition>
         <argsstring></argsstring>
         <name>curve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1a8aa0f17cb3da1db49cadbf7e514e0505" prot="private" static="no" mutable="no">
@@ -68,12 +44,6 @@
         <definition>Size initialIndex_</definition>
         <argsstring></argsstring>
         <name>initialIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1aaafa151c3c244b107a148e67b39cdc61" prot="private" static="no" mutable="no">
@@ -81,12 +51,6 @@
         <definition>Size localisation_</definition>
         <argsstring></argsstring>
         <name>localisation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1acd95d5dd3a890eff5e905c8f71bc3425" prot="private" static="no" mutable="no">
@@ -94,12 +58,6 @@
         <definition>helper_iterator rateHelpersStart_</definition>
         <argsstring></argsstring>
         <name>rateHelpersStart_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1a6ed49e6fc958b5d80c212ed807773d99" prot="private" static="no" mutable="no">
@@ -107,12 +65,6 @@
         <definition>helper_iterator rateHelpersEnd_</definition>
         <argsstring></argsstring>
         <name>rateHelpersEnd_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -138,12 +90,6 @@
           <type>helper_iterator</type>
           <declname>rateHelpersEnd</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="47" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -155,12 +101,6 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="251" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -172,19 +112,9 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="273" bodyend="294"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="40" bodyend="65"/>
   </compounddef>
 </doxygen>

@@ -18,12 +18,6 @@
         <definition>CubicInterpolation::DerivativeApprox da_</definition>
         <argsstring></argsstring>
         <name>da_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="694" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="694" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a49d945dc193acbcea43c3f0572a9469c" prot="private" static="no" mutable="no">
@@ -31,12 +25,6 @@
         <definition>bool monotonic_</definition>
         <argsstring></argsstring>
         <name>monotonic_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="695" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="695" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a820a774ea04c6c1ec4df64e4a7ce26cf" prot="private" static="no" mutable="no">
@@ -44,12 +32,6 @@
         <definition>CubicInterpolation::BoundaryCondition leftType_</definition>
         <argsstring></argsstring>
         <name>leftType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="696" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="696" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a51645ba519df3134cb5c26c778132e40" prot="private" static="no" mutable="no">
@@ -57,12 +39,6 @@
         <definition>CubicInterpolation::BoundaryCondition rightType_</definition>
         <argsstring></argsstring>
         <name>rightType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="696" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="696" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a2b8746419d279974ca34ef65d3aa80f9" prot="private" static="no" mutable="no">
@@ -70,12 +46,6 @@
         <definition>Real leftValue_</definition>
         <argsstring></argsstring>
         <name>leftValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="697" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="697" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1ab7ae2a0cb5b514dcc8f2612d21d2b316" prot="private" static="no" mutable="no">
@@ -83,12 +53,6 @@
         <definition>Real rightValue_</definition>
         <argsstring></argsstring>
         <name>rightValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="697" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="697" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a3ade2bd698897bb3d91d2f6d5d5aaa82" prot="private" static="no" mutable="yes">
@@ -96,12 +60,6 @@
         <definition>Array tmp_</definition>
         <argsstring></argsstring>
         <name>tmp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="698" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="698" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1aef7f39f95dbbf62fd365a1ec2a0e70bf" prot="private" static="no" mutable="yes">
@@ -109,12 +67,6 @@
         <definition>std::vector&lt;Real&gt; dx_</definition>
         <argsstring></argsstring>
         <name>dx_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="699" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="699" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a93b243b472bec03de352c43fb0c94984" prot="private" static="no" mutable="yes">
@@ -122,12 +74,6 @@
         <definition>std::vector&lt;Real&gt; S_</definition>
         <argsstring></argsstring>
         <name>S_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="699" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="699" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1ae31136b2d83d0556f05949f6ccb51f7c" prot="private" static="no" mutable="yes">
@@ -135,12 +81,6 @@
         <definition>TridiagonalOperator L_</definition>
         <argsstring></argsstring>
         <name>L_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="700" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="700" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -186,12 +126,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>rightConditionValue</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="360" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="344" bodyend="360"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -199,12 +133,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="362" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="362" bodyend="670"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -216,12 +144,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="671" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="671" bodyend="675"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -233,12 +155,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="676" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="676" bodyend="682"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -250,12 +166,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="683" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="683" bodyend="687"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -267,19 +177,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="688" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="688" bodyend="692"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="54" bodyend="-1"/>
   </compounddef>
 </doxygen>

@@ -21,12 +21,6 @@
           <type>T &amp;</type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_disposable_1a4e34b6d01a65daf06beaa13b266c1459" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -38,12 +32,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_disposable_1a62e578457d50f2dfccc17ba03ebd94de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -55,12 +43,6 @@
           <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/disposable.hpp" bodystart="85" bodyend="88"/>
       </memberdef>
       </sectiondef>

@@ -9,12 +9,6 @@
         <definition>CallableBond::arguments arguments_</definition>
         <argsstring></argsstring>
         <name>arguments_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1ac694011a07003f7d67b8183597b5a0c6" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>Time redemptionTime_</definition>
         <argsstring></argsstring>
         <name>redemptionTime_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a2f156ecbe4b2565cf41fabcbfa476c39" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>std::vector&lt;Time&gt; couponTimes_</definition>
         <argsstring></argsstring>
         <name>couponTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1abac2d2e025f90412d739851b50083136" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>std::vector&lt;Time&gt; callabilityTimes_</definition>
         <argsstring></argsstring>
         <name>callabilityTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -74,12 +50,6 @@
           <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="36"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -91,12 +61,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>size</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="37"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -104,12 +68,6 @@
         <definition>std::vector&lt;Time&gt; mandatoryTimes</definition>
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="38"/>
       </memberdef>
       </sectiondef>
@@ -123,12 +81,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a9a40fa1e5a72b0409745ea1c67b2cf63" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -140,19 +92,9 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="50"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="32" bodyend="51"/>
   </compounddef>
 </doxygen>

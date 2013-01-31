@@ -19,12 +19,6 @@
         <definition>typedef T::value_type value_type</definition>
         <argsstring></argsstring>
         <name>value_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_convergence_statistics_1a1c8168a0d88468e6516d4641ef378a60" prot="public" static="no">
@@ -32,12 +26,6 @@
         <definition>typedef std::vector&lt;std::pair&lt;Size,value_type&gt; &gt; table_type</definition>
         <argsstring></argsstring>
         <name>table_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -47,12 +35,6 @@
         <definition>table_type table_</definition>
         <argsstring></argsstring>
         <name>table_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convergence_statistics_1ad06d24a790fafb1770b8c14bae47a376" prot="private" static="no" mutable="no">
@@ -60,12 +42,6 @@
         <definition>U samplingRule_</definition>
         <argsstring></argsstring>
         <name>samplingRule_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_convergence_statistics_1a93237d609f8c6f66cfb22c55c004d210" prot="private" static="no" mutable="no">
@@ -73,12 +49,6 @@
         <definition>Size nextSampleSize_</definition>
         <argsstring></argsstring>
         <name>nextSampleSize_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -97,12 +67,6 @@
           <declname>rule</declname>
           <defval>U()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="90" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1afc2f09312916217fea1ec35a927a3edc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -115,12 +79,6 @@
           <declname>rule</declname>
           <defval>U()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="97" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1a0fd2224497ce267aa05d4fe5915aa11d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -137,12 +95,6 @@
           <declname>weight</declname>
           <defval>1.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1a536b63938a662f0138ab4f1e87669eef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -163,12 +115,6 @@
           <type>DataIterator</type>
           <declname>end</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1acd78fc587eb7cf80dd145cb3adda5ae8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -196,12 +142,6 @@
           <type>WeightIterator</type>
           <declname>wbegin</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="72" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -209,12 +149,6 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="116" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_convergence_statistics_1a2c9c98dfbddea40f5d6add9c239632e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -222,12 +156,6 @@
         <definition>const ConvergenceStatistics&lt; T, U &gt;::table_type &amp; convergenceTable</definition>
         <argsstring>() const </argsstring>
         <name>convergenceTable</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="124" bodyend="126"/>
       </memberdef>
       </sectiondef>

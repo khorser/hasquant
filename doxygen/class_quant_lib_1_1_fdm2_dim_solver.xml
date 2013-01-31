@@ -9,12 +9,6 @@
         <definition>const FdmSolverDesc solverDesc_</definition>
         <argsstring></argsstring>
         <name>solverDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
@@ -22,12 +16,6 @@
         <definition>const FdmSchemeDesc schemeDesc_</definition>
         <argsstring></argsstring>
         <name>schemeDesc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1a3dbee12d35ac857fce84d2e13990b09b" prot="private" static="no" mutable="no">
@@ -35,12 +23,6 @@
         <definition>const boost::shared_ptr&lt;FdmLinearOpComposite&gt; op_</definition>
         <argsstring></argsstring>
         <name>op_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1a06afd27dcb2e2053592df2c535af8327" prot="private" static="no" mutable="no">
@@ -48,12 +30,6 @@
         <definition>const boost::shared_ptr&lt;FdmSnapshotCondition&gt; thetaCondition_</definition>
         <argsstring></argsstring>
         <name>thetaCondition_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1ae1eee6b55c9dc464e35c5225991bc128" prot="private" static="no" mutable="no">
@@ -61,12 +37,6 @@
         <definition>const boost::shared_ptr&lt;FdmStepConditionComposite&gt; conditions_</definition>
         <argsstring></argsstring>
         <name>conditions_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" static="no" mutable="no">
@@ -74,12 +44,6 @@
         <definition>std::vector&lt;Real&gt; x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1a71a6c36122b9ef005c4c52bda3890e24" prot="private" static="no" mutable="no">
@@ -87,12 +51,6 @@
         <definition>std::vector&lt;Real&gt; y_</definition>
         <argsstring></argsstring>
         <name>y_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1a1a5680106af428c3896552f9911bddd6" prot="private" static="no" mutable="no">
@@ -100,12 +58,6 @@
         <definition>std::vector&lt;Real&gt; initialValues_</definition>
         <argsstring></argsstring>
         <name>initialValues_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1ad5efeadce0fdb321fe5c85d93c516871" prot="private" static="no" mutable="yes">
@@ -113,12 +65,6 @@
         <definition>Matrix resultValues_</definition>
         <argsstring></argsstring>
         <name>resultValues_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm2_dim_solver_1a4a7b3d51d77a750c48ef1df8cbe5d88f" prot="private" static="no" mutable="yes">
@@ -126,12 +72,6 @@
         <definition>boost::shared_ptr&lt;BicubicSpline&gt; interpolation_</definition>
         <argsstring></argsstring>
         <name>interpolation_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -153,12 +93,6 @@
           <type>const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;</type>
           <declname>op</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="42"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1ac0ba2422f2ffe2d1843462c15d8ce84b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -174,12 +108,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a7ce5036c20066e383d5b68d770a3b847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -195,12 +123,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a35279b56a8a434738b5210e5abe66376" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -216,12 +138,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a9bb70b34a017142d208a3439a59238cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -237,12 +153,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a0fa7710cae036567b83922ed8125e564" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -258,12 +168,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1ae3d80f9c78734c076475283c675c425c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -279,12 +183,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a96c8f7599965301834826364d48349fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -300,19 +198,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm2dimsolver.hpp" bodystart="38" bodyend="67"/>
   </compounddef>
 </doxygen>

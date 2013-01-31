@@ -9,12 +9,6 @@
         <definition>Rate yield</definition>
         <argsstring></argsstring>
         <name>yield</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -24,19 +18,9 @@
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="60"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="58" bodyend="63"/>
   </compounddef>
 </doxygen>

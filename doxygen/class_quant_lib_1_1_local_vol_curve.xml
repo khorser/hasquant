@@ -14,10 +14,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="43" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -28,10 +24,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -42,10 +34,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="49" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -56,10 +44,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
       </sectiondef>
@@ -73,10 +57,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -87,10 +67,6 @@
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       </sectiondef>
@@ -106,12 +82,6 @@
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="79" bodyend="86"/>
       </memberdef>
       </sectiondef>
@@ -121,12 +91,6 @@
         <definition>Handle&lt;BlackVarianceCurve&gt; blackVarianceCurve_</definition>
         <argsstring></argsstring>
         <name>blackVarianceCurve_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -140,19 +104,11 @@
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_variance_curve" kindref="compound">BlackVarianceCurve</ref> &gt; &amp;</type>
           <declname>curve</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="35" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Local volatility curve derived from a Black curve. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="33" bodyend="73"/>
   </compounddef>
 </doxygen>

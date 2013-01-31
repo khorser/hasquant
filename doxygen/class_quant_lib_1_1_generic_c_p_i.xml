@@ -35,19 +35,11 @@
           <declname>ts</declname>
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="45" bodyend="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Generic CPI index. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="43" bodyend="60"/>
   </compounddef>
 </doxygen>

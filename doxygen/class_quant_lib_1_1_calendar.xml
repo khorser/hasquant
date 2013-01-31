@@ -53,10 +53,6 @@
         <name>empty</name>
         <briefdescription>
 <para>Returns whether or not the calendar is initialized. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="186" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -68,8 +64,6 @@
 <para>Returns the name of the calendar. </para>        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000143"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between calendars. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="190" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a85aed4d5b4c114bdd47766ef9e52e2f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -81,12 +75,8 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the date is a business day for the given market. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="194" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1aa529b7298ba96b90261ed56c34f015f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -98,12 +88,8 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the date is a holiday for the given market. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="210" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a9c1941e4f95b1d74d7f9b2e772174c73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -115,12 +101,8 @@
           <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
           <declname>w</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the weekday is part of the weekend for the given market. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="214" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a406c43181bd59e07a145a4722fdf2480" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -132,12 +114,8 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the date is last business day for the month in given market. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a19b6ae524d9688302a3d133d9a8eaf67" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -151,10 +129,6 @@
         </param>
         <briefdescription>
 <para>last business day of the month to which the given date belongs </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="206" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a656020bddfdb2d9f48c9f0dc12b26597" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -165,12 +139,8 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Adds a date to the set of holidays for the given calendar. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a4c682210881efe66d463cc0907f00722" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -181,12 +151,8 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Removes a date from the set of holidays for the given calendar. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1aee7c18511c7ee1bcda6124f43a37aa28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -202,12 +168,8 @@
           <declname>convention</declname>
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Adjusts a non-business day to the appropriate near business day with respect to the given convention. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1ac47bb82bf7b147cfacf373991c2905ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -236,13 +198,9 @@
           <declname>endOfMonth</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Advances the given date of the given number of business days and returns the result. <simplesect kind="note"><para>The input date is not modified. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="129"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1aff3da5f18d09db3745c371b8679bd5ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -268,13 +226,9 @@
           <declname>endOfMonth</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Advances the given date as specified by the given period and returns the result. <simplesect kind="note"><para>The input date is not modified. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a19727b525ba0493943d84e29459b65a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -300,12 +254,8 @@
           <declname>includeLast</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Calculates the number of business days between two given dates and returns the result. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="144"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1a0b6fcbea4559480b4dc3df0abbf64766" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -332,10 +282,6 @@
         </param>
         <briefdescription>
 <para>Returns the holidays between two dates. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="114"/>
       </memberdef>
       </sectiondef>
@@ -345,12 +291,8 @@
         <definition>Calendar</definition>
         <argsstring>()</argsstring>
         <name>Calendar</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The default constructor returns a calendar with a null implementation, which is therefore unusable except as a placeholder. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
       </sectiondef>
@@ -366,12 +308,8 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the two calendars belong to the same derived class. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="218" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1af842d77a8aacbc167a64749dba1a3a87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -385,12 +323,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="223" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1aab055e8665c0e69976ecbe4aebd47a8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -404,12 +336,6 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="227" bodyend="229"/>
       </memberdef>
       </sectiondef>

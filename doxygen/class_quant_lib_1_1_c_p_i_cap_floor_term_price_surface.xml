@@ -13,12 +13,8 @@
         <argsstring>() const </argsstring>
         <name>observationLag</name>
         <reimplements refid="class_quant_lib_1_1_inflation_term_structure_1a44d0249f5e6de07f14d8b0255d499a38">observationLag</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="364" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -31,8 +27,6 @@
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
 <para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="368" bodyend="370"/>
       </memberdef>
       </sectiondef>
@@ -47,8 +41,6 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>you don&apos;t know if <ref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a2e986030f606857ab21de088507b12dd" kindref="member">price()</ref> is a cap or a floor without checking the ZeroInflation ATM level. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="372" bodyend="374"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -56,12 +48,6 @@
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="377" bodyend="379"/>
       </memberdef>
       </sectiondef>
@@ -79,12 +65,8 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000015"><xreftitle>Warning</xreftitle><xrefdescription><para>you MUST remind the compiler in any descendants with the using:: mechanism because you overload the names remember that the strikes use the quoting convention </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="107"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1af5f906ac2721469a4af0dde470e8bb54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -100,12 +82,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a33817643431dd2229d6ae3a56298c149" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -121,12 +97,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="109"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a0ead5d6d35977c4e7a864fcbd872cea9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -142,12 +112,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a5c6404c0e4506cde98496072cae6a9e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -163,12 +127,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="111"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1ac96073052feae5947b674ba774e940c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -184,12 +142,6 @@
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>k</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="112"/>
       </memberdef>
       </sectiondef>
@@ -199,12 +151,6 @@
         <definition>Real nominal_</definition>
         <argsstring></argsstring>
         <name>nominal_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1aa63f20268765f716e3c0ced196db5798" prot="private" static="no" mutable="no">
@@ -212,12 +158,6 @@
         <definition>BusinessDayConvention bdc_</definition>
         <argsstring></argsstring>
         <name>bdc_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -279,12 +219,6 @@
           <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>fPrice</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1aa8f85a13387f4bd9882d9246c8184de3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -294,10 +228,6 @@
         <name>zeroInflationIndex</name>
         <briefdescription>
 <para>is based on </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a1b89821fd50ae8ad7335bb45f0f7ecf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -305,12 +235,6 @@
         <definition>virtual std::vector&lt;Rate&gt; strikes</definition>
         <argsstring>() const </argsstring>
         <name>strikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a8eecc5b9075172047970adbe20dbd7d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -318,12 +242,6 @@
         <definition>virtual std::vector&lt;Rate&gt; capStrikes</definition>
         <argsstring>() const </argsstring>
         <name>capStrikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="116" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1ac4646f67e6fdfb4083ede53dee441d31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -331,12 +249,6 @@
         <definition>virtual std::vector&lt;Rate&gt; floorStrikes</definition>
         <argsstring>() const </argsstring>
         <name>floorStrikes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a111b99f9d70e1cfb1bcc9c538603fca5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -344,12 +256,6 @@
         <definition>virtual std::vector&lt;Period&gt; maturities</definition>
         <argsstring>() const </argsstring>
         <name>maturities</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="118" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1ad7a5f17f95e1110b6496474fe6b7a53a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -357,12 +263,6 @@
         <definition>virtual const Matrix&amp; capPrices</definition>
         <argsstring>() const </argsstring>
         <name>capPrices</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1ac94ed3cf05780d7b9ff02e3dae871131" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -370,12 +270,6 @@
         <definition>virtual const Matrix&amp; floorPrices</definition>
         <argsstring>() const </argsstring>
         <name>floorPrices</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a5e7f4a8423be791d84c2f637f5f36309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -383,12 +277,6 @@
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="123" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a665e35ebe818f3866d6a3946ed399432" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -396,12 +284,6 @@
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="124" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1ac20d3a319fe01f0a90d2786cb0aaf50d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -409,12 +291,6 @@
         <definition>virtual Date minDate</definition>
         <argsstring>() const </argsstring>
         <name>minDate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="125" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -425,10 +301,6 @@
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="126" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1af122932d1bbc419bad4cc59bbc5e55a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -440,12 +312,6 @@
           <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
           <declname>p</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="130"/>
       </memberdef>
       </sectiondef>

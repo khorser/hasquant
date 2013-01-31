@@ -8,12 +8,6 @@
         <definition>Size iterations</definition>
         <argsstring></argsstring>
         <name>iterations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_bi_c_g_stab_result_1ae00ecbfbe7c0f2b69c514b9e70fe8c04" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Real error</definition>
         <argsstring></argsstring>
         <name>error</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_bi_c_g_stab_result_1a877142897d25b48b1ab91cde586ab339" prot="public" static="no" mutable="no">
@@ -34,19 +22,9 @@
         <definition>Array x</definition>
         <argsstring></argsstring>
         <name>x</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="33" bodyend="37"/>
   </compounddef>
 </doxygen>

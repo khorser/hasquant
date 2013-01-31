@@ -8,12 +8,6 @@
         <definition>Clone&lt;MarketModelMultiProduct&gt; product</definition>
         <argsstring></argsstring>
         <name>product</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1aa8edac5104dee87fc6488fbc99895800" prot="public" static="no" mutable="no">
@@ -21,12 +15,6 @@
         <definition>Real multiplier</definition>
         <argsstring></argsstring>
         <name>multiplier</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1ad2f3e3fe1acf068b2686761333556fd8" prot="public" static="no" mutable="no">
@@ -34,12 +22,6 @@
         <definition>std::vector&lt;Size&gt; numberOfCashflows</definition>
         <argsstring></argsstring>
         <name>numberOfCashflows</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1a10eacbc6d0d31ab49ecb20de50786852" prot="public" static="no" mutable="no">
@@ -47,12 +29,6 @@
         <definition>std::vector&lt;std::vector&lt;CashFlow&gt; &gt; cashflows</definition>
         <argsstring></argsstring>
         <name>cashflows</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1abe6d70a2f681b27d05e74fb0a549ea02" prot="public" static="no" mutable="no">
@@ -60,12 +36,6 @@
         <definition>std::vector&lt;Size&gt; timeIndices</definition>
         <argsstring></argsstring>
         <name>timeIndices</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1a1d39aac66e12dae50a24cd7a9100ef33" prot="public" static="no" mutable="no">
@@ -73,19 +43,9 @@
         <definition>bool done</definition>
         <argsstring></argsstring>
         <name>done</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="60" bodyend="67"/>
   </compounddef>
 </doxygen>

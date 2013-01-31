@@ -9,31 +9,13 @@
         <name>Discretization</name>
         <enumvalue id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a36f45ac51e3e98d35c68ca85b7573e87a15bdc5f58bb77a2b71744a6888e4aac0" prot="public">
           <name>PartialTruncation</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a36f45ac51e3e98d35c68ca85b7573e87a6904cb3e61c256ca87b9d28391676513" prot="public">
           <name>FullTruncation</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
         <enumvalue id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a36f45ac51e3e98d35c68ca85b7573e87ac8495a3116471d7668b1a4a4313dd90d" prot="public">
           <name>Reflection</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="66" bodyend="67"/>
       </memberdef>
       </sectiondef>
@@ -43,12 +25,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; riskFreeRate_</definition>
         <argsstring></argsstring>
         <name>riskFreeRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1ac90d45f37ddd446a4543012fb5c4c4f2" prot="private" static="no" mutable="no">
@@ -56,12 +32,6 @@
         <definition>Handle&lt;YieldTermStructure&gt; dividendYield_</definition>
         <argsstring></argsstring>
         <name>dividendYield_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a381b08ec4629ceeb3334b4555f71c120" prot="private" static="no" mutable="no">
@@ -69,12 +39,6 @@
         <definition>Handle&lt;Quote&gt; s0_</definition>
         <argsstring></argsstring>
         <name>s0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a5f315773f95ca1592e577e6e4536cd33" prot="private" static="no" mutable="no">
@@ -82,12 +46,6 @@
         <definition>Real v0_</definition>
         <argsstring></argsstring>
         <name>v0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a17cf9f123d10cee38805ace49f127756" prot="private" static="no" mutable="no">
@@ -95,12 +53,6 @@
         <definition>Real omega_</definition>
         <argsstring></argsstring>
         <name>omega_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
@@ -108,12 +60,6 @@
         <definition>Real alpha_</definition>
         <argsstring></argsstring>
         <name>alpha_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" static="no" mutable="no">
@@ -121,12 +67,6 @@
         <definition>Real beta_</definition>
         <argsstring></argsstring>
         <name>beta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a88c6756db7fb1136217d5e4f3fe88885" prot="private" static="no" mutable="no">
@@ -134,12 +74,6 @@
         <definition>Real gamma_</definition>
         <argsstring></argsstring>
         <name>gamma_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" static="no" mutable="no">
@@ -147,12 +81,6 @@
         <definition>Real lambda_</definition>
         <argsstring></argsstring>
         <name>lambda_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1ab14c459b91f49fbf96e31ed75ed45cc2" prot="private" static="no" mutable="no">
@@ -160,12 +88,6 @@
         <definition>Real daysPerYear_</definition>
         <argsstring></argsstring>
         <name>daysPerYear_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1aa7ec2320965677495504b650c862fbb0" prot="private" static="no" mutable="no">
@@ -173,12 +95,6 @@
         <definition>Discretization discretization_</definition>
         <argsstring></argsstring>
         <name>discretization_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -234,12 +150,6 @@
           <declname>d</declname>
           <defval>FullTruncation</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -250,10 +160,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -264,10 +170,6 @@
         <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -286,10 +188,6 @@
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -308,10 +206,6 @@
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="79"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -328,12 +222,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dx</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="80"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -358,12 +248,8 @@
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="82"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a30fd40988a93faccca807dd016f8c5e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -371,12 +257,6 @@
         <definition>Real v0</definition>
         <argsstring>() const </argsstring>
         <name>v0</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -384,12 +264,6 @@
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>
         <name>lambda</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a63ebf28ed55c1eb20ca91ee99cc081ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -397,12 +271,6 @@
         <definition>Real omega</definition>
         <argsstring>() const </argsstring>
         <name>omega</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -410,12 +278,6 @@
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="87" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -423,12 +285,6 @@
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -436,12 +292,6 @@
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
         <name>gamma</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1ae3f13df53c8b2b7fd37cd23468f4fdb4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -449,12 +299,6 @@
         <definition>Real daysPerYear</definition>
         <argsstring>() const </argsstring>
         <name>daysPerYear</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a5454c7c9728f2ccef70ac7c9cc0fccee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -462,12 +306,6 @@
         <definition>const Handle&lt;Quote&gt;&amp; s0</definition>
         <argsstring>() const </argsstring>
         <name>s0</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -475,12 +313,6 @@
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -488,12 +320,6 @@
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -505,13 +331,9 @@
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
 </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/gjrgarchprocess.hpp" line="96"/>
       </memberdef>
       </sectiondef>

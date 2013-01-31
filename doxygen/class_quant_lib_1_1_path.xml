@@ -10,12 +10,6 @@
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a0004e5f7457adee64d3a05ee24509aaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -23,12 +17,6 @@
         <definition>Size length</definition>
         <argsstring>() const </argsstring>
         <name>length</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1ae07c86cdf4eda1646caab8017e38bfd8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -42,10 +30,6 @@
         </param>
         <briefdescription>
 <para>asset value at the <formula id="56">$ i $</formula>-th point </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1aa2a3b2bafacf0f06b9be120b0b100ace" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -57,12 +41,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a101a709206ec7812f7f95cad473a3cad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -74,12 +52,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1aef1835418a9f584646a69e5b07c1fb71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -91,12 +63,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="110" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a72ae2e219d43e0a6d8c0e16dec878bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -108,12 +74,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a0fddf660c31f55b9332f76c1c9c1c63c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -125,12 +85,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a91dfebfe8158f3ff280387f0c21f2a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -144,10 +98,6 @@
         </param>
         <briefdescription>
 <para>time at the <formula id="56">$ i $</formula>-th point </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1adf80e67a5954b0635539898d1de0bac3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -157,10 +107,6 @@
         <name>front</name>
         <briefdescription>
 <para>initial asset value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1aa525610a679a070be58fbe9319306c38" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -168,12 +114,6 @@
         <definition>Real &amp; front</definition>
         <argsstring>()</argsstring>
         <name>front</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a617738d98f10c8d121b9a738e4bb3aee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -183,10 +123,6 @@
         <name>back</name>
         <briefdescription>
 <para>final asset value </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a8397a37a7d51cd9c8e8245115a5e547d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -194,12 +130,6 @@
         <definition>Real &amp; back</definition>
         <argsstring>()</argsstring>
         <name>back</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a6726e8faccac2e47434227100ca52e60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -209,10 +139,6 @@
         <name>timeGrid</name>
         <briefdescription>
 <para>time grid </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="142" bodyend="144"/>
       </memberdef>
       </sectiondef>
@@ -223,12 +149,6 @@
         <definition>typedef Array::const_iterator iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_path_1a096f9315b4acef7a25c449ca6ea8aee9" prot="public" static="no">
@@ -236,12 +156,6 @@
         <definition>typedef Array::const_reverse_iterator reverse_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_iterator</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a6b6603de814d357dc040ed01a9498d0c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -249,12 +163,6 @@
         <definition>Path::iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="146" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a9c74dee2134f7940921cfe6f8180a986" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -262,12 +170,6 @@
         <definition>Path::iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="150" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a76d1fc4c08855a94c8749e9f41649c33" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -275,12 +177,6 @@
         <definition>Path::reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="154" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_1aebc3be647c9dce002d454069451aba9f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -288,12 +184,6 @@
         <definition>Path::reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
         <name>rend</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
       </sectiondef>
@@ -303,12 +193,6 @@
         <definition>TimeGrid timeGrid_</definition>
         <argsstring></argsstring>
         <name>timeGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_1a99a3a78defaeab5ede226107da665b96" prot="private" static="no" mutable="no">
@@ -316,12 +200,6 @@
         <definition>Array values_</definition>
         <argsstring></argsstring>
         <name>values_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -340,12 +218,6 @@
           <declname>values</declname>
           <defval><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref>()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="82" bodyend="88"/>
       </memberdef>
       </sectiondef>

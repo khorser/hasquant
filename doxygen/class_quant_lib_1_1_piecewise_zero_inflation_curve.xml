@@ -73,12 +73,6 @@
           <declname>i</declname>
           <defval>Interpolator()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="51" bodyend="69"/>
       </memberdef>
       </sectiondef>
@@ -94,8 +88,6 @@
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
 <para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="110" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -106,10 +98,6 @@
         <reimplements refid="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="116" bodyend="119"/>
       </memberdef>
       </sectiondef>
@@ -120,12 +108,6 @@
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="122" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -133,12 +115,6 @@
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="128" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -146,12 +122,6 @@
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="134" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -159,12 +129,6 @@
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="141" bodyend="144"/>
       </memberdef>
       </sectiondef>
@@ -176,12 +140,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="152" bodyend="155"/>
       </memberdef>
       </sectiondef>
@@ -191,12 +149,6 @@
         <definition>typedef InterpolatedZeroInflationCurve&lt;Interpolator&gt; base_curve</definition>
         <argsstring></argsstring>
         <name>base_curve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1aff1e838647af0aa6e29bcee45b209398" prot="private" static="no">
@@ -204,12 +156,6 @@
         <definition>typedef PiecewiseZeroInflationCurve&lt;Interpolator,Bootstrap,Traits&gt; this_curve</definition>
         <argsstring></argsstring>
         <name>this_curve</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -219,12 +165,6 @@
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
@@ -232,12 +172,6 @@
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>
         <name>interpolator_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -247,12 +181,6 @@
         <definition>std::vector&lt;boost::shared_ptr&lt;typename Traits::helper&gt; &gt; instruments_</definition>
         <argsstring></argsstring>
         <name>instruments_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
@@ -260,12 +188,6 @@
         <definition>Real accuracy_</definition>
         <argsstring></argsstring>
         <name>accuracy_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a3dde59eaf2b97f4b7227dc0a92a26d64" prot="private" static="no" mutable="no">
@@ -273,12 +195,6 @@
         <definition>Bootstrap&lt;this_curve&gt; bootstrap_</definition>
         <argsstring></argsstring>
         <name>bootstrap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="103" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -288,12 +204,6 @@
         <definition>friend class Bootstrap&lt; this_curve &gt;</definition>
         <argsstring></argsstring>
         <name>Bootstrap&lt; this_curve &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a57e9e8eaf5be1d62515629611b40421e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -301,12 +211,6 @@
         <definition>friend class BootstrapError&lt; this_curve &gt;</definition>
         <argsstring></argsstring>
         <name>BootstrapError&lt; this_curve &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="102" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -317,19 +221,13 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="147" bodyend="149"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Piecewise zero-inflation term structure. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp" bodystart="39" bodyend="104"/>
   </compounddef>
 </doxygen>

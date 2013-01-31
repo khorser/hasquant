@@ -15,12 +15,6 @@
         <definition>const PathGenerator&lt; GSG &gt;::sample_type &amp; next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_generator_1abacc895c68c2f082c8cd5d9fc2d2a5f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -28,12 +22,6 @@
         <definition>const PathGenerator&lt; GSG &gt;::sample_type &amp; antithetic</definition>
         <argsstring>() const </argsstring>
         <name>antithetic</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_generator_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -41,12 +29,6 @@
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_generator_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -54,12 +36,6 @@
         <definition>const TimeGrid&amp; timeGrid</definition>
         <argsstring>() const </argsstring>
         <name>timeGrid</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       </sectiondef>
@@ -69,12 +45,6 @@
         <definition>typedef Sample&lt;Path&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -84,12 +54,6 @@
         <definition>bool brownianBridge_</definition>
         <argsstring></argsstring>
         <name>brownianBridge_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1a64140717577d3f2eafa18016be2b53eb" prot="private" static="no" mutable="no">
@@ -97,12 +61,6 @@
         <definition>GSG generator_</definition>
         <argsstring></argsstring>
         <name>generator_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1a101ac2fd4059964925dda5d18055f99c" prot="private" static="no" mutable="no">
@@ -110,12 +68,6 @@
         <definition>Size dimension_</definition>
         <argsstring></argsstring>
         <name>dimension_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1adda5ae6c670bdbb1857509a4aa20ec25" prot="private" static="no" mutable="no">
@@ -123,12 +75,6 @@
         <definition>TimeGrid timeGrid_</definition>
         <argsstring></argsstring>
         <name>timeGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1aa5a59ac3cc2d12f748a336ede36c6ed2" prot="private" static="no" mutable="no">
@@ -136,12 +82,6 @@
         <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; process_</definition>
         <argsstring></argsstring>
         <name>process_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1ab66466f0938ee327635eab8a616d1ef4" prot="private" static="no" mutable="yes">
@@ -149,12 +89,6 @@
         <definition>sample_type next_</definition>
         <argsstring></argsstring>
         <name>next_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1aedff7f6f4202c9a9773b8efcb4e1deef" prot="private" static="no" mutable="yes">
@@ -162,12 +96,6 @@
         <definition>std::vector&lt;Real&gt; temp_</definition>
         <argsstring></argsstring>
         <name>temp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_path_generator_1a8acd68dfbde630aaf205a8d4092d9602" prot="private" static="no" mutable="no">
@@ -175,12 +103,6 @@
         <definition>BrownianBridge bb_</definition>
         <argsstring></argsstring>
         <name>bb_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -210,12 +132,6 @@
           <type>bool</type>
           <declname>brownianBridge</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="80" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_path_generator_1aa22257337a62516ace1d26739a7a1660" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -239,12 +155,6 @@
           <type>bool</type>
           <declname>brownianBridge</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="96" bodyend="108"/>
       </memberdef>
       </sectiondef>
@@ -258,12 +168,6 @@
           <type>bool</type>
           <declname>antithetic</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="124" bodyend="155"/>
       </memberdef>
       </sectiondef>

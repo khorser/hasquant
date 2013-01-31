@@ -43,12 +43,6 @@
           <type>bool</type>
           <declname>indexIsInterpolated</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a642237e437e3f1dbb5a3b00cc19a915d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -56,12 +50,6 @@
         <definition>virtual ~YoYOptionletVolatilitySurface</definition>
         <argsstring>()</argsstring>
         <name>~YoYOptionletVolatilitySurface</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
       </sectiondef>
@@ -90,12 +78,8 @@
           <declname>extrapolate</declname>
           <defval>false</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>Returns the volatility for a given maturity date and strike rate that observes inflation, by default, with the observation lag of the term structure. Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="63"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a8bec322449324878a9b8c3d56eee84ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -123,10 +107,6 @@
         </param>
         <briefdescription>
 <para>returns the volatility for a given option tenor and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1ab3fc5836b8ffe33d09eca494369576a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -156,8 +136,6 @@
 <para>Returns the total integrated variance for a given exercise date and strike rate. </para>        </briefdescription>
         <detaileddescription>
 <para>Total integrated variance is useful because it scales out t for the optionlet pricing formulae. Note that it is called &quot;total&quot; because the surface does not know whether it represents Black, Bachelier or Displaced Diffusion variance. These are virtual so alternate connections between const vol and total var are possible.</para><para>Because inflation is highly linked to dates (for interpolation, periods, etc) we do NOT provide a time version </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="84"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1ac18bd55fdc43f49b20dd1ba29250bb92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -185,10 +163,6 @@
         </param>
         <briefdescription>
 <para>returns the total integrated variance for a given option tenor and strike rate </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1abafd7188fd2256052647de8003c83484" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -196,12 +170,8 @@
         <definition>virtual Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para>The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -209,12 +179,6 @@
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a660491a5abacf3aa1128ee5c6ef8a6c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -222,12 +186,6 @@
         <definition>virtual bool indexIsInterpolated</definition>
         <argsstring>() const </argsstring>
         <name>indexIsInterpolated</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -236,12 +194,6 @@
         <argsstring>() const </argsstring>
         <name>baseDate</name>
         <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="97"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a108bd0a09df4aa94c9bb9254632040b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -260,10 +212,6 @@
         </param>
         <briefdescription>
 <para>base date will be in the past because of observation lag </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="100"/>
       </memberdef>
       </sectiondef>
@@ -281,10 +229,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="106"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -299,10 +243,6 @@
         <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="108"/>
       </memberdef>
       </sectiondef>
@@ -312,17 +252,9 @@
         <definition>virtual Volatility baseLevel</definition>
         <argsstring>() const </argsstring>
         <name>baseLevel</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/yoyinflationoptionletvolatilitystructure.hpp" bodystart="112" bodyend="116"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
     <detaileddescription>
 <para>Abstract interface ... no data, only results. <verbatim>   Basically used to change the BlackVariance() methods to
    totalVariance.  Also deal with lagged observations of an index

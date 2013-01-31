@@ -17,12 +17,6 @@
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_option_1a95c0837ce9c4bcc4cb9b9ff975f3bfe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -58,19 +52,13 @@
           <declname>maxVol</declname>
           <defval>4.0</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000060"><xreftitle>Warning</xreftitle><xrefdescription><para>currently, this method returns the Black-Scholes implied volatility using analytic formulas for European options and a finite-difference method for American and Bermudan options. It will give unconsistent results if the pricing was performed with any other methods (such as jump-diffusion models.)</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000061"><xreftitle>Warning</xreftitle><xrefdescription><para>options with a gamma that changes sign (e.g., binary options) have values that are <bold>not</bold> monotonic in the volatility. In these cases, the calculation can fail and the result (if any) is almost meaningless. Another possible source of failure is to have a target value that is not attainable with any volatility, e.g., a target value lower than the intrinsic value in the case of American options. </para></xrefdescription></xrefsect></para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Vanilla option (no discrete dividends, no barriers) on a single asset. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp" bodystart="37" bodyend="67"/>
   </compounddef>
 </doxygen>

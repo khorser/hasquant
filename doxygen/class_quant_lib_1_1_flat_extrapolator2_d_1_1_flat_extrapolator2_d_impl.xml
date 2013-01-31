@@ -9,12 +9,6 @@
         <definition>boost::shared_ptr&lt;Interpolation2D&gt; decoratedInterp_</definition>
         <argsstring></argsstring>
         <name>decoratedInterp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -28,12 +22,6 @@
           <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
           <declname>decoratedInterpolation</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ae464439f613889645330b4fefbf66ab2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -41,12 +29,6 @@
         <definition>Real xMin</definition>
         <argsstring>() const </argsstring>
         <name>xMin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -54,12 +36,6 @@
         <definition>Real xMax</definition>
         <argsstring>() const </argsstring>
         <name>xMax</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="48" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1abd3804c44239a53b3697f463c999550b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -67,12 +43,6 @@
         <definition>std::vector&lt;Real&gt; xValues</definition>
         <argsstring>() const </argsstring>
         <name>xValues</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1a1dad083b76f04303ab47af9b9cf673ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -84,12 +54,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="54" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ae9d8578e244ef2368ca8870e98001bb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -97,12 +61,6 @@
         <definition>Real yMin</definition>
         <argsstring>() const </argsstring>
         <name>yMin</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ac0015c501e8d85fcc8d8e2303b5713ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -110,12 +68,6 @@
         <definition>Real yMax</definition>
         <argsstring>() const </argsstring>
         <name>yMax</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1a3a528ec1ab50863605d4aec3a44f8caa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -123,12 +75,6 @@
         <definition>std::vector&lt;Real&gt; yValues</definition>
         <argsstring>() const </argsstring>
         <name>yValues</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1a226ca4edb5a41970a8589cda9a9c46b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -140,12 +86,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ada4fe51c1f2712b9652a097a6613a8a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -153,12 +93,6 @@
         <definition>const Matrix&amp; zData</definition>
         <argsstring>() const </argsstring>
         <name>zData</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1a4f46449c6173e13183974caff591ab2f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -174,12 +108,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="72" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -187,12 +115,6 @@
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1afe1d8348c24e6589bc7c0b3f689316a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -200,12 +122,6 @@
         <definition>void calculate</definition>
         <argsstring>()</argsstring>
         <name>calculate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1abea3518f04c55492b47c8a8d1a04ca12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -221,12 +137,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="79" bodyend="83"/>
       </memberdef>
       </sectiondef>
@@ -240,12 +150,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="88" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl_1a9d390509fd0ef167b0c9a0dec7293eb2" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -257,19 +161,9 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="95" bodyend="101"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/flatextrapolation2d.hpp" bodystart="39" bodyend="103"/>
   </compounddef>
 </doxygen>

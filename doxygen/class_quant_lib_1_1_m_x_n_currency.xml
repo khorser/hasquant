@@ -10,12 +10,6 @@
         <definition>MXNCurrency</definition>
         <argsstring>()</argsstring>
         <name>MXNCurrency</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="132" bodyend="139"/>
       </memberdef>
       </sectiondef>

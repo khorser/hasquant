@@ -11,12 +11,6 @@
         <definition>Barrier::Type barrierType</definition>
         <argsstring></argsstring>
         <name>barrierType</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_option_1_1arguments_1a5e7aaf525ba688c85e16fa8b3adb5179" prot="public" static="no" mutable="no">
@@ -24,12 +18,6 @@
         <definition>Real barrier</definition>
         <argsstring></argsstring>
         <name>barrier</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_option_1_1arguments_1a42839acf8e6b930f24be763afb792a45" prot="public" static="no" mutable="no">
@@ -37,12 +25,6 @@
         <definition>Real rebate</definition>
         <argsstring></argsstring>
         <name>rebate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -52,12 +34,6 @@
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="72"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_barrier_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -65,19 +41,11 @@
         <definition>void validate</definition>
         <argsstring>() const </argsstring>
         <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="76"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Arguments for barrier option calculation </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp" bodystart="70" bodyend="77"/>
   </compounddef>
 </doxygen>

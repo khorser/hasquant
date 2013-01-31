@@ -10,12 +10,6 @@
         <definition>const Real heatRate_</definition>
         <argsstring></argsstring>
         <name>heatRate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1aee06cd02341796b9e83ede8be2ad0ee2" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>const Real pMin_</definition>
         <argsstring></argsstring>
         <name>pMin_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ada99e5388b503fa12e045c2060aa9475" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>const Real pMax_</definition>
         <argsstring></argsstring>
         <name>pMax_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1acf629de0b7ded06172785e50f2c0ecef" prot="private" static="no" mutable="no">
@@ -49,12 +31,6 @@
         <definition>const Size tMinUp_</definition>
         <argsstring></argsstring>
         <name>tMinUp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ab06b54dddf49030f931b40aa717b3fa9" prot="private" static="no" mutable="no">
@@ -62,12 +38,6 @@
         <definition>const Size tMinDown_</definition>
         <argsstring></argsstring>
         <name>tMinDown_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1af2411cd32232caa591bd390c8b5b03eb" prot="private" static="no" mutable="no">
@@ -75,12 +45,6 @@
         <definition>const Real startUpFuel_</definition>
         <argsstring></argsstring>
         <name>startUpFuel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ad85e46c0c1e963f423e0a72082a05994" prot="private" static="no" mutable="no">
@@ -88,12 +52,6 @@
         <definition>const Real startUpFixCost_</definition>
         <argsstring></argsstring>
         <name>startUpFixCost_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1a0581b0aeae621a9961269c3d1d8e07ef" prot="private" static="no" mutable="no">
@@ -101,12 +59,6 @@
         <definition>const Size initialState_</definition>
         <argsstring></argsstring>
         <name>initialState_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -152,12 +104,6 @@
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -165,12 +111,6 @@
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="43"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -181,19 +121,9 @@
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="44"/>
       </memberdef>
       </sectiondef>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="33" bodyend="52"/>
   </compounddef>
 </doxygen>

@@ -3,10 +3,6 @@
   <compounddef id="class_stat" kind="class" prot="public">
     <compoundname>Stat</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_generic_gaussian_statistics" prot="public" virt="non-virtual">GenericGaussianStatistics&lt; Stat &gt;</derivedcompoundref>
-    <briefdescription>
-    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="40"/>
   </compounddef>
 </doxygen>

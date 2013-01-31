@@ -10,12 +10,6 @@
         <definition>Real a_</definition>
         <argsstring></argsstring>
         <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Real b_</definition>
         <argsstring></argsstring>
         <name>b_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a21cb0313d759e9d26706f81f8a17d98c" prot="private" static="no" mutable="no">
@@ -36,12 +24,6 @@
         <definition>Real r0_</definition>
         <argsstring></argsstring>
         <name>r0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -67,12 +49,6 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>r0</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="79" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -91,10 +67,6 @@
         </param>
         <briefdescription>
 <para>Compute state variable from short rate. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="87" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1af27a7a114190fb434f373a1427cca1fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -113,10 +85,6 @@
         </param>
         <briefdescription>
 <para>Compute short rate from state variable. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>

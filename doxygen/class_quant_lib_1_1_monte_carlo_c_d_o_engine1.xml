@@ -10,12 +10,6 @@
         <definition>boost::shared_ptr&lt;RandomDefaultModel&gt; rdm_</definition>
         <argsstring></argsstring>
         <name>rdm_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine1_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
@@ -23,12 +17,6 @@
         <definition>Size samples_</definition>
         <argsstring></argsstring>
         <name>samples_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="151" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -46,12 +34,6 @@
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>samples</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       </sectiondef>
@@ -61,12 +43,6 @@
         <definition>void defaultScenarios</definition>
         <argsstring>() const </argsstring>
         <name>defaultScenarios</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="110"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine1_1a3660e034e2d6c3a470310130926c8a73" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -75,12 +51,6 @@
         <argsstring>() const </argsstring>
         <name>initialize</name>
         <reimplements refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1aaac543552f17269d35397313c2387f9b">initialize</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="112" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine1_1a6d163efc5ceadc563dd267641d754a0e" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -93,19 +63,11 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="139" bodyend="148"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the exptected tranche loss distribution. </para>    </briefdescription>
-    <detaileddescription>
-    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="104" bodyend="152"/>
   </compounddef>
 </doxygen>

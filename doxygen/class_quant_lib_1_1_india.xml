@@ -12,15 +12,7 @@
           <name>NSE</name>
           <briefdescription>
 <para>National <ref refid="class_quant_lib_1_1_stock" kindref="compound">Stock</ref> Exchange. </para>          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
         </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" bodystart="77" bodyend="78"/>
       </memberdef>
       </sectiondef>
@@ -35,12 +27,6 @@
           <declname>m</declname>
           <defval><ref refid="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" kindref="member">NSE</ref></defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/india.hpp" line="79"/>
       </memberdef>
       </sectiondef>

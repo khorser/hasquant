@@ -10,12 +10,6 @@
         <definition>friend class Singleton&lt; UnitOfMeasureConversionManager &gt;</definition>
         <argsstring></argsstring>
         <name>Singleton&lt; UnitOfMeasureConversionManager &gt;</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -25,12 +19,6 @@
         <definition>std::list&lt;UnitOfMeasureConversion&gt; data_</definition>
         <argsstring></argsstring>
         <name>data_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
@@ -55,12 +43,6 @@
           <declname>type</declname>
           <defval>UnitOfMeasureConversion::Derived</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a56517d6c0673d0288049e89765057a1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -71,12 +53,6 @@
         <param>
           <type>const UnitOfMeasureConversion &amp;</type>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -84,12 +60,6 @@
         <definition>void clear</definition>
         <argsstring>()</argsstring>
         <name>clear</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="48"/>
       </memberdef>
       </sectiondef>
@@ -99,12 +69,6 @@
         <definition>UnitOfMeasureConversionManager</definition>
         <argsstring>()</argsstring>
         <name>UnitOfMeasureConversionManager</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1ab8bd4acf8f01123f6c403ed73f7ff225" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -112,12 +76,6 @@
         <definition>void addKnownConversionFactors</definition>
         <argsstring>()</argsstring>
         <name>addKnownConversionFactors</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a3c44aa73895e93b0a4698cb874aeeec7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -137,12 +95,6 @@
           <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>target</declname>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a316b7556f07ffd394fb29b09564dc381" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
@@ -167,12 +119,6 @@
           <declname>forbidden</declname>
           <defval>std::list&lt; std::string &gt;()</defval>
         </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="61"/>
       </memberdef>
       </sectiondef>
