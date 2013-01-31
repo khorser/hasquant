@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cot_swap_from_fwd_correlation" kind="class" prot="public">
     <compoundname>QuantLib::CotSwapFromFwdCorrelation</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">PiecewiseConstantCorrelation</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1a09083d1e4c8bcebbcdbb307de6133f62" prot="private" static="no" mutable="no">
         <type>boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt;</type>

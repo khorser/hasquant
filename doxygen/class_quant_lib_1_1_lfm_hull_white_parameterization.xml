@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lfm_hull_white_parameterization" kind="class" prot="public">
     <compoundname>QuantLib::LfmHullWhiteParameterization</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lfm_covariance_parameterization" prot="public" virt="non-virtual">LfmCovarianceParameterization</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0a9d92c9beb820af6e0e6379490d2ce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

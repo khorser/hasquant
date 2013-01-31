@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedCurve</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_default_density_curve" prot="protected" virt="non-virtual">InterpolatedDefaultDensityCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_discount_curve" prot="protected" virt="non-virtual">InterpolatedDiscountCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_forward_curve" prot="protected" virt="non-virtual">InterpolatedForwardCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_hazard_rate_curve" prot="protected" virt="non-virtual">InterpolatedHazardRateCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_survival_probability_curve" prot="protected" virt="non-virtual">InterpolatedSurvivalProbabilityCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve" prot="protected" virt="non-virtual">InterpolatedYoYInflationCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_zero_curve" prot="protected" virt="non-virtual">InterpolatedZeroCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_zero_inflation_curve" prot="protected" virt="non-virtual">InterpolatedZeroInflationCurve&lt; Interpolator &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp</includes>
     <templateparamlist>
       <param>

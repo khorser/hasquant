@@ -2,31 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_observable" kind="class" prot="public">
     <compoundname>QuantLib::Observable</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">BootstrapHelper&lt; YoYInflationTermStructure &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">BootstrapHelper&lt; YoYOptionletVolatilitySurface &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">BootstrapHelper&lt; ZeroInflationTermStructure &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_affine_model" prot="public" virt="virtual">AffineModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">BootstrapHelper&lt; TS &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="virtual">CalibratedModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_calibration_helper" prot="public" virt="non-virtual">CalibrationHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_claim" prot="public" virt="non-virtual">Claim</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_commodity_index" prot="public" virt="non-virtual">CommodityIndex</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_quanto_helper" prot="public" virt="non-virtual">FdmQuantoHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="virtual">FloatingRateCouponPricer</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_handle_1_1_link" prot="public" virt="non-virtual">Handle&lt; T &gt;::Link</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_index" prot="public" virt="non-virtual">Index</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_inflation_coupon_pricer" prot="public" virt="virtual">InflationCouponPricer</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="virtual">LazyObject</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_market_model_factory" prot="public" virt="non-virtual">MarketModelFactory</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_pricing_engine" prot="public" virt="non-virtual">PricingEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_quote" prot="public" virt="virtual">Quote</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_recovery_rate_model" prot="public" virt="virtual">RecoveryRateModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_rendistato_basket" prot="public" virt="non-virtual">RendistatoBasket</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_smile_section" prot="public" virt="virtual">SmileSection</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_term_structure" prot="public" virt="virtual">TermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_term_structure_consistent_model" prot="public" virt="virtual">TermStructureConsistentModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/patterns/observable.hpp</includes>
       <sectiondef kind="private-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_observable_1af51a978edbbc2923ebcf6aa2ecbc3964" prot="private" static="no">

@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_integrator" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Integrator</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_kronrod_adaptive" prot="public" virt="non-virtual">GaussKronrodAdaptive</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_kronrod_non_adaptive" prot="public" virt="non-virtual">GaussKronrodNonAdaptive</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_lobatto_integral" prot="public" virt="non-virtual">GaussLobattoIntegral</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_segment_integral" prot="public" virt="non-virtual">SegmentIntegral</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_trapezoid_integral" prot="public" virt="non-virtual">TrapezoidIntegral&lt; IntegrationPolicy &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_trapezoid_integral" prot="public" virt="non-virtual">TrapezoidIntegral&lt; Default &gt;</derivedcompoundref>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
       <memberdef kind="function" id="class_quant_lib_1_1_integrator_1ae715a1a7471aa54a69ade6e67652c6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

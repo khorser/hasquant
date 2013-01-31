@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_exercise_value" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MarketModelExerciseValue</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_bermudan_swaption_exercise_value" prot="public" virt="non-virtual">BermudanSwaptionExerciseValue</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_nothing_exercise_value" prot="public" virt="non-virtual">NothingExerciseValue</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_exercise_value_1af9fc810be9548f932c1be63f5062e581" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

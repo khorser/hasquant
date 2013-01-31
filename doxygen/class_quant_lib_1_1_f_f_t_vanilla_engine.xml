@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_f_t_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FFTVanillaEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_f_f_t_engine" prot="public" virt="non-virtual">FFTEngine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_vanilla_engine_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" static="no" mutable="no">

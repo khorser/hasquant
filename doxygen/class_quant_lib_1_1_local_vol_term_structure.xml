@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_local_vol_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LocalVolTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_local_constant_vol" prot="public" virt="non-virtual">LocalConstantVol</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_local_vol_curve" prot="public" virt="non-virtual">LocalVolCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_local_vol_surface" prot="public" virt="non-virtual">LocalVolSurface</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvoltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -159,9 +155,6 @@
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_constant_vol_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
@@ -176,9 +169,6 @@
         <definition>virtual Volatility localVolImpl</definition>
         <argsstring>(Time t, Real strike) const =0</argsstring>
         <name>localVolImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1aae14ca62291a64bc501d292224396525">localVolImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_constant_vol_1aae14ca62291a64bc501d292224396525">localVolImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1aae14ca62291a64bc501d292224396525">localVolImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

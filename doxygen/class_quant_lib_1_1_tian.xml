@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tian" kind="class" prot="public">
     <compoundname>QuantLib::Tian</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_binomial_tree" prot="public" virt="non-virtual">BinomialTree&lt; Tian &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tian_1af13e32489ba958a621af9256ec0c5c84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

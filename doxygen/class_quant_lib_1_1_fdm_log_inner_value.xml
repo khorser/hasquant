@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_log_inner_value" kind="class" prot="public">
     <compoundname>QuantLib::FdmLogInnerValue</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmInnerValueCalculator</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_log_inner_value_1ac641fb99b5820ca1d07577c57f4d57c9" prot="private" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_a_u_d_currency" kind="class" prot="public">
     <compoundname>QuantLib::AUDCurrency</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_currency" prot="public" virt="non-virtual">Currency</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/oceania.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_a_u_d_currency_1ae911b9972f7f960aab36385394747f9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_pathwise_multi_caplet" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseMultiCaplet</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" prot="public" virt="non-virtual">MarketModelPathwiseMultiProduct</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_caplet_1adfdcd5dfe44a759ebc2f8467090eecdd" prot="private" static="no" mutable="no">

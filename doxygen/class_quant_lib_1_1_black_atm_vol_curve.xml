@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_atm_vol_curve" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BlackAtmVolCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_abcd_atm_vol_curve" prot="public" virt="non-virtual">AbcdAtmVolCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_vol_surface" prot="public" virt="non-virtual">BlackVolSurface</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/blackatmvolcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -226,11 +223,6 @@
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interest_rate_vol_surface_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_vol_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_equity_f_x_vol_surface_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
@@ -245,8 +237,6 @@
         <definition>virtual Real atmVarianceImpl</definition>
         <argsstring>(Time t) const =0</argsstring>
         <name>atmVarianceImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1a399f9448fe345c23f0484547b98749fc">atmVarianceImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_vol_surface_1a399f9448fe345c23f0484547b98749fc">atmVarianceImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -260,8 +250,6 @@
         <definition>virtual Volatility atmVolImpl</definition>
         <argsstring>(Time t) const =0</argsstring>
         <name>atmVolImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1a19afdb51423c925cb7f5ce598b2369ec">atmVolImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_vol_surface_1a19afdb51423c925cb7f5ce598b2369ec">atmVolImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

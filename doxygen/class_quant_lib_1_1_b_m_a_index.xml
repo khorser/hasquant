@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_b_m_a_index" kind="class" prot="public">
     <compoundname>QuantLib::BMAIndex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interest_rate_index" prot="public" virt="non-virtual">InterestRateIndex</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/bmaindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>

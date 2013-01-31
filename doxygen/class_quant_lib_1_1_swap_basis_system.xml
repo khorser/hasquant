@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swap_basis_system" kind="class" prot="public">
     <compoundname>QuantLib::SwapBasisSystem</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">MarketModelBasisSystem</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_basis_system_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>

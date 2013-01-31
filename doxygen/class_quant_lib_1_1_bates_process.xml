@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bates_process" kind="class" prot="public">
     <compoundname>QuantLib::BatesProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_heston_process" prot="public" virt="non-virtual">HestonProcess</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1a027ef25067c7fa91c1c3ef2a4163d1d5" prot="private" static="no" mutable="no">

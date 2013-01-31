@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_capped_floored_cms_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CappedFlooredCmsCoupon</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_capped_floored_coupon" prot="public" virt="non-virtual">CappedFlooredCoupon</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_cms_coupon_1a8ab67d54c82f6b07738f8b925a3d1e4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

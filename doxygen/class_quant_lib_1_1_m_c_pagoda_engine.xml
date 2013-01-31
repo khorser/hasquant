@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_pagoda_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCPagodaEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_pagoda_option_1_1engine" prot="public" virt="non-virtual">PagodaOption::engine</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_mc_simulation" prot="public" virt="non-virtual">McSimulation&lt; MultiVariate, RNG, S &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp</includes>
     <templateparamlist>
       <param>

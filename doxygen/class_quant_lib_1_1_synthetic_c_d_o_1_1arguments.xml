@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::SyntheticCDO::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a0d68fd6434b749c23eea28b12007b58a" prot="public" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_basket" kindref="compound">Basket</ref> &gt;</type>

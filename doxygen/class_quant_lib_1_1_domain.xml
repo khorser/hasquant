@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_domain" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Domain</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; Real, Real, bool &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bounded_domain" prot="public" virt="non-virtual">BoundedDomain</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_null_domain" prot="public" virt="non-virtual">NullDomain</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_universal_domain" prot="public" virt="non-virtual">UniversalDomain</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_domain_1a6714fb4293e9e2060f72f292425a6481" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

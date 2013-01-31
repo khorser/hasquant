@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error" kind="class" prot="private">
     <compoundname>QuantLib::detail::SABRInterpolationImpl::SABRError</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a5da17267622558d2f7d5e9773425bd98" prot="private" static="no" mutable="no">
         <type>SABRInterpolationImpl *</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedCapFloor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_discretized_asset" prot="public" virt="non-virtual">DiscretizedAsset</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_cap_floor_1aeb142d3bfd1e9b3343f694b88050f899" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref></type>

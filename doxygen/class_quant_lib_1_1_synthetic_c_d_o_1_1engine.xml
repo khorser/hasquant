@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_synthetic_c_d_o_1_1engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::SyntheticCDO::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; SyntheticCDO::arguments, SyntheticCDO::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_integral_c_d_o_engine" prot="public" virt="non-virtual">IntegralCDOEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mid_point_c_d_o_engine" prot="public" virt="non-virtual">MidPointCDOEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2" prot="public" virt="non-virtual">MonteCarloCDOEngine2</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> base engine. </para>    </briefdescription>

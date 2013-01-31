@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationCapFloor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_cap" prot="public" virt="non-virtual">YoYInflationCap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_collar" prot="public" virt="non-virtual">YoYInflationCollar</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_floor" prot="public" virt="non-virtual">YoYInflationFloor</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments" prot="public">QuantLib::YoYInflationCapFloor::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1engine" prot="public">QuantLib::YoYInflationCapFloor::engine</innerclass>

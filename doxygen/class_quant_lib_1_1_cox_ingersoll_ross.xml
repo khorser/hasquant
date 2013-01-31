@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross" kind="class" prot="public">
     <compoundname>QuantLib::CoxIngersollRoss</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_factor_affine_model" prot="public" virt="non-virtual">OneFactorAffineModel</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_cox_ingersoll_ross" prot="public" virt="non-virtual">ExtendedCoxIngersollRoss</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::CoxIngersollRoss::Dynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process" prot="public">QuantLib::CoxIngersollRoss::HelperProcess</innerclass>
@@ -71,7 +69,6 @@
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
         <name>discountBondOption</name>
         <reimplements refid="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a0b47448ed1ba48ac5138854aed3f1d49">discountBondOption</reimplementedby>
         <param>
           <type>Option::Type</type>
           <declname>type</declname>
@@ -96,7 +93,6 @@
         <argsstring>() const </argsstring>
         <name>dynamics</name>
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be">dynamics</reimplementedby>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="55"/>
@@ -107,7 +103,6 @@
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_parametric_exercise_adapter" kind="class" prot="public">
     <compoundname>QuantLib::ParametricExerciseAdapter</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">QuantLib::ExerciseStrategy&lt; CurveState &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a2c21aea2418a5a63b99bb267d9f9e1d7" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; MarketModelParametricExercise &gt;</type>

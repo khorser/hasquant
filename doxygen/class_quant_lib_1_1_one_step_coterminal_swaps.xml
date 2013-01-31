@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_step_coterminal_swaps" kind="class" prot="public">
     <compoundname>QuantLib::OneStepCoterminalSwaps</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_multi_product_one_step" prot="public" virt="non-virtual">MultiProductOneStep</basecompoundref>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_one_step_coterminal_swaps_1a6f8b552187132cf1314374dbdd1d8515" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

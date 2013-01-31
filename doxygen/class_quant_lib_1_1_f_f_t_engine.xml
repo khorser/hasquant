@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_f_t_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FFTEngine</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_f_t_vanilla_engine" prot="public" virt="non-virtual">FFTVanillaEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_f_t_variance_gamma_engine" prot="public" virt="non-virtual">FFTVarianceGammaEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp</includes>
       <sectiondef kind="private-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_f_f_t_engine_1ae4967d8fd55b64b741908b1249e73ebe" prot="private" static="no">
@@ -77,8 +74,6 @@
         <definition>virtual std::auto_ptr&lt;FFTEngine&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>
-        <reimplementedby refid="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a0428dab69dd3bc7d09cfa5127bf039ab">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_f_f_t_vanilla_engine_1a0428dab69dd3bc7d09cfa5127bf039ab">clone</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="56"/>
       </memberdef>
       </sectiondef>

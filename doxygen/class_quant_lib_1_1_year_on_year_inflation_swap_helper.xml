@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_year_on_year_inflation_swap_helper" kind="class" prot="public">
     <compoundname>QuantLib::YearOnYearInflationSwapHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">BootstrapHelper&lt; YoYInflationTermStructure &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_year_on_year_inflation_swap_helper_1acd5970d101e4cdb3c9ce9aa5850e91e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

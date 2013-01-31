@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bootstrap_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BootstrapHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_asset_swap_helper" prot="public" virt="non-virtual">AssetSwapHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bond_helper" prot="public" virt="non-virtual">BondHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_dated_o_i_s_rate_helper" prot="public" virt="non-virtual">DatedOISRateHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_futures_rate_helper" prot="public" virt="non-virtual">FuturesRateHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_relative_date_bootstrap_helper" prot="public" virt="non-virtual">RelativeDateBootstrapHelper&lt; TS &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp</includes>
     <templateparamlist>
       <param>
@@ -31,19 +24,6 @@
         <definition>virtual Real impliedQuote</definition>
         <argsstring>() const =0</argsstring>
         <name>impliedQuote</name>
-        <reimplementedby refid="class_quant_lib_1_1_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bond_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_optionlet_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_futures_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_deposit_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_spread_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fra_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
@@ -58,9 +38,6 @@
         <definition>void setTermStructure</definition>
         <argsstring>(TS *)</argsstring>
         <name>setTermStructure</name>
-        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a70ad3f5015feaac40fbe9ccb8cc04ee4">setTermStructure</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_optionlet_helper_1a464b4c5152e08c1ba4be3b8c3822aef6">setTermStructure</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_helper_1aeeeff42ebf958777b9b9ccd43b92ea8a">setTermStructure</reimplementedby>
         <param>
           <type>TS *</type>
           <defname>t</defname>
@@ -102,8 +79,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_cds_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="151" bodyend="153"/>
       </memberdef>
       </sectiondef>
@@ -114,14 +89,6 @@
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplementedby refid="class_quant_lib_1_1_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bond_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_futures_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_deposit_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fra_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>

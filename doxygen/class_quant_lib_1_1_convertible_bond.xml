@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convertible_bond" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bond" prot="public" virt="non-virtual">Bond</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_convertible_fixed_coupon_bond" prot="public" virt="non-virtual">ConvertibleFixedCouponBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_convertible_floating_rate_bond" prot="public" virt="non-virtual">ConvertibleFloatingRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_convertible_zero_coupon_bond" prot="public" virt="non-virtual">ConvertibleZeroCouponBond</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_convertible_bond_1_1option" prot="public">QuantLib::ConvertibleBond::option</innerclass>
       <sectiondef kind="public-func">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_convertible_bond_1_1option" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleBond::option</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_asset_option" prot="public" virt="non-virtual">OneAssetOption</basecompoundref>
     <innerclass refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments" prot="public">QuantLib::ConvertibleBond::option::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1engine" prot="public">QuantLib::ConvertibleBond::option::engine</innerclass>
       <sectiondef kind="private-attrib">

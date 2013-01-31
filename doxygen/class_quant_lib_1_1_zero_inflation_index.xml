@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_zero_inflation_index" kind="class" prot="public">
     <compoundname>QuantLib::ZeroInflationIndex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_inflation_index" prot="public" virt="non-virtual">InflationIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_a_u_c_p_i" prot="public" virt="non-virtual">AUCPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_h_i_c_p" prot="public" virt="non-virtual">EUHICP</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_h_i_c_p_x_t" prot="public" virt="non-virtual">EUHICPXT</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_r_h_i_c_p" prot="public" virt="non-virtual">FRHICP</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_c_p_i" prot="public" virt="non-virtual">GenericCPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_u_k_r_p_i" prot="public" virt="non-virtual">UKRPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_u_s_c_p_i" prot="public" virt="non-virtual">USCPI</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>

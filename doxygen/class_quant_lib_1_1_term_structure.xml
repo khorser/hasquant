@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="virtual">Observer</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_extrapolator" prot="public" virt="non-virtual">Extrapolator</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_callable_bond_volatility_structure" prot="public" virt="non-virtual">CallableBondVolatilityStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_commodity_curve" prot="public" virt="non-virtual">CommodityCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_default_probability_term_structure" prot="public" virt="non-virtual">DefaultProbabilityTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_inflation_term_structure" prot="public" virt="non-virtual">InflationTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yield_term_structure" prot="public" virt="non-virtual">YieldTermStructure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -83,26 +74,6 @@
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplementedby refid="class_quant_lib_1_1_caplet_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_spreaded_hazard_rate_curve_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_drift_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_constant_vol_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplementedby>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="122" bodyend="124"/>
@@ -125,56 +96,6 @@
         <definition>virtual Date maxDate</definition>
         <argsstring>() const =0</argsstring>
         <name>maxDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_caplet_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_adapter_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_survival_probability_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_drift_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_flat_hazard_rate_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_constant_vol_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_constant_vol_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_cap_floor_term_volatility_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_optionlet_volatility_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_commodity_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_swaption_volatility_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_default_density_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_forward_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_discount_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_hazard_rate_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_zero_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_flat_forward_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_matrix_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplementedby>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="85"/>
@@ -184,12 +105,6 @@
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
         <name>maxTime</name>
-        <reimplementedby refid="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplementedby>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="126" bodyend="128"/>
@@ -199,17 +114,6 @@
         <definition>virtual const Date&amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1a4a72314adf5959d9427df0fad16a1d3b">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_drift_term_structure_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1a4a72314adf5959d9427df0fad16a1d3b">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_term_structure_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1a4a72314adf5959d9427df0fad16a1d3b">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa">referenceDate</reimplementedby>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="89"/>
@@ -219,17 +123,6 @@
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_spreaded_hazard_rate_curve_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_drift_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplementedby>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="130" bodyend="132"/>
@@ -239,14 +132,6 @@
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
-        <reimplementedby refid="class_quant_lib_1_1_drift_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplementedby>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="134" bodyend="138"/>
@@ -260,16 +145,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_adapter_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_flat_forward_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_surface_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_default_probability_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yield_term_structure_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="97"/>
       </memberdef>
       </sectiondef>

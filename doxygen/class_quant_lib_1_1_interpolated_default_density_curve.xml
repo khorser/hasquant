@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_default_density_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedDefaultDensityCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_default_density_structure" prot="public" virt="non-virtual">DefaultDensityStructure</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_interpolated_curve" prot="protected" virt="non-virtual">QuantLib::InterpolatedCurve&lt; Interpolator &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolateddefaultdensitycurve.hpp</includes>
     <templateparamlist>
       <param>

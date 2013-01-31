@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pricing_period" kind="class" prot="public">
     <compoundname>QuantLib::PricingPeriod</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_date_interval" prot="public" virt="non-virtual">DateInterval</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_pricing_period_1a292ad9c54719780e61282ddeeac02410" prot="private" static="no" mutable="no">

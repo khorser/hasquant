@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_trigeorgis" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedTrigeorgis</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_extended_equal_jumps_binomial_tree" prot="public" virt="non-virtual">ExtendedEqualJumpsBinomialTree&lt; ExtendedTrigeorgis &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_trigeorgis_1a19e5d0060fa947df9856a8a298123afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

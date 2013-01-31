@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_u_region" kind="class" prot="public">
     <compoundname>QuantLib::EURegion</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_region" prot="public" virt="non-virtual">Region</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_u_region_1a54cb357ef7442aeabe3652a4eba85b22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

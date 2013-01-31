@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_variance_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::VarianceSwap::results</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Instrument::results</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1results_1a0dbb7d4efbc792edb4ef8e546e1aa861" prot="public" static="no" mutable="no">

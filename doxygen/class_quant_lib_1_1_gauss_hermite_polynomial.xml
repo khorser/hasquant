@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_hermite_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::GaussHermitePolynomial</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial" prot="public" virt="non-virtual">GaussianOrthogonalPolynomial</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_gauss_hermite_polynomial_1a4f72ee8e7b9ca115f61ebd6c7fa65251" prot="private" static="no" mutable="no">

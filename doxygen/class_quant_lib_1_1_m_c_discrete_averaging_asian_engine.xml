@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCDiscreteAveragingAsianEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1engine" prot="public" virt="non-virtual">DiscreteAveragingAsianOption::engine</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_mc_simulation" prot="public" virt="non-virtual">McSimulation&lt; SingleVariate, RNG, S &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine" prot="public" virt="non-virtual">MCDiscreteArithmeticAPEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_discrete_arithmetic_a_s_engine" prot="public" virt="non-virtual">MCDiscreteArithmeticASEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine" prot="public" virt="non-virtual">MCDiscreteGeometricAPEngine&lt; RNG, S &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mcdiscreteasianengine.hpp</includes>
     <templateparamlist>
       <param>

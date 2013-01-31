@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_commodity_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::CommodityCashFlow</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</basecompoundref>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_surface" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Surface</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; Real, Real, Real &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_test_surface" prot="public" virt="non-virtual">TestSurface</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_surface_1af034c5477c1ca16034f9c847379b7a07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">

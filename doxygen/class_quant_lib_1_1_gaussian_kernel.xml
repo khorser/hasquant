@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_kernel" kind="class" prot="public">
     <compoundname>QuantLib::GaussianKernel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_kernel_function" prot="public" virt="non-virtual">KernelFunction</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_kernel_1aab2c61bbb8f4e989140f9c6b3b4bdcba" prot="private" static="no" mutable="no">

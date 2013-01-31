@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_general_linear_least_squares" kind="class" prot="public">
     <compoundname>QuantLib::GeneralLinearLeastSquares</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_linear_least_squares_regression" prot="public" virt="non-virtual">LinearLeastSquaresRegression&lt; ArgumentType &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_linear_regression" prot="public" virt="non-virtual">LinearRegression</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/generallinearleastsquares.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_general_linear_least_squares_1af5a37c7acf5ad8854042b4eda291216d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

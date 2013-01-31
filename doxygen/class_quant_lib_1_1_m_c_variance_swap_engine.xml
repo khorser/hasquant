@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_variance_swap_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCVarianceSwapEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_variance_swap_1_1engine" prot="public" virt="non-virtual">VarianceSwap::engine</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_mc_simulation" prot="public" virt="non-virtual">McSimulation&lt; SingleVariate, RNG, S &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp</includes>
     <templateparamlist>
       <param>

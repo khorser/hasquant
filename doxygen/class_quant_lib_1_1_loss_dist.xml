@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_loss_dist" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LossDist</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_loss_dist_binomial" prot="public" virt="non-virtual">LossDistBinomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_loss_dist_bucketing" prot="public" virt="non-virtual">LossDistBucketing</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_loss_dist_homogeneous" prot="public" virt="non-virtual">LossDistHomogeneous</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_loss_dist_monte_carlo" prot="public" virt="non-virtual">LossDistMonteCarlo</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1ab1ed2340c94e1792f0d63fca3f5b1b7e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -27,10 +23,6 @@
         <definition>virtual Distribution operator()</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;volumes, const std::vector&lt; Real &gt; &amp;probabilities) const =0</argsstring>
         <name>operator()</name>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_binomial_1a0c71a619a048f010109b9d01231394d8">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_homogeneous_1a0c71a619a048f010109b9d01231394d8">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_bucketing_1a0c71a619a048f010109b9d01231394d8">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a0c71a619a048f010109b9d01231394d8">operator()</reimplementedby>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>volumes</declname>
@@ -46,10 +38,6 @@
         <definition>virtual Size buckets</definition>
         <argsstring>() const =0</argsstring>
         <name>buckets</name>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_binomial_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_homogeneous_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_bucketing_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a01ac704c1d58d3c0b62457aebf7097c3">buckets</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="44"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_1a6adb04174b3fd47dcf4a4d6a401d563e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -57,10 +45,6 @@
         <definition>virtual Real maximum</definition>
         <argsstring>() const =0</argsstring>
         <name>maximum</name>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_binomial_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_homogeneous_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_bucketing_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_loss_dist_monte_carlo_1ad7e73faa199a16d3c9dc6a7a7295c295">maximum</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="45"/>
       </memberdef>
       </sectiondef>

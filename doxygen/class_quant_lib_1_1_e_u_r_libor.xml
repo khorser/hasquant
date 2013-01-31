@@ -2,21 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_u_r_libor" kind="class" prot="public">
     <compoundname>QuantLib::EURLibor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor10_m" prot="public" virt="non-virtual">EURLibor10M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor11_m" prot="public" virt="non-virtual">EURLibor11M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor1_m" prot="public" virt="non-virtual">EURLibor1M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor1_y" prot="public" virt="non-virtual">EURLibor1Y</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor2_m" prot="public" virt="non-virtual">EURLibor2M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor2_w" prot="public" virt="non-virtual">EURLibor2W</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor3_m" prot="public" virt="non-virtual">EURLibor3M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor4_m" prot="public" virt="non-virtual">EURLibor4M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor5_m" prot="public" virt="non-virtual">EURLibor5M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor6_m" prot="public" virt="non-virtual">EURLibor6M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor7_m" prot="public" virt="non-virtual">EURLibor7M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor8_m" prot="public" virt="non-virtual">EURLibor8M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor9_m" prot="public" virt="non-virtual">EURLibor9M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor_s_w" prot="public" virt="non-virtual">EURLiborSW</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date calculations</header>

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_south_korea_1_1_settlement_impl" kind="class" prot="private">
     <compoundname>QuantLib::SouthKorea::SettlementImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_impl" prot="public" virt="non-virtual">Calendar::Impl</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_south_korea_1_1_krx_impl" prot="public" virt="non-virtual">SouthKorea::KrxImpl</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_south_korea_1_1_settlement_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>

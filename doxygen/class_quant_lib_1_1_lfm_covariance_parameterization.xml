@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lfm_covariance_parameterization" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LfmCovarianceParameterization</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_lfm_covariance_proxy" prot="public" virt="non-virtual">LfmCovarianceProxy</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_lfm_hull_white_parameterization" prot="public" virt="non-virtual">LfmHullWhiteParameterization</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmcovarparam.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_covariance_parameterization_1a28186f7bbcc9ede01363ab8bf7a70d44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -47,8 +45,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const =0</argsstring>
         <name>diffusion</name>
-        <reimplementedby refid="class_quant_lib_1_1_lfm_covariance_proxy_1a98f01d842b650489da3c57e779f73c93">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a98f01d842b650489da3c57e779f73c93">diffusion</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -65,8 +61,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>covariance</name>
-        <reimplementedby refid="class_quant_lib_1_1_lfm_covariance_proxy_1a0278d24739a9bfc281246d6172530b49">covariance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0278d24739a9bfc281246d6172530b49">covariance</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -83,7 +77,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; integratedCovariance</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>integratedCovariance</name>
-        <reimplementedby refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1abadf15cf4c8136891d2e91d8f36a0baf">integratedCovariance</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

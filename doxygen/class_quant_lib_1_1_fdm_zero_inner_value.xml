@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_zero_inner_value" kind="class" prot="public">
     <compoundname>QuantLib::FdmZeroInnerValue</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmInnerValueCalculator</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_zero_inner_value_1a3763df815f0fe4f4f7119e0210e04e7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

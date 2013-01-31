@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_callable_bond_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CallableBondVolatilityStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_term_structure" prot="public" virt="non-virtual">TermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_callable_bond_constant_volatility" prot="public" virt="non-virtual">CallableBondConstantVolatility</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -280,7 +278,6 @@
         <definition>virtual const Period&amp; maxBondTenor</definition>
         <argsstring>() const =0</argsstring>
         <name>maxBondTenor</name>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1a222e287d5aaa40149f1f067f1beceadb">maxBondTenor</reimplementedby>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="111"/>
@@ -290,7 +287,6 @@
         <definition>virtual Time maxBondLength</definition>
         <argsstring>() const </argsstring>
         <name>maxBondLength</name>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1aeddd916230722ca9ad5f39884802d280">maxBondLength</reimplementedby>
         <briefdescription>
 <para>the largest bondLength for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="113"/>
@@ -300,7 +296,6 @@
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="115"/>
@@ -310,7 +305,6 @@
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_constant_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondvolstructure.hpp" line="117"/>

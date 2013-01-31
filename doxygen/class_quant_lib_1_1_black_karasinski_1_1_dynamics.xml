@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_karasinski_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::BlackKarasinski::Dynamics</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" prot="public" virt="non-virtual">OneFactorModel::ShortRateDynamics</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" static="no" mutable="no">

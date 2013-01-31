@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_biased_barrier_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BiasedBarrierPathPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; Path &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_biased_barrier_path_pricer_1a1439bfbbaacb914efebb469a50d6528a" prot="private" static="no" mutable="no">
         <type>Barrier::Type</type>

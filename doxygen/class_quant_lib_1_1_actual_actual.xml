@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_actual_actual" kind="class" prot="public">
     <compoundname>QuantLib::ActualActual</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_day_counter" prot="public" virt="non-virtual">DayCounter</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_actual_actual_1_1_a_f_b___impl" prot="private">QuantLib::ActualActual::AFB_Impl</innerclass>
     <innerclass refid="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl" prot="private">QuantLib::ActualActual::ISDA_Impl</innerclass>

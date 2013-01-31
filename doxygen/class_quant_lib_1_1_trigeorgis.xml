@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_trigeorgis" kind="class" prot="public">
     <compoundname>QuantLib::Trigeorgis</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_equal_jumps_binomial_tree" prot="public" virt="non-virtual">EqualJumpsBinomialTree&lt; Trigeorgis &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_trigeorgis_1a05be2f33a3933bb0735f8b4a729cbaba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

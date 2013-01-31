@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::HullWhite::FittingParameter::Impl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_parameter_1_1_impl" prot="public" virt="non-virtual">Parameter::Impl</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>

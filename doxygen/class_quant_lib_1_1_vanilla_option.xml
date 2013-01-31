@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::VanillaOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_asset_option" prot="public" virt="non-virtual">OneAssetOption</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_european_option" prot="public" virt="non-virtual">EuropeanOption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_option_1ab547123a460c3153e3b668bb0d424073" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

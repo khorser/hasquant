@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_recovery_rate_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RecoveryRateModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_constant_recovery_model" prot="public" virt="non-virtual">ConstantRecoveryModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1aaad2f8d05f1afd02a7511a65519a4a5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -29,7 +27,6 @@
         <definition>virtual bool appliesToSeniority</definition>
         <argsstring>(Seniority) const =0</argsstring>
         <name>appliesToSeniority</name>
-        <reimplementedby refid="class_quant_lib_1_1_constant_recovery_model_1afe953f4160ca21765a8aadb329bab537">appliesToSeniority</reimplementedby>
         <param>
           <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
         </param>

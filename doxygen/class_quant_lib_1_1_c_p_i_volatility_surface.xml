@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_p_i_volatility_surface" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CPIVolatilitySurface</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_constant_c_p_i_volatility" prot="public" virt="non-virtual">ConstantCPIVolatility</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Volatility</header>
@@ -184,7 +182,6 @@
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="117"/>
@@ -195,7 +192,6 @@
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
         <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/cpivolatilitystructure.hpp" line="119"/>

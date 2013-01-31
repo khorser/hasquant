@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pagoda_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::PagodaOption::arguments</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_option_1_1arguments" prot="public" virt="non-virtual">Option::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_backward_flat_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::BackwardFlatInterpolation</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_backward_flat_interpolation_1abe0e0081bab0e9cc585be91a8568998a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

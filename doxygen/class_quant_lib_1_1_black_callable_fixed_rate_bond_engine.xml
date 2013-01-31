@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCallableFixedRateBondEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_callable_bond_1_1engine" prot="public" virt="non-virtual">CallableBond::engine</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_callable_zero_coupon_bond_engine" prot="public" virt="non-virtual">BlackCallableZeroCouponBondEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a05deafe5bd63e3776fe27120df277cd9" prot="private" static="no" mutable="no">

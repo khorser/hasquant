@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_student_recursive_cdo_engine" kind="class" prot="public">
     <compoundname>QuantLib::StudentRecursiveCdoEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_recursive_cdo_engine" prot="public" virt="non-virtual">RecursiveCdoEngine&lt; CDOEngine, OneFactorStudentCopula &gt;</basecompoundref>
     <templateparamlist>
       <param>
         <type>class CDOEngine</type>

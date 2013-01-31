@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BlackIborQuantoCouponPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_black_ibor_coupon_pricer" prot="public" virt="non-virtual">BlackIborCouponPricer</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer_1a8e07c82d9c8e480edf6c92bbe1320831" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>

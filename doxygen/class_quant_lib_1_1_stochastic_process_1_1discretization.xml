@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stochastic_process_1_1discretization" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::StochasticProcess::discretization</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_end_euler_discretization" prot="public" virt="non-virtual">EndEulerDiscretization</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euler_discretization" prot="public" virt="non-virtual">EulerDiscretization</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -18,8 +16,6 @@
         <definition>virtual Disposable&lt;Array&gt; drift</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const =0</argsstring>
         <name>drift</name>
-        <reimplementedby refid="class_quant_lib_1_1_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_end_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d">drift</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
         </param>
@@ -42,8 +38,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const =0</argsstring>
         <name>diffusion</name>
-        <reimplementedby refid="class_quant_lib_1_1_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_end_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049">diffusion</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
         </param>
@@ -66,8 +60,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const =0</argsstring>
         <name>covariance</name>
-        <reimplementedby refid="class_quant_lib_1_1_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3">covariance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_end_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3">covariance</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
         </param>

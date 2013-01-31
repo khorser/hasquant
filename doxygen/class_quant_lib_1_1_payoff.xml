@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Payoff</compoundname>
-    <basecompoundref prot="private" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_basket_payoff" prot="public" virt="non-virtual">BasketPayoff</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_double_sticky_ratchet_payoff" prot="public" virt="non-virtual">DoubleStickyRatchetPayoff</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_type_payoff" prot="public" virt="non-virtual">ForwardTypePayoff</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_null_payoff" prot="public" virt="non-virtual">NullPayoff</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_type_payoff" prot="public" virt="non-virtual">TypePayoff</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/payoff.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
@@ -16,23 +10,6 @@
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
         <name>name</name>
-        <reimplementedby refid="class_quant_lib_1_1_null_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ratchet_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_floating_type_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sticky_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ratchet_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_plain_vanilla_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_percentage_strike_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ratchet_min_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_asset_or_nothing_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sticky_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_type_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sticky_min_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gap_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_fund_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_share_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="45"/>
@@ -42,14 +19,6 @@
         <definition>virtual std::string description</definition>
         <argsstring>() const =0</argsstring>
         <name>description</name>
-        <reimplementedby refid="class_quant_lib_1_1_null_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gap_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_share_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/payoff.hpp" line="46"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_payoff_1a6d8b8d4f6c9e7904c5de2786903518b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -57,17 +26,6 @@
         <definition>virtual Real operator()</definition>
         <argsstring>(Real price) const =0</argsstring>
         <name>operator()</name>
-        <reimplementedby refid="class_quant_lib_1_1_null_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a2880a6dfa22d5df6db76c086ae7721bf">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_floating_type_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_plain_vanilla_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_percentage_strike_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_asset_or_nothing_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_type_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gap_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_fund_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_share_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe">operator()</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>price</declname>
@@ -82,16 +40,6 @@
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplementedby refid="class_quant_lib_1_1_null_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_floating_type_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_plain_vanilla_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_percentage_strike_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_asset_or_nothing_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gap_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_fund_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_share_payoff_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>

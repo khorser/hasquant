@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_european_multi_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::EuropeanMultiPathPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_european_multi_path_pricer_1a7b5082ae03b9506e1d5b91b3c3209094" prot="private" static="no" mutable="no">
         <type>boost::shared_ptr&lt; BasketPayoff &gt;</type>

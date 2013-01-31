@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl" kind="class" prot="public">
     <compoundname>QuantLib::detail::SABRInterpolationImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation_1_1template_impl" prot="public" virt="non-virtual">QuantLib::Interpolation::templateImpl&lt; I1, I2 &gt;</basecompoundref>
-    <basecompoundref prot="public" virt="non-virtual">SABRCoeffHolder</basecompoundref>
     <innerclass refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error" prot="private">QuantLib::detail::SABRInterpolationImpl::SABRError</innerclass>
     <innerclass refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation" prot="private">QuantLib::detail::SABRInterpolationImpl::SabrParametersTransformation</innerclass>
     <templateparamlist>

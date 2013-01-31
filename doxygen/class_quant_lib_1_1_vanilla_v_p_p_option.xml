@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_v_p_p_option" kind="class" prot="public">
     <compoundname>QuantLib::VanillaVPPOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_multi_asset_option" prot="public" virt="non-virtual">MultiAssetOption</basecompoundref>
     <innerclass refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments" prot="public">QuantLib::VanillaVPPOption::arguments</innerclass>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ab6ee6ec5266ae8b1040cb8cf46afc66f" prot="private" static="no" mutable="no">

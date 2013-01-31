@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_hungary_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::Hungary::Impl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_western_impl" prot="public" virt="non-virtual">Calendar::WesternImpl</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_hungary_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>

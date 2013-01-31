@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_measure_process" kind="class" prot="public">
     <compoundname>QuantLib::ForwardMeasureProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g2_forward_process" prot="public" virt="non-virtual">G2ForwardProcess</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process_1a3a96bffd94ced6cc152372a566e0149b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

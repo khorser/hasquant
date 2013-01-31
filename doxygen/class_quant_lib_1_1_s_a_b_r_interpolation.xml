@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_s_a_b_r_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::SABRInterpolation</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_s_a_b_r_interpolation_1ab2a1566d1dd58f7ee17d2f855b48704b" prot="private" static="no" mutable="no">

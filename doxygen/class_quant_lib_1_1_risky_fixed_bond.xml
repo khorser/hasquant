@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_risky_fixed_bond" kind="class" prot="public">
     <compoundname>QuantLib::RiskyFixedBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_risky_bond" prot="public" virt="non-virtual">RiskyBond</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_risky_fixed_bond_1a070ed82c6cab5f05e2874979f4193388" prot="private" static="no" mutable="no">

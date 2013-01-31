@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_line_search_based_method" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LineSearchBasedMethod</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_optimization_method" prot="public" virt="non-virtual">OptimizationMethod</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_b_f_g_s" prot="public" virt="non-virtual">BFGS</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_conjugate_gradient" prot="public" virt="non-virtual">ConjugateGradient</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_steepest_descent" prot="public" virt="non-virtual">SteepestDescent</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

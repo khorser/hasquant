@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pde_short_rate" kind="class" prot="public">
     <compoundname>QuantLib::PdeShortRate</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">PdeSecondOrderParabolic</basecompoundref>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_pde_short_rate_1aae035d1991b41ee61215e34da5f41785" prot="public" static="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">OneFactorModel::ShortRateDynamics</ref> &gt;</type>

@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_curve_dependent_step_condition" kind="class" prot="public">
     <compoundname>QuantLib::CurveDependentStepCondition</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">QuantLib::StepCondition&lt; array_type &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_american_condition" prot="public" virt="non-virtual">AmericanCondition</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_shout_condition" prot="public" virt="non-virtual">ShoutCondition</derivedcompoundref>
     <innerclass refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper" prot="protected">QuantLib::CurveDependentStepCondition::ArrayWrapper</innerclass>
     <innerclass refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper" prot="protected">QuantLib::CurveDependentStepCondition::CurveWrapper</innerclass>
     <innerclass refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper" prot="protected">QuantLib::CurveDependentStepCondition::PayoffWrapper</innerclass>

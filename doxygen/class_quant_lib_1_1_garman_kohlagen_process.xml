@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_garman_kohlagen_process" kind="class" prot="public">
     <compoundname>QuantLib::GarmanKohlagenProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generalized_black_scholes_process" prot="public" virt="non-virtual">GeneralizedBlackScholesProcess</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garman_kohlagen_process_1ade94a231a4d65e1fbc2f44e5d7b3423e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

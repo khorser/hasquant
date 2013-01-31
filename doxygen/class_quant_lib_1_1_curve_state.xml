@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_curve_state" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CurveState</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_m_swap_curve_state" prot="public" virt="non-virtual">CMSwapCurveState</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_coterminal_swap_curve_state" prot="public" virt="non-virtual">CoterminalSwapCurveState</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_l_m_m_curve_state" prot="public" virt="non-virtual">LMMCurveState</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -34,9 +31,6 @@
         <definition>virtual Real discountRatio</definition>
         <argsstring>(Size i, Size j) const =0</argsstring>
         <name>discountRatio</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1aba827b05a0086533a68c6c2862351d08">discountRatio</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aba827b05a0086533a68c6c2862351d08">discountRatio</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1aba827b05a0086533a68c6c2862351d08">discountRatio</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -52,9 +46,6 @@
         <definition>virtual Rate forwardRate</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>forwardRate</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1aac1391a5c503e87b171babebba6d4a60">forwardRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aac1391a5c503e87b171babebba6d4a60">forwardRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1aac1391a5c503e87b171babebba6d4a60">forwardRate</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -66,9 +57,6 @@
         <definition>virtual Rate coterminalSwapAnnuity</definition>
         <argsstring>(Size numeraire, Size i) const =0</argsstring>
         <name>coterminalSwapAnnuity</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1aea7368686f038e0fdbc9341faf4003a6">coterminalSwapAnnuity</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aea7368686f038e0fdbc9341faf4003a6">coterminalSwapAnnuity</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1aea7368686f038e0fdbc9341faf4003a6">coterminalSwapAnnuity</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numeraire</declname>
@@ -84,9 +72,6 @@
         <definition>virtual Rate coterminalSwapRate</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>coterminalSwapRate</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8">coterminalSwapRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8">coterminalSwapRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8">coterminalSwapRate</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -98,9 +83,6 @@
         <definition>virtual Rate cmSwapAnnuity</definition>
         <argsstring>(Size numeraire, Size i, Size spanningForwards) const =0</argsstring>
         <name>cmSwapAnnuity</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1">cmSwapAnnuity</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1">cmSwapAnnuity</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1">cmSwapAnnuity</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>numeraire</declname>
@@ -120,9 +102,6 @@
         <definition>virtual Rate cmSwapRate</definition>
         <argsstring>(Size i, Size spanningForwards) const =0</argsstring>
         <name>cmSwapRate</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01">cmSwapRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01">cmSwapRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01">cmSwapRate</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -138,9 +117,6 @@
         <definition>virtual const std::vector&lt;Rate&gt;&amp; forwardRates</definition>
         <argsstring>() const =0</argsstring>
         <name>forwardRates</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184">forwardRates</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184">forwardRates</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184">forwardRates</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestate.hpp" line="75"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_state_1af917754216210a5e5ffca04bff64bebd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -148,9 +124,6 @@
         <definition>virtual const std::vector&lt;Rate&gt;&amp; coterminalSwapRates</definition>
         <argsstring>() const =0</argsstring>
         <name>coterminalSwapRates</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5">coterminalSwapRates</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5">coterminalSwapRates</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5">coterminalSwapRates</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestate.hpp" line="76"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_curve_state_1a7dc0f55707fcc9c01bd6a8610b0da7c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -158,9 +131,6 @@
         <definition>virtual const std::vector&lt;Rate&gt;&amp; cmSwapRates</definition>
         <argsstring>(Size spanningForwards) const =0</argsstring>
         <name>cmSwapRates</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1a2c2d3c56715486e94144c87531f19fcc">cmSwapRates</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a2c2d3c56715486e94144c87531f19fcc">cmSwapRates</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1a2c2d3c56715486e94144c87531f19fcc">cmSwapRates</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>spanningForwards</declname>
@@ -187,9 +157,6 @@
         <definition>virtual std::auto_ptr&lt;CurveState&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_m_swap_curve_state_1a8c46c0cde27036afcca8fe94bf19101d">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a8c46c0cde27036afcca8fe94bf19101d">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_l_m_m_curve_state_1a8c46c0cde27036afcca8fe94bf19101d">clone</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestate.hpp" line="81"/>
       </memberdef>
       </sectiondef>

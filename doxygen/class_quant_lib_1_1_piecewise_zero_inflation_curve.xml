@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_zero_inflation_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseZeroInflationCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolated_zero_inflation_curve" prot="public" virt="non-virtual">QuantLib::InterpolatedZeroInflationCurve&lt; Interpolator &gt;</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewisezeroinflationcurve.hpp</includes>
     <templateparamlist>
       <param>

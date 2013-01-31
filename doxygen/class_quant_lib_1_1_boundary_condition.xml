@@ -54,8 +54,6 @@
         <definition>virtual void applyBeforeApplying</definition>
         <argsstring>(operator_type &amp;) const =0</argsstring>
         <name>applyBeforeApplying</name>
-        <reimplementedby refid="class_quant_lib_1_1_neumann_b_c_1ab906412b49c195a549d177f62342ef0d">applyBeforeApplying</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dirichlet_b_c_1ab906412b49c195a549d177f62342ef0d">applyBeforeApplying</reimplementedby>
         <param>
           <type>operator_type &amp;</type>
         </param>
@@ -68,8 +66,6 @@
         <definition>virtual void applyAfterApplying</definition>
         <argsstring>(array_type &amp;) const =0</argsstring>
         <name>applyAfterApplying</name>
-        <reimplementedby refid="class_quant_lib_1_1_neumann_b_c_1a518faf0242362b370a0b7686ed73f88c">applyAfterApplying</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dirichlet_b_c_1a518faf0242362b370a0b7686ed73f88c">applyAfterApplying</reimplementedby>
         <param>
           <type>array_type &amp;</type>
         </param>
@@ -82,8 +78,6 @@
         <definition>virtual void applyBeforeSolving</definition>
         <argsstring>(operator_type &amp;, array_type &amp;rhs) const =0</argsstring>
         <name>applyBeforeSolving</name>
-        <reimplementedby refid="class_quant_lib_1_1_neumann_b_c_1a64b4db3a4c8c7be8a29a179de646e929">applyBeforeSolving</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dirichlet_b_c_1a64b4db3a4c8c7be8a29a179de646e929">applyBeforeSolving</reimplementedby>
         <param>
           <type>operator_type &amp;</type>
         </param>
@@ -100,8 +94,6 @@
         <definition>virtual void applyAfterSolving</definition>
         <argsstring>(array_type &amp;) const =0</argsstring>
         <name>applyAfterSolving</name>
-        <reimplementedby refid="class_quant_lib_1_1_neumann_b_c_1a7468ddf74a36a677b124dfcf09015a22">applyAfterSolving</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dirichlet_b_c_1a7468ddf74a36a677b124dfcf09015a22">applyAfterSolving</reimplementedby>
         <param>
           <type>array_type &amp;</type>
         </param>
@@ -114,8 +106,6 @@
         <definition>virtual void setTime</definition>
         <argsstring>(Time t)=0</argsstring>
         <name>setTime</name>
-        <reimplementedby refid="class_quant_lib_1_1_neumann_b_c_1a6e60101b2af13783da6aa3d7cee67acb">setTime</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dirichlet_b_c_1a6e60101b2af13783da6aa3d7cee67acb">setTime</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

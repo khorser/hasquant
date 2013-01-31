@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_flat_extrapolator2_d" kind="class" prot="public">
     <compoundname>QuantLib::FlatExtrapolator2D</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation2_d" prot="public" virt="non-virtual">Interpolation2D</basecompoundref>
     <innerclass refid="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl" prot="protected">QuantLib::FlatExtrapolator2D::FlatExtrapolator2DImpl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1afb60f28213f6dfd343a02b2495da4133" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

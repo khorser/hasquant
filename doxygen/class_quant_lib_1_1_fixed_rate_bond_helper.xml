@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fixed_rate_bond_helper" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateBondHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bond_helper" prot="public" virt="non-virtual">BondHelper</basecompoundref>
       <sectiondef kind="user-defined">
       <header>additional inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1ab68f3ea5d56505dbf17e2210d9cbc00d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

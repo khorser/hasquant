@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_claim" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Claim</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_face_value_accrual_claim" prot="public" virt="non-virtual">FaceValueAccrualClaim</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_face_value_claim" prot="public" virt="non-virtual">FaceValueClaim</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_claim_1ad2e9bee49eababe4baebe19b32d7e6ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -20,8 +16,6 @@
         <definition>virtual Real amount</definition>
         <argsstring>(const Date &amp;defaultDate, Real notional, Real recoveryRate) const =0</argsstring>
         <name>amount</name>
-        <reimplementedby refid="class_quant_lib_1_1_face_value_claim_1acf1dfd8d88311d4ea2f5630de7b995e9">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_face_value_accrual_claim_1acf1dfd8d88311d4ea2f5630de7b995e9">amount</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>defaultDate</declname>

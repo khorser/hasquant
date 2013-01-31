@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_index_manager" kind="class" prot="public">
     <compoundname>QuantLib::IndexManager</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_singleton" prot="public" virt="non-virtual">Singleton&lt; IndexManager &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp</includes>
       <sectiondef kind="private-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_index_manager_1a4cfdb53fc4ba50a284863d232c0ac5db" prot="private" static="no">

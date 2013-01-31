@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_constrained_evolver" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ConstrainedEvolver</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_market_model_evolver" prot="public" virt="non-virtual">MarketModelEvolver</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained" prot="public" virt="non-virtual">LogNormalFwdRateEulerConstrained</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_constrained_evolver_1a32649c4f0b2e209ac89fd34e0eee454f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -18,7 +16,6 @@
         <definition>virtual void setConstraintType</definition>
         <argsstring>(const std::vector&lt; Size &gt; &amp;startIndexOfSwapRate, const std::vector&lt; Size &gt; &amp;EndIndexOfSwapRate)=0</argsstring>
         <name>setConstraintType</name>
-        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a9dfafb10d71a00875356c7a29b6d7254">setConstraintType</reimplementedby>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
           <declname>startIndexOfSwapRate</declname>
@@ -36,7 +33,6 @@
         <definition>virtual void setThisConstraint</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;rateConstraints, const std::valarray&lt; bool &gt; &amp;isConstraintActive)=0</argsstring>
         <name>setThisConstraint</name>
-        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a26532f9fcb834fa17c3ffb60ab5e5693">setThisConstraint</reimplementedby>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
           <declname>rateConstraints</declname>

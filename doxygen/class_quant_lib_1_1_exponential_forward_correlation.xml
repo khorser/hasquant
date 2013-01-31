@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exponential_forward_correlation" kind="class" prot="public">
     <compoundname>QuantLib::ExponentialForwardCorrelation</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">PiecewiseConstantCorrelation</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_exponential_forward_correlation_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

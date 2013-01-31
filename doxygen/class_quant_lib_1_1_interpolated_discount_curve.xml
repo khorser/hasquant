@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_discount_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedDiscountCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_yield_term_structure" prot="public" virt="non-virtual">YieldTermStructure</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_interpolated_curve" prot="protected" virt="non-virtual">QuantLib::InterpolatedCurve&lt; Interpolator &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp</includes>
     <templateparamlist>
       <param>

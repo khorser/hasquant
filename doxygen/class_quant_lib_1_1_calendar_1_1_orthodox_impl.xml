@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calendar_1_1_orthodox_impl" kind="class" prot="public">
     <compoundname>QuantLib::Calendar::OrthodoxImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_impl" prot="public" virt="non-virtual">Calendar::Impl</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_ukraine_1_1_use_impl" prot="public" virt="non-virtual">Ukraine::UseImpl</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp</includes>
       <sectiondef kind="protected-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_orthodox_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">

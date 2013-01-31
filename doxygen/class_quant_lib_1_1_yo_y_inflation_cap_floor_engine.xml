@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::YoYInflationCapFloorEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1engine" prot="public" virt="non-virtual">YoYInflationCapFloor::engine</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_bachelier_cap_floor_engine" prot="public" virt="non-virtual">YoYInflationBachelierCapFloorEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_black_cap_floor_engine" prot="public" virt="non-virtual">YoYInflationBlackCapFloorEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_unit_displaced_black_cap_floor_engine" prot="public" virt="non-virtual">YoYInflationUnitDisplacedBlackCapFloorEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/inflation/inflationcapfloorengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1a34374e848b5e016a316bc23217253bc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

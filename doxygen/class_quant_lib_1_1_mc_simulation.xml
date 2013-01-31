@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mc_simulation" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::McSimulation</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzEngine&lt; BasketOption::engine, MultiVariate, RNG &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzEngine&lt; VanillaOption::engine, SingleVariate, RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzPathEngine&lt; PathMultiAssetOption::engine, MultiVariate, RNG &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_vanilla_engine" prot="public" virt="non-virtual">MCVanillaEngine&lt; MultiVariate, RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_vanilla_engine" prot="public" virt="non-virtual">MCVanillaEngine&lt; SingleVariate, RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzEngine&lt; GenericEngine, MC, RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzPathEngine&lt; GenericEngine, MC, RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_vanilla_engine" prot="public" virt="non-virtual">MCVanillaEngine&lt; MC, RNG, S, Inst &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp</includes>
     <templateparamlist>
       <param>

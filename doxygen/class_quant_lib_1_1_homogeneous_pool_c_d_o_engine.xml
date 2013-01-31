@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_homogeneous_pool_c_d_o_engine" kind="class" prot="public">
     <compoundname>QuantLib::HomogeneousPoolCDOEngine</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">CDOEngine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
     <templateparamlist>
       <param>

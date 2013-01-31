@@ -2,19 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stochastic_process1_d" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::StochasticProcess1D</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process" prot="public" virt="non-virtual">CoxIngersollRoss::HelperProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" prot="public" virt="non-virtual">ExtendedOrnsteinUhlenbeckProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_measure_process1_d" prot="public" virt="non-virtual">ForwardMeasureProcess1D</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_geman_roncoroni_process" prot="public" virt="non-virtual">GemanRoncoroniProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generalized_black_scholes_process" prot="public" virt="non-virtual">GeneralizedBlackScholesProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process" prot="public" virt="non-virtual">GeneralizedOrnsteinUhlenbeckProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_geometric_brownian_motion_process" prot="public" virt="non-virtual">GeometricBrownianMotionProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hull_white_process" prot="public" virt="non-virtual">HullWhiteProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_merton76_process" prot="public" virt="non-virtual">Merton76Process</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_ornstein_uhlenbeck_process" prot="public" virt="non-virtual">OrnsteinUhlenbeckProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_square_root_process" prot="public" virt="non-virtual">SquareRootProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_gamma_process" prot="public" virt="non-virtual">VarianceGammaProcess</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization" prot="public">QuantLib::StochasticProcess1D::discretization</innerclass>
       <sectiondef kind="user-defined">
@@ -24,17 +11,6 @@
         <definition>virtual Real x0</definition>
         <argsstring>() const =0</argsstring>
         <name>x0</name>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geometric_brownian_motion_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_square_root_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_merton76_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geman_roncoroni_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_gamma_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_forward_process_1a89d2f497b5fd0d0a0dce2ec82c86e778">x0</reimplementedby>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="178"/>
@@ -44,18 +20,6 @@
         <definition>virtual Real drift</definition>
         <argsstring>(Time t, Real x) const =0</argsstring>
         <name>drift</name>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geometric_brownian_motion_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_scholes_merton_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_square_root_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_merton76_process_1a1ff4edad5a08359f18edf7f72a492317">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geman_roncoroni_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_gamma_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_forward_process_1a545d33724b1d6d312eb8a17f73571842">drift</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -73,19 +37,6 @@
         <definition>virtual Real diffusion</definition>
         <argsstring>(Time t, Real x) const =0</argsstring>
         <name>diffusion</name>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geometric_brownian_motion_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vega_stressed_black_scholes_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_scholes_merton_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_square_root_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ornstein_uhlenbeck_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_merton76_process_1a73959c8b969d8981d5d670b367d51aed">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geman_roncoroni_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_gamma_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_forward_process_1ab4d7fe4af7a6dd0ae710c073569821e4">diffusion</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -103,12 +54,6 @@
         <definition>virtual Real expectation</definition>
         <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
         <name>expectation</name>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_process_1a81842299056bb82662dce099fca6bcba">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a81842299056bb82662dce099fca6bcba">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a81842299056bb82662dce099fca6bcba">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a81842299056bb82662dce099fca6bcba">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1a81842299056bb82662dce099fca6bcba">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_forward_process_1a81842299056bb82662dce099fca6bcba">expectation</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -130,12 +75,6 @@
         <definition>virtual Real stdDeviation</definition>
         <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
         <name>stdDeviation</name>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_process_1aa78ac261543c5f8c3b2e065f4a57c526">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aa78ac261543c5f8c3b2e065f4a57c526">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1aa78ac261543c5f8c3b2e065f4a57c526">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geman_roncoroni_process_1aa78ac261543c5f8c3b2e065f4a57c526">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1aa78ac261543c5f8c3b2e065f4a57c526">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_forward_process_1aa78ac261543c5f8c3b2e065f4a57c526">stdDeviation</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -157,11 +96,6 @@
         <definition>virtual Real variance</definition>
         <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
         <name>variance</name>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_process_1aec618e405b3e8c104f58b6616d3d482f">variance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1aec618e405b3e8c104f58b6616d3d482f">variance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1aec618e405b3e8c104f58b6616d3d482f">variance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aec618e405b3e8c104f58b6616d3d482f">variance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_forward_process_1aec618e405b3e8c104f58b6616d3d482f">variance</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -183,9 +117,6 @@
         <definition>virtual Real evolve</definition>
         <argsstring>(Time t0, Real x0, Time dt, Real dw) const </argsstring>
         <name>evolve</name>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_scholes_merton_process_1a28916b3498be74dceb699ad1499a46c0">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_geman_roncoroni_process_1a28916b3498be74dceb699ad1499a46c0">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1a28916b3498be74dceb699ad1499a46c0">evolve</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -211,8 +142,6 @@
         <definition>virtual Real apply</definition>
         <argsstring>(Real x0, Real dx) const </argsstring>
         <name>apply</name>
-        <reimplementedby refid="class_quant_lib_1_1_merton76_process_1a556c2d99ae77d13156c6371c4faaf960">apply</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1aee1aadb67f9085eb8a9fc89604bd8ead">apply</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x0</declname>

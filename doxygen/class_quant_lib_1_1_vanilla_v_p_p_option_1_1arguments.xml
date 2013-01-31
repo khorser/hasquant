@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::VanillaVPPOption::arguments</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_option_1_1arguments" prot="public" virt="virtual">Option::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1af8effc7b27d720414fee142bdf4d7595" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::TreeCallableZeroCouponBondEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine" prot="public" virt="non-virtual">TreeCallableFixedRateBondEngine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine_1a6556191fffdab7edfba81a08e2af489c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

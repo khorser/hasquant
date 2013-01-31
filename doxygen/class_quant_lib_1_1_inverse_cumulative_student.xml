@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inverse_cumulative_student" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativeStudent</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1a8d06535f9bae5b629f83cb7261f5913f" prot="private" static="no" mutable="no">

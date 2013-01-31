@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::ForwardVanillaOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_asset_option" prot="public" virt="non-virtual">OneAssetOption</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_quanto_forward_vanilla_option" prot="public" virt="non-virtual">QuantoForwardVanillaOption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_forward_vanilla_option_1aa921b26418fb0d2cd2b73a34aef8ae14" prot="public" static="no">
@@ -80,7 +78,6 @@
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>

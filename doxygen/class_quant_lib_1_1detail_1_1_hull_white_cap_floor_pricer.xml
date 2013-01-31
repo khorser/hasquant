@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer" kind="class" prot="public">
     <compoundname>QuantLib::detail::HullWhiteCapFloorPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; Path &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a8ec534b4d382bebfbbf67aebd59dfb85" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref></type>

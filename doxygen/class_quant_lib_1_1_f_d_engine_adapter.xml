@@ -2,19 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_engine_adapter" kind="class" prot="public">
     <compoundname>QuantLib::FDEngineAdapter</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">base</basecompoundref>
-    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_american_engine" prot="public" virt="non-virtual">FDAmericanEngine&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_american_engine" prot="public" virt="non-virtual">FDDividendAmericanEngine&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_american_engine_merton73" prot="public" virt="non-virtual">FDDividendAmericanEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale" prot="public" virt="non-virtual">FDDividendAmericanEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_european_engine" prot="public" virt="non-virtual">FDDividendEuropeanEngine&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_european_engine_merton73" prot="public" virt="non-virtual">FDDividendEuropeanEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_european_engine_shift_scale" prot="public" virt="non-virtual">FDDividendEuropeanEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_shout_engine" prot="public" virt="non-virtual">FDDividendShoutEngine&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_shout_engine_merton73" prot="public" virt="non-virtual">FDDividendShoutEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_shout_engine_shift_scale" prot="public" virt="non-virtual">FDDividendShoutEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_shout_engine" prot="public" virt="non-virtual">FDShoutEngine&lt; Scheme &gt;</derivedcompoundref>
     <templateparamlist>
       <param>
         <type>typename</type>

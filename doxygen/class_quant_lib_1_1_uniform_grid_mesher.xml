@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_uniform_grid_mesher" kind="class" prot="public">
     <compoundname>QuantLib::UniformGridMesher</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmMesher</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_uniform_grid_mesher_1ac0e29ba443e48544494c7f32c043ca3d" prot="private" static="no" mutable="no">
         <type>boost::scoped_array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>

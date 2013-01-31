@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_log_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::LogCubicInterpolation</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fritsch_butland_log_cubic" prot="public" virt="non-virtual">FritschButlandLogCubic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_kruger_log_cubic" prot="public" virt="non-virtual">KrugerLogCubic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_log_cubic_natural_spline" prot="public" virt="non-virtual">LogCubicNaturalSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_log_parabolic" prot="public" virt="non-virtual">LogParabolic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_monotonic_log_cubic_natural_spline" prot="public" virt="non-virtual">MonotonicLogCubicNaturalSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_monotonic_log_parabolic" prot="public" virt="non-virtual">MonotonicLogParabolic</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_log_cubic_interpolation_1a8fddd246edfd7fdfd081dc4f3a67fbbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

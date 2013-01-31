@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_black_variance_curve" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedBlackVarianceCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_black_variance_term_structure" prot="public" virt="non-virtual">BlackVarianceTermStructure</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">

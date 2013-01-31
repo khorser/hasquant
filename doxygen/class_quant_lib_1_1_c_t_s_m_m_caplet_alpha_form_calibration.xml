@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletAlphaFormCalibration</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">CTSMMCapletCalibration</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a4fc0728c8a5fc0f8bae35984aa85d45a" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>

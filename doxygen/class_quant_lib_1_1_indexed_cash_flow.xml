@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_indexed_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::IndexedCashFlow</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_cash_flow" prot="public" virt="non-virtual">CPICashFlow</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
@@ -151,7 +148,6 @@
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cash_flow_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">

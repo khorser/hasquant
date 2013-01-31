@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calibration_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CalibrationHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_helper" prot="public" virt="non-virtual">CapHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_heston_model_helper" prot="public" virt="non-virtual">HestonModelHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_helper" prot="public" virt="non-virtual">SwaptionHelper</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033" prot="public" static="no">
@@ -75,9 +70,6 @@
         <definition>virtual Real modelValue</definition>
         <argsstring>() const =0</argsstring>
         <name>modelValue</name>
-        <reimplementedby refid="class_quant_lib_1_1_heston_model_helper_1a7e150860902ed14d27ceee6baaed0942">modelValue</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4">modelValue</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4">modelValue</reimplementedby>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="59"/>
@@ -96,9 +88,6 @@
         <definition>virtual void addTimesTo</definition>
         <argsstring>(std::list&lt; Time &gt; &amp;times) const =0</argsstring>
         <name>addTimesTo</name>
-        <reimplementedby refid="class_quant_lib_1_1_heston_model_helper_1a9cee8013f93ddeb3dcdd7e8e41efe78d">addTimesTo</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e">addTimesTo</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e">addTimesTo</reimplementedby>
         <param>
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
@@ -139,9 +128,6 @@
         <definition>virtual Real blackPrice</definition>
         <argsstring>(Volatility volatility) const =0</argsstring>
         <name>blackPrice</name>
-        <reimplementedby refid="class_quant_lib_1_1_heston_model_helper_1a30466de83789323a5c4b09b48f069500">blackPrice</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_helper_1a722ad9621557c52aa1b7e1e6f7308424">blackPrice</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_helper_1a722ad9621557c52aa1b7e1e6f7308424">blackPrice</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>volatility</declname>

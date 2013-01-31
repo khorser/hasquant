@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_c_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCEuropeanEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_m_c_vanilla_engine" prot="public" virt="non-virtual">MCVanillaEngine&lt; SingleVariate, RNG, S &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp</includes>
     <templateparamlist>
       <param>

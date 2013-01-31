@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_square_root_andersen" kind="class" prot="public">
     <compoundname>QuantLib::SquareRootAndersen</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_market_model_vol_process" prot="public" virt="non-virtual">MarketModelVolProcess</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_square_root_andersen_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">

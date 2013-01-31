@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_longstaff_schwartz_exercise_strategy" kind="class" prot="public">
     <compoundname>QuantLib::LongstaffSchwartzExerciseStrategy</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">QuantLib::ExerciseStrategy&lt; CurveState &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_exercise_strategy_1a64d7e9715fe2899895be981a18d57c99" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; MarketModelBasisSystem &gt;</type>

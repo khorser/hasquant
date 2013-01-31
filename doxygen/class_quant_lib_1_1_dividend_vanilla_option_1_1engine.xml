@@ -2,17 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_dividend_vanilla_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::DividendVanillaOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; DividendVanillaOption::arguments, DividendVanillaOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDAmericanCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDAmericanCondition&lt; FDDividendEngineMerton73&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDAmericanCondition&lt; FDDividendEngineShiftScale&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDDividendEngine&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDDividendEngineMerton73&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDDividendEngineShiftScale&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDShoutCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDShoutCondition&lt; FDDividendEngineMerton73&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDShoutCondition&lt; FDDividendEngineShiftScale&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_dividend_european_engine" prot="public" virt="non-virtual">AnalyticDividendEuropeanEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp</includes>
     <briefdescription>
 <para>Dividend-vanilla-option engine base class </para>    </briefdescription>

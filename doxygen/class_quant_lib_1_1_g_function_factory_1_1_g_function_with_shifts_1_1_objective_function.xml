@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1ad1ed96ea77e3bb991bf660d6514ca09f" prot="private" static="no" mutable="no">
         <type>const GFunctionWithShifts &amp;</type>

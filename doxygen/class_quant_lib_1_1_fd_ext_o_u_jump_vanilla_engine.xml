@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd_ext_o_u_jump_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdExtOUJumpVanillaEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaOption::arguments, VanillaOption::results &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_ext_o_u_jump_vanilla_engine_1a53db70a3fdfda50516bf7d47da3f1958" prot="private" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>

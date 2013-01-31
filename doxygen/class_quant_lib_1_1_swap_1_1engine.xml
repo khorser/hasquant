@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swap_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::Swap::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Swap::arguments, Swap::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_discounting_swap_engine" prot="public" virt="non-virtual">DiscountingSwapEngine</derivedcompoundref>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" bodystart="133" bodyend="134"/>
   </compounddef>
 </doxygen>

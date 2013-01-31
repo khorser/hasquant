@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation" kind="class" prot="private">
     <compoundname>QuantLib::AbcdCalibration::AbcdParametersTransformation</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">ParametersTransformation</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1a0a792d2ec89747f199b3f37afa85c8b3" prot="private" static="no" mutable="yes">
         <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>

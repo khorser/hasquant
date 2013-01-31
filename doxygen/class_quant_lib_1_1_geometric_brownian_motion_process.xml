@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_geometric_brownian_motion_process" kind="class" prot="public">
     <compoundname>QuantLib::GeometricBrownianMotionProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/geometricbrownianprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_geometric_brownian_motion_process_1a192edffe2198134c0463009ce88127f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

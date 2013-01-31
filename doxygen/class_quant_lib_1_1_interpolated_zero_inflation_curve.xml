@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_zero_inflation_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedZeroInflationCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_zero_inflation_term_structure" prot="public" virt="non-virtual">ZeroInflationTermStructure</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_interpolated_curve" prot="protected" virt="non-virtual">QuantLib::InterpolatedCurve&lt; Interpolator &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_zero_inflation_curve" prot="public" virt="non-virtual">PiecewiseZeroInflationCurve&lt; Interpolator, Bootstrap, Traits &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp</includes>
     <templateparamlist>
       <param>
@@ -19,7 +16,6 @@
         <argsstring>() const </argsstring>
         <name>baseDate</name>
         <reimplements refid="class_quant_lib_1_1_inflation_term_structure_1afec07013d98138f010a327210da23b50">baseDate</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
         <briefdescription>
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
@@ -32,7 +28,6 @@
         <argsstring>() const </argsstring>
         <name>maxDate</name>
         <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplementedby>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="190" bodyend="198"/>

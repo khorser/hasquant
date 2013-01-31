@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_garman_klass_simple_sigma" kind="class" prot="public">
     <compoundname>QuantLib::GarmanKlassSimpleSigma</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_garman_klass_abstract" prot="public" virt="non-virtual">GarmanKlassAbstract</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_open_close" prot="public" virt="non-virtual">GarmanKlassOpenClose&lt; GarmanKlassSimpleSigma &gt;</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_simple_sigma_1a98b637de5408d7ca4780643f8fbe77f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

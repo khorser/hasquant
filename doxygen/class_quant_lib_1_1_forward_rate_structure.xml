@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_rate_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ForwardRateStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_yield_term_structure" prot="public" virt="non-virtual">YieldTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_spreaded_term_structure" prot="public" virt="non-virtual">ForwardSpreadedTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_forward_curve" prot="public" virt="non-virtual">InterpolatedForwardCurve&lt; Interpolator &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -101,8 +98,6 @@
         <definition>virtual Rate forwardImpl</definition>
         <argsstring>(Time) const =0</argsstring>
         <name>forwardImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1af9a0dab6e2bfb4a21dce277a40fcf928">forwardImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_forward_curve_1af9a0dab6e2bfb4a21dce277a40fcf928">forwardImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -115,8 +110,6 @@
         <definition>virtual Rate zeroYieldImpl</definition>
         <argsstring>(Time) const </argsstring>
         <name>zeroYieldImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_forward_spreaded_term_structure_1a7b3637b3975a6b4b75b71f31793d4687">zeroYieldImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_forward_curve_1a7b3637b3975a6b4b75b71f31793d4687">zeroYieldImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>

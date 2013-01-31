@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_cap_floor_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCapFloorEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cap_floor_1_1engine" prot="public" virt="non-virtual">CapFloor::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_black_cap_floor_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">

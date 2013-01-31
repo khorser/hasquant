@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_basket_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::BasketOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; BasketOption::arguments, BasketOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_longstaff_schwartz_engine" prot="public" virt="non-virtual">MCLongstaffSchwartzEngine&lt; BasketOption::engine, MultiVariate, RNG &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" prot="public" virt="non-virtual">Fd2dBlackScholesVanillaEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_kirk_engine" prot="public" virt="non-virtual">KirkEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_european_basket_engine" prot="public" virt="non-virtual">MCEuropeanBasketEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stulz_engine" prot="public" virt="non-virtual">StulzEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp</includes>
     <briefdescription>
 <para>Basket-option engine base class </para>    </briefdescription>

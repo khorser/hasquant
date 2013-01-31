@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple2d_b_s_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimple2dBSSolver</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="private" virt="non-virtual">LazyObject</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1ad303dc9251eef656d2ef96a9f98e6e05" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>

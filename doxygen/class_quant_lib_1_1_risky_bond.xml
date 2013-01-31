@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_risky_bond" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RiskyBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_risky_fixed_bond" prot="public" virt="non-virtual">RiskyFixedBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_risky_floating_bond" prot="public" virt="non-virtual">RiskyFloatingBond</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
@@ -96,8 +93,6 @@
         <definition>virtual std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; cashflows</definition>
         <argsstring>() const =0</argsstring>
         <name>cashflows</name>
-        <reimplementedby refid="class_quant_lib_1_1_risky_fixed_bond_1afa370ed34023fad18a16a731b4db2f33">cashflows</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_floating_bond_1afa370ed34023fad18a16a731b4db2f33">cashflows</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a5984fd1d8915bf44d28eb9df0eefa84f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -112,8 +107,6 @@
         <definition>virtual Real notional</definition>
         <argsstring>(Date date=Date::minDate()) const =0</argsstring>
         <name>notional</name>
-        <reimplementedby refid="class_quant_lib_1_1_risky_fixed_bond_1aa2384a4500da600292b83a9dd7df4164">notional</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_floating_bond_1aa2384a4500da600292b83a9dd7df4164">notional</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
           <declname>date</declname>
@@ -126,8 +119,6 @@
         <definition>virtual Date effectiveDate</definition>
         <argsstring>() const =0</argsstring>
         <name>effectiveDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_risky_fixed_bond_1a5a7ce2cc06cc4f622cfd651e7d22776f">effectiveDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_floating_bond_1a5a7ce2cc06cc4f622cfd651e7d22776f">effectiveDate</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a580b196687c62f4d8576f11ef8987477" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -135,8 +126,6 @@
         <definition>virtual Date maturityDate</definition>
         <argsstring>() const =0</argsstring>
         <name>maturityDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_risky_fixed_bond_1a716a3c2e199a948105b3be48b6c338aa">maturityDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_floating_bond_1a716a3c2e199a948105b3be48b6c338aa">maturityDate</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="60"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a4587be7cee2cbaec53a7773806961f95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -144,8 +133,6 @@
         <definition>virtual std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; interestFlows</definition>
         <argsstring>() const =0</argsstring>
         <name>interestFlows</name>
-        <reimplementedby refid="class_quant_lib_1_1_risky_fixed_bond_1a9e4418003f465fb39df82e28d2879099">interestFlows</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_floating_bond_1a9e4418003f465fb39df82e28d2879099">interestFlows</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="61"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a0f39350cd04b9af24095c5345c33e103" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -153,8 +140,6 @@
         <definition>virtual std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; notionalFlows</definition>
         <argsstring>() const =0</argsstring>
         <name>notionalFlows</name>
-        <reimplementedby refid="class_quant_lib_1_1_risky_fixed_bond_1a8a460b368ba6b41ae68c27347281a1ad">notionalFlows</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_floating_bond_1a8a460b368ba6b41ae68c27347281a1ad">notionalFlows</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="62"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a85d6833ce9d7b23841364e286f1ca08d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">

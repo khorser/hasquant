@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm1d_mesher" kind="class" prot="public">
     <compoundname>QuantLib::Fdm1dMesher</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_concentrating1d_mesher" prot="public" virt="non-virtual">Concentrating1dMesher</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_exponential_jump1d_mesher" prot="public" virt="non-virtual">ExponentialJump1dMesher</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_black_scholes_mesher" prot="public" virt="non-virtual">FdmBlackScholesMesher</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_black_scholes_multi_strike_mesher" prot="public" virt="non-virtual">FdmBlackScholesMultiStrikeMesher</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_heston_variance_mesher" prot="public" virt="non-virtual">FdmHestonVarianceMesher</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_simple_process1d_mesher" prot="public" virt="non-virtual">FdmSimpleProcess1dMesher</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_uniform1d_mesher" prot="public" virt="non-virtual">Uniform1dMesher</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1ab4d75a75239852265b97d3efb33fcf2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

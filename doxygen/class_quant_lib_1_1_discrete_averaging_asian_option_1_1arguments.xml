@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::DiscreteAveragingAsianOption::arguments</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">arguments</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1a956f95e66c116ce6eec88b6f7c3dd0fd" prot="public" static="no" mutable="no">

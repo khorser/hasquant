@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedVanillaOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_discretized_asset" prot="public" virt="non-virtual">DiscretizedAsset</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_vanilla_option_1a3cccbeb9ef04a8b9d5666a1eafc21e3a" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_option_1_1arguments" kindref="compound">VanillaOption::arguments</ref></type>

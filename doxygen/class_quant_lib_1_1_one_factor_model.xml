@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_short_rate_model" prot="public" virt="non-virtual">ShortRateModel</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_karasinski" prot="public" virt="non-virtual">BlackKarasinski</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generalized_hull_white" prot="public" virt="non-virtual">GeneralizedHullWhite</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_affine_model" prot="public" virt="non-virtual">OneFactorAffineModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::OneFactorModel::ShortRateDynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree" prot="public">QuantLib::OneFactorModel::ShortRateTree</innerclass>
@@ -33,12 +29,6 @@
         <definition>virtual boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const =0</argsstring>
         <name>dynamics</name>
-        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1a89786edacdadb5904c317fd4ed5cb3bd">dynamics</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vasicek_1ab819304423e7791547c3089322a190be">dynamics</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be">dynamics</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be">dynamics</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd">dynamics</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd">dynamics</reimplementedby>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="46"/>
@@ -49,10 +39,6 @@
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
         <reimplements refid="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>

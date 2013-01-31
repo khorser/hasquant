@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_heston_hull_white_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::HestonHullWhitePathPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a57fcc5db9ef9fd7447a6fa4e3a9e64f9" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>

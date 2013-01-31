@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_parameters_transformation" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ParametersTransformation</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation" prot="public" virt="non-virtual">AbcdCalibration::AbcdParametersTransformation</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation" prot="public" virt="non-virtual">SABRInterpolationImpl&lt; I1, I2 &gt;::SabrParametersTransformation</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_parameters_transformation_1ab78413e4bcca36b38d5827d165bb5db5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

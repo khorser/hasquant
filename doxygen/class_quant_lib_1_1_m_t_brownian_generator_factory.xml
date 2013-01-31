@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_t_brownian_generator_factory" kind="class" prot="public">
     <compoundname>QuantLib::MTBrownianGeneratorFactory</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BrownianGeneratorFactory</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_m_t_brownian_generator_factory_1a39818330032075067999645be285873f" prot="private" static="no" mutable="no">
         <type>unsigned long</type>

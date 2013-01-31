@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_lattice1_d" kind="class" prot="public">
     <compoundname>QuantLib::TreeLattice1D</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_tree_lattice" prot="public" virt="non-virtual">QuantLib::TreeLattice&lt; Impl &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice1d.hpp</includes>
     <templateparamlist>
       <param>

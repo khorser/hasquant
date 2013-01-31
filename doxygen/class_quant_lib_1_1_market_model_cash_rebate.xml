@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_cash_rebate" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelCashRebate</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_market_model_multi_product" prot="public" virt="non-virtual">MarketModelMultiProduct</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/cashrebate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>

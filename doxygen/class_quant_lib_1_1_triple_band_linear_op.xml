@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_triple_band_linear_op" kind="class" prot="public">
     <compoundname>QuantLib::TripleBandLinearOp</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmLinearOp</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_first_derivative_op" prot="public" virt="non-virtual">FirstDerivativeOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_second_derivative_op" prot="public" virt="non-virtual">SecondDerivativeOp</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1aa88d5f966f192ea7ac9e68fb5de37288" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

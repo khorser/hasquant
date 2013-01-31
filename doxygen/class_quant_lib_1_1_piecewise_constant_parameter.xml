@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_constant_parameter" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseConstantParameter</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_parameter" prot="public" virt="non-virtual">Parameter</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl" prot="private">QuantLib::PiecewiseConstantParameter::Impl</innerclass>
       <sectiondef kind="public-func">

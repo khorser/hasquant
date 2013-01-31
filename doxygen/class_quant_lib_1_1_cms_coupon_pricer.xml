@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cms_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::CmsCouponPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="non-virtual">FloatingRateCouponPricer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hagan_pricer" prot="public" virt="non-virtual">HaganPricer</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_cms_coupon_pricer_1a1e632c98a70cdb47a9101771008f2c12" prot="private" static="no" mutable="no">

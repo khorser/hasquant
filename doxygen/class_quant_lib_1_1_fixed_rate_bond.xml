@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bond" prot="public" virt="non-virtual">Bond</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_b_t_p" prot="public" virt="non-virtual">BTP</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/fixedratebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1ae6647c978d8f8da1dc38593db4a2efb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

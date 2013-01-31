@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_default_event" kind="class" prot="public">
     <compoundname>QuantLib::DefaultEvent</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bankruptcy_event" prot="public" virt="non-virtual">BankruptcyEvent</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_failure_to_pay_event" prot="public" virt="non-virtual">FailureToPayEvent</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_default_event_1_1_default_settlement" prot="public">QuantLib::DefaultEvent::DefaultSettlement</innerclass>
       <sectiondef kind="private-type">

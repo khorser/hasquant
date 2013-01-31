@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_everest_option" kind="class" prot="public">
     <compoundname>QuantLib::EverestOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_multi_asset_option" prot="public" virt="non-virtual">MultiAssetOption</basecompoundref>
     <innerclass refid="class_quant_lib_1_1_everest_option_1_1arguments" prot="public">QuantLib::EverestOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_everest_option_1_1engine" prot="public">QuantLib::EverestOption::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_everest_option_1_1results" prot="public">QuantLib::EverestOption::results</innerclass>

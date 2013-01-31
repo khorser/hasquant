@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interest_rate_index" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InterestRateIndex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_index" prot="public" virt="non-virtual">Index</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_b_m_a_index" prot="public" virt="non-virtual">BMAIndex</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_index" prot="public" virt="non-virtual">SwapIndex</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
@@ -136,8 +131,6 @@
         <definition>Date valueDate</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>valueDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_e_u_r_libor_1a01fafdb3585a34706678b12af90b1cf9">valueDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_1a01fafdb3585a34706678b12af90b1cf9">valueDate</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
@@ -149,11 +142,6 @@
         <definition>virtual Date maturityDate</definition>
         <argsstring>(const Date &amp;valueDate) const =0</argsstring>
         <name>maturityDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_ibor_index_1a615a330e425e4b9abceba4a56fc2664f">maturityDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_e_u_r_libor_1a615a330e425e4b9abceba4a56fc2664f">maturityDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_1a615a330e425e4b9abceba4a56fc2664f">maturityDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_b_m_a_index_1a615a330e425e4b9abceba4a56fc2664f">maturityDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_index_1a615a330e425e4b9abceba4a56fc2664f">maturityDate</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
@@ -168,10 +156,6 @@
         <definition>virtual Rate forecastFixing</definition>
         <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
         <name>forecastFixing</name>
-        <reimplementedby refid="class_quant_lib_1_1_proxy_ibor_1a31402c8dcd6c83166c07900d7f440bca">forecastFixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ibor_index_1a31402c8dcd6c83166c07900d7f440bca">forecastFixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_b_m_a_index_1a31402c8dcd6c83166c07900d7f440bca">forecastFixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_index_1a31402c8dcd6c83166c07900d7f440bca">forecastFixing</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>

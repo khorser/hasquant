@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discrete_averaging_asian_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::DiscreteAveragingAsianOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; DiscreteAveragingAsianOption::arguments, DiscreteAveragingAsianOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_discrete_geometric_average_price_asian_engine" prot="public" virt="non-virtual">AnalyticDiscreteGeometricAveragePriceAsianEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_discrete_geometric_average_strike_asian_engine" prot="public" virt="non-virtual">AnalyticDiscreteGeometricAverageStrikeAsianEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" prot="public" virt="non-virtual">MCDiscreteAveragingAsianEngine&lt; RNG, S &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp</includes>
     <briefdescription>
 <para>Discrete-averaging Asian engine base class. </para>    </briefdescription>

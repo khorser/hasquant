@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution" kind="class" prot="public">
     <compoundname>QuantLib::InverseNonCentralChiSquareDistribution</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a5a4b0d3681b828d034773d04d0b2122c" prot="private" static="no" mutable="no">
         <type>NonCentralChiSquareDistribution</type>

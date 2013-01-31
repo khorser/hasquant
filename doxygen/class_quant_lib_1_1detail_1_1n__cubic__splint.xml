@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1n__cubic__splint" kind="class" prot="public">
     <compoundname>QuantLib::detail::n_cubic_splint</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Point&lt; Real, X::argument_type &gt;, Real &gt;</basecompoundref>
     <templateparamlist>
       <param>
         <type>class X</type>

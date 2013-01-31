@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_coupon" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationCoupon</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_inflation_coupon" prot="public" virt="non-virtual">InflationCoupon</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon" prot="public" virt="non-virtual">CappedFlooredYoYInflationCoupon</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -48,7 +46,6 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <reimplements refid="class_quant_lib_1_1_inflation_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>

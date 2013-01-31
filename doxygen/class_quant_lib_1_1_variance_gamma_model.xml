@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_variance_gamma_model" kind="class" prot="public">
     <compoundname>QuantLib::VarianceGammaModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="non-virtual">CalibratedModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammamodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_model_1a91960bc4315b6d52af31c8c47d4328d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::CoxIngersollRoss::Dynamics</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" prot="public" virt="non-virtual">OneFactorModel::ShortRateDynamics</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" prot="public" virt="non-virtual">ExtendedCoxIngersollRoss::Dynamics</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -35,7 +33,6 @@
         <argsstring>(Time, Rate r) const </argsstring>
         <name>variable</name>
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33">variable</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -54,7 +51,6 @@
         <argsstring>(Time, Real y) const </argsstring>
         <name>shortRate</name>
         <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2">shortRate</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

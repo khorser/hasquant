@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_argentina" kind="class" prot="public">
     <compoundname>QuantLib::Argentina</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar" prot="public" virt="non-virtual">Calendar</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_argentina_1_1_merval_impl" prot="private">QuantLib::Argentina::MervalImpl</innerclass>
       <sectiondef kind="public-type">

@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_garman_klass_abstract" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::GarmanKlassAbstract</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">QuantLib::LocalVolatilityEstimator&lt; IntervalPrice &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma4" prot="public" virt="non-virtual">GarmanKlassSigma4</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma5" prot="public" virt="non-virtual">GarmanKlassSigma5</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_simple_sigma" prot="public" virt="non-virtual">GarmanKlassSimpleSigma</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_parkinson_sigma" prot="public" virt="non-virtual">ParkinsonSigma</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

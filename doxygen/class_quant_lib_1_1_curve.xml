@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_curve" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Curve</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_test_curve" prot="public" virt="non-virtual">TestCurve</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_curve_1ac18558a7f7b08085261782f72b65ce26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolation2_d" kind="class" prot="public">
     <compoundname>QuantLib::Interpolation2D</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_extrapolator" prot="public" virt="non-virtual">Extrapolator</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bicubic_spline" prot="public" virt="non-virtual">BicubicSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bilinear_interpolation" prot="public" virt="non-virtual">BilinearInterpolation</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_flat_extrapolator2_d" prot="public" virt="non-virtual">FlatExtrapolator2D</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_kernel_interpolation2_d" prot="public" virt="non-virtual">KernelInterpolation2D</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_polynomial2_d_spline" prot="public" virt="non-virtual">Polynomial2DSpline</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_interpolation2_d_1_1_impl" prot="protected">QuantLib::Interpolation2D::Impl</innerclass>
     <innerclass refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl" prot="public">QuantLib::Interpolation2D::templateImpl</innerclass>

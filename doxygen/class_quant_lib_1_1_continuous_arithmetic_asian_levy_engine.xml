@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_continuous_arithmetic_asian_levy_engine" kind="class" prot="public">
     <compoundname>QuantLib::ContinuousArithmeticAsianLevyEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_continuous_averaging_asian_option_1_1engine" prot="public" virt="non-virtual">ContinuousAveragingAsianOption::engine</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_continuous_arithmetic_asian_levy_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>

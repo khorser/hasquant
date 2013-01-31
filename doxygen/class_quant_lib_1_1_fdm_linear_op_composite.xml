@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_linear_op_composite" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FdmLinearOpComposite</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmLinearOp</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm2d_black_scholes_op" prot="public" virt="non-virtual">Fdm2dBlackScholesOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_bates_op" prot="public" virt="non-virtual">FdmBatesOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_black_scholes_op" prot="public" virt="non-virtual">FdmBlackScholesOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op" prot="public" virt="non-virtual">FdmExtendedOrnsteinUhlenbackOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op" prot="public" virt="non-virtual">FdmExtOUJumpOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_heston_hull_white_op" prot="public" virt="non-virtual">FdmHestonHullWhiteOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_heston_op" prot="public" virt="non-virtual">FdmHestonOp</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op" prot="public" virt="non-virtual">FdmKlugeExtOUOp</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_composite_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

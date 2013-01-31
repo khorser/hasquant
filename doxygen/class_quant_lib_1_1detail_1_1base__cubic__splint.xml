@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1base__cubic__splint" kind="class" prot="public">
     <compoundname>QuantLib::detail::base_cubic_splint</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; base_arg_type, Real &gt;</basecompoundref>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1a40e1ff99ae6254a8809dff87dd7e4cd5" prot="public" static="no">
         <type>base_data</type>

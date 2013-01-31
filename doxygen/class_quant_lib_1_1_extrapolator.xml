@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extrapolator" kind="class" prot="public">
     <compoundname>QuantLib::Extrapolator</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolation2_d" prot="public" virt="non-virtual">Interpolation2D</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_term_structure" prot="public" virt="non-virtual">TermStructure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp</includes>
       <sectiondef kind="user-defined">
       <header>modifiers</header>

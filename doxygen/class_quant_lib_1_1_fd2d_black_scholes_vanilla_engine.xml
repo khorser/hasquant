@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::Fd2dBlackScholesVanillaEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_basket_option_1_1engine" prot="public" virt="non-virtual">BasketOption::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a9b28f546051f3d0cc2b8b0bc7683baf3" prot="private" static="no" mutable="no">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss::Dynamics</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" prot="public" virt="non-virtual">CoxIngersollRoss::Dynamics</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a1863803e3d08a291d7dd59ab2242e748" prot="private" static="no" mutable="no">

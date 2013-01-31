@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_m_t_unit_of_measure" kind="class" prot="public">
     <compoundname>QuantLib::MTUnitOfMeasure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_unit_of_measure" prot="public" virt="non-virtual">UnitOfMeasure</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_m_t_unit_of_measure_1a7557ca540380da17c748c57a0e22e99b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

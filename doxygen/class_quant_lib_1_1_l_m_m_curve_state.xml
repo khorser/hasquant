@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_l_m_m_curve_state" kind="class" prot="public">
     <compoundname>QuantLib::LMMCurveState</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_curve_state" prot="public" virt="non-virtual">CurveState</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/lmmcurvestate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>

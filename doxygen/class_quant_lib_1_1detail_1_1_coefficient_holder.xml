@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_coefficient_holder" kind="class" prot="public">
     <compoundname>QuantLib::detail::CoefficientHolder</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl" prot="public" virt="non-virtual">CubicInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_coefficient_holder_1a9bedbbacb0b82a55c579510cee137603" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

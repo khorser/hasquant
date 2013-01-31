@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calibrated_model" kind="class" prot="public">
     <compoundname>QuantLib::CalibratedModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="virtual">Observer</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model" prot="public" virt="non-virtual">GJRGARCHModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_heston_model" prot="public" virt="non-virtual">HestonModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_libor_forward_model" prot="public" virt="non-virtual">LiborForwardModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_time_dependent_heston_model" prot="public" virt="non-virtual">PiecewiseTimeDependentHestonModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_short_rate_model" prot="public" virt="non-virtual">ShortRateModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_gamma_model" prot="public" virt="non-virtual">VarianceGammaModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint" prot="public">QuantLib::CalibratedModel::PrivateConstraint</innerclass>
       <sectiondef kind="friend">
@@ -117,7 +109,6 @@
         <definition>virtual void setParams</definition>
         <argsstring>(const Array &amp;params)</argsstring>
         <name>setParams</name>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_1ae83c058519d7bfc23a3101b42ee038bf">setParams</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>

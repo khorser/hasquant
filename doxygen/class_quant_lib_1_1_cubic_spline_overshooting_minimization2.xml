@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cubic_spline_overshooting_minimization2" kind="class" prot="public">
     <compoundname>QuantLib::CubicSplineOvershootingMinimization2</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cubic_interpolation" prot="public" virt="non-virtual">CubicInterpolation</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_spline_overshooting_minimization2_1abf4ceb533a8c0a130bedbc4e35cd19d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

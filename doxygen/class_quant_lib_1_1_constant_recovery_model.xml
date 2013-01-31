@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_constant_recovery_model" kind="class" prot="public">
     <compoundname>QuantLib::ConstantRecoveryModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_recovery_rate_model" prot="public" virt="non-virtual">RecoveryRateModel</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_constant_recovery_model_1a6b6b1d8704216c65bc79d7c4b96dacc3" prot="private" static="no" mutable="no">

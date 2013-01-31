@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_barrier_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::BarrierOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; BarrierOption::arguments, BarrierOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_barrier_engine" prot="public" virt="non-virtual">AnalyticBarrierEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_c_barrier_engine" prot="public" virt="non-virtual">MCBarrierEngine&lt; RNG, S &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_perturbative_barrier_option_engine" prot="public" virt="non-virtual">PerturbativeBarrierOptionEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp</includes>
     <briefdescription>
 <para>Barrier-option engine base class </para>    </briefdescription>

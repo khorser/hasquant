@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_implied_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::ImpliedTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_yield_term_structure" prot="public" virt="non-virtual">YieldTermStructure</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure interface</header>

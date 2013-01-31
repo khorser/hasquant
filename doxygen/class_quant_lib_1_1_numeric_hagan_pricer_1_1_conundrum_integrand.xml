@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand" kind="class" prot="public">
     <compoundname>QuantLib::NumericHaganPricer::ConundrumIntegrand</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">NumericHaganPricer::Function</basecompoundref>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand_1aa48057b0ec06d9c76590cec43f86e645" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

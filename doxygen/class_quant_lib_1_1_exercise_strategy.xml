@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exercise_strategy" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ExerciseStrategy</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_longstaff_schwartz_exercise_strategy" prot="public" virt="non-virtual">LongstaffSchwartzExerciseStrategy</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_parametric_exercise_adapter" prot="public" virt="non-virtual">ParametricExerciseAdapter</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_rate_trigger" prot="public" virt="non-virtual">SwapRateTrigger</derivedcompoundref>
     <templateparamlist>
       <param>
         <type>class</type>

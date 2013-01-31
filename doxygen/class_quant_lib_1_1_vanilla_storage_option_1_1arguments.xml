@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::VanillaStorageOption::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3cf17821f2a14490d8e2dc2f8d103edb" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

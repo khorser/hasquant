@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_smile_section" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::SmileSection</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_flat_smile_section" prot="public" virt="non-virtual">FlatSmileSection</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_smile_section" prot="public" virt="non-virtual">InterpolatedSmileSection&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sabr_interpolated_smile_section" prot="public" virt="non-virtual">SabrInterpolatedSmileSection</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sabr_smile_section" prot="public" virt="non-virtual">SabrSmileSection</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_spreaded_smile_section" prot="public" virt="non-virtual">SpreadedSmileSection</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_smile_section_1accf36e1a5238df02dfe0073cadaa6414" prot="private" static="no" mutable="no">

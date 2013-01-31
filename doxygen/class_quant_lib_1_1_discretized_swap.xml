@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_swap" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedSwap</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_discretized_asset" prot="public" virt="non-virtual">DiscretizedAsset</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swap_1a60c914d0443816be456c95d367c4f461" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_vanilla_swap_1_1arguments" kindref="compound">VanillaSwap::arguments</ref></type>

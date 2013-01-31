@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_p_i_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::CPICouponPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_inflation_coupon_pricer" prot="public" virt="non-virtual">InflationCouponPricer</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicouponpricer.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InflationCouponPricer interface</header>

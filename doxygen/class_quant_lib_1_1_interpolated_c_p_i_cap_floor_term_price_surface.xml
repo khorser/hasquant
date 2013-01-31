@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedCPICapFloorTermPriceSurface</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface" prot="public" virt="non-virtual">CPICapFloorTermPriceSurface</basecompoundref>
     <templateparamlist>
       <param>
         <type>class Interpolator2D</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::LongstaffSchwartzMultiPathPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info" prot="protected">QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</innerclass>
       <sectiondef kind="public-func">

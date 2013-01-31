@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_unit_of_measure" kind="class" prot="public">
     <compoundname>QuantLib::UnitOfMeasure</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_barrel_unit_of_measure" prot="public" virt="non-virtual">BarrelUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gallon_unit_of_measure" prot="public" virt="non-virtual">GallonUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_kilolitre_unit_of_measure" prot="public" virt="non-virtual">KilolitreUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_litre_unit_of_measure" prot="public" virt="non-virtual">LitreUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_lot_unit_of_measure" prot="public" virt="non-virtual">LotUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_b_unit_of_measure" prot="public" virt="non-virtual">MBUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_t_unit_of_measure" prot="public" virt="non-virtual">MTUnitOfMeasure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tokyo_kilolitre_unit_of_measure" prot="public" virt="non-virtual">TokyoKilolitreUnitOfMeasure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_unit_of_measure_1_1_data" prot="public">QuantLib::UnitOfMeasure::Data</innerclass>
       <sectiondef kind="user-defined">

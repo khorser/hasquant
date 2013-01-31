@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_lattice" kind="class" prot="public">
     <compoundname>QuantLib::TreeLattice</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lattice" prot="public" virt="non-virtual">Lattice</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_curiously_recurring_template" prot="public" virt="non-virtual">QuantLib::CuriouslyRecurringTemplate&lt; Impl &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice1_d" prot="public" virt="non-virtual">TreeLattice1D&lt; Impl &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice2_d" prot="public" virt="non-virtual">TreeLattice2D&lt; Impl, T &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice.hpp</includes>
     <templateparamlist>
       <param>

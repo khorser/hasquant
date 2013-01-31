@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_rectangular_domain" kind="class" prot="public">
     <compoundname>QuantLib::RectangularDomain</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BoundedDomain</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a4b5473213e394f5b1744d2a1c7bf8108" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

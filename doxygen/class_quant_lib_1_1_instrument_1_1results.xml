@@ -2,19 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_instrument_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::Instrument::results</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::results</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bond_1_1results" prot="public" virt="non-virtual">Bond::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cds_option_1_1results" prot="public" virt="non-virtual">CdsOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1results" prot="public" virt="non-virtual">CPICapFloor::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_credit_default_swap_1_1results" prot="public" virt="non-virtual">CreditDefaultSwap::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_energy_commodity_1_1results" prot="public" virt="non-virtual">EnergyCommodity::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_multi_asset_option_1_1results" prot="public" virt="non-virtual">MultiAssetOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_asset_option_1_1results" prot="public" virt="non-virtual">OneAssetOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_path_multi_asset_option_1_1results" prot="public" virt="non-virtual">PathMultiAssetOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_1_1results" prot="public" virt="non-virtual">Swap::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_synthetic_c_d_o_1_1results" prot="public" virt="non-virtual">SyntheticCDO::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_option_1_1results" prot="public" virt="non-virtual">VarianceOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_swap_1_1results" prot="public" virt="non-virtual">VarianceSwap::results</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_instrument_1_1results_1abd5746c9a8c4bf217e5294c6c702559b" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

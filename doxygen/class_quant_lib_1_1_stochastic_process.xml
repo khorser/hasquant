@@ -2,19 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stochastic_process" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::StochasticProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" prot="public" virt="non-virtual">ExtOUWithJumpsProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_measure_process" prot="public" virt="non-virtual">ForwardMeasureProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g2_process" prot="public" virt="non-virtual">G2Process</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process" prot="public" virt="non-virtual">GJRGARCHProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_heston_process" prot="public" virt="non-virtual">HestonProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" prot="public" virt="non-virtual">HybridHestonHullWhiteProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_joint_stochastic_process" prot="public" virt="non-virtual">JointStochasticProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_kluge_ext_o_u_process" prot="public" virt="non-virtual">KlugeExtOUProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_libor_forward_model_process" prot="public" virt="non-virtual">LiborForwardModelProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stochastic_process_array" prot="public" virt="non-virtual">StochasticProcessArray</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_stochastic_process_1_1discretization" prot="public">QuantLib::StochasticProcess::discretization</innerclass>
       <sectiondef kind="user-defined">
@@ -24,16 +11,6 @@
         <definition>virtual Size size</definition>
         <argsstring>() const =0</argsstring>
         <name>size</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="64"/>
@@ -43,10 +20,6 @@
         <definition>virtual Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
-        <reimplementedby refid="class_quant_lib_1_1_bates_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="66"/>
@@ -56,16 +29,6 @@
         <definition>virtual Disposable&lt;Array&gt; initialValues</definition>
         <argsstring>() const =0</argsstring>
         <name>initialValues</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a52995c5d650b640095ade365420c42bc">initialValues</reimplementedby>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="68"/>
@@ -75,17 +38,6 @@
         <definition>virtual Disposable&lt;Array&gt; drift</definition>
         <argsstring>(Time t, const Array &amp;x) const =0</argsstring>
         <name>drift</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bates_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a1d856e971c3addcd2d00e72532fce713">drift</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -103,16 +55,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(Time t, const Array &amp;x) const =0</argsstring>
         <name>diffusion</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1ae248439226c0e7c8ae789befbcb3ea7d">diffusion</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -130,10 +72,6 @@
         <definition>virtual Disposable&lt;Array&gt; expectation</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>expectation</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a30a103c583af9320f08337052d38c622">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a30a103c583af9320f08337052d38c622">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a30a103c583af9320f08337052d38c622">expectation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a2251bf5abb3c75337aaae0e702c8612f">expectation</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -155,10 +93,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; stdDeviation</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>stdDeviation</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1ab55b8ade4729f4509ad40bbaab050a0d">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1ab55b8ade4729f4509ad40bbaab050a0d">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1ab55b8ade4729f4509ad40bbaab050a0d">stdDeviation</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1ab57d44f7476ddb77778d2c64c986da67">stdDeviation</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -180,11 +114,6 @@
         <definition>virtual Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>covariance</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_process_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a160c7d5ebac24951b3bf0ac86dd7674f">covariance</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -206,15 +135,6 @@
         <definition>virtual Disposable&lt;Array&gt; evolve</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
         <name>evolve</name>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bates_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a66053adca1c85012da97a7106f87fe10">evolve</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -240,12 +160,6 @@
         <definition>virtual Disposable&lt;Array&gt; apply</definition>
         <argsstring>(const Array &amp;x0, const Array &amp;dx) const </argsstring>
         <name>apply</name>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a91dd3de6a35734e8ce91f1ff63ae4d0c">apply</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
@@ -266,12 +180,6 @@
         <definition>virtual Time time</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>time</name>
-        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_merton76_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a748380f774765c5190c570c0c8a8091e">time</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_heston_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>

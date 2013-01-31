@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_energy_commodity_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::EnergyCommodity::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1arguments_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multiplicative_price_seasonality" kind="class" prot="public">
     <compoundname>QuantLib::MultiplicativePriceSeasonality</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_seasonality" prot="public" virt="non-virtual">Seasonality</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1aaa0bf273dd9cf60bac755433885fc754" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FittedBondDiscountCurve::FittingMethod</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_cubic_b_splines_fitting" prot="public" virt="non-virtual">CubicBSplinesFitting</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_exponential_splines_fitting" prot="public" virt="non-virtual">ExponentialSplinesFitting</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_nelson_siegel_fitting" prot="public" virt="non-virtual">NelsonSiegelFitting</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_simple_polynomial_fitting" prot="public" virt="non-virtual">SimplePolynomialFitting</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_svensson_fitting" prot="public" virt="non-virtual">SvenssonFitting</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aed718c4358fb9121b3421566c9e0be55" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -53,11 +48,6 @@
         <definition>virtual Size size</definition>
         <argsstring>() const =0</argsstring>
         <name>size</name>
-        <reimplementedby refid="class_quant_lib_1_1_exponential_splines_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_nelson_siegel_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_svensson_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_simple_polynomial_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
         <briefdescription>
 <para>total number of coefficients to fit/solve for </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="204"/>
@@ -94,11 +84,6 @@
         <definition>virtual std::auto_ptr&lt;FittingMethod&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>
-        <reimplementedby refid="class_quant_lib_1_1_exponential_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_nelson_siegel_fitting_1ae3bc14b05ae58606398649bfd2f6af41">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_svensson_fitting_1ae3bc14b05ae58606398649bfd2f6af41">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cubic_b_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41">clone</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_simple_polynomial_fitting_1ae3bc14b05ae58606398649bfd2f6af41">clone</reimplementedby>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="212"/>

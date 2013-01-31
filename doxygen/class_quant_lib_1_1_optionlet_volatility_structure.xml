@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_optionlet_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OptionletVolatilityStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_caplet_variance_curve" prot="public" virt="non-virtual">CapletVarianceCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_constant_optionlet_volatility" prot="public" virt="non-virtual">ConstantOptionletVolatility</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_spreaded_optionlet_volatility" prot="public" virt="non-virtual">SpreadedOptionletVolatility</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stripped_optionlet_adapter" prot="public" virt="non-virtual">StrippedOptionletAdapter</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>

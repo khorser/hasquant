@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_range_accrual_pricer" kind="class" prot="public">
     <compoundname>QuantLib::RangeAccrualPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="non-virtual">FloatingRateCouponPricer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_range_accrual_pricer_by_bgm" prot="public" virt="non-virtual">RangeAccrualPricerByBgm</derivedcompoundref>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

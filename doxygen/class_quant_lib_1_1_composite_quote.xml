@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_composite_quote" kind="class" prot="public">
     <compoundname>QuantLib::CompositeQuote</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_quote" prot="public" virt="non-virtual">Quote</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp</includes>
     <templateparamlist>
       <param>

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bounded_domain" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BoundedDomain</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_domain" prot="public" virt="non-virtual">Domain</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_rectangular_domain" prot="public" virt="non-virtual">RectangularDomain</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bounded_domain_1adb28eda0cefba7aa918d8d79d8b629b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

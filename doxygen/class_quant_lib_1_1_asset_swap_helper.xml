@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_asset_swap_helper" kind="class" prot="public">
     <compoundname>QuantLib::AssetSwapHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::BootstrapHelper&lt; DefaultProbabilityTermStructure &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a6f1e4aec3cba6f7cea92368273728ec8" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>

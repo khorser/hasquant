@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multi_asset_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::MultiAssetOption::results</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Instrument::results</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_greeks" prot="public" virt="non-virtual">Greeks</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_everest_option_1_1results" prot="public" virt="non-virtual">EverestOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_himalaya_option_1_1results" prot="public" virt="non-virtual">HimalayaOption::results</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_margrabe_option_1_1results" prot="public" virt="non-virtual">MargrabeOption::results</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_multi_asset_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

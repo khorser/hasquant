@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionStandard</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">GFunction</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a68f23aa4bdf5d39805c0434a36675dab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

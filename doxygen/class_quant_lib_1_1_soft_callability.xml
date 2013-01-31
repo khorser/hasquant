@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_soft_callability" kind="class" prot="public">
     <compoundname>QuantLib::SoftCallability</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_callability" prot="public" virt="non-virtual">Callability</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_soft_callability_1a39c805c18ebd9255ee1af6663afcc3fa" prot="private" static="no" mutable="no">

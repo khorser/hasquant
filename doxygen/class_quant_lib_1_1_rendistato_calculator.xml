@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_rendistato_calculator" kind="class" prot="public">
     <compoundname>QuantLib::RendistatoCalculator</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="private" virt="non-virtual">LazyObject</basecompoundref>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ad37076d5ec6a1c45a01c3d6a3fc91489" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

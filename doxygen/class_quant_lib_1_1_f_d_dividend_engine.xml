@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_f_d_dividend_engine_merton73" prot="public" virt="non-virtual">QuantLib::FDDividendEngineMerton73&lt; Scheme &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_american_condition" prot="public" virt="non-virtual">FDAmericanCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDDividendEngine&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_shout_condition" prot="public" virt="non-virtual">FDShoutCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;</derivedcompoundref>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>

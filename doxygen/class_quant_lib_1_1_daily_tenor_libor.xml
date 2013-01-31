@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_daily_tenor_libor" kind="class" prot="public">
     <compoundname>QuantLib::DailyTenorLibor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_a_d_libor_o_n" prot="public" virt="non-virtual">CADLiborON</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_daily_tenor_c_h_f_libor" prot="public" virt="non-virtual">DailyTenorCHFLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_daily_tenor_g_b_p_libor" prot="public" virt="non-virtual">DailyTenorGBPLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_daily_tenor_j_p_y_libor" prot="public" virt="non-virtual">DailyTenorJPYLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_daily_tenor_u_s_d_libor" prot="public" virt="non-virtual">DailyTenorUSDLibor</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_daily_tenor_libor_1a523f98099ea0204f01b3ca90b92bf2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

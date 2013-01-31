@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_smile_section" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedSmileSection</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_smile_section" prot="public" virt="non-virtual">SmileSection</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
     <templateparamlist>
       <param>
         <type>class Interpolator</type>

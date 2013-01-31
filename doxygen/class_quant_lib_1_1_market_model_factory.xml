@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_factory" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MarketModelFactory</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory" prot="public" virt="non-virtual">CotSwapToFwdAdapterFactory</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_flat_vol_factory" prot="public" virt="non-virtual">FlatVolFactory</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_factory" prot="public" virt="non-virtual">FwdToCotSwapAdapterFactory</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_factory_1a3fa54b54445fc2742a15bea0d4c2435f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

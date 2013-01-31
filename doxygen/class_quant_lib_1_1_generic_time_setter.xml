@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_generic_time_setter" kind="class" prot="public">
     <compoundname>QuantLib::GenericTimeSetter</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter" prot="public" virt="non-virtual">TridiagonalOperator::TimeSetter</basecompoundref>
     <templateparamlist>
       <param>
         <type>class PdeClass</type>

@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lattice" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Lattice</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice" prot="public" virt="non-virtual">TreeLattice&lt; Impl &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice" prot="public" virt="non-virtual">TreeLattice&lt; BlackScholesLattice&lt; T &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice" prot="public" virt="non-virtual">TreeLattice&lt; OneFactorModel::ShortRateTree &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice" prot="public" virt="non-virtual">TreeLattice&lt; TwoFactorModel::ShortRateTree &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
@@ -25,10 +21,6 @@
         <definition>virtual void initialize</definition>
         <argsstring>(DiscretizedAsset &amp;, Time time) const =0</argsstring>
         <name>initialize</name>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a1ddfbb7f9627db7391473e14c4a1fee2">initialize</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a1ddfbb7f9627db7391473e14c4a1fee2">initialize</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a1ddfbb7f9627db7391473e14c4a1fee2">initialize</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a1ddfbb7f9627db7391473e14c4a1fee2">initialize</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
         </param>
@@ -45,11 +37,6 @@
         <definition>virtual void rollback</definition>
         <argsstring>(DiscretizedAsset &amp;, Time to) const =0</argsstring>
         <name>rollback</name>
-        <reimplementedby refid="class_quant_lib_1_1_tsiveriotis_fernandes_lattice_1a47fadd8835bd6040e705f4a46c46ad86">rollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a47fadd8835bd6040e705f4a46c46ad86">rollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a47fadd8835bd6040e705f4a46c46ad86">rollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a47fadd8835bd6040e705f4a46c46ad86">rollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a47fadd8835bd6040e705f4a46c46ad86">rollback</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
         </param>
@@ -66,11 +53,6 @@
         <definition>virtual void partialRollback</definition>
         <argsstring>(DiscretizedAsset &amp;, Time to) const =0</argsstring>
         <name>partialRollback</name>
-        <reimplementedby refid="class_quant_lib_1_1_tsiveriotis_fernandes_lattice_1a90141038ed4cf080568664474ee02524">partialRollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a90141038ed4cf080568664474ee02524">partialRollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a90141038ed4cf080568664474ee02524">partialRollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a90141038ed4cf080568664474ee02524">partialRollback</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a90141038ed4cf080568664474ee02524">partialRollback</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
         </param>
@@ -90,10 +72,6 @@
         <definition>virtual Real presentValue</definition>
         <argsstring>(DiscretizedAsset &amp;) const =0</argsstring>
         <name>presentValue</name>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a6e58935b14ee8a45352a848a2e03dc51">presentValue</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a6e58935b14ee8a45352a848a2e03dc51">presentValue</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a6e58935b14ee8a45352a848a2e03dc51">presentValue</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice_1a6e58935b14ee8a45352a848a2e03dc51">presentValue</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">DiscretizedAsset</ref> &amp;</type>
         </param>
@@ -126,11 +104,6 @@
         <definition>virtual Disposable&lt;Array&gt; grid</definition>
         <argsstring>(Time) const =0</argsstring>
         <name>grid</name>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice1_d_1a9f0bc6b9482a95d66e1be219d3447589">grid</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice1_d_1a9f0bc6b9482a95d66e1be219d3447589">grid</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice1_d_1a9f0bc6b9482a95d66e1be219d3447589">grid</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice2_d_1aa37e45030e4c2a4e9c797614dc33c480">grid</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_lattice2_d_1aa37e45030e4c2a4e9c797614dc33c480">grid</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>

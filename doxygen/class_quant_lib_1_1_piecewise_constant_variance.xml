@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_constant_variance" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PiecewiseConstantVariance</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_constant_abcd_variance" prot="public" virt="non-virtual">PiecewiseConstantAbcdVariance</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_variance_1a22503e6f07e55d69923990e0e04f69df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

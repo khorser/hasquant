@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euribor" kind="class" prot="public">
     <compoundname>QuantLib::Euribor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor10_m" prot="public" virt="non-virtual">Euribor10M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor11_m" prot="public" virt="non-virtual">Euribor11M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor1_m" prot="public" virt="non-virtual">Euribor1M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor1_y" prot="public" virt="non-virtual">Euribor1Y</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor2_m" prot="public" virt="non-virtual">Euribor2M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor2_w" prot="public" virt="non-virtual">Euribor2W</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor3_m" prot="public" virt="non-virtual">Euribor3M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor3_w" prot="public" virt="non-virtual">Euribor3W</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor4_m" prot="public" virt="non-virtual">Euribor4M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor5_m" prot="public" virt="non-virtual">Euribor5M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor6_m" prot="public" virt="non-virtual">Euribor6M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor7_m" prot="public" virt="non-virtual">Euribor7M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor8_m" prot="public" virt="non-virtual">Euribor8M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor9_m" prot="public" virt="non-virtual">Euribor9M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor_s_w" prot="public" virt="non-virtual">EuriborSW</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euribor_1af30eba86f2ecf86b7f07994dd2b955f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

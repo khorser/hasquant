@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_united_kingdom" kind="class" prot="public">
     <compoundname>QuantLib::UnitedKingdom</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar" prot="public" virt="non-virtual">Calendar</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedkingdom.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_united_kingdom_1_1_exchange_impl" prot="private">QuantLib::UnitedKingdom::ExchangeImpl</innerclass>
     <innerclass refid="class_quant_lib_1_1_united_kingdom_1_1_metals_impl" prot="private">QuantLib::UnitedKingdom::MetalsImpl</innerclass>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_integrand" kind="class" prot="public">
     <compoundname>QuantLib::detail::Integrand</compoundname>
-    <basecompoundref prot="private" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_integrand_1a594e301f9fe01b0c3dc21b2cb6e5fec2" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref></type>

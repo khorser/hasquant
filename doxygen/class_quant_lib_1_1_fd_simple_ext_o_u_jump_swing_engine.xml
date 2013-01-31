@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdSimpleExtOUJumpSwingEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaSwingOption::arguments, VanillaSwingOption::results &gt;</basecompoundref>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a41e5d6817cb171cff9a28e375681f742" prot="public" static="no">
         <type>FdmExtOUJumpModelInnerValue::Shape</type>

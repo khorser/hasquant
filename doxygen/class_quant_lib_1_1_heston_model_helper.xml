@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_heston_model_helper" kind="class" prot="public">
     <compoundname>QuantLib::HestonModelHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibration_helper" prot="public" virt="non-virtual">CalibrationHelper</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1ac90d45f37ddd446a4543012fb5c4c4f2" prot="private" static="no" mutable="no">

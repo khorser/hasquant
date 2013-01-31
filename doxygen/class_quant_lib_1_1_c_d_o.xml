@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_d_o" kind="class" prot="public">
     <compoundname>QuantLib::CDO</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdo.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_c_d_o_1a56b7b9ab5eda00ca07f70e80911890ce" prot="private" static="no" mutable="no">

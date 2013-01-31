@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_two_factor_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TwoFactorModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_short_rate_model" prot="public" virt="non-virtual">ShortRateModel</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g2" prot="public" virt="non-virtual">G2</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::TwoFactorModel::ShortRateDynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" prot="public">QuantLib::TwoFactorModel::ShortRateTree</innerclass>
@@ -24,7 +22,6 @@
         <definition>virtual boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const =0</argsstring>
         <name>dynamics</name>
-        <reimplementedby refid="class_quant_lib_1_1_g2_1a89786edacdadb5904c317fd4ed5cb3bd">dynamics</reimplementedby>
         <briefdescription>
 <para>Returns the short-rate dynamics. </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="44"/>

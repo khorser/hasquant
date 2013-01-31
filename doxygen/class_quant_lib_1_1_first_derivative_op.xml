@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_first_derivative_op" kind="class" prot="public">
     <compoundname>QuantLib::FirstDerivativeOp</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">TripleBandLinearOp</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_first_derivative_op_1a103481ada0c1754f9e9d1336c9b4d5a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

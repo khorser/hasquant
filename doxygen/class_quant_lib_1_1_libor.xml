@@ -2,16 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_libor" kind="class" prot="public">
     <compoundname>QuantLib::Libor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_a_u_d_libor" prot="public" virt="non-virtual">AUDLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_a_d_libor" prot="public" virt="non-virtual">CADLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_h_f_libor" prot="public" virt="non-virtual">CHFLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_d_k_k_libor" prot="public" virt="non-virtual">DKKLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g_b_p_libor" prot="public" virt="non-virtual">GBPLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_j_p_y_libor" prot="public" virt="non-virtual">JPYLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_n_z_d_libor" prot="public" virt="non-virtual">NZDLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_s_e_k_libor" prot="public" virt="non-virtual">SEKLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_u_s_d_libor" prot="public" virt="non-virtual">USDLibor</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date calculations</header>

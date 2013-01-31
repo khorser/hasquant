@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_volatility_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::VolatilityTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_term_structure" prot="public" virt="non-virtual">TermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_atm_vol_curve" prot="public" virt="non-virtual">BlackAtmVolCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_vol_term_structure" prot="public" virt="non-virtual">BlackVolTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor_term_volatility_structure" prot="public" virt="non-virtual">CapFloorTermVolatilityStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_volatility_surface" prot="public" virt="non-virtual">CPIVolatilitySurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_local_vol_term_structure" prot="public" virt="non-virtual">LocalVolTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_optionlet_volatility_structure" prot="public" virt="non-virtual">OptionletVolatilityStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_volatility_structure" prot="public" virt="non-virtual">SwaptionVolatilityStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" prot="public" virt="non-virtual">YoYOptionletVolatilitySurface</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -145,33 +136,6 @@
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
-        <reimplementedby refid="class_quant_lib_1_1_caplet_variance_curve_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_adapter_1a92f7194103698b0abf537479db1bab49">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1a92f7194103698b0abf537479db1bab49">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_constant_vol_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_constant_vol_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_cap_floor_term_volatility_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_optionlet_volatility_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_swaption_volatility_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_surface_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_curve_1aec700319eaa1c6fca66df8e15aea6167">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_matrix_1a92f7194103698b0abf537479db1bab49">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a325a26f342dc0d36ac376c98e79f7565">minStrike</reimplementedby>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="74"/>
@@ -181,33 +145,6 @@
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
-        <reimplementedby refid="class_quant_lib_1_1_caplet_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_adapter_1af96d43a92083621b2e8e980ec2b666b9">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_c_p_i_volatility_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1af96d43a92083621b2e8e980ec2b666b9">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_sabr_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_constant_vol_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_local_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_constant_vol_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_cap_floor_term_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_optionlet_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_swaption_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_matrix_1af96d43a92083621b2e8e980ec2b666b9">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_yo_y_optionlet_volatility_1a890665a296b4f9991d4d01ac63e35873">maxStrike</reimplementedby>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="76"/>

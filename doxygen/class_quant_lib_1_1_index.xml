@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_index" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Index</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_inflation_index" prot="public" virt="non-virtual">InflationIndex</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interest_rate_index" prot="public" virt="non-virtual">InterestRateIndex</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/index.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -19,9 +16,6 @@
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
         <name>name</name>
-        <reimplementedby refid="class_quant_lib_1_1_b_m_a_index_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
         <briefdescription>
 <para>Returns the name of the index. </para>        </briefdescription>
         <detaileddescription>
@@ -33,8 +27,6 @@
         <definition>virtual Calendar fixingCalendar</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingCalendar</name>
-        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1abd47d61ed23fb73440b0c02534236330">fixingCalendar</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1abd47d61ed23fb73440b0c02534236330">fixingCalendar</reimplementedby>
         <briefdescription>
 <para>returns the calendar defining valid fixing dates </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="54"/>
@@ -44,9 +36,6 @@
         <definition>virtual bool isValidFixingDate</definition>
         <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
         <name>isValidFixingDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_b_m_a_index_1aa279f27f1bb152aa71ff980f0bae2727">isValidFixingDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1aa279f27f1bb152aa71ff980f0bae2727">isValidFixingDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1aa279f27f1bb152aa71ff980f0bae2727">isValidFixingDate</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
@@ -60,10 +49,6 @@
         <definition>virtual Real fixing</definition>
         <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const =0</argsstring>
         <name>fixing</name>
-        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1a1c776ca10de744b29a4d051102003eb9">fixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1ab2e953a50a4d61d840d72c13c4789ea6">fixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_inflation_index_1a1c776ca10de744b29a4d051102003eb9">fixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_index_1a1c776ca10de744b29a4d051102003eb9">fixing</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
@@ -93,7 +78,6 @@
         <definition>virtual void addFixing</definition>
         <argsstring>(const Date &amp;fixingDate, Real fixing, bool forceOverwrite=false)</argsstring>
         <name>addFixing</name>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1aa8992ffa6a24397eda41c2a7ac458c97">addFixing</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>

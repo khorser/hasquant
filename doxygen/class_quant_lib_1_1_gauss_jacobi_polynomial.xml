@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_jacobi_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::GaussJacobiPolynomial</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial" prot="public" virt="non-virtual">GaussianOrthogonalPolynomial</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_chebyshev2nd_polynomial" prot="public" virt="non-virtual">GaussChebyshev2ndPolynomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_chebyshev_polynomial" prot="public" virt="non-virtual">GaussChebyshevPolynomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_gegenbauer_polynomial" prot="public" virt="non-virtual">GaussGegenbauerPolynomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_legendre_polynomial" prot="public" virt="non-virtual">GaussLegendrePolynomial</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_gauss_jacobi_polynomial_1a3a5f60670b1c3273333467ce33939204" prot="private" static="no" mutable="no">

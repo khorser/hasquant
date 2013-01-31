@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_g_j_r_g_a_r_c_h_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticGJRGARCHEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_model_engine" prot="public" virt="non-virtual">GenericModelEngine&lt; GJRGARCHModel, VanillaOption::arguments, VanillaOption::results &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticgjrgarchengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_g_j_r_g_a_r_c_h_engine_1aee0588dc0bdd4847b643555df4338ea3" prot="private" static="no" mutable="yes">

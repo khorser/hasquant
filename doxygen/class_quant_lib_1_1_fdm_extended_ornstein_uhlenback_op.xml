@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmExtendedOrnsteinUhlenbackOp</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmLinearOpComposite</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>

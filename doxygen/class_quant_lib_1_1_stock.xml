@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stock" kind="class" prot="public">
     <compoundname>QuantLib::Stock</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_stock_1a5d87a388f17e28809793d3f796120ffe" prot="private" static="no" mutable="no">

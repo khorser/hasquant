@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolation2_d_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::Interpolation2D::Impl</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_flat_extrapolator2_d_1_1_flat_extrapolator2_d_impl" prot="public" virt="non-virtual">FlatExtrapolator2D::FlatExtrapolator2DImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl" prot="public" virt="non-virtual">Interpolation2D::templateImpl&lt; I1, I2, M &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -25,7 +23,6 @@
         <definition>virtual Real xMin</definition>
         <argsstring>() const =0</argsstring>
         <name>xMin</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1ae464439f613889645330b4fefbf66ab2">xMin</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="51"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a7d1806bb5aaf76faa0458141176cee59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -33,7 +30,6 @@
         <definition>virtual Real xMax</definition>
         <argsstring>() const =0</argsstring>
         <name>xMax</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1ac5bfc70b2ea8397a47c13cbfe397345b">xMax</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="52"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a7d9e92e02c01de190de9ebb26a88d039" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -41,7 +37,6 @@
         <definition>virtual std::vector&lt;Real&gt; xValues</definition>
         <argsstring>() const =0</argsstring>
         <name>xValues</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1abd3804c44239a53b3697f463c999550b">xValues</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a062c9f965c87d9295a8d17f401ccfba8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -49,7 +44,6 @@
         <definition>virtual Size locateX</definition>
         <argsstring>(Real x) const =0</argsstring>
         <name>locateX</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1a1dad083b76f04303ab47af9b9cf673ad">locateX</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
@@ -61,7 +55,6 @@
         <definition>virtual Real yMin</definition>
         <argsstring>() const =0</argsstring>
         <name>yMin</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1ae9d8578e244ef2368ca8870e98001bb6">yMin</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="55"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1aef6ca12cfd5ef96200c70e46a8f1d878" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -69,7 +62,6 @@
         <definition>virtual Real yMax</definition>
         <argsstring>() const =0</argsstring>
         <name>yMax</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1ac0015c501e8d85fcc8d8e2303b5713ba">yMax</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="56"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1ac27e584d07fa9748bf3e4142faee2e63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -77,7 +69,6 @@
         <definition>virtual std::vector&lt;Real&gt; yValues</definition>
         <argsstring>() const =0</argsstring>
         <name>yValues</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1a3a528ec1ab50863605d4aec3a44f8caa">yValues</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="57"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a50c3515366911ef7efc911087577c647" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -85,7 +76,6 @@
         <definition>virtual Size locateY</definition>
         <argsstring>(Real y) const =0</argsstring>
         <name>locateY</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1a226ca4edb5a41970a8589cda9a9c46b5">locateY</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
@@ -97,7 +87,6 @@
         <definition>virtual const Matrix&amp; zData</definition>
         <argsstring>() const =0</argsstring>
         <name>zData</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1ada4fe51c1f2712b9652a097a6613a8a9">zData</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="59"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a33626bf0b191571367cc6c0cf97f4f59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -105,7 +94,6 @@
         <definition>virtual bool isInRange</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
         <name>isInRange</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl_1a4f46449c6173e13183974caff591ab2f">isInRange</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>

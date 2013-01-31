@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedCallableFixedRateBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_discretized_asset" prot="public" virt="non-virtual">DiscretizedAsset</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1af48abd19298730ed7f612e1051255fae" prot="private" static="no" mutable="no">
         <type>CallableBond::arguments</type>

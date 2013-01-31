@@ -2,17 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_day_counter_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::DayCounter::Impl</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual360_1_1_impl" prot="public" virt="non-virtual">Actual360::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual365_fixed_1_1_impl" prot="public" virt="non-virtual">Actual365Fixed::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual_1_1_a_f_b___impl" prot="public" virt="non-virtual">ActualActual::AFB_Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl" prot="public" virt="non-virtual">ActualActual::ISDA_Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual_1_1_i_s_m_a___impl" prot="public" virt="non-virtual">ActualActual::ISMA_Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_business252_1_1_impl" prot="public" virt="non-virtual">Business252::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_day_counter_1_1_impl" prot="public" virt="non-virtual">OneDayCounter::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_simple_day_counter_1_1_impl" prot="public" virt="non-virtual">SimpleDayCounter::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl" prot="public" virt="non-virtual">Thirty360::EU_Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_thirty360_1_1_i_t___impl" prot="public" virt="non-virtual">Thirty360::IT_Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_thirty360_1_1_u_s___impl" prot="public" virt="non-virtual">Thirty360::US_Impl</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bachelier_yo_y_inflation_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BachelierYoYInflationCouponPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer" prot="public" virt="non-virtual">YoYInflationCouponPricer</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bachelier_yo_y_inflation_coupon_pricer_1a897fcdcef0841501239b9fdcfcf13ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

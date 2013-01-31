@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_joshi4" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedJoshi4</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_extended_binomial_tree" prot="public" virt="non-virtual">ExtendedBinomialTree&lt; ExtendedJoshi4 &gt;</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_joshi4_1a0fefbfbff87da4aa56d07ea7964498c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

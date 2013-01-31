@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_basis_system" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MarketModelBasisSystem</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">MarketModelNodeDataProvider</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_basis_system" prot="public" virt="non-virtual">SwapBasisSystem</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_forward_basis_system" prot="public" virt="non-virtual">SwapForwardBasisSystem</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_basis_system_1a8c44b012825c6dcb6fe4d4d01a078d45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>

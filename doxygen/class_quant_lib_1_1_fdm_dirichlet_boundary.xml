@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_dirichlet_boundary" kind="class" prot="public">
     <compoundname>QuantLib::FdmDirichletBoundary</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_boundary_condition" prot="public" virt="non-virtual">BoundaryCondition&lt; FdmLinearOp &gt;</basecompoundref>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9625d18a7fe44bba0f81c0de83f765fb" prot="public" static="no">
         <type>FdmLinearOp</type>

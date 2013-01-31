@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multi_asset_option" kind="class" prot="public">
     <compoundname>QuantLib::MultiAssetOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_option" prot="public" virt="non-virtual">Option</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_basket_option" prot="public" virt="non-virtual">BasketOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_everest_option" prot="public" virt="non-virtual">EverestOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_himalaya_option" prot="public" virt="non-virtual">HimalayaOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_margrabe_option" prot="public" virt="non-virtual">MargrabeOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_pagoda_option" prot="public" virt="non-virtual">PagodaOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_spread_option" prot="public" virt="non-virtual">SpreadOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_v_p_p_option" prot="public" virt="non-virtual">VanillaVPPOption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_multi_asset_option_1_1engine" prot="public">QuantLib::MultiAssetOption::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_multi_asset_option_1_1results" prot="public">QuantLib::MultiAssetOption::results</innerclass>

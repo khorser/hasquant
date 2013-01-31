@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_discrete_geometric_average_price_asian_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticDiscreteGeometricAveragePriceAsianEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1engine" prot="public" virt="non-virtual">DiscreteAveragingAsianOption::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/analytic_discr_geom_av_price.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_discrete_geometric_average_price_asian_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">

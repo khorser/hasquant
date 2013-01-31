@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_thirty360" kind="class" prot="public">
     <compoundname>QuantLib::Thirty360</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_day_counter" prot="public" virt="non-virtual">DayCounter</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl" prot="private">QuantLib::Thirty360::EU_Impl</innerclass>
     <innerclass refid="class_quant_lib_1_1_thirty360_1_1_i_t___impl" prot="private">QuantLib::Thirty360::IT_Impl</innerclass>

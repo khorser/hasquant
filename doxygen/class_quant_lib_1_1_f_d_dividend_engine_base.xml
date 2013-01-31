@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_engine_base" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FDDividendEngineBase</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">QuantLib::FDMultiPeriodEngine&lt; Scheme &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_engine_merton73" prot="public" virt="non-virtual">FDDividendEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_engine_shift_scale" prot="public" virt="non-virtual">FDDividendEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp</includes>
     <templateparamlist>
       <param>

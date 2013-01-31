@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tsiveriotis_fernandes_lattice" kind="class" prot="public">
     <compoundname>QuantLib::TsiveriotisFernandesLattice</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_black_scholes_lattice" prot="public" virt="non-virtual">QuantLib::BlackScholesLattice&lt; T &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp</includes>
     <templateparamlist>
       <param>

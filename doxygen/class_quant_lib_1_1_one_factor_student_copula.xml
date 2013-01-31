@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_student_copula" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorStudentCopula</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_factor_copula" prot="public" virt="non-virtual">OneFactorCopula</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_student_copula_1ae3cc790c460f714df62ec867fc4dab0c" prot="private" static="no" mutable="no">

@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_inner_value_calculator" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FdmInnerValueCalculator</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_exp_ext_o_u_inner_value_calculator" prot="public" virt="non-virtual">FdmExpExtOUInnerValueCalculator</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value" prot="public" virt="non-virtual">FdmExtOUJumpModelInnerValue</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_log_basket_inner_value" prot="public" virt="non-virtual">FdmLogBasketInnerValue</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_log_inner_value" prot="public" virt="non-virtual">FdmLogInnerValue</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value" prot="public" virt="non-virtual">FdmSpreadPayoffInnerValue</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_zero_inner_value" prot="public" virt="non-virtual">FdmZeroInnerValue</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

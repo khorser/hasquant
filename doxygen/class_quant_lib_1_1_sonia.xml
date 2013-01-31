@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_sonia" kind="class" prot="public">
     <compoundname>QuantLib::Sonia</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">OvernightIndex</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/sonia.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sonia_1ae069aede61ab597509e4a8d29a1c1b42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

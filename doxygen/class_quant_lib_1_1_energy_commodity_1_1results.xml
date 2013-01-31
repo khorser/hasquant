@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_energy_commodity_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::EnergyCommodity::results</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Instrument::results</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1results_1a2d0d8db8ecaae636a224ea2ba4dd51a2" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

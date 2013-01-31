@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap_floor_term_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CapFloorTermVolatilityStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor_term_vol_curve" prot="public" virt="non-virtual">CapFloorTermVolCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor_term_vol_surface" prot="public" virt="non-virtual">CapFloorTermVolSurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_constant_cap_floor_term_volatility" prot="public" virt="non-virtual">ConstantCapFloorTermVolatility</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>

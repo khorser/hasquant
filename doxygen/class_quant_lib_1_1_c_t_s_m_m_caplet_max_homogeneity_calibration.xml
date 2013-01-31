@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletMaxHomogeneityCalibration</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">CTSMMCapletCalibration</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1a20c680d5c61a51c3e58a152b6385ea25" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

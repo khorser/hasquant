@@ -2,17 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bond" kind="class" prot="public">
     <compoundname>QuantLib::Bond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_amortizing_cms_rate_bond" prot="public" virt="non-virtual">AmortizingCmsRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_amortizing_fixed_rate_bond" prot="public" virt="non-virtual">AmortizingFixedRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_amortizing_floating_rate_bond" prot="public" virt="non-virtual">AmortizingFloatingRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_callable_bond" prot="public" virt="non-virtual">CallableBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cms_rate_bond" prot="public" virt="non-virtual">CmsRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_convertible_bond" prot="public" virt="non-virtual">ConvertibleBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_bond" prot="public" virt="non-virtual">CPIBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fixed_rate_bond" prot="public" virt="non-virtual">FixedRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_floating_rate_bond" prot="public" virt="non-virtual">FloatingRateBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zero_coupon_bond" prot="public" virt="non-virtual">ZeroCouponBond</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_bond_1_1arguments" prot="public">QuantLib::Bond::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_bond_1_1engine" prot="public">QuantLib::Bond::engine</innerclass>
@@ -333,8 +322,6 @@
         <definition>virtual Real accruedAmount</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>accruedAmount</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_c_t_e_u_1ae8885ec61dd18583e5ac542fb5498fe4">accruedAmount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_b_t_p_1ae8885ec61dd18583e5ac542fb5498fe4">accruedAmount</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
           <declname>d</declname>

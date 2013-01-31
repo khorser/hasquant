@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_convex_monotone4_min_helper" kind="class" prot="public">
     <compoundname>QuantLib::detail::ConvexMonotone4MinHelper</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">ConvexMonotone4Helper</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_convex_monotone4_min_helper_1af1e26afaea4ba30fc153246f049723f4" prot="private" static="no" mutable="no">
         <type>bool</type>

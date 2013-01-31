@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_american_engine_merton73" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendAmericanEngineMerton73</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">QuantLib::FDEngineAdapter&lt; FDAmericanCondition&lt; FDDividendEngineMerton73&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</basecompoundref>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>

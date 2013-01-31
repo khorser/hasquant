@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_mesher" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FdmMesher</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_mesher_composite" prot="public" virt="non-virtual">FdmMesherComposite</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_uniform_grid_mesher" prot="public" virt="non-virtual">UniformGridMesher</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

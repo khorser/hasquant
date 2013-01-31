@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mixed_linear_kruger_cubic" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearKrugerCubic</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_mixed_linear_cubic_interpolation" prot="public" virt="non-virtual">MixedLinearCubicInterpolation</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_kruger_cubic_1a2952cdc4c31ff74905711b81347ccbba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

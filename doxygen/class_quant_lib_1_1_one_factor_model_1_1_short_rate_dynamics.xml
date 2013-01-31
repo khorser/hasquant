@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorModel::ShortRateDynamics</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics" prot="public" virt="non-virtual">BlackKarasinski::Dynamics</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" prot="public" virt="non-virtual">CoxIngersollRoss::Dynamics</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hull_white_1_1_dynamics" prot="public" virt="non-virtual">HullWhite::Dynamics</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vasicek_1_1_dynamics" prot="public" virt="non-virtual">Vasicek::Dynamics</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1aa5a59ac3cc2d12f748a336ede36c6ed2" prot="private" static="no" mutable="no">
@@ -40,11 +36,6 @@
         <definition>virtual Real variable</definition>
         <argsstring>(Time t, Rate r) const =0</argsstring>
         <name>variable</name>
-        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039">variable</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348">variable</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33">variable</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039">variable</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348">variable</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -62,11 +53,6 @@
         <definition>virtual Rate shortRate</definition>
         <argsstring>(Time t, Real variable) const =0</argsstring>
         <name>shortRate</name>
-        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500">shortRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1af27a7a114190fb434f373a1427cca1fe">shortRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2">shortRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500">shortRate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6">shortRate</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

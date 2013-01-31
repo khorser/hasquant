@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_black_scholes_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmBlackScholesSolver</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a062ac6697ede4ec0ad571e1557c8dd59" prot="public" static="no">
         <type>std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;</type>

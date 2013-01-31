@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_brownian_generator" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BrownianGenerator</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_m_t_brownian_generator" prot="public" virt="non-virtual">MTBrownianGenerator</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sobol_brownian_generator" prot="public" virt="non-virtual">SobolBrownianGenerator</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_1a447c523c246b53547f6723d481620f92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

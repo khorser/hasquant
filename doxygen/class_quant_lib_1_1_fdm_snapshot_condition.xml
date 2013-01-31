@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_snapshot_condition" kind="class" prot="public">
     <compoundname>QuantLib::FdmSnapshotCondition</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">StepCondition&lt; Array &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_snapshot_condition_1a457f33ba3cae0a866042833846c84a81" prot="private" static="no" mutable="no">
         <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>

@@ -2,53 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pricing_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PricingEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Arguments, Results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; BarrierOption::arguments, BarrierOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; BasketOption::arguments, BasketOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Bond::arguments, Bond::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CallableBond::arguments, CallableBond::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CapFloor::arguments, CapFloor::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CdsOption::arguments, CdsOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CliquetOption::arguments, CliquetOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CompoundOption::arguments, CompoundOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ContinuousAveragingAsianOption::arguments, ContinuousAveragingAsianOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ContinuousFixedLookbackOption::arguments, ContinuousFixedLookbackOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ContinuousFloatingLookbackOption::arguments, ContinuousFloatingLookbackOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ConvertibleBond::option::arguments, ConvertibleBond::option::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CPICapFloor::arguments, CPICapFloor::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CPISwap::arguments, CPISwap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CreditDefaultSwap::arguments, CreditDefaultSwap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; DiscreteAveragingAsianOption::arguments, DiscreteAveragingAsianOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; DividendBarrierOption::arguments, DividendBarrierOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; DividendVanillaOption::arguments, DividendVanillaOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; EnergyCommodity::arguments, EnergyCommodity::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; EverestOption::arguments, EverestOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ForwardOptionArguments&lt; VanillaOption::arguments &gt;, VanillaOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; HimalayaOption::arguments, HimalayaOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Instr::arguments, QuantoOptionResults&lt; Instr::results &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; MargrabeOption::arguments, MargrabeOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; MultiAssetOption::arguments, MultiAssetOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; OneAssetOption::arguments, OneAssetOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; PagodaOption::arguments, PagodaOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; PathMultiAssetOption::arguments, PathMultiAssetOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; SimpleChooserOption::arguments, SimpleChooserOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; SpreadOption::arguments, SpreadOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Swap::arguments, Swap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Swaption::arguments, Swaption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; SyntheticCDO::arguments, SyntheticCDO::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaOption::arguments, VanillaOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaStorageOption::arguments, VanillaStorageOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaSwap::arguments, VanillaSwap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaSwingOption::arguments, VanillaSwingOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaVPPOption::arguments, VanillaVPPOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VarianceOption::arguments, VarianceOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VarianceSwap::arguments, VarianceSwap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; WriterExtensibleOption::arguments, WriterExtensibleOption::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; YearOnYearInflationSwap::arguments, YearOnYearInflationSwap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; YoYInflationCapFloor::arguments, YoYInflationCapFloor::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ZeroCouponInflationSwap::arguments, ZeroCouponInflationSwap::results &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ArgumentsType, ResultsType &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_pricing_engine_1_1arguments" prot="public">QuantLib::PricingEngine::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_pricing_engine_1_1results" prot="public">QuantLib::PricingEngine::results</innerclass>
@@ -65,52 +18,6 @@
         <definition>virtual arguments* getArguments</definition>
         <argsstring>() const =0</argsstring>
         <name>getArguments</name>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5">getArguments</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="39"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -118,52 +25,6 @@
         <definition>virtual const results* getResults</definition>
         <argsstring>() const =0</argsstring>
         <name>getResults</name>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c">getResults</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="40"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
@@ -171,52 +32,6 @@
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="41"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -224,75 +39,6 @@
         <definition>virtual void calculate</definition>
         <argsstring>() const =0</argsstring>
         <name>calculate</name>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_writer_extensible_option_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kirk_spread_option_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_simple_chooser_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_lfm_swaption_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_performance_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_integral_heston_variance_option_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_cds_option_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_dividend_european_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_perturbative_barrier_option_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_cliquet_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_continuous_fixed_lookback_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_performance_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_european_margrabe_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_american_margrabe_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_kirk_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_compound_option_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_g2_swaption_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stulz_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_barrier_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_discrete_geometric_average_strike_asian_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_bates_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_performance_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_swaption_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_black_scholes_rebate_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_b_s_m_hull_white_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_vanilla_swap_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_heston_rebate_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_discrete_geometric_average_price_asian_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_continuous_geometric_average_price_asian_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_pagoda_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_f_d_european_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_black_scholes_barrier_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_binomial_convertible_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_heston_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_g_j_r_g_a_r_c_h_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_jamshidian_swaption_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_digital_american_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_heston_barrier_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fd_heston_hull_white_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_path_basket_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_european_basket_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_longstaff_schwartz_path_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_binomial_vanilla_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_tree_swaption_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_longstaff_schwartz_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_longstaff_schwartz_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_variance_swap_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_barrier_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_mid_point_c_d_o_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_integral_c_d_o_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>

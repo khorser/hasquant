@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd_black_scholes_asian_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdBlackScholesAsianEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; DiscreteAveragingAsianOption::arguments, DiscreteAveragingAsianOption::results &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1acef2b56fcfa48f7f4a68844033f24b63" prot="private" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>

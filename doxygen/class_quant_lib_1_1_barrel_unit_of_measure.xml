@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_barrel_unit_of_measure" kind="class" prot="public">
     <compoundname>QuantLib::BarrelUnitOfMeasure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_unit_of_measure" prot="public" virt="non-virtual">UnitOfMeasure</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_barrel_unit_of_measure_1abec0040497c0f87301acc9bfed5a4f8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_constant_grad_helper" kind="class" prot="public">
     <compoundname>QuantLib::detail::ConstantGradHelper</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">SectionHelper</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_constant_grad_helper_1af3d64f6e70b2ae7c4de97bb7b06facd4" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

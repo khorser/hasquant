@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simple_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::SimpleCashFlow</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_amortizing_payment" prot="public" virt="non-virtual">AmortizingPayment</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_redemption" prot="public" virt="non-virtual">Redemption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
@@ -44,8 +41,6 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <reimplements refid="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_amortizing_payment_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>

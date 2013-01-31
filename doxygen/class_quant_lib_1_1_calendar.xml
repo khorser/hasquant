@@ -2,44 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calendar" kind="class" prot="public">
     <compoundname>QuantLib::Calendar</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_argentina" prot="public" virt="non-virtual">Argentina</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_australia" prot="public" virt="non-virtual">Australia</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bespoke_calendar" prot="public" virt="non-virtual">BespokeCalendar</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_brazil" prot="public" virt="non-virtual">Brazil</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_canada" prot="public" virt="non-virtual">Canada</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_china" prot="public" virt="non-virtual">China</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_czech_republic" prot="public" virt="non-virtual">CzechRepublic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_denmark" prot="public" virt="non-virtual">Denmark</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_finland" prot="public" virt="non-virtual">Finland</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_germany" prot="public" virt="non-virtual">Germany</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hong_kong" prot="public" virt="non-virtual">HongKong</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hungary" prot="public" virt="non-virtual">Hungary</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_iceland" prot="public" virt="non-virtual">Iceland</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_india" prot="public" virt="non-virtual">India</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_indonesia" prot="public" virt="non-virtual">Indonesia</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_italy" prot="public" virt="non-virtual">Italy</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_japan" prot="public" virt="non-virtual">Japan</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_joint_calendar" prot="public" virt="non-virtual">JointCalendar</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mexico" prot="public" virt="non-virtual">Mexico</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_new_zealand" prot="public" virt="non-virtual">NewZealand</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_norway" prot="public" virt="non-virtual">Norway</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_null_calendar" prot="public" virt="non-virtual">NullCalendar</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_poland" prot="public" virt="non-virtual">Poland</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_russia" prot="public" virt="non-virtual">Russia</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_saudi_arabia" prot="public" virt="non-virtual">SaudiArabia</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_singapore" prot="public" virt="non-virtual">Singapore</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_slovakia" prot="public" virt="non-virtual">Slovakia</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_south_africa" prot="public" virt="non-virtual">SouthAfrica</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_south_korea" prot="public" virt="non-virtual">SouthKorea</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sweden" prot="public" virt="non-virtual">Sweden</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_switzerland" prot="public" virt="non-virtual">Switzerland</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_taiwan" prot="public" virt="non-virtual">Taiwan</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_t_a_r_g_e_t" prot="public" virt="non-virtual">TARGET</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_turkey" prot="public" virt="non-virtual">Turkey</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_ukraine" prot="public" virt="non-virtual">Ukraine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_kingdom" prot="public" virt="non-virtual">UnitedKingdom</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_states" prot="public" virt="non-virtual">UnitedStates</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_weekends_only" prot="public" virt="non-virtual">WeekendsOnly</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_calendar_1_1_impl" prot="protected">QuantLib::Calendar::Impl</innerclass>
     <innerclass refid="class_quant_lib_1_1_calendar_1_1_orthodox_impl" prot="public">QuantLib::Calendar::OrthodoxImpl</innerclass>

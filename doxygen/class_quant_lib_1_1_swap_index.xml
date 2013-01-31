@@ -2,20 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swap_index" kind="class" prot="public">
     <compoundname>QuantLib::SwapIndex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interest_rate_index" prot="public" virt="non-virtual">InterestRateIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_chf_libor_swap_isda_fix" prot="public" virt="non-virtual">ChfLiborSwapIsdaFix</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor_swap_ifr_fix" prot="public" virt="non-virtual">EuriborSwapIfrFix</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor_swap_isda_fix_a" prot="public" virt="non-virtual">EuriborSwapIsdaFixA</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor_swap_isda_fix_b" prot="public" virt="non-virtual">EuriborSwapIsdaFixB</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_eur_libor_swap_ifr_fix" prot="public" virt="non-virtual">EurLiborSwapIfrFix</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_eur_libor_swap_isda_fix_a" prot="public" virt="non-virtual">EurLiborSwapIsdaFixA</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_eur_libor_swap_isda_fix_b" prot="public" virt="non-virtual">EurLiborSwapIsdaFixB</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gbp_libor_swap_isda_fix" prot="public" virt="non-virtual">GbpLiborSwapIsdaFix</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_jpy_libor_swap_isda_fix_am" prot="public" virt="non-virtual">JpyLiborSwapIsdaFixAm</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm" prot="public" virt="non-virtual">JpyLiborSwapIsdaFixPm</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_overnight_indexed_swap_index" prot="public" virt="non-virtual">OvernightIndexedSwapIndex</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_usd_libor_swap_isda_fix_am" prot="public" virt="non-virtual">UsdLiborSwapIsdaFixAm</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_usd_libor_swap_isda_fix_pm" prot="public" virt="non-virtual">UsdLiborSwapIsdaFixPm</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InterestRateIndex interface</header>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_perturbative_barrier_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::PerturbativeBarrierOptionEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_barrier_option_1_1engine" prot="public" virt="non-virtual">BarrierOption::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">

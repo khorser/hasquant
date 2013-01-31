@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_vol_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BlackVolTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_variance_term_structure" prot="public" virt="non-virtual">BlackVarianceTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_volatility_term_structure" prot="public" virt="non-virtual">BlackVolatilityTermStructure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -310,14 +307,6 @@
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_constant_vol_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_volatility_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
@@ -333,12 +322,6 @@
         <definition>virtual Real blackVarianceImpl</definition>
         <argsstring>(Time t, Real strike) const =0</argsstring>
         <name>blackVarianceImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1aa1d54e6aae7eded3d225f318ea0809e8">blackVarianceImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1aac9acafacf1acecd771fade5de4d6d83">blackVarianceImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1aa1d54e6aae7eded3d225f318ea0809e8">blackVarianceImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1abc901657495c85091d7bbc4316b45112">blackVarianceImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1a09743beeb203823c4210a18876fc744c">blackVarianceImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_volatility_term_structure_1a2b2daeb3aa678ba0363a0ba78e5cb94e">blackVarianceImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -356,8 +339,6 @@
         <definition>virtual Volatility blackVolImpl</definition>
         <argsstring>(Time t, Real strike) const =0</argsstring>
         <name>blackVolImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_black_constant_vol_1a04384dcdddac572e2d556ee140adb185">blackVolImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_term_structure_1a215d8b326d1a4fd938663365815bc7f7">blackVolImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

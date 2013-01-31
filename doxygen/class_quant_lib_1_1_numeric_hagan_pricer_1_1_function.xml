@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::NumericHaganPricer::Function</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand" prot="public" virt="non-virtual">NumericHaganPricer::ConundrumIntegrand</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function_1af90995647e802e28f0a10dec00761500" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

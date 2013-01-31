@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_curiously_recurring_template" kind="class" prot="public">
     <compoundname>QuantLib::CuriouslyRecurringTemplate</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_solver1_d" prot="public" virt="non-virtual">Solver1D&lt; Impl &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_lattice" prot="public" virt="non-virtual">TreeLattice&lt; Impl &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp</includes>
     <templateparamlist>
       <param>

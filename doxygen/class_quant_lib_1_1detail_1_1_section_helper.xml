@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_section_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::detail::SectionHelper</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_combo_helper" prot="public" virt="non-virtual">ComboHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_constant_grad_helper" prot="public" virt="non-virtual">ConstantGradHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_convex_monotone2_helper" prot="public" virt="non-virtual">ConvexMonotone2Helper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper" prot="public" virt="non-virtual">ConvexMonotone3Helper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_convex_monotone4_helper" prot="public" virt="non-virtual">ConvexMonotone4Helper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper" prot="public" virt="non-virtual">EverywhereConstantHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_quadratic_helper" prot="public" virt="non-virtual">QuadraticHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper" prot="public" virt="non-virtual">QuadraticMinHelper</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

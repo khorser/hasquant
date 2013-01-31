@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_survival_probability_structure" kind="class" prot="public">
     <compoundname>QuantLib::SurvivalProbabilityStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_default_probability_term_structure" prot="public" virt="non-virtual">DefaultProbabilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_survival_probability_curve" prot="public" virt="non-virtual">InterpolatedSurvivalProbabilityCurve&lt; Interpolator &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/survivalprobabilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>

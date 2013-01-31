@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_path_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PathPricer</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; PathType, ValueType &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp</includes>
     <templateparamlist>
       <param>
@@ -30,8 +29,6 @@
         <definition>virtual ValueType operator()</definition>
         <argsstring>(const PathType &amp;path) const =0</argsstring>
         <name>operator()</name>
-        <reimplementedby refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3">operator()</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a973b5f4a40082fdcd2ccbb91e5116756">operator()</reimplementedby>
         <param>
           <type>const PathType &amp;</type>
           <declname>path</declname>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_optionlet_stripper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::YoYOptionletStripper</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper" prot="public" virt="non-virtual">InterpolatedYoYOptionletStripper&lt; Interpolator1D &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1a5188210fcbaf217a55550e96c4909cfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -10,7 +9,6 @@
         <definition>virtual void initialize</definition>
         <argsstring>(const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;, const Real slope) const =0</argsstring>
         <name>initialize</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1aa5a448819773b424b8521378875e245d">initialize</reimplementedby>
         <param>
           <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
         </param>
@@ -30,7 +28,6 @@
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a5e7f4a8423be791d84c2f637f5f36309">minStrike</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="47"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -38,7 +35,6 @@
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a665e35ebe818f3866d6a3946ed399432">maxStrike</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="48"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1ac959cc382e922f194db0da80ec9984d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -46,7 +42,6 @@
         <definition>virtual std::vector&lt;Rate&gt; strikes</definition>
         <argsstring>() const =0</argsstring>
         <name>strikes</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a1b89821fd50ae8ad7335bb45f0f7ecf4">strikes</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoyoptionletstripper.hpp" line="49"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1aea33d9a19826d827d20a9e73fe51298c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -54,7 +49,6 @@
         <definition>virtual std::pair&lt;std::vector&lt;Rate&gt;, std::vector&lt;Volatility&gt; &gt; slice</definition>
         <argsstring>(const Date &amp;d) const =0</argsstring>
         <name>slice</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1a60ca89e5837b7d2c7c9ba70ee7205c36">slice</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>

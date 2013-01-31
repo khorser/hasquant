@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cubic_b_splines_fitting" kind="class" prot="public">
     <compoundname>QuantLib::CubicBSplinesFitting</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" prot="public" virt="non-virtual">FittedBondDiscountCurve::FittingMethod</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a5533497959e9af060b1c95e34e394fc6" prot="private" static="no" mutable="no">

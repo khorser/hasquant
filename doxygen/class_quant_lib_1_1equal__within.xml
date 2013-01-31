@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1equal__within" kind="class" prot="public">
     <compoundname>QuantLib::equal_within</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; T, T, bool &gt;</basecompoundref>
     <templateparamlist>
       <param>
         <type>class T</type>

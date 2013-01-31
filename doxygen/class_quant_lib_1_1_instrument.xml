@@ -2,27 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_instrument" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Instrument</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bond" prot="public" virt="non-virtual">Bond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor" prot="public" virt="non-virtual">CapFloor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_d_o" prot="public" virt="non-virtual">CDO</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_commodity" prot="public" virt="non-virtual">Commodity</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_composite_instrument" prot="public" virt="non-virtual">CompositeInstrument</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_cap_floor" prot="public" virt="non-virtual">CPICapFloor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_credit_default_swap" prot="public" virt="non-virtual">CreditDefaultSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward" prot="public" virt="non-virtual">Forward</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_nth_to_default" prot="public" virt="non-virtual">NthToDefault</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_option" prot="public" virt="non-virtual">Option</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_path_multi_asset_option" prot="public" virt="non-virtual">PathMultiAssetOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_risky_asset_swap" prot="public" virt="non-virtual">RiskyAssetSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_risky_asset_swap_option" prot="public" virt="non-virtual">RiskyAssetSwapOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_risky_bond" prot="public" virt="non-virtual">RiskyBond</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stock" prot="public" virt="non-virtual">Stock</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap" prot="public" virt="non-virtual">Swap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_synthetic_c_d_o" prot="public" virt="non-virtual">SyntheticCDO</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_option" prot="public" virt="non-virtual">VarianceOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_swap" prot="public" virt="non-virtual">VarianceSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor" prot="public" virt="non-virtual">YoYInflationCapFloor</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instrument.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_instrument_1_1results" prot="public">QuantLib::Instrument::results</innerclass>
       <sectiondef kind="user-defined">
@@ -86,33 +65,6 @@
         <definition>virtual bool isExpired</definition>
         <argsstring>() const =0</argsstring>
         <name>isExpired</name>
-        <reimplementedby refid="class_quant_lib_1_1_stock_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_future_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_multi_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_storage_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_path_multi_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_vanilla_swap_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_swap_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_writer_extensible_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cds_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_composite_instrument_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swing_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_bond_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_nth_to_default_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bond_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_synthetic_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_credit_default_swap_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_d_o_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="64"/>
@@ -153,26 +105,6 @@
         <definition>void setupExpired</definition>
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_forward_vanilla_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_barrier_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_path_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_vanilla_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_bond_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cds_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_asset_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_nth_to_default_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_synthetic_c_d_o_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_d_o_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bond_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_credit_default_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="157" bodyend="161"/>
@@ -183,19 +115,6 @@
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_stock_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_option_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_future_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_basis_swap_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_vanilla_swap_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_composite_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_convertible_bond_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_bond_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_nth_to_default_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_bond_forward_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_d_o_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
         <detaileddescription>
 <para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instrument.hpp" bodystart="163" bodyend="170"/>
@@ -246,45 +165,6 @@
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplementedby refid="class_quant_lib_1_1_continuous_floating_lookback_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_simple_chooser_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_margrabe_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_storage_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_compound_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_continuous_averaging_asian_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dividend_barrier_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_path_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_barrier_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_pagoda_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_himalaya_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_writer_extensible_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cliquet_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cds_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_vanilla_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dividend_vanilla_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_continuous_fixed_lookback_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_option_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swing_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_discrete_averaging_asian_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_callable_bond_1a71e3006b83c8b484bc57296fe94bf36d">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_asset_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_commodity_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_credit_default_swap_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_synthetic_c_d_o_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_callable_fixed_rate_bond_1af6f2357affd0584e0db188a557bdef03">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bond_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -297,26 +177,6 @@
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_margrabe_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_barrier_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_multi_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_variance_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cds_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_asset_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cap_floor_1a0f63e39daa12d877d8156360b8f920af">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_commodity_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_1a0f63e39daa12d877d8156360b8f920af">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_credit_default_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_synthetic_c_d_o_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_bond_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>

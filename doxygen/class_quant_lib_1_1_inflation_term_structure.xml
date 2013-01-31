@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inflation_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InflationTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_term_structure" prot="public" virt="non-virtual">TermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface" prot="public" virt="non-virtual">CPICapFloorTermPriceSurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" prot="public" virt="non-virtual">YoYCapFloorTermPriceSurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" prot="public" virt="non-virtual">YoYInflationTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zero_inflation_term_structure" prot="public" virt="non-virtual">ZeroInflationTermStructure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -146,7 +141,6 @@
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a44d0249f5e6de07f14d8b0255d499a38">observationLag</reimplementedby>
         <detaileddescription>
 <para>The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflationtermstructure.hpp" bodystart="269" bodyend="271"/>
@@ -184,11 +178,6 @@
         <definition>virtual Date baseDate</definition>
         <argsstring>() const =0</argsstring>
         <name>baseDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplementedby>
         <briefdescription>
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>

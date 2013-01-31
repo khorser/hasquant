@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_type_payoff" kind="class" prot="public">
     <compoundname>QuantLib::TypePayoff</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_payoff" prot="public" virt="non-virtual">Payoff</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_floating_type_payoff" prot="public" virt="non-virtual">FloatingTypePayoff</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_striked_type_payoff" prot="public" virt="non-virtual">StrikedTypePayoff</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
@@ -14,10 +11,6 @@
         <argsstring>() const </argsstring>
         <name>description</name>
         <reimplements refid="class_quant_lib_1_1_payoff_1a77d7003fa5d2e29669371413d5662141">description</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gap_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_super_share_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="54"/>
       </memberdef>
       </sectiondef>

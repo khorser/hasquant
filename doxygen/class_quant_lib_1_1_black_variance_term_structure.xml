@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_variance_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::BlackVarianceTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_black_vol_term_structure" prot="public" virt="non-virtual">BlackVolTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_variance_curve" prot="public" virt="non-virtual">BlackVarianceCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_variance_surface" prot="public" virt="non-virtual">BlackVarianceSurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_black_variance_curve" prot="public" virt="non-virtual">ExtendedBlackVarianceCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_black_variance_surface" prot="public" virt="non-virtual">ExtendedBlackVarianceSurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_implied_vol_term_structure" prot="public" virt="non-virtual">ImpliedVolTermStructure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -119,11 +113,6 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <reimplements refid="class_quant_lib_1_1_black_vol_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_implied_vol_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_black_variance_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_variance_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>

@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_copula" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorCopula</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_gaussian_copula" prot="public" virt="non-virtual">OneFactorGaussianCopula</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_gaussian_student_copula" prot="public" virt="non-virtual">OneFactorGaussianStudentCopula</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_student_copula" prot="public" virt="non-virtual">OneFactorStudentCopula</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_student_gaussian_copula" prot="public" virt="non-virtual">OneFactorStudentGaussianCopula</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorcopula.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_copula_1af4fe1d014da6e427fc150e9b79864621" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -40,10 +35,6 @@
         <definition>virtual Real density</definition>
         <argsstring>(Real m) const =0</argsstring>
         <name>density</name>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_copula_1a87748e5305096b30afeeaa93ce59137c">density</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_student_copula_1a87748e5305096b30afeeaa93ce59137c">density</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a87748e5305096b30afeeaa93ce59137c">density</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_student_gaussian_copula_1a87748e5305096b30afeeaa93ce59137c">density</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>m</declname>
@@ -59,10 +50,6 @@
         <definition>virtual Real cumulativeZ</definition>
         <argsstring>(Real z) const =0</argsstring>
         <name>cumulativeZ</name>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_copula_1a7f12eff80e70545a68af09aaab9a5bfa">cumulativeZ</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_student_copula_1a7f12eff80e70545a68af09aaab9a5bfa">cumulativeZ</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a7f12eff80e70545a68af09aaab9a5bfa">cumulativeZ</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_student_gaussian_copula_1a7f12eff80e70545a68af09aaab9a5bfa">cumulativeZ</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>z</declname>
@@ -78,7 +65,6 @@
         <definition>virtual Real cumulativeY</definition>
         <argsstring>(Real y) const </argsstring>
         <name>cumulativeY</name>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_copula_1a712150bf4c40b6443a311f2569117760">cumulativeY</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>y</declname>
@@ -94,7 +80,6 @@
         <definition>virtual Real inverseCumulativeY</definition>
         <argsstring>(Real p) const </argsstring>
         <name>inverseCumulativeY</name>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_copula_1a309f9b6f2c8476ddc7d4d750a0f7d75c">inverseCumulativeY</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>p</declname>

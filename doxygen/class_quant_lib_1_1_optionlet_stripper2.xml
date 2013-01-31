@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_optionlet_stripper2" kind="class" prot="public">
     <compoundname>QuantLib::OptionletStripper2</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_optionlet_stripper" prot="public" virt="non-virtual">OptionletStripper</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function" prot="private">QuantLib::OptionletStripper2::ObjectiveFunction</innerclass>
       <sectiondef kind="user-defined">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_tracing" kind="class" prot="public">
     <compoundname>QuantLib::detail::Tracing</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_singleton" prot="public" virt="non-virtual">Singleton&lt; Tracing &gt;</basecompoundref>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1detail_1_1_tracing_1a475f2a00cc99298a3bd25b96e16fae71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

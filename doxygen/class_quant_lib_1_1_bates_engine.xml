@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bates_engine" kind="class" prot="public">
     <compoundname>QuantLib::BatesEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_analytic_heston_engine" prot="public" virt="non-virtual">AnalyticHestonEngine</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bates_det_jump_engine" prot="public" virt="non-virtual">BatesDetJumpEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bates_engine_1a612699f44f77c40d5705fa99c68934d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

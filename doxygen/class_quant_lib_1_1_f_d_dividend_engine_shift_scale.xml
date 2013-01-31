@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_dividend_engine_shift_scale" kind="class" prot="public">
     <compoundname>QuantLib::FDDividendEngineShiftScale</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_f_d_dividend_engine_base" prot="public" virt="non-virtual">QuantLib::FDDividendEngineBase&lt; Scheme &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_american_condition" prot="public" virt="non-virtual">FDAmericanCondition&lt; FDDividendEngineShiftScale&lt; Scheme &gt; &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDDividendEngineShiftScale&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_shout_condition" prot="public" virt="non-virtual">FDShoutCondition&lt; FDDividendEngineShiftScale&lt; Scheme &gt; &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp</includes>
     <templateparamlist>
       <param>

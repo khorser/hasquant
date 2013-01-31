@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_simplex" kind="class" prot="public">
     <compoundname>QuantLib::Simplex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_optimization_method" prot="public" virt="non-virtual">OptimizationMethod</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" static="no" mutable="no">

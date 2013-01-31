@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_libor_forward_model" kind="class" prot="public">
     <compoundname>QuantLib::LiborForwardModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="non-virtual">CalibratedModel</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_affine_model" prot="public" virt="non-virtual">AffineModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/liborforwardmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1aa6b4ca3d94c5fb230cad0b17de1af907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

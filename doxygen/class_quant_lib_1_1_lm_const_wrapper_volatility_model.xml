@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lm_const_wrapper_volatility_model" kind="class" prot="public">
     <compoundname>QuantLib::LmConstWrapperVolatilityModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lm_volatility_model" prot="public" virt="non-virtual">LmVolatilityModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

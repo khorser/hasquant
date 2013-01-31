@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error" kind="class" prot="private">
     <compoundname>QuantLib::AbcdCalibration::AbcdError</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1a51690e10d7b30ca2476f855a643866e6" prot="private" static="no" mutable="no">
         <type>AbcdCalibration *</type>

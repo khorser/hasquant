@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_hagan_pricer" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHaganPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_hagan_pricer" prot="public" virt="non-virtual">HaganPricer</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_hagan_pricer_1a81f28aa3715695a25e04c2c2f15ae53c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

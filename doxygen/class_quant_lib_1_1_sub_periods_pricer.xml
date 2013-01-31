@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_sub_periods_pricer" kind="class" prot="public">
     <compoundname>QuantLib::SubPeriodsPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="non-virtual">FloatingRateCouponPricer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_averaging_rate_pricer" prot="public" virt="non-virtual">AveragingRatePricer</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_compounding_rate_pricer" prot="public" virt="non-virtual">CompoundingRatePricer</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model" kind="class" prot="public">
     <compoundname>QuantLib::GJRGARCHModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="non-virtual">CalibratedModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/equity/gjrgarchmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_j_r_g_a_r_c_h_model_1a3ccb3ba96073a0962fe9cd5532fc7446" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

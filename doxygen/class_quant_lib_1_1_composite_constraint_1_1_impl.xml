@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_composite_constraint_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::CompositeConstraint::Impl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_constraint_1_1_impl" prot="public" virt="non-virtual">Constraint::Impl</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1af52f657d5950bd668e858a718936b9d3" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref></type>

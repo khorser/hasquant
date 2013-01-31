@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_integral_c_d_o_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::IntegralCDOEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine" prot="public" virt="non-virtual">SyntheticCDO::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_integral_c_d_o_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

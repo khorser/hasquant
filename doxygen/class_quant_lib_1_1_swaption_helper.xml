@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_helper" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibration_helper" prot="public" virt="non-virtual">CalibrationHelper</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/swaptionhelper.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_helper_1a093e0f8ad44a96a446a1643d6a253c10" prot="private" static="no" mutable="no">

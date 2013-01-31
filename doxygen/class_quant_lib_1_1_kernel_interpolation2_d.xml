@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kernel_interpolation2_d" kind="class" prot="public">
     <compoundname>QuantLib::KernelInterpolation2D</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation2_d" prot="public" virt="non-virtual">Interpolation2D</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/kernelinterpolation2d.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kernel_interpolation2_d_1a91807fcf1f8570d6866c877e67959de6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

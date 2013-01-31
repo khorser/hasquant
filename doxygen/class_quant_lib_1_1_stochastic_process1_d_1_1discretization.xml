@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_stochastic_process1_d_1_1discretization" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::StochasticProcess1D::discretization</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_end_euler_discretization" prot="public" virt="non-virtual">EndEulerDiscretization</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euler_discretization" prot="public" virt="non-virtual">EulerDiscretization</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -18,8 +16,6 @@
         <definition>virtual Real drift</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>drift</name>
-        <reimplementedby refid="class_quant_lib_1_1_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8">drift</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_end_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8">drift</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
         </param>
@@ -42,8 +38,6 @@
         <definition>virtual Real diffusion</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>diffusion</name>
-        <reimplementedby refid="class_quant_lib_1_1_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52">diffusion</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_end_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52">diffusion</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
         </param>
@@ -66,8 +60,6 @@
         <definition>virtual Real variance</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const =0</argsstring>
         <name>variance</name>
-        <reimplementedby refid="class_quant_lib_1_1_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f">variance</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_end_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f">variance</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
         </param>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_leisen_reimer" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedLeisenReimer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_extended_binomial_tree" prot="public" virt="non-virtual">ExtendedBinomialTree&lt; ExtendedLeisenReimer &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/lattices/extendedbinomialtree.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_leisen_reimer_1a024f0aeaf72aa54e7ade102e23f43686" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

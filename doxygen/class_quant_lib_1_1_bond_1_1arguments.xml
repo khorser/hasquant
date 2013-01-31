@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bond_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Bond::arguments</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">PricingEngine::arguments</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_callable_bond_1_1arguments" prot="public" virt="non-virtual">CallableBond::arguments</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>

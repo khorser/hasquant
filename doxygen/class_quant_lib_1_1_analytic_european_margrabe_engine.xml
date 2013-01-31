@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_european_margrabe_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticEuropeanMargrabeEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_margrabe_option_1_1engine" prot="public" virt="non-virtual">MargrabeOption::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticeuropeanmargrabeengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_european_margrabe_engine_1abb89fde45de159f8ba084d4cb368144e" prot="private" static="no" mutable="no">

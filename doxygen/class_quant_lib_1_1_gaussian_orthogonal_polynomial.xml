@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_orthogonal_polynomial" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::GaussianOrthogonalPolynomial</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_hermite_polynomial" prot="public" virt="non-virtual">GaussHermitePolynomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_hyperbolic_polynomial" prot="public" virt="non-virtual">GaussHyperbolicPolynomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_jacobi_polynomial" prot="public" virt="non-virtual">GaussJacobiPolynomial</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_laguerre_polynomial" prot="public" virt="non-virtual">GaussLaguerrePolynomial</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1ad23187cb308f85ea0dea7911b6c0546d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -20,10 +16,6 @@
         <definition>virtual Real mu_0</definition>
         <argsstring>() const =0</argsstring>
         <name>mu_0</name>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a2ad28899a5762c677631c246bbd07d7e">mu_0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hermite_polynomial_1a2ad28899a5762c677631c246bbd07d7e">mu_0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1a2ad28899a5762c677631c246bbd07d7e">mu_0</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hyperbolic_polynomial_1a2ad28899a5762c677631c246bbd07d7e">mu_0</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="53"/>
       </memberdef>
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a4b62a25af75d692dbf58ce06f96184ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
@@ -31,10 +23,6 @@
         <definition>virtual Real alpha</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>alpha</name>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a5636c42b75b9162dfc03348bdf0e46db">alpha</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hermite_polynomial_1a5636c42b75b9162dfc03348bdf0e46db">alpha</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1a5636c42b75b9162dfc03348bdf0e46db">alpha</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hyperbolic_polynomial_1a5636c42b75b9162dfc03348bdf0e46db">alpha</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -46,10 +34,6 @@
         <definition>virtual Real beta</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>beta</name>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1aef8dfcc10e1813645475edd1b30ca109">beta</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hermite_polynomial_1aef8dfcc10e1813645475edd1b30ca109">beta</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1aef8dfcc10e1813645475edd1b30ca109">beta</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hyperbolic_polynomial_1aef8dfcc10e1813645475edd1b30ca109">beta</reimplementedby>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -61,10 +45,6 @@
         <definition>virtual Real w</definition>
         <argsstring>(Real x) const =0</argsstring>
         <name>w</name>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf">w</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hermite_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf">w</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf">w</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_gauss_hyperbolic_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf">w</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>

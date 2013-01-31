@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_abcd_squared" kind="class" prot="public">
     <compoundname>QuantLib::AbcdSquared</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_abcd_squared_1a79cff342588358998302705659dc574c" prot="private" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_abcd_function" kindref="compound">AbcdFunction</ref> &gt;</type>

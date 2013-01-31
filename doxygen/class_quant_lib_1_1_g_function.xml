@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::GFunction</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield" prot="public" virt="non-virtual">GFunctionFactory::GFunctionExactYield</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard" prot="public" virt="non-virtual">GFunctionFactory::GFunctionStandard</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts" prot="public" virt="non-virtual">GFunctionFactory::GFunctionWithShifts</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_1a2093b4ceca15348323db42ad5b8aedf1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

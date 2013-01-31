@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_more_greeks" kind="class" prot="public">
     <compoundname>QuantLib::MoreGreeks</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::results</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_asset_option_1_1results" prot="public" virt="non-virtual">OneAssetOption::results</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/option.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_more_greeks_1ade07d7d6e2dd62225dd75988c763ad50" prot="public" static="no" mutable="no">

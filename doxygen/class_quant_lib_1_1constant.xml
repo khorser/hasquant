@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1constant" kind="class" prot="public">
     <compoundname>QuantLib::constant</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; T, U &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1everywhere" prot="public" virt="non-virtual">everywhere</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1nowhere" prot="public" virt="non-virtual">nowhere</derivedcompoundref>
     <templateparamlist>
       <param>
         <type>class</type>

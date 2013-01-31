@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_integral_heston_variance_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::IntegralHestonVarianceOptionEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_variance_option_1_1engine" prot="public" virt="non-virtual">VarianceOption::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/varianceoption/integralhestonvarianceoptionengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_integral_heston_variance_option_engine_1a913c0bb126440b8eebb19cb20ed021a2" prot="private" static="no" mutable="no">

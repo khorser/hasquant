@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_american_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::AmericanPathPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_early_exercise_path_pricer" prot="public" virt="non-virtual">EarlyExercisePathPricer&lt; Path &gt;</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_american_path_pricer_1ae8eabc3e484fe8125a05765c4347d9ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

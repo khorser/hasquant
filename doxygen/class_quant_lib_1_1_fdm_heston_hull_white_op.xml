@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_hull_white_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonHullWhiteOp</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmLinearOpComposite</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae10660f3b964d88f488c5fc9c9395656" prot="private" static="no" mutable="no">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>

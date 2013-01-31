@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::SwaptionVolatilityStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_volatility_term_structure" prot="public" virt="non-virtual">VolatilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_constant_swaption_volatility" prot="public" virt="non-virtual">ConstantSwaptionVolatility</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_spreaded_swaption_volatility" prot="public" virt="non-virtual">SpreadedSwaptionVolatility</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_volatility_discrete" prot="public" virt="non-virtual">SwaptionVolatilityDiscrete</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -556,9 +552,6 @@
         <definition>virtual const Period&amp; maxSwapTenor</definition>
         <argsstring>() const =0</argsstring>
         <name>maxSwapTenor</name>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_cube_1aa42d63fa6f2a1c9d377c25ca63fa5f6c">maxSwapTenor</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_constant_swaption_volatility_1aab612f40ee132a09e19f67c16e502cdb">maxSwapTenor</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_matrix_1aab612f40ee132a09e19f67c16e502cdb">maxSwapTenor</reimplementedby>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolstructure.hpp" line="165"/>

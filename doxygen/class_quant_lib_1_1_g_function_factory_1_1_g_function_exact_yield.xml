@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionExactYield</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">GFunction</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1ac7f5a684459af28cde57ef1ee2854aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

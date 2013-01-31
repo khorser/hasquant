@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_garman_klass_open_close" kind="class" prot="public">
     <compoundname>QuantLib::GarmanKlassOpenClose</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma1" prot="public" virt="non-virtual">GarmanKlassSigma1</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma3" prot="public" virt="non-virtual">GarmanKlassSigma3</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma6" prot="public" virt="non-virtual">GarmanKlassSigma6</derivedcompoundref>
     <templateparamlist>
       <param>
         <type>class</type>

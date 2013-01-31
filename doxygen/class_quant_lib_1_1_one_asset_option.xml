@@ -2,23 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_asset_option" kind="class" prot="public">
     <compoundname>QuantLib::OneAssetOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_option" prot="public" virt="non-virtual">Option</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_barrier_option" prot="public" virt="non-virtual">BarrierOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cliquet_option" prot="public" virt="non-virtual">CliquetOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_compound_option" prot="public" virt="non-virtual">CompoundOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_continuous_averaging_asian_option" prot="public" virt="non-virtual">ContinuousAveragingAsianOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_continuous_fixed_lookback_option" prot="public" virt="non-virtual">ContinuousFixedLookbackOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_continuous_floating_lookback_option" prot="public" virt="non-virtual">ContinuousFloatingLookbackOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_convertible_bond_1_1option" prot="public" virt="non-virtual">ConvertibleBond::option</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_discrete_averaging_asian_option" prot="public" virt="non-virtual">DiscreteAveragingAsianOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_dividend_vanilla_option" prot="public" virt="non-virtual">DividendVanillaOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_vanilla_option" prot="public" virt="non-virtual">ForwardVanillaOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_quanto_vanilla_option" prot="public" virt="non-virtual">QuantoVanillaOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_simple_chooser_option" prot="public" virt="non-virtual">SimpleChooserOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_option" prot="public" virt="non-virtual">VanillaOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_storage_option" prot="public" virt="non-virtual">VanillaStorageOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_swing_option" prot="public" virt="non-virtual">VanillaSwingOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_writer_extensible_option" prot="public" virt="non-virtual">WriterExtensibleOption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_one_asset_option_1_1engine" prot="public">QuantLib::OneAssetOption::engine</innerclass>
     <innerclass refid="class_quant_lib_1_1_one_asset_option_1_1results" prot="public">QuantLib::OneAssetOption::results</innerclass>
@@ -30,8 +13,6 @@
         <argsstring>() const </argsstring>
         <name>isExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_storage_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swing_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplementedby>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="42"/>
@@ -137,9 +118,6 @@
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_forward_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_barrier_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_quanto_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>

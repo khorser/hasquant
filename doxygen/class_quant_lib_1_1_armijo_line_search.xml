@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_armijo_line_search" kind="class" prot="public">
     <compoundname>QuantLib::ArmijoLineSearch</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_line_search" prot="public" virt="non-virtual">LineSearch</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_armijo_line_search_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">

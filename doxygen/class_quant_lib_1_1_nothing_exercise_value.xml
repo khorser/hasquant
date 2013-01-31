@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_nothing_exercise_value" kind="class" prot="public">
     <compoundname>QuantLib::NothingExerciseValue</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">MarketModelExerciseValue</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a7a81f9ffb6a0ed0bc3fbe4702f8077e3" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

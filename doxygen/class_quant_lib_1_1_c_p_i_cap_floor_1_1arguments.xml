@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CPICapFloor::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1af0e108519286f3c7f1b8bcd11d6cfb68" prot="public" static="no" mutable="no">
         <type>Option::Type</type>

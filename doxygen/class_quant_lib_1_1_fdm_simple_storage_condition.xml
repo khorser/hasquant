@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple_storage_condition" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimpleStorageCondition</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">StepCondition&lt; Array &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1a74056d41a3aa1d300d6b427829cb63c4" prot="private" static="no" mutable="no">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>

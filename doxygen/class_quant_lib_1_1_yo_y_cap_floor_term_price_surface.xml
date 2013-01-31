@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::YoYCapFloorTermPriceSurface</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_inflation_term_structure" prot="public" virt="non-virtual">InflationTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface" prot="public" virt="non-virtual">InterpolatedYoYCapFloorTermPriceSurface&lt; Interpolator2D, Interpolator1D &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp</includes>
       <sectiondef kind="user-defined">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface_1aa7badb9c372b771a1aaed98f2bc73c29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">

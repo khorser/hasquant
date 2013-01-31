@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_b_p_currency" kind="class" prot="public">
     <compoundname>QuantLib::GBPCurrency</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_currency" prot="public" virt="non-virtual">Currency</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_b_p_currency_1a9c671e7ce42ee00ac7ca5ca7b7f0fe5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

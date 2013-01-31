@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_heston_process" kind="class" prot="public">
     <compoundname>QuantLib::HestonProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bates_process" prot="public" virt="non-virtual">BatesProcess</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/hestonprocess.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_heston_process_1a36f45ac51e3e98d35c68ca85b7573e87" prot="public" static="no">

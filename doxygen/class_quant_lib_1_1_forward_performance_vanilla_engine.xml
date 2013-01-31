@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_performance_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::ForwardPerformanceVanillaEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_forward_vanilla_engine" prot="public" virt="non-virtual">QuantLib::ForwardVanillaEngine&lt; Engine &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/forwardperformanceengine.hpp</includes>
     <templateparamlist>
       <param>

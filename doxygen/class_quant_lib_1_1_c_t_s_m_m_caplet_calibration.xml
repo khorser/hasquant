@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CTSMMCapletCalibration</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration" prot="public" virt="non-virtual">CTSMMCapletAlphaFormCalibration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration" prot="public" virt="non-virtual">CTSMMCapletMaxHomogeneityCalibration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration" prot="public" virt="non-virtual">CTSMMCapletOriginalCalibration</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1aa59e6c3028ea3aa011c95cffb3a1fb3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>

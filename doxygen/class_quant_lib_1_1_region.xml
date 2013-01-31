@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_region" kind="class" prot="public">
     <compoundname>QuantLib::Region</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_australia_region" prot="public" virt="non-virtual">AustraliaRegion</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_region" prot="public" virt="non-virtual">EURegion</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_france_region" prot="public" virt="non-virtual">FranceRegion</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generic_region" prot="public" virt="non-virtual">GenericRegion</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_u_k_region" prot="public" virt="non-virtual">UKRegion</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_u_s_region" prot="public" virt="non-virtual">USRegion</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_region_1_1_data" prot="public">QuantLib::Region::Data</innerclass>
       <sectiondef kind="user-defined">

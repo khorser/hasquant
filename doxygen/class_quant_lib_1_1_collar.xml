@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_collar" kind="class" prot="public">
     <compoundname>QuantLib::Collar</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cap_floor" prot="public" virt="non-virtual">CapFloor</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_collar_1a0a200e0eeed62fc046df4a3eec2982a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

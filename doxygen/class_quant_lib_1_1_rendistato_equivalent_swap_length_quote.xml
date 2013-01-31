@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote" kind="class" prot="public">
     <compoundname>QuantLib::RendistatoEquivalentSwapLengthQuote</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_quote" prot="public" virt="non-virtual">Quote</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1ab3394fc6d0df9cc90ca40e99346a0f4e" prot="private" static="no" mutable="no">

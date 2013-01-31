@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euribor365" kind="class" prot="public">
     <compoundname>QuantLib::Euribor365</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__10_m" prot="public" virt="non-virtual">Euribor365_10M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__11_m" prot="public" virt="non-virtual">Euribor365_11M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__1_m" prot="public" virt="non-virtual">Euribor365_1M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__1_y" prot="public" virt="non-virtual">Euribor365_1Y</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__2_m" prot="public" virt="non-virtual">Euribor365_2M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__2_w" prot="public" virt="non-virtual">Euribor365_2W</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__3_m" prot="public" virt="non-virtual">Euribor365_3M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__3_w" prot="public" virt="non-virtual">Euribor365_3W</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__4_m" prot="public" virt="non-virtual">Euribor365_4M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__5_m" prot="public" virt="non-virtual">Euribor365_5M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__6_m" prot="public" virt="non-virtual">Euribor365_6M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__7_m" prot="public" virt="non-virtual">Euribor365_7M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__8_m" prot="public" virt="non-virtual">Euribor365_8M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365__9_m" prot="public" virt="non-virtual">Euribor365_9M</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365___s_w" prot="public" virt="non-virtual">Euribor365_SW</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/euribor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euribor365_1a9f4ffb3b2f961922cd7e81f584d7b066" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

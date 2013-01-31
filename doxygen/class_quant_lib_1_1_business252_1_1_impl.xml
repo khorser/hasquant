@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_business252_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::Business252::Impl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_day_counter_1_1_impl" prot="public" virt="non-virtual">DayCounter::Impl</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_business252_1_1_impl_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>

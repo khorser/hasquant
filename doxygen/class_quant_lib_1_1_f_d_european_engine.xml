@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_f_d_european_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDEuropeanEngine</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">OneAssetOption::engine</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_f_d_vanilla_engine" prot="public" virt="non-virtual">FDVanillaEngine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp</includes>
     <templateparamlist>
       <param>

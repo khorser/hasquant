@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_line_search" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LineSearch</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_armijo_line_search" prot="public" virt="non-virtual">ArmijoLineSearch</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_1abf6329e7e510004f936417b572cd3feb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -75,7 +74,6 @@
         <definition>virtual Real operator()</definition>
         <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)=0</argsstring>
         <name>operator()</name>
-        <reimplementedby refid="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0">operator()</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
           <declname>P</declname>

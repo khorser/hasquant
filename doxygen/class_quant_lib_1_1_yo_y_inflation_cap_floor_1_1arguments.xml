@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationCapFloor::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments_1a169e4dad5de53640e67ba44ca365d56d" prot="public" static="no" mutable="no">

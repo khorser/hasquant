@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lm_fixed_volatility_model" kind="class" prot="public">
     <compoundname>QuantLib::LmFixedVolatilityModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lm_volatility_model" prot="public" virt="non-virtual">LmVolatilityModel</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a9dd7c53d3020c2b4a373e1be3c9aa55c" prot="private" static="no" mutable="no">
         <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>

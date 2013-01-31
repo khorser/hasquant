@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_mesher_composite" kind="class" prot="public">
     <compoundname>QuantLib::FdmMesherComposite</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmMesher</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_mesher_composite_1af794561743189eb6a6b574ded2faecab" prot="private" static="no" mutable="no">
         <type>const std::vector&lt; boost::shared_ptr&lt; Fdm1dMesher &gt; &gt;</type>

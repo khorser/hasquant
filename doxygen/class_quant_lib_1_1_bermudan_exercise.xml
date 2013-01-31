@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bermudan_exercise" kind="class" prot="public">
     <compoundname>QuantLib::BermudanExercise</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_early_exercise" prot="public" virt="non-virtual">EarlyExercise</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swing_exercise" prot="public" virt="non-virtual">SwingExercise</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bermudan_exercise_1a23a2f17d9bae84c1423ab5c423b17205" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

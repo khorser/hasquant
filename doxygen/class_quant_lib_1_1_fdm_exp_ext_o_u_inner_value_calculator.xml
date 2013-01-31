@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_exp_ext_o_u_inner_value_calculator" kind="class" prot="public">
     <compoundname>QuantLib::FdmExpExtOUInnerValueCalculator</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">FdmInnerValueCalculator</basecompoundref>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_exp_ext_o_u_inner_value_calculator_1a5473e5fd78d535844f5f297f680685b9" prot="public" static="no">
         <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>

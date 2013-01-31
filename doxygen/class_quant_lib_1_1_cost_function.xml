@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cost_function" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CostFunction</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error" prot="public" virt="non-virtual">AbcdCalibration::AbcdError</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error" prot="public" virt="non-virtual">SABRInterpolationImpl&lt; I1, I2 &gt;::SABRError</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_frobenius_cost_function" prot="public" virt="non-virtual">FrobeniusCostFunction</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_least_square_function" prot="public" virt="non-virtual">LeastSquareFunction</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_penalty_function" prot="public" virt="non-virtual">PenaltyFunction&lt; Curve &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_projected_cost_function" prot="public" virt="non-virtual">ProjectedCostFunction</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -22,8 +16,6 @@
         <definition>virtual Real value</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>value</name>
-        <reimplementedby refid="class_quant_lib_1_1_projected_cost_function_1a1333520b710a945f475fc3c7382d1462">value</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1aa96b19df61cc4e727372ce7f9abb60c9">value</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
@@ -37,8 +29,6 @@
         <definition>virtual Disposable&lt;Array&gt; values</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>values</name>
-        <reimplementedby refid="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273">values</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1aefd0ff60f2c43e34293b14ff785035d1">values</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
@@ -52,7 +42,6 @@
         <definition>virtual void gradient</definition>
         <argsstring>(Array &amp;grad, const Array &amp;x) const </argsstring>
         <name>gradient</name>
-        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1a5606a9f56d4bf8a1b09386234ac220a1">gradient</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>grad</declname>
@@ -70,7 +59,6 @@
         <definition>virtual Real valueAndGradient</definition>
         <argsstring>(Array &amp;grad, const Array &amp;x) const </argsstring>
         <name>valueAndGradient</name>
-        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1a35a37dbf4155454c382e433e5183ba2f">valueAndGradient</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
           <declname>grad</declname>

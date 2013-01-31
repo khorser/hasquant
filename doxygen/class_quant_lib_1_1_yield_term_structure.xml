@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yield_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::YieldTermStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_term_structure" prot="public" virt="non-virtual">TermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fitted_bond_discount_curve" prot="public" virt="non-virtual">FittedBondDiscountCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_flat_forward" prot="public" virt="non-virtual">FlatForward</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_rate_structure" prot="public" virt="non-virtual">ForwardRateStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_implied_term_structure" prot="public" virt="non-virtual">ImpliedTermStructure</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_discount_curve" prot="public" virt="non-virtual">InterpolatedDiscountCurve&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zero_yield_structure" prot="public" virt="non-virtual">ZeroYieldStructure</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yieldtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -338,12 +331,6 @@
         <definition>virtual DiscountFactor discountImpl</definition>
         <argsstring>(Time) const =0</argsstring>
         <name>discountImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_implied_term_structure_1a2c21d8d34e88bb0451cabdd4e280ab17">discountImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_yield_structure_1a2c21d8d34e88bb0451cabdd4e280ab17">discountImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_flat_forward_1a2c21d8d34e88bb0451cabdd4e280ab17">discountImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_discount_curve_1a2c21d8d34e88bb0451cabdd4e280ab17">discountImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_rate_structure_1a2c21d8d34e88bb0451cabdd4e280ab17">discountImpl</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1a2c21d8d34e88bb0451cabdd4e280ab17">discountImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_b_s_m_hull_white_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticBSMHullWhiteEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_model_engine" prot="public" virt="non-virtual">GenericModelEngine&lt; HullWhite, VanillaOption::arguments, VanillaOption::results &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticbsmhullwhiteengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_analytic_b_s_m_hull_white_engine_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">

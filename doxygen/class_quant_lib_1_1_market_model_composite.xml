@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_market_model_composite" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelComposite</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_market_model_multi_product" prot="public" virt="non-virtual">MarketModelMultiProduct</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_multi_product_composite" prot="public" virt="non-virtual">MultiProductComposite</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_single_product_composite" prot="public" virt="non-virtual">SingleProductComposite</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product" prot="protected">QuantLib::MarketModelComposite::SubProduct</innerclass>
       <sectiondef kind="user-defined">

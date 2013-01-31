@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolation2_d_1_1template_impl" kind="class" prot="public">
     <compoundname>QuantLib::Interpolation2D::templateImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation2_d_1_1_impl" prot="public" virt="non-virtual">Interpolation2D::Impl</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_bicubic_spline_impl" prot="public" virt="non-virtual">BicubicSplineImpl&lt; I1, I2, M &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_bilinear_interpolation_impl" prot="public" virt="non-virtual">BilinearInterpolationImpl&lt; I1, I2, M &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_kernel_interpolation2_d_impl" prot="public" virt="non-virtual">KernelInterpolation2DImpl&lt; I1, I2, M, Kernel &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_polynomial2_d_spline_impl" prot="public" virt="non-virtual">Polynomial2DSplineImpl&lt; I1, I2, M &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp</includes>
     <templateparamlist>
       <param>

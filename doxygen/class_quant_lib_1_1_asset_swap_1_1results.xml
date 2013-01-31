@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_asset_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::AssetSwap::results</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Swap::results</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1_1results_1aaae65d8ddf791f2593ac9d1d395f1d3a" prot="public" static="no" mutable="no">

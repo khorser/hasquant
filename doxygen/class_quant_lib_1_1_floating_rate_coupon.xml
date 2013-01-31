@@ -2,16 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_floating_rate_coupon" kind="class" prot="public">
     <compoundname>QuantLib::FloatingRateCoupon</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_coupon" prot="public" virt="non-virtual">Coupon</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_average_b_m_a_coupon" prot="public" virt="non-virtual">AverageBMACoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_capped_floored_coupon" prot="public" virt="non-virtual">CappedFlooredCoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cms_coupon" prot="public" virt="non-virtual">CmsCoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_digital_coupon" prot="public" virt="non-virtual">DigitalCoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_ibor_coupon" prot="public" virt="non-virtual">IborCoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_overnight_indexed_coupon" prot="public" virt="non-virtual">OvernightIndexedCoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_range_accrual_floaters_coupon" prot="public" virt="non-virtual">RangeAccrualFloatersCoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sub_periods_coupon" prot="public" virt="non-virtual">SubPeriodsCoupon</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
@@ -101,8 +91,6 @@
         <definition>virtual Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
-        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a8672d26ae625ac44319bf3ad4ced846e">fixingDate</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_overnight_indexed_coupon_1a8672d26ae625ac44319bf3ad4ced846e">fixingDate</reimplementedby>
         <briefdescription>
 <para>fixing date </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="79"/>
@@ -130,8 +118,6 @@
         <definition>virtual Rate indexFixing</definition>
         <argsstring>() const </argsstring>
         <name>indexFixing</name>
-        <reimplementedby refid="class_quant_lib_1_1_ibor_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41">indexFixing</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41">indexFixing</reimplementedby>
         <briefdescription>
 <para>fixing of the underlying index </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="85"/>
@@ -141,9 +127,6 @@
         <definition>Rate convexityAdjustment</definition>
         <argsstring>() const </argsstring>
         <name>convexityAdjustment</name>
-        <reimplementedby refid="class_quant_lib_1_1_capped_floored_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_digital_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplementedby>
         <briefdescription>
 <para>convexity adjustment </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/floatingratecoupon.hpp" bodystart="125" bodyend="127"/>
@@ -186,14 +169,6 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <reimplements refid="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>

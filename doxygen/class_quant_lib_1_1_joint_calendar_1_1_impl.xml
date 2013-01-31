@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_joint_calendar_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::JointCalendar::Impl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_impl" prot="public" virt="non-virtual">Calendar::Impl</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1ae34c1f8fcaee67fd6bea7d3a0f9ffc31" prot="private" static="no" mutable="no">
         <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>

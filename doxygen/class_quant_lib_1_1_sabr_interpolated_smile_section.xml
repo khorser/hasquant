@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_sabr_interpolated_smile_section" kind="class" prot="public">
     <compoundname>QuantLib::SabrInterpolatedSmileSection</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_smile_section" prot="public" virt="non-virtual">SmileSection</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a144c2c04b6c92cf1479282c40b078f63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseYoYOptionletVolatilityCurve</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve" prot="public" virt="non-virtual">InterpolatedYoYOptionletVolatilityCurve&lt; Interpolator &gt;</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp</includes>
     <templateparamlist>
       <param>

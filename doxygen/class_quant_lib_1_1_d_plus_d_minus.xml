@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_d_plus_d_minus" kind="class" prot="public">
     <compoundname>QuantLib::DPlusDMinus</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_tridiagonal_operator" prot="public" virt="non-virtual">TridiagonalOperator</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dplusdminus.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_d_plus_d_minus_1a968eb39c2764ad72529b82d9e5443bef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

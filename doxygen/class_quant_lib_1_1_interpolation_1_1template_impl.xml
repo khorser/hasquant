@@ -2,16 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolation_1_1template_impl" kind="class" prot="public">
     <compoundname>QuantLib::Interpolation::templateImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation_1_1_impl" prot="public" virt="non-virtual">Interpolation::Impl</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl" prot="public" virt="non-virtual">BackwardFlatInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_convex_monotone_impl" prot="public" virt="non-virtual">ConvexMonotoneImpl&lt; I1, I2 &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl" prot="public" virt="non-virtual">CubicInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_forward_flat_interpolation_impl" prot="public" virt="non-virtual">ForwardFlatInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_kernel_interpolation_impl" prot="public" virt="non-virtual">KernelInterpolationImpl&lt; I1, I2, Kernel &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl" prot="public" virt="non-virtual">LinearInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl" prot="public" virt="non-virtual">LogInterpolationImpl&lt; I1, I2, Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl" prot="public" virt="non-virtual">MixedInterpolationImpl&lt; I1, I2, Interpolator1, Interpolator2 &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl" prot="public" virt="non-virtual">SABRInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp</includes>
     <templateparamlist>
       <param>

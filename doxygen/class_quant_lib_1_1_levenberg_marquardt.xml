@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_levenberg_marquardt" kind="class" prot="public">
     <compoundname>QuantLib::LevenbergMarquardt</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_optimization_method" prot="public" virt="non-virtual">OptimizationMethod</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1aa345e430a32a46229b67f4a7c0fa3edb" prot="private" static="no" mutable="no">

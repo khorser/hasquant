@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pagoda_option" kind="class" prot="public">
     <compoundname>QuantLib::PagodaOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_multi_asset_option" prot="public" virt="non-virtual">MultiAssetOption</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_pagoda_option_1_1arguments" prot="public">QuantLib::PagodaOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_pagoda_option_1_1engine" prot="public">QuantLib::PagodaOption::engine</innerclass>

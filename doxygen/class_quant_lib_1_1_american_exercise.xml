@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_american_exercise" kind="class" prot="public">
     <compoundname>QuantLib::AmericanExercise</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_early_exercise" prot="public" virt="non-virtual">EarlyExercise</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_american_exercise_1af814e77af9d3a57850d9e503f07bf482" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

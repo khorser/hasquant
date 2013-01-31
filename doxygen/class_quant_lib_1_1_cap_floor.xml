@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::CapFloor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap" prot="public" virt="non-virtual">Cap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_collar" prot="public" virt="non-virtual">Collar</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_floor" prot="public" virt="non-virtual">Floor</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_cap_floor_1_1arguments" prot="public">QuantLib::CapFloor::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_cap_floor_1_1engine" prot="public">QuantLib::CapFloor::engine</innerclass>

@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_factor_affine_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorAffineModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_factor_model" prot="public" virt="non-virtual">OneFactorModel</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_affine_model" prot="public" virt="non-virtual">AffineModel</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cox_ingersoll_ross" prot="public" virt="non-virtual">CoxIngersollRoss</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vasicek" prot="public" virt="non-virtual">Vasicek</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_affine_model_1a7ba76488a8dafa032560538843a5737f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

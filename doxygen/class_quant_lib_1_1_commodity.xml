@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_commodity" kind="class" prot="public">
     <compoundname>QuantLib::Commodity</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_energy_commodity" prot="public" virt="non-virtual">EnergyCommodity</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_1a158b39795cddba2f2b2c3e04843dcf0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

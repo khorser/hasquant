@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_variance_mesher" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonVarianceMesher</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Fdm1dMesher</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_variance_mesher_1ae9ecbac39bf0ea96ac4954bc8f62ac29" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

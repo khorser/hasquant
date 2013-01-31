@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_sobol_brownian_generator" kind="class" prot="public">
     <compoundname>QuantLib::SobolBrownianGenerator</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BrownianGenerator</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355" prot="public" static="no">

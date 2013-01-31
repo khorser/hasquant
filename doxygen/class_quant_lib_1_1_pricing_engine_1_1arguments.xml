@@ -2,20 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pricing_engine_1_1arguments" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PricingEngine::arguments</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_bond_1_1arguments" prot="public" virt="non-virtual">Bond::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor_1_1arguments" prot="public" virt="virtual">CapFloor::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments" prot="public" virt="virtual">CPICapFloor::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_credit_default_swap_1_1arguments" prot="public" virt="virtual">CreditDefaultSwap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_energy_commodity_1_1arguments" prot="public" virt="virtual">EnergyCommodity::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_option_1_1arguments" prot="public" virt="virtual">Option::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_path_multi_asset_option_1_1arguments" prot="public" virt="virtual">PathMultiAssetOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_1_1arguments" prot="public" virt="virtual">Swap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments" prot="public" virt="virtual">SyntheticCDO::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments" prot="public" virt="virtual">VanillaStorageOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments" prot="public" virt="virtual">VanillaSwingOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_option_1_1arguments" prot="public" virt="virtual">VarianceOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_variance_swap_1_1arguments" prot="public" virt="virtual">VarianceSwap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_1_1arguments" prot="public" virt="virtual">YoYInflationCapFloor::arguments</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

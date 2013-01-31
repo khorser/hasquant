@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_volatility_cube" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolatilityCube</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">SwaptionVolatilityDiscrete</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_vol_cube1" prot="public" virt="non-virtual">SwaptionVolCube1</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_vol_cube2" prot="public" virt="non-virtual">SwaptionVolCube2</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>

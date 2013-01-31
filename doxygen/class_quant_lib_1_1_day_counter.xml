@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_day_counter" kind="class" prot="public">
     <compoundname>QuantLib::DayCounter</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual360" prot="public" virt="non-virtual">Actual360</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual365_fixed" prot="public" virt="non-virtual">Actual365Fixed</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual" prot="public" virt="non-virtual">ActualActual</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_business252" prot="public" virt="non-virtual">Business252</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_day_counter" prot="public" virt="non-virtual">OneDayCounter</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_simple_day_counter" prot="public" virt="non-virtual">SimpleDayCounter</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_thirty360" prot="public" virt="non-virtual">Thirty360</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_day_counter_1_1_impl" prot="protected">QuantLib::DayCounter::Impl</innerclass>
       <sectiondef kind="user-defined">

@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_relative_date_bootstrap_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RelativeDateBootstrapHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::BootstrapHelper&lt; TS &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_b_m_a_swap_rate_helper" prot="public" virt="non-virtual">BMASwapRateHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cds_helper" prot="public" virt="non-virtual">CdsHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_deposit_rate_helper" prot="public" virt="non-virtual">DepositRateHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fra_rate_helper" prot="public" virt="non-virtual">FraRateHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_o_i_s_rate_helper" prot="public" virt="non-virtual">OISRateHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swap_rate_helper" prot="public" virt="non-virtual">SwapRateHelper</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp</includes>
     <templateparamlist>
       <param>
@@ -23,7 +16,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_cds_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="108" bodyend="114"/>
       </memberdef>
       </sectiondef>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_spreaded_optionlet_volatility" kind="class" prot="public">
     <compoundname>QuantLib::SpreadedOptionletVolatility</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_optionlet_volatility_structure" prot="public" virt="non-virtual">OptionletVolatilityStructure</basecompoundref>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_optionlet_volatility_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_default_density_structure" kind="class" prot="public">
     <compoundname>QuantLib::DefaultDensityStructure</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_default_probability_term_structure" prot="public" virt="non-virtual">DefaultProbabilityTermStructure</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_default_density_curve" prot="public" virt="non-virtual">InterpolatedDefaultDensityCurve&lt; Interpolator &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultdensitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
@@ -100,7 +98,6 @@
         <argsstring>(Time) const </argsstring>
         <name>survivalProbabilityImpl</name>
         <reimplements refid="class_quant_lib_1_1_default_probability_term_structure_1a344fea84748c884236cd26be3f3b1dd5">survivalProbabilityImpl</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_interpolated_default_density_curve_1a9ea9cd8b6b75f0c6e5ed1d907dfe63e1">survivalProbabilityImpl</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>

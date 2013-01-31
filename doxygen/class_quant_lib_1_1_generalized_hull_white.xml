@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_generalized_hull_white" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedHullWhite</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_factor_model" prot="public" virt="non-virtual">OneFactorModel</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_term_structure_consistent_model" prot="public" virt="non-virtual">TermStructureConsistentModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
       <sectiondef kind="private-attrib">

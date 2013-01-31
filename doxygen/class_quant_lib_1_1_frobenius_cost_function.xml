@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_frobenius_cost_function" kind="class" prot="public">
     <compoundname>QuantLib::FrobeniusCostFunction</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_frobenius_cost_function_1ab19ae36d6d9c3ce8b3e83c52d2779dfe" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>

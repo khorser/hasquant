@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper" kind="class" prot="public">
     <compoundname>QuantLib::detail::EverywhereConstantHelper</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">SectionHelper</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a3750926f3db88561a589630027f75a97" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

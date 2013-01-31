@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_callable_bond_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CallableBond::arguments</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Bond::arguments</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_proxy_ibor" kind="class" prot="public">
     <compoundname>QuantLib::ProxyIbor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_proxy_ibor_1a7ae72d1b9912c44d86a4a553c2fef99a" prot="private" static="no" mutable="no">

@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_energy_swap" kind="class" prot="public">
     <compoundname>QuantLib::EnergySwap</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_energy_commodity" prot="public" virt="non-virtual">EnergyCommodity</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_energy_basis_swap" prot="public" virt="non-virtual">EnergyBasisSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_energy_vanilla_swap" prot="public" virt="non-virtual">EnergyVanillaSwap</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a97463b8decd2a897e5b74ff4137eae58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

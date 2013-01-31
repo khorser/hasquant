@@ -2,16 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::CubicInterpolation</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_akima_cubic_interpolation" prot="public" virt="non-virtual">AkimaCubicInterpolation</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cubic_natural_spline" prot="public" virt="non-virtual">CubicNaturalSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cubic_spline_overshooting_minimization1" prot="public" virt="non-virtual">CubicSplineOvershootingMinimization1</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cubic_spline_overshooting_minimization2" prot="public" virt="non-virtual">CubicSplineOvershootingMinimization2</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fritsch_butland_cubic" prot="public" virt="non-virtual">FritschButlandCubic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_kruger_cubic" prot="public" virt="non-virtual">KrugerCubic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_monotonic_cubic_natural_spline" prot="public" virt="non-virtual">MonotonicCubicNaturalSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_monotonic_parabolic" prot="public" virt="non-virtual">MonotonicParabolic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_parabolic" prot="public" virt="non-virtual">Parabolic</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp</includes>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" prot="public" static="no">

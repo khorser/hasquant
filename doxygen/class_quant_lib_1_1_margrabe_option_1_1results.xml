@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_margrabe_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::MargrabeOption::results</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_multi_asset_option_1_1results" prot="public" virt="non-virtual">MultiAssetOption::results</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/margrabeoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a90fefb6d21481196eae30c99279c45ed" prot="public" static="no" mutable="no">

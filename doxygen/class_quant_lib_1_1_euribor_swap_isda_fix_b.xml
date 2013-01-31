@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euribor_swap_isda_fix_b" kind="class" prot="public">
     <compoundname>QuantLib::EuriborSwapIsdaFixB</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_swap_index" prot="public" virt="non-virtual">SwapIndex</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swap/euriborswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euribor_swap_isda_fix_b_1af1549e88091dd0194d7511fa1447ee04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

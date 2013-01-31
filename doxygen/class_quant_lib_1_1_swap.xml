@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swap" kind="class" prot="public">
     <compoundname>QuantLib::Swap</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_asset_swap" prot="public" virt="non-virtual">AssetSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_b_m_a_swap" prot="public" virt="non-virtual">BMASwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_swap" prot="public" virt="non-virtual">CPISwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_overnight_indexed_swap" prot="public" virt="non-virtual">OvernightIndexedSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_swap" prot="public" virt="non-virtual">VanillaSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_year_on_year_inflation_swap" prot="public" virt="non-virtual">YearOnYearInflationSwap</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zero_coupon_inflation_swap" prot="public" virt="non-virtual">ZeroCouponInflationSwap</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_swap_1_1arguments" prot="public">QuantLib::Swap::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_swap_1_1engine" prot="public">QuantLib::Swap::engine</innerclass>
@@ -82,9 +74,6 @@
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swap_1a769a037255393b166557200edad61038">setupArguments</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -98,9 +87,6 @@
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swap_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_1a0f63e39daa12d877d8156360b8f920af">fetchResults</reimplementedby>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
@@ -115,8 +101,6 @@
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_vanilla_swap_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplementedby>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="105"/>

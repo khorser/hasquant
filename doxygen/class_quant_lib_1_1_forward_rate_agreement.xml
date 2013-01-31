@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_forward_rate_agreement" kind="class" prot="public">
     <compoundname>QuantLib::ForwardRateAgreement</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_forward" prot="public" virt="non-virtual">Forward</basecompoundref>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">

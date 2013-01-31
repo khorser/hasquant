@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mixed_linear_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearCubicInterpolation</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mixed_linear_cubic_natural_spline" prot="public" virt="non-virtual">MixedLinearCubicNaturalSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mixed_linear_fritsch_butland_cubic" prot="public" virt="non-virtual">MixedLinearFritschButlandCubic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mixed_linear_kruger_cubic" prot="public" virt="non-virtual">MixedLinearKrugerCubic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mixed_linear_monotonic_cubic_natural_spline" prot="public" virt="non-virtual">MixedLinearMonotonicCubicNaturalSpline</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mixed_linear_monotonic_parabolic" prot="public" virt="non-virtual">MixedLinearMonotonicParabolic</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mixed_linear_parabolic" prot="public" virt="non-virtual">MixedLinearParabolic</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_cubic_interpolation_1a2ee3257a82ef7279bbf7c00b6856d189" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_kronrod_adaptive" kind="class" prot="public">
     <compoundname>QuantLib::GaussKronrodAdaptive</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Integrator</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_adaptive_1add0ba79f141ae0a90b0db80d4994d9dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

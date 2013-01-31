@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bates_double_exp_det_jump_model" kind="class" prot="public">
     <compoundname>QuantLib::BatesDoubleExpDetJumpModel</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BatesDoubleExpModel</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_det_jump_model_1adef545b34c1c7d1d09029aed8efa0182" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

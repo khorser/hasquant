@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_writer_extensible_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::WriterExtensibleOption::arguments</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_option_1_1arguments" prot="public" virt="non-virtual">Option::arguments</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/writerextensibleoption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_writer_extensible_option_1_1arguments_1a3b1bb5e134ef03e851478bc00138e06e" prot="public" static="no" mutable="no">

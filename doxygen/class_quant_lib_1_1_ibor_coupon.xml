@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_ibor_coupon" kind="class" prot="public">
     <compoundname>QuantLib::IborCoupon</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon" prot="public" virt="non-virtual">FloatingRateCoupon</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>

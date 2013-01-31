@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_short_rate_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ShortRateModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="non-virtual">CalibratedModel</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_model" prot="public" virt="non-virtual">OneFactorModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_two_factor_model" prot="public" virt="non-virtual">TwoFactorModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -23,13 +20,6 @@
         <definition>virtual boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;) const =0</argsstring>
         <name>tree</name>
-        <reimplementedby refid="class_quant_lib_1_1_two_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
         </param>

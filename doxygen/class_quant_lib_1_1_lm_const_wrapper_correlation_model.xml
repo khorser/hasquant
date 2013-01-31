@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lm_const_wrapper_correlation_model" kind="class" prot="public">
     <compoundname>QuantLib::LmConstWrapperCorrelationModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lm_correlation_model" prot="public" virt="non-virtual">LmCorrelationModel</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a4a007c9376714d579fb3712556125a8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

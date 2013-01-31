@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_call_specified_pathwise_multi_product" kind="class" prot="public">
     <compoundname>QuantLib::CallSpecifiedPathwiseMultiProduct</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" prot="public" virt="non-virtual">MarketModelPathwiseMultiProduct</basecompoundref>
       <sectiondef kind="user-defined">
       <header>MarketModelPathwiseMultiProduct interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

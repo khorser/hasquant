@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_settings_1_1_date_proxy" kind="class" prot="private">
     <compoundname>QuantLib::Settings::DateProxy</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable_value" prot="public" virt="non-virtual">ObservableValue&lt; Date &gt;</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_settings_1_1_date_proxy_1a5b1e593409541056e2b59b992c00e369" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

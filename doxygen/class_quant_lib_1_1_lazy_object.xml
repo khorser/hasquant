@@ -2,44 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lazy_object" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LazyObject</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_abcd_atm_vol_curve" prot="public" virt="non-virtual">AbcdAtmVolCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_basket" prot="public" virt="non-virtual">Basket</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor_term_vol_curve" prot="public" virt="non-virtual">CapFloorTermVolCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cap_floor_term_vol_surface" prot="public" virt="non-virtual">CapFloorTermVolSurface</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cms_market" prot="public" virt="non-virtual">CmsMarket</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote" prot="public" virt="non-virtual">EurodollarFuturesImpliedStdDevQuote</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm2d_black_scholes_solver" prot="public" virt="non-virtual">Fdm2dBlackScholesSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm2_dim_solver" prot="public" virt="non-virtual">Fdm2DimSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm3_dim_solver" prot="public" virt="non-virtual">Fdm3DimSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_bates_solver" prot="public" virt="non-virtual">FdmBatesSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_black_scholes_solver" prot="public" virt="non-virtual">FdmBlackScholesSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver" prot="public" virt="non-virtual">FdmExtOUJumpSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_heston_hull_white_solver" prot="public" virt="non-virtual">FdmHestonHullWhiteSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_heston_solver" prot="public" virt="non-virtual">FdmHestonSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver" prot="public" virt="non-virtual">FdmKlugeExtOUSolver&lt; N &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_ndim_solver" prot="public" virt="non-virtual">FdmNdimSolver&lt; N &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver" prot="private" virt="non-virtual">FdmSimple2dBSSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver" prot="public" virt="non-virtual">FdmSimple2dExtOUSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver" prot="public" virt="non-virtual">FdmSimple3dExtOUJumpSolver</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fitted_bond_discount_curve" prot="public" virt="non-virtual">FittedBondDiscountCurve</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_flat_forward" prot="public" virt="non-virtual">FlatForward</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_forward_swap_quote" prot="public" virt="non-virtual">ForwardSwapQuote</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_implied_std_dev_quote" prot="public" virt="non-virtual">ImpliedStdDevQuote</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_smile_section" prot="public" virt="non-virtual">InterpolatedSmileSection&lt; Interpolator &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_copula" prot="public" virt="non-virtual">OneFactorCopula</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_default_curve" prot="public" virt="non-virtual">PiecewiseDefaultCurve&lt; Traits, Interpolator, Bootstrap &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_yield_curve" prot="public" virt="non-virtual">PiecewiseYieldCurve&lt; Traits, Interpolator, Bootstrap &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve" prot="public" virt="non-virtual">PiecewiseYoYInflationCurve&lt; Interpolator, Bootstrap, Traits &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve" prot="public" virt="non-virtual">PiecewiseYoYOptionletVolatilityCurve&lt; Interpolator, Bootstrap, Traits &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_piecewise_zero_inflation_curve" prot="public" virt="non-virtual">PiecewiseZeroInflationCurve&lt; Interpolator, Bootstrap, Traits &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_rendistato_calculator" prot="private" virt="non-virtual">RendistatoCalculator</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sabr_interpolated_smile_section" prot="public" virt="non-virtual">SabrInterpolatedSmileSection</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stripped_optionlet_adapter" prot="public" virt="non-virtual">StrippedOptionletAdapter</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_stripped_optionlet_base" prot="public" virt="non-virtual">StrippedOptionletBase</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_volatility_discrete" prot="public" virt="non-virtual">SwaptionVolatilityDiscrete</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
@@ -49,17 +11,6 @@
         <argsstring>()</argsstring>
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_forward_swap_quote_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cms_market_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_adapter_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_flat_forward_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_surface_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_default_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yield_curve_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="102" bodyend="116"/>
       </memberdef>
       </sectiondef>
@@ -99,7 +50,6 @@
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplementedby refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
         <detaileddescription>
 <para>This method performs all needed calculations by calling the <emphasis><bold>performCalculations</bold></emphasis> method.</para><para><xrefsect id="caveats_1_caveats000085"><xreftitle>Warning</xreftitle><xrefdescription><para>Objects cache the results of the previous calculation. Such results will be returned upon later invocations of <emphasis><bold>calculate</bold></emphasis>. When the results depend on arguments which could change between invocations, the lazy object must register itself as observer of such objects for the calculations to be performed again when they change.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000086"><xreftitle>Warning</xreftitle><xrefdescription><para>Should this method be redefined in derived classes, <ref refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" kindref="member">LazyObject::calculate()</ref> should be called in the overriding method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" bodystart="145" bodyend="156"/>
@@ -109,44 +59,6 @@
         <definition>virtual void performCalculations</definition>
         <argsstring>() const =0</argsstring>
         <name>performCalculations</name>
-        <reimplementedby refid="class_quant_lib_1_1_stock_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_option_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_future_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_implied_std_dev_quote_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_swap_quote_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_adapter_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_optionlet_stripper2_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_copula_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_optionlet_stripper1_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_asset_swap_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_basis_swap_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_energy_vanilla_swap_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_composite_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_student_copula_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_stripped_optionlet_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_convertible_bond_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cms_market_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_abcd_atm_vol_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_risky_bond_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_flat_forward_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_surface_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cap_floor_term_vol_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_zero_inflation_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_swaption_volatility_matrix_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_nth_to_default_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_forward_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_bond_forward_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_d_o_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fitted_bond_discount_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_default_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_basket_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_one_factor_student_gaussian_copula_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_piecewise_yield_curve_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplementedby>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/lazyobject.hpp" line="91"/>

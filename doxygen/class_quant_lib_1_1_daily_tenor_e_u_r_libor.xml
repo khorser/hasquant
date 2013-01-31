@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_daily_tenor_e_u_r_libor" kind="class" prot="public">
     <compoundname>QuantLib::DailyTenorEURLibor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor_o_n" prot="public" virt="non-virtual">EURLiborON</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_daily_tenor_e_u_r_libor_1a99d2ccd6b0436ae5781f1211df16dcb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

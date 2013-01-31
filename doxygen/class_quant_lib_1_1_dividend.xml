@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_dividend" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Dividend</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fixed_dividend" prot="public" virt="non-virtual">FixedDividend</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_fractional_dividend" prot="public" virt="non-virtual">FractionalDividend</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
@@ -28,8 +25,6 @@
         <argsstring>() const =0</argsstring>
         <name>amount</name>
         <reimplements refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_dividend_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fractional_dividend_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
         <briefdescription>
 <para>returns the amount of the cash flow </para>        </briefdescription>
         <detaileddescription>
@@ -69,8 +64,6 @@
         <definition>virtual Real amount</definition>
         <argsstring>(Real underlying) const =0</argsstring>
         <name>amount</name>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_dividend_1afb22d24f9de61304f9bf6072e9206a0e">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fractional_dividend_1a4331227e15dd6175bbb270e7e6311a43">amount</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>underlying</declname>

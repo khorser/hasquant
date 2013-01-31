@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_adapted_path_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::AdaptedPathPayoff</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_payoff" prot="public" virt="non-virtual">PathPayoff</basecompoundref>
     <innerclass refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data" prot="public">QuantLib::AdaptedPathPayoff::ValuationData</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1a4fc1c7b18d5496f70710a11e9101665e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

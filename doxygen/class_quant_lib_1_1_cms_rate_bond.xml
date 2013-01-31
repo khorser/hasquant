@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cms_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::CmsRateBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bond" prot="public" virt="non-virtual">Bond</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/cmsratebond.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cms_rate_bond_1a7633422a0c3c58407b7d7d9a61699ea2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

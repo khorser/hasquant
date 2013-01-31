@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Option::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cds_option_1_1arguments" prot="public" virt="non-virtual">CdsOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cliquet_option_1_1arguments" prot="public" virt="non-virtual">CliquetOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments" prot="public" virt="non-virtual">ConvertibleBond::option::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_margrabe_option_1_1arguments" prot="public" virt="non-virtual">MargrabeOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_pagoda_option_1_1arguments" prot="public" virt="non-virtual">PagodaOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption_1_1arguments" prot="public" virt="non-virtual">Swaption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments" prot="public" virt="virtual">VanillaVPPOption::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_writer_extensible_option_1_1arguments" prot="public" virt="non-virtual">WriterExtensibleOption::arguments</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/option.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">

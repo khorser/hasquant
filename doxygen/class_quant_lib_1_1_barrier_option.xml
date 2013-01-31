@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_barrier_option" kind="class" prot="public">
     <compoundname>QuantLib::BarrierOption</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_one_asset_option" prot="public" virt="non-virtual">OneAssetOption</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_dividend_barrier_option" prot="public" virt="non-virtual">DividendBarrierOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_quanto_barrier_option" prot="public" virt="non-virtual">QuantoBarrierOption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_barrier_option_1_1arguments" prot="public">QuantLib::BarrierOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_barrier_option_1_1engine" prot="public">QuantLib::BarrierOption::engine</innerclass>
@@ -42,7 +39,6 @@
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_dividend_barrier_option_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplementedby>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

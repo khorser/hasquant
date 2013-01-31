@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_one_asset_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::OneAssetOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; OneAssetOption::arguments, OneAssetOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDAmericanCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_engine_adapter" prot="public" virt="non-virtual">FDEngineAdapter&lt; FDShoutCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_digital_american_engine" prot="public" virt="non-virtual">AnalyticDigitalAmericanEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_binomial_vanilla_engine" prot="public" virt="non-virtual">BinomialVanillaEngine&lt; T &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_f_d_european_engine" prot="public" virt="non-virtual">FDEuropeanEngine&lt; Scheme &gt;</derivedcompoundref>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/oneassetoption.hpp" bodystart="79" bodyend="81"/>
   </compounddef>
 </doxygen>

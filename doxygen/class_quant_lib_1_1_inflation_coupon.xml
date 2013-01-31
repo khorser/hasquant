@@ -2,10 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_inflation_coupon" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InflationCoupon</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_coupon" prot="public" virt="non-virtual">Coupon</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_coupon" prot="public" virt="non-virtual">CPICoupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_yo_y_inflation_coupon" prot="public" virt="non-virtual">YoYInflationCoupon</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
@@ -113,7 +109,6 @@
         <definition>virtual Rate indexFixing</definition>
         <argsstring>() const </argsstring>
         <name>indexFixing</name>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41">indexFixing</reimplementedby>
         <briefdescription>
 <para>fixing of the underlying index, as observed by the coupon </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcoupon.hpp" line="84"/>
@@ -138,9 +133,6 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <reimplements refid="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_e_u_r_libor9_m" kind="class" prot="public">
     <compoundname>QuantLib::EURLibor9M</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_e_u_r_libor" prot="public" virt="non-virtual">EURLibor</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_u_r_libor9_m_1aa63034a291446e868b3e79e55941f8d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

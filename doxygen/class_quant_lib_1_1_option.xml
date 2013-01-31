@@ -2,11 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_option" kind="class" prot="public">
     <compoundname>QuantLib::Option</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cds_option" prot="public" virt="non-virtual">CdsOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_multi_asset_option" prot="public" virt="non-virtual">MultiAssetOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_one_asset_option" prot="public" virt="non-virtual">OneAssetOption</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_swaption" prot="public" virt="non-virtual">Swaption</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/option.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_option_1_1arguments" prot="public">QuantLib::Option::arguments</innerclass>
       <sectiondef kind="public-type">

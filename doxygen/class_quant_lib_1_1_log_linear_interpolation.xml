@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_log_linear_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::LogLinearInterpolation</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_log_linear_interpolation_1ab4291ed0039bc09f58173e1f71a16602" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

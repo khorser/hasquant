@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_polynomial2_d_spline_impl" kind="class" prot="public">
     <compoundname>QuantLib::detail::Polynomial2DSplineImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl" prot="public" virt="non-virtual">QuantLib::Interpolation2D::templateImpl&lt; I1, I2, M &gt;</basecompoundref>
     <templateparamlist>
       <param>
         <type>class I1</type>

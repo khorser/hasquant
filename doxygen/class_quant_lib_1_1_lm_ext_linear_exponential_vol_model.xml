@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model" kind="class" prot="public">
     <compoundname>QuantLib::LmExtLinearExponentialVolModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model" prot="public" virt="non-virtual">LmLinearExponentialVolatilityModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmextlinexpvolmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model_1aa3611aea8d9f8925adebe9bfbbac4a46" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

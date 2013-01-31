@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_spread_basket_payoff" kind="class" prot="public">
     <compoundname>QuantLib::SpreadBasketPayoff</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BasketPayoff</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_spread_basket_payoff_1a25348035a5eba88e1462669f531af242" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

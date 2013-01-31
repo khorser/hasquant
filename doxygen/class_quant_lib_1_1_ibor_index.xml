@@ -2,20 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_ibor_index" kind="class" prot="public">
     <compoundname>QuantLib::IborIndex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_interest_rate_index" prot="public" virt="non-virtual">InterestRateIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cdor" prot="public" virt="non-virtual">Cdor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_daily_tenor_e_u_r_libor" prot="public" virt="non-virtual">DailyTenorEURLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_daily_tenor_libor" prot="public" virt="non-virtual">DailyTenorLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor" prot="public" virt="non-virtual">Euribor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_euribor365" prot="public" virt="non-virtual">Euribor365</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_libor" prot="public" virt="non-virtual">EURLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_jibar" prot="public" virt="non-virtual">Jibar</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_libor" prot="public" virt="non-virtual">Libor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_overnight_index" prot="public" virt="non-virtual">OvernightIndex</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_proxy_ibor" prot="public" virt="non-virtual">ProxyIbor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tibor" prot="public" virt="non-virtual">Tibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_t_r_libor" prot="public" virt="non-virtual">TRLibor</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zibor" prot="public" virt="non-virtual">Zibor</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InterestRateIndex interface</header>
@@ -79,7 +65,6 @@
         <definition>virtual boost::shared_ptr&lt;IborIndex&gt; clone</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;forwarding) const </argsstring>
         <name>clone</name>
-        <reimplementedby refid="class_quant_lib_1_1_libor_1a1a7804d7c4d753ee70800b8913a50622">clone</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>forwarding</declname>

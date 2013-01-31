@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_random_default_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RandomDefaultModel</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_gaussian_random_default_model" prot="public" virt="non-virtual">GaussianRandomDefaultModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_random_default_model_1a71ba42c4a5efb507deda9781b6e62c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -32,7 +31,6 @@
         <definition>virtual void nextSequence</definition>
         <argsstring>(Real tmax=QL_MAX_REAL)=0</argsstring>
         <name>nextSequence</name>
-        <reimplementedby refid="class_quant_lib_1_1_gaussian_random_default_model_1ac793b8fd2de34a6c7f3e7dce559ef39b">nextSequence</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tmax</declname>
@@ -47,7 +45,6 @@
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
-        <reimplementedby refid="class_quant_lib_1_1_gaussian_random_default_model_1ad20897c5c8bd47f5d4005989bead0e55">reset</reimplementedby>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="54"/>
       </memberdef>
       </sectiondef>

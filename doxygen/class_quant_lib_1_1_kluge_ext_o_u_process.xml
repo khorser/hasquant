@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kluge_ext_o_u_process" kind="class" prot="public">
     <compoundname>QuantLib::KlugeExtOUProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a350ede3211a53486a5fb393ec23d4a21" prot="private" static="no" mutable="no">

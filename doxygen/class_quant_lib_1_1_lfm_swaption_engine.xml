@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lfm_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::LfmSwaptionEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_model_engine" prot="public" virt="non-virtual">GenericModelEngine&lt; LiborForwardModel, Swaption::arguments, Swaption::results &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmswaptionengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_lfm_swaption_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained" kind="class" prot="public">
     <compoundname>QuantLib::LogNormalFwdRateEulerConstrained</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_constrained_evolver" prot="public" virt="non-virtual">ConstrainedEvolver</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateeulerconstrained.hpp</includes>
       <sectiondef kind="user-defined">
       <header>MarketModelConstrained interface</header>

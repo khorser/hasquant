@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_second_order_mixed_derivative_op" kind="class" prot="public">
     <compoundname>QuantLib::SecondOrderMixedDerivativeOp</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">NinePointLinearOp</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_second_order_mixed_derivative_op_1a8cf11f50a20a5eff1b928c8f4db0b5a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

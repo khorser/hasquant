@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cash_flow" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CashFlow</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_commodity_cash_flow" prot="public" virt="non-virtual">CommodityCashFlow</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_coupon" prot="public" virt="non-virtual">Coupon</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_dividend" prot="public" virt="non-virtual">Dividend</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_indexed_cash_flow" prot="public" virt="non-virtual">IndexedCashFlow</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_simple_cash_flow" prot="public" virt="non-virtual">SimpleCashFlow</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
@@ -17,10 +11,6 @@
         <argsstring>() const =0</argsstring>
         <name>date</name>
         <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
@@ -56,15 +46,6 @@
         <definition>virtual Real amount</definition>
         <argsstring>() const =0</argsstring>
         <name>amount</name>
-        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dividend_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_coupon_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_dividend_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fractional_dividend_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cash_flow_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
         <briefdescription>
 <para>returns the amount of the cash flow </para>        </briefdescription>
         <detaileddescription>
@@ -81,26 +62,6 @@
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <reimplements refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_dividend_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_amortizing_payment_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_inflation_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_c_p_i_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad">accept</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
         <param>
           <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>

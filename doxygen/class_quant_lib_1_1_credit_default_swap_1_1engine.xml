@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_credit_default_swap_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::CreditDefaultSwap::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; CreditDefaultSwap::arguments, CreditDefaultSwap::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_integral_cds_engine" prot="public" virt="non-virtual">IntegralCdsEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mid_point_cds_engine" prot="public" virt="non-virtual">MidPointCdsEngine</derivedcompoundref>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="279" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="277" bodyend="279"/>
   </compounddef>
 </doxygen>

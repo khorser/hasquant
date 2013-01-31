@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_recursive_cdo_engine" kind="class" prot="public">
     <compoundname>QuantLib::GaussianRecursiveCdoEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_recursive_cdo_engine" prot="public" virt="non-virtual">RecursiveCdoEngine&lt; CDOEngine, OneFactorGaussianCopula &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp</includes>
     <templateparamlist>
       <param>

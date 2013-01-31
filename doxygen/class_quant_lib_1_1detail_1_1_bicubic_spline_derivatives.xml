@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::detail::BicubicSplineDerivatives</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_bicubic_spline_impl" prot="public" virt="non-virtual">BicubicSplineImpl&lt; I1, I2, M &gt;</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives_1a08792cb09924e13486839fa681d7b5a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_heston_model" kind="class" prot="public">
     <compoundname>QuantLib::HestonModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="non-virtual">CalibratedModel</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bates_double_exp_model" prot="public" virt="non-virtual">BatesDoubleExpModel</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_bates_model" prot="public" virt="non-virtual">BatesModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_heston_model_1_1_feller_constraint" prot="public">QuantLib::HestonModel::FellerConstraint</innerclass>
       <sectiondef kind="public-func">

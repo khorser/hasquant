@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_business252" kind="class" prot="public">
     <compoundname>QuantLib::Business252</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_day_counter" prot="public" virt="non-virtual">DayCounter</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_business252_1_1_impl" prot="private">QuantLib::Business252::Impl</innerclass>
       <sectiondef kind="public-func">

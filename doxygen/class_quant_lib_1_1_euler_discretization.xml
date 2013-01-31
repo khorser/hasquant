@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_euler_discretization" kind="class" prot="public">
     <compoundname>QuantLib::EulerDiscretization</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" prot="public" virt="non-virtual">StochasticProcess::discretization</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization" prot="public" virt="non-virtual">StochasticProcess1D::discretization</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

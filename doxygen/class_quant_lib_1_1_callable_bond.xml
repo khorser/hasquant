@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_callable_bond" kind="class" prot="public">
     <compoundname>QuantLib::CallableBond</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bond" prot="public" virt="non-virtual">Bond</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_callable_fixed_rate_bond" prot="public" virt="non-virtual">CallableFixedRateBond</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1arguments" prot="public">QuantLib::CallableBond::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1engine" prot="public">QuantLib::CallableBond::engine</innerclass>
@@ -75,7 +73,6 @@
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
         <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_callable_fixed_rate_bond_1af6f2357affd0584e0db188a557bdef03">setupArguments</reimplementedby>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_cds_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCdsOptionEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_cds_option_1_1engine" prot="public" virt="non-virtual">CdsOption::engine</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_black_cds_option_engine_1a441cf22e5da9198c16764b48f18d056f" prot="private" static="no" mutable="no">

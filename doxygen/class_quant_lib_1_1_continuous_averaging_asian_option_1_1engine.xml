@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_continuous_averaging_asian_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::ContinuousAveragingAsianOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ContinuousAveragingAsianOption::arguments, ContinuousAveragingAsianOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_continuous_geometric_average_price_asian_engine" prot="public" virt="non-virtual">AnalyticContinuousGeometricAveragePriceAsianEngine</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_continuous_arithmetic_asian_levy_engine" prot="public" virt="non-virtual">ContinuousArithmeticAsianLevyEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp</includes>
     <briefdescription>
 <para>Continuous-averaging Asian engine base class. </para>    </briefdescription>

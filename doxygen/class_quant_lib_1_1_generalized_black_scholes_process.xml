@@ -2,13 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_generalized_black_scholes_process" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedBlackScholesProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_process" prot="public" virt="non-virtual">BlackProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_scholes_merton_process" prot="public" virt="non-virtual">BlackScholesMertonProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_scholes_process" prot="public" virt="non-virtual">BlackScholesProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_black_scholes_merton_process" prot="public" virt="non-virtual">ExtendedBlackScholesMertonProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_garman_kohlagen_process" prot="public" virt="non-virtual">GarmanKohlagenProcess</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vega_stressed_black_scholes_process" prot="public" virt="non-virtual">VegaStressedBlackScholesProcess</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>

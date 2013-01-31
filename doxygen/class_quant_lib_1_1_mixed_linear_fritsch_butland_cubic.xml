@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mixed_linear_fritsch_butland_cubic" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearFritschButlandCubic</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_mixed_linear_cubic_interpolation" prot="public" virt="non-virtual">MixedLinearCubicInterpolation</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_fritsch_butland_cubic_1af5c3745755f64d301c093257a4855a9b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

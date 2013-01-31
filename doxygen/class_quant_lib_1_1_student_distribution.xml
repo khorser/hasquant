@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_student_distribution" kind="class" prot="public">
     <compoundname>QuantLib::StudentDistribution</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_student_distribution_1ae7498ef3fa9e3da5bc35ee3bd6e71a5d" prot="private" static="no" mutable="no">

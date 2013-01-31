@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::TreeCallableFixedRateBondEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_lattice_short_rate_model_engine" prot="public" virt="non-virtual">LatticeShortRateModelEngine&lt; CallableBond::arguments, CallableBond::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine" prot="public" virt="non-virtual">TreeCallableZeroCouponBondEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/treecallablebondengine.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>

@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_term_structure_consistent_model" kind="class" prot="public">
     <compoundname>QuantLib::TermStructureConsistentModel</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_karasinski" prot="public" virt="non-virtual">BlackKarasinski</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_cox_ingersoll_ross" prot="public" virt="non-virtual">ExtendedCoxIngersollRoss</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_g2" prot="public" virt="non-virtual">G2</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_generalized_hull_white" prot="public" virt="non-virtual">GeneralizedHullWhite</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hull_white" prot="public" virt="non-virtual">HullWhite</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_consistent_model_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">

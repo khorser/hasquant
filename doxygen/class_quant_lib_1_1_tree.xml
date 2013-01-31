@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tree" kind="class" prot="public">
     <compoundname>QuantLib::Tree</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_curiously_recurring_template" prot="public" virt="non-virtual">CuriouslyRecurringTemplate&lt; T &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_binomial_tree" prot="public" virt="non-virtual">BinomialTree&lt; T &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_extended_binomial_tree" prot="public" virt="non-virtual">ExtendedBinomialTree&lt; T &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/tree.hpp</includes>
     <templateparamlist>
       <param>

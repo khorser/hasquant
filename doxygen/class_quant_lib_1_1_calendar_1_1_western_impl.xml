@@ -2,47 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calendar_1_1_western_impl" kind="class" prot="public">
     <compoundname>QuantLib::Calendar::WesternImpl</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_impl" prot="public" virt="non-virtual">Calendar::Impl</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_argentina_1_1_merval_impl" prot="public" virt="non-virtual">Argentina::MervalImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_australia_1_1_impl" prot="public" virt="non-virtual">Australia::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_brazil_1_1_exchange_impl" prot="public" virt="non-virtual">Brazil::ExchangeImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_brazil_1_1_settlement_impl" prot="public" virt="non-virtual">Brazil::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_canada_1_1_settlement_impl" prot="public" virt="non-virtual">Canada::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_canada_1_1_tsx_impl" prot="public" virt="non-virtual">Canada::TsxImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_czech_republic_1_1_pse_impl" prot="public" virt="non-virtual">CzechRepublic::PseImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_denmark_1_1_impl" prot="public" virt="non-virtual">Denmark::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_finland_1_1_impl" prot="public" virt="non-virtual">Finland::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_germany_1_1_eurex_impl" prot="public" virt="non-virtual">Germany::EurexImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_germany_1_1_euwax_impl" prot="public" virt="non-virtual">Germany::EuwaxImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_germany_1_1_frankfurt_stock_exchange_impl" prot="public" virt="non-virtual">Germany::FrankfurtStockExchangeImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_germany_1_1_settlement_impl" prot="public" virt="non-virtual">Germany::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_germany_1_1_xetra_impl" prot="public" virt="non-virtual">Germany::XetraImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hong_kong_1_1_hkex_impl" prot="public" virt="non-virtual">HongKong::HkexImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_hungary_1_1_impl" prot="public" virt="non-virtual">Hungary::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_iceland_1_1_icex_impl" prot="public" virt="non-virtual">Iceland::IcexImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_india_1_1_nse_impl" prot="public" virt="non-virtual">India::NseImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_indonesia_1_1_bej_impl" prot="public" virt="non-virtual">Indonesia::BejImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_italy_1_1_exchange_impl" prot="public" virt="non-virtual">Italy::ExchangeImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_italy_1_1_settlement_impl" prot="public" virt="non-virtual">Italy::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_mexico_1_1_bmv_impl" prot="public" virt="non-virtual">Mexico::BmvImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_new_zealand_1_1_impl" prot="public" virt="non-virtual">NewZealand::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_norway_1_1_impl" prot="public" virt="non-virtual">Norway::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_poland_1_1_impl" prot="public" virt="non-virtual">Poland::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_russia_1_1_settlement_impl" prot="public" virt="non-virtual">Russia::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_singapore_1_1_sgx_impl" prot="public" virt="non-virtual">Singapore::SgxImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_slovakia_1_1_bsse_impl" prot="public" virt="non-virtual">Slovakia::BsseImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_south_africa_1_1_impl" prot="public" virt="non-virtual">SouthAfrica::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_sweden_1_1_impl" prot="public" virt="non-virtual">Sweden::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_switzerland_1_1_impl" prot="public" virt="non-virtual">Switzerland::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_t_a_r_g_e_t_1_1_impl" prot="public" virt="non-virtual">TARGET::Impl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_kingdom_1_1_exchange_impl" prot="public" virt="non-virtual">UnitedKingdom::ExchangeImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_kingdom_1_1_metals_impl" prot="public" virt="non-virtual">UnitedKingdom::MetalsImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_kingdom_1_1_settlement_impl" prot="public" virt="non-virtual">UnitedKingdom::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_states_1_1_government_bond_impl" prot="public" virt="non-virtual">UnitedStates::GovernmentBondImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_states_1_1_nerc_impl" prot="public" virt="non-virtual">UnitedStates::NercImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_states_1_1_nyse_impl" prot="public" virt="non-virtual">UnitedStates::NyseImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_united_states_1_1_settlement_impl" prot="public" virt="non-virtual">UnitedStates::SettlementImpl</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_weekends_only_1_1_impl" prot="public" virt="non-virtual">WeekendsOnly::Impl</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp</includes>
       <sectiondef kind="protected-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_western_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">

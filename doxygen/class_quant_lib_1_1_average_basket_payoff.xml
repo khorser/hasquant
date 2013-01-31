@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_average_basket_payoff" kind="class" prot="public">
     <compoundname>QuantLib::AverageBasketPayoff</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">BasketPayoff</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_average_basket_payoff_1a0965c37cd84ea03df388dd567b4cc45c" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>

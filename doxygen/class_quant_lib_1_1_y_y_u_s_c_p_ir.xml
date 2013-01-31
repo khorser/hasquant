@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_y_y_u_s_c_p_ir" kind="class" prot="public">
     <compoundname>QuantLib::YYUSCPIr</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_yo_y_inflation_index" prot="public" virt="non-virtual">YoYInflationIndex</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflation/uscpi.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_y_y_u_s_c_p_ir_1a18cb728e9bec800d78b8b2da7bc43ba0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

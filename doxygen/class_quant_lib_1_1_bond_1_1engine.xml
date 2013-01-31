@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_bond_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::Bond::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Bond::arguments, Bond::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_discounting_bond_engine" prot="public" virt="non-virtual">DiscountingBondEngine</derivedcompoundref>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="289" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="288" bodyend="289"/>
   </compounddef>
 </doxygen>

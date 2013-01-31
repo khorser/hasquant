@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_log_cubic_natural_spline" kind="class" prot="public">
     <compoundname>QuantLib::LogCubicNaturalSpline</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_log_cubic_interpolation" prot="public" virt="non-virtual">LogCubicInterpolation</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_log_cubic_natural_spline_1a5af0d5cde59da17a2fddc0e06a73e317" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

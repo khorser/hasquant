@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_constraint" kind="class" prot="public">
     <compoundname>QuantLib::Constraint</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_boundary_constraint" prot="public" virt="non-virtual">BoundaryConstraint</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint" prot="public" virt="non-virtual">CalibratedModel::PrivateConstraint</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_composite_constraint" prot="public" virt="non-virtual">CompositeConstraint</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_heston_model_1_1_feller_constraint" prot="public" virt="non-virtual">HestonModel::FellerConstraint</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_no_constraint" prot="public" virt="non-virtual">NoConstraint</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_positive_constraint" prot="public" virt="non-virtual">PositiveConstraint</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_constraint_1_1_impl" prot="protected">QuantLib::Constraint::Impl</innerclass>
       <sectiondef kind="public-func">

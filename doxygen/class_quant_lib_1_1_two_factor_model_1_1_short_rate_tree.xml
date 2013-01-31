@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" kind="class" prot="public">
     <compoundname>QuantLib::TwoFactorModel::ShortRateTree</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_tree_lattice2_d" prot="public" virt="non-virtual">TreeLattice2D&lt; TwoFactorModel::ShortRateTree, TrinomialTree &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1ae9756a7000541f59d6ecf6c317d3e50b" prot="private" static="no" mutable="no">

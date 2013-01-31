@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_multi_step_tarn" kind="class" prot="public">
     <compoundname>QuantLib::MultiStepTarn</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_multi_product_multi_step" prot="public" virt="non-virtual">MultiProductMultiStep</basecompoundref>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_tarn_1a56865e26489f9b92ffd7aa1adf6cbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">

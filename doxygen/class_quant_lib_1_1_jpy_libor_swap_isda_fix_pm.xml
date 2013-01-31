@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm" kind="class" prot="public">
     <compoundname>QuantLib::JpyLiborSwapIsdaFixPm</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_swap_index" prot="public" virt="non-virtual">SwapIndex</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/swap/jpyliborswap.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm_1a99a870bc80bd627d8ba262d9cce3e24e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

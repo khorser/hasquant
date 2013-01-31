@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_credit_default_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::CreditDefaultSwap::results</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Instrument::results</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1results_1a193a327b5f6c2aeba8fc5d2c40f7b017" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>

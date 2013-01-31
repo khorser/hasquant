@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_n_z_d_libor" kind="class" prot="public">
     <compoundname>QuantLib::NZDLibor</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_libor" prot="public" virt="non-virtual">Libor</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/nzdlibor.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_n_z_d_libor_1a5b6838ec85b68d5675d1d4030253bd44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">

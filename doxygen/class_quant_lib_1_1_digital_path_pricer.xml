@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_digital_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::DigitalPathPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; Path &gt;</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a1ef130613f9d1fa82a5d54d277083e99" prot="private" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_or_nothing_payoff" kindref="compound">CashOrNothingPayoff</ref> &gt;</type>

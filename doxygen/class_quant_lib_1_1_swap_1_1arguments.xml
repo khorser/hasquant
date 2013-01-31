@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swap_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Swap::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_asset_swap_1_1arguments" prot="public" virt="non-virtual">AssetSwap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments" prot="public" virt="non-virtual">CPISwap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_swap_1_1arguments" prot="public" virt="non-virtual">VanillaSwap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments" prot="public" virt="non-virtual">YearOnYearInflationSwap::arguments</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zero_coupon_inflation_swap_1_1arguments" prot="public" virt="non-virtual">ZeroCouponInflationSwap::arguments</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1arguments_1afd4d39f841bb8aba3695d1d6ed65e1f2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &gt;</type>

@@ -2,12 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_tridiagonal_operator" kind="class" prot="public">
     <compoundname>QuantLib::TridiagonalOperator</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_b_s_m_operator" prot="public" virt="non-virtual">BSMOperator</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_d_minus" prot="public" virt="non-virtual">DMinus</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_d_plus" prot="public" virt="non-virtual">DPlus</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_d_plus_d_minus" prot="public" virt="non-virtual">DPlusDMinus</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_d_zero" prot="public" virt="non-virtual">DZero</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_pde_operator" prot="public" virt="non-virtual">PdeOperator&lt; PdeClass &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter" prot="public">QuantLib::TridiagonalOperator::TimeSetter</innerclass>
       <sectiondef kind="user-defined">

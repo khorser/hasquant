@@ -2,20 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_yo_y_inflation_index" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationIndex</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_inflation_index" prot="public" virt="non-virtual">InflationIndex</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_a_u_c_p_i" prot="public" virt="non-virtual">YYAUCPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_a_u_c_p_ir" prot="public" virt="non-virtual">YYAUCPIr</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_e_u_h_i_c_p" prot="public" virt="non-virtual">YYEUHICP</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_e_u_h_i_c_pr" prot="public" virt="non-virtual">YYEUHICPr</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_e_u_h_i_c_p_x_t" prot="public" virt="non-virtual">YYEUHICPXT</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_f_r_h_i_c_p" prot="public" virt="non-virtual">YYFRHICP</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_f_r_h_i_c_pr" prot="public" virt="non-virtual">YYFRHICPr</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_generic_c_p_i" prot="public" virt="non-virtual">YYGenericCPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_generic_c_p_ir" prot="public" virt="non-virtual">YYGenericCPIr</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_u_k_r_p_i" prot="public" virt="non-virtual">YYUKRPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_u_k_r_p_ir" prot="public" virt="non-virtual">YYUKRPIr</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_u_s_c_p_i" prot="public" virt="non-virtual">YYUSCPI</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_y_y_u_s_c_p_ir" prot="public" virt="non-virtual">YYUSCPIr</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>

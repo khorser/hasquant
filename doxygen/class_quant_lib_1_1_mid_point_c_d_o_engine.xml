@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mid_point_c_d_o_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MidPointCDOEngine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine" prot="public" virt="non-virtual">SyntheticCDO::engine</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine1" prot="public" virt="non-virtual">MonteCarloCDOEngine1</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mid_point_c_d_o_engine_1aafdc66830f19c8a053838846f9b3b9c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -29,7 +27,6 @@
         <argsstring>(const Date &amp;) const =0</argsstring>
         <name>expectedTrancheLoss</name>
         <reimplements refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1a2e70e1d1ab3c68a3c6d4c5bb39820576">expectedTrancheLoss</reimplements>
-        <reimplementedby refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine1_1a6d163efc5ceadc563dd267641d754a0e">expectedTrancheLoss</reimplementedby>
         <param>
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>

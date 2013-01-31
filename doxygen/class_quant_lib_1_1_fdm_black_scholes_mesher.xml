@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_black_scholes_mesher" kind="class" prot="public">
     <compoundname>QuantLib::FdmBlackScholesMesher</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Fdm1dMesher</basecompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_mesher_1a74af3690f82fdca6efda1c4622cb19af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

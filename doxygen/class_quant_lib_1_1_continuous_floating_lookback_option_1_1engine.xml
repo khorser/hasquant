@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_continuous_floating_lookback_option_1_1engine" kind="class" prot="public">
     <compoundname>QuantLib::ContinuousFloatingLookbackOption::engine</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; ContinuousFloatingLookbackOption::arguments, ContinuousFloatingLookbackOption::results &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine" prot="public" virt="non-virtual">AnalyticContinuousFloatingLookbackEngine</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp</includes>
     <briefdescription>
 <para>Continuous floating lookback engine base class </para>    </briefdescription>

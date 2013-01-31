@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1simple__event" kind="class" prot="public">
     <compoundname>QuantLib::detail::simple_event</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1simple__event_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>

@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_credit_default_swap_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CreditDefaultSwap::arguments</compoundname>
-    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_cds_option_1_1arguments" prot="public" virt="non-virtual">CdsOption::arguments</derivedcompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a07c2d0e57c7e50acbacdfa1703016dd9" prot="public" static="no" mutable="no">
         <type>Protection::Side</type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swing_exercise" kind="class" prot="public">
     <compoundname>QuantLib::SwingExercise</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_bermudan_exercise" prot="public" virt="non-virtual">BermudanExercise</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_swing_exercise_1a032b9910f340bbe66e91dd8403df2a11" prot="private" static="no" mutable="no">

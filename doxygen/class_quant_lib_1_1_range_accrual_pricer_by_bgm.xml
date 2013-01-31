@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_range_accrual_pricer_by_bgm" kind="class" prot="public">
     <compoundname>QuantLib::RangeAccrualPricerByBgm</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">RangeAccrualPricer</basecompoundref>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1a3416b3c7e57041a332be8b73b8ba53a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

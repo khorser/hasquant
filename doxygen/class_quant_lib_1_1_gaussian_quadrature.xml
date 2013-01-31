@@ -2,14 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gaussian_quadrature" kind="class" prot="public">
     <compoundname>QuantLib::GaussianQuadrature</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_chebyshev2nd_integration" prot="public" virt="non-virtual">GaussChebyshev2ndIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_chebyshev_integration" prot="public" virt="non-virtual">GaussChebyshevIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_gegenbauer_integration" prot="public" virt="non-virtual">GaussGegenbauerIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_hermite_integration" prot="public" virt="non-virtual">GaussHermiteIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_hyperbolic_integration" prot="public" virt="non-virtual">GaussHyperbolicIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_jacobi_integration" prot="public" virt="non-virtual">GaussJacobiIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_laguerre_integration" prot="public" virt="non-virtual">GaussLaguerreIntegration</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_gauss_legendre_integration" prot="public" virt="non-virtual">GaussLegendreIntegration</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_quadrature_1aa17c3bd9fcf002dcb2dbfb5efc269c8c" prot="private" static="no" mutable="no">

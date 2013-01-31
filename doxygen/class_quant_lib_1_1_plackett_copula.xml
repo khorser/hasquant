@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_plackett_copula" kind="class" prot="public">
     <compoundname>QuantLib::PlackettCopula</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; Real, Real, Real &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/plackettcopula.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_plackett_copula_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">

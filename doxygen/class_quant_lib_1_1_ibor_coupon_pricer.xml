@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_ibor_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::IborCouponPricer</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="non-virtual">FloatingRateCouponPricer</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_black_ibor_coupon_pricer" prot="public" virt="non-virtual">BlackIborCouponPricer</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_pricer_1a3e7a8d3fd9aaecc2a833165743019ca3" prot="private" static="no" mutable="no">

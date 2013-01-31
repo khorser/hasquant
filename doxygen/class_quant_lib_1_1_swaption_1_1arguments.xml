@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Swaption::arguments</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_vanilla_swap_1_1arguments" prot="public" virt="non-virtual">VanillaSwap::arguments</basecompoundref>
-    <basecompoundref refid="class_quant_lib_1_1_option_1_1arguments" prot="public" virt="non-virtual">Option::arguments</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1_1arguments_1a3326e02320aa0daaf1c3433efd26ea37" prot="public" static="no" mutable="no">

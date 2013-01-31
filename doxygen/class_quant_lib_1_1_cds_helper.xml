@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_cds_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CdsHelper</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_relative_date_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::RelativeDateBootstrapHelper&lt; DefaultProbabilityTermStructure &gt;</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_spread_cds_helper" prot="public" virt="non-virtual">SpreadCdsHelper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_upfront_cds_helper" prot="public" virt="non-virtual">UpfrontCdsHelper</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1aadb08e58343efaf93254f2fc5b84b6a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_scholes_merton_process" kind="class" prot="public">
     <compoundname>QuantLib::BlackScholesMertonProcess</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_generalized_black_scholes_process" prot="public" virt="non-virtual">GeneralizedBlackScholesProcess</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_merton_process_1a1c7be9461e3e192a152f6eec947de8d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

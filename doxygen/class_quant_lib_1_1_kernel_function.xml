@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_kernel_function" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::KernelFunction</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_gaussian_kernel" prot="public" virt="non-virtual">GaussianKernel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kernel_function_1a45b5bc5f0e6ad13abc0d53cb235d8cd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
@@ -17,7 +16,6 @@
         <definition>virtual Real operator()</definition>
         <argsstring>(Real x) const =0</argsstring>
         <name>operator()</name>
-        <reimplementedby refid="class_quant_lib_1_1_gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d">operator()</reimplementedby>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>

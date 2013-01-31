@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_gauss_gegenbauer_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::GaussGegenbauerPolynomial</compoundname>
-    <basecompoundref refid="class_quant_lib_1_1_gauss_jacobi_polynomial" prot="public" virt="non-virtual">GaussJacobiPolynomial</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_gegenbauer_polynomial_1af5550f63ca8dd01261076550bf5c4af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">

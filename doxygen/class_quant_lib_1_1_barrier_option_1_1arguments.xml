@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_barrier_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::BarrierOption::arguments</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">arguments</basecompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_dividend_barrier_option_1_1arguments" prot="public" virt="non-virtual">DividendBarrierOption::arguments</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/barrieroption.hpp</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_barrier_option_1_1arguments_1af96b635e5c74c1566e70a2a7c25f2a4e" prot="public" static="no" mutable="no">

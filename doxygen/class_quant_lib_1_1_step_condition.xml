@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_step_condition" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::StepCondition</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_curve_dependent_step_condition" prot="public" virt="non-virtual">CurveDependentStepCondition&lt; array_type &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_null_condition" prot="public" virt="non-virtual">NullCondition&lt; array_type &gt;</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_zero_condition" prot="public" virt="non-virtual">ZeroCondition&lt; array_type &gt;</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp</includes>
     <templateparamlist>
       <param>
@@ -26,8 +23,6 @@
         <definition>virtual void applyTo</definition>
         <argsstring>(array_type &amp;a, Time t) const =0</argsstring>
         <name>applyTo</name>
-        <reimplementedby refid="class_quant_lib_1_1_zero_condition_1abd66e856646ef33d2ae796fb9d86f27f">applyTo</reimplementedby>
-        <reimplementedby refid="class_quant_lib_1_1_null_condition_1a878bab06de00a1b5dfee2a25928f75ba">applyTo</reimplementedby>
         <param>
           <type>array_type &amp;</type>
           <declname>a</declname>

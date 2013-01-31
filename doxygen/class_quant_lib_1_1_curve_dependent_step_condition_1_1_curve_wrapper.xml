@@ -2,8 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::CurveDependentStepCondition::CurveWrapper</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper" prot="public" virt="non-virtual">CurveDependentStepCondition&lt; array_type &gt;::ArrayWrapper</derivedcompoundref>
-    <derivedcompoundref refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper" prot="public" virt="non-virtual">CurveDependentStepCondition&lt; array_type &gt;::PayoffWrapper</derivedcompoundref>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1ada5322ace3e6e7194879abfa92bede90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

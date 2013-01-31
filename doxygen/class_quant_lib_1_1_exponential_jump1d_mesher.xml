@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exponential_jump1d_mesher" kind="class" prot="public">
     <compoundname>QuantLib::ExponentialJump1dMesher</compoundname>
-    <basecompoundref prot="public" virt="non-virtual">Fdm1dMesher</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_exponential_jump1d_mesher_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" static="no" mutable="no">

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_commodity_type" kind="class" prot="public">
     <compoundname>QuantLib::CommodityType</compoundname>
-    <derivedcompoundref refid="class_quant_lib_1_1_null_commodity_type" prot="public" virt="non-virtual">NullCommodityType</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_commodity_type_1_1_data" prot="protected">QuantLib::CommodityType::Data</innerclass>
       <sectiondef kind="user-defined">
