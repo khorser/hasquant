@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_exponential_jump1d_mesher" kind="class" prot="public">
     <compoundname>QuantLib::ExponentialJump1dMesher</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_exponential_jump1d_mesher_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real beta_</definition>
-        <argsstring></argsstring>
-        <name>beta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exponential_jump1d_mesher_1abb89333a64fdf97627f73462a9e43591" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real jumpIntensity_</definition>
-        <argsstring></argsstring>
-        <name>jumpIntensity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exponential_jump1d_mesher_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real eta_</definition>
-        <argsstring></argsstring>
-        <name>eta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1a71d3a400f8107ad1d604361cfc4012c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

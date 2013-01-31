@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_alpha_form_linear_hyperbolic" kind="class" prot="public">
     <compoundname>QuantLib::AlphaFormLinearHyperbolic</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real alpha_</definition>
-        <argsstring></argsstring>
-        <name>alpha_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a989b8d9fd65f0f9caae32480b2c9ff8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

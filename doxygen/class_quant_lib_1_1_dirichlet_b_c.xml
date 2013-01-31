@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_dirichlet_b_c" kind="class" prot="public">
     <compoundname>QuantLib::DirichletBC</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_dirichlet_b_c_1a3750926f3db88561a589630027f75a97" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real value_</definition>
-        <argsstring></argsstring>
-        <name>value_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="105" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_dirichlet_b_c_1a9d351c0a52db8c1927580ab4dfd42812" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00" kindref="member">Side</ref></type>
-        <definition>Side side_</definition>
-        <argsstring></argsstring>
-        <name>side_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/boundarycondition.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_dirichlet_b_c_1a19ed68ccaf486a93eb99923d75523a29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,43 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fd_bates_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdBatesVanillaEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size tGrid_</definition>
-        <argsstring></argsstring>
-        <name>tGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size xGrid_</definition>
-        <argsstring></argsstring>
-        <name>xGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1a4a9d2eb047a6d0d329c5ec9ba01e39b5" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size vGrid_</definition>
-        <argsstring></argsstring>
-        <name>vGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size dampingSteps_</definition>
-        <argsstring></argsstring>
-        <name>dampingSteps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdbatesvanillaengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd_bates_vanilla_engine_1a89b17a2f0599a9c0e3e3fbe5631ac3b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

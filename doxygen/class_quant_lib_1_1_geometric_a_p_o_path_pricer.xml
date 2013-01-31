@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_geometric_a_p_o_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::GeometricAPOPathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref></type>
-        <definition>PlainVanillaPayoff payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discount_</definition>
-        <argsstring></argsstring>
-        <name>discount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1af7bfe5678e5fb28716cab530ef2320cb" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real runningProduct_</definition>
-        <argsstring></argsstring>
-        <name>runningProduct_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1af7b74f117d77bca61083800382057efe" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size pastFixings_</definition>
-        <argsstring></argsstring>
-        <name>pastFixings_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1a86d794f35e5cad47144c884217a73a33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

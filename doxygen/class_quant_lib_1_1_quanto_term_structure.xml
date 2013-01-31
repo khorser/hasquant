@@ -56,64 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="113" bodyend="120"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1ae1f873b65a59ead8160d9d472eed077e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; underlyingDividendTS_</definition>
-        <argsstring></argsstring>
-        <name>underlyingDividendTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a9f6a5e08837c62a8bb68bcf7b48dc505" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; riskFreeTS_</definition>
-        <argsstring></argsstring>
-        <name>riskFreeTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a10f63cab7da89b3ed3e8d650c161460b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; foreignRiskFreeTS_</definition>
-        <argsstring></argsstring>
-        <name>foreignRiskFreeTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a4859fc0226365e45fda60b683af60232" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;BlackVolTermStructure&gt; underlyingBlackVolTS_</definition>
-        <argsstring></argsstring>
-        <name>underlyingBlackVolTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a2fc6b670ed3c4e381d7ec5f152f43460" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;BlackVolTermStructure&gt; exchRateBlackVolTS_</definition>
-        <argsstring></argsstring>
-        <name>exchRateBlackVolTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a373aa506a1a54945985509a282637f1b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real underlyingExchRateCorrelation_</definition>
-        <argsstring></argsstring>
-        <name>underlyingExchRateCorrelation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real strike_</definition>
-        <argsstring></argsstring>
-        <name>strike_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_term_structure_1a774710f9347c72db4ca615244af0af6f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real exchRateATMlevel_</definition>
-        <argsstring></argsstring>
-        <name>exchRateATMlevel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/quantotermstructure.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_term_structure_1a8a492ca4a04a52b27abb13989ea942ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

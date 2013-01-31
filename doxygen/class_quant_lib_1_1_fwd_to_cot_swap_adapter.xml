@@ -58,50 +58,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a00cbe042fcbdf0b6ab1366858f9d89b3" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;MarketModel&gt; fwdModel_</definition>
-        <argsstring></argsstring>
-        <name>fwdModel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1ab08d17d726b407bc7365c916b7827528" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfFactors_</definition>
-        <argsstring></argsstring>
-        <name>numberOfFactors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfRates_</definition>
-        <argsstring></argsstring>
-        <name>numberOfRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a7096f7840a57cff837d27141bc085e5c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfSteps_</definition>
-        <argsstring></argsstring>
-        <name>numberOfSteps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a8b89a8c8a2eeefb8fb7fcf981aab2498" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; initialRates_</definition>
-        <argsstring></argsstring>
-        <name>initialRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a4c0e90029768120dad570b182ae7e747" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>std::vector&lt;Matrix&gt; pseudoRoots_</definition>
-        <argsstring></argsstring>
-        <name>pseudoRoots_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a43cdaa4ae8bf0bdffbc5fa3c41c83059" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

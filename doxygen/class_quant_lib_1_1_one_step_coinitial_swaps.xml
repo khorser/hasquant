@@ -59,43 +59,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" line="44"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_coinitial_swaps_1ad3aae77deea2299a19a323693babc367" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; fixedAccruals_</definition>
-        <argsstring></argsstring>
-        <name>fixedAccruals_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_coinitial_swaps_1a27ab05f4ebf0871b131b91330353d146" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; floatingAccruals_</definition>
-        <argsstring></argsstring>
-        <name>floatingAccruals_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_coinitial_swaps_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
-        <argsstring></argsstring>
-        <name>paymentTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_coinitial_swaps_1ad95df7ff70abb810f7e848c7d25d8321" prot="private" static="no" mutable="no">
-        <type>double</type>
-        <definition>double fixedRate_</definition>
-        <argsstring></argsstring>
-        <name>fixedRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_coinitial_swaps_1a4db1170620701c092375336c1c0427d7" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size lastIndex_</definition>
-        <argsstring></argsstring>
-        <name>lastIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepcoinitialswaps.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_step_coinitial_swaps_1ab5cf528c66a3cdfd1d0dfdca2f3e0590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -18,15 +18,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdeshortrate.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdeshortrate.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_pde_short_rate_1a92ce1ed8c79d08e45bdb3ae2491543a6" prot="private" static="no" mutable="no">
-        <type>const argument_type</type>
-        <definition>const argument_type dynamics_</definition>
-        <argsstring></argsstring>
-        <name>dynamics_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdeshortrate.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdeshortrate.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pde_short_rate_1a0280123c5c0a336afcf12a2584a66f74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

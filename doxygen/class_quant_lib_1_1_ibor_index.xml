@@ -129,27 +129,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="46"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_ibor_index_1a12fc49baa75def526e09af508b0c07a7" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate forecastFixing</definition>
-        <argsstring>(const Date &amp;valueDate, const Date &amp;endDate, Time t) const </argsstring>
-        <name>forecastFixing</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>valueDate</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>endDate</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" bodystart="106" bodyend="114"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>base class for Inter-Bank-Offered-Rate indexes (e.g. Libor, etc.) </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" bodystart="35" bodyend="86"/>

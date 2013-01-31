@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_stock" kind="class" prot="public">
     <compoundname>QuantLib::Stock</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_stock_1a5d87a388f17e28809793d3f796120ffe" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; quote_</definition>
-        <argsstring></argsstring>
-        <name>quote_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stock.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_stock_1a468473067957158cb9f09fc2abe845e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

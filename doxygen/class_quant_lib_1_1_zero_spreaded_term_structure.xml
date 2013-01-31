@@ -66,43 +66,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="112" bodyend="114"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a7664b599d851ec51cd5eeece5a2a715a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; originalCurve_</definition>
-        <argsstring></argsstring>
-        <name>originalCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a5caa3200880208842845075caebdb6e1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_zero_spreaded_term_structure_1acf57dd9de966efed783083d0d4dacbf5" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
-        <definition>Compounding comp_</definition>
-        <argsstring></argsstring>
-        <name>comp_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a5fc293af1e881a1c68e5536dab641deb" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
-        <definition>Frequency freq_</definition>
-        <argsstring></argsstring>
-        <name>freq_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dc_</definition>
-        <argsstring></argsstring>
-        <name>dc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerospreadedtermstructure.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_zero_spreaded_term_structure_1a627395c2115caf6b3835a36a49983100" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

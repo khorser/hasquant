@@ -122,36 +122,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="68"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1a04115ce75740ada042f5cf59cd1ffb6e" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; blackProcess_</definition>
-        <argsstring></argsstring>
-        <name>blackProcess_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1ab25f150bbbe0ceb6ff5c9cb62b386af2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; jumpIntensity_</definition>
-        <argsstring></argsstring>
-        <name>jumpIntensity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1a4d4fa4d20ca79286b1b8e7ef95192c2f" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; logMeanJump_</definition>
-        <argsstring></argsstring>
-        <name>logMeanJump_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1a38d3e4aed5d81c4f561347f735e14300" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; logJumpVolatility_</definition>
-        <argsstring></argsstring>
-        <name>logJumpVolatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a49ad1979d928f27eeae2b4a1251fc3a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

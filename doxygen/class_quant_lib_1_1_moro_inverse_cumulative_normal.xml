@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_moro_inverse_cumulative_normal" kind="class" prot="public">
     <compoundname>QuantLib::MoroInverseCumulativeNormal</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_moro_inverse_cumulative_normal_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real average_</definition>
-        <argsstring></argsstring>
-        <name>average_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="208" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="208" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_moro_inverse_cumulative_normal_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="208" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="208" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_moro_inverse_cumulative_normal_1a01cc9353c296b8d7bae5a6084c94b9b4" prot="private" static="yes" mutable="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

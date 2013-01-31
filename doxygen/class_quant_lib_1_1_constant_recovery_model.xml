@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_constant_recovery_model" kind="class" prot="public">
     <compoundname>QuantLib::ConstantRecoveryModel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_constant_recovery_model_1a6b6b1d8704216c65bc79d7c4b96dacc3" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_recovery_rate_quote" kindref="compound">RecoveryRateQuote</ref> &gt;</type>
-        <definition>Handle&lt;RecoveryRateQuote&gt; quote_</definition>
-        <argsstring></argsstring>
-        <name>quote_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_constant_recovery_model_1a7333ed7b0aa9754ceebcba7e0e965a7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

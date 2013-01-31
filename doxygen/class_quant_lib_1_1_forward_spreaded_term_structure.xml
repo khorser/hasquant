@@ -95,22 +95,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="108" bodyend="111"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a7664b599d851ec51cd5eeece5a2a715a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; originalCurve_</definition>
-        <argsstring></argsstring>
-        <name>originalCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_spreaded_term_structure_1a5caa3200880208842845075caebdb6e1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardspreadedtermstructure.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_forward_spreaded_term_structure_1af0fc8e2b047bebd3a8a7ffecb98042b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

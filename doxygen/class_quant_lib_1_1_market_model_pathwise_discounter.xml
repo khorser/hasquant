@@ -3,43 +3,6 @@
   <compounddef id="class_quant_lib_1_1_market_model_pathwise_discounter" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseDiscounter</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a3c5bc5e28c4bbd1998cd26b5d449208d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size before_</definition>
-        <argsstring></argsstring>
-        <name>before_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberRates_</definition>
-        <argsstring></argsstring>
-        <name>numberRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1af2ec52c6d9db8f350c28765715b34839" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real beforeWeight_</definition>
-        <argsstring></argsstring>
-        <name>beforeWeight_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1afd545e525eb338dc8ef0e1caa56543c0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real postWeight_</definition>
-        <argsstring></argsstring>
-        <name>postWeight_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1adc2ef1f387b7b05f1c9b3f51c6a9ec83" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; taus_</definition>
-        <argsstring></argsstring>
-        <name>taus_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a86d15ad123e36cbab665cd838c71efec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

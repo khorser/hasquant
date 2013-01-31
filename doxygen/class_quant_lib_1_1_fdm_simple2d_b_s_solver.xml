@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple2d_b_s_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimple2dBSSolver</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1ad303dc9251eef656d2ef96a9f98e6e05" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>Handle&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a14272b32e607ffb18de710cd74e7daef" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real strike_</definition>
-        <argsstring></argsstring>
-        <name>strike_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
-        <type>const FdmSolverDesc</type>
-        <definition>const FdmSolverDesc solverDesc_</definition>
-        <argsstring></argsstring>
-        <name>solverDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
-        <type>boost::shared_ptr&lt; Fdm2DimSolver &gt;</type>
-        <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
-        <argsstring></argsstring>
-        <name>solver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a6b497b216edcc245dfdf5fd190f80043" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

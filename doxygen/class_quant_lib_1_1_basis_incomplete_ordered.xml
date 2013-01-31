@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_basis_incomplete_ordered" kind="class" prot="public">
     <compoundname>QuantLib::BasisIncompleteOrdered</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_basis_incomplete_ordered_1a2123b524ed01f4b11c34f0bfb397694f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>std::vector&lt;Array&gt; currentBasis_</definition>
-        <argsstring></argsstring>
-        <name>currentBasis_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basis_incomplete_ordered_1a9db2ba0acb3b1825f382b8beea3ec1f1" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size euclideanDimension_</definition>
-        <argsstring></argsstring>
-        <name>euclideanDimension_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="39" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basis_incomplete_ordered_1aee6154e3e164ca3ef05c2e36505f12c0" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array newVector_</definition>
-        <argsstring></argsstring>
-        <name>newVector_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="40" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1a967c1b6bde796319e9551f2b4bc9f96b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

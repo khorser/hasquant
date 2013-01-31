@@ -46,29 +46,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1a7b2a906019af6d4ad9a0077d9d4e7462" prot="private" static="no" mutable="no">
-        <type>boost::optional&lt; <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &gt;</type>
-        <definition>boost::optional&lt;Price&gt; price_</definition>
-        <argsstring></argsstring>
-        <name>price_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
-        <definition>Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date date_</definition>
-        <argsstring></argsstring>
-        <name>date_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_callability_1aeb9063d369a5d78faba8e19783dc0016" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

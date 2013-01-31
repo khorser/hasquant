@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimple3dExtOUJumpSolver</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1af9b89f2c7b9fb40ebc38660165609b88" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
-        <definition>const Handle&lt;ExtOUWithJumpsProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
-        <argsstring></argsstring>
-        <name>rTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
-        <type>const FdmSolverDesc</type>
-        <definition>const FdmSolverDesc solverDesc_</definition>
-        <argsstring></argsstring>
-        <name>solverDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1ae10c7ae34ed0e3ce83e1a5a1721fdc90" prot="private" static="no" mutable="yes">
-        <type>boost::shared_ptr&lt; Fdm3DimSolver &gt;</type>
-        <definition>boost::shared_ptr&lt;Fdm3DimSolver&gt; solver_</definition>
-        <argsstring></argsstring>
-        <name>solver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple3dextoujumpsolver.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple3d_ext_o_u_jump_solver_1ad91971f9bfd3a732e6ea534f3e75fb5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

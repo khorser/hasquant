@@ -25,36 +25,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a98e8e540edb437f98c62fbbc3bbdb701" prot="private" static="no" mutable="no">
-        <type>const Side</type>
-        <definition>const Side side_</definition>
-        <argsstring></argsstring>
-        <name>side_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6f82d4a4640bb56acd32cee4139370d0" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real valueOnBoundary_</definition>
-        <argsstring></argsstring>
-        <name>valueOnBoundary_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a217fc462bba36545e25bc0b7f50e2377" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real xExtreme_</definition>
-        <argsstring></argsstring>
-        <name>xExtreme_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a04ab9a298d4798a54e2ba82c50fb19a2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; indicies_</definition>
-        <argsstring></argsstring>
-        <name>indicies_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9045300122c604195884011d6607940f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

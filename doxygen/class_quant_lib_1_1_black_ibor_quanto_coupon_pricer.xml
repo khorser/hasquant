@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BlackIborQuantoCouponPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer_1a8e07c82d9c8e480edf6c92bbe1320831" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;BlackVolTermStructure&gt; fxRateBlackVolatility_</definition>
-        <argsstring></argsstring>
-        <name>fxRateBlackVolatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer_1ab2529c340dc6a70f98a658efa8ec9b37" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; underlyingFxCorrelation_</definition>
-        <argsstring></argsstring>
-        <name>underlyingFxCorrelation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/quantocouponpricer.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer_1a9b361d743ab1731bf84bb6f674488e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

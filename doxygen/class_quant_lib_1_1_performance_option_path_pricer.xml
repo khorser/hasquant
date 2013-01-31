@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_performance_option_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::PerformanceOptionPathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_performance_option_path_pricer_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real strike_</definition>
-        <argsstring></argsstring>
-        <name>strike_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" bodystart="114" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_performance_option_path_pricer_1abcdb1c11e3593354931e650dd3dd13f2" prot="private" static="no" mutable="no">
-        <type>Option::Type</type>
-        <definition>Option::Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" bodystart="115" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_performance_option_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
-        <definition>std::vector&lt;DiscountFactor&gt; discounts_</definition>
-        <argsstring></argsstring>
-        <name>discounts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" bodystart="116" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_performance_option_path_pricer_1a99f9cb4c6fe92a806a9f33e1eeb5f846" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

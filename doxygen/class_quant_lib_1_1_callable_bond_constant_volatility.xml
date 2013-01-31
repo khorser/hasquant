@@ -126,29 +126,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a14cc04bf8608e1205f4796cbb54fd7f5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter_</definition>
-        <argsstring></argsstring>
-        <name>dayCounter_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_constant_volatility_1aca62bedce5f800f5dceaa2e85b2bc9e1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
-        <definition>Period maxBondTenor_</definition>
-        <argsstring></argsstring>
-        <name>maxBondTenor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1afa4061e2c92fd12d1cd25942355b70c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

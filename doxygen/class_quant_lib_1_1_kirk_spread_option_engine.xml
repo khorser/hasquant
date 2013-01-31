@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_kirk_spread_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::KirkSpreadOptionEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_kirk_spread_option_engine_1a1ea6b54ef20d7392441ffa3f1d9c0a77" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;BlackProcess&gt; process1_</definition>
-        <argsstring></argsstring>
-        <name>process1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kirk_spread_option_engine_1a5d5ea58175668b187dc21bebcd6677bd" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;BlackProcess&gt; process2_</definition>
-        <argsstring></argsstring>
-        <name>process2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kirk_spread_option_engine_1aa87769c49eac4cbcd447093b1ae38b36" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/kirkspreadoptionengine.hpp" bodystart="43" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kirk_spread_option_engine_1adeca2f6bb78ecce837f7eed05668ba2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

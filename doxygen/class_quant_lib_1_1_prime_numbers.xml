@@ -27,15 +27,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="48"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a380c72c99a9c6e635a8347157daef351" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>PrimeNumbers</definition>
-        <argsstring>()</argsstring>
-        <name>PrimeNumbers</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="50" bodyend="50"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a76738d2768be27aefd000752de7af2bc" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>

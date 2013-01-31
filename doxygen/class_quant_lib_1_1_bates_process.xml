@@ -3,43 +3,6 @@
   <compounddef id="class_quant_lib_1_1_bates_process" kind="class" prot="public">
     <compoundname>QuantLib::BatesProcess</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1a027ef25067c7fa91c1c3ef2a4163d1d5" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real lambda_</definition>
-        <argsstring></argsstring>
-        <name>lambda_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1ab93aabd725036e18018464e4d104a097" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real delta_</definition>
-        <argsstring></argsstring>
-        <name>delta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1aa75da5258630a6e16f71bc04f43a33f6" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real nu_</definition>
-        <argsstring></argsstring>
-        <name>nu_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1a049bf2fd17a24d5efdf571600ff749ec" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real m_</definition>
-        <argsstring></argsstring>
-        <name>m_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bates_process_1af1fc88eee476d12a7fe5d010bbb5c8e2" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
-        <definition>const CumulativeNormalDistribution cumNormalDist_</definition>
-        <argsstring></argsstring>
-        <name>cumNormalDist_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/batesprocess.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bates_process_1aa53ab896db19eca97e8e53bb62b3d29e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

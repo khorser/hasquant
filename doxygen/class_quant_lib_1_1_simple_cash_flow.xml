@@ -48,22 +48,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="89" bodyend="96"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_simple_cash_flow_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real amount_</definition>
-        <argsstring></argsstring>
-        <name>amount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_simple_cash_flow_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date date_</definition>
-        <argsstring></argsstring>
-        <name>date_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_simple_cash_flow_1a0bd25764268be43d0c23bfbe8aba2b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

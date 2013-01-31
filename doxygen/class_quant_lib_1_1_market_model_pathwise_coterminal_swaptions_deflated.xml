@@ -3,43 +3,6 @@
   <compounddef id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1adfdcd5dfe44a759ebc2f8467090eecdd" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; rateTimes_</definition>
-        <argsstring></argsstring>
-        <name>rateTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; strikes_</definition>
-        <argsstring></argsstring>
-        <name>strikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberRates_</definition>
-        <argsstring></argsstring>
-        <name>numberRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size currentIndex_</definition>
-        <argsstring></argsstring>
-        <name>currentIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref></type>
-        <definition>EvolutionDescription evolution_</definition>
-        <argsstring></argsstring>
-        <name>evolution_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a16c35eb39b59cd0f22fb74f03330ed2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

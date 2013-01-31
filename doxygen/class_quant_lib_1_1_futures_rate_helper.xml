@@ -38,22 +38,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="92"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_futures_rate_helper_1aa6cf56f0c774a558d79ae9d61241d8bf" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time yearFraction_</definition>
-        <argsstring></argsstring>
-        <name>yearFraction_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_futures_rate_helper_1a2db327ac7c42c255e47ec86b3c4da706" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; convAdj_</definition>
-        <argsstring></argsstring>
-        <name>convAdj_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1af8f8fc7fd687e1f205089964f22cfc2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

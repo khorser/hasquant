@@ -148,29 +148,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="97"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_1a3e22290961d6b56dce069c1c4fda6386" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date referenceDate_</definition>
-        <argsstring></argsstring>
-        <name>referenceDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="115" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_1a8cb58608de54286272715a08a7492a7e" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural settlementDays_</definition>
-        <argsstring></argsstring>
-        <name>settlementDays_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="116" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter_</definition>
-        <argsstring></argsstring>
-        <name>dayCounter_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructure.hpp" bodystart="117" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a7cd56b3d79445a9c5e72fbc0ddd4d201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

@@ -4,64 +4,6 @@
     <compoundname>QuantLib::VolatilityBumpInstrumentJacobian</compoundname>
     <innerclass refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap" prot="public">QuantLib::VolatilityBumpInstrumentJacobian::Cap</innerclass>
     <innerclass refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_swaption" prot="public">QuantLib::VolatilityBumpInstrumentJacobian::Swaption</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aec20e4b28521e92bbcd06a9f768336e4" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_vega_bump_collection" kindref="compound">VegaBumpCollection</ref></type>
-        <definition>VegaBumpCollection bumps_</definition>
-        <argsstring></argsstring>
-        <name>bumps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aa8431507da058f3886dcd735bebb22bf" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; Swaption &gt;</type>
-        <definition>std::vector&lt;Swaption&gt; swaptions_</definition>
-        <argsstring></argsstring>
-        <name>swaptions_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aab9be16c0ad54c109b6e9b13cf94a17a" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; Cap &gt;</type>
-        <definition>std::vector&lt;Cap&gt; caps_</definition>
-        <argsstring></argsstring>
-        <name>caps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a4d3cd7c89eef3342655f0c77c21b2c59" prot="private" static="no" mutable="yes">
-        <type>std::valarray&lt; bool &gt;</type>
-        <definition>std::valarray&lt;bool&gt; computed_</definition>
-        <argsstring></argsstring>
-        <name>computed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a494949239a699b0592b98db108f89f74" prot="private" static="no" mutable="yes">
-        <type>bool</type>
-        <definition>bool allComputed_</definition>
-        <argsstring></argsstring>
-        <name>allComputed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a979a8a837dc087013bcc7d0d9918c817" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; derivatives_</definition>
-        <argsstring></argsstring>
-        <name>derivatives_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1af3828fb6dd2c8f26deee19266e76c097" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; onePercentBumps_</definition>
-        <argsstring></argsstring>
-        <name>onePercentBumps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aaa0a81e56299281df9c35c4b869426a2" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix bumpMatrix_</definition>
-        <argsstring></argsstring>
-        <name>bumpMatrix_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a4733b81cad6142c6eda26dbf7dff5a65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

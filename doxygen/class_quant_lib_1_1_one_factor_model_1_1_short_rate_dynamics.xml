@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorModel::ShortRateDynamics</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1aa5a59ac3cc2d12f748a336ede36c6ed2" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -25,17 +25,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="49"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_b_f_g_s_1a5d99af2d22111c8e81b37c1b609b8496" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix inverseHessian_</definition>
-        <argsstring></argsstring>
-        <name>inverseHessian_</name>
-        <briefdescription>
-<para>inverse of hessian matrix </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_f_g_s_1ad16a72492104729c191a62e0ab7546a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

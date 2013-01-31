@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_proxy_ibor" kind="class" prot="public">
     <compoundname>QuantLib::ProxyIbor</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_ibor_1a7ae72d1b9912c44d86a4a553c2fef99a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; gearing_</definition>
-        <argsstring></argsstring>
-        <name>gearing_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_ibor_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
-        <argsstring></argsstring>
-        <name>iborIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_ibor_1a5caa3200880208842845075caebdb6e1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_proxy_ibor_1a493e75bdacba76f6b2ec7969ba322ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -77,22 +54,6 @@
           <declname>spread</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="44"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_proxy_ibor_1a31402c8dcd6c83166c07900d7f440bca" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate forecastFixing</definition>
-        <argsstring>(const Date &amp;fixingDate) const </argsstring>
-        <name>forecastFixing</name>
-        <reimplements refid="class_quant_lib_1_1_interest_rate_index_1a068334de0e963b4134d832cf035b3e03">forecastFixing</reimplements>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>fixingDate</declname>
-        </param>
-        <briefdescription>
-<para>It can be overridden to implement particular conventions. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/proxyibor.hpp" bodystart="54" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

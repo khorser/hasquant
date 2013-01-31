@@ -11,50 +11,6 @@
         <type>class Interpolator</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a1d42000bb140219a9fcbb7b3cc5cacbe" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a3e0db17aa18a4d3e837a3a93e8bb6ad5" kindref="member">SequenceStatistics</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;SequenceStatistics&gt; stats_</definition>
-        <argsstring></argsstring>
-        <name>stats_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="230" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="230" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1aa88299924157a2ff41d5ad78318b0054" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; skippedDates_</definition>
-        <argsstring></argsstring>
-        <name>skippedDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="231" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1af5d524c8f8687fd7dbb1bbb9a1290344" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; skippedDatesErrorMessage_</definition>
-        <argsstring></argsstring>
-        <name>skippedDatesErrorMessage_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="232" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1aa2a2548f1a4a7059cff88a0ed3023de8" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; failedDates_</definition>
-        <argsstring></argsstring>
-        <name>failedDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="233" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="233" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ad8936fd9c1c14e9c15dc239fb300f912" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; failedDatesErrorMessage_</definition>
-        <argsstring></argsstring>
-        <name>failedDatesErrorMessage_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="234" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="234" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a87a5a047f13da672b5d8a59b0b09e736" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt;</type>
-        <definition>std::vector&lt;Period&gt; fixingPeriods_</definition>
-        <argsstring></argsstring>
-        <name>fixingPeriods_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="235" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a7d3e7260bb19c5748ef144cbb2e2b430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -187,22 +187,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="158" bodyend="160"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_path_1adda5ae6c670bdbb1857509a4aa20ec25" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref></type>
-        <definition>TimeGrid timeGrid_</definition>
-        <argsstring></argsstring>
-        <name>timeGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_path_1a99a3a78defaeab5ede226107da665b96" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array values_</definition>
-        <argsstring></argsstring>
-        <name>values_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/path.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_path_1a97c525e0b5ef5934bbf609fa33e9bab4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

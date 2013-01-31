@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_variance_gamma_engine" kind="class" prot="public">
     <compoundname>QuantLib::VarianceGammaEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_engine_1ab36bbe36365d265741871d4414314e11" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;VarianceGammaProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_engine_1aec41fc8d5057dccde9163e13c8dd4407" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

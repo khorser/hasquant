@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_loss_dist_bucketing" kind="class" prot="public">
     <compoundname>QuantLib::LossDistBucketing</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_bucketing_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nBuckets_</definition>
-        <argsstring></argsstring>
-        <name>nBuckets_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="196" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_bucketing_1abff8e9929d1de11ec2ddeae1146c19b2" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maximum_</definition>
-        <argsstring></argsstring>
-        <name>maximum_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="197" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_bucketing_1a0c2c8b8d85c2ef2a8ea5afb1855a7bd7" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real epsilon_</definition>
-        <argsstring></argsstring>
-        <name>epsilon_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="198" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_bucketing_1ac84336ba94974568e944853ca269808b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -78,24 +55,6 @@
         <name>maximum</name>
         <reimplements refid="class_quant_lib_1_1_loss_dist_1a6adb04174b3fd47dcf4a4d6a401d563e">maximum</reimplements>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="192" bodyend="192"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_bucketing_1ac372ed58ee1837492b4519f4c31ec7f0" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>int</type>
-        <definition>int locateTargetBucket</definition>
-        <argsstring>(Real loss, Size i0=0) const </argsstring>
-        <name>locateTargetBucket</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>loss</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>i0</declname>
-          <defval>0</defval>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="194"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -10,15 +10,6 @@
         <defname>T</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_tree_1a12229307c99d2cbced5ff04c4cd5c2be" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size columns_</definition>
-        <argsstring></argsstring>
-        <name>columns_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/tree.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/tree.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tree_1a8fe1055f39c1f80fd420458fe249fd99" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

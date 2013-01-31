@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_heston_hull_white_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::HestonHullWhitePathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a57fcc5db9ef9fd7447a6fa4e3a9e64f9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time exerciseTime_</definition>
-        <argsstring></argsstring>
-        <name>exerciseTime_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="105" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a73cfad8707a6a802108b5bb7e04aca75" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Payoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1a916e217d41c78e01caf44eab39c2f47d" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;HybridHestonHullWhiteProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="107" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_heston_hull_white_path_pricer_1aa54db1f87b00e439a66fee4c3f9e3be2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

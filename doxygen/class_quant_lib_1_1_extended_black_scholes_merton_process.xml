@@ -18,15 +18,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedblackscholesprocess.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedblackscholesprocess.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_scholes_merton_process_1adbf35d67970893bd6d58ff33bea3e68e" prot="private" static="no" mutable="no">
-        <type>const Discretization</type>
-        <definition>const Discretization discretization_</definition>
-        <argsstring></argsstring>
-        <name>discretization_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedblackscholesprocess.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedblackscholesprocess.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_scholes_merton_process_1a945d224778a59f356e087117bd4cb55c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

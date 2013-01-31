@@ -237,29 +237,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="165" bodyend="165"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_time_grid_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="168" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_time_grid_1a2d4469cea4b7a580aa23f08c62603745" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; dt_</definition>
-        <argsstring></argsstring>
-        <name>dt_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="169" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_time_grid_1a07e6a1db7b4a86f9bbe6ff699a5e7e01" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; mandatoryTimes_</definition>
-        <argsstring></argsstring>
-        <name>mandatoryTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="170" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>time grid class </para>    </briefdescription>
     <detaileddescription>

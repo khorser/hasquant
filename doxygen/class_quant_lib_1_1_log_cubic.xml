@@ -21,50 +21,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="150" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a01a59794e4d2ee97747285d2948f7d22" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
-        <definition>CubicInterpolation::DerivativeApprox da_</definition>
-        <argsstring></argsstring>
-        <name>da_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="152" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a49d945dc193acbcea43c3f0572a9469c" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool monotonic_</definition>
-        <argsstring></argsstring>
-        <name>monotonic_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="153" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a820a774ea04c6c1ec4df64e4a7ce26cf" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
-        <definition>CubicInterpolation::BoundaryCondition leftType_</definition>
-        <argsstring></argsstring>
-        <name>leftType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="154" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a51645ba519df3134cb5c26c778132e40" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
-        <definition>CubicInterpolation::BoundaryCondition rightType_</definition>
-        <argsstring></argsstring>
-        <name>rightType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="154" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1a2b8746419d279974ca34ef65d3aa80f9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real leftValue_</definition>
-        <argsstring></argsstring>
-        <name>leftValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="155" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_log_cubic_1ab7ae2a0cb5b514dcc8f2612d21d2b316" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rightValue_</definition>
-        <argsstring></argsstring>
-        <name>rightValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="155" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_log_cubic_1af1ffb206e7367aab7d9541404e73c05f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

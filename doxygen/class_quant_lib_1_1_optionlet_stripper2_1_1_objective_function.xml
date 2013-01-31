@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function" kind="class" prot="private">
     <compoundname>QuantLib::OptionletStripper2::ObjectiveFunction</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1a6f9a0e67f7d3aee78bf5871970c6e50c" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_simple_quote" kindref="compound">SimpleQuote</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;SimpleQuote&gt; spreadQuote_</definition>
-        <argsstring></argsstring>
-        <name>spreadQuote_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1a0835bac62ccb8f5b035a9c07fd9f9aef" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cap_floor" kindref="compound">CapFloor</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;CapFloor&gt; cap_</definition>
-        <argsstring></argsstring>
-        <name>cap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1ae65be73f5312f6a5ac410f2e7a1ddf4d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real targetValue_</definition>
-        <argsstring></argsstring>
-        <name>targetValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1_1_objective_function_1a81e598a789f7171d1ea87946f451bc3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

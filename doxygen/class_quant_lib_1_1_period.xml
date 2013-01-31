@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_period" kind="class" prot="public">
     <compoundname>QuantLib::Period</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/period.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_period_1ae79e25765568ee1380f10acfeeb69d25" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
-        <definition>Integer length_</definition>
-        <argsstring></argsstring>
-        <name>length_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_period_1ade3053af8ab758d10f427575c7324c9a" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gadd9fe45e09605eee3e4a39c8a5c4476d" kindref="member">TimeUnit</ref></type>
-        <definition>TimeUnit units_</definition>
-        <argsstring></argsstring>
-        <name>units_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_period_1ae8d0cd55e4166146e5ebee66c5a0838c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

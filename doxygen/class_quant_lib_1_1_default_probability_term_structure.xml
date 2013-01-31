@@ -334,52 +334,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="162"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_probability_term_structure_1abbeccbb06fd7c7ee3afbe909a082261d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; jumps_</definition>
-        <argsstring></argsstring>
-        <name>jumps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="168" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_probability_term_structure_1a377c3196ba84049502e83cf5fd576b8a" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; jumpDates_</definition>
-        <argsstring></argsstring>
-        <name>jumpDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="169" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_probability_term_structure_1a5397e08246d45ca8c71c9f27c8cc59c7" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; jumpTimes_</definition>
-        <argsstring></argsstring>
-        <name>jumpTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="170" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_probability_term_structure_1abbe4a622662791f8eed5aefb709b4b7e" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nJumps_</definition>
-        <argsstring></argsstring>
-        <name>nJumps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="171" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_probability_term_structure_1abfaa2bb3ceda5570df43b2989d23c966" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date latestReference_</definition>
-        <argsstring></argsstring>
-        <name>latestReference_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" bodystart="172" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_default_probability_term_structure_1ac504aa9db8e76074d4b1624eb2ffc177" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void setJumps</definition>
-        <argsstring>()</argsstring>
-        <name>setJumps</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/defaulttermstructure.hpp" line="166"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Default probability term structure. </para>    </briefdescription>
     <detaileddescription>

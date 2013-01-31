@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_european_heston_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::EuropeanHestonPathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_european_heston_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref></type>
-        <definition>PlainVanillaPayoff payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_european_heston_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discount_</definition>
-        <argsstring></argsstring>
-        <name>discount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_european_heston_path_pricer_1ac4c66d8fdddc65f7f659076536d8f7ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

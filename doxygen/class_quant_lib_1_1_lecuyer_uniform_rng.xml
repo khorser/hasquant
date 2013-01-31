@@ -12,36 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a8b16998a078d244f74b6670e65581c9b" prot="private" static="no" mutable="yes">
-        <type>long</type>
-        <definition>long temp1</definition>
-        <argsstring></argsstring>
-        <name>temp1</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a5399dcab8d608cb0503d584b447d7162" prot="private" static="no" mutable="yes">
-        <type>long</type>
-        <definition>long temp2</definition>
-        <argsstring></argsstring>
-        <name>temp2</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a04ee6b20e6d3476ab1f51397993cfeef" prot="private" static="no" mutable="yes">
-        <type>long</type>
-        <definition>long y</definition>
-        <argsstring></argsstring>
-        <name>y</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1af034a88fa2af8f32782a86023aaca9bd" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; long &gt;</type>
-        <definition>std::vector&lt;long&gt; buffer</definition>
-        <argsstring></argsstring>
-        <name>buffer</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a351b28bfd179207bc21cffd7afbe5232" prot="private" static="yes" mutable="no">
         <type>const long</type>

@@ -112,15 +112,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="48"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_volatility_model_1a88bf4673a29cef102cf58706906dc001" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void generateArguments</definition>
-        <argsstring>()=0</argsstring>
-        <name>generateArguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="55"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>caplet volatility model </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmvolmodel.hpp" bodystart="33" bodyend="56"/>

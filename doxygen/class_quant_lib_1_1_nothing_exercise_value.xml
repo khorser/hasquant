@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_nothing_exercise_value" kind="class" prot="public">
     <compoundname>QuantLib::NothingExerciseValue</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a7a81f9ffb6a0ed0bc3fbe4702f8077e3" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfExercises_</definition>
-        <argsstring></argsstring>
-        <name>numberOfExercises_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="43" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; rateTimes_</definition>
-        <argsstring></argsstring>
-        <name>rateTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref></type>
-        <definition>EvolutionDescription evolution_</definition>
-        <argsstring></argsstring>
-        <name>evolution_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size currentIndex_</definition>
-        <argsstring></argsstring>
-        <name>currentIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_nothing_exercise_value_1a218eed94df9c96a0b5fc23cacf4519dd" prot="private" static="no" mutable="no">
-        <type>MarketModelMultiProduct::CashFlow</type>
-        <definition>MarketModelMultiProduct::CashFlow cf_</definition>
-        <argsstring></argsstring>
-        <name>cf_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/nothingexercisevalue.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_nothing_exercise_value_1a25553d35b4ae8b5be0a3a9ca5cdf65a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

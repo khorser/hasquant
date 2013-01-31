@@ -11,15 +11,6 @@
         <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_european_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref></type>
-        <definition>SampledCurve prices_</definition>
-        <argsstring></argsstring>
-        <name>prices_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_d_european_engine_1a9da867b11905305bb6465102d0613f05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -46,16 +37,6 @@
           <defval>false</defval>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="46" bodyend="53"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_european_engine_1a10873979f635888606e03f9cb2d8a096" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>() const </argsstring>
-        <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="61" bodyend="84"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

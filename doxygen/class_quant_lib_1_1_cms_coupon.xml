@@ -27,15 +27,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="61"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cms_coupon_1a3a0b946fc98b025f246b77d6c2751f41" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;SwapIndex&gt; swapIndex_</definition>
-        <argsstring></argsstring>
-        <name>swapIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cmscoupon.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cms_coupon_1a81123c8a4bea54faba972b9a1f2142cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_joint_calendar_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::JointCalendar::Impl</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1ae34c1f8fcaee67fd6bea7d3a0f9ffc31" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a51033ff28c58a4dd772d61053b4f3bca" kindref="member">JointCalendarRule</ref></type>
-        <definition>JointCalendarRule rule_</definition>
-        <argsstring></argsstring>
-        <name>rule_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1aa16c127ef5c19c39a81af0debfac0744" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &gt;</type>
-        <definition>std::vector&lt;Calendar&gt; calendars_</definition>
-        <argsstring></argsstring>
-        <name>calendars_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1_1_impl_1a9ac0c2cc367e71f14ec1d2a9b9b86243" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

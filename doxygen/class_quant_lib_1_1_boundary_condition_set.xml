@@ -7,15 +7,6 @@
         <type>typename bc_set</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_boundary_condition_set_1a798f46195f07f4d5bb7b8bc45674594d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; bc_set &gt;</type>
-        <definition>std::vector&lt;bc_set&gt; bcSet_</definition>
-        <argsstring></argsstring>
-        <name>bcSet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_set_1adadb3786bfe63eaec40510b17577a9f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>

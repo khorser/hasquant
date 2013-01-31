@@ -30,43 +30,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1ae48628359537d2f1fc62e147ca8d1b0c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
-        <definition>Curve* curve_</definition>
-        <argsstring></argsstring>
-        <name>curve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1a8aa0f17cb3da1db49cadbf7e514e0505" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size initialIndex_</definition>
-        <argsstring></argsstring>
-        <name>initialIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1aaafa151c3c244b107a148e67b39cdc61" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size localisation_</definition>
-        <argsstring></argsstring>
-        <name>localisation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1acd95d5dd3a890eff5e905c8f71bc3425" prot="private" static="no" mutable="no">
-        <type>helper_iterator</type>
-        <definition>helper_iterator rateHelpersStart_</definition>
-        <argsstring></argsstring>
-        <name>rateHelpersStart_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1a6ed49e6fc958b5d80c212ed807773d99" prot="private" static="no" mutable="no">
-        <type>helper_iterator</type>
-        <definition>helper_iterator rateHelpersEnd_</definition>
-        <argsstring></argsstring>
-        <name>rateHelpersEnd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

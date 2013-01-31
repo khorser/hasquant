@@ -12,15 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_ziggurat_rng_1a8179b6f798136e72f4691fe0aa93ef76" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_mersenne_twister_uniform_rng" kindref="compound">MersenneTwisterUniformRng</ref></type>
-        <definition>MersenneTwisterUniformRng mt32_</definition>
-        <argsstring></argsstring>
-        <name>mt32_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_ziggurat_rng_1a2052bed081d36e3d3c216260365d6a31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -40,15 +31,6 @@
         <argsstring>() const </argsstring>
         <name>next</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="56" bodyend="58"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_ziggurat_rng_1a02ce9033842ef7bba94d91f0d09c7ebc" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real nextGaussian</definition>
-        <argsstring>() const </argsstring>
-        <name>nextGaussian</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

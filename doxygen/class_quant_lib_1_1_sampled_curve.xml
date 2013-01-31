@@ -292,22 +292,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" bodystart="136" bodyend="140"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_sampled_curve_1a31ca2c1a1fa378e372c6b6d3b60ee995" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array grid_</definition>
-        <argsstring></argsstring>
-        <name>grid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" bodystart="143" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sampled_curve_1a99a3a78defaeab5ede226107da665b96" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array values_</definition>
-        <argsstring></argsstring>
-        <name>values_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" bodystart="144" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a33580ac5a3826007cedae397d3886ec0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

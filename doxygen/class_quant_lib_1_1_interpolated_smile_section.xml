@@ -7,50 +7,6 @@
         <type>class Interpolator</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a3f780d143004e5cf127478ee7a544202" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real exerciseTimeSquareRoot_</definition>
-        <argsstring></argsstring>
-        <name>exerciseTimeSquareRoot_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; strikes_</definition>
-        <argsstring></argsstring>
-        <name>strikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a7e045438d429730668e385687214e270" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; stdDevHandles_</definition>
-        <argsstring></argsstring>
-        <name>stdDevHandles_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a2eda9ffb470e96ef36034f671a237037" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; atmLevel_</definition>
-        <argsstring></argsstring>
-        <name>atmLevel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
-        <definition>std::vector&lt;Volatility&gt; vols_</definition>
-        <argsstring></argsstring>
-        <name>vols_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
-        <definition>Interpolation interpolation_</definition>
-        <argsstring></argsstring>
-        <name>interpolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a3cc5763a9b3599ad0df3c117687e61ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

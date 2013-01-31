@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_abcd_squared" kind="class" prot="public">
     <compoundname>QuantLib::AbcdSquared</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_squared_1a79cff342588358998302705659dc574c" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_abcd_function" kindref="compound">AbcdFunction</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;AbcdFunction&gt; abcd_</definition>
-        <argsstring></argsstring>
-        <name>abcd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="125" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_squared_1a0a04e1aa89ae3670613ee52a136b31dd" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time T_</definition>
-        <argsstring></argsstring>
-        <name>T_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="126" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_squared_1ae01a35542c1152f133620fbfe04e7c0d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time S_</definition>
-        <argsstring></argsstring>
-        <name>S_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="126" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_squared_1a07c4f592ddba254bb068f7304d985029" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

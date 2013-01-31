@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_spread_payoff_inner_value" kind="class" prot="public">
     <compoundname>QuantLib::FdmSpreadPayoffInnerValue</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1ad5c2741533c6bb9b68f48f38304d8870" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; BasketPayoff &gt;</type>
-        <definition>const boost::shared_ptr&lt;BasketPayoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a57815a443010afa35099ebe378677708" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calc1_</definition>
-        <argsstring></argsstring>
-        <name>calc1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a29a25d0a2a6dc814a96fe4a19155d640" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calc2_</definition>
-        <argsstring></argsstring>
-        <name>calc2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a82eb7abeef843df1f50603e0e7382588" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

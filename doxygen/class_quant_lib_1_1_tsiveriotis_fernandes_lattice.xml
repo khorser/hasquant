@@ -8,15 +8,6 @@
         <type>class T</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_tsiveriotis_fernandes_lattice_1ad4bc4f66bf23ba1a38e095e8dab443a0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
-        <definition>Spread creditSpread_</definition>
-        <argsstring></argsstring>
-        <name>creditSpread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/tflattice.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tsiveriotis_fernandes_lattice_1a77bbffc0c5cb4073e61de5296175236e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

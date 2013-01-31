@@ -13,15 +13,6 @@
         <type>class M</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1a07e2ea3b16557509ece7c3d3be38333f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &gt;</type>
-        <definition>std::vector&lt;Interpolation&gt; splines_</definition>
-        <argsstring></argsstring>
-        <name>splines_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="151" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bicubic_spline_impl_1a9c646f2d554c7d8a40ada4df450caa6e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

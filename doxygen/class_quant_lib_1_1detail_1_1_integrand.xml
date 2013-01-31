@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_integrand" kind="class" prot="public">
     <compoundname>QuantLib::detail::Integrand</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_integrand_1a594e301f9fe01b0c3dc21b2cb6e5fec2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref></type>
-        <definition>Path path_</definition>
-        <argsstring></argsstring>
-        <name>path_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="331" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="331" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_integrand_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="332" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="332" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_integrand_1a6597fe9c344aad7a42e225ba95fb5354" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -56,22 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube2_1ac1a971d26f261c3df23e4ce69a1f8269" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
-        <definition>std::vector&lt;Interpolation2D&gt; volSpreadsInterpolator_</definition>
-        <argsstring></argsstring>
-        <name>volSpreadsInterpolator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_vol_cube2_1a5b32a996b6fe7b79ae3f3957031876c6" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>std::vector&lt;Matrix&gt; volSpreadsMatrix_</definition>
-        <argsstring></argsstring>
-        <name>volSpreadsMatrix_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1aa6961bd57430aba0e756491bc0ad80b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

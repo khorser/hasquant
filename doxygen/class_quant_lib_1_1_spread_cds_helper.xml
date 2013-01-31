@@ -127,16 +127,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="132"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_spread_cds_helper_1ae5bb53d57b1f705fbf3a6459c7d4f221" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void resetEngine</definition>
-        <argsstring>()</argsstring>
-        <name>resetEngine</name>
-        <reimplements refid="class_quant_lib_1_1_cds_helper_1ab3774009db0f4540cff6c9a7e50b73c2">resetEngine</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="134"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Spread-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="105" bodyend="135"/>

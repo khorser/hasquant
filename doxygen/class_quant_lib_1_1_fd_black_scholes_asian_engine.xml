@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd_black_scholes_asian_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdBlackScholesAsianEngine</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1acef2b56fcfa48f7f4a68844033f24b63" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size tGrid_</definition>
-        <argsstring></argsstring>
-        <name>tGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size xGrid_</definition>
-        <argsstring></argsstring>
-        <name>xGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1a550283992dcfeeacebd018b3f25e638e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size aGrid_</definition>
-        <argsstring></argsstring>
-        <name>aGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/fdblackscholesasianengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_asian_engine_1a80675bcbf1ec71372d7054c4a98b1f2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

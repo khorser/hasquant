@@ -5,15 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_dividend_vanilla_option_1_1arguments" prot="public">QuantLib::DividendVanillaOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_dividend_vanilla_option_1_1engine" prot="public">QuantLib::DividendVanillaOption::engine</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_dividend_vanilla_option_1ac637785895e23cfc18a08909c49835f4" prot="private" static="no" mutable="no">
-        <type>DividendSchedule</type>
-        <definition>DividendSchedule cashFlow_</definition>
-        <argsstring></argsstring>
-        <name>cashFlow_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendvanillaoption.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_vanilla_option_1a486e07d9813d00e6767c6d22c9cabfaf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_armijo_line_search" kind="class" prot="public">
     <compoundname>QuantLib::ArmijoLineSearch</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_armijo_line_search_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real alpha_</definition>
-        <argsstring></argsstring>
-        <name>alpha_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_armijo_line_search_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real beta_</definition>
-        <argsstring></argsstring>
-        <name>beta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1aa9b7b48a8c23873cce8850ca4c91b983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

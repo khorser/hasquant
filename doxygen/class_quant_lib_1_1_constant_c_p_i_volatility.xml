@@ -79,35 +79,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_constant_c_p_i_volatility_1affafcc6e56e72b677c7afa126e18a595" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a2872cf9ebf014c0aa202f405fe4af927" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>virtual Volatility volatilityImpl</definition>
-        <argsstring>(Time length, Rate strike) const </argsstring>
-        <name>volatilityImpl</name>
-        <reimplements refid="class_quant_lib_1_1_c_p_i_volatility_surface_1a36e205184c11421c639d90ff127f482a">volatilityImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>length</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>strike</declname>
-        </param>
-        <detaileddescription>
-<para>Implements the actual volatility surface calculation in derived classes e.g. bilinear interpolation. N.B. does not derive the surface. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="57"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Constant surface, no K or T dependence. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="32" bodyend="59"/>

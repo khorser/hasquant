@@ -2,50 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_pseudo_derivative" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionPseudoDerivative</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a48895cd8fda9324a2e4878c2152c429d" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;MarketModel&gt; inputModel_</definition>
-        <argsstring></argsstring>
-        <name>inputModel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1ac06562f94b91e275e1fb8d2541b98c33" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>std::vector&lt;Matrix&gt; varianceDerivatives_</definition>
-        <argsstring></argsstring>
-        <name>varianceDerivatives_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1aa1ffcd296066282de075b6649a0e0dff" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>std::vector&lt;Matrix&gt; volatilityDerivatives_</definition>
-        <argsstring></argsstring>
-        <name>volatilityDerivatives_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a8192c66d14a3d9fee44e82ecf27c0f97" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real impliedVolatility_</definition>
-        <argsstring></argsstring>
-        <name>impliedVolatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a35a6031d373fd3a059caa000189a7b37" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real expiry_</definition>
-        <argsstring></argsstring>
-        <name>expiry_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a24129c87c49238b3cfb21fe9478f0a07" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real variance_</definition>
-        <argsstring></argsstring>
-        <name>variance_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1aa816dc2db612e172040dfcb99ac95bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

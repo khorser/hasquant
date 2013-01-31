@@ -25,19 +25,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="95" bodyend="95"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_integral_c_d_o_engine_1a2e70e1d1ab3c68a3c6d4c5bb39820576" prot="private" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real expectedTrancheLoss</definition>
-        <argsstring>(const Date &amp;) const =0</argsstring>
-        <name>expectedTrancheLoss</name>
-        <reimplements refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1a2e70e1d1ab3c68a3c6d4c5bb39820576">expectedTrancheLoss</reimplements>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="97"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> base engine taking (possibly) small time steps. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="92" bodyend="100"/>

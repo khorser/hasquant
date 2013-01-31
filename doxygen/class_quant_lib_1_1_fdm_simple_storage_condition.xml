@@ -2,50 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple_storage_condition" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimpleStorageCondition</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1a74056d41a3aa1d300d6b427829cb63c4" prot="private" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>const std::vector&lt;Time&gt; exerciseTimes_</definition>
-        <argsstring></argsstring>
-        <name>exerciseTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calculator_</definition>
-        <argsstring></argsstring>
-        <name>calculator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1a21de17ea0abda3f05a9ebed18e630e74" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real changeRate_</definition>
-        <argsstring></argsstring>
-        <name>changeRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; x_</definition>
-        <argsstring></argsstring>
-        <name>x_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_storage_condition_1a71a6c36122b9ef005c4c52bda3890e24" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; y_</definition>
-        <argsstring></argsstring>
-        <name>y_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimplestoragecondition.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple_storage_condition_1abd70235cd407c0029df7e3c7edd7e869" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

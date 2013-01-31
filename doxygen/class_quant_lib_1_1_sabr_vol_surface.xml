@@ -135,92 +135,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="83"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a15e8d74f30fa16ce97adbfebf60faf18" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt;</type>
-        <definition>Handle&lt;BlackAtmVolCurve&gt; atmCurve_</definition>
-        <argsstring></argsstring>
-        <name>atmCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1ab238b6541fd526e96e5adfea50e9bcb2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt;</type>
-        <definition>std::vector&lt;Period&gt; optionTenors_</definition>
-        <argsstring></argsstring>
-        <name>optionTenors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a8c3d11bba712822cbb27ad9fbe496fcb" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; optionTimes_</definition>
-        <argsstring></argsstring>
-        <name>optionTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a0319ec980b7cb2681d52e037d3a53b42" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; optionDates_</definition>
-        <argsstring></argsstring>
-        <name>optionDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="92" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a9ca34812c0e20d3c92e8b6004655b572" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt;</type>
-        <definition>std::vector&lt;Spread&gt; atmRateSpreads_</definition>
-        <argsstring></argsstring>
-        <name>atmRateSpreads_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="93" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1ab492bc9d36b91b0ea5d53d89d0706eb5" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Handle&lt;Quote&gt; &gt; &gt; volSpreads_</definition>
-        <argsstring></argsstring>
-        <name>volSpreads_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a561478316762a6647f12a1e358c3c1d1" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isAlphaFixed_</definition>
-        <argsstring></argsstring>
-        <name>isAlphaFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a49f7321b27322013d21cff9c326f25b7" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isBetaFixed_</definition>
-        <argsstring></argsstring>
-        <name>isBetaFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a39e50370f6b721f2d31ae0123a06f2d6" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isNuFixed_</definition>
-        <argsstring></argsstring>
-        <name>isNuFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a3a3ba101748053e18bb6f079e081cd56" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isRhoFixed_</definition>
-        <argsstring></argsstring>
-        <name>isRhoFixed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1aa68519070d2409fbca4d7f59355583b2" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool vegaWeighted_</definition>
-        <argsstring></argsstring>
-        <name>vegaWeighted_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="100" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_vol_surface_1a020f662047cf69a4f5d20bc81850fa07" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; boost::array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, 4 &gt; &gt;</type>
-        <definition>std::vector&lt;boost::array&lt;Real,4&gt; &gt; sabrGuesses_</definition>
-        <argsstring></argsstring>
-        <name>sabrGuesses_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a50c79da67f8bc7df135c5925123cd11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -274,37 +188,6 @@
           <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="69"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a0d51434a505aa5c9a664a90f7a0021e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void registerWithMarketData</definition>
-        <argsstring>()</argsstring>
-        <name>registerWithMarketData</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="86"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1abc07f485644d250199f9c044e516d430" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void checkInputs</definition>
-        <argsstring>() const </argsstring>
-        <name>checkInputs</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="87"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a8ccca2cb77af803a9eee5ce00d546f14" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void updateSabrGuesses</definition>
-        <argsstring>(const Date &amp;d, boost::array&lt; Real, 4 &gt; newGuesses) const </argsstring>
-        <name>updateSabrGuesses</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <param>
-          <type>boost::array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, 4 &gt;</type>
-          <declname>newGuesses</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/sabrvolsurface.hpp" line="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

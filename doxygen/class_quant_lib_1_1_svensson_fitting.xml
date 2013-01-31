@@ -22,38 +22,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="93"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_svensson_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size size</definition>
-        <argsstring>() const </argsstring>
-        <name>size</name>
-        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
-        <briefdescription>
-<para>total number of coefficients to fit/solve for </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="95"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_svensson_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discountFunction</definition>
-        <argsstring>(const Array &amp;x, Time t) const </argsstring>
-        <name>discountFunction</name>
-        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a">discountFunction</reimplements>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>derived classes must set this </para>        </briefdescription>
-        <detaileddescription>
-<para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="96"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Svensson Fitting method. </para>    </briefdescription>
     <detaileddescription>

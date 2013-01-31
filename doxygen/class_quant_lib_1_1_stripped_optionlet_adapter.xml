@@ -95,29 +95,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a433cdee55f53adcb1d19024ac2fbf72d" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stripped_optionlet_base" kindref="compound">StrippedOptionletBase</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;StrippedOptionletBase&gt; optionletStripper_</definition>
-        <argsstring></argsstring>
-        <name>optionletStripper_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a90c30356ef0ba05e4c9eacc8df7ec953" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nInterpolations_</definition>
-        <argsstring></argsstring>
-        <name>nInterpolations_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a7fd81bca9c55969d4c19b6f0d47c9950" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;Interpolation&gt; &gt; strikeInterpolations_</definition>
-        <argsstring></argsstring>
-        <name>strikeInterpolations_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionletadapter.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_adapter_1a42f2affb2df109795aa4101130a58454" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

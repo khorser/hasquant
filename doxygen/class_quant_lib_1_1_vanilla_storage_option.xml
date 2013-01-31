@@ -4,29 +4,6 @@
     <compoundname>QuantLib::VanillaStorageOption</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments" prot="public">QuantLib::VanillaStorageOption::arguments</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1aef58e11a5bfd8e2bf14b750d2fdd93c4" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real capacity_</definition>
-        <argsstring></argsstring>
-        <name>capacity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1ad16d0e8df9f6aa001d7fe004e38ec393" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real load_</definition>
-        <argsstring></argsstring>
-        <name>load_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1a21de17ea0abda3f05a9ebed18e630e74" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real changeRate_</definition>
-        <argsstring></argsstring>
-        <name>changeRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1a4082442772cb2df54c98993cae338371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

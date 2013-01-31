@@ -50,29 +50,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_vanilla_option_1a7ba4ea799959d890a10aa2ce1f820323" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real qvega_</definition>
-        <argsstring></argsstring>
-        <name>qvega_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_vanilla_option_1a8d41d78beaffcfea2b09b86a0569642b" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real qrho_</definition>
-        <argsstring></argsstring>
-        <name>qrho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_vanilla_option_1a08c77a7026c7a6cfff2afd8fcee489ac" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real qlambda_</definition>
-        <argsstring></argsstring>
-        <name>qlambda_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1aa8fd943d8f37ed070222b9abe6db9633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -100,18 +77,6 @@
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="62"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>setupExpired</name>
-        <reimplements refid="class_quant_lib_1_1_one_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <detaileddescription>
-<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

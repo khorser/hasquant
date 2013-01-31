@@ -339,29 +339,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yield_curve_1adc47136f5538e417c8dcca16854cac8d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;typename Traits::helper&gt; &gt; instruments_</definition>
-        <argsstring></argsstring>
-        <name>instruments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="182" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yield_curve_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real accuracy_</definition>
-        <argsstring></argsstring>
-        <name>accuracy_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="183" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yield_curve_1a3dde59eaf2b97f4b7227dc0a92a26d64" prot="private" static="no" mutable="no">
-        <type>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;</type>
-        <definition>Bootstrap&lt;this_curve&gt; bootstrap_</definition>
-        <argsstring></argsstring>
-        <name>bootstrap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="192" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1ae111cb608a73ca819237b5c9f93f1088" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>
@@ -383,19 +360,6 @@
         <argsstring></argsstring>
         <name>PenaltyFunction&lt; this_curve &gt;</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="191" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discountImpl</definition>
-        <argsstring>(Time) const </argsstring>
-        <name>discountImpl</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <defname>t</defname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="245" bodyend="248"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

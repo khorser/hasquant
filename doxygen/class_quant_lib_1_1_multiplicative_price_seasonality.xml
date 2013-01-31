@@ -98,29 +98,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="152"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a6b022f17c3cd4573591b1d9d6bdc9bc0" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date seasonalityBaseDate_</definition>
-        <argsstring></argsstring>
-        <name>seasonalityBaseDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="121" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multiplicative_price_seasonality_1ae358763dc753768bb42e898365204a9a" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
-        <definition>Frequency frequency_</definition>
-        <argsstring></argsstring>
-        <name>frequency_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="122" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multiplicative_price_seasonality_1ac89342d7f64c0e53c6858225fe08ca89" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; seasonalityFactors_</definition>
-        <argsstring></argsstring>
-        <name>seasonalityFactors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="123" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a44c1ae642d4a92fa718e6cbebff53a66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

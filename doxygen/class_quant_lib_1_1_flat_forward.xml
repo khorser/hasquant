@@ -183,36 +183,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="102" bodyend="105"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_flat_forward_1a956859b47599b6d2380009a5d28a7b38" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; forward_</definition>
-        <argsstring></argsstring>
-        <name>forward_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_flat_forward_1a4017b03bddec618f5120a549c1a371e8" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
-        <definition>Compounding compounding_</definition>
-        <argsstring></argsstring>
-        <name>compounding_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_flat_forward_1ae358763dc753768bb42e898365204a9a" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
-        <definition>Frequency frequency_</definition>
-        <argsstring></argsstring>
-        <name>frequency_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_flat_forward_1a1ea555b4ee54e9ebfb9417ddf85a09a3" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
-        <definition>InterestRate rate_</definition>
-        <argsstring></argsstring>
-        <name>rate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/flatforward.hpp" bodystart="92" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_flat_forward_1a6968bd096b10d7259e742fa324abade3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>

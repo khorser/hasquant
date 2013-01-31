@@ -3,64 +3,6 @@
   <compounddef id="class_quant_lib_1_1_accounting_engine" kind="class" prot="public">
     <compoundname>QuantLib::AccountingEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1a8cb4075d2c803646a9ee0d4b2896e332" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;MarketModelEvolver&gt; evolver_</definition>
-        <argsstring></argsstring>
-        <name>evolver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1afe1ca2a0498e17face86d6cac6f38ec0" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
-        <definition>Clone&lt;MarketModelMultiProduct&gt; product_</definition>
-        <argsstring></argsstring>
-        <name>product_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1a72ee3009f0ae910cbbe75ea95d0e9992" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real initialNumeraireValue_</definition>
-        <argsstring></argsstring>
-        <name>initialNumeraireValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1a4472a0e32e19632546affb5977062d24" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberProducts_</definition>
-        <argsstring></argsstring>
-        <name>numberProducts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1ac02019c3e5395ae9a13d95e65733c56d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; numerairesHeld_</definition>
-        <argsstring></argsstring>
-        <name>numerairesHeld_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1aa728e4b75a27d68ae924976413ac154b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; numberCashFlowsThisStep_</definition>
-        <argsstring></argsstring>
-        <name>numberCashFlowsThisStep_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1a9bd4a6af8efd848e88a3b87585e59daf" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; MarketModelMultiProduct::CashFlow &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;MarketModelMultiProduct::CashFlow&gt; &gt; cashFlowsGenerated_</definition>
-        <argsstring></argsstring>
-        <name>cashFlowsGenerated_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_accounting_engine_1a5aa2331136e0d40b661fe092ed262978" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; MarketModelDiscounter &gt;</type>
-        <definition>std::vector&lt;MarketModelDiscounter&gt; discounters_</definition>
-        <argsstring></argsstring>
-        <name>discounters_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_accounting_engine_1ab2e285c4672943062a20a8bb70247c1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -95,19 +37,6 @@
           <declname>numberOfPaths</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="50"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_accounting_engine_1acd3d9209e3d55da84002ce0d9e20f127" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real singlePathValues</definition>
-        <argsstring>(std::vector&lt; Real &gt; &amp;values)</argsstring>
-        <name>singlePathValues</name>
-        <param>
-          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
-          <declname>values</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/accountingengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

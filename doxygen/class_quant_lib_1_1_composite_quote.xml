@@ -59,29 +59,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1ac182967a91827b9f3653635840e65b1a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; element1_</definition>
-        <argsstring></argsstring>
-        <name>element1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1aceda1e20ef5d041116c46f6fee025506" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; element2_</definition>
-        <argsstring></argsstring>
-        <name>element2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1a8491af6ee584103994b06d1d9cf731b8" prot="private" static="no" mutable="no">
-        <type>BinaryFunction</type>
-        <definition>BinaryFunction f_</definition>
-        <argsstring></argsstring>
-        <name>f_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1a2628d28a842eb4da85ddbdcb576553f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

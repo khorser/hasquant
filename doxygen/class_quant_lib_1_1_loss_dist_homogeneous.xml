@@ -3,57 +3,6 @@
   <compounddef id="class_quant_lib_1_1_loss_dist_homogeneous" kind="class" prot="public">
     <compoundname>QuantLib::LossDistHomogeneous</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nBuckets_</definition>
-        <argsstring></argsstring>
-        <name>nBuckets_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="162" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1abff8e9929d1de11ec2ddeae1146c19b2" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maximum_</definition>
-        <argsstring></argsstring>
-        <name>maximum_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="163" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1a0c2c8b8d85c2ef2a8ea5afb1855a7bd7" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real epsilon_</definition>
-        <argsstring></argsstring>
-        <name>epsilon_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="164" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size n_</definition>
-        <argsstring></argsstring>
-        <name>n_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="165" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1af1cc7e6ad658032e9368edd0b5810ef4" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real volume_</definition>
-        <argsstring></argsstring>
-        <name>volume_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="166" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1a36f6cdd030e18a2e8f0bcf9353878e35" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; probability_</definition>
-        <argsstring></argsstring>
-        <name>probability_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="167" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_dist_homogeneous_1a29203f81351411e68e51fedb2adee42e" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; excessProbability_</definition>
-        <argsstring></argsstring>
-        <name>excessProbability_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="168" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_loss_dist_homogeneous_1a5ec68acd2980624a117e2f8a96d7e746" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

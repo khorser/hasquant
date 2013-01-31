@@ -3,50 +3,6 @@
   <compounddef id="class_quant_lib_1_1_make_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::MakeCapFloor</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1ad16ae34a3483f675942bf573ec4271ba" prot="private" static="no" mutable="no">
-        <type>CapFloor::Type</type>
-        <definition>CapFloor::Type capFloorType_</definition>
-        <argsstring></argsstring>
-        <name>capFloorType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate strike_</definition>
-        <argsstring></argsstring>
-        <name>strike_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1a372994af3e97d8b3e9eef891109c4708" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool firstCapletExcluded_</definition>
-        <argsstring></argsstring>
-        <name>firstCapletExcluded_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1aaf8849e372b95794dfde616057a9d75f" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool asOptionlet_</definition>
-        <argsstring></argsstring>
-        <name>asOptionlet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1a7899615d541219d449d54a7784b56d9a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref></type>
-        <definition>MakeVanillaSwap makeVanillaSwap_</definition>
-        <argsstring></argsstring>
-        <name>makeVanillaSwap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1aec8a3d48bdab47e807560f973bfa1569" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;PricingEngine&gt; engine_</definition>
-        <argsstring></argsstring>
-        <name>engine_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1ab701fbc7fe43af2644d4d2eb35bf76c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -316,43 +316,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="168" bodyend="181"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_1ae82158a816c03ee5401734e9af8ebdc1" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate r_</definition>
-        <argsstring></argsstring>
-        <name>r_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="184" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dc_</definition>
-        <argsstring></argsstring>
-        <name>dc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="185" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_1acf57dd9de966efed783083d0d4dacbf5" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
-        <definition>Compounding comp_</definition>
-        <argsstring></argsstring>
-        <name>comp_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="186" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_1acc815ee6278a0efaf4eee14ab425f806" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool freqMakesSense_</definition>
-        <argsstring></argsstring>
-        <name>freqMakesSense_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="187" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_1ae594b335935559979aa1fe648061b52c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real freq_</definition>
-        <argsstring></argsstring>
-        <name>freq_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="188" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="188" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_1a470e6cf45fe6bf07123c0ba59f292814" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>

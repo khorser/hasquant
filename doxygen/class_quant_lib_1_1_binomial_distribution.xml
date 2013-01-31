@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_binomial_distribution" kind="class" prot="public">
     <compoundname>QuantLib::BinomialDistribution</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_binomial_distribution_1ab045fb029116c7ba3b737aa0460b8966" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
-        <definition>BigNatural n_</definition>
-        <argsstring></argsstring>
-        <name>n_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_binomial_distribution_1aa6f730f107dec19441df8ce521ab3f61" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real logP_</definition>
-        <argsstring></argsstring>
-        <name>logP_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_binomial_distribution_1ad6d284158e47d2a26cc417578e7e61ec" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real logOneMinusP_</definition>
-        <argsstring></argsstring>
-        <name>logOneMinusP_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_binomial_distribution_1a57cbbf81702f9ae88052a82796767503" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

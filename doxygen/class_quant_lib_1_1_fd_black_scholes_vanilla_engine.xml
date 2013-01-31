@@ -2,57 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdBlackScholesVanillaEngine</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1acef2b56fcfa48f7f4a68844033f24b63" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size tGrid_</definition>
-        <argsstring></argsstring>
-        <name>tGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size xGrid_</definition>
-        <argsstring></argsstring>
-        <name>xGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size dampingSteps_</definition>
-        <argsstring></argsstring>
-        <name>dampingSteps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a18d4d9334fdfbd5b9f515cb382a278b8" prot="private" static="no" mutable="no">
-        <type>const bool</type>
-        <definition>const bool localVol_</definition>
-        <argsstring></argsstring>
-        <name>localVol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1aff1b9e5e66f10d47518609e153448d55" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real illegalLocalVolOverwrite_</definition>
-        <argsstring></argsstring>
-        <name>illegalLocalVolOverwrite_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdblackscholesvanillaengine.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_vanilla_engine_1a19a0a3c16864a5ac02570ceea02f9019" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_factory" kind="class" prot="public">
     <compoundname>QuantLib::FwdToCotSwapAdapterFactory</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_factory_1a335b391288468d36bceaeca6ae754cc3" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_factory" kindref="compound">MarketModelFactory</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;MarketModelFactory&gt; forwardFactory_</definition>
-        <argsstring></argsstring>
-        <name>forwardFactory_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fwd_to_cot_swap_adapter_factory_1a385e8d47de0c35b662838056eff0224f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

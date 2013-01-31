@@ -84,43 +84,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="103" bodyend="110"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter_</definition>
-        <argsstring></argsstring>
-        <name>dayCounter_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1adfb02c99d8f389febbe441aa1338e14b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate_</definition>
-        <argsstring></argsstring>
-        <name>maxDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1a5e6a6ce748d7b860ae24fc1f1e331e00" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; variances_</definition>
-        <argsstring></argsstring>
-        <name>variances_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_curve_1ab8440b9bc4e266817688cfbc43fee041" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
-        <definition>Interpolation varianceCurve_</definition>
-        <argsstring></argsstring>
-        <name>varianceCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancecurve.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_curve_1a37ac548367be1e742bffbbd41518d6e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

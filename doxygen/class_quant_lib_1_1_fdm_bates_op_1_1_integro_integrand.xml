@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand" kind="class" prot="private">
     <compoundname>QuantLib::FdmBatesOp::IntegroIntegrand</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1a12813200f3dc96ba42daef8d52aeefdc" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real x_</definition>
-        <argsstring></argsstring>
-        <name>x_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1ab93aabd725036e18018464e4d104a097" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real delta_</definition>
-        <argsstring></argsstring>
-        <name>delta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1aa75da5258630a6e16f71bc04f43a33f6" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real nu_</definition>
-        <argsstring></argsstring>
-        <name>nu_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1a474788abd4b701988062bf1161090ad2" prot="private" static="no" mutable="no">
-        <type>const FdmBoundaryConditionSet &amp;</type>
-        <definition>const FdmBoundaryConditionSet&amp; bcSet_</definition>
-        <argsstring></argsstring>
-        <name>bcSet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1ac7f99b91f156a037621bbdea6cab2792" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_linear_interpolation" kindref="compound">LinearInterpolation</ref> &gt; &amp;</type>
-        <definition>const boost::shared_ptr&lt;LinearInterpolation&gt;&amp; interpl_</definition>
-        <argsstring></argsstring>
-        <name>interpl_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1af0ed3ad04e78da46b8f74f5e37d4ea6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

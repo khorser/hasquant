@@ -86,36 +86,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1afb597b35edab96eecbcbf9a2df04f05d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real x0_</definition>
-        <argsstring></argsstring>
-        <name>x0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a0e414136017e35bfe55ed92d7e7661e0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real speed_</definition>
-        <argsstring></argsstring>
-        <name>speed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1aa8ae25f45fba2b614971adf594da0ab0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real level_</definition>
-        <argsstring></argsstring>
-        <name>level_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1affafcc6e56e72b677c7afa126e18a595" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/ornsteinuhlenbeckprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_ornstein_uhlenbeck_process_1a6a45086f57b05b580f652b091a4d0113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -5,15 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_dividend_barrier_option_1_1arguments" prot="public">QuantLib::DividendBarrierOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_dividend_barrier_option_1_1engine" prot="public">QuantLib::DividendBarrierOption::engine</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_dividend_barrier_option_1ac637785895e23cfc18a08909c49835f4" prot="private" static="no" mutable="no">
-        <type>DividendSchedule</type>
-        <definition>DividendSchedule cashFlow_</definition>
-        <argsstring></argsstring>
-        <name>cashFlow_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/dividendbarrieroption.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_barrier_option_1a0eea23abdf323050b9c978fe20ac03bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

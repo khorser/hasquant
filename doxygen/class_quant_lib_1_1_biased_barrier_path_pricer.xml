@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_biased_barrier_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BiasedBarrierPathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_biased_barrier_path_pricer_1a1439bfbbaacb914efebb469a50d6528a" prot="private" static="no" mutable="no">
-        <type>Barrier::Type</type>
-        <definition>Barrier::Type barrierType_</definition>
-        <argsstring></argsstring>
-        <name>barrierType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="173" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_biased_barrier_path_pricer_1a70ca946cc3b0a75548f7f38eedd3a7a6" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real barrier_</definition>
-        <argsstring></argsstring>
-        <name>barrier_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="174" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_biased_barrier_path_pricer_1ad6e88a4eb440388c167742fc333e8fd5" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rebate_</definition>
-        <argsstring></argsstring>
-        <name>rebate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="175" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_biased_barrier_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref></type>
-        <definition>PlainVanillaPayoff payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="176" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_biased_barrier_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
-        <definition>std::vector&lt;DiscountFactor&gt; discounts_</definition>
-        <argsstring></argsstring>
-        <name>discounts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="177" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_biased_barrier_path_pricer_1a50ab57b49c747f02816fb0bcb0fac046" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

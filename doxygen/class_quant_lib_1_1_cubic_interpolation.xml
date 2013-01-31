@@ -78,15 +78,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="130" bodyend="147"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_interpolation_1ae8dc37592623c194b315958bb7da77a6" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; detail::CoefficientHolder &gt;</type>
-        <definition>boost::shared_ptr&lt;detail::CoefficientHolder&gt; coeffs_</definition>
-        <argsstring></argsstring>
-        <name>coeffs_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/cubicinterpolation.hpp" bodystart="181" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_interpolation_1a4660490e94d17a41507f676a5eb41a15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

@@ -19,15 +19,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1details_1_1_linear_fcts_1a629cd77b499dfe61c107f412bec4a20e" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, ArgumentType &gt; &gt;</type>
-        <definition>std::vector&lt; boost::function1&lt;Real, ArgumentType&gt; &gt; v</definition>
-        <argsstring></argsstring>
-        <name>v</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fcts_1a1aa55cf772d33c64b491cf0978981e18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

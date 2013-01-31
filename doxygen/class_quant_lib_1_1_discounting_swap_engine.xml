@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discounting_swap_engine" kind="class" prot="public">
     <compoundname>QuantLib::DiscountingSwapEngine</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
-        <argsstring></argsstring>
-        <name>discountCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1a4c03bc11ff086bfab1c39eb1409e968a" prot="private" static="no" mutable="no">
-        <type>boost::optional&lt; bool &gt;</type>
-        <definition>boost::optional&lt;bool&gt; includeSettlementDateFlows_</definition>
-        <argsstring></argsstring>
-        <name>includeSettlementDateFlows_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1af212738530e45abd96efb0941375436e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date settlementDate_</definition>
-        <argsstring></argsstring>
-        <name>settlementDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discounting_swap_engine_1a9554983a95caac37e8a83513ceb54bf9" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date npvDate_</definition>
-        <argsstring></argsstring>
-        <name>npvDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swap/discountingswapengine.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discounting_swap_engine_1aa7be22a575aabf3b208da485e618b0c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

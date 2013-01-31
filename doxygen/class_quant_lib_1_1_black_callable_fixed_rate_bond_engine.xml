@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCallableFixedRateBondEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a05deafe5bd63e3776fe27120df277cd9" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_callable_bond_volatility_structure" kindref="compound">CallableBondVolatilityStructure</ref> &gt;</type>
-        <definition>Handle&lt;CallableBondVolatilityStructure&gt; volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
-        <argsstring></argsstring>
-        <name>discountCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1ab2a178c9173ba1f65ca26e9362eea5bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -61,22 +45,6 @@
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="54"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a69691748c32a230731a5799600fbb774" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real spotIncome</definition>
-        <argsstring>() const </argsstring>
-        <name>spotIncome</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="59"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a2e9b946ebf8f7e7aaf42c1ac65b7ebc1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility forwardPriceVolatility</definition>
-        <argsstring>() const </argsstring>
-        <name>forwardPriceVolatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/blackcallablebondengine.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

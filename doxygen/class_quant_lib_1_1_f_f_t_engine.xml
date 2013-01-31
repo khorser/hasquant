@@ -19,15 +19,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_engine_1ae0fe437eb3946d0a7c0a0a25b02586c5" prot="private" static="no" mutable="no">
-        <type>ResultMap</type>
-        <definition>ResultMap resultMap_</definition>
-        <argsstring></argsstring>
-        <name>resultMap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftengine.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1aa0711fbc7eaf022530829206e3e8be5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

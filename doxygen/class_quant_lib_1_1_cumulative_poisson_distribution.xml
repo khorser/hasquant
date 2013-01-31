@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_cumulative_poisson_distribution" kind="class" prot="public">
     <compoundname>QuantLib::CumulativePoissonDistribution</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cumulative_poisson_distribution_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real mu_</definition>
-        <argsstring></argsstring>
-        <name>mu_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_poisson_distribution_1afef08c1785dc638a5639d03f29628180" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

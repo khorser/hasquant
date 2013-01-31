@@ -54,15 +54,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="123" bodyend="130"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_constant_vol_1a14cc04bf8608e1205f4796cbb54fd7f5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackconstantvol.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_constant_vol_1a715f0ebaf60ac7805652ec9979aaa294" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

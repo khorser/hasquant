@@ -4,15 +4,6 @@
     <compoundname>QuantLib::BespokeCalendar</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl" prot="private">QuantLib::BespokeCalendar::Impl</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bespoke_calendar_1ae9747af8c1a67ac736efc2f0d2cc7649" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; BespokeCalendar::Impl &gt;</type>
-        <definition>boost::shared_ptr&lt;BespokeCalendar::Impl&gt; bespokeImpl_</definition>
-        <argsstring></argsstring>
-        <name>bespokeImpl_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1a7f3c5b5278c667900534fb0e63f13c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -13,22 +13,6 @@
         <type>class Interpolator</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a7afe998cb08635d359ce79adce5b5e5b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; logY_</definition>
-        <argsstring></argsstring>
-        <name>logY_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
-        <definition>Interpolation interpolation_</definition>
-        <argsstring></argsstring>
-        <name>interpolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a4183da57d8b82e00ff817a2d139d021d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

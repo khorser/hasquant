@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_shout_condition" kind="class" prot="public">
     <compoundname>QuantLib::ShoutCondition</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_shout_condition_1a6241a1fa630fce592defbaa223154bc4" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time resTime_</definition>
-        <argsstring></argsstring>
-        <name>resTime_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_shout_condition_1abb3d0cb77e91fb8041a940f98569dbc0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate rate_</definition>
-        <argsstring></argsstring>
-        <name>rate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_shout_condition_1a642233aebfbc96026aae4121a3615ea2" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor disc_</definition>
-        <argsstring></argsstring>
-        <name>disc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a9060b1f6d7cc29b738bd1bbcfab3072e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -83,23 +60,6 @@
           <declname>t</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="72" bodyend="75"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a79b50b2bdafb58aebc280d8afccfc224" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>virtual Real applyToValue</definition>
-        <argsstring>(Real current, Real intrinsic) const </argsstring>
-        <name>applyToValue</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>current</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>intrinsic</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/shoutcondition.hpp" bodystart="52" bodyend="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

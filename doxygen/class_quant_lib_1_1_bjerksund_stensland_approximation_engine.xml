@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine" kind="class" prot="public">
     <compoundname>QuantLib::BjerksundStenslandApproximationEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/bjerksundstenslandengine.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine_1ad7beb01099c5ca4ca4c749bca0ebf508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

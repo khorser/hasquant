@@ -42,36 +42,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1af0b604c5aaee57f070870e3663c0f4bb" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; double &gt;</type>
-        <definition>std::vector&lt;double&gt; ranf_arr_buf</definition>
-        <argsstring></argsstring>
-        <name>ranf_arr_buf</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1aa6017a161f4d9540bb75013ab4c58099" prot="private" static="no" mutable="yes">
-        <type>size_t</type>
-        <definition>size_t ranf_arr_ptr</definition>
-        <argsstring></argsstring>
-        <name>ranf_arr_ptr</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1ad91754e0cba3b8728c8d47a87e9d747f" prot="private" static="no" mutable="yes">
-        <type>size_t</type>
-        <definition>size_t ranf_arr_sentinel</definition>
-        <argsstring></argsstring>
-        <name>ranf_arr_sentinel</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1ad94d865ffdb9379861c87971c108c4a3" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; double &gt;</type>
-        <definition>std::vector&lt;double&gt; ran_u</definition>
-        <argsstring></argsstring>
-        <name>ran_u</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1ab59db514c5c64ebd20105fd6eba4e0a2" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -95,67 +65,6 @@
         <detaileddescription>
 <para>returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0) </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="68" bodyend="73"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a600f323493a28e6a309e15d624122e29" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>double</type>
-        <definition>double mod_sum</definition>
-        <argsstring>(double x, double y) const </argsstring>
-        <name>mod_sum</name>
-        <param>
-          <type>double</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>y</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="75" bodyend="77"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a86236eec6550f4ededb316702aeb4737" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool is_odd</definition>
-        <argsstring>(int s) const </argsstring>
-        <name>is_odd</name>
-        <param>
-          <type>int</type>
-          <declname>s</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="79" bodyend="81"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a4f0a28eea782bdf9b9c9cc5d66845c0d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ranf_start</definition>
-        <argsstring>(long seed)</argsstring>
-        <name>ranf_start</name>
-        <param>
-          <type>long</type>
-          <declname>seed</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="60"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1abe6fa9d5f6533fe227a20bf89d8beb8c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void ranf_array</definition>
-        <argsstring>(std::vector&lt; double &gt; &amp;aa, int n) const </argsstring>
-        <name>ranf_array</name>
-        <param>
-          <type>std::vector&lt; double &gt; &amp;</type>
-          <declname>aa</declname>
-        </param>
-        <param>
-          <type>int</type>
-          <declname>n</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="61"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1a0a78eb5869e3410a1be126acd1c95384" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double ranf_arr_cycle</definition>
-        <argsstring>() const </argsstring>
-        <name>ranf_arr_cycle</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

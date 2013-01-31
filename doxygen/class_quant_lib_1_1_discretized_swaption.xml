@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_swaption" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedSwaption</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swaption_1a296de1144757789c2bc170797a7a8428" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_swaption_1_1arguments" kindref="compound">Swaption::arguments</ref></type>
-        <definition>Swaption::arguments arguments_</definition>
-        <argsstring></argsstring>
-        <name>arguments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" bodystart="40" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_swaption_1a7f31153caa8a095ff4dfb1178afbd171" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time lastPayment_</definition>
-        <argsstring></argsstring>
-        <name>lastPayment_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/discretizedswaption.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_swaption_1a40898e73d462ae1e01a125341cf30ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

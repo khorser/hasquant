@@ -10,22 +10,6 @@
         <type>class I2</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a93eaa990736f292e226b3b09a939beee" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; primitiveConst_</definition>
-        <argsstring></argsstring>
-        <name>primitiveConst_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a41bc28f21a1e438c67c0c0f823c59f17" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; s_</definition>
-        <argsstring></argsstring>
-        <name>s_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a02b5c58b0bd60e3a1778f9898eb71c72" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

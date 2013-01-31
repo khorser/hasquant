@@ -3,57 +3,6 @@
   <compounddef id="class_quant_lib_1_1_extended_black_variance_curve" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedBlackVarianceCurve</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter_</definition>
-        <argsstring></argsstring>
-        <name>dayCounter_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1adfb02c99d8f389febbe441aa1338e14b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate_</definition>
-        <argsstring></argsstring>
-        <name>maxDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a7ae0c2e859b037de7aae2614e224eaaa" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; volatilities_</definition>
-        <argsstring></argsstring>
-        <name>volatilities_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a5e6a6ce748d7b860ae24fc1f1e331e00" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; variances_</definition>
-        <argsstring></argsstring>
-        <name>variances_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1ab8440b9bc4e266817688cfbc43fee041" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
-        <definition>Interpolation varianceCurve_</definition>
-        <argsstring></argsstring>
-        <name>varianceCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_black_variance_curve_1a8ca39226be422a0af03d79208d2f79da" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool forceMonotoneVariance_</definition>
-        <argsstring></argsstring>
-        <name>forceMonotoneVariance_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1a7d9ea4c4459fca848fad48d1e3df5500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -159,33 +108,6 @@
         <name>update</name>
         <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="61"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1aac9acafacf1acecd771fade5de4d6d83" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real blackVarianceImpl</definition>
-        <argsstring>(Time t, Real) const </argsstring>
-        <name>blackVarianceImpl</name>
-        <reimplements refid="class_quant_lib_1_1_black_vol_term_structure_1a8f201d5f64aee87d444db159f62637f6">blackVarianceImpl</reimplements>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>strike</declname>
-        </param>
-        <briefdescription>
-<para>Black variance calculation. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="63"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_curve_1afeca83ef1eb59a51bc02e8f88d96a330" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void setVariances</definition>
-        <argsstring>()</argsstring>
-        <name>setVariances</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/extendedblackvariancecurve.hpp" line="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pagoda_multi_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::PagodaMultiPathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discount_</definition>
-        <argsstring></argsstring>
-        <name>discount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="119" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1a95c0170051dff1bbdc70bbe6cdd63f4c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real roof_</definition>
-        <argsstring></argsstring>
-        <name>roof_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="120" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1af0abba39c7f061e53d00e11883af4d3f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real fraction_</definition>
-        <argsstring></argsstring>
-        <name>fraction_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mcpagodaengine.hpp" bodystart="120" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pagoda_multi_path_pricer_1a61050a9470f1f8560608689991b8a8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

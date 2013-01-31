@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_inverse_cumulative_poisson" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativePoisson</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real lambda_</definition>
-        <argsstring></argsstring>
-        <name>lambda_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a916136b717afde07e1a8b711c7975d0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -35,19 +26,6 @@
           <declname>x</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="114" bodyend="130"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a7687e32b422e3629854ab18be2e8a515" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real calcSummand</definition>
-        <argsstring>(BigNatural index) const </argsstring>
-        <name>calcSummand</name>
-        <param>
-          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
-          <declname>index</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="132" bodyend="135"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

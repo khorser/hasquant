@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g2_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::G2::Dynamics</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_g2_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
-        <definition>Parameter fitting_</definition>
-        <argsstring></argsstring>
-        <name>fitting_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="142" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_dynamics_1a0513bda7e06cc1fac8a057176d377efc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

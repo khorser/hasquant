@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_cms_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::CmsCouponPricer</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cms_coupon_pricer_1a1e632c98a70cdb47a9101771008f2c12" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
-        <definition>Handle&lt;SwaptionVolatilityStructure&gt; swaptionVol_</definition>
-        <argsstring></argsstring>
-        <name>swaptionVol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="133" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cms_coupon_pricer_1a020c99088bd1bc23f839031d9841d2da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -12,15 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_seed_generator_1a897450e49b1c8dde68a3f84ebf321bc7" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_mersenne_twister_uniform_rng" kindref="compound">MersenneTwisterUniformRng</ref></type>
-        <definition>MersenneTwisterUniformRng rng_</definition>
-        <argsstring></argsstring>
-        <name>rng_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_seed_generator_1a957d5ec5d69c9644228fe2eca5cd08e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned long</type>
@@ -28,22 +19,6 @@
         <argsstring>()</argsstring>
         <name>get</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="41"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_seed_generator_1aa00e356714c34ba83dbff23c610d57e3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>SeedGenerator</definition>
-        <argsstring>()</argsstring>
-        <name>SeedGenerator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="43"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_seed_generator_1a25a40b6614565f755233080a384c35f1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initialize</definition>
-        <argsstring>()</argsstring>
-        <name>initialize</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

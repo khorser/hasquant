@@ -36,29 +36,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="139" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1binary__compose3__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" static="no" mutable="no">
-        <type>F</type>
-        <definition>F f_</definition>
-        <argsstring></argsstring>
-        <name>f_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="150" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1binary__compose3__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" static="no" mutable="no">
-        <type>G</type>
-        <definition>G g_</definition>
-        <argsstring></argsstring>
-        <name>g_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="151" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1binary__compose3__function_1abbaf94cb47bb8a35351ed320c1119e3e" prot="private" static="no" mutable="no">
-        <type>H</type>
-        <definition>H h_</definition>
-        <argsstring></argsstring>
-        <name>h_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="152" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1binary__compose3__function_1aef75a733bd9c4c34e308d7ef91a20276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

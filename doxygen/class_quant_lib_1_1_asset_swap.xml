@@ -5,71 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_asset_swap_1_1arguments" prot="public">QuantLib::AssetSwap::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_asset_swap_1_1results" prot="public">QuantLib::AssetSwap::results</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a4821815d418ae403f661fe086661d7da" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Bond&gt; bond_</definition>
-        <argsstring></argsstring>
-        <name>bond_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a7fcaee097ffa6f5c4c69c87fd94581ae" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real bondCleanPrice_</definition>
-        <argsstring></argsstring>
-        <name>bondCleanPrice_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1ac567f42e3c257401c47f8a0dd3980e2f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real nonParRepayment_</definition>
-        <argsstring></argsstring>
-        <name>nonParRepayment_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
-        <definition>Spread spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a910815019f47c9236f4112d43d67371b" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool parSwap_</definition>
-        <argsstring></argsstring>
-        <name>parSwap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a803c3db64837bdd4d63de86f64a248ac" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date upfrontDate_</definition>
-        <argsstring></argsstring>
-        <name>upfrontDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a492c911c409c868717797a52dda59333" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
-        <definition>Spread fairSpread_</definition>
-        <argsstring></argsstring>
-        <name>fairSpread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a7573025e3c4912c05a1e589e7773ccd4" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real fairCleanPrice_</definition>
-        <argsstring></argsstring>
-        <name>fairCleanPrice_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_1a20e610dcd481ae9b0434c6ceff29b86f" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real fairNonParRepayment_</definition>
-        <argsstring></argsstring>
-        <name>fairNonParRepayment_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1afe29f6a0d065614964b50e3396e94212" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -281,18 +216,6 @@
         <detaileddescription>
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="92"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>setupExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <detaileddescription>
-<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/assetswap.hpp" line="94"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

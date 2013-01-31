@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_early_exercise" kind="class" prot="public">
     <compoundname>QuantLib::EarlyExercise</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_early_exercise_1a22a68e7cde8039d87abf3c7811ee7277" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool payoffAtExpiry_</definition>
-        <argsstring></argsstring>
-        <name>payoffAtExpiry_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

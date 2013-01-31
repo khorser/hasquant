@@ -31,15 +31,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="53"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_e_u_r_libor_1a45c7c29e9deb3e2a306a329663a3069b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar target_</definition>
-        <argsstring></argsstring>
-        <name>target_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/eurlibor.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_e_u_r_libor_1a3c295849ef82eac47318de584267ff33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

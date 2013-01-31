@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78" kind="class" prot="public">
     <compoundname>QuantLib::BivariateCumulativeNormalDistributionDr78</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1af8261a46a6df92c0375dbe36b96dbd5d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rho2_</definition>
-        <argsstring></argsstring>
-        <name>rho2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1a5b3ec330fad87daf3073ba470ccb5407" prot="private" static="yes" mutable="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" kind="class" prot="public">
     <compoundname>QuantLib::TwoFactorModel::ShortRateTree</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1ae9756a7000541f59d6ecf6c317d3e50b" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics_</definition>
-        <argsstring></argsstring>
-        <name>dynamics_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="128" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1a860511eeaaac9869f739edd9cf1df4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_black_cap_floor_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCapFloorEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_cap_floor_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
-        <argsstring></argsstring>
-        <name>discountCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_cap_floor_engine_1a99ae0b038644df79fe522fda46c399be" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
-        <definition>Handle&lt;OptionletVolatilityStructure&gt; vol_</definition>
-        <argsstring></argsstring>
-        <name>vol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/blackcapfloorengine.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_cap_floor_engine_1a9a265ddc504e6979c13b2061dfe50064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

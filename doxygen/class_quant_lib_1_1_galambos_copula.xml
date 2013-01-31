@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_galambos_copula" kind="class" prot="public">
     <compoundname>QuantLib::GalambosCopula</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/galamboscopula.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_galambos_copula_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real theta_</definition>
-        <argsstring></argsstring>
-        <name>theta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/galamboscopula.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/galamboscopula.hpp" bodystart="39" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_galambos_copula_1a13e85ed555d5280a0c50a0298eea3f84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

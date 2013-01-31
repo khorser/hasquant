@@ -96,64 +96,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="49" bodyend="50"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dayCounter_</definition>
-        <argsstring></argsstring>
-        <name>dayCounter_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1adfb02c99d8f389febbe441aa1338e14b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date maxDate_</definition>
-        <argsstring></argsstring>
-        <name>maxDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1a3ef6d1cab27fcf5c430e9e74c618ff8d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; strikes_</definition>
-        <argsstring></argsstring>
-        <name>strikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1a4041b9b3f4639defe3da76476955e09c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix variances_</definition>
-        <argsstring></argsstring>
-        <name>variances_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1aafc439d9b47b028642c9f2e2536c4c84" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref></type>
-        <definition>Interpolation2D varianceSurface_</definition>
-        <argsstring></argsstring>
-        <name>varianceSurface_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="100" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1ae9e08030675df0a27984cb0b9b9c268d" prot="private" static="no" mutable="no">
-        <type>Extrapolation</type>
-        <definition>Extrapolation lowerExtrapolation_</definition>
-        <argsstring></argsstring>
-        <name>lowerExtrapolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_variance_surface_1a05bf4ae060a1dc55bd7906f32ac6b747" prot="private" static="no" mutable="no">
-        <type>Extrapolation</type>
-        <definition>Extrapolation upperExtrapolation_</definition>
-        <argsstring></argsstring>
-        <name>upperExtrapolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvariancesurface.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_variance_surface_1a9a1efd40689bf8d3e0253842d79a046e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

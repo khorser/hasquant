@@ -12,15 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1aa4c843f49b01849ec9263c9aeaa4e27a" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real gridLogSpacing_</definition>
-        <argsstring></argsstring>
-        <name>gridLogSpacing_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1ab602c82b8b4c102c985b77298eb4c3d3" prot="private" static="yes" mutable="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -68,23 +59,6 @@
         <argsstring>() const </argsstring>
         <name>grid</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="57" bodyend="57"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1ab552e09b28193a2d8c53fa55a96ebd64" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size safeGridPoints</definition>
-        <argsstring>(Size gridPoints, Time residualTime) const </argsstring>
-        <name>safeGridPoints</name>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>gridPoints</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>residualTime</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

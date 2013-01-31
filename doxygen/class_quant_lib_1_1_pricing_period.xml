@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_pricing_period" kind="class" prot="public">
     <compoundname>QuantLib::PricingPeriod</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_pricing_period_1a292ad9c54719780e61282ddeeac02410" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date paymentDate_</definition>
-        <argsstring></argsstring>
-        <name>paymentDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_pricing_period_1ab6b30088882e06f81614dabbecb34a3e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref></type>
-        <definition>Quantity quantity_</definition>
-        <argsstring></argsstring>
-        <name>quantity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pricing_period_1a0bbfdd8aebce3a0ef7699b865100c636" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

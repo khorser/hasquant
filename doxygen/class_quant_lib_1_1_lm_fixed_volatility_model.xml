@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_lm_fixed_volatility_model" kind="class" prot="public">
     <compoundname>QuantLib::LmFixedVolatilityModel</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a9dd7c53d3020c2b4a373e1be3c9aa55c" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>const Array volatilities_</definition>
-        <argsstring></argsstring>
-        <name>volatilities_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="43" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lm_fixed_volatility_model_1afa53808254a9d329c9cd25509b317ef2" prot="private" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>const std::vector&lt;Time&gt; startTimes_</definition>
-        <argsstring></argsstring>
-        <name>startTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a533759436c1b9d801ec55e933bc24d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -68,15 +52,6 @@
           <declname>x</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void generateArguments</definition>
-        <argsstring>()</argsstring>
-        <name>generateArguments</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="41"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="31" bodyend="45"/>

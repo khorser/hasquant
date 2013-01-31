@@ -26,22 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="42"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_value_quote_1ab651f48b400b38a7a77a1e5dc0528774" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Index&gt; index_</definition>
-        <argsstring></argsstring>
-        <name>index_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_value_quote_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date fixingDate_</definition>
-        <argsstring></argsstring>
-        <name>fixingDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/forwardvaluequote.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_forward_value_quote_1a36b857d390696e8bee79ff5a610a1b0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

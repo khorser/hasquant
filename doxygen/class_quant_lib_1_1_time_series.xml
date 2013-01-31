@@ -329,15 +329,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="179" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_time_series_1a70dcbdd4d44f4f2198e7da9ef5689503" prot="private" static="no" mutable="yes">
-        <type>Container</type>
-        <definition>Container values_</definition>
-        <argsstring></argsstring>
-        <name>values_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab23fa5e29fa4062e597a71f8750e1672" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

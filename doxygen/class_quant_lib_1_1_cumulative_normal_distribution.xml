@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_cumulative_normal_distribution" kind="class" prot="public">
     <compoundname>QuantLib::CumulativeNormalDistribution</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cumulative_normal_distribution_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real average_</definition>
-        <argsstring></argsstring>
-        <name>average_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cumulative_normal_distribution_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cumulative_normal_distribution_1a900e47436ec8f5d0a1e25ce9853bd78e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_normal_distribution" kindref="compound">NormalDistribution</ref></type>
-        <definition>NormalDistribution gaussian_</definition>
-        <argsstring></argsstring>
-        <name>gaussian_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cumulative_normal_distribution_1a58a80e4d4151666a081b2ce4ed6c2746" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_error_function" kindref="compound">ErrorFunction</ref></type>
-        <definition>ErrorFunction errorFunction_</definition>
-        <argsstring></argsstring>
-        <name>errorFunction_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cumulative_normal_distribution_1a156cf72a9a0fd5ef1f994ce00ad1535c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

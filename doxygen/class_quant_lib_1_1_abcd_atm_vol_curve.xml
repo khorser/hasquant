@@ -136,92 +136,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="139" bodyend="142"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a582b9e3471551208befa708027ca4ac8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nOptionTenors_</definition>
-        <argsstring></argsstring>
-        <name>nOptionTenors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1ab238b6541fd526e96e5adfea50e9bcb2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt;</type>
-        <definition>std::vector&lt;Period&gt; optionTenors_</definition>
-        <argsstring></argsstring>
-        <name>optionTenors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="103" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1ab3f8dfc9b890f93f48b2e7c9c3e8dbb9" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt;</type>
-        <definition>std::vector&lt;Period&gt; actualOptionTenors_</definition>
-        <argsstring></argsstring>
-        <name>actualOptionTenors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a0319ec980b7cb2681d52e037d3a53b42" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; optionDates_</definition>
-        <argsstring></argsstring>
-        <name>optionDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="105" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a8c3d11bba712822cbb27ad9fbe496fcb" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; optionTimes_</definition>
-        <argsstring></argsstring>
-        <name>optionTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1af3d127d5f15e1c974d3919b2f03a568f" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; actualOptionTimes_</definition>
-        <argsstring></argsstring>
-        <name>actualOptionTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="107" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1aab7be0a2ef3486101fe70ac7ba229d17" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date evaluationDate_</definition>
-        <argsstring></argsstring>
-        <name>evaluationDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="108" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1aeaea77606805639211b9e0e7f29205d8" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; volHandles_</definition>
-        <argsstring></argsstring>
-        <name>volHandles_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="110" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
-        <definition>std::vector&lt;Volatility&gt; vols_</definition>
-        <argsstring></argsstring>
-        <name>vols_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="111" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a32eef066e4a3ce5e75bbaed5717dea88" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
-        <definition>std::vector&lt;Volatility&gt; actualVols_</definition>
-        <argsstring></argsstring>
-        <name>actualVols_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="112" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1aab14b367d365ea8c90ee154fde2cadb2" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; bool &gt;</type>
-        <definition>std::vector&lt;bool&gt; inclusionInInterpolation_</definition>
-        <argsstring></argsstring>
-        <name>inclusionInInterpolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="114" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_atm_vol_curve_1adfa8dcf74bbc31f9b8a768f4421b763a" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; AbcdInterpolation &gt;</type>
-        <definition>boost::shared_ptr&lt;AbcdInterpolation&gt; interpolation_</definition>
-        <argsstring></argsstring>
-        <name>interpolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" bodystart="116" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a7d58da65efdf301fc2baecf2379f2f82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -333,43 +247,6 @@
         <argsstring>() const </argsstring>
         <name>endCriteria</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="61"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_atm_vol_curve_1abc07f485644d250199f9c044e516d430" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void checkInputs</definition>
-        <argsstring>() const </argsstring>
-        <name>checkInputs</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="96"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_atm_vol_curve_1aab49bcb78bd6b21daa03146798059126" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initializeOptionDatesAndTimes</definition>
-        <argsstring>() const </argsstring>
-        <name>initializeOptionDatesAndTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="97"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a61276146f98b84946a324a299fcca9ed" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initializeVolatilities</definition>
-        <argsstring>()</argsstring>
-        <name>initializeVolatilities</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="98"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a0d51434a505aa5c9a664a90f7a0021e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void registerWithMarketData</definition>
-        <argsstring>()</argsstring>
-        <name>registerWithMarketData</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="99"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_atm_vol_curve_1a5b3dba4afd88e1d0446f99b2f6a65de9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void interpolate</definition>
-        <argsstring>()</argsstring>
-        <name>interpolate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/abcdatmvolcurve.hpp" line="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

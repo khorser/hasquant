@@ -35,64 +35,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="76"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date date_</definition>
-        <argsstring></argsstring>
-        <name>date_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1a08cd4e6fb04071f05afd05b5bff9c53b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
-        <definition>Money discountedAmount_</definition>
-        <argsstring></argsstring>
-        <name>discountedAmount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1afea7578367a27314fd6834469ebfb3be" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
-        <definition>Money undiscountedAmount_</definition>
-        <argsstring></argsstring>
-        <name>undiscountedAmount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1afd974ea5c618910e5d39e6e4eedbad00" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
-        <definition>Money discountedPaymentAmount_</definition>
-        <argsstring></argsstring>
-        <name>discountedPaymentAmount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1a6ed9380701f0cd249d64b1d1c6fbbae1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
-        <definition>Money undiscountedPaymentAmount_</definition>
-        <argsstring></argsstring>
-        <name>undiscountedPaymentAmount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1a66b4140fae915e18de3885d515814f78" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real discountFactor_</definition>
-        <argsstring></argsstring>
-        <name>discountFactor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1ac25ef1ec8eec75b409ef5e05075e5e2f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real paymentDiscountFactor_</definition>
-        <argsstring></argsstring>
-        <name>paymentDiscountFactor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_cash_flow_1ae3118963d637df1bf46db66f470747e6" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool finalized_</definition>
-        <argsstring></argsstring>
-        <name>finalized_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditycashflow.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_cash_flow_1ac2edc391e28f48d7e7f232b4b558b69c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

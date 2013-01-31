@@ -57,22 +57,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_spreaded_smile_section_1a8efb4ba6cc428f87834233aa1c1a479f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;SmileSection&gt; underlyingSection_</definition>
-        <argsstring></argsstring>
-        <name>underlyingSection_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_spreaded_smile_section_1a0f282e91dbd00752acbc31e5d6a94174" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>const Handle&lt;Quote&gt; spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1a4349fb827238bb228b5e94cd7e91982e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

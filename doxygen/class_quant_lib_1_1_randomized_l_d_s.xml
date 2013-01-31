@@ -21,50 +21,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a2c457099d2857c50d57d1c924c552328" prot="private" static="no" mutable="yes">
-        <type>LDS</type>
-        <definition>LDS ldsg_</definition>
-        <argsstring></argsstring>
-        <name>ldsg_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a1f5db3849f6c7fb351346e5687d1b048" prot="private" static="no" mutable="yes">
-        <type>LDS</type>
-        <definition>LDS pristineldsg_</definition>
-        <argsstring></argsstring>
-        <name>pristineldsg_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a12741f316babcec57022ce10d15dc1d4" prot="private" static="no" mutable="no">
-        <type>PRS</type>
-        <definition>PRS prsg_</definition>
-        <argsstring></argsstring>
-        <name>prsg_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a101ac2fd4059964925dda5d18055f99c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size dimension_</definition>
-        <argsstring></argsstring>
-        <name>dimension_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1ae1f845a270331b98285cfdd363dee595" prot="private" static="no" mutable="yes">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
-        <definition>sample_type x</definition>
-        <argsstring></argsstring>
-        <name>x</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_randomized_l_d_s_1a8ffc66dfe45ee8f2180feaa67e6ea02c" prot="private" static="no" mutable="yes">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
-        <definition>sample_type randomizer_</definition>
-        <argsstring></argsstring>
-        <name>randomizer_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_randomized_l_d_s_1ab9c8b1032e33e44aab7d913df6b30a2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -111,36 +111,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
-        <type>Type</type>
-        <definition>Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1afa6ee3a42c562628f1a8deda9f1bdb6d" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
-        <definition>Leg yoyLeg_</definition>
-        <argsstring></argsstring>
-        <name>yoyLeg_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1ad8ad7d620cce7df50e26ce8394321fd4" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; capRates_</definition>
-        <argsstring></argsstring>
-        <name>capRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1adc11f67c784aa9174ad5d6f850f59549" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; floorRates_</definition>
-        <argsstring></argsstring>
-        <name>floorRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/inflationcapfloor.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_1a4030ea785c10519f78a73c136d00638a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

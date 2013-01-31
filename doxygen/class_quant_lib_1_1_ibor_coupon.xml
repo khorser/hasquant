@@ -40,43 +40,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="64"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
-        <argsstring></argsstring>
-        <name>iborIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date fixingDate_</definition>
-        <argsstring></argsstring>
-        <name>fixingDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a507cd6e556e2c7d8da6796730b888312" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date fixingValueDate_</definition>
-        <argsstring></argsstring>
-        <name>fixingValueDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a42f732a216448fbafe184c1610d62ea9" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date fixingEndDate_</definition>
-        <argsstring></argsstring>
-        <name>fixingEndDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_1a20c1c621e2e3fb6928372c48e4bd0463" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time spanningTime_</definition>
-        <argsstring></argsstring>
-        <name>spanningTime_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/iborcoupon.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_1ad9fd1dfc20c84512dd35c327d5880f99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

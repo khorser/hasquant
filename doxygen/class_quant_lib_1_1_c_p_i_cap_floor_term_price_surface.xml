@@ -143,22 +143,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="112"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real nominal_</definition>
-        <argsstring></argsstring>
-        <name>nominal_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="153" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1aa63f20268765f716e3c0ced196db5798" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
-        <definition>BusinessDayConvention bdc_</definition>
-        <argsstring></argsstring>
-        <name>bdc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="154" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface_1ab034d01a2e56aea452837031e984069d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

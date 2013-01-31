@@ -7,22 +7,6 @@
         <type>class PdeClass</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_generic_time_setter_1a053f900d0848669dd7456436fc674856" prot="private" static="no" mutable="no">
-        <type>PdeClass::grid_type</type>
-        <definition>PdeClass::grid_type grid_</definition>
-        <argsstring></argsstring>
-        <name>grid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generic_time_setter_1a9c40ac6b2609150bc1d62f06b3bffad6" prot="private" static="no" mutable="no">
-        <type>PdeClass</type>
-        <definition>PdeClass pde_</definition>
-        <argsstring></argsstring>
-        <name>pde_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="92" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1a128a759d11365cdafd4455de2b5a5ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>

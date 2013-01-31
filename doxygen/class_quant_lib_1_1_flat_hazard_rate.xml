@@ -131,15 +131,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_flat_hazard_rate_1a48ac4ae0d5014d53fa8a4dd37c0498b2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; hazardRate_</definition>
-        <argsstring></argsstring>
-        <name>hazardRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Flat hazard-rate curve. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/flathazardrate.hpp" bodystart="35" bodyend="70"/>

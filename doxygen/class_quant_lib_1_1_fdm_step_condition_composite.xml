@@ -11,22 +11,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_step_condition_composite_1a189f7cccf06d556536bc82aa0e426a13" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; stoppingTimes_</definition>
-        <argsstring></argsstring>
-        <name>stoppingTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_step_condition_composite_1ac5b98f63bb83984de5a13c2d49caa098" prot="private" static="no" mutable="no">
-        <type>const Conditions</type>
-        <definition>const Conditions conditions_</definition>
-        <argsstring></argsstring>
-        <name>conditions_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1a25f249e0532f5a2174b4075de3a45d86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

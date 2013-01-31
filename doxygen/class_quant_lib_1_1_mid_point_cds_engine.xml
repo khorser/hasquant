@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_mid_point_cds_engine" kind="class" prot="public">
     <compoundname>QuantLib::MidPointCdsEngine</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a441cf22e5da9198c16764b48f18d056f" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;DefaultProbabilityTermStructure&gt; probability_</definition>
-        <argsstring></argsstring>
-        <name>probability_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real recoveryRate_</definition>
-        <argsstring></argsstring>
-        <name>recoveryRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="43" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
-        <argsstring></argsstring>
-        <name>discountCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_mid_point_cds_engine_1a4c03bc11ff086bfab1c39eb1409e968a" prot="private" static="no" mutable="no">
-        <type>boost::optional&lt; bool &gt;</type>
-        <definition>boost::optional&lt;bool&gt; includeSettlementDateFlows_</definition>
-        <argsstring></argsstring>
-        <name>includeSettlementDateFlows_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/midpointcdsengine.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_mid_point_cds_engine_1a5ab2c31d1f34d2d7242bcde7f9cf0bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -62,71 +62,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size size_</definition>
-        <argsstring></argsstring>
-        <name>size_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="140" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a6b4cd39a8eca4c81bee1cda0cda93305" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; t_</definition>
-        <argsstring></argsstring>
-        <name>t_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="141" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a5cc07694df39759b7c646902548e294f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; sqrtdt_</definition>
-        <argsstring></argsstring>
-        <name>sqrtdt_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="142" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1aa70bcc753b785e13a69444a9a6471b5e" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; bridgeIndex_</definition>
-        <argsstring></argsstring>
-        <name>bridgeIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="143" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a297bd720420f5e71b46aef8aca552fe2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; leftIndex_</definition>
-        <argsstring></argsstring>
-        <name>leftIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="143" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a63f9c9cfcf8994e7f5ebd5f460630293" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; rightIndex_</definition>
-        <argsstring></argsstring>
-        <name>rightIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="143" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1ab2ada1faae18d7e9c1ff070fc10eecec" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; leftWeight_</definition>
-        <argsstring></argsstring>
-        <name>leftWeight_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="144" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a8cf534bc88f638485a81998085c5db99" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; rightWeight_</definition>
-        <argsstring></argsstring>
-        <name>rightWeight_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="144" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_brownian_bridge_1a86183c1eb79b83a8c4c769c79a959672" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; stdDev_</definition>
-        <argsstring></argsstring>
-        <name>stdDev_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="144" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1aa358622cc01bb34c683b20349df9bf72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -245,15 +180,6 @@
 <simplesect kind="note"><para>To get the canonical Brownian bridge which starts and finishes at the same value, the first element of the input sequence must be zero. Conversely, to get a sloped bridge set the first element to a non-zero value. In this case, the final value in the bridge will be sqrt(last time point)*(first element of input sequence). </para></simplesect>
 </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="107" bodyend="137"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_brownian_bridge_1a25a40b6614565f755233080a384c35f1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initialize</definition>
-        <argsstring>()</argsstring>
-        <name>initialize</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="139"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

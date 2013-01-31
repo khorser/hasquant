@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_variance_mesher" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonVarianceMesher</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_variance_mesher_1ae9ecbac39bf0ea96ac4954bc8f62ac29" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real volaEstimate_</definition>
-        <argsstring></argsstring>
-        <name>volaEstimate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_variance_mesher_1abacd1fc0a7f187759a204e1830e6cd22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

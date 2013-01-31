@@ -56,57 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a7664b599d851ec51cd5eeece5a2a715a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; originalCurve_</definition>
-        <argsstring></argsstring>
-        <name>originalCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1adfb442ed7c07c7fd24cc67bbf77e3bf5" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; spreads_</definition>
-        <argsstring></argsstring>
-        <name>spreads_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; dates_</definition>
-        <argsstring></argsstring>
-        <name>dates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1acf57dd9de966efed783083d0d4dacbf5" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
-        <definition>Compounding comp_</definition>
-        <argsstring></argsstring>
-        <name>comp_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a5fc293af1e881a1c68e5536dab641deb" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
-        <definition>Frequency freq_</definition>
-        <argsstring></argsstring>
-        <name>freq_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dc_</definition>
-        <argsstring></argsstring>
-        <name>dc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a08ce7c74ee74b1205a2f53da9fae1f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -141,26 +90,6 @@
           <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="82" bodyend="98"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a9642376d31319343d37b0a31757ad10b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void updateTimes</definition>
-        <argsstring>()</argsstring>
-        <name>updateTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="153" bodyend="156"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1acf71fa0f92ded6e6bbe7a17645feb99a" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
-        <definition>Spread calcSpread</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>calcSpread</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="133" bodyend="146"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

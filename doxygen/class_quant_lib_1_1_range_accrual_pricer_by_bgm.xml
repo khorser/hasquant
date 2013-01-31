@@ -12,50 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="136"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1aa9bf78c1a9550ea46151060cfdc3365f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real correlation_</definition>
-        <argsstring></argsstring>
-        <name>correlation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="191" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1af9386e233b4305eca9768edbab4b7141" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool withSmile_</definition>
-        <argsstring></argsstring>
-        <name>withSmile_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="192" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1ae2949480ff9772e82720814925976a8d" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool byCallSpread_</definition>
-        <argsstring></argsstring>
-        <name>byCallSpread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="193" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="193" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1a50ed36b3b44ceaf9e7d0a39e08d12119" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;SmileSection&gt; smilesOnExpiry_</definition>
-        <argsstring></argsstring>
-        <name>smilesOnExpiry_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="195" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1a60e85ef73208e5d95e9bcda880e56603" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;SmileSection&gt; smilesOnPayment_</definition>
-        <argsstring></argsstring>
-        <name>smilesOnPayment_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="196" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1af6e39c19b8b54a1179a10c3b0c0a6b13" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real eps_</definition>
-        <argsstring></argsstring>
-        <name>eps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="197" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_pricer_by_bgm_1a670e800918fc5af2674a7c39fe74e7a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

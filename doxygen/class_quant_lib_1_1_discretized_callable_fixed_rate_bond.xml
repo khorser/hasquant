@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedCallableFixedRateBond</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1af48abd19298730ed7f612e1051255fae" prot="private" static="no" mutable="no">
-        <type>CallableBond::arguments</type>
-        <definition>CallableBond::arguments arguments_</definition>
-        <argsstring></argsstring>
-        <name>arguments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1ac694011a07003f7d67b8183597b5a0c6" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time redemptionTime_</definition>
-        <argsstring></argsstring>
-        <name>redemptionTime_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a2f156ecbe4b2565cf41fabcbfa476c39" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; couponTimes_</definition>
-        <argsstring></argsstring>
-        <name>couponTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1abac2d2e025f90412d739851b50083136" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; callabilityTimes_</definition>
-        <argsstring></argsstring>
-        <name>callabilityTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a1fce1419444577d3bb4928661eb7cba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -68,30 +38,6 @@
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="38"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a103920d0a3d154908562d4076a85062a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void applyCallability</definition>
-        <argsstring>(Size i)</argsstring>
-        <name>applyCallability</name>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>i</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="49"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a9a40fa1e5a72b0409745ea1c67b2cf63" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void addCoupon</definition>
-        <argsstring>(Size i)</argsstring>
-        <name>addCoupon</name>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>i</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="50"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="32" bodyend="51"/>

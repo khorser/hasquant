@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_f_f_t_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FFTVanillaEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_vanilla_engine_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor dividendDiscount_</definition>
-        <argsstring></argsstring>
-        <name>dividendDiscount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_vanilla_engine_1aa638469d31148178272450a0a3aa49dc" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor riskFreeDiscount_</definition>
-        <argsstring></argsstring>
-        <name>riskFreeDiscount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_vanilla_engine_1a3ae7cc9fb0a97b0ab1c985edce00ffc0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time t_</definition>
-        <argsstring></argsstring>
-        <name>t_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_f_t_vanilla_engine_1af9a51387b5842958cfe11765f5be6fdf" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real var_</definition>
-        <argsstring></argsstring>
-        <name>var_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/fftvanillaengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_vanilla_engine_1a3d0e7f5f4232edfbb780dd312d90daf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

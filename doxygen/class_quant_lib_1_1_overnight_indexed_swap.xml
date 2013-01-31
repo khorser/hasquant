@@ -135,57 +135,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
-        <type>Type</type>
-        <definition>Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1af93f6645f3e6a081deb804ed7c13b5e7" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; nominals_</definition>
-        <argsstring></argsstring>
-        <name>nominals_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1acc825d201592eecbe5533798ba3b5760" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
-        <definition>Frequency paymentFrequency_</definition>
-        <argsstring></argsstring>
-        <name>paymentFrequency_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate fixedRate_</definition>
-        <argsstring></argsstring>
-        <name>fixedRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="93" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1a868229ed9a741bf0a5db9a71e9a4c876" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter fixedDC_</definition>
-        <argsstring></argsstring>
-        <name>fixedDC_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1a692e32fbdb1ea4abf8e1fd5620a699fa" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; OvernightIndex &gt;</type>
-        <definition>boost::shared_ptr&lt;OvernightIndex&gt; overnightIndex_</definition>
-        <argsstring></argsstring>
-        <name>overnightIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_overnight_indexed_swap_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
-        <definition>Spread spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a89407c6282554fca99c92abfe5be0966" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -258,19 +207,6 @@
           <defval>0.0</defval>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="55"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1afcded32b0833f78eadb15fd164619359" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initialize</definition>
-        <argsstring>(const Schedule &amp;schedule)</argsstring>
-        <name>initialize</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
-          <declname>schedule</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/overnightindexedswap.hpp" line="86"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

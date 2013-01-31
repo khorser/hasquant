@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error" kind="class" prot="private">
     <compoundname>QuantLib::AbcdCalibration::AbcdError</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1a51690e10d7b30ca2476f855a643866e6" prot="private" static="no" mutable="no">
-        <type>AbcdCalibration *</type>
-        <definition>AbcdCalibration* abcd_</definition>
-        <argsstring></argsstring>
-        <name>abcd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1ae9b81d17cea43b9da06ea8e92b42a288" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

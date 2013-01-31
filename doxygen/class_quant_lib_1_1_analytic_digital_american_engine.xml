@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_analytic_digital_american_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticDigitalAmericanEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_digital_american_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticdigitalamericanengine.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_digital_american_engine_1ab2ebdbd59fe259b5ddf182aca89d1be0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

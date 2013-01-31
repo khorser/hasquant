@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_rectangular_domain" kind="class" prot="public">
     <compoundname>QuantLib::RectangularDomain</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a4b5473213e394f5b1744d2a1c7bf8108" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minX_</definition>
-        <argsstring></argsstring>
-        <name>minX_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a53f0c7efd005f4b1147c89fec4eea9f9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minY_</definition>
-        <argsstring></argsstring>
-        <name>minY_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1ae19fab9e86676781cb4b5ea6b0e06c46" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxX_</definition>
-        <argsstring></argsstring>
-        <name>maxX_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a1b02085fb6a7eead8f6feee856383165" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real maxY_</definition>
-        <argsstring></argsstring>
-        <name>maxY_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1acf2ae9a59519990901e0bb37f9e50ca5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

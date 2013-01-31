@@ -2,50 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_bates_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmBatesSolver</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_solver_1a6dbcf7675af1bb2f33952601821e7408" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_bates_process" kindref="compound">BatesProcess</ref> &gt;</type>
-        <definition>const Handle&lt;BatesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
-        <type>const FdmSolverDesc</type>
-        <definition>const FdmSolverDesc solverDesc_</definition>
-        <argsstring></argsstring>
-        <name>solverDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_solver_1ab3f7e1fd80dce47659bbc463030c7240" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size integroIntegrationOrder_</definition>
-        <argsstring></argsstring>
-        <name>integroIntegrationOrder_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_solver_1a89eeb7b732baf93246a9489cb99723af" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;</type>
-        <definition>const Handle&lt;FdmQuantoHelper&gt; quantoHelper_</definition>
-        <argsstring></argsstring>
-        <name>quantoHelper_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
-        <type>boost::shared_ptr&lt; Fdm2DimSolver &gt;</type>
-        <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
-        <argsstring></argsstring>
-        <name>solver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbatessolver.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_solver_1a83b677e67301ce4ef739b904137f39ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_pool" kind="class" prot="public">
     <compoundname>QuantLib::Pool</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_pool_1a874bbc5b3000d84f699a0badb252ea32" prot="private" static="no" mutable="no">
-        <type>std::map&lt; std::string, Issuer &gt;</type>
-        <definition>std::map&lt;std::string,Issuer&gt; data_</definition>
-        <argsstring></argsstring>
-        <name>data_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_pool_1a4a4e8d4b717c21589a060b4a2d56c4ce" prot="private" static="no" mutable="no">
-        <type>std::map&lt; std::string, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::map&lt;std::string,Real&gt; time_</definition>
-        <argsstring></argsstring>
-        <name>time_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_pool_1ab0040ffc4275fed51da172ce1ee71f8b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; names_</definition>
-        <argsstring></argsstring>
-        <name>names_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_pool_1af71e2c9e63c7a14525b20806f3c40c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

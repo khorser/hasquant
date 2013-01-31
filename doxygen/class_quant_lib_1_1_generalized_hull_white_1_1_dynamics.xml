@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedHullWhite::Dynamics</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
-        <definition>Parameter fitting_</definition>
-        <argsstring></argsstring>
-        <name>fitting_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="117" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a560ea615fecdd923dc4a551eb2ab0b96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

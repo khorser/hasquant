@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletMaxHomogeneityCalibration</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1a20c680d5c61a51c3e58a152b6385ea25" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real caplet0Swaption1Priority_</definition>
-        <argsstring></argsstring>
-        <name>caplet0Swaption1Priority_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa597190044054929641b5eb039340182" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real totalSwaptionError_</definition>
-        <argsstring></argsstring>
-        <name>totalSwaptionError_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa400dd36c121e98d640c687caa1c63ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -115,27 +99,6 @@
           <declname>swapCovariancePseudoRoots</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="57"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1afd37f1fcf607e6ee5349dce9a31e2ac0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural calibrationImpl_</definition>
-        <argsstring>(Natural numberOfFactors, Natural maxIterations, Real tolerance)</argsstring>
-        <name>calibrationImpl_</name>
-        <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-          <declname>numberOfFactors</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-          <declname>maxIterations</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>tolerance</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="62"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="28" bodyend="67"/>

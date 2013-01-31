@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1ad1ed96ea77e3bb991bf660d6514ca09f" prot="private" static="no" mutable="no">
-        <type>const GFunctionWithShifts &amp;</type>
-        <definition>const GFunctionWithShifts&amp; o_</definition>
-        <argsstring></argsstring>
-        <name>o_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="153" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a9489d1da5b00c42e11e2bb37d7cc0b94" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real Rs_</definition>
-        <argsstring></argsstring>
-        <name>Rs_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="154" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a82692e4e8edda225208d27e32de786c8" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real derivative_</definition>
-        <argsstring></argsstring>
-        <name>derivative_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="155" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a01c14cff0d16539e5dad3d0cc574327e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_gaussian_random_default_model" kind="class" prot="public">
     <compoundname>QuantLib::GaussianRandomDefaultModel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_random_default_model_1a7a9b7801c4fe86a2235450249920cb26" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
-        <definition>Handle&lt;OneFactorCopula&gt; copula_</definition>
-        <argsstring></argsstring>
-        <name>copula_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_random_default_model_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real accuracy_</definition>
-        <argsstring></argsstring>
-        <name>accuracy_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_random_default_model_1a9ad21b943e0b26e7e635844cb88707ae" prot="private" static="no" mutable="no">
-        <type>long</type>
-        <definition>long seed_</definition>
-        <argsstring></argsstring>
-        <name>seed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_random_default_model_1a3093a327f220bbde3af28ef1e24ac7e4" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_inverse_cumulative_rsg" kindref="compound">PseudoRandom::rsg_type</ref></type>
-        <definition>PseudoRandom::rsg_type rsg_</definition>
-        <argsstring></argsstring>
-        <name>rsg_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_random_default_model_1a01f45fe4006a155bb158a9f55f534ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

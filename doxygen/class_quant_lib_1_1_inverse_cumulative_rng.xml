@@ -31,22 +31,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" static="no" mutable="no">
-        <type>RNG</type>
-        <definition>RNG uniformGenerator_</definition>
-        <argsstring></argsstring>
-        <name>uniformGenerator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_rng_1a1684a2d3d4771a19b38a400bf87c2b69" prot="private" static="no" mutable="no">
-        <type>IC</type>
-        <definition>IC ICND_</definition>
-        <argsstring></argsstring>
-        <name>ICND_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_rng_1a94c3ceb8818a466b6bd20dcb49d2665f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

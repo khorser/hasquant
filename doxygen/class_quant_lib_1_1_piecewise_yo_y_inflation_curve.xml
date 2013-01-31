@@ -173,29 +173,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1adc47136f5538e417c8dcca16854cac8d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;typename Traits::helper&gt; &gt; instruments_</definition>
-        <argsstring></argsstring>
-        <name>instruments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="93" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real accuracy_</definition>
-        <argsstring></argsstring>
-        <name>accuracy_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a3dde59eaf2b97f4b7227dc0a92a26d64" prot="private" static="no" mutable="no">
-        <type>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve" kindref="compound">this_curve</ref> &gt;</type>
-        <definition>Bootstrap&lt;this_curve&gt; bootstrap_</definition>
-        <argsstring></argsstring>
-        <name>bootstrap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="105" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ae111cb608a73ca819237b5c9f93f1088" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>
@@ -210,18 +187,6 @@
         <argsstring></argsstring>
         <name>BootstrapError&lt; this_curve &gt;</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="149" bodyend="151"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

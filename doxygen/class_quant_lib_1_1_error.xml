@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_error" kind="class" prot="public">
     <compoundname>QuantLib::Error</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/errors.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_error_1ab566f1e816eaa670bf41b5fb4a913d53" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; std::string &gt;</type>
-        <definition>boost::shared_ptr&lt;std::string&gt; message_</definition>
-        <argsstring></argsstring>
-        <name>message_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_error_1a55f022485ff175b831875b9a8b39a600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

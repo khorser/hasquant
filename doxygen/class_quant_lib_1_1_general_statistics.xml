@@ -273,22 +273,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_general_statistics_1a3aaec9e307c55c0feab51b7802d3ba14" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;std::pair&lt;Real,Real&gt; &gt; samples_</definition>
-        <argsstring></argsstring>
-        <name>samples_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" bodystart="181" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_general_statistics_1aed753975ae900455b0cd59b63bf34458" prot="private" static="no" mutable="yes">
-        <type>bool</type>
-        <definition>bool sorted_</definition>
-        <argsstring></argsstring>
-        <name>sorted_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" bodystart="182" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_general_statistics_1aea0f50316eca89c0866cbbd8570ef9ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

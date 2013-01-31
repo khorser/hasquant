@@ -39,28 +39,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="111" bodyend="117"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_engine_shift_scale_1a781bc1a5dab54b628a6ffceacff27587" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setGridLimits</definition>
-        <argsstring>() const </argsstring>
-        <name>setGridLimits</name>
-        <reimplements refid="class_quant_lib_1_1_f_d_dividend_engine_base_1a1e6712a71412ac850e1068b04878d9a3">setGridLimits</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="213" bodyend="226"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_engine_shift_scale_1abb94448804c271bc25e384c98b241a5b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void executeIntermediateStep</definition>
-        <argsstring>(Size step) const </argsstring>
-        <name>executeIntermediateStep</name>
-        <reimplements refid="class_quant_lib_1_1_f_d_dividend_engine_base_1a6596133425c83e7deeb5ff237a46bead">executeIntermediateStep</reimplements>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>step</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="229" bodyend="249"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Finite-differences engine for dividend options using shifted dividends. </para>    </briefdescription>
     <detaileddescription>

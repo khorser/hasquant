@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_one_factor_gaussian_copula" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorGaussianCopula</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_copula_1aabb938b56fdd5e6405f3db6d367286d6" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_normal_distribution" kindref="compound">NormalDistribution</ref></type>
-        <definition>NormalDistribution density_</definition>
-        <argsstring></argsstring>
-        <name>density_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a2a2a48958acddd428b4a6db501094bc7" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
-        <definition>CumulativeNormalDistribution cumulative_</definition>
-        <argsstring></argsstring>
-        <name>cumulative_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_copula_1ae9cb0a5e7a05c76a7d9ee384da384ff1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_inverse_cumulative_normal" kindref="compound">InverseCumulativeNormal</ref></type>
-        <definition>InverseCumulativeNormal inverseCumulative_</definition>
-        <argsstring></argsstring>
-        <name>inverseCumulative_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1ac697b3db3dc86d5b69db61a44191af4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -118,18 +95,6 @@
         <detaileddescription>
 <para>overrides the base class implementation based on table data </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="76" bodyend="78"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_copula_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorgaussiancopula.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

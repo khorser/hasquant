@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_analytic_american_margrabe_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticAmericanMargrabeEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_american_margrabe_engine_1abb89fde45de159f8ba084d4cb368144e" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process1_</definition>
-        <argsstring></argsstring>
-        <name>process1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_american_margrabe_engine_1a93dcfbc17d2d778387747616c9208336" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process2_</definition>
-        <argsstring></argsstring>
-        <name>process2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_american_margrabe_engine_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/analyticamericanmargrabeengine.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_american_margrabe_engine_1a88fe3a0f3869d52f6da4e5e408508906" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

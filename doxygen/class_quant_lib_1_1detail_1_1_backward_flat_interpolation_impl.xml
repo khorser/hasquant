@@ -10,15 +10,6 @@
         <type>class I2</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1aaf90812c5b4e82ea37442f6d34ba983f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; primitive_</definition>
-        <argsstring></argsstring>
-        <name>primitive_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/backwardflatinterpolation.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_backward_flat_interpolation_impl_1a6d2a3dfbe2cbfec11ae863511931ec49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_bermudan_step_condition" kind="class" prot="public">
     <compoundname>QuantLib::FdmBermudanStepCondition</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bermudan_step_condition_1aa010100d61810501bed98b1773802fe5" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; exerciseTimes_</definition>
-        <argsstring></argsstring>
-        <name>exerciseTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bermudan_step_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bermudan_step_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calculator_</definition>
-        <argsstring></argsstring>
-        <name>calculator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_bermudan_step_condition_1afeda3574cd33f00ec0c73a70e609d72a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

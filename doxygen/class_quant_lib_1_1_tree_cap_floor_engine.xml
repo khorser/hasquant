@@ -48,15 +48,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="50"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_tree_cap_floor_engine_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
-        <argsstring></argsstring>
-        <name>termStructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tree_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>

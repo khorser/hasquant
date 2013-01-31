@@ -17,78 +17,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="56"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a1ae5295d141aaa273755aa25ae98799c" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optionlet_stripper1" kindref="compound">OptionletStripper1</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;OptionletStripper1&gt; stripper1_</definition>
-        <argsstring></argsstring>
-        <name>stripper1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1aedd4a7348279bc413a06d57a0180bfe0" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_cap_floor_term_vol_curve" kindref="compound">CapFloorTermVolCurve</ref> &gt;</type>
-        <definition>const Handle&lt;CapFloorTermVolCurve&gt; atmCapFloorTermVolCurve_</definition>
-        <argsstring></argsstring>
-        <name>atmCapFloorTermVolCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dc_</definition>
-        <argsstring></argsstring>
-        <name>dc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1af2d8270303af86ea4f1ccc1e1c694a69" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nOptionExpiries_</definition>
-        <argsstring></argsstring>
-        <name>nOptionExpiries_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a527694365f9018a06acf0e5e01a44ccf" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; atmCapFloorStrikes_</definition>
-        <argsstring></argsstring>
-        <name>atmCapFloorStrikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a52a660e9d47b1beab42433e4aef95f37" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; atmCapFloorPrices_</definition>
-        <argsstring></argsstring>
-        <name>atmCapFloorPrices_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a18e4df01749814688c6ff8b7308218ef" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
-        <definition>std::vector&lt;Volatility&gt; spreadsVolImplied_</definition>
-        <argsstring></argsstring>
-        <name>spreadsVolImplied_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a49c3ac57f654be306cf8e88a4fc75365" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cap_floor" kindref="compound">CapFloor</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;CapFloor&gt; &gt; caps_</definition>
-        <argsstring></argsstring>
-        <name>caps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1ad1fbba98763c2a0de29a5700ad331942" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size maxEvaluations_</definition>
-        <argsstring></argsstring>
-        <name>maxEvaluations_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper2_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real accuracy_</definition>
-        <argsstring></argsstring>
-        <name>accuracy_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1a66a507e7be07efad7c13ef1caa92a9c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -125,15 +53,6 @@
         <argsstring>() const </argsstring>
         <name>spreadsVol</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="52"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper2_1a2ff12847de3c2f781b4857792ee01a6c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
-        <definition>std::vector&lt;Volatility&gt; spreadsVolImplied</definition>
-        <argsstring>() const </argsstring>
-        <name>spreadsVolImplied</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper2.hpp" line="59"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

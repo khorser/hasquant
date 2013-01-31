@@ -52,15 +52,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="65"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_coupon_1a68827cbb94494fda6f8b40bf2ba744ec" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; yoyIndex_</definition>
-        <argsstring></argsstring>
-        <name>yoyIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_coupon_1a6004193f7ab45787be505bf6fddafe26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

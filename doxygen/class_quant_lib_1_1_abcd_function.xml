@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_abcd_function" kind="class" prot="public">
     <compoundname>QuantLib::AbcdFunction</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_function_1a114bd3f70557109ba551776610bb2dc1" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real a_</definition>
-        <argsstring></argsstring>
-        <name>a_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="113" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_function_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real b_</definition>
-        <argsstring></argsstring>
-        <name>b_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="113" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_function_1a04b890f917032156f955c80d329dbd80" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real c_</definition>
-        <argsstring></argsstring>
-        <name>c_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="113" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_function_1a260091718af93fbcb88cdd51b7d6aa00" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real d_</definition>
-        <argsstring></argsstring>
-        <name>d_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="113" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1aa5b24da2df7808a41fd0459e90d2274e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

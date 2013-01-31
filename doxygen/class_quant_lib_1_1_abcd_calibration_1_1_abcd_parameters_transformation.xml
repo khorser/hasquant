@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation" kind="class" prot="private">
     <compoundname>QuantLib::AbcdCalibration::AbcdParametersTransformation</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1a0a792d2ec89747f199b3f37afa85c8b3" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array y_</definition>
-        <argsstring></argsstring>
-        <name>y_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1aca53ae2cfd5d7d1f6818a5eb62506d54" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real eps1_</definition>
-        <argsstring></argsstring>
-        <name>eps1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1aa572a88c3477fff22866327409f014b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

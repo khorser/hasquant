@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_orthogonalized_bump_finder" kind="class" prot="public">
     <compoundname>QuantLib::OrthogonalizedBumpFinder</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_orthogonalized_bump_finder_1a8f05c47e1d655904914257fa3688f043" prot="private" static="no" mutable="no">
-        <type>VolatilityBumpInstrumentJacobian</type>
-        <definition>VolatilityBumpInstrumentJacobian derivativesProducer_</definition>
-        <argsstring></argsstring>
-        <name>derivativesProducer_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="103" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_orthogonalized_bump_finder_1a572740fb94c027d74945aa778699c0bf" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real multiplierCutOff_</definition>
-        <argsstring></argsstring>
-        <name>multiplierCutOff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_orthogonalized_bump_finder_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real tolerance_</definition>
-        <argsstring></argsstring>
-        <name>tolerance_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="105" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_orthogonalized_bump_finder_1ac13090c0556142212a8c53c8edb00940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

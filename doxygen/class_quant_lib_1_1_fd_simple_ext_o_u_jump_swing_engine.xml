@@ -11,57 +11,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a53db70a3fdfda50516bf7d47da3f1958" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
-        <argsstring></argsstring>
-        <name>rTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a03eaa61142f7435ea76aa4ccfbf60c09" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; Shape &gt;</type>
-        <definition>const boost::shared_ptr&lt;Shape&gt; shape_</definition>
-        <argsstring></argsstring>
-        <name>shape_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size tGrid_</definition>
-        <argsstring></argsstring>
-        <name>tGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size xGrid_</definition>
-        <argsstring></argsstring>
-        <name>xGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size yGrid_</definition>
-        <argsstring></argsstring>
-        <name>yGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1ae9de6650aad558980eb9b9d7668b3a79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

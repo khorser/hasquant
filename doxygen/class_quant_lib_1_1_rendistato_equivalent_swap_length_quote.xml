@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote" kind="class" prot="public">
     <compoundname>QuantLib::RendistatoEquivalentSwapLengthQuote</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1ab3394fc6d0df9cc90ca40e99346a0f4e" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; RendistatoCalculator &gt;</type>
-        <definition>boost::shared_ptr&lt;RendistatoCalculator&gt; r_</definition>
-        <argsstring></argsstring>
-        <name>r_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="177" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1af3727512560c455bc520230846b62925" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

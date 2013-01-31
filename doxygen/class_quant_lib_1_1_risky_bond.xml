@@ -16,43 +16,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="72"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_risky_bond_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string name_</definition>
-        <argsstring></argsstring>
-        <name>name_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_risky_bond_1a505a4eae2b8f7bccc0d6ae1f0199801c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
-        <definition>Currency ccy_</definition>
-        <argsstring></argsstring>
-        <name>ccy_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_risky_bond_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real recoveryRate_</definition>
-        <argsstring></argsstring>
-        <name>recoveryRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_risky_bond_1a91bcd9366ffaa6883788c4d5cecbc265" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;DefaultProbabilityTermStructure&gt; defaultTS_</definition>
-        <argsstring></argsstring>
-        <name>defaultTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_risky_bond_1afede98ee249f0d9a977891edf19a1708" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; yieldTS_</definition>
-        <argsstring></argsstring>
-        <name>yieldTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskybond.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_risky_bond_1a1392fb8c078ecf62236ec2558c44f3a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

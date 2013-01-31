@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonOp</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_op_1a85f98e3ad305848e4e8b78e47cb93a84" prot="private" static="no" mutable="no">
-        <type>NinePointLinearOp</type>
-        <definition>NinePointLinearOp correlationMap_</definition>
-        <argsstring></argsstring>
-        <name>correlationMap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_op_1a2d8c39e05b56003c02b61e1ba3356801" prot="private" static="no" mutable="no">
-        <type>FdmHestonVariancePart</type>
-        <definition>FdmHestonVariancePart dyMap_</definition>
-        <argsstring></argsstring>
-        <name>dyMap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="100" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_op_1a257ac89b3734afbf0133877673922c3f" prot="private" static="no" mutable="no">
-        <type>FdmHestonEquityPart</type>
-        <definition>FdmHestonEquityPart dxMap_</definition>
-        <argsstring></argsstring>
-        <name>dxMap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_op_1aed9c50ab5e81724d1eeb2a7f2f761db9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

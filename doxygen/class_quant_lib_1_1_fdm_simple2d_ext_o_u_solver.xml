@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimple2dExtOUSolver</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1ab7d5497dd2489d9b9812bff29e0e16bf" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
-        <definition>const Handle&lt;ExtendedOrnsteinUhlenbeckProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
-        <argsstring></argsstring>
-        <name>rTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
-        <type>const FdmSolverDesc</type>
-        <definition>const FdmSolverDesc solverDesc_</definition>
-        <argsstring></argsstring>
-        <name>solverDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
-        <type>boost::shared_ptr&lt; Fdm2DimSolver &gt;</type>
-        <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
-        <argsstring></argsstring>
-        <name>solver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmsimple2dextousolver.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_ext_o_u_solver_1a8fbbf4fed2b46aa8af5c798f9daf222e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

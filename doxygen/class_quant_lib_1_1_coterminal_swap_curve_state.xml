@@ -145,57 +145,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="73"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ac7372fad315f02b5c7baa1362d9d0f88" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size first_</definition>
-        <argsstring></argsstring>
-        <name>first_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ab8d29fabefdf5e5204a438a31c5fc3b2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
-        <definition>std::vector&lt;DiscountFactor&gt; discRatios_</definition>
-        <argsstring></argsstring>
-        <name>discRatios_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a218b3ef267a412453606bf24443f6895" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; forwardRates_</definition>
-        <argsstring></argsstring>
-        <name>forwardRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a808e0b8f5ace9bf605daacd91d771cfa" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; cmSwapRates_</definition>
-        <argsstring></argsstring>
-        <name>cmSwapRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ab296e61d38edd3b52e2f204b1b3797d3" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; cmSwapAnnuities_</definition>
-        <argsstring></argsstring>
-        <name>cmSwapAnnuities_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aa2fd64eca22c89d70009196c51e707f3" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; cotSwapRates_</definition>
-        <argsstring></argsstring>
-        <name>cotSwapRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1adfb5766f14d0211cca86ab652bce182f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; cotAnnuities_</definition>
-        <argsstring></argsstring>
-        <name>cotAnnuities_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a2970d6c5b819e43d5c28c4ba5cb9bd3e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

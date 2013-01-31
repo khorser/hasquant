@@ -42,22 +42,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_derived_quote_1aadc717ea37b233c27327f01812edfe0d" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; element_</definition>
-        <argsstring></argsstring>
-        <name>element_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_derived_quote_1ac9d81f9b9cab814ebe5c735e90e4a491" prot="private" static="no" mutable="no">
-        <type>UnaryFunction</type>
-        <definition>UnaryFunction f_</definition>
-        <argsstring></argsstring>
-        <name>f_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/derivedquote.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_derived_quote_1aa20eb7655926a809d96c85943c38979a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

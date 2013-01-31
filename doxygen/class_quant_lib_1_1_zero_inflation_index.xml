@@ -46,15 +46,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="162"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_zero_inflation_index_1a2cd42b764b86c03f2255cfdeb82cdcb1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;ZeroInflationTermStructure&gt; zeroInflation_</definition>
-        <argsstring></argsstring>
-        <name>zeroInflation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="167" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a405cafaa1c2d2ba680a5ef10bc818dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -97,30 +88,6 @@
         <briefdescription>
 <para>Always use the evaluation date as the reference date. </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="148"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a4a02b0f9a156656ea971ab5f4ffe3307" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool needsForecast</definition>
-        <argsstring>(const Date &amp;fixingDate) const </argsstring>
-        <name>needsForecast</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>fixingDate</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="165"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a31402c8dcd6c83166c07900d7f440bca" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate forecastFixing</definition>
-        <argsstring>(const Date &amp;fixingDate) const </argsstring>
-        <name>forecastFixing</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>fixingDate</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="166"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

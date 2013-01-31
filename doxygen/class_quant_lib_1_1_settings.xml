@@ -26,45 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="47"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1aa47eba642bb525608360293ca195866f" prot="private" static="no" mutable="no">
-        <type>DateProxy</type>
-        <definition>DateProxy evaluationDate_</definition>
-        <argsstring></argsstring>
-        <name>evaluationDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="119" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1a9dc706f7bde495e92a2ead042696d763" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool includeReferenceDateEvents_</definition>
-        <argsstring></argsstring>
-        <name>includeReferenceDateEvents_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="120" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1a8a3aacf41cab37be41ec441e1ee15ee9" prot="private" static="no" mutable="no">
-        <type>boost::optional&lt; bool &gt;</type>
-        <definition>boost::optional&lt;bool&gt; includeTodaysCashFlows_</definition>
-        <argsstring></argsstring>
-        <name>includeTodaysCashFlows_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="121" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1a8f231257ba45f5e8bff505c57007dbc7" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool enforcesTodaysHistoricFixings_</definition>
-        <argsstring></argsstring>
-        <name>enforcesTodaysHistoricFixings_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="122" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_settings_1ad9e75fc733b9d496f8003fb4725878c3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>Settings</definition>
-        <argsstring>()</argsstring>
-        <name>Settings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="40"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DateProxy &amp;</type>

@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_marshall_olkin_copula" kind="class" prot="public">
     <compoundname>QuantLib::MarshallOlkinCopula</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_marshall_olkin_copula_1a7808bed616def7f344acacb1b9b48f77" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real a1_</definition>
-        <argsstring></argsstring>
-        <name>a1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_marshall_olkin_copula_1afeaad24aaccd1fa2c6d91b92be41e4e0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real a2_</definition>
-        <argsstring></argsstring>
-        <name>a2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_marshall_olkin_copula_1a1043cb418214310a8e762bb72a6d5b69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

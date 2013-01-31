@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper" kind="class" prot="protected">
     <compoundname>QuantLib::CurveDependentStepCondition::ArrayWrapper</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper_1a1d703c8631d2e72b6276a36f8daea445" prot="private" static="no" mutable="no">
-        <type>array_type</type>
-        <definition>array_type value_</definition>
-        <argsstring></argsstring>
-        <name>value_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper_1aa2cfc8b112c887bcf3d13474691adedb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

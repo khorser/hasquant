@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonSolver</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_solver_1a70dcfd2f573071e9a589041e9d09447c" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_heston_process" kindref="compound">HestonProcess</ref> &gt;</type>
-        <definition>const Handle&lt;HestonProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
-        <type>const FdmSolverDesc</type>
-        <definition>const FdmSolverDesc solverDesc_</definition>
-        <argsstring></argsstring>
-        <name>solverDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_solver_1a89eeb7b732baf93246a9489cb99723af" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;</type>
-        <definition>const Handle&lt;FdmQuantoHelper&gt; quantoHelper_</definition>
-        <argsstring></argsstring>
-        <name>quantoHelper_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
-        <type>boost::shared_ptr&lt; Fdm2DimSolver &gt;</type>
-        <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
-        <argsstring></argsstring>
-        <name>solver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmhestonsolver.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_solver_1a07b4359d5af34b9baa5e826e53305d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

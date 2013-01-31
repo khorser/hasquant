@@ -358,15 +358,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="170"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_date_1a51c38d3088b7464c8c5d9f2cd0442096" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
-        <definition>BigInteger serialNumber_</definition>
-        <argsstring></argsstring>
-        <name>serialNumber_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="173" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_date_1a184b838fc86b6047e5d9ba7f9f3e8a18" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>

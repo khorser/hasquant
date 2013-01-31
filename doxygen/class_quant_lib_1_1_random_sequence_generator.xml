@@ -19,36 +19,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1a9cf0dc854ef1c5ea1ceb614b8c06b5c4" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size dimensionality_</definition>
-        <argsstring></argsstring>
-        <name>dimensionality_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1a71b7f656dfe0cefb9d41f6e8e8f502c8" prot="private" static="no" mutable="no">
-        <type>RNG</type>
-        <definition>RNG rng_</definition>
-        <argsstring></argsstring>
-        <name>rng_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="yes">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
-        <definition>sample_type sequence_</definition>
-        <argsstring></argsstring>
-        <name>sequence_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_random_sequence_generator_1ad426b393eed1e246bc404a540c0ad4f8" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref> &gt;</type>
-        <definition>std::vector&lt;BigNatural&gt; int32Sequence_</definition>
-        <argsstring></argsstring>
-        <name>int32Sequence_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_random_sequence_generator_1a58caaa6b289fac085580152fc34831cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

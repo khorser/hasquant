@@ -56,36 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" bodystart="97" bodyend="101"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_drift_term_structure_1a9f6a5e08837c62a8bb68bcf7b48dc505" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; riskFreeTS_</definition>
-        <argsstring></argsstring>
-        <name>riskFreeTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_drift_term_structure_1ad0da92f6a2f81cd0ccaab113a9e32e90" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; dividendTS_</definition>
-        <argsstring></argsstring>
-        <name>dividendTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_drift_term_structure_1a75306afc1d46537ab240785bb3cd798c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;BlackVolTermStructure&gt; blackVolTS_</definition>
-        <argsstring></argsstring>
-        <name>blackVolTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_drift_term_structure_1a480eda1f776c35ceefab65e522ad7ff8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real underlyingLevel_</definition>
-        <argsstring></argsstring>
-        <name>underlyingLevel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/drifttermstructure.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_drift_term_structure_1aca7066efd7405e90d29ce5a67840005d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

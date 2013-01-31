@@ -109,36 +109,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
-        <type>Type</type>
-        <definition>Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real nominal_</definition>
-        <argsstring></argsstring>
-        <name>nominal_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1aadb83d9343aed52cd8e4ad929429024e" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate liborFraction_</definition>
-        <argsstring></argsstring>
-        <name>liborFraction_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1a68df81f84ff876c153127481a690291e" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate liborSpread_</definition>
-        <argsstring></argsstring>
-        <name>liborSpread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a6e41b7b5fbe131e7f781084d96fb93e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

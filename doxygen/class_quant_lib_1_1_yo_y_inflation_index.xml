@@ -53,22 +53,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="202"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_index_1a568cfc3b9b689613e4ab46615481cb61" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool ratio_</definition>
-        <argsstring></argsstring>
-        <name>ratio_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="206" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="206" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_yo_y_inflation_index_1a1073cfc296260f253b9860914d0ca680" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YoYInflationTermStructure&gt; yoyInflation_</definition>
-        <argsstring></argsstring>
-        <name>yoyInflation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" bodystart="207" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1a9c8e75da8b8f15185f87c2ec73388af3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -113,19 +97,6 @@
           <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="186"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_index_1a31402c8dcd6c83166c07900d7f440bca" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate forecastFixing</definition>
-        <argsstring>(const Date &amp;fixingDate) const </argsstring>
-        <name>forecastFixing</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>fixingDate</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/inflationindex.hpp" line="205"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

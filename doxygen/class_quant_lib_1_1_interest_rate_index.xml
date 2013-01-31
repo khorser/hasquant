@@ -176,22 +176,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="127" bodyend="131"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_index_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="private" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string name_</definition>
-        <argsstring></argsstring>
-        <name>name_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="92" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interest_rate_index_1af1ed03a737a75f4ce678edf42fe3dc7b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar fixingCalendar_</definition>
-        <argsstring></argsstring>
-        <name>fixingCalendar_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/interestrateindex.hpp" bodystart="93" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_interest_rate_index_1aeb7d1f996a04d11f4ac16b353657e930" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

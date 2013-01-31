@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorModel::ShortRateTree</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1a88f9e15301f6ea7ec2bfb85fb8484292" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_trinomial_tree" kindref="compound">TrinomialTree</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;TrinomialTree&gt; tree_</definition>
-        <argsstring></argsstring>
-        <name>tree_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="107" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1ae9756a7000541f59d6ecf6c317d3e50b" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics_</definition>
-        <argsstring></argsstring>
-        <name>dynamics_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="108" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree_1a7aa0e3ed054c4bf1689294f806458463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

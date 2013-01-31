@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_stulz_engine" kind="class" prot="public">
     <compoundname>QuantLib::StulzEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_stulz_engine_1abb89fde45de159f8ba084d4cb368144e" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process1_</definition>
-        <argsstring></argsstring>
-        <name>process1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stulz_engine_1a93dcfbc17d2d778387747616c9208336" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process2_</definition>
-        <argsstring></argsstring>
-        <name>process2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stulz_engine_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/stulzengine.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_stulz_engine_1a7d983b9f0ecb56859b6bf30d351492be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_kluge_ext_o_u_process" kind="class" prot="public">
     <compoundname>QuantLib::KlugeExtOUProcess</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a350ede3211a53486a5fb393ec23d4a21" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a4dfbf0d88927e566a7298c1d7c8a5b91" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real sqrtMRho_</definition>
-        <argsstring></argsstring>
-        <name>sqrtMRho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a9d31d563c46074b765ba62c1e7b5a5f7" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; klugeProcess_</definition>
-        <argsstring></argsstring>
-        <name>klugeProcess_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kluge_ext_o_u_process_1ac42eae749f0558b848f89d7cababcc08" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; ouProcess_</definition>
-        <argsstring></argsstring>
-        <name>ouProcess_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/klugeextouprocess.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a55a7c3aeeb705e00c56215f1b2f2cf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

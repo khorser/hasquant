@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticContinuousFloatingLookbackEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a295cb716891a8d7a7568773c4946e459" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
-        <definition>CumulativeNormalDistribution f_</definition>
-        <argsstring></argsstring>
-        <name>f_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a498d7812b12d4c2d7977f145df3be3ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -38,82 +22,6 @@
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="47"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1ac49ad98a633b66a7a9ddf330a0d064d8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real underlying</definition>
-        <argsstring>() const </argsstring>
-        <name>underlying</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="52"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a384e61b69dd2e190b4041246b725e00c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time residualTime</definition>
-        <argsstring>() const </argsstring>
-        <name>residualTime</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="53"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1ae7cf26d190e83b99249233b1264cd0b1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility volatility</definition>
-        <argsstring>() const </argsstring>
-        <name>volatility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="54"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a9719895601366465667b3ca8972121a4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real minmax</definition>
-        <argsstring>() const </argsstring>
-        <name>minmax</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="55"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a5027d9b072a2b0a2d0b95290ae60e60a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real stdDeviation</definition>
-        <argsstring>() const </argsstring>
-        <name>stdDeviation</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="56"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1aec4742c5ccf23463c537d0e7d6990607" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate riskFreeRate</definition>
-        <argsstring>() const </argsstring>
-        <name>riskFreeRate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="57"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a4d3c06d01e8a68c61fc773da70ab5815" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor riskFreeDiscount</definition>
-        <argsstring>() const </argsstring>
-        <name>riskFreeDiscount</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="58"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a49bcd44bdf5a8c6aa4ca42e3c75e2fb1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate dividendYield</definition>
-        <argsstring>() const </argsstring>
-        <name>dividendYield</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="59"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1aaa7e52ca4b7b09b017d2028c9f61e3ad" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor dividendDiscount</definition>
-        <argsstring>() const </argsstring>
-        <name>dividendDiscount</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="60"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_continuous_floating_lookback_engine_1a18e77dcdd3d1509952eb0472ade77d92" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real A</definition>
-        <argsstring>(Real eta) const </argsstring>
-        <name>A</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>eta</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/lookback/analyticcontinuousfloatinglookback.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

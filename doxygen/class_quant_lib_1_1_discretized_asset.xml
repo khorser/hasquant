@@ -143,15 +143,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="123"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_asset_1a9b59c4b1fe57dba3b5f7826f38b6fe56" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Lattice&gt; method_</definition>
-        <argsstring></argsstring>
-        <name>method_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="138" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1afad0751d0bfc43043efa52445e6f40e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

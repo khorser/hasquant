@@ -2,50 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_vega_bump_cluster" kind="class" prot="public">
     <compoundname>QuantLib::VegaBumpCluster</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_cluster_1af5d2dabb2ea30a39fca98f3f44360fdb" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size factorBegin_</definition>
-        <argsstring></argsstring>
-        <name>factorBegin_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_cluster_1ac4d9b2ab7e00be15f39d4ce9f79f89b0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size factorEnd_</definition>
-        <argsstring></argsstring>
-        <name>factorEnd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_cluster_1a722cdf298b5b219c6e9f3215a5721689" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size rateBegin_</definition>
-        <argsstring></argsstring>
-        <name>rateBegin_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_cluster_1aab19f5a6e8a842476cd174f1024b8873" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size rateEnd_</definition>
-        <argsstring></argsstring>
-        <name>rateEnd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_cluster_1a328ad3a7f2dd834b8f3093e151b41c49" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size stepBegin_</definition>
-        <argsstring></argsstring>
-        <name>stepBegin_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_vega_bump_cluster_1a72cffadf66bd3efaa8f94b790c5ea072" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size stepEnd_</definition>
-        <argsstring></argsstring>
-        <name>stepEnd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1abe52dc478dc4f0d482b1c1d202487fd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

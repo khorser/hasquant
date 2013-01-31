@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_analytic_p_t_d_heston_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticPTDHestonEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1a6a6f8fe6a7030c23eafadccdc4aed706" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; AnalyticHestonEngine::Integration &gt;</type>
-        <definition>const boost::shared_ptr&lt;AnalyticHestonEngine::Integration&gt; integration_</definition>
-        <argsstring></argsstring>
-        <name>integration_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analyticptdhestonengine.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1abc142be262ed116e6fc4935c01b1dfed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

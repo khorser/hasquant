@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fast_fourier_transform" kind="class" prot="public">
     <compoundname>QuantLib::FastFourierTransform</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fast_fourier_transform_1aa69043ccd264c92f74f238f9986e9665" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; double &gt;</type>
-        <definition>std::vector&lt;double&gt; cs_</definition>
-        <argsstring></argsstring>
-        <name>cs_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fast_fourier_transform_1a1e8a188246324c2c8b4094329f03f012" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; double &gt;</type>
-        <definition>std::vector&lt;double&gt; sn_</definition>
-        <argsstring></argsstring>
-        <name>sn_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a52f3db7d80c4e276e8aad3336e5e5040" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::size_t</type>
@@ -116,39 +100,6 @@
         <detaileddescription>
 <para>The output sequence must be allocated by the user. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="74" bodyend="77"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1af5cd3ea31ebe82dc353ca835e79f710e" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename InputIterator</type>
-          </param>
-          <param>
-            <type>typename RandomAccessIterator</type>
-          </param>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void transform_impl</definition>
-        <argsstring>(InputIterator inBegin, InputIterator inEnd, RandomAccessIterator out, bool inverse) const </argsstring>
-        <name>transform_impl</name>
-        <param>
-          <type>InputIterator</type>
-          <declname>inBegin</declname>
-        </param>
-        <param>
-          <type>InputIterator</type>
-          <declname>inEnd</declname>
-        </param>
-        <param>
-          <type>RandomAccessIterator</type>
-          <declname>out</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>inverse</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="83" bodyend="110"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-func">

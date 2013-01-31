@@ -26,15 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/centrallimitgaussianrng.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/centrallimitgaussianrng.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_l_gaussian_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" static="no" mutable="no">
-        <type>RNG</type>
-        <definition>RNG uniformGenerator_</definition>
-        <argsstring></argsstring>
-        <name>uniformGenerator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/centrallimitgaussianrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/centrallimitgaussianrng.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_l_gaussian_rng_1aaadb3d9a4b1c2b6a7547ab900765f34e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

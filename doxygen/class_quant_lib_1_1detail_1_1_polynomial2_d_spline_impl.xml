@@ -13,15 +13,6 @@
         <type>class M</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_polynomial2_d_spline_impl_1a6f35454550f58cf64044349ae7719fa3" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &gt;</type>
-        <definition>std::vector&lt;Interpolation&gt; polynomials_</definition>
-        <argsstring></argsstring>
-        <name>polynomials_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/polynomial2Dspline.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_polynomial2_d_spline_impl_1a308223d0072effb391364f59016095c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

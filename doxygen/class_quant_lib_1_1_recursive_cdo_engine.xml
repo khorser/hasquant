@@ -15,45 +15,6 @@
         <defname>copulaT</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nBuckets_</definition>
-        <argsstring></argsstring>
-        <name>nBuckets_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="117" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a7d34f0604e09880515f7104cba7bfc7b" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_gauss_hermite_integration" kindref="compound">GaussHermiteIntegration</ref></type>
-        <definition>const GaussHermiteIntegration integral_</definition>
-        <argsstring></argsstring>
-        <name>integral_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="118" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a0eb730b3274e3a353d94cdcb4bc8c57c" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; wk_</definition>
-        <argsstring></argsstring>
-        <name>wk_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="119" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a8fefe1627bd6032c64d4d69c0c68278f" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real loss_unit_</definition>
-        <argsstring></argsstring>
-        <name>loss_unit_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="120" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a4334d72caf7e92f73161ebcb19410f73" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; oneFactorCorrels_</definition>
-        <argsstring></argsstring>
-        <name>oneFactorCorrels_</name>
-        <briefdescription>
-<para>name to name factor loadings (betas). In the single factor copula: </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="125" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a784a4cae083c5b2fe8f118af0cefbb21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -122,42 +83,6 @@
           <declname>date</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="103" bodyend="111"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a5551d80e6a3b5ec9e39037a9b55baad5" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real integratorLoss</definition>
-        <argsstring>(const Date &amp;date, Real mktFactor) const </argsstring>
-        <name>integratorLoss</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>date</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>mktFactor</declname>
-        </param>
-        <briefdescription>
-<para>Weights the conditional portfolio loss by the mkt factor. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="78" bodyend="81"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1ac917b9b604a9ff450984e142deabb6d2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real expectedConditionalLoss</definition>
-        <argsstring>(const Date &amp;date, Real mktFactor) const </argsstring>
-        <name>expectedConditionalLoss</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>date</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>mktFactor</declname>
-        </param>
-        <briefdescription>
-<para>Portfolio loss conditional to the market factor value. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="203" bodyend="287"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

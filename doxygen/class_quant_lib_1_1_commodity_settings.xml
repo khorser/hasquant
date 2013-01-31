@@ -12,31 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_settings_1a9b8209f252ea1344d7fa6de58bc1102a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
-        <definition>Currency currency_</definition>
-        <argsstring></argsstring>
-        <name>currency_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="43" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_settings_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
-        <definition>UnitOfMeasure unitOfMeasure_</definition>
-        <argsstring></argsstring>
-        <name>unitOfMeasure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1a64a502593a2ff038deb661cc6b698d11" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>CommoditySettings</definition>
-        <argsstring>()</argsstring>
-        <name>CommoditySettings</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="37"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>

@@ -118,36 +118,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="59"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1afb597b35edab96eecbcbf9a2df04f05d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real x0_</definition>
-        <argsstring></argsstring>
-        <name>x0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1aa8ae25f45fba2b614971adf594da0ab0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real level_</definition>
-        <argsstring></argsstring>
-        <name>level_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1a5f122fd3f113b8a1ba26405d7487ac0f" prot="private" static="no" mutable="no">
-        <type>boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt;</type>
-        <definition>boost::function&lt;Real (Time)&gt; speed_</definition>
-        <argsstring></argsstring>
-        <name>speed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1af6a15cb85858be5cd3495b7a3cefeb7d" prot="private" static="no" mutable="no">
-        <type>boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt;</type>
-        <definition>boost::function&lt;Real (Time)&gt; volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedornsteinuhlenbeckprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process_1ad6421a8bf3cf2b7caf96275ca4b3fb7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

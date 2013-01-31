@@ -72,64 +72,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1adaa914cf3317cde625a653d4b9e7d8a8" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; path_generator_type &gt;</type>
-        <definition>boost::shared_ptr&lt;path_generator_type&gt; pathGenerator_</definition>
-        <argsstring></argsstring>
-        <name>pathGenerator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1a8e0b51e1c08eedc79df3817ec206eed0" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; path_pricer_type &gt;</type>
-        <definition>boost::shared_ptr&lt;path_pricer_type&gt; pathPricer_</definition>
-        <argsstring></argsstring>
-        <name>pathPricer_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1a9574df4dda4bb996d0b1562a16ed4969" prot="private" static="no" mutable="no">
-        <type>stats_type</type>
-        <definition>stats_type sampleAccumulator_</definition>
-        <argsstring></argsstring>
-        <name>sampleAccumulator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1ad6f5b38979426163fe632f9a81245fd3" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isAntitheticVariate_</definition>
-        <argsstring></argsstring>
-        <name>isAntitheticVariate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1a82f8475920e75f3c10435e91023a0e77" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; path_pricer_type &gt;</type>
-        <definition>boost::shared_ptr&lt;path_pricer_type&gt; cvPathPricer_</definition>
-        <argsstring></argsstring>
-        <name>cvPathPricer_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1a3ea880608e5e6404f2f6a969300cc162" prot="private" static="no" mutable="no">
-        <type>result_type</type>
-        <definition>result_type cvOptionValue_</definition>
-        <argsstring></argsstring>
-        <name>cvOptionValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1a3662c0ea28a589e29b8cc3aa4d651491" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool isControlVariate_</definition>
-        <argsstring></argsstring>
-        <name>isControlVariate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_model_1acc193b06e58b5c7f2afd266ec5ad87c4" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; path_generator_type &gt;</type>
-        <definition>boost::shared_ptr&lt;path_generator_type&gt; cvPathGenerator_</definition>
-        <argsstring></argsstring>
-        <name>cvPathGenerator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_model_1ac333491bacb2f08888afa1d98ae29d50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

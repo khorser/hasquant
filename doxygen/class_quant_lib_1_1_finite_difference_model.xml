@@ -45,22 +45,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_finite_difference_model_1a8e46261c3a78a76a01b11f1272258b64" prot="private" static="no" mutable="no">
-        <type>Evolver</type>
-        <definition>Evolver evolver_</definition>
-        <argsstring></argsstring>
-        <name>evolver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="145" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_finite_difference_model_1a189f7cccf06d556536bc82aa0e426a13" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; stoppingTimes_</definition>
-        <argsstring></argsstring>
-        <name>stoppingTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="146" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a09774de668e962396945562d3dd77666" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -158,35 +142,6 @@
         <detaileddescription>
 <para>solves the problem between the given times, applying a condition at every step. <xrefsect id="caveats_1_caveats000079"><xreftitle>Warning</xreftitle><xrefdescription><para>being this a rollback, <computeroutput>from</computeroutput> must be a later time than <computeroutput>to</computeroutput>. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="81" bodyend="87"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a32f370f9f9ec047df367c098d757c5e1" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void rollbackImpl</definition>
-        <argsstring>(array_type &amp;a, Time from, Time to, Size steps, const condition_type *condition)</argsstring>
-        <name>rollbackImpl</name>
-        <param>
-          <type>array_type &amp;</type>
-          <declname>a</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>from</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>to</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>steps</declname>
-        </param>
-        <param>
-          <type>const condition_type *</type>
-          <declname>condition</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="89" bodyend="144"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

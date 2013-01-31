@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_dividend_adder" kind="class" prot="public">
     <compoundname>QuantLib::detail::DividendAdder</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_dividend_adder_1a44bd4227a1f7221c0abe8a93b08274b5" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_dividend" kindref="compound">Dividend</ref> *</type>
-        <definition>const Dividend* dividend</definition>
-        <argsstring></argsstring>
-        <name>dividend</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" line="200" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendengine.hpp" bodystart="200" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_dividend_adder_1ab9b24461fae8723861aa12f09e0155d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

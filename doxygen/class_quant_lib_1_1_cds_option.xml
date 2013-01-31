@@ -101,29 +101,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="75"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cds_option_1a094655deb03130e3cfb8a0b5ae5a54e7" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;CreditDefaultSwap&gt; swap_</definition>
-        <argsstring></argsstring>
-        <name>swap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cds_option_1a060ede8594d8f0d3d76ec093558e1ce8" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool knocksOut_</definition>
-        <argsstring></argsstring>
-        <name>knocksOut_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cds_option_1a9f889543109a071307e44752fa0a91bf" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real riskyAnnuity_</definition>
-        <argsstring></argsstring>
-        <name>riskyAnnuity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1ad336e12950bbf3cfc1bafd6fc5bb796a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -144,32 +121,6 @@
           <defval>true</defval>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="50"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void setupExpired</definition>
-        <argsstring>() const </argsstring>
-        <name>setupExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
-        <detaileddescription>
-<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="83"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void fetchResults</definition>
-        <argsstring>(const PricingEngine::results *) const </argsstring>
-        <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
-        <param>
-          <type>const PricingEngine::results *</type>
-          <defname>r</defname>
-        </param>
-        <detaileddescription>
-<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="84"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

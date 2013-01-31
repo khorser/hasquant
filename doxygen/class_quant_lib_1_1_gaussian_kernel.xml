@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_gaussian_kernel" kind="class" prot="public">
     <compoundname>QuantLib::GaussianKernel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_kernel_1aab2c61bbb8f4e989140f9c6b3b4bdcba" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_normal_distribution" kindref="compound">NormalDistribution</ref></type>
-        <definition>NormalDistribution nd_</definition>
-        <argsstring></argsstring>
-        <name>nd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_kernel_1ae08ec8d619e9e0ae0ff9f72551859cb9" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
-        <definition>CumulativeNormalDistribution cnd_</definition>
-        <argsstring></argsstring>
-        <name>cnd_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_kernel_1abea5e47f9dd97fc8da41bbe727d05955" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real normFact_</definition>
-        <argsstring></argsstring>
-        <name>normFact_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a589c757d080f04958842516b5ec50746" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

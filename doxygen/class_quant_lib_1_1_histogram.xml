@@ -166,59 +166,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_histogram_1af9c626db41e269447653dcc7cc126d35" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; data_</definition>
-        <argsstring></argsstring>
-        <name>data_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_histogram_1a3302347dceaaf00ca09365623b6ea1e5" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size bins_</definition>
-        <argsstring></argsstring>
-        <name>bins_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_histogram_1a164fa2dab796159956a76aab07e30697" prot="private" static="no" mutable="no">
-        <type>Algorithm</type>
-        <definition>Algorithm algorithm_</definition>
-        <argsstring></argsstring>
-        <name>algorithm_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_histogram_1a14ca6561ae3a61e765345417cfcb0dd5" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; breaks_</definition>
-        <argsstring></argsstring>
-        <name>breaks_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_histogram_1a4d1392f1f19c1c12f148c903249fd01b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; counts_</definition>
-        <argsstring></argsstring>
-        <name>counts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_histogram_1a2ddaa0bf3b6283122b23bafa9f0549c9" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; frequency_</definition>
-        <argsstring></argsstring>
-        <name>frequency_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1afe1d8348c24e6589bc7c0b3f689316a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void calculate</definition>
-        <argsstring>()</argsstring>
-        <name>calculate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="92"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_histogram" kindref="compound">Histogram</ref> class. </para>    </briefdescription>
     <detaileddescription>

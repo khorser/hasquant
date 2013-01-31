@@ -3,43 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fd_heston_barrier_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdHestonBarrierEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size tGrid_</definition>
-        <argsstring></argsstring>
-        <name>tGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size xGrid_</definition>
-        <argsstring></argsstring>
-        <name>xGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1a4a9d2eb047a6d0d329c5ec9ba01e39b5" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size vGrid_</definition>
-        <argsstring></argsstring>
-        <name>vGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size dampingSteps_</definition>
-        <argsstring></argsstring>
-        <name>dampingSteps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_barrier_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonbarrierengine.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_barrier_engine_1a12c2c812b151d7509f54d4cd292c8e07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

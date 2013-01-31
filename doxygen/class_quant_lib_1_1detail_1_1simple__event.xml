@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1simple__event" kind="class" prot="public">
     <compoundname>QuantLib::detail::simple_event</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1simple__event_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date date_</definition>
-        <argsstring></argsstring>
-        <name>date_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1simple__event_1aafbb0786dca875b972ca9ddf654f4840" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

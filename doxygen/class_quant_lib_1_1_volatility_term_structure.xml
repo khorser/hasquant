@@ -99,15 +99,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="67"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_term_structure_1aa63f20268765f716e3c0ced196db5798" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
-        <definition>BusinessDayConvention bdc_</definition>
-        <argsstring></argsstring>
-        <name>bdc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/voltermstructure.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>

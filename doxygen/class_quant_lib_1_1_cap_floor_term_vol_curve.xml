@@ -84,64 +84,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="153" bodyend="157"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a582b9e3471551208befa708027ca4ac8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nOptionTenors_</definition>
-        <argsstring></argsstring>
-        <name>nOptionTenors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="105" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1ab238b6541fd526e96e5adfea50e9bcb2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt;</type>
-        <definition>std::vector&lt;Period&gt; optionTenors_</definition>
-        <argsstring></argsstring>
-        <name>optionTenors_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a0319ec980b7cb2681d52e037d3a53b42" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; optionDates_</definition>
-        <argsstring></argsstring>
-        <name>optionDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="107" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a8c3d11bba712822cbb27ad9fbe496fcb" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; optionTimes_</definition>
-        <argsstring></argsstring>
-        <name>optionTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="108" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1aab7be0a2ef3486101fe70ac7ba229d17" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date evaluationDate_</definition>
-        <argsstring></argsstring>
-        <name>evaluationDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="109" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1aeaea77606805639211b9e0e7f29205d8" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; volHandles_</definition>
-        <argsstring></argsstring>
-        <name>volHandles_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="111" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
-        <definition>std::vector&lt;Volatility&gt; vols_</definition>
-        <argsstring></argsstring>
-        <name>vols_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="112" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
-        <definition>Interpolation interpolation_</definition>
-        <argsstring></argsstring>
-        <name>interpolation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" bodystart="115" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a68700cceda888de11e2f04e1a8984f85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -278,36 +220,6 @@
         <briefdescription>
 <para>floating reference date, fixed market data </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="75"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1abc07f485644d250199f9c044e516d430" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void checkInputs</definition>
-        <argsstring>() const </argsstring>
-        <name>checkInputs</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="100"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1aab49bcb78bd6b21daa03146798059126" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initializeOptionDatesAndTimes</definition>
-        <argsstring>() const </argsstring>
-        <name>initializeOptionDatesAndTimes</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="101"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a0d51434a505aa5c9a664a90f7a0021e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void registerWithMarketData</definition>
-        <argsstring>()</argsstring>
-        <name>registerWithMarketData</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="102"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_term_vol_curve_1a5b3dba4afd88e1d0446f99b2f6a65de9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void interpolate</definition>
-        <argsstring>()</argsstring>
-        <name>interpolate</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/capfloor/capfloortermvolcurve.hpp" line="103"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

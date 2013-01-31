@@ -30,43 +30,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="265" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="265" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a582a83fcbbf2db2f8d51c5ae749c5b5e" prot="private" static="no" mutable="no">
-        <type>const data &amp;</type>
-        <definition>const data&amp; d_</definition>
-        <argsstring></argsstring>
-        <name>d_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="274" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="274" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a77d015539f2a2a09c89a8aa0a5727da5" prot="private" static="no" mutable="no">
-        <type>const data &amp;</type>
-        <definition>const data &amp; d2_</definition>
-        <argsstring></argsstring>
-        <name>d2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="274" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="274" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1accf46bcd8cb837b7b34c0f6c35cc6f4e" prot="private" static="no" mutable="no">
-        <type>const data_table &amp;</type>
-        <definition>const data_table&amp; y_</definition>
-        <argsstring></argsstring>
-        <name>y_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="275" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="275" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a50d523b30e828df6c4123843e7737e67" prot="private" static="no" mutable="no">
-        <type>data_table &amp;</type>
-        <definition>data_table&amp; y2_</definition>
-        <argsstring></argsstring>
-        <name>y2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="276" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="276" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1afec3f9c9ad784475758c6c245d0e8686" prot="private" static="no" mutable="no">
-        <type>output_data &amp;</type>
-        <definition>output_data&amp; v_</definition>
-        <argsstring></argsstring>
-        <name>v_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="277" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="277" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a8733ec13e7348dddf398be84ea1bd3ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

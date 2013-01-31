@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_digital_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::DigitalPathPricer</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a1ef130613f9d1fa82a5d54d277083e99" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_or_nothing_payoff" kindref="compound">CashOrNothingPayoff</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;CashOrNothingPayoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="122" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a01fc48156161326ae94fa67cc6c11601" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_american_exercise" kindref="compound">AmericanExercise</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;AmericanExercise&gt; exercise_</definition>
-        <argsstring></argsstring>
-        <name>exercise_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="123" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; diffProcess_</definition>
-        <argsstring></argsstring>
-        <name>diffProcess_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="124" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref></type>
-        <definition>PseudoRandom::ursg_type sequenceGen_</definition>
-        <argsstring></argsstring>
-        <name>sequenceGen_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="125" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_digital_path_pricer_1a9a6e1109fcdac96e12417721c9041ce8" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; discountTS_</definition>
-        <argsstring></argsstring>
-        <name>discountTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="126" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_digital_path_pricer_1a44a8dc80b3e08d8c711dff736368f163" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

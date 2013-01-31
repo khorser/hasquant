@@ -3,64 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmKlugeExtOUOp</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1af006f735a20172e3270200865bb4f05d" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; kluge_</definition>
-        <argsstring></argsstring>
-        <name>kluge_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a17d01b48e15925b5924626d1106f1405" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; extOU_</definition>
-        <argsstring></argsstring>
-        <name>extOU_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
-        <argsstring></argsstring>
-        <name>rTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" static="no" mutable="no">
-        <type>const FdmBoundaryConditionSet</type>
-        <definition>const FdmBoundaryConditionSet bcSet_</definition>
-        <argsstring></argsstring>
-        <name>bcSet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="92" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1aab054b5ea2257fd3d0b838c3146b031d" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op" kindref="compound">FdmExtOUJumpOp</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmExtOUJumpOp&gt; klugeOp_</definition>
-        <argsstring></argsstring>
-        <name>klugeOp_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a7c506e612bc53209c1b6a065523f9781" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmExtendedOrnsteinUhlenbackOp &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmExtendedOrnsteinUhlenbackOp&gt; ouOp_</definition>
-        <argsstring></argsstring>
-        <name>ouOp_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ab34235771f6460dc69ebe21ba2a73575" prot="private" static="no" mutable="no">
-        <type>const NinePointLinearOp</type>
-        <definition>const NinePointLinearOp corrMap_</definition>
-        <argsstring></argsstring>
-        <name>corrMap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6196d15718e60a26804ca495e0bff78a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

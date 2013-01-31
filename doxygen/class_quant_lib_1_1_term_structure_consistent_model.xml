@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_term_structure_consistent_model" kind="class" prot="public">
     <compoundname>QuantLib::TermStructureConsistentModel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_consistent_model_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
-        <argsstring></argsstring>
-        <name>termStructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_consistent_model_1abc88328a9ce3013c5c8689ee87a0205c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

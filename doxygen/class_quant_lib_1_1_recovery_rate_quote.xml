@@ -66,22 +66,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_recovery_rate_quote_1ae35b512424ab0cb35502f8dd976cb8aa" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
-        <definition>Seniority seniority_</definition>
-        <argsstring></argsstring>
-        <name>seniority_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_recovery_rate_quote_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real recoveryRate_</definition>
-        <argsstring></argsstring>
-        <name>recoveryRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_recovery_rate_quote_1ad04d9ebe85dc59213d9d4db8b7a6896d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>

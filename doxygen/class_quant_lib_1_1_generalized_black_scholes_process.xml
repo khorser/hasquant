@@ -167,50 +167,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="82"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_black_scholes_process_1ac7f78080531d745f99bea415937e8cab" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; x0_</definition>
-        <argsstring></argsstring>
-        <name>x0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_black_scholes_process_1afe7e3df45f71537a12136bfa45acad60" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; riskFreeRate_</definition>
-        <argsstring></argsstring>
-        <name>riskFreeRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_black_scholes_process_1ac90d45f37ddd446a4543012fb5c4c4f2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; dividendYield_</definition>
-        <argsstring></argsstring>
-        <name>dividendYield_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_black_scholes_process_1a573a60904b64808b105a3307edb6023c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;BlackVolTermStructure&gt; blackVolatility_</definition>
-        <argsstring></argsstring>
-        <name>blackVolatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_black_scholes_process_1a3e6ce7d8a8c2276a5e6aa00a64c7723b" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_local_vol_term_structure" kindref="compound">LocalVolTermStructure</ref> &gt;</type>
-        <definition>RelinkableHandle&lt;LocalVolTermStructure&gt; localVolatility_</definition>
-        <argsstring></argsstring>
-        <name>localVolatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_black_scholes_process_1a56cd8ee45c3477740e0429f98758c935" prot="private" static="no" mutable="yes">
-        <type>bool</type>
-        <definition>bool updated_</definition>
-        <argsstring></argsstring>
-        <name>updated_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/blackscholesprocess.hpp" bodystart="89" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_black_scholes_process_1a3df0b86a1ef1cf90ccd7403887d2453a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

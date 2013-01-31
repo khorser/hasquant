@@ -11,38 +11,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_tracing_1a045e6ebcc2cec847920a49abcf5599c8" prot="private" static="no" mutable="no">
-        <type>std::ostream *</type>
-        <definition>std::ostream* out_</definition>
-        <argsstring></argsstring>
-        <name>out_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_tracing_1ab6dfcb3e6c79f4def1295fea7f0de8c0" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool enabled_</definition>
-        <argsstring></argsstring>
-        <name>enabled_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_tracing_1a5c026231da11874bd824a06d0a516708" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
-        <definition>Integer depth_</definition>
-        <argsstring></argsstring>
-        <name>depth_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a6f5029a99a424c669154db0011e6c8e9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>Tracing</definition>
-        <argsstring>()</argsstring>
-        <name>Tracing</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="68"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a486f22824bd83c5308a0d70ffac6f758" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>

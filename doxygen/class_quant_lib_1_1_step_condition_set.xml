@@ -17,15 +17,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_step_condition_set_1a7261b531978cd11dfbc3ebfa6bbb2bb8" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; itemType &gt;</type>
-        <definition>std::vector&lt;itemType&gt; stepConditions_</definition>
-        <argsstring></argsstring>
-        <name>stepConditions_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>

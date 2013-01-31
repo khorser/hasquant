@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p" kind="class" prot="public">
     <compoundname>QuantLib::BivariateCumulativeNormalDistributionWe04DP</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1aa9bf78c1a9550ea46151060cfdc3365f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real correlation_</definition>
-        <argsstring></argsstring>
-        <name>correlation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a686775bd2175a0b1b03cb7abaddbeab1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
-        <definition>CumulativeNormalDistribution cumnorm_</definition>
-        <argsstring></argsstring>
-        <name>cumnorm_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1ad77e715ae0200927ddf5c6702eda95ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

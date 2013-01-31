@@ -49,15 +49,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_composite_instrument_1a7d98f4af4c855e7381c74f5bafef95f6" prot="private" static="no" mutable="no">
-        <type>std::list&lt; component &gt;</type>
-        <definition>std::list&lt;component&gt; components_</definition>
-        <argsstring></argsstring>
-        <name>components_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1a6c2e5140cb8d3d49eb526feba0d0fda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_log_basket_inner_value" kind="class" prot="public">
     <compoundname>QuantLib::FdmLogBasketInnerValue</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_log_basket_inner_value_1ad5c2741533c6bb9b68f48f38304d8870" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; BasketPayoff &gt;</type>
-        <definition>const boost::shared_ptr&lt;BasketPayoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_log_basket_inner_value_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_log_basket_inner_value_1a4c85797c635768ba7c6d9628df6acf27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

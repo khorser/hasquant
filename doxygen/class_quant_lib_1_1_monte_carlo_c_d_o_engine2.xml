@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2" kind="class" prot="public">
     <compoundname>QuantLib::MonteCarloCDOEngine2</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a37c7ec3ed133d2d4a4e11455251f61c8" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_random_default_model" kindref="compound">RandomDefaultModel</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;RandomDefaultModel&gt; rdm_</definition>
-        <argsstring></argsstring>
-        <name>rdm_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="166" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size samples_</definition>
-        <argsstring></argsstring>
-        <name>samples_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="167" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a47ab7a2d9d91819b5520a4c2c328d7d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -42,19 +26,6 @@
         <name>calculate</name>
         <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="161"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a6bf5cd8c204e8cef5fd9f29384438015" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real expectedTrancheLoss</definition>
-        <argsstring>(const Date &amp;) const </argsstring>
-        <name>expectedTrancheLoss</name>
-        <reimplements refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1a2e70e1d1ab3c68a3c6d4c5bb39820576">expectedTrancheLoss</reimplements>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="164" bodyend="164"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

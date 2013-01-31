@@ -181,27 +181,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolateddefaultdensitycurve.hpp" line="61"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_default_density_curve_1af65e10b2400f08232f8edeed4ace26ee" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void initialize</definition>
-        <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Real &gt; &amp;densities, const DayCounter &amp;dayCounter)</argsstring>
-        <name>initialize</name>
-        <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
-          <declname>dates</declname>
-        </param>
-        <param>
-          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
-          <declname>densities</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
-          <declname>dayCounter</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolateddefaultdensitycurve.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolateddefaultdensitycurve.hpp" bodystart="255" bodyend="283"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> based on interpolation of default densities. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolateddefaultdensitycurve.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/interpolateddefaultdensitycurve.hpp" bodystart="38" bodyend="103"/>

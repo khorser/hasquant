@@ -21,24 +21,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_index_manager_1a4e969c1b5fd69a14385063b40b2f9c03" prot="private" static="no" mutable="yes">
-        <type>history_map</type>
-        <definition>history_map data_</definition>
-        <argsstring></argsstring>
-        <name>data_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a5cafa02d4aafb676b8bda53204b93dd7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>IndexManager</definition>
-        <argsstring>()</argsstring>
-        <name>IndexManager</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="39" bodyend="39"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a5bc396af9eb1d49d50c4b0bd6e03c03b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>

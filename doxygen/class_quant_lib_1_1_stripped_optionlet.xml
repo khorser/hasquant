@@ -94,99 +94,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="61"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar calendar_</definition>
-        <argsstring></argsstring>
-        <name>calendar_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a8cb58608de54286272715a08a7492a7e" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural settlementDays_</definition>
-        <argsstring></argsstring>
-        <name>settlementDays_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1afcd8e9f7982524cb0e8c3d7889a752b8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
-        <definition>BusinessDayConvention businessDayConvention_</definition>
-        <argsstring></argsstring>
-        <name>businessDayConvention_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
-        <definition>DayCounter dc_</definition>
-        <argsstring></argsstring>
-        <name>dc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
-        <argsstring></argsstring>
-        <name>iborIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1ab550e495931b5ac06cadad6304b31a1f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nOptionletDates_</definition>
-        <argsstring></argsstring>
-        <name>nOptionletDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a90d9e439fb5ebe3ecf3fece2945cce6f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; optionletDates_</definition>
-        <argsstring></argsstring>
-        <name>optionletDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a901d3034547526afa185e14c7232382e" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; optionletTimes_</definition>
-        <argsstring></argsstring>
-        <name>optionletTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a8dbefba5696ca8972a2ea2a610d653ae" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; optionletAtmRates_</definition>
-        <argsstring></argsstring>
-        <name>optionletAtmRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1ad326a486270bf61958c6e5cfd41b4af6" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Rate&gt; &gt; optionletStrikes_</definition>
-        <argsstring></argsstring>
-        <name>optionletStrikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a67ae5ca8c9285c2e266d0472b1c1e7ad" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nStrikes_</definition>
-        <argsstring></argsstring>
-        <name>nStrikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a95d25b7a1c494d80025e56ea2ec92a9f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Handle&lt;Quote&gt; &gt; &gt; optionletVolQuotes_</definition>
-        <argsstring></argsstring>
-        <name>optionletVolQuotes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_stripped_optionlet_1a299a6625c5bfcf50287bbb43cd631175" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;Volatility&gt; &gt; optionletVolatilities_</definition>
-        <argsstring></argsstring>
-        <name>optionletVolatilities_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_1ab76f0f8d72582b1a692703bc3a70e4d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -225,32 +132,6 @@
           <declname>dc</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="46"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_1abc07f485644d250199f9c044e516d430" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void checkInputs</definition>
-        <argsstring>() const </argsstring>
-        <name>checkInputs</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="64"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_1a0d51434a505aa5c9a664a90f7a0021e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void registerWithMarketData</definition>
-        <argsstring>()</argsstring>
-        <name>registerWithMarketData</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="65"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_stripped_optionlet_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/strippedoptionlet.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_black_cds_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCdsOptionEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_cds_option_engine_1a441cf22e5da9198c16764b48f18d056f" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;DefaultProbabilityTermStructure&gt; probability_</definition>
-        <argsstring></argsstring>
-        <name>probability_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_cds_option_engine_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real recoveryRate_</definition>
-        <argsstring></argsstring>
-        <name>recoveryRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_cds_option_engine_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
-        <argsstring></argsstring>
-        <name>termStructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_cds_option_engine_1a14cc04bf8608e1205f4796cbb54fd7f5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; volatility_</definition>
-        <argsstring></argsstring>
-        <name>volatility_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/blackcdsoptionengine.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_cds_option_engine_1ac69cb4664730c940b47a28b1612cbb13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

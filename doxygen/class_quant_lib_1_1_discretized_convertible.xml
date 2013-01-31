@@ -2,50 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_convertible" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedConvertible</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_convertible_1a5f68f69feeffd25b71464b944109a791" prot="private" static="no" mutable="no">
-        <type>ConvertibleBond::option::arguments</type>
-        <definition>ConvertibleBond::option::arguments arguments_</definition>
-        <argsstring></argsstring>
-        <name>arguments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_convertible_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_convertible_1a189f7cccf06d556536bc82aa0e426a13" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; stoppingTimes_</definition>
-        <argsstring></argsstring>
-        <name>stoppingTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_convertible_1abac2d2e025f90412d739851b50083136" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; callabilityTimes_</definition>
-        <argsstring></argsstring>
-        <name>callabilityTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_convertible_1a2f156ecbe4b2565cf41fabcbfa476c39" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; couponTimes_</definition>
-        <argsstring></argsstring>
-        <name>couponTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_convertible_1a75c16fcd88d78a795aee52f84f65ad38" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; dividendTimes_</definition>
-        <argsstring></argsstring>
-        <name>dividendTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_convertible_1a78788b3a71e66491bebd933556ff754c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -125,46 +81,6 @@
         <argsstring>() const </argsstring>
         <name>mandatoryTimes</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="54" bodyend="63"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_convertible_1aa84d2f2da575cce5fadbd4c2e490b5ea" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; adjustedGrid</definition>
-        <argsstring>() const </argsstring>
-        <name>adjustedGrid</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="70"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_convertible_1ab99f2955b04d4b73de1abad91a03194c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void applyConvertibility</definition>
-        <argsstring>()</argsstring>
-        <name>applyConvertibility</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="71"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_convertible_1ad2c372fe3aca2a52b1865f57854ce19e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void applyCallability</definition>
-        <argsstring>(Size, bool convertible)</argsstring>
-        <name>applyCallability</name>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>convertible</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="72"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_convertible_1af7a57968ad23b4e8b7e84dae5d6c556d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void addCoupon</definition>
-        <argsstring>(Size)</argsstring>
-        <name>addCoupon</name>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="73"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/discretizedconvertible.hpp" bodystart="34" bodyend="80"/>

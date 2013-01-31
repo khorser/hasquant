@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation" kind="class" prot="private">
     <compoundname>QuantLib::detail::SABRInterpolationImpl::SabrParametersTransformation</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation_1a0a792d2ec89747f199b3f37afa85c8b3" prot="private" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array y_</definition>
-        <argsstring></argsstring>
-        <name>y_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="274" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="274" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation_1aca53ae2cfd5d7d1f6818a5eb62506d54" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real eps1_</definition>
-        <argsstring></argsstring>
-        <name>eps1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="275" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="275" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation_1ab83605616f26e63b7e331c00c51f809b" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real eps2_</definition>
-        <argsstring></argsstring>
-        <name>eps2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="275" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="275" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation_1a1401c475fdb80d24e046490d8420a521" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real dilationFactor_</definition>
-        <argsstring></argsstring>
-        <name>dilationFactor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="275" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="275" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_sabr_parameters_transformation_1ad77387e6ae913b00b2920d9aeda270f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

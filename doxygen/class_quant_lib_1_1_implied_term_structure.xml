@@ -59,15 +59,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="90" bodyend="102"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_implied_term_structure_1a7664b599d851ec51cd5eeece5a2a715a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; originalCurve_</definition>
-        <argsstring></argsstring>
-        <name>originalCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/impliedtermstructure.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_implied_term_structure_1a7dcfdfac9796267ba70661c9ad5c85e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

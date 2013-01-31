@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_basket_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BasketPayoff</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_payoff_1affd63fef9f9cb61474132d02a3366bc5" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Payoff&gt; basePayoff_</definition>
-        <argsstring></argsstring>
-        <name>basePayoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a808f35be919559506cae91c3a021f87c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

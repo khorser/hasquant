@@ -84,15 +84,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="79" bodyend="86"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_local_vol_curve_1afd01980b2c0bec102befc8e227490e95" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_variance_curve" kindref="compound">BlackVarianceCurve</ref> &gt;</type>
-        <definition>Handle&lt;BlackVarianceCurve&gt; blackVarianceCurve_</definition>
-        <argsstring></argsstring>
-        <name>blackVarianceCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1a9bcfbba29fe0a01738bfb53056be256a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -3,50 +3,6 @@
   <compounddef id="class_quant_lib_1_1_heston_model_helper" kind="class" prot="public">
     <compoundname>QuantLib::HestonModelHelper</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1ac90d45f37ddd446a4543012fb5c4c4f2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; dividendYield_</definition>
-        <argsstring></argsstring>
-        <name>dividendYield_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1ad78debd4aecc695a825e6cb42052bb35" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;VanillaOption&gt; option_</definition>
-        <argsstring></argsstring>
-        <name>option_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1a7540e1a0fc1bccaccbba558c270d33f0" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>const Date exerciseDate_</definition>
-        <argsstring></argsstring>
-        <name>exerciseDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1afbe18e91c190f3a06b1fb66e429cadb6" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>const Time tau_</definition>
-        <argsstring></argsstring>
-        <name>tau_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1a8bf3af3edadccaf1a6ac78b0d0ab7211" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real s0_</definition>
-        <argsstring></argsstring>
-        <name>s0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_heston_model_helper_1a9c7c739cc17577c5718c8a2421f3a036" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real strikePrice_</definition>
-        <argsstring></argsstring>
-        <name>strikePrice_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodelhelper.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1ab1df92f492a78501874b8580fdbeb697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

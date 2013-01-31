@@ -166,22 +166,6 @@
       </sectiondef>
       <sectiondef kind="public-type">
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_money_1a1ddeb37fc39453c586998ce654dcfeea" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
-        <definition>Decimal value_</definition>
-        <argsstring></argsstring>
-        <name>value_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_money_1a9b8209f252ea1344d7fa6de58bc1102a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
-        <definition>Currency currency_</definition>
-        <argsstring></argsstring>
-        <name>currency_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="class_quant_lib_1_1_money_1a1f495f020f64c7b177b9e1bc0f99139c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>

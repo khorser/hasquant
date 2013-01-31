@@ -158,36 +158,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a532e2adef666f32acaa21b53834b42da" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real open_</definition>
-        <argsstring></argsstring>
-        <name>open_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1ab345b763ee4f5eeaef8a098c7c76b1e9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real close_</definition>
-        <argsstring></argsstring>
-        <name>close_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real high_</definition>
-        <argsstring></argsstring>
-        <name>high_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a390b29a166814f8834fa8caea46ee97c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real low_</definition>
-        <argsstring></argsstring>
-        <name>low_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a1e2311ac1194f01bc365460d8fab00d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

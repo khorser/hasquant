@@ -3,78 +3,6 @@
   <compounddef id="class_quant_lib_1_1_sphere_cylinder_optimizer" kind="class" prot="public">
     <compoundname>QuantLib::SphereCylinderOptimizer</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a6a78d0f0b24e5f4ce144260c34d7ddeb" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real r_</definition>
-        <argsstring></argsstring>
-        <name>r_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a507f1cb5e8d3c26e97417c966505e6e1" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real s_</definition>
-        <argsstring></argsstring>
-        <name>s_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real alpha_</definition>
-        <argsstring></argsstring>
-        <name>alpha_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1add99fb5ad202284d88314279dd079fe4" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real z1_</definition>
-        <argsstring></argsstring>
-        <name>z1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a74d70043063d15c5f7c88dd75a8af6f4" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real z2_</definition>
-        <argsstring></argsstring>
-        <name>z2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a428f9ca38b11ebf0b076df57ed145b05" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real z3_</definition>
-        <argsstring></argsstring>
-        <name>z3_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a4d4fc69d7ec3f1bfbd291a2fe75385cd" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real topValue_</definition>
-        <argsstring></argsstring>
-        <name>topValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a83c931cd76f3b141aa726a7e513f8d83" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real bottomValue_</definition>
-        <argsstring></argsstring>
-        <name>bottomValue_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a94f12c63459a1d2a6d1ef243cdc5f713" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool nonEmpty_</definition>
-        <argsstring></argsstring>
-        <name>nonEmpty_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a03949db495c5123468b45840905ef928" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real zweight_</definition>
-        <argsstring></argsstring>
-        <name>zweight_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1ab418732e2b63785866f16eeb4b522276" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -164,19 +92,6 @@
           <declname>y3</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="58"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1abe924fb8ebd3703b15d120679128e0c1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real objectiveFunction</definition>
-        <argsstring>(Real x2) const </argsstring>
-        <name>objectiveFunction</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x2</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

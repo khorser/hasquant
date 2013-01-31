@@ -59,50 +59,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real notional_</definition>
-        <argsstring></argsstring>
-        <name>notional_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1ab651f48b400b38a7a77a1e5dc0528774" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Index&gt; index_</definition>
-        <argsstring></argsstring>
-        <name>index_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a3da982a1d3d4255d4c6c1a00135cab37" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date baseDate_</definition>
-        <argsstring></argsstring>
-        <name>baseDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date fixingDate_</definition>
-        <argsstring></argsstring>
-        <name>fixingDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a292ad9c54719780e61282ddeeac02410" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date paymentDate_</definition>
-        <argsstring></argsstring>
-        <name>paymentDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1adc460eee16e23c544191ba2a3997c078" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool growthOnly_</definition>
-        <argsstring></argsstring>
-        <name>growthOnly_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a26470d10d6c897a714ed1ae0ded3e446" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

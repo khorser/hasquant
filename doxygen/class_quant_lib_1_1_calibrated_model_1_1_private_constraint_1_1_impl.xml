@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::CalibratedModel::PrivateConstraint::Impl</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1af922d9f9b118b46d8acbd8b2d768a5c4" prot="private" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
-        <definition>const std::vector&lt;Parameter&gt;&amp; arguments_</definition>
-        <argsstring></argsstring>
-        <name>arguments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="158" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a8be4af264dc90debea6ae1bc11bf4b04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

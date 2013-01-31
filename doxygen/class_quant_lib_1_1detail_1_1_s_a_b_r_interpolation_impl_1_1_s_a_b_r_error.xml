@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error" kind="class" prot="private">
     <compoundname>QuantLib::detail::SABRInterpolationImpl::SABRError</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a5da17267622558d2f7d5e9773425bd98" prot="private" static="no" mutable="no">
-        <type>SABRInterpolationImpl *</type>
-        <definition>SABRInterpolationImpl* sabr_</definition>
-        <argsstring></argsstring>
-        <name>sabr_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="327" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="327" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1ab9619d7b0fe821089bc61239afec165e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

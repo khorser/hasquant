@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_discretized_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedCapFloor</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_cap_floor_1aeb142d3bfd1e9b3343f694b88050f899" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref></type>
-        <definition>CapFloor::arguments arguments_</definition>
-        <argsstring></argsstring>
-        <name>arguments_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/discretizedcapfloor.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/discretizedcapfloor.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_cap_floor_1ad9c8f547e3e532d4be646472b0a2cc58" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; startTimes_</definition>
-        <argsstring></argsstring>
-        <name>startTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/discretizedcapfloor.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/discretizedcapfloor.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_cap_floor_1a93cf51d5f36c6055582b0ef5136f0f37" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; endTimes_</definition>
-        <argsstring></argsstring>
-        <name>endTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/discretizedcapfloor.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/discretizedcapfloor.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_cap_floor_1acc6e405d619c13b77b52de572f5b49e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

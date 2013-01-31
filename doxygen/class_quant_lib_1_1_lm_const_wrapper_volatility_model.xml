@@ -78,16 +78,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="48" bodyend="51"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>void generateArguments</definition>
-        <argsstring>()</argsstring>
-        <name>generateArguments</name>
-        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="57" bodyend="57"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>caplet const volatility model </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="32" bodyend="58"/>

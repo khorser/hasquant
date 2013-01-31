@@ -55,22 +55,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1a32ea77a274fa82ee6a3adfd66f3a8e6f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;VanillaSwap&gt; swap_</definition>
-        <argsstring></argsstring>
-        <name>swap_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1aec8e1970aae4b2d39df926474b83ecc3" prot="private" static="no" mutable="no">
-        <type>Settlement::Type</type>
-        <definition>Settlement::Type settlementType_</definition>
-        <argsstring></argsstring>
-        <name>settlementType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_1a9f431caee823ea28cf76b5cb5b710621" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -56,22 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/factorspreadedhazardratecurve.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/factorspreadedhazardratecurve.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1ad89485b3c765f66730099e15aded7736" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;DefaultProbabilityTermStructure&gt; originalCurve_</definition>
-        <argsstring></argsstring>
-        <name>originalCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/factorspreadedhazardratecurve.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/factorspreadedhazardratecurve.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1a5caa3200880208842845075caebdb6e1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; spread_</definition>
-        <argsstring></argsstring>
-        <name>spread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/factorspreadedhazardratecurve.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/factorspreadedhazardratecurve.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_factor_spreaded_hazard_rate_curve_1a7b41a5f6f3180d38d2eef8a2aa966a9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

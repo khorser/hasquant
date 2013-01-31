@@ -3,78 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fdm_bates_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmBatesOp</compoundname>
     <innerclass refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand" prot="private">QuantLib::FdmBatesOp::IntegroIntegrand</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1aa17c3bd9fcf002dcb2dbfb5efc269c8c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array x_</definition>
-        <argsstring></argsstring>
-        <name>x_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1a0965c37cd84ea03df388dd567b4cc45c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array weights_</definition>
-        <argsstring></argsstring>
-        <name>weights_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1a027ef25067c7fa91c1c3ef2a4163d1d5" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real lambda_</definition>
-        <argsstring></argsstring>
-        <name>lambda_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1ab93aabd725036e18018464e4d104a097" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real delta_</definition>
-        <argsstring></argsstring>
-        <name>delta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1aa75da5258630a6e16f71bc04f43a33f6" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real nu_</definition>
-        <argsstring></argsstring>
-        <name>nu_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1a049bf2fd17a24d5efdf571600ff749ec" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real m_</definition>
-        <argsstring></argsstring>
-        <name>m_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1a14a6623feb3a0e5a908254116250262f" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_gauss_hermite_integration" kindref="compound">GaussHermiteIntegration</ref></type>
-        <definition>GaussHermiteIntegration gaussHermiteIntegration_</definition>
-        <argsstring></argsstring>
-        <name>gaussHermiteIntegration_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" static="no" mutable="no">
-        <type>const FdmBoundaryConditionSet</type>
-        <definition>const FdmBoundaryConditionSet bcSet_</definition>
-        <argsstring></argsstring>
-        <name>bcSet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_bates_op_1aee9eb406a58546eae5e05bd6fc5d1aef" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmHestonOp &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmHestonOp&gt; hestonOp_</definition>
-        <argsstring></argsstring>
-        <name>hestonOp_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_op_1ac1d9307ca160f9d3de1ee7757897424d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -196,19 +124,6 @@
           <declname>s</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="114" bodyend="117"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_op_1af74cc85e4f497ec38295d24e745f9859" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; integro</definition>
-        <argsstring>(const Array &amp;r) const </argsstring>
-        <name>integro</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
-          <declname>r</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="72"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="36" bodyend="82"/>

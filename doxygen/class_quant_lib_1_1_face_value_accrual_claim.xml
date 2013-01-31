@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_face_value_accrual_claim" kind="class" prot="public">
     <compoundname>QuantLib::FaceValueAccrualClaim</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_face_value_accrual_claim_1a09fd50540ac731d65d5082af90f834fa" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Bond&gt; referenceSecurity_</definition>
-        <argsstring></argsstring>
-        <name>referenceSecurity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_face_value_accrual_claim_1aeaac23c75b9e2c27a07555344018171f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

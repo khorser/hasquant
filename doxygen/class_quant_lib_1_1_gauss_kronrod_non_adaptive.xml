@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_gauss_kronrod_non_adaptive" kind="class" prot="public">
     <compoundname>QuantLib::GaussKronrodNonAdaptive</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1a143abeb112e1d03d1fad1fde1f082a89" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real relativeAccuracy_</definition>
-        <argsstring></argsstring>
-        <name>relativeAccuracy_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1ab4d774d801573bf249162d60d261a410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

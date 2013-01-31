@@ -46,15 +46,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_extrapolator_1a7f85e136eebe6c8c18cce10b4be3a3db" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool extrapolate_</definition>
-        <argsstring></argsstring>
-        <name>extrapolate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/extrapolation.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extrapolator_1ac799544aa04b6a67f067b21ad88147bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

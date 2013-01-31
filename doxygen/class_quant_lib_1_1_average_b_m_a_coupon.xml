@@ -68,15 +68,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="75"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_average_b_m_a_coupon_1afd403450c7ab6f7b903f86caf93c06e1" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
-        <definition>Schedule fixingSchedule_</definition>
-        <argsstring></argsstring>
-        <name>fixingSchedule_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/averagebmacoupon.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_average_b_m_a_coupon_1a145541adfeb389ba98f14de59d789f3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_garch11" kind="class" prot="public">
     <compoundname>QuantLib::Garch11</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_garch11_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real alpha_</definition>
-        <argsstring></argsstring>
-        <name>alpha_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_garch11_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real beta_</definition>
-        <argsstring></argsstring>
-        <name>beta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_garch11_1a88c6756db7fb1136217d5e4f3fe88885" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real gamma_</definition>
-        <argsstring></argsstring>
-        <name>gamma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_garch11_1ae5ed07c9b4fc4588f840b65fac6ebcbf" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real vl_</definition>
-        <argsstring></argsstring>
-        <name>vl_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a5f96f517b814e7fa452aa77234f95d3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -105,31 +75,6 @@
           <declname>quoteSeries</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="51"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_garch11_1a87b8e8e007393982e8b58a8918c1bb83" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real costFunction</definition>
-        <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;qs, Real alpha, Real beta, Real omega)</argsstring>
-        <name>costFunction</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
-          <declname>qs</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>alpha</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>beta</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>omega</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

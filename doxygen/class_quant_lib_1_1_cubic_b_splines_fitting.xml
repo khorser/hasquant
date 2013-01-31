@@ -3,31 +3,6 @@
   <compounddef id="class_quant_lib_1_1_cubic_b_splines_fitting" kind="class" prot="public">
     <compoundname>QuantLib::CubicBSplinesFitting</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a5533497959e9af060b1c95e34e394fc6" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_b_spline" kindref="compound">BSpline</ref></type>
-        <definition>BSpline splines_</definition>
-        <argsstring></argsstring>
-        <name>splines_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="130" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size size_</definition>
-        <argsstring></argsstring>
-        <name>size_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="131" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a357822f17eb0bd8c48f3e02fa0246093" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural N_</definition>
-        <argsstring></argsstring>
-        <name>N_</name>
-        <briefdescription>
-<para>N_th basis function coefficient to solve for when d(0)=1. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="133" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a980eea5e9fe83b0f615979eb72e3d723" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -71,38 +46,6 @@
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="126"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size size</definition>
-        <argsstring>() const </argsstring>
-        <name>size</name>
-        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
-        <briefdescription>
-<para>total number of coefficients to fit/solve for </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="128"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
-        <definition>DiscountFactor discountFunction</definition>
-        <argsstring>(const Array &amp;x, Time t) const </argsstring>
-        <name>discountFunction</name>
-        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a">discountFunction</reimplements>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-<para>derived classes must set this </para>        </briefdescription>
-        <detaileddescription>
-<para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="129"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

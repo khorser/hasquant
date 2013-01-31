@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_simple_swing_condition" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimpleSwingCondition</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_swing_condition_1a74056d41a3aa1d300d6b427829cb63c4" prot="private" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>const std::vector&lt;Time&gt; exerciseTimes_</definition>
-        <argsstring></argsstring>
-        <name>exerciseTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_swing_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_swing_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calculator_</definition>
-        <argsstring></argsstring>
-        <name>calculator_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple_swing_condition_1a3175cb5110707258d2f5075e49ee7d8c" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size swingDirection_</definition>
-        <argsstring></argsstring>
-        <name>swingDirection_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple_swing_condition_1a30981b8fe14ebb07ff498e27e43bf3dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

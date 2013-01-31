@@ -174,36 +174,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1aff626e64244e6b8430972b61a2405169" prot="private" static="no" mutable="no">
-        <type>RandomAccessIterator</type>
-        <definition>RandomAccessIterator begin_</definition>
-        <argsstring></argsstring>
-        <name>begin_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1a5e57fc05a0e74011ddb318203e15be2d" prot="private" static="no" mutable="no">
-        <type>RandomAccessIterator</type>
-        <definition>RandomAccessIterator end_</definition>
-        <argsstring></argsstring>
-        <name>end_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1a5b7d151dd8bd0b9caf6c2226a1a0bfa8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size xSize_</definition>
-        <argsstring></argsstring>
-        <name>xSize_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1a4b4ced0c6342f8c5e8d8788b1e4d3417" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size ySize_</definition>
-        <argsstring></argsstring>
-        <name>ySize_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a64811b5cfac61b8b7f079a1e56c273f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

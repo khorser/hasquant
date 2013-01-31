@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand" kind="class" prot="private">
     <compoundname>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1ab295bd7d159f9136fed721f36381decb" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real y_</definition>
-        <argsstring></argsstring>
-        <name>y_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real eta_</definition>
-        <argsstring></argsstring>
-        <name>eta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a474788abd4b701988062bf1161090ad2" prot="private" static="no" mutable="no">
-        <type>const FdmBoundaryConditionSet &amp;</type>
-        <definition>const FdmBoundaryConditionSet&amp; bcSet_</definition>
-        <argsstring></argsstring>
-        <name>bcSet_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1ac7f99b91f156a037621bbdea6cab2792" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_linear_interpolation" kindref="compound">LinearInterpolation</ref> &gt; &amp;</type>
-        <definition>const boost::shared_ptr&lt;LinearInterpolation&gt;&amp; interpl_</definition>
-        <argsstring></argsstring>
-        <name>interpl_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a78b7a377f4507f398d68d2b84602594d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,43 +3,6 @@
   <compounddef id="class_quant_lib_1_1_market_model_pathwise_cash_rebate" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseCashRebate</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref></type>
-        <definition>EvolutionDescription evolution_</definition>
-        <argsstring></argsstring>
-        <name>evolution_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
-        <argsstring></argsstring>
-        <name>paymentTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a0cdfce4daff0a90a480838c61b53e39e" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix amounts_</definition>
-        <argsstring></argsstring>
-        <name>amounts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfProducts_</definition>
-        <argsstring></argsstring>
-        <name>numberOfProducts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size currentIndex_</definition>
-        <argsstring></argsstring>
-        <name>currentIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcashrebate.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_cash_rebate_1a643f50d3371d3a4ab2d88e85f165f676" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

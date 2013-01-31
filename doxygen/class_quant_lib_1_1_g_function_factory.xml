@@ -70,15 +70,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="86"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1af447a901dbf4e82f6e4b5ecb80f5bdf4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>GFunctionFactory</definition>
-        <argsstring>()</argsstring>
-        <name>GFunctionFactory</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="88"/>
-      </memberdef>
-      </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="71" bodyend="177"/>
   </compounddef>
 </doxygen>

@@ -38,36 +38,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="192"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date fixingDate_</definition>
-        <argsstring></argsstring>
-        <name>fixingDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="196" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a5fd288c2fefa3e5808e1f424a609aa40" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
-        <definition>Period periodToStart_</definition>
-        <argsstring></argsstring>
-        <name>periodToStart_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="197" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
-        <argsstring></argsstring>
-        <name>iborIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="198" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fra_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>RelinkableHandle&lt;YieldTermStructure&gt; termStructureHandle_</definition>
-        <argsstring></argsstring>
-        <name>termStructureHandle_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="199" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1a66221e6086a9b142f49030b77f7c2ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -300,16 +270,6 @@
           <declname>iborIndex</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="184"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fra_rate_helper_1a5b508edbd7d439284c55178fd681adb0" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void initializeDates</definition>
-        <argsstring>()</argsstring>
-        <name>initializeDates</name>
-        <reimplements refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aac525f92a4e969388fe7563e8c2a2251">initializeDates</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="195"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

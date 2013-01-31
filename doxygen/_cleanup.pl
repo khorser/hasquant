@@ -28,6 +28,14 @@ for $f (glob("*.xml"))
 	    {
 		$skip = "</listofallmembers>";
 	    }
+	    elsif (m!<sectiondef kind="private-attrib">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
+	    elsif (m!<sectiondef kind="private-func">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
 	    elsif (m!<sectiondef kind="protected-attrib">!)
 	    {
 		$skip = "</sectiondef>";

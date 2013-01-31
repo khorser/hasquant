@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_failure_to_pay" kind="class" prot="public">
     <compoundname>QuantLib::FailureToPay</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_failure_to_pay_1a4f4ed09973d6b39f5a011bc88f8e1448" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
-        <definition>Period gracePeriod_</definition>
-        <argsstring></argsstring>
-        <name>gracePeriod_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="180" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_failure_to_pay_1a98d38e581f0a90d3b96700bf0583298d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real amountRequired_</definition>
-        <argsstring></argsstring>
-        <name>amountRequired_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="182" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_failure_to_pay_1ac32b1d3e732b5fc5ff63084f62dfa956" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

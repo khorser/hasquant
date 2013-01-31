@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_multi_product_pathwise_wrapper" kind="class" prot="public">
     <compoundname>QuantLib::MultiProductPathwiseWrapper</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_product_pathwise_wrapper_1a18b3bb6b5e6938842bf6c24c9d0931f7" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; <ref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt;</type>
-        <definition>Clone&lt;MarketModelPathwiseMultiProduct&gt; innerProduct_</definition>
-        <argsstring></argsstring>
-        <name>innerProduct_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_product_pathwise_wrapper_1a4cd199c6bb3d51d1f4af9bfa8c7cb84d" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;MarketModelPathwiseMultiProduct::CashFlow&gt; &gt; cashFlowsGenerated_</definition>
-        <argsstring></argsstring>
-        <name>cashFlowsGenerated_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_product_pathwise_wrapper_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfProducts_</definition>
-        <argsstring></argsstring>
-        <name>numberOfProducts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multisteppathwisewrapper.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_multi_product_pathwise_wrapper_1a3943bd9fb0e20a9adf88c1e8013a65ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

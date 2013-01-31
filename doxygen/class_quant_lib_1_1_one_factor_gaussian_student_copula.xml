@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_one_factor_gaussian_student_copula" kind="class" prot="public">
     <compoundname>QuantLib::OneFactorGaussianStudentCopula</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1aabb938b56fdd5e6405f3db6d367286d6" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_normal_distribution" kindref="compound">NormalDistribution</ref></type>
-        <definition>NormalDistribution density_</definition>
-        <argsstring></argsstring>
-        <name>density_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="122" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1af8176fbedaa19a90b95c63211ec07dd2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_cumulative_student_distribution" kindref="compound">CumulativeStudentDistribution</ref></type>
-        <definition>CumulativeStudentDistribution cumulative_</definition>
-        <argsstring></argsstring>
-        <name>cumulative_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="123" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1acd1dac754e079daeb635aa09373b1065" prot="private" static="no" mutable="no">
-        <type>int</type>
-        <definition>int nz_</definition>
-        <argsstring></argsstring>
-        <name>nz_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="124" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a37a4c02d77c92244eea1a25559c8aee7" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real scaleZ_</definition>
-        <argsstring></argsstring>
-        <name>scaleZ_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="126" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a0ac2371595391c41cfa9cf447fcbcd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -90,29 +60,6 @@
         <detaileddescription>
 <para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="138" bodyend="140"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <briefdescription>
-<para><ref refid="class_quant_lib_1_1_observer" kindref="compound">Observer</ref> interface. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="120"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a8073a564a69fffcb46d729de62e32c5d" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real cumulativeYintegral</definition>
-        <argsstring>(Real y) const </argsstring>
-        <name>cumulativeYintegral</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>y</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="131"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -3,108 +3,6 @@
   <compounddef id="class_quant_lib_1_1_basket" kind="class" prot="public">
     <compoundname>QuantLib::Basket</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1ab0040ffc4275fed51da172ce1ee71f8b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; names_</definition>
-        <argsstring></argsstring>
-        <name>names_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="169" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a6bbb9ef180bf5ecb750bbb9a698708c7" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; notionals_</definition>
-        <argsstring></argsstring>
-        <name>notionals_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="170" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a804abfaf5ef088110d37eccde7d1c9a0" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; Pool &gt;</type>
-        <definition>boost::shared_ptr&lt;Pool&gt; pool_</definition>
-        <argsstring></argsstring>
-        <name>pool_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="171" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a69d3c9c99d522936a4f50c1223a6516c" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &gt;</type>
-        <definition>std::vector&lt;DefaultProbKey&gt; defaultKeys_</definition>
-        <argsstring></argsstring>
-        <name>defaultKeys_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="174" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1ac6b7e07efa3a4bd412ed8609850f04f9" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_recovery_rate_model" kindref="compound">RecoveryRateModel</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;RecoveryRateModel&gt; &gt; rrModels_</definition>
-        <argsstring></argsstring>
-        <name>rrModels_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="176" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1abf4432950f31447458eb901253f011ac" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real attachmentRatio_</definition>
-        <argsstring></argsstring>
-        <name>attachmentRatio_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="177" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a607c0a4c41a5984bba192df98f4b92f2" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real detachmentRatio_</definition>
-        <argsstring></argsstring>
-        <name>detachmentRatio_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="178" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1aee374a9df272020d64d31a18c85d8f87" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real basketNotional_</definition>
-        <argsstring></argsstring>
-        <name>basketNotional_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="179" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1ad97580d4eb5d15b3e169dec7d9d06575" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real basketLGD_</definition>
-        <argsstring></argsstring>
-        <name>basketLGD_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="180" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a8dbdf1020db8b31676c118532bd49837" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real trancheNotional_</definition>
-        <argsstring></argsstring>
-        <name>trancheNotional_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="181" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a422b08b34d790844bec9aca40977a32c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real attachmentAmount_</definition>
-        <argsstring></argsstring>
-        <name>attachmentAmount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="182" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1a14718d6b51c572ed98b6d3a3ba6343c0" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real detachmentAmount_</definition>
-        <argsstring></argsstring>
-        <name>detachmentAmount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="183" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1aa7cccb3bd0f4a3220e4e41442e7a1a10" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; LGDs_</definition>
-        <argsstring></argsstring>
-        <name>LGDs_</name>
-        <briefdescription>
-<para>Individual names expected LGDs at the reference date. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="185" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_basket_1ae50a065e5429044810d78025756d58dd" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; Loss &gt;</type>
-        <definition>std::vector&lt;Loss&gt; scenarioLoss_</definition>
-        <argsstring></argsstring>
-        <name>scenarioLoss_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="186" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" bodystart="186" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_basket_1a23dbe55228444e1fdde6e2b693fee99e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -507,18 +405,6 @@
         <briefdescription>
 <para>Vector of incremental tranche losses under the current scenario. </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="164"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
-        <detaileddescription>
-<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/basket.hpp" line="167"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

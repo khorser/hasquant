@@ -158,15 +158,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="108" bodyend="115"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_coupon_1a1ea555b4ee54e9ebfb9417ddf85a09a3" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
-        <definition>InterestRate rate_</definition>
-        <argsstring></argsstring>
-        <name>rate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Coupon paying a fixed interest rate </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="38" bodyend="75"/>

@@ -48,22 +48,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="59"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_libor_1aaa01af25066655c738c899fbb7d6a401" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar financialCenterCalendar_</definition>
-        <argsstring></argsstring>
-        <name>financialCenterCalendar_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_libor_1a7a193b9bc8b7814ab73fe583407146cf" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
-        <definition>Calendar jointCalendar_</definition>
-        <argsstring></argsstring>
-        <name>jointCalendar_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/ibor/libor.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_libor_1a31d1278ed064aaf773b5e8dfc4fd5c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -2,43 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
-        <argsstring></argsstring>
-        <name>termStructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="134" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real theta_</definition>
-        <argsstring></argsstring>
-        <name>theta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="135" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1a9fd062c3257b97efb131dd9a0c168a38" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real k_</definition>
-        <argsstring></argsstring>
-        <name>k_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="135" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="135" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1afb597b35edab96eecbcbf9a2df04f05d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real x0_</definition>
-        <argsstring></argsstring>
-        <name>x0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="135" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1af45f134687bf58a35c7df79eaba3738e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

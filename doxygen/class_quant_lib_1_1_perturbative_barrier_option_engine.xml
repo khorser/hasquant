@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_perturbative_barrier_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::PerturbativeBarrierOptionEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
-        <argsstring></argsstring>
-        <name>process_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a24741b3153d69ec6b31f19055dd91562" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural order_</definition>
-        <argsstring></argsstring>
-        <name>order_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1abdebe1301122f71cf4fad5b22de22552" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool zeroGamma_</definition>
-        <argsstring></argsstring>
-        <name>zeroGamma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/barrieroption/perturbativebarrieroptionengine.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a91afc879fc5f1960f367fb3a1cc82437" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

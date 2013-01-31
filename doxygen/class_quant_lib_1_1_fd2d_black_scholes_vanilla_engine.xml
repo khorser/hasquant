@@ -3,64 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::Fd2dBlackScholesVanillaEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a9b28f546051f3d0cc2b8b0bc7683baf3" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; p1_</definition>
-        <argsstring></argsstring>
-        <name>p1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1acd777b137a676cdead0f190f166563a9" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; p2_</definition>
-        <argsstring></argsstring>
-        <name>p2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a7e99e192b1f8083fb9698974031ade6a" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real correlation_</definition>
-        <argsstring></argsstring>
-        <name>correlation_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size xGrid_</definition>
-        <argsstring></argsstring>
-        <name>xGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size yGrid_</definition>
-        <argsstring></argsstring>
-        <name>yGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size tGrid_</definition>
-        <argsstring></argsstring>
-        <name>tGrid_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size dampingSteps_</definition>
-        <argsstring></argsstring>
-        <name>dampingSteps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1ab3e55b6ce13d4487caf29d25516dfdfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

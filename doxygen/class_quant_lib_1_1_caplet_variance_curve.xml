@@ -26,15 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_caplet_variance_curve_1a9a85285f5ea905b54cf0e15fa87a97fb" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_black_variance_curve" kindref="compound">BlackVarianceCurve</ref></type>
-        <definition>BlackVarianceCurve blackCurve_</definition>
-        <argsstring></argsstring>
-        <name>blackCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1ab8237fa09c27ca6fa7edc11f1264fefa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -17,15 +17,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1step__iterator_1a58a2e269a08b87048551715956342933" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
-        <definition>BigInteger step_</definition>
-        <argsstring></argsstring>
-        <name>step_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1abb1fccc1ec657d30fc080bc0bf40b5bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

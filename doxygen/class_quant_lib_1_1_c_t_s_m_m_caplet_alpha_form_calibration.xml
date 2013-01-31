@@ -2,64 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletAlphaFormCalibration</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a4fc0728c8a5fc0f8bae35984aa85d45a" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; alphaInitial_</definition>
-        <argsstring></argsstring>
-        <name>alphaInitial_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a968c8a4cb7ffa67c8da4b6b3d98615f5" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; alphaMax_</definition>
-        <argsstring></argsstring>
-        <name>alphaMax_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1aa8580850596d971a2ddcb02404719b72" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; alphaMin_</definition>
-        <argsstring></argsstring>
-        <name>alphaMin_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1aae2e7b5259effa735eb0f21f8269d45f" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool maximizeHomogeneity_</definition>
-        <argsstring></argsstring>
-        <name>maximizeHomogeneity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1ab5485c129432de5d6e56a95eb3efb4f7" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; AlphaForm &gt;</type>
-        <definition>boost::shared_ptr&lt;AlphaForm&gt; parametricForm_</definition>
-        <argsstring></argsstring>
-        <name>parametricForm_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a48e9f3bb7c612528bb48bdd22c58bde1" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; alpha_</definition>
-        <argsstring></argsstring>
-        <name>alpha_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a6bfa2e66aaac94627cdf7ea5e75ea6c7" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; a_</definition>
-        <argsstring></argsstring>
-        <name>a_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1aea0f54a8d22da6f8adb151998811ed2f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; b_</definition>
-        <argsstring></argsstring>
-        <name>b_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1a4f4e33dd3dabe7daa136a25573b7a452" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -200,27 +142,6 @@
           <declname>swapCovariancePseudoRoots</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="74"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_alpha_form_calibration_1afd37f1fcf607e6ee5349dce9a31e2ac0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural calibrationImpl_</definition>
-        <argsstring>(Natural numberOfFactors, Natural maxIterations, Real tolerance)</argsstring>
-        <name>calibrationImpl_</name>
-        <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-          <declname>numberOfFactors</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-          <declname>maxIterations</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>tolerance</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="78"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalalphacalibration.hpp" bodystart="30" bodyend="85"/>

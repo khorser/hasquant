@@ -8,15 +8,6 @@
         <type>class CDOEngine</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine_1ab30c093c138e55870ab79587961401d6" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
-        <definition>const Handle&lt;OneFactorCopula&gt; copula_</definition>
-        <argsstring></argsstring>
-        <name>copula_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="272" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="271" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine_1a874500da3cd99da4ff301c3ac259a18c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -28,19 +19,6 @@
           <declname>copula</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="230" bodyend="233"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine_1a6d163efc5ceadc563dd267641d754a0e" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real expectedTrancheLoss</definition>
-        <argsstring>(const Date &amp;d) const </argsstring>
-        <name>expectedTrancheLoss</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="235" bodyend="271"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>

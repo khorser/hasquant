@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_boundary_constraint_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::BoundaryConstraint::Impl</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a390b29a166814f8834fa8caea46ee97c" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real low_</definition>
-        <argsstring></argsstring>
-        <name>low_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real high_</definition>
-        <argsstring></argsstring>
-        <name>high_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a739166be6bd0e04c1fc00f58f5bd8717" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

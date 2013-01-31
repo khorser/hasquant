@@ -18,15 +18,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_calibration_helper_1a9f9c0e0bdd48774973b8a42e76c9ebab" prot="private" static="no" mutable="no">
-        <type>const CalibrationErrorType</type>
-        <definition>const CalibrationErrorType calibrationErrorType_</definition>
-        <argsstring></argsstring>
-        <name>calibrationErrorType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/calibrationhelper.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a1c1f699e86af3c7d725555ee8640d319" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

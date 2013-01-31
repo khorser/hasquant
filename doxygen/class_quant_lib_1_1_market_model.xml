@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_market_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MarketModel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_1a838d79b5b77e88ed560610ceb5d79df2" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>std::vector&lt;Matrix&gt; covariance_</definition>
-        <argsstring></argsstring>
-        <name>covariance_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_1a5a5a420aa8690c2b903b0f4ca8956294" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
-        <definition>std::vector&lt;Matrix&gt; totalCovariance_</definition>
-        <argsstring></argsstring>
-        <name>totalCovariance_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

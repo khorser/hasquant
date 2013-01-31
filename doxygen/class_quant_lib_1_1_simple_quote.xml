@@ -50,15 +50,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_simple_quote_1a3750926f3db88561a589630027f75a97" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real value_</definition>
-        <argsstring></argsstring>
-        <name>value_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1aa3842da21c4ba0b230d9481d63c3b06c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

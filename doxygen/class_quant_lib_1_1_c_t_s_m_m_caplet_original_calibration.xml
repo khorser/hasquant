@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletOriginalCalibration</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1a48e9f3bb7c612528bb48bdd22c58bde1" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; alpha_</definition>
-        <argsstring></argsstring>
-        <name>alpha_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1a4dc6c3b9a9787a1b5f4ff4f0b6971fd2" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool lowestRoot_</definition>
-        <argsstring></argsstring>
-        <name>lowestRoot_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1afc28dec9c08c3a91202235244aef519a" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool useFullApprox_</definition>
-        <argsstring></argsstring>
-        <name>useFullApprox_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1adad1b2b304f426594ea51a02e2e2dab8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -121,25 +98,6 @@
           <declname>swapCovariancePseudoRoots</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="61"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1a4564fb134bea636093f5febeeb2e4aa0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural calibrationImpl_</definition>
-        <argsstring>(Natural numberOfFactors, Natural, Real)</argsstring>
-        <name>calibrationImpl_</name>
-        <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-          <declname>numberOfFactors</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="65"/>
       </memberdef>
       </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" bodystart="28" bodyend="69"/>

@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_black_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackSwaptionEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_swaption_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
-        <argsstring></argsstring>
-        <name>discountCurve_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_swaption_engine_1ab7bb4e4c9f5765d736acddb95770aa7c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
-        <definition>Handle&lt;SwaptionVolatilityStructure&gt; vol_</definition>
-        <argsstring></argsstring>
-        <name>vol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1abd24ff35a976366d04e4cdcb3e489b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

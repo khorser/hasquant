@@ -72,43 +72,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" line="52"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_swaption_1a202147612522384bf58d92f294a8cedb" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size startIndex_</definition>
-        <argsstring></argsstring>
-        <name>startIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_swaption_1a93c98cea283aa6d8bd047b968fd86970" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size endIndex_</definition>
-        <argsstring></argsstring>
-        <name>endIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_swaption_1adcc92268a287e9010c09d066f3729fa5" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;StrikedTypePayoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_swaption_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
-        <argsstring></argsstring>
-        <name>paymentTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_multi_step_swaption_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size currentIndex_</definition>
-        <argsstring></argsstring>
-        <name>currentIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepswaption.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_multi_step_swaption_1a131b04bc6bbccff6b87398c22c9c5ef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

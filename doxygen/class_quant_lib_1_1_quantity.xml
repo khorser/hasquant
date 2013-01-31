@@ -162,29 +162,6 @@
       </sectiondef>
       <sectiondef kind="public-type">
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1a792de4e88e29e3df5d753c1590d47d8c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref></type>
-        <definition>CommodityType commodityType_</definition>
-        <argsstring></argsstring>
-        <name>commodityType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
-        <definition>UnitOfMeasure unitOfMeasure_</definition>
-        <argsstring></argsstring>
-        <name>unitOfMeasure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quantity_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real amount_</definition>
-        <argsstring></argsstring>
-        <name>amount_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_quantity_1ad2b77826ab7bb423eb3117281aca2b72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>

@@ -37,15 +37,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="89" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_parallel_evolver_1aef6b7dd9b6ddcb702ca96f3b5cdf0fba" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; Evolver &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;Evolver&gt; &gt; evolvers_</definition>
-        <argsstring></argsstring>
-        <name>evolvers_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="111" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_parallel_evolver_1a837ec9638f5c903436c81bcde0601c4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

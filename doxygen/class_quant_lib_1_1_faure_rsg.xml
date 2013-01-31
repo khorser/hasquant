@@ -12,85 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a9cf0dc854ef1c5ea1ceb614b8c06b5c4" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size dimensionality_</definition>
-        <argsstring></argsstring>
-        <name>dimensionality_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" static="no" mutable="yes">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
-        <definition>sample_type sequence_</definition>
-        <argsstring></argsstring>
-        <name>sequence_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a89e718360f70fcbaffbbddcdde80d87b" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; long int &gt;</type>
-        <definition>std::vector&lt;long int&gt; integerSequence_</definition>
-        <argsstring></argsstring>
-        <name>integerSequence_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1af7e5a1677c2d306ee54893a4f4a1fb48" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; long int &gt;</type>
-        <definition>std::vector&lt;long int&gt; bary_</definition>
-        <argsstring></argsstring>
-        <name>bary_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a5887dca4032d27bced3e70c6dc219b3c" prot="private" static="no" mutable="yes">
-        <type>std::vector&lt; std::vector&lt; long int &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;long int&gt; &gt; gray_</definition>
-        <argsstring></argsstring>
-        <name>gray_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a0b6b6deeaf234f4fe1458a6320c8f772" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size base_</definition>
-        <argsstring></argsstring>
-        <name>base_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1aa3c4688fab345016517ac455a5dd2018" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size mbit_</definition>
-        <argsstring></argsstring>
-        <name>mbit_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1aad624c6efaa33f6cc9e8038ab896f324" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; long int &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;long int&gt; &gt; powBase_</definition>
-        <argsstring></argsstring>
-        <name>powBase_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a7f0114915436207b8d706475877ee08b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; long int &gt;</type>
-        <definition>std::vector&lt;long int&gt; addOne_</definition>
-        <argsstring></argsstring>
-        <name>addOne_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1ad5eb34b6873bc9721086f68f87a04dba" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; std::vector&lt; long int &gt; &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;std::vector&lt;long int&gt; &gt; &gt; pascal3D</definition>
-        <argsstring></argsstring>
-        <name>pascal3D</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_faure_rsg_1a28cbabc560b9c8f545909732163c6d26" prot="private" static="no" mutable="no">
-        <type>double</type>
-        <definition>double normalizationFactor_</definition>
-        <argsstring></argsstring>
-        <name>normalizationFactor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1a66c526c4bd3931e9df1d9f2a81f196c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -137,15 +58,6 @@
         <argsstring>() const </argsstring>
         <name>dimension</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="64" bodyend="64"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_faure_rsg_1acba90d1497f24d6c21a1befd8ac04eda" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void generateNextIntSequence</definition>
-        <argsstring>() const </argsstring>
-        <name>generateNextIntSequence</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="66"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -2,22 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_composite_constraint_1_1_impl" kind="class" prot="private">
     <compoundname>QuantLib::CompositeConstraint::Impl</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1af52f657d5950bd668e858a718936b9d3" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref></type>
-        <definition>Constraint c1_</definition>
-        <argsstring></argsstring>
-        <name>c1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="121" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1ab3621e87adf3a9b3086633435deeb327" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref></type>
-        <definition>Constraint c2_</definition>
-        <argsstring></argsstring>
-        <name>c2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="121" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1a97371fef8a4150c4928c1f976cd6fd05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

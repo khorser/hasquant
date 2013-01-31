@@ -4,57 +4,6 @@
     <compoundname>QuantLib::GeneralizedHullWhite</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a9eb54631de0ff65d7ae3516aed4a6e94" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; speedstructure_</definition>
-        <argsstring></argsstring>
-        <name>speedstructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a82f021d0d82f55fad82b099884a9fb4b" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; volstructure_</definition>
-        <argsstring></argsstring>
-        <name>volstructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a198afb8e4fec5d3187ee5e91a15cd716" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; speedperiods_</definition>
-        <argsstring></argsstring>
-        <name>speedperiods_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a5f10512a54cdea141168efadf1c72cf7" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; volperiods_</definition>
-        <argsstring></argsstring>
-        <name>volperiods_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1ad4439c51d60a45db28cbc47843a73171" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
-        <definition>Parameter&amp; a_</definition>
-        <argsstring></argsstring>
-        <name>a_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
-        <definition>Parameter&amp; sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a1863803e3d08a291d7dd59ab2242e748" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
-        <definition>Parameter phi_</definition>
-        <argsstring></argsstring>
-        <name>phi_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -123,22 +72,6 @@
           <declname>grid</declname>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="67"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a152c593c6c6d82f43ccbbaa6c274efa6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt;</type>
-        <definition>boost::function&lt;Real (Time)&gt; speed</definition>
-        <argsstring>() const </argsstring>
-        <name>speed</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="79"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a979df69e95f3cafb2b705afeb84c9dd4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt;</type>
-        <definition>boost::function&lt;Real (Time)&gt; vol</definition>
-        <argsstring>() const </argsstring>
-        <name>vol</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="80"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

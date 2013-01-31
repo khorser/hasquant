@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_upfront_cds_helper" kind="class" prot="public">
     <compoundname>QuantLib::UpfrontCdsHelper</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1ae8ff2a0be6d5f0a407a3a92a9557a89f" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
-        <definition>Natural upfrontSettlementDays_</definition>
-        <argsstring></argsstring>
-        <name>upfrontSettlementDays_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="174" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1a803c3db64837bdd4d63de86f64a248ac" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date upfrontDate_</definition>
-        <argsstring></argsstring>
-        <name>upfrontDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="175" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1aebc84697d9b3aee7df3fe493a9f0989a" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate runningSpread_</definition>
-        <argsstring></argsstring>
-        <name>runningSpread_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="176" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -180,16 +157,6 @@
         <name>initializeDates</name>
         <reimplements refid="class_quant_lib_1_1_cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1ae5bb53d57b1f705fbf3a6459c7d4f221" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void resetEngine</definition>
-        <argsstring>()</argsstring>
-        <name>resetEngine</name>
-        <reimplements refid="class_quant_lib_1_1_cds_helper_1ab3774009db0f4540cff6c9a7e50b73c2">resetEngine</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="177"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

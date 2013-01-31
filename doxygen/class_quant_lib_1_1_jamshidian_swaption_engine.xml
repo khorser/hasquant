@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_jamshidian_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::JamshidianSwaptionEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/jamshidianswaptionengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_jamshidian_swaption_engine_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
-        <argsstring></argsstring>
-        <name>termStructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/jamshidianswaptionengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/jamshidianswaptionengine.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_jamshidian_swaption_engine_1ab0a2f098de5f255b399b71ae199b3496" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

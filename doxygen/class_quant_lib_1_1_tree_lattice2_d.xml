@@ -16,22 +16,6 @@
         <defval><ref refid="class_quant_lib_1_1_trinomial_tree" kindref="compound">TrinomialTree</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_tree_lattice2_d_1ac9c403758931aabe718882f1e0b00907" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix m_</definition>
-        <argsstring></argsstring>
-        <name>m_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_tree_lattice2_d_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/lattice2d.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice2_d_1a704f2e1b3213debcb31d9e34532a6b62" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

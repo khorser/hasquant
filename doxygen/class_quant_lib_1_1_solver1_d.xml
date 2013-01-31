@@ -116,36 +116,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="223" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="250" bodyend="253"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1a35f7fccfd2455628469e3aa3c81c873a" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real lowerBound_</definition>
-        <argsstring></argsstring>
-        <name>lowerBound_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="231" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1abcbfe0842c7e864aaa71532acac7b585" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real upperBound_</definition>
-        <argsstring></argsstring>
-        <name>upperBound_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="231" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1a217f89b53faa6499a9f2c66d3cdf1841" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool lowerBoundEnforced_</definition>
-        <argsstring></argsstring>
-        <name>lowerBoundEnforced_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="232" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_solver1_d_1a49c9d474bd044afedd1c54f27017a707" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool upperBoundEnforced_</definition>
-        <argsstring></argsstring>
-        <name>upperBoundEnforced_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="232" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1acc4099a72e9b9c8fcbe611906203a757" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -153,19 +123,6 @@
         <argsstring>()</argsstring>
         <name>Solver1D</name>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="68" bodyend="70"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_solver1_d_1a22f5e6348dd6dd261abde6848bdcd628" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real enforceBounds_</definition>
-        <argsstring>(Real x) const </argsstring>
-        <name>enforceBounds_</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>x</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" line="230" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/solver1d.hpp" bodystart="256" bodyend="262"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

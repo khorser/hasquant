@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_lm_linear_exponential_volatility_model" kind="class" prot="public">
     <compoundname>QuantLib::LmLinearExponentialVolatilityModel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a8febdf88837e4cffc9f75ddf4da8e5d1" prot="private" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>const std::vector&lt;Time&gt; fixingTimes_</definition>
-        <argsstring></argsstring>
-        <name>fixingTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a8f5b4b645bd11c8f5a6e25f0d34fe6ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -102,16 +93,6 @@
           <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="58"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void generateArguments</definition>
-        <argsstring>()</argsstring>
-        <name>generateArguments</name>
-        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

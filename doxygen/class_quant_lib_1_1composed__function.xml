@@ -26,22 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="116" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1composed__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" static="no" mutable="no">
-        <type>F</type>
-        <definition>F f_</definition>
-        <argsstring></argsstring>
-        <name>f_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="122" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1composed__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" static="no" mutable="no">
-        <type>G</type>
-        <definition>G g_</definition>
-        <argsstring></argsstring>
-        <name>g_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="123" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1composed__function_1a58076738c8be889fca1b173b252c8d0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

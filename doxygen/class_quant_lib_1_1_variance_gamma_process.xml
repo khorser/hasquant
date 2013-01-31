@@ -3,50 +3,6 @@
   <compounddef id="class_quant_lib_1_1_variance_gamma_process" kind="class" prot="public">
     <compoundname>QuantLib::VarianceGammaProcess</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_process_1a381b08ec4629ceeb3334b4555f71c120" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; s0_</definition>
-        <argsstring></argsstring>
-        <name>s0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_process_1ac90d45f37ddd446a4543012fb5c4c4f2" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; dividendYield_</definition>
-        <argsstring></argsstring>
-        <name>dividendYield_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_process_1afe7e3df45f71537a12136bfa45acad60" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; riskFreeRate_</definition>
-        <argsstring></argsstring>
-        <name>riskFreeRate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_process_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_process_1aa98338c783e2410f2e1fa6fce5f363e9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real nu_</definition>
-        <argsstring></argsstring>
-        <name>nu_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_gamma_process_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real theta_</definition>
-        <argsstring></argsstring>
-        <name>theta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/variancegammaprocess.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1aedd0446a44f48ee92068daf14f6a8b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

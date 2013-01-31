@@ -27,15 +27,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_factorial_1a9e05bb75a771251a38bb1e7f2d324271" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>Factorial</definition>
-        <argsstring>()</argsstring>
-        <name>Factorial</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" bodystart="40" bodyend="40"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Factorial numbers calculator </para>    </briefdescription>
     <detaileddescription>

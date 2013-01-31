@@ -54,26 +54,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_issuer_1a781aec0eade147fc39f96622465341c2" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>, <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &gt;</type>
-        <definition>std::vector&lt;std::pair&lt;DefaultProbKey, Handle&lt;DefaultProbabilityTermStructure&gt; &gt; &gt; probabilities_</definition>
-        <argsstring></argsstring>
-        <name>probabilities_</name>
-        <briefdescription>
-<para>probabilities of events for each bond collection </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_issuer_1a4f4ea0fafcd158ca0c220d2e4514c88c" prot="private" static="no" mutable="no">
-        <type>DefaultEventSet</type>
-        <definition>DefaultEventSet events_</definition>
-        <argsstring></argsstring>
-        <name>events_</name>
-        <briefdescription>
-<para>History of past events affecting this issuer. Notice it is possible. </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_issuer_1afd7dca7a5176138f5c0770e4e3f796a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

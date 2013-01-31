@@ -5,15 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::ExtendedCoxIngersollRoss::Dynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter" prot="public">QuantLib::ExtendedCoxIngersollRoss::FittingParameter</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a1863803e3d08a291d7dd59ab2242e748" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
-        <definition>Parameter phi_</definition>
-        <argsstring></argsstring>
-        <name>phi_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a88667693f84f2d60e897a566c9fc1e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

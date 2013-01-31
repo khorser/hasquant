@@ -111,36 +111,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
-        <type>Type</type>
-        <definition>Type type_</definition>
-        <argsstring></argsstring>
-        <name>type_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1ac1b4945f06b25811301d831ad6495625" prot="private" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
-        <definition>Leg floatingLeg_</definition>
-        <argsstring></argsstring>
-        <name>floatingLeg_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="95" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1ad8ad7d620cce7df50e26ce8394321fd4" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; capRates_</definition>
-        <argsstring></argsstring>
-        <name>capRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="96" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cap_floor_1adc11f67c784aa9174ad5d6f850f59549" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; floorRates_</definition>
-        <argsstring></argsstring>
-        <name>floorRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/capfloor.hpp" bodystart="97" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a6f0891310d58cfd07749fe51ac4f8e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

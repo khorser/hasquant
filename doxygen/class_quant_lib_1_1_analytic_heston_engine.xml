@@ -16,29 +16,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1ac192ece2bb0652f4e8e1627cd4343745" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size evaluations_</definition>
-        <argsstring></argsstring>
-        <name>evaluations_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="129" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1ac475fa7be7680e386f295b8feb7a07ce" prot="private" static="no" mutable="no">
-        <type>const ComplexLogFormula</type>
-        <definition>const ComplexLogFormula cpxLog_</definition>
-        <argsstring></argsstring>
-        <name>cpxLog_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="132" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1a5d7eae8c3d0cf7a7e66dd2f8ddc224bc" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; Integration &gt;</type>
-        <definition>const boost::shared_ptr&lt;Integration&gt; integration_</definition>
-        <argsstring></argsstring>
-        <name>integration_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="133" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

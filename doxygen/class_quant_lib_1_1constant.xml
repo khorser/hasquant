@@ -14,15 +14,6 @@
         <defname>U</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1constant_1a1595f1eed6e7358f3b73ff9e86e9b26f" prot="private" static="no" mutable="no">
-        <type>U</type>
-        <definition>U u_</definition>
-        <argsstring></argsstring>
-        <name>u_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -3,36 +3,6 @@
   <compounddef id="class_quant_lib_1_1_analytic_heston_hull_white_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHestonHullWhiteEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a8dc2834ec35d6f15384c3c76bbedd858" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white" kindref="compound">HullWhite</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;HullWhite&gt; hullWhiteModel_</definition>
-        <argsstring></argsstring>
-        <name>hullWhiteModel_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="88" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1abb4f4f0d0ae85eef70cf06068fb9a66f" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real m_</definition>
-        <argsstring></argsstring>
-        <name>m_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="90" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a114bd3f70557109ba551776610bb2dc1" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real a_</definition>
-        <argsstring></argsstring>
-        <name>a_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="yes">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonhullwhiteengine.hpp" bodystart="91" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a9b18a1700c3a0da0247e508f00f28dac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

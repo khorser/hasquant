@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_date_interval" kind="class" prot="public">
     <compoundname>QuantLib::DateInterval</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_date_interval_1ac56f0c18a8f1a3337b9f9456958e4611" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date startDate_</definition>
-        <argsstring></argsstring>
-        <name>startDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_date_interval_1ac13c69cfd95ff3957d5def2d7dd36f90" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date endDate_</definition>
-        <argsstring></argsstring>
-        <name>endDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" bodystart="39" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_date_interval_1a6aa05c54f803720abdee15bc2136ab83" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>

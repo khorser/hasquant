@@ -46,43 +46,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" bodystart="46" bodyend="54"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_delta_vol_quote_1a01517fec56e5a81589c2b6f4b5681c45" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real delta_</definition>
-        <argsstring></argsstring>
-        <name>delta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_delta_vol_quote_1aa549fcbe211987b807fcd89654b43aae" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
-        <definition>Handle&lt;Quote&gt; vol_</definition>
-        <argsstring></argsstring>
-        <name>vol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_delta_vol_quote_1af6a5e4b2c12476cb9e7c80c1d95e355a" prot="private" static="no" mutable="no">
-        <type>DeltaType</type>
-        <definition>DeltaType deltaType_</definition>
-        <argsstring></argsstring>
-        <name>deltaType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_delta_vol_quote_1abf47de5577b79f0a52d9897d6f046bff" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time maturity_</definition>
-        <argsstring></argsstring>
-        <name>maturity_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_delta_vol_quote_1a5e3d887aa64c10893cbedbc05eb84936" prot="private" static="no" mutable="no">
-        <type>AtmType</type>
-        <definition>AtmType atmType_</definition>
-        <argsstring></argsstring>
-        <name>atmType_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/deltavolquote.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_delta_vol_quote_1a80209fa5bb75996eed26634fda3fc348" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

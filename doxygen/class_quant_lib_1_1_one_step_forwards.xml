@@ -59,29 +59,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" line="44"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_forwards_1aeb8981967234c763295b4c901abf52fb" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; accruals_</definition>
-        <argsstring></argsstring>
-        <name>accruals_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_forwards_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
-        <argsstring></argsstring>
-        <name>paymentTimes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_one_step_forwards_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
-        <definition>std::vector&lt;Rate&gt; strikes_</definition>
-        <argsstring></argsstring>
-        <name>strikes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepforwards.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_one_step_forwards_1aada4f7b85822cd0953a24fe9b774381e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

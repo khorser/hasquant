@@ -21,31 +21,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="89"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_adaptive_1a0f208918243b415ece7768b3b770d2ff" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real integrateRecursively</definition>
-        <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b, Real tolerance) const </argsstring>
-        <name>integrateRecursively</name>
-        <param>
-          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
-          <declname>f</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>a</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>b</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>tolerance</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="98"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Integral of a 1-dimensional function using the Gauss-Kronrod methods. </para>    </briefdescription>
     <detaileddescription>

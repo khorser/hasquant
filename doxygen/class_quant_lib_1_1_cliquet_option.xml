@@ -5,15 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_cliquet_option_1_1arguments" prot="public">QuantLib::CliquetOption::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_cliquet_option_1_1engine" prot="public">QuantLib::CliquetOption::engine</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cliquet_option_1aa53a279aad0424747496f2f580129ba6" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
-        <definition>std::vector&lt;Date&gt; resetDates_</definition>
-        <argsstring></argsstring>
-        <name>resetDates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cliquetoption.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cliquet_option_1a14988ea07051e642fa62d73c4ff3fed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

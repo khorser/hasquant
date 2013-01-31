@@ -31,23 +31,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="42" bodyend="43"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_american_condition_1ad5076fc2089a30506dcd12c87c32e43e" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real applyToValue</definition>
-        <argsstring>(Real current, Real intrinsic) const </argsstring>
-        <name>applyToValue</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>current</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>intrinsic</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="45" bodyend="47"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>American exercise condition. </para>    </briefdescription>
     <detaileddescription>

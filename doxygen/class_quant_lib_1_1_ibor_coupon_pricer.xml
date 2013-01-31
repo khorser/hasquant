@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_ibor_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::IborCouponPricer</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_pricer_1a3e7a8d3fd9aaecc2a833165743019ca3" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
-        <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVol_</definition>
-        <argsstring></argsstring>
-        <name>capletVol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1ab8cc31db512e6184c6e636cb48f528dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

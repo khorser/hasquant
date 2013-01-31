@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_kirk_engine" kind="class" prot="public">
     <compoundname>QuantLib::KirkEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_kirk_engine_1a1ea6b54ef20d7392441ffa3f1d9c0a77" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;BlackProcess&gt; process1_</definition>
-        <argsstring></argsstring>
-        <name>process1_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kirk_engine_1a5d5ea58175668b187dc21bebcd6677bd" prot="private" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;BlackProcess&gt; process2_</definition>
-        <argsstring></argsstring>
-        <name>process2_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_kirk_engine_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real rho_</definition>
-        <argsstring></argsstring>
-        <name>rho_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/kirkengine.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_kirk_engine_1a62a4b370f5680744ea910ac2cf036b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

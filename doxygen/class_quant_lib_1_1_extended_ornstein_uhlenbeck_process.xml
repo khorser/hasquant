@@ -147,50 +147,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1af6b5e6269e1f31d009cd6e3e44604cda" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real speed_</definition>
-        <argsstring></argsstring>
-        <name>speed_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a192565efcbdabcec5aa86b7658e4112c" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>const Volatility vol_</definition>
-        <argsstring></argsstring>
-        <name>vol_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a488b87090d3d07dce14eea9aef83e481" prot="private" static="no" mutable="no">
-        <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt;</type>
-        <definition>const boost::function&lt;Real (Real)&gt; b_</definition>
-        <argsstring></argsstring>
-        <name>b_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a87e7903e82f7ee7b57239ecc047a5b8a" prot="private" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real intEps_</definition>
-        <argsstring></argsstring>
-        <name>intEps_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1aefb9a2ef823920233168c9531380576f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ornstein_uhlenbeck_process" kindref="compound">OrnsteinUhlenbeckProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;OrnsteinUhlenbeckProcess&gt; ouProcess_</definition>
-        <argsstring></argsstring>
-        <name>ouProcess_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1adbf35d67970893bd6d58ff33bea3e68e" prot="private" static="no" mutable="no">
-        <type>const Discretization</type>
-        <definition>const Discretization discretization_</definition>
-        <argsstring></argsstring>
-        <name>discretization_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extendedornsteinuhlenbeckprocess.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process_1a99abbb9639a49e4ca62d7047a6bab9a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

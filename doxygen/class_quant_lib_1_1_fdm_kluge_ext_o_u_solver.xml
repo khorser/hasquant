@@ -10,43 +10,6 @@
         <defval>3</defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a3ec6c37ea8b906b8ceb40a68c1c8b21d" prot="private" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt;</type>
-        <definition>const Handle&lt;KlugeExtOUProcess&gt; klugeOUProcess_</definition>
-        <argsstring></argsstring>
-        <name>klugeOUProcess_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
-        <argsstring></argsstring>
-        <name>rTS_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
-        <type>const FdmSolverDesc</type>
-        <definition>const FdmSolverDesc solverDesc_</definition>
-        <argsstring></argsstring>
-        <name>solverDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
-        <type>const FdmSchemeDesc</type>
-        <definition>const FdmSchemeDesc schemeDesc_</definition>
-        <argsstring></argsstring>
-        <name>schemeDesc_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1abadd509255a2cb4d7a91dfe48e09dfe4" prot="private" static="no" mutable="yes">
-        <type>boost::shared_ptr&lt; FdmNdimSolver&lt; N &gt; &gt;</type>
-        <definition>boost::shared_ptr&lt;FdmNdimSolver&lt;N&gt; &gt; solver_</definition>
-        <argsstring></argsstring>
-        <name>solver_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextousolver.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_solver_1aef08b3f1cf2a28894e557ad2f3cb929d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

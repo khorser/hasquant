@@ -3,29 +3,6 @@
   <compounddef id="class_quant_lib_1_1_covariance_decomposition" kind="class" prot="public">
     <compoundname>QuantLib::CovarianceDecomposition</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_covariance_decomposition_1a056cd2cd8c8177ec2aafdcd9c7077ecd" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array variances_</definition>
-        <argsstring></argsstring>
-        <name>variances_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="108" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_covariance_decomposition_1aac09b3a47c6403bf02aedef03612ac4c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array stdDevs_</definition>
-        <argsstring></argsstring>
-        <name>stdDevs_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="108" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_covariance_decomposition_1a3d5aeaf3b3e2c9ac3abefa191f9d387a" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix correlationMatrix_</definition>
-        <argsstring></argsstring>
-        <name>correlationMatrix_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="109" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1a91fc136055dc917754c5238edb5bc138" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

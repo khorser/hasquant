@@ -369,22 +369,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="174" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a926dd08eb98ca1553e4b0b6e4939d54f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate callPayoff</definition>
-        <argsstring>() const </argsstring>
-        <name>callPayoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="178"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1ab91a6fa7cd981bd6d857a192449093a7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>Rate putPayoff</definition>
-        <argsstring>() const </argsstring>
-        <name>putPayoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="179"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Digital-payoff coupon. </para>    </briefdescription>
     <detaileddescription>

@@ -2,29 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl" kind="class" prot="public">
     <compoundname>QuantLib::TermStructureFittingParameter::NumericalImpl</compoundname>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; times_</definition>
-        <argsstring></argsstring>
-        <name>times_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="182" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ab7762b4e5b79275c37fa24b9f8be1579" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; values_</definition>
-        <argsstring></argsstring>
-        <name>values_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="183" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
-        <argsstring></argsstring>
-        <name>termStructure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="184" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1a426c8d7c1c4fddc9256055429235ad21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

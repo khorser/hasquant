@@ -3,50 +3,6 @@
   <compounddef id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseMultiDeflatedCap</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a6360827251f6201fc1dd67f994411177" prot="private" static="no" mutable="no">
-        <type>MarketModelPathwiseMultiDeflatedCaplet</type>
-        <definition>MarketModelPathwiseMultiDeflatedCaplet underlyingCaplets_</definition>
-        <argsstring></argsstring>
-        <name>underlyingCaplets_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="187" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberRates_</definition>
-        <argsstring></argsstring>
-        <name>numberRates_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="189" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a870e0a0d986b7ed1294b2f78e023945f" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;std::pair&lt;Size,Size&gt; &gt; startsAndEnds_</definition>
-        <argsstring></argsstring>
-        <name>startsAndEnds_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="191" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size currentIndex_</definition>
-        <argsstring></argsstring>
-        <name>currentIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="194" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1adac99cf3cb23e8689fc4696c7054a1ce" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>std::vector&lt;Size&gt; innerCashFlowSizes_</definition>
-        <argsstring></argsstring>
-        <name>innerCashFlowSizes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="195" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1abeb1a8ee9da6950e3365c02437adaeaa" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt;</type>
-        <definition>std::vector&lt;std::vector&lt;MarketModelPathwiseMultiProduct::CashFlow&gt; &gt; innerCashFlowsGenerated_</definition>
-        <argsstring></argsstring>
-        <name>innerCashFlowsGenerated_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="196" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a78244d84483c4622f276510fbaad07c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

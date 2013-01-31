@@ -73,36 +73,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="83" bodyend="85"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a7e06897b6a17809d0d5041e4029b1ba8" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; MarketModelExerciseValue &gt;</type>
-        <definition>Clone&lt;MarketModelExerciseValue&gt; exercise_</definition>
-        <argsstring></argsstring>
-        <name>exercise_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size numberOfProducts_</definition>
-        <argsstring></argsstring>
-        <name>numberOfProducts_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" static="no" mutable="no">
-        <type>std::valarray&lt; bool &gt;</type>
-        <definition>std::valarray&lt;bool&gt; isExerciseTime_</definition>
-        <argsstring></argsstring>
-        <name>isExerciseTime_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size currentIndex_</definition>
-        <argsstring></argsstring>
-        <name>currentIndex_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a829098019ea3834bd074e13b7a2abfe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

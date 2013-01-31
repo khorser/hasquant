@@ -19,22 +19,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_vanilla_option_1a0601f0de876fa7de177ee481c23e52ca" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real moneyness_</definition>
-        <argsstring></argsstring>
-        <name>moneyness_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_vanilla_option_1af38bdd338214148a5eb151666356c911" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date resetDate_</definition>
-        <argsstring></argsstring>
-        <name>resetDate_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_forward_vanilla_option_1a14f6ffabc523c00ef19e96ea35897723" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

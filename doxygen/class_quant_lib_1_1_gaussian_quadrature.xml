@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_gaussian_quadrature" kind="class" prot="public">
     <compoundname>QuantLib::GaussianQuadrature</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_quadrature_1aa17c3bd9fcf002dcb2dbfb5efc269c8c" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array x_</definition>
-        <argsstring></argsstring>
-        <name>x_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_quadrature_1a26573986379a1661fd23fad2dde2a1de" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array w_</definition>
-        <argsstring></argsstring>
-        <name>w_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

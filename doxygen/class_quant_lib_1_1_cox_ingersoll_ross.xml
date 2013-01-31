@@ -5,36 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::CoxIngersollRoss::Dynamics</innerclass>
     <innerclass refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process" prot="public">QuantLib::CoxIngersollRoss::HelperProcess</innerclass>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1aa01a1eae45acf765c08564dbbf668d20" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
-        <definition>Parameter&amp; theta_</definition>
-        <argsstring></argsstring>
-        <name>theta_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1ae7c264dac91e99f4d78deaebc25c5ce0" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
-        <definition>Parameter&amp; k_</definition>
-        <argsstring></argsstring>
-        <name>k_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
-        <definition>Parameter&amp; sigma_</definition>
-        <argsstring></argsstring>
-        <name>sigma_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1ac0c8eb89b2ee6a6ace5e9e5464f26f25" prot="private" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
-        <definition>Parameter&amp; r0_</definition>
-        <argsstring></argsstring>
-        <name>r0_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a86cde1731e3090e18ffb1b0a4e7f7552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

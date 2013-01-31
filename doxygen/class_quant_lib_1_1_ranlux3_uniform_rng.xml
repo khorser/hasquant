@@ -12,15 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_ranlux3_uniform_rng_1a6ffc0ab1bec1bb3af932502c0b155ac7" prot="private" static="no" mutable="yes">
-        <type>boost::ranlux64_3_01</type>
-        <definition>boost::ranlux64_3_01 ranlux3_</definition>
-        <argsstring></argsstring>
-        <name>ranlux3_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_ranlux3_uniform_rng_1a26acac4149299d7b81700d3006db9fe6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>

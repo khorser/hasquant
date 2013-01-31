@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_student_distribution" kind="class" prot="public">
     <compoundname>QuantLib::StudentDistribution</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_student_distribution_1ae7498ef3fa9e3da5bc35ee3bd6e71a5d" prot="private" static="no" mutable="no">
-        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
-        <definition>Integer n_</definition>
-        <argsstring></argsstring>
-        <name>n_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="49" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_student_distribution_1a72fd4ee923827897f994b08cd4b1e57c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
